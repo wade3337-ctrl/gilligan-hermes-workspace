@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Great Scott — AI-Assisted V1 Cleanup Plan</title>
+<style>
+@page{size:letter;margin:0.5in}*{box-sizing:border-box}
+body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#1c2b22;margin:0;padding:26px;font-size:12.5px;line-height:1.45}
+.head{border-bottom:3px solid #2e7d32;padding-bottom:9px;margin-bottom:13px}
+.head h1{margin:0;font-size:19px;color:#1b5e20}
+.head .sub{font-size:12px;color:#557;margin-top:3px}
+h2{font-size:12.5px;color:#fff;background:#2e7d32;padding:4px 10px;border-radius:4px;margin:15px 0 7px;text-transform:uppercase;letter-spacing:.4px}
+h3{font-size:13px;color:#1b5e20;margin:9px 0 3px}
+ul{margin:4px 0;padding-left:18px}li{margin:3px 0}
+.tag{display:inline-block;font-size:10px;font-weight:bold;color:#fff;border-radius:9px;padding:1px 8px;vertical-align:middle}
+.t-now{background:#b23a3a}.t-next{background:#c77f12}.t-then{background:#3a6ea5}
+table{border-collapse:collapse;width:100%;margin:6px 0;font-size:11.5px}
+th,td{border:1px solid #cfe3cf;padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#e8f3e9;color:#1b5e20}
+.win td:nth-child(2){background:#f1f8f1}
+.method{background:#f6faf6;border:1px solid #cfe3cf;border-radius:7px;padding:9px 13px}
+.note{font-size:11px;color:#667}
+.flag{background:#fffdf5;border:1px solid #e0a23a;border-radius:7px;padding:8px 12px;margin-top:6px}
+.flag b{color:#c77f12}
+.foot{margin-top:16px;border-top:1px solid #ddd;padding-top:6px;font-size:10.5px;color:#889;display:flex;justify-content:space-between}
+code{background:#eef3ee;padding:0 3px;border-radius:3px}
+</style></head><body>
+
+<div class="head">
+  <h1>🌳 AI-Assisted V1 Cleanup Plan</h1>
+  <div class="sub">The in-house alternative to the $300K+ "V2 migration." Goal: make V1 (TRIM IT) <b>secure, reliable, and AI-accessible</b> — the V1.5 foundation. <b>Security first.</b></div>
+</div>
+
+<h2>How it works — safety IS the point</h2>
+<div class="method">
+<b>Roles:</b> Gilligan (Claude) drafts &amp; reviews every change and verifies the result · Codex executes server-side · you approve · a trusted "hands" runs prod changes.<br>
+<b>The rules (already how we work on TRIM IT):</b>
+<ul style="margin-top:3px">
+  <li><b>Backup-first, always</b> — timestamped <code>.bak</code> before any change; nothing is ever deleted.</li>
+  <li><b>PLAY first, then PROD</b> — test every change on the play sandbox (nightly restore of prod), verify, <i>then</i> apply to production.</li>
+  <li><b>One change at a time</b>, numbered batches, rollback chain on each.</li>
+  <li>Gilligan never touches the production database directly — changes are drafted, reviewed, approved, then run.</li>
+</ul>
+This is the same discipline that reconciled the customer-verifier and the daily monitor to the penny.
+</div>
+
+<h2>The work, prioritized</h2>
+
+<h3>Phase 1 — Security <span class="tag t-now">DO NOW</span></h3>
+<ul>
+  <li><b>SQL-injection sweep &amp; fix</b> — AI scans the whole codebase (~3,600 stored procs + the <code>.cfm</code>/<code>.cfc</code> pages) for unparameterized queries, then wraps them safely (<code>cfqueryparam</code>). <i>This is the exact risk Travis flagged — and the thing he implied costs "hundreds of thousands." It doesn't.</i></li>
+  <li><b>Kill the <code>sa</code> database login</b> — the app currently connects to SQL Server with full god-rights. Replace with a least-privilege account (only the permissions the app needs). Hours of work, huge risk reduction.</li>
+  <li><b>Fix plaintext passwords</b> — migrate the stored passwords to hashed + salted, with a safe transition path.</li>
+  <li><b>Baseline hardening</b> — suppress detailed error leakage, tighten session/cookie handling, add input validation on the exposed forms.</li>
+</ul>
+
+<h3>Phase 2 — Reliability &amp; data hygiene <span class="tag t-next">NEXT</span></h3>
+<ul>
+  <li>Retire the ~200 <code>zDelete-*</code>/backup tables (GBs) — after dependency checks, on a copy first.</li>
+  <li>Add missing enforced foreign keys, incrementally, to stop bad data at the source.</li>
+  <li>Fix broken screens (the data-driven menu / <code>ObjectPath</code>↔<code>.cfm</code> mismatches).</li>
+  <li>Targeted data-quality cleanup (the kind the customer-verifier surfaced).</li>
+</ul>
+
+<h3>Phase 3 — AI-accessibility — lay Arbor's rails <span class="tag t-then">THEN</span></h3>
+<ul>
+  <li>Expand secure read-only endpoints (like the <code>MonitorData.ReadOnly.cfm</code> we already built) so Arbor agents read clean data.</li>
+  <li>Document the data model for AI consumption.</li>
+  <li><b>This is where V1.5 cleanup literally becomes the Arbor backend — same work, double duty.</b></li>
+</ul>
+
+<h2>Honest cost comparison</h2>
+<table class="win">
+<tr><th>&nbsp;</th><th>AI-assisted V1 cleanup (this plan)</th><th>V2 rebuild (Data Processing LLC)</th></tr>
+<tr><td><b>Time to SECURE</b></td><td>Weeks (Phase 1)</td><td>End of 2027 (security folded into a multi-year rebuild)</td></tr>
+<tr><td><b>Time to usable</b></td><td>V1 is already in use — improves continuously</td><td>~End of 2027</td></tr>
+<tr><td><b>Cost</b></td><td>Mostly AI labor (low) + trusted human hours to execute. <b>A small fraction of $300K.</b> Tooling = low thousands.</td><td>$328,800 (data only) → likely <b>$600–800K all-in</b></td></tr>
+<tr><td><b>What you get</b></td><td>The system you already run, made secure + clean + AI-ready</td><td>The same ERP, rebuilt on the same tech (parity)</td></tr>
+<tr><td><b>Ownership</b></td><td><b>In-house</b> — you own the capability</td><td>Vendor-built &amp; vendor-dependent</td></tr>
+<tr><td><b>Risk</b></td><td>Incremental, backup-first, reversible</td><td>Big-bang, multi-year, single-vendor</td></tr>
+</table>
+
+<h2>Honest caveats (so this is real, not a sales pitch)</h2>
+<ul>
+  <li><b>It needs "hands."</b> AI drafts and verifies, but a trusted person must <i>run</i> prod changes with judgment. Today that's you running Codex prompts — for sustained pace you may want a part-time ColdFusion-literate person (still a fraction of $40K/mo).</li>
+  <li><b>SQLi scope is unknown until the sweep runs</b> — could be a focused set or broad across the 3,600 procs. The scan tells us; <i>then</i> we size it accurately.</li>
+  <li><b>Prod changes are never zero-risk</b> — mitigated hard by PLAY-first + backups + one-at-a-time, but discipline is required.</li>
+</ul>
+
+<div class="flag"><b>▶ Recommended first move:</b> run the AI <b>security sweep</b> (read-only — Gilligan drafts, Codex scans) to produce <i>our own</i> count of the SQL-injection surface + the <code>sa</code>/password issues. That gives you an <b>independent scope</b> to cross-check against Travis's quote — facts, not claims — before a dollar more is spent.</div>
+
+<div class="foot"><span>Great Scott Tree Care — internal plan</span><span>Prepared by Gilligan · June 11, 2026</span></div>
+</body></html>

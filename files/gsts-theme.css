@@ -1,0 +1,221 @@
+/* ============================================================================
+   GSTS THEME  ·  v2 (2026-06-09)
+   The canonical Great Scott Tree Service look — distilled from the LIVE
+   production CSS (gsts-tokens.css + the Price Buddy pricing-guide.css), so it
+   reflects the UI Jason actually built, not a guess.
+
+   HOW TO USE
+   1. Link this file on every page:   <link rel="stylesheet" href="/gsts/assets/css/gsts-theme.css">
+   2. Build with the .gsts-* component classes below and the var(--gsts-*) tokens.
+   3. NEVER hard-code hex literals in page CSS — always use the tokens here.
+   4. Mobile-first is non-negotiable: 44px min tap targets, 16px inputs (stops iOS zoom).
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   1) TOKENS  (the single source of truth for color/spacing)
+   --gsts-brand-green / -deep / -pale match the deployed gsts-tokens.css.
+---------------------------------------------------------------------------- */
+:root {
+  /* Brand greens */
+  --gsts-brand-green:       #5C743D;  /* primary: app bar, headers, active state, accents */
+  --gsts-brand-green-grad:  #405528;  /* darker partner for the header gradient + green text */
+  --gsts-brand-green-deep:  #2A3A18;  /* deepest: Pro-Tip popover bg (per tokens.css) */
+  --gsts-brand-green-pale:  #D5EDB3;  /* pale: Pro-Tip header label */
+  --gsts-tint-green:        #e8f5e9;  /* hover wash on links/options */
+
+  /* Neutrals */
+  --gsts-body-bg:           #f7f9fb;  /* page background */
+  --gsts-surface:           #ffffff;  /* cards / tables / inputs */
+  --gsts-surface-alt:       #f8fafc;  /* subtle hover surface */
+  --gsts-border:            #e5e7eb;  /* card/table borders */
+  --gsts-border-strong:     #cbd5e1;  /* input borders */
+  --gsts-text:              #1f2937;  /* primary text */
+  --gsts-text-muted:        #475569;  /* labels / secondary */
+  --gsts-text-faint:        #64748b;  /* placeholders / empty states */
+  --gsts-text-onbrand:      #ffffff;  /* text on green */
+
+  /* Status */
+  --gsts-good:              #166534;  /* on-target / positive (e.g. TPH good) */
+  --gsts-bad:               #c62828;  /* off-target / negative */
+  --gsts-warn-bg:           #fff3e0;
+  --gsts-warn-border:       #ffcc80;
+  --gsts-warn-text:         #8a4b00;
+  --gsts-good-bg:           #f0fdfa;  /* highlight panel bg */
+  --gsts-good-border:       #ccfbf1;
+
+  /* Type, spacing, shape */
+  --gsts-font:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --gsts-radius:      6px;   /* default cards/buttons/inputs */
+  --gsts-radius-lg:   8px;   /* highlight panels / pro-tip */
+  --gsts-tap:        44px;   /* minimum touch target */
+  --gsts-shadow-card: 0 1px 2px rgba(15,23,42,0.04);
+  --gsts-shadow-pop:  0 8px 20px rgba(15,23,42,0.16);
+  --gsts-header-grad: linear-gradient(135deg, var(--gsts-brand-green) 0%, var(--gsts-brand-green-grad) 100%);
+}
+
+/* ----------------------------------------------------------------------------
+   2) BASE
+---------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body.gsts {
+  margin: 0;
+  font-family: var(--gsts-font);
+  background: var(--gsts-body-bg);
+  color: var(--gsts-text);
+  -webkit-tap-highlight-color: rgba(0,0,0,0.08);
+}
+.gsts a { color: var(--gsts-brand-green); }
+.gsts a:hover { color: var(--gsts-brand-green-grad); }
+
+/* Form controls: 16px font prevents iOS zoom; 44px = comfortable touch target */
+.gsts input[type=text], .gsts input[type=number], .gsts input[type=date],
+.gsts select, .gsts textarea, .gsts .gsts-input {
+  width: 100%;
+  min-height: var(--gsts-tap);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--gsts-text);
+  background: var(--gsts-surface);
+  border: 1px solid var(--gsts-border-strong);
+  border-radius: var(--gsts-radius);
+  padding: 8px 10px;
+}
+.gsts input:focus, .gsts select:focus, .gsts textarea:focus {
+  outline: 2px solid rgba(92,116,61,0.28);
+  border-color: var(--gsts-brand-green);
+}
+
+/* ----------------------------------------------------------------------------
+   3) APP BAR (sticky page header)
+---------------------------------------------------------------------------- */
+.gsts-appbar {
+  display: flex; align-items: center; gap: 16px;
+  height: 56px; padding: 8px 18px;
+  background: var(--gsts-header-grad);
+  color: var(--gsts-text-onbrand);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.gsts-appbar h1 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: 0.3px; }
+.gsts-appbar .gsts-summary {        /* right-aligned stat pill */
+  margin-left: auto; font-size: 14px; padding: 4px 12px;
+  background: rgba(255,255,255,0.12); border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------------------------------------------------------
+   4) SECTION HEADER (the green banner atop a card/report)
+---------------------------------------------------------------------------- */
+.gsts-section-header {
+  margin: calc(-1 * 12px) calc(-1 * 12px) 12px;   /* flush to card edges */
+  padding: 10px 12px; border-radius: var(--gsts-radius) var(--gsts-radius) 0 0;
+  background: var(--gsts-header-grad); color: var(--gsts-text-onbrand);
+}
+.gsts-section-header strong { display: block; font-size: 15px; font-weight: 600; }
+.gsts-section-header span   { display: block; margin-top: 2px; font-size: 12px; opacity: 0.9; }
+
+/* ----------------------------------------------------------------------------
+   5) CARD
+---------------------------------------------------------------------------- */
+.gsts-card {
+  background: var(--gsts-surface);
+  border: 1px solid var(--gsts-border);
+  border-radius: var(--gsts-radius);
+  box-shadow: var(--gsts-shadow-card);
+  padding: 12px;
+}
+.gsts-card-title { margin: 0 0 10px; color: var(--gsts-brand-green-grad); font-size: 15px; font-weight: 600; }
+
+/* ----------------------------------------------------------------------------
+   6) TABLE
+---------------------------------------------------------------------------- */
+.gsts-table {
+  width: 100%; background: var(--gsts-surface);
+  border: 1px solid var(--gsts-border);
+  border-collapse: separate; border-spacing: 0;
+}
+.gsts-table th, .gsts-table td {
+  padding: 6px; font-size: 13px;
+  border-bottom: 1px solid var(--gsts-border);
+  border-right: 1px solid var(--gsts-border);
+}
+.gsts-table th { background: var(--gsts-brand-green); color: var(--gsts-text-onbrand); font-weight: 600; text-align: left; }
+.gsts-table tr:last-child td { border-bottom: 0; }
+.gsts-table th:last-child, .gsts-table td:last-child { border-right: 0; }
+.gsts-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ----------------------------------------------------------------------------
+   7) BUTTONS / PILLS / SEGMENTED CONTROL
+---------------------------------------------------------------------------- */
+.gsts-btn, .gsts-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--gsts-tap); padding: 10px 16px;
+  border: 1px solid var(--gsts-border-strong); border-radius: var(--gsts-radius);
+  background: var(--gsts-surface); color: var(--gsts-brand-green-grad);
+  font-weight: 600; text-decoration: none; cursor: pointer;
+}
+.gsts-btn:hover, .gsts-pill:hover { background: var(--gsts-surface-alt); }
+.gsts-btn-primary, .gsts-pill.is-selected, .gsts-btn.is-active {
+  background: var(--gsts-brand-green); border-color: var(--gsts-brand-green); color: var(--gsts-text-onbrand);
+}
+.gsts-btn:disabled { opacity: 0.4; cursor: default; }
+
+.gsts-segmented { display: flex; gap: 6px; }
+.gsts-segmented a {
+  flex: 1 1 0; min-height: var(--gsts-tap);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--gsts-border-strong); border-radius: var(--gsts-radius);
+  background: var(--gsts-surface); color: var(--gsts-brand-green-grad);
+  font-size: 16px; font-weight: 600; text-decoration: none;
+}
+.gsts-segmented a.active {
+  background: var(--gsts-brand-green); border-color: var(--gsts-brand-green); color: var(--gsts-text-onbrand);
+}
+
+/* ----------------------------------------------------------------------------
+   8) STATUS  (text + badges + KPI tile)
+---------------------------------------------------------------------------- */
+.gsts-good { color: var(--gsts-good); font-weight: 600; }   /* e.g. TPH on target */
+.gsts-bad  { color: var(--gsts-bad);  font-weight: 600; }   /* e.g. TPH below target */
+
+.gsts-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+}
+.gsts-badge.good  { background: var(--gsts-good-bg);  color: var(--gsts-good); border: 1px solid var(--gsts-good-border); }
+.gsts-badge.watch { background: var(--gsts-warn-bg);  color: var(--gsts-warn-text); border: 1px solid var(--gsts-warn-border); }
+.gsts-badge.poor  { background: #fdecec; color: var(--gsts-bad); border: 1px solid #f3b4b4; }
+
+.gsts-kpi { background: var(--gsts-surface); border: 1px solid var(--gsts-border); border-radius: var(--gsts-radius); padding: 16px; text-align: center; }
+.gsts-kpi-label { text-transform: uppercase; color: var(--gsts-text-muted); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; }
+.gsts-kpi-value { margin-top: 4px; font-size: 30px; line-height: 1; font-weight: 700; color: var(--gsts-text); }
+
+/* ----------------------------------------------------------------------------
+   9) PRO TIP popover (branded contextual help — the GSTS signature)
+   Pair with a small JS controller that positions it and toggles .is-visible.
+---------------------------------------------------------------------------- */
+.gsts-protip {
+  display: none; position: fixed; z-index: 10000; max-width: 320px;
+  padding: 12px 14px; border: 1px solid var(--gsts-brand-green);
+  border-left: 4px solid var(--gsts-brand-green); border-radius: var(--gsts-radius-lg);
+  background: rgb(240,245,230); box-shadow: 0 12px 28px rgba(92,116,61,0.25);
+  color: var(--gsts-brand-green-grad); font: 13px/1.45 var(--gsts-font); pointer-events: none;
+}
+.gsts-protip.is-visible { display: block; }
+.gsts-protip-header {
+  margin-bottom: 4px; padding: 4px 8px; border-radius: var(--gsts-radius) var(--gsts-radius) 0 0;
+  background: var(--gsts-brand-green); color: var(--gsts-text-onbrand); font-size: 14px; font-weight: 700;
+}
+
+/* ----------------------------------------------------------------------------
+   10) RESPONSIVE + A11Y
+---------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .gsts-appbar { flex-wrap: wrap; height: auto; min-height: 56px; padding: 8px 12px; }
+  .gsts-appbar h1 { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gsts * { transition: none !important; }
+}
+.gsts :focus-visible { outline: 2px solid var(--gsts-brand-green); outline-offset: 2px; }

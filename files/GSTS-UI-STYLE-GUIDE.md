@@ -1,0 +1,57 @@
+# GSTS UI Style Guide (v2 — 2026-06-09)
+**The canonical Great Scott look. Apply to every existing screen and every new build (TrimIT + Arbor AI).**
+Derived from the **live production CSS** (`gsts-tokens.css` + Price Buddy `pricing-guide.css`) — this is
+what Jason actually built, with real values, not a guess. Pair this doc with **`gsts-theme.css`**.
+
+## How to use (for you, Codex, or Herman)
+1. Attach this file + `gsts-theme.css` whenever asking an AI to build or update a GSTS/Arbor screen.
+2. Link the theme on the page, put `class="gsts"` on `<body>`, and build with the `.gsts-*` classes.
+3. **Never hard-code hex.** Use `var(--gsts-*)` tokens only.
+4. **Mobile-first is law:** 44px minimum tap targets, 16px inputs (stops iOS zoom), works ~360px → ultrawide.
+5. Back up before editing existing files (timestamped, per the standing rule).
+
+## The look in one paragraph
+Clean operations-dashboard style on a light slate background (`#f7f9fb`), white cards with soft shadows
+and 6px corners. The signature is the **green gradient** (`135deg, #5C743D → #405528`) on the app bar and
+section headers, white text on green, and green-filled active states (pills, tabs, selected rows). Status
+reads in plain color + text: green `#166534` good, red `#c62828` bad. Everything is touch-friendly.
+
+## Palette (real, in-use)
+| Token | Value | Use |
+|---|---|---|
+| `--gsts-brand-green` | `#5C743D` | app bar, section headers, active/selected, table headers, accents |
+| `--gsts-brand-green-grad` | `#405528` | gradient partner + green text on cards |
+| `--gsts-brand-green-deep` | `#2A3A18` | deepest green (Pro-Tip popover bg per tokens.css) |
+| `--gsts-brand-green-pale` | `#D5EDB3` | Pro-Tip header label |
+| `--gsts-body-bg` | `#f7f9fb` | page background |
+| `--gsts-surface` / `--gsts-border` | `#fff` / `#e5e7eb` | cards, tables, inputs / borders |
+| `--gsts-text` / `--gsts-text-muted` | `#1f2937` / `#475569` | text / labels |
+| `--gsts-good` / `--gsts-bad` | `#166534` / `#c62828` | on-target / off-target |
+
+## Components (classes in `gsts-theme.css`)
+- `.gsts-appbar` + `h1` + `.gsts-summary` — 56px gradient header with a right-aligned stat pill.
+- `.gsts-section-header` (`strong` + `span`) — green banner atop a card/report.
+- `.gsts-card` + `.gsts-card-title` — white panel, 6px radius, soft shadow.
+- `.gsts-table` (+ `.gsts-table-scroll`) — green header row, hairline borders.
+- `.gsts-btn` / `.gsts-btn-primary`, `.gsts-pill` (`.is-selected`), `.gsts-segmented` (`a.active`) — green-filled when active.
+- `.gsts-kpi` (`-label`/`-value`) and `.gsts-badge` (`.good`/`.watch`/`.poor`) — KPIs + status badges.
+- `.gsts-good` / `.gsts-bad` — inline status text (e.g. TPH).
+- `.gsts-protip` + `.gsts-protip-header` — the branded contextual-help popover (the GSTS signature; add a small JS positioner that toggles `.is-visible`).
+
+## Typography & shape
+- Font: system stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, …`). No web fonts.
+- Sizes: app-bar h1 18/600 · card & section titles 15/600 · KPI value 30/700 · body/table 13–14 · labels 12/600.
+- Radius 6px (cards/buttons/inputs), 8px (highlight panels/pro-tip). Inputs/buttons ≥ 44px tall.
+
+## Do / Don't
+- ✅ Tokens for every color; green gradient for headers; 44px tap targets; 16px inputs; status as color **and** text.
+- ❌ Don't reuse the old `style.css` — that's leftover **template boilerplate** (blue `#00a9ff`, fixed 984px,
+  sliders, social footer). It is NOT the brand. Don't propagate it.
+- ❌ Don't introduce new third-party UI libraries; vanilla CSS/JS + these classes.
+
+## Notes for maintainers
+- Two source files already live in the app: `/gsts/assets/css/gsts-tokens.css` (colors) and the per-page CSS.
+  `gsts-theme.css` consolidates and generalizes them so any page can adopt the full system with one link.
+- Minor real-world drift to be aware of: the deployed `--gsts-brand-green-deep` is `#2A3A18`, but the Price
+  Buddy header gradient uses `#405528` as its dark partner. The theme captures both (`-deep` vs `-grad`).
+- Supersedes `gsts-ui-spec-v1.0.md`, whose hex values were estimates (e.g. `#5a7a3a`); use these real ones.

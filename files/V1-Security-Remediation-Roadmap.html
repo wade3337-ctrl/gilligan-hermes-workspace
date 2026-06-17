@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Great Scott — V1 Security Remediation Roadmap</title>
+<style>
+@page{size:letter;margin:0.5in}*{box-sizing:border-box}
+body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#1c2b22;margin:0;padding:26px;font-size:12.5px;line-height:1.45}
+.head{border-bottom:3px solid #2e7d32;padding-bottom:9px;margin-bottom:13px}
+.head h1{margin:0;font-size:19px;color:#1b5e20}.head .sub{font-size:12px;color:#557;margin-top:3px}
+h2{font-size:12.5px;color:#fff;background:#2e7d32;padding:4px 10px;border-radius:4px;margin:15px 0 7px;text-transform:uppercase;letter-spacing:.4px}
+ul{margin:4px 0;padding-left:18px}li{margin:3px 0}
+table{border-collapse:collapse;width:100%;margin:6px 0;font-size:11.5px}th,td{border:1px solid #cfe3cf;padding:6px 8px;text-align:left;vertical-align:top}th{background:#e8f3e9;color:#1b5e20}
+.tier{border-radius:7px;padding:9px 13px;margin:7px 0}
+.t0{background:#fbeeee;border:1px solid #e6b7b7}.t1{background:#fff3e0;border:1px solid #f0c98a}.t2{background:#f1f8f1;border:1px solid #cfe3cf}.t3{background:#eef3f8;border:1px solid #c2d4e6}
+.tier b.lbl{display:inline-block;color:#fff;border-radius:9px;padding:1px 9px;font-size:11px;margin-right:6px}
+.l0{background:#b23a3a}.l1{background:#c77f12}.l2{background:#2e7d32}.l3{background:#3a6ea5}
+.insight{background:#fffdf5;border:2px solid #e0a23a;border-radius:8px;padding:10px 14px;margin:8px 0}.insight b{color:#c77f12}
+.note{font-size:11px;color:#667}code{background:#eef3ee;padding:0 3px;border-radius:3px}
+.foot{margin-top:16px;border-top:1px solid #ddd;padding-top:6px;font-size:10.5px;color:#889;display:flex;justify-content:space-between}
+</style></head><body>
+<div class="head"><h1>🔒 V1 Security Remediation Roadmap</h1>
+<div class="sub">Built from the live read-only sweep (Jun 10). Turns the scary "8,422" headline into a prioritized, mostly-AI plan — and confirms: <b>fix on V1, don't migrate.</b></div></div>
+
+<h2>Reading the 8,422 honestly (signal vs. noise)</h2>
+<p class="note">The scan flags <b>any</b> query with an interpolated <code>#variable#</code> and no <code>cfqueryparam</code>. That's the right net to cast — but it's an <b>upper bound of sites to review</b>, not 8,422 live holes. Breaking it down:</p>
+<ul>
+  <li>🗑️ <b>A large share is dead/temp/dev code</b> sitting in the web root — <code>TravisTemp*</code>, <code>zDataFix*</code>, <code>*_DeleteLater</code>, <code>ZTest2</code>, <code>test1</code>, <code>TestEnv</code>, <code>*Copy*</code>, <code>Jasonsrepairs</code> (174), <code>TanBackup</code> (49). <b>These get DELETED, not fixed</b> — which erases a big chunk of the count and removes risk (they shouldn't be web-reachable at all).</li>
+  <li>🟡 <b>Many interpolate internal values</b> — loop IDs from a prior query (<code>#DATA.ID[i]#</code>), app constants (<code>#application.dsn#</code>), or ETL table names. Lower risk, batch-fixable, some are false positives.</li>
+  <li>🔴 <b>The genuinely urgent set is the user-facing subset</b> — <b>WebPortal (1,623, your external customer portal)</b>, <code>External$RFP*</code>, <code>API\resources</code>, <code>FieldApp</code>, and the <b>login</b> flow. These take real outside input. <b>This is where we start.</b></li>
+</ul>
+
+<div class="insight">🔑 <b>The #1 move de-risks everything at once.</b> Both datasources (<code>GSTS</code> + <code>GSTSAPI</code>) connect as <code>sa</code> — full SQL Server admin. That means any SQL injection that <i>is</i> exploited runs with god-rights (catastrophic). <b>Replacing <code>sa</code> with a least-privilege login is fast (hours) and instantly caps the blast radius of all ~8,400 sites — even before a single query is fixed.</b> Do this first.</div>
+
+<h2>The plan — four tiers</h2>
+<div class="tier t0"><b class="lbl l0">TIER 0</b><b>Cap the blast radius — days</b>
+<ul><li>Replace <code>sa</code> on <code>GSTS</code> + <code>GSTSAPI</code> with least-privilege SQL logins.</li>
+<li>Rotate &amp; vault the exposed secrets found in code (<code>FTP_PASSWORD</code>, <code>apiUser</code> passwords, <code>azureTranslatorKey</code> — 60 spots).</li></ul></div>
+
+<div class="tier t1"><b class="lbl l1">TIER 1</b><b>Close the front doors — weeks</b>
+<ul><li>Parameterize SQL injection on the <b>user-facing</b> endpoints first: WebPortal, <code>External$RFP*</code>, <code>API\resources</code>, FieldApp, login. (<code>cfqueryparam</code> / whitelist dynamic identifiers.)</li>
+<li>Fix <b>plaintext passwords</b> → salted hashing (Argon2/bcrypt); <b>stop the admin screen from displaying stored passwords.</b></li>
+<li>Harden auth cookies (Secure/HttpOnly/SameSite) and <b>stop trusting role/identity values stored in client cookies</b> (<code>CurrentUserRoles</code>, <code>IsInternalUser</code> = privilege-escalation risk).</li></ul></div>
+
+<div class="tier t2"><b class="lbl l2">TIER 2</b><b>Shrink the surface — cheap, parallel</b>
+<ul><li><b>Delete the dead/temp/dev files</b> from the web root (backup first). Removes risk + a big slice of the 8,422.</li>
+<li>Lock down the 78 upload handlers (require auth, extension/MIME allowlist, store outside web root).</li>
+<li>Strip public <code>cfdump</code>/debug output (298 spots, mostly in junk files).</li></ul></div>
+
+<div class="tier t3"><b class="lbl l3">TIER 3</b><b>Sweep the rest — ongoing, AI-batched</b>
+<ul><li>Parameterize remaining internal queries module-by-module (Chrome/Steel/Yellow/Water…).</li>
+<li><b>Finish the stored-proc scan</b> — the live read failed on Windows auth; re-run read-only with a SQL login to get the true proc picture (checked-in scripts showed 5/59 dynamic-SQL).</li>
+<li>Roll into the broader V1.5 cleanup (foreign keys, dead-table retirement).</li></ul></div>
+
+<h2>Scope &amp; cost vs. the $300K</h2>
+<table>
+<tr><th>&nbsp;</th><th>Urgent security (Tier 0–1)</th><th>Full sweep (Tier 2–3)</th></tr>
+<tr><td><b>What</b></td><td><code>sa</code> + passwords + secrets + user-facing SQLi + cookies</td><td>Delete dead code, parameterize the rest, procs, hygiene</td></tr>
+<tr><td><b>Effort</b></td><td><b>Days → a few weeks</b>, AI-assisted + human verify</td><td>Ongoing, batched AI pattern-work</td></tr>
+<tr><td><b>Cost</b></td><td colspan="2"><b>A small fraction of $300K.</b> And note: migrating to V2 would have to redo every one of these fixes anyway — the holes live in the queries, not the platform.</td></tr>
+</table>
+
+<h2>Honest caveats</h2>
+<ul>
+<li>Exact urgent-site count needs one more pass to separate the user-facing subset from dead/internal — that triage is itself an AI task.</li>
+<li>The <b>stored-proc side is unmeasured</b> (auth blocked) — a known gap to close before claiming "done."</li>
+<li>Every fix runs <b>PLAY-first, backup-first, one batch at a time</b>, with your approval.</li>
+</ul>
+<div class="foot"><span>Great Scott Tree Care — internal · evidence: security-findings-20260610.md</span><span>Prepared by Gilligan · June 11, 2026</span></div>
+</body></html>

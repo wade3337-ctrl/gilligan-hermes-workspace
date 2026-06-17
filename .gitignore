@@ -1,0 +1,11 @@
+# runtime state / caches (not identity)
+.openclaw/
+.clawhub/
+.openclaw-cli-images/
+# secrets — NEVER commit
+**/.secrets/
+*.pem
+*.key
+.git-credentials
+*.log
+.DS_Store
