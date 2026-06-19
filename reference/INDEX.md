@@ -11,6 +11,7 @@
 - misc: `ARBORTOOLS_V2_MIGRATION_CHECKPOINT.md`, `VOICE_SETUP_CHECKPOINT.md`, `Becerra-Interview-Sheet.html`, `go-aheads-2026-05-31.pdf`.
 
 ## Lives in the Artifacts root (`~/arbor-stack/`) — pointers
+> 📂 **Full Artifacts table of contents:** `~/arbor-stack/INDEX.md` (every folder/standing doc). Topic lookup → `../ROUTING.md` → "By topic".
 - **V1.5 roadmap (master plan):** `TRIMIT-1.5-ROADMAP.md` + live "▶ V1.5 Roadmap" tab on `production-dashboard/Reference-RepairsAndScheme.cfm`.
 - **System-wide menu audit (119 links):** `Arbor AI/A.I/TrimIT Menu Audit — Jason Wade Profile.pdf`.
 - **Logic audit (12 dashboards):** `ship-log/2026-06-15-logic-audit-all-projects.md`.

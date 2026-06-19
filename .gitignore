@@ -2,6 +2,8 @@
 .openclaw/
 .clawhub/
 .openclaw-cli-images/
+# local memory backups (redundant with git history itself)
+memory/_backups/
 # secrets — NEVER commit
 **/.secrets/
 *.pem

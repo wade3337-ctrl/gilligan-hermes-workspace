@@ -54,4 +54,5 @@ reads in plain color + text: green `#166534` good, red `#c62828` bad. Everything
   `gsts-theme.css` consolidates and generalizes them so any page can adopt the full system with one link.
 - Minor real-world drift to be aware of: the deployed `--gsts-brand-green-deep` is `#2A3A18`, but the Price
   Buddy header gradient uses `#405528` as its dark partner. The theme captures both (`-deep` vs `-grad`).
-- Supersedes `gsts-ui-spec-v1.0.md`, whose hex values were estimates (e.g. `#5a7a3a`); use these real ones.
+- Supersedes `gsts-ui-spec-v1.0.md` **for color/hex values only** (its hexes were estimates, e.g. `#5a7a3a`; use these real ones).
+- **For COMPONENT behaviors — Welcome/Intro Modal, Pro-Tip pop-ups, drill-downs, filters — see `arbor-stack/gsts-ui-spec-v1.0.md`.** Notably **Section 2A (Welcome / Intro Modal)** is REQUIRED on every dashboard set's front page, with **colored-emoji** content (Skipper-approved style, Jun 19 2026). Canonical: `Executive$Financial$Overview$Frame$Beta.cfm` + `SalesProductionMeetingDashboard.cfm`.
