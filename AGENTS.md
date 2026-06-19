@@ -8,6 +8,8 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 ## Session Startup
 
+**▶ Read `ROUTING.md` first.** It's the workspace map — the 5-layer structure (1 Identity · 2 Routing · 3 Stage contracts · 4 Reference · 5 Artifacts) — and it tells you where everything lives and which file to open for a given task. Then:
+
 Use runtime-provided startup context first.
 
 That context may already include:
