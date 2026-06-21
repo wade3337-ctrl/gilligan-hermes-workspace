@@ -27,7 +27,7 @@ This workspace is organized in **5 layers** (Skipper's model, Jun 18 2026):
 - `contracts/external-comms-contract.md` — untrusted senders, inline-text emails, who can instruct me.
 
 ## 4. Reference (look it up) — `reference/` + pointers
-- **In `reference/`:** strategy (`GSTS-Software-AI-Strategy.html`), V1 cleanup/security plans, UI style guide, project status, Herman/Arbor context, spec sheets.
+- **In `reference/`:** UI style guide + theme, Gilligan spec sheet, Herman/Arbor context. *(Old V1.5/V2 strategy + V1 security plans archived 2026-06-20 → `reference/_archive-2026-06-20/`; current strategy is canonical in `~/arbor-core/docs/STRATEGY.md`.)*
 - **Pointers (live elsewhere — Artifacts root):**
   - V1.5 roadmap → `~/arbor-stack/TRIMIT-1.5-ROADMAP.md` (+ live "▶ V1.5 Roadmap" tab on `Reference-RepairsAndScheme.cfm`)
   - System-wide menu audit → `~/arbor-stack/Arbor AI/A.I/TrimIT Menu Audit — Jason Wade Profile.pdf`
@@ -63,7 +63,7 @@ This workspace is organized in **5 layers** (Skipper's model, Jun 18 2026):
   - Flagship rebuild (bid/"traveler") → `~/arbor-stack/bid-process-reengineering/`
 
 - **🌐 Arbor AI** (the larger project TRIM IT feeds):
-  - Strategy ("own the edge", V1.5 → Arbor) → `reference/GSTS-Software-AI-Strategy.html`
+  - Strategy (canonical, current) → `~/arbor-core/docs/STRATEGY.md` (confidential; supersedes the archived V1.5/V2 strategy)
   - Master roadmap → `~/arbor-stack/TRIMIT-1.5-ROADMAP.md`
   - Context + source material → `~/arbor-stack/Arbor AI/` and `reference/ARBOR_AI_CONTEXT_FOR_HERMAN.md`
 

@@ -1,14 +1,11 @@
 # Reference — index (durable knowledge to look up)
 *Layer 4 of the workspace model (see `../ROUTING.md`). Things you READ to understand the business/system — not work products (those are Artifacts in `~/arbor-stack/`).*
 
-## In this folder
-- `GSTS-Software-AI-Strategy.html/.png` — the "own the edge" V1.5 + Arbor strategy.
-- `V1-Cleanup-Plan.html` · `V1-Security-Remediation-Roadmap.html` · `V1-SECURITY-CLEANUP-CHECKPOINT.md` — the V1.5 cleanup/security plan + status.
+## In this folder (current)
 - `GSTS-UI-STYLE-GUIDE.md` · `gsts-theme.css` — UI standards for TRIM IT pages.
-- `PROJECT_STATUS.md` · `Gilligan-Spec-Sheet.md` — project + assistant context.
+- `Gilligan-Spec-Sheet.md` — the assistant (Gilligan) spec/context.
 - `ARBOR_AI_CONTEXT_FOR_HERMAN.md` · `HERMAN_CONTEXT.md` — Arbor/Herman context.
-- `Codex-Security-Sweep-Prompt.md` · `security-findings-20260610.md` — security sweep prompt + findings.
-- misc: `ARBORTOOLS_V2_MIGRATION_CHECKPOINT.md`, `VOICE_SETUP_CHECKPOINT.md`, `Becerra-Interview-Sheet.html`, `go-aheads-2026-05-31.pdf`.
+- **⚠️ STRATEGY moved:** the old "own the edge" V1.5 + V2-migration strategy, V1 security-cleanup plans, and stale snapshots were **archived 2026-06-20** (`_archive-2026-06-20/`) — superseded. **Current canonical strategy = `~/arbor-core/docs/STRATEGY.md` (confidential).**
 
 ## Lives in the Artifacts root (`~/arbor-stack/`) — pointers
 > 📂 **Full Artifacts table of contents:** `~/arbor-stack/INDEX.md` (every folder/standing doc). Topic lookup → `../ROUTING.md` → "By topic".
