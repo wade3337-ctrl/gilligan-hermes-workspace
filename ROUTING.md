@@ -16,6 +16,7 @@ This workspace is organized in **5 layers** (Skipper's model, Jun 18 2026):
 ---
 ## 1. Identity (who/why) — root
 - `IDENTITY.md` — name (Gilligan), vibe. · `SOUL.md` — persona/values. · `USER.md` — the Skipper (Jason): role, preferences, how he works. · `AGENTS.md` — workspace operating rules. · `MEMORY.md` — curated long-term memory (main session only). · `memory/YYYY-MM-DD.md` — daily logs.
+- **🧠 Self-improvement (consult BEFORE a task, auto-updated):** `LESSONS.md` — what didn't work (gotchas/anti-patterns) · `PLAYBOOK.md` — what works (proven techniques; the **Hermes self-improvement loop**). Written to *in the moment* (rule in `AGENTS.md`) + distilled/pruned by a **weekly cron**.
 
 ## 2. Routing (this file)
 - `ROUTING.md` — you are here. Update it when the structure changes.

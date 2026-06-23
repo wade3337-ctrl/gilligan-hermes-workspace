@@ -6,6 +6,7 @@ Curated **index** of durable facts. Detail lives in: `contracts/` (how we do eac
 
 ## 🧭 HOW WE WORK (all domains)
 - **🗂️ Workspace = 5 layers → READ `ROUTING.md` FIRST** (Identity root `.md` · Routing · `contracts/` · `reference/` · Artifacts `~/arbor-stack/`). When adding a contract/reference/major artifact, update `ROUTING.md` + the relevant INDEX.
+- **🧠 Self-improvement files (consult BEFORE a task; auto-updated):** `LESSONS.md` = what DIDN'T work (gotchas/anti-patterns) · `PLAYBOOK.md` = what WORKS (proven techniques — the Hermes self-improvement loop). I write to them the *moment* I hit a flop / nail a technique (rule baked into `AGENTS.md`); a **weekly cron** distills recent logs + prunes. Check the relevant domain tag before email/DB/deploy/agent work so I don't repeat a flop or re-derive a fix.
 - **📐 How we do each kind of work = `contracts/` — open the contract, don't re-derive:**
   - **Repair** → `contracts/repair-contract.md`: UI vs DB; root-cause + map blast radius (triggers/procs/views), no patch-on-a-patch; **backup-first to `\GSTS\Jasonsrepairs\` (PLAY-ONLY)**; build + **render-verify the *served* output**; log to `gsts-ship-log.md` + `ship-log/` detail (with actual code mods) + update `Reference-RepairsAndScheme.cfm` repairRows.
   - **Dev handoff (play→prod)** → `contracts/dev-handoff-contract.md`: `deploy-manifest.js` before, hand over the package + exact paths, `deploy-smoketest.sh` after. **Jordan Kim = IT, salaried/$0** (prod deploys, menu/AppForms config); **Travis/Data Processing = $75/hr**, deep DB/security only.

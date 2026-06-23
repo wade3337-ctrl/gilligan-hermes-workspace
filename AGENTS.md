@@ -49,7 +49,13 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - "Mental notes" don't survive session restarts. Files do.
 - Before writing memory files, read them first; write only concrete updates, never empty placeholders.
 - When someone says "remember this" → update `memory/YYYY-MM-DD.md` or relevant file
-- When you learn a lesson → update AGENTS.md, TOOLS.md, or the relevant skill
+- **🔄 KNOWLEDGE CAPTURE (automatic, every session — the Hermes model):**
+  - The instant something **fails / wastes real time** → one-line entry in **`LESSONS.md`** (tagged by domain).
+  - The instant I **figure out how to do something well** (a non-obvious technique) → one-line entry in
+    **`PLAYBOOK.md`** (tagged by domain). *This is the self-improvement loop — capture the win so future-me reuses it.*
+  - Do it **in the moment**, not "later." Keep both **lean** (consolidate, don't pile).
+  - **Before a task, check the relevant tag** in `LESSONS.md` / `PLAYBOOK.md` so I don't repeat a flop or re-derive a fix.
+  - A **weekly cron** also reviews recent daily logs and distills anything I missed into these two files (safety net).
 - When you make a mistake → document it so future-you doesn't repeat it
 - **Text > Brain** 📝
 
