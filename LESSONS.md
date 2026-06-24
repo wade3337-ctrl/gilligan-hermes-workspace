@@ -57,3 +57,12 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
   Herman setup) → if `Permission denied (publickey)` but host key matches, my key was dropped; have Herman re-add it. (2026-06-23)
 - ⚠️ **`icacls … /inheritance:r` may not stick if chained loosely** — run it cleanly and CONFIRM with a follow-up
   `icacls <file>` (look for `(I)` = still inherited). (2026-06-23)
+- ⚠️ **Laptop Herman brain = GLM is UNRESOLVED (2026-06-23):** Hermes's built-in **z.ai provider uses the METERED
+  `/paas/v4`** (blocked on the coding plan → "insufficient balance"); forcing `glm-5.2` via Hermes's **anthropic**
+  provider + the z.ai **anthropic** endpoint produced **"no final response"** (Hermes↔z.ai coding-endpoint
+  compatibility gap — needs `hermes` debug-log analysis). Herman was ALREADY pre-set to glm-5.2/metered (= the
+  original "GLM not working"); its model config is **NOT** in `~/.hermes/config.yaml`. GLM-as-a-TOOL works (`glm-ask.py`).
+- ⚠️ **ColdFusion: literal `#` inside `<cfoutput>` errors** — a hex color (`color:#ffe08a`) or any `#...#` in cfoutput is read as a CF variable → "An error occurred" with debug off. **Escape as `##` (`##ffe08a`)** or move the literal outside cfoutput. Cost ~2 deploys to spot (2026-06-23, ZTest-SiteMap).
+- ⚠️ **CF dynamic SQL: avoid `--` line comments inside `<cfquery>`** — if the newline collapses, `--` comments out the rest of the query. Use `/* ... */` block comments. (2026-06-23)
+- 💡 **TrimIT geo data has bad geocodes** — active job sites include sign-flipped longitudes (+117 vs -117 → Asia) and mis-geocodes (UK/NM/ID). Any map MUST bound to a SoCal sanity box (lat 32–35.5, lng -121 to -114) and *count+flag* the strays, never silently fit-to-all (4/2906 active blew the view worldwide). Fixable in the geocode backfill pass. (2026-06-23)
+- ⚠️ **Leaflet canvas (preferCanvas): don't `removeLayer`/`addTo` circleMarkers to filter** — they fail to repaint on re-add (filter down works, clearing the filter leaves them gone). Instead keep all markers on the map and toggle visibility with `setStyle({radius:0,opacity:0,fillOpacity:0})` for hidden / real style for shown — `setStyle` repaints reliably both directions, and radius:0 = visually off the map + no overlap. (2026-06-23, ZTest-SiteMap)
