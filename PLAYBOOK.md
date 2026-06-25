@@ -8,6 +8,10 @@ In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> —
 ## 🤖 Models / crew (cross-model verification)
 - ✅ **GLM via direct z.ai API** — `echo "<prompt>" | python3 ~/arbor-core/crew/glm-ask.py` (Bearer →
   `/api/anthropic/v1/messages`). Reliable single-shot; feed DB evidence inline (it can't run tools). (2026-06-21)
+- ✅ **Gemini (4th crew member) via direct Google API** — `echo "<prompt>" | python3 ~/arbor-core/crew/gemini-ask.py`
+  (key `~/.secrets/gemini.json` 0600; `?key=` param → `generativelanguage.googleapis.com/v1beta/models/<m>:generateContent`).
+  Single-shot, **API not CLI** (avoids the Codex/GLM-CLI flakiness — most reliable judge so far); feed evidence inline.
+  **Free-tier key = 2.5-class only** (`gemini-2.5-flash` works; `gemini-2.5-pro` 429-quota-blocked; **no 3.5 — needs paid tier**). `GEMINI_MODEL` env overrides. Debuted verifying City Budgets FY fix ✅. (2026-06-25)
 - ✅ **3-lab verification gate** — Claude produces, **Codex + GLM independently judge** (re-run queries / reason).
   Catches real errors before they ship (caught schema + pricing over-reaches). (2026-06-21)
 - ✅ **GLM as an independent TOOL-RUNNING judge** — `python3 ~/arbor-core/crew/glm-judge.py task.txt`: a controlled
