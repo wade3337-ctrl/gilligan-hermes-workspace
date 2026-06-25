@@ -27,6 +27,13 @@ In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> —
   DERIVED. Triggers via `sys.triggers.parent_id`. (2026-06-21)
 - ✅ **Read-only DB:** `echo "SET NOCOUNT ON; SELECT …" | bash ~/arbor-stack/production-dashboard/gsql.sh`, ONE query
   at a time. Column profiler: `arbor-core/reference-maps/_tools/profile-cols.sh`. (2026-06-21)
+- ✅ **Persist prototype state on PLAY despite the nightly GSTS refresh** — the refresh restores ONLY the GSTS db, so
+  put writable prototype data in a **SEPARATE database on the same SQL instance** (e.g. `Workbench`) and it survives.
+  Reach it from ColdFusion through the **existing GSTS datasource using 3-part names** (`Workbench.dbo.Tbl`) — CF
+  connects as `sa`, so it already has cross-DB access; **no new CF datasource or grant needed**. Writes via a tiny
+  `MERGE`-upsert `.cfm` endpoint (cfqueryparam). The answer to the long-stuck "notes don't save on play." (2026-06-25)
+- ✅ **Aggregate-over-subquery workaround** — `SUM(CASE WHEN EXISTS(subquery)…)` throws SQL 130; compute the per-row
+  flag in a CTE/derived table first, then `SUM()` the flag. (2026-06-25)
 
 ## 🌳 TRIM IT / web inspection
 - ✅ **Render a live TRIM IT page (no screenshots):** `bash ~/arbor-stack/production-dashboard/view.sh '<page.cfm?args>'`

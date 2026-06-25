@@ -20,6 +20,12 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
 - ⚠️ **`gsql.sh` writes ONE shared remote temp file** → concurrent queries clobber each other → run **sequentially**
   or use a per-process isolated wrapper. (2026-06-21)
 - ⚠️ **Reserved words as a column alias break sqlcmd** ("Incorrect syntax near 'proc'") → use a safe alias (`pname`). (2026-06-21)
+- ⚠️ **`SUM(CASE WHEN EXISTS(subquery)…)` / aggregate over a subquery → SQL error 130** → compute the per-row flag in a CTE/derived table, then `SUM()` it. (2026-06-25)
+- ⚠️ **A literal `#` in ANY double-quoted CFML string = "missing ending #" / interpolation error — NOT just inside `<cfoutput>`** (also `<cfset x="...#77...">`, array literals, etc.). Bit me twice in one day (inline `color:#fff`, then `#77` inside a `cfset` repairRows array). → escape as `##`. (2026-06-25)
+- ⚠️ **Don't BATCH the live `Reference-RepairsAndScheme.cfm` sync** — update its `repairRows`/`buildRows` when you write each `gsts-ship-log.md` row, not "later." Let it drift 13 entries behind once (Skipper caught it). Edit it byte-level (ASCII-only inserts after a newline) since it's UTF-8 + may have a BOM. (2026-06-25)
+
+## 🗺️ Leaflet / maps
+- ⚠️ **Leaflet CANVAS renderer (`preferCanvas:true`): the DOM `pointer-events:none` trick to make an overlay click-through is a NO-OP** — canvas paths have no own DOM element, so `layer.getElement()` returns nothing and the style never applies. A filled *interactive* polygon then swallows clicks meant for markers underneath (bit the workbench lasso twice — #77 "fixed" it this wrong way). → set **`interactive:false`** on the overlay so Leaflet skips it in JS hit-detection; the shape still renders. (2026-06-25)
 
 ## 📧 Email (gilligan.gsts gmail)
 - ⚠️ **Self From=To lands in Sent, not Inbox** → keep From≠To.
