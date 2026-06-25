@@ -33,6 +33,12 @@ In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> —
   `arbor-stack/anomaly-monitor/.secrets/gmail.json`); search `[Gmail]/Sent Mail` by `SINCE "DD-Mon-YYYY"`. Send via
   `anomaly-monitor/send-email.js` (`--html --bodyFile`) or `send-files.js`. (2026-06-22)
 
+## 📄 Files / PDF / image assets
+- ✅ **Render a (vector) PDF → crisp PNG with NO poppler/imagemagick/gs** (none on this box): `npm i mupdf` (WASM,
+  zero native deps) → ESM script: `doc=mupdf.Document.openDocument(new Uint8Array(buf),"application/pdf")`,
+  `page.toPixmap(mupdf.Matrix.scale(4,4), mupdf.ColorSpace.DeviceRGB, /*alpha*/true).asPNG()`. `alpha=true` →
+  transparent bg; scale 4 ≈ 288dpi. Tight-cropped to the artbox automatically. Used for the GSTC 50th logo. (2026-06-25)
+
 ## 🪟 Windows-over-SSH (Hermes laptop / gstsdatabase)
 - ✅ **PowerShell over SSH:** base64 `-EncodedCommand` (UTF-16LE); run a child `ssh` via `Start-Process` not `&`;
   `scp` large scripts (cmd line-length cap).

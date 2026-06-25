@@ -34,7 +34,8 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
   Don't conclude "missing" from the C path. (2026-06-22)
 - ⚠️ **Menu "window" names ≠ filenames** — resolve the real page via `dbo.AppForms.ObjectPath`; an app's JS endpoints
   are **relative to that app's folder** (e.g. `FieldApp/...`), so root-level fetch 404s. (2026-06-22)
-- ⚠️ **`.cfm` with emoji/non-ASCII needs a UTF-8 BOM** or ColdFusion serves mojibake (`ssh type` strips it).
+- ⚠️ **`.cfm` with emoji/non-ASCII needs a UTF-8 BOM** or ColdFusion serves mojibake (`ssh type` strips it). **Cleaner alt: use HTML numeric entities** (`&#NNNN;`) → ASCII source, no BOM. CF only treats `#` special *inside* `<cfoutput>` → single `#` in static HTML, **double `##` inside cfoutput** (collapses to one on render). (2026-06-25)
+- ⚠️ **Substring role-matching trap:** CFML `CONTAINS "coo"` matched "**coo**rdinator" → Sales/Production *Coordinators* mis-tagged as exec. Use **padded whole-word checks** (` coo `/` ceo `) for short tokens; avoid over-broad keywords like bare "director". Always test role logic against real users. (2026-06-25)
 - ⚠️ **Dual-webroot shadow:** `C:\ColdFusion...\GSTS` can OVERRIDE `D:\...\GSTS` → render-verify the *served* output.
 
 ## ⚙️ Config / infra
