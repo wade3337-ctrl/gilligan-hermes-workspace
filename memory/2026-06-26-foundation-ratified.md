@@ -112,9 +112,18 @@ Build plan bumped DRAFT v0.1 → **v1.0, FOUNDATION RATIFIED**.
 ## also fixed: gemini-ask.py + kimi-ask.py both had too-short timeouts (120/180s) + only caught HTTPError → big
 ## reasoning prompts died with raw TimeoutError; now 300s + retry (GEMINI_TIMEOUT/KIMI_TIMEOUT, *_RETRIES).
 
-## ⭐ NEXT SESSION = (1) light re-gate v1.7 → (2) update STRATEGY.md/CHARTER.md to PRODUCT framing (arbor-core =
-## Skipper's vertical SaaS, GS = tenant #1) → (3) Docker skeleton (Postgres · FastAPI · Keycloak[realm-per-tenant] ·
-## Infisical · MinIO) + first migrations FROM v1.7. Parked: customer-spine data-quality [D4a]; arbor-play/prod host box;
-## MEMORY.md truncation tidy (2% clipped — trim to lean index).
+## 🎯 STRATEGIC PIVOT (Skipper, end of session) — schema was foundation, NOT the product
+Skipper challenged: *"feels like another TRIM IT (clean DB), not a true AGENTIC tree-care system."* **Accepted as
+half-right + the right instinct.** Clean data = necessary ground (agents on dirty data = garbage), but we hadn't
+started the agent layer = the actual product + moat. **NEXT PHASE flips center of gravity: data → AGENTS.** The agent
+layer = roster · agent-first interaction (intent not forms) · reasoning runtime (perceive→reason→act→govern) · tool
+layer (governed actions, one brain) · knowledge layer (vertical SOPs = moat). Design approach: **thinnest REAL agent
+end-to-end** (not abstract) reveals the architecture + validates the schema.
+- **✅ FIRST AGENT = BID FOLLOW-UP AGENT** (works the sent-bid clock: draft→send[gated]→escalate→capture→close).
+  Full framing + the 6 design questions + schema it exercises → **`arbor-core/build/AGENT-LAYER-kickoff.md`**.
+
+## ⭐ NEXT CHAT (Skipper starts fresh tomorrow AM) = OPEN `build/AGENT-LAYER-kickoff.md` → design the Bid Follow-up
+## agent end-to-end (perceive→reason→act→govern) on the v1.7 data. (Light v1.7 re-gate · STRATEGY/CHARTER product
+## reframe · Docker skeleton come AFTER the agent design.) Parked: D4a data-quality; arbor host box.
 ## Parked work items still open: customer-spine data-quality criteria [D4a]; pick arbor-play/prod host box.
 (ALL docs committed to arbor-core repo + nightly backup. Tonight's commits: 07bad70..HEAD, ~10 commits.)
