@@ -57,6 +57,10 @@ Curated **index** of durable facts. Detail lives in: `contracts/` (how we do eac
   - **Per-salesperson + Nate rollup** — pilot, preview to jwade; go-live pending prod endpoint + M365 allowlist + `liveEnabled`. Reps: Griffiths / Chesley / Barker / Cornish → Nate.
   - **AR collections weekly** — preview to jwade; behind = 31+ days; rep map in `ar-report/`. Go-live pending mapping confirm + per-rep split.
   - Metrics spec: `anomaly-monitor/METRICS_SPEC.md` (M1 TPH · M1b OT · M2 revenue vs $2.2M/mo · M3 contract burn-down).
+- **⏸️ ACTIVE WIP — Steve's diligence dashboard (waiting on Steve, 2026-06-27):** Full build DONE + verified on PLAY
+  (Sales Performance tab, Direct Costs + Type/Treatment columns, CSV export breaks them out; + 6 company-wide win-rate
+  bug fixes). **Nothing on PROD yet** — paused pending Steve's "looks good", then hand batch to Jordan for prod deploy.
+  ⚠️ prod win-rates still wrong until then. **Resume from → `arbor-stack/steves-projects/diligence-sales-history/CHECKPOINT-STEVE-DASH.md`.**
 - **📌 FRESH SESSION:** read `anomaly-monitor/CHECKPOINT.md` (monitor state) + `ROUTING.md` (the map); `gsts-ship-log.md` = what's done.
 
 ---
