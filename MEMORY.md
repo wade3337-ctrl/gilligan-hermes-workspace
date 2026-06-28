@@ -61,6 +61,10 @@ Curated **index** of durable facts. Detail lives in: `contracts/` (how we do eac
   (Sales Performance tab, Direct Costs + Type/Treatment columns, CSV export breaks them out; + 6 company-wide win-rate
   bug fixes). **Nothing on PROD yet** — paused pending Steve's "looks good", then hand batch to Jordan for prod deploy.
   ⚠️ prod win-rates still wrong until then. **Resume from → `arbor-stack/steves-projects/diligence-sales-history/CHECKPOINT-STEVE-DASH.md`.**
+- **🚀 DEPLOY-PACKAGE PREP (next session, 2026-06-28):** build the prod deploy package for Travis/Jordan — full batch
+  (SPM suite [4-lab crew-cleared], Steve's dash, win-rate 6, 4-market drill, treatment-bin, RevPerf RC-02) all on PLAY +
+  verified; **one DB change = IsMeasured fix for Travis** (reps 1108/1145); 5 SPM assets 404 on prod. Gates: Skipper review ·
+  Steve sign-off · Brent reply. **Resume from → `arbor-stack/DEPLOY-PACKAGE-CHECKPOINT.md`.**
 - **📌 FRESH SESSION:** read `anomaly-monitor/CHECKPOINT.md` (monitor state) + `ROUTING.md` (the map); `gsts-ship-log.md` = what's done.
 
 ---
