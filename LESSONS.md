@@ -14,6 +14,7 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
   lightweight calls (gsql, GLM-API) are fine. Don't depend on long nested CLI agents. (2026-06-22)
 - ⚠️ **Background sub-agents get killed mid-run** (the v1.1 producer was) — the **main session is stable**; do
   consequential long work there, not in detached background agents. (2026-06-22)
+- ⚠️ **Kimi empty/truncated output = the HELPER `max_tokens` cap, NOT the account** — K2 is a reasoning model and burns the budget *thinking* before it emits the answer, so "ran out of budget" was `kimi-ask.py`'s cap (raised 8k→16k→**40k**) while the Skipper's Kimi account was ~1% used. Raise `max_tokens` before suspecting billing. (2026-06-28)
 
 ## 🗄️ DB / SQL (TRIM IT, sqlcmd via gsql.sh)
 - ⚠️ **`gsql.sh` takes a FILE or STDIN, not an inline arg string** (it `cat`s $1) → pipe SQL on stdin. (2026-06-21)
@@ -48,6 +49,7 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
 - ⚠️ **`~/.openclaw/openclaw.json` has clobber history** → always back up + merge-patch, never overwrite.
 - ⚠️ **Python 3.14 here has no package manager + no passwordless sudo** → use stdlib; Skipper installs system pkgs.
 - ⚠️ **No headless browser** → authenticated HTTP fetch (view.sh) for web/ERP pages.
+- ⚠️ **MEMORY.md silently clipped at ~20k** → `agents.defaults.bootstrapMaxChars`/`bootstrapTotalMaxChars` were UNSET in `~/.openclaw/openclaw.json` (bootstrap truncated). Set them (40000 / 160000), back up the config first, and restart to apply. (2026-06-28)
 
 ## 🧑‍🤝‍🧑 Working with the Skipper / process
 - ⚠️ **Don't let background/inter-session chatter drown the user** (`[[subagent-completion-noise]]`) — surface real
@@ -56,6 +58,7 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
   State only what's proven; flag inferences as inferences. (2026-06-21)
 - ⚠️ **"Set up" ≠ working** — laptop GLM was reported "set up" but had **NO key/client/config** at all. Always VERIFY
   the config actually persisted (key present? endpoint right? client runs?) before assuming a setup landed. (2026-06-23)
+- ⚠️ **Don't run a crew gate where only ONE of us can see the result** — a background-shell run leaves the Skipper blind to it; a `sessions_spawn` sub-agent leaves ME blind to it (supersedes the 06-26 "spawn a sub-agent for long crew work" note). → run gates **FOREGROUND, in-turn**; confirm the Skipper got it, re-send if it doesn't land. (2026-06-28)
 
 ## 🪟 Windows / SSH (Hermes laptop)
 - ⚠️ **Recursive `dir /s` / `findstr /S` over the user profile or a venv HANGS the SSH session** (timed out 3× in a
