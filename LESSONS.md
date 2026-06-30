@@ -6,6 +6,9 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
 `ROUTING.md` + `MEMORY.md`. Format: `- ⚠️ <the trap> → <the fix/avoid>. (date)`
 
 ## 🤖 Models / CLI tooling
+- ⚠️ **OpenClaw generic Discord error after Opus stops can be Claude Code auth, not Discord/OpenClaw** — logs showed `claude-cli` returning `401 Invalid authentication credentials` while `claude auth status` still said logged in. → check `journalctl --user -u openclaw*` / `/tmp/openclaw/openclaw-YYYY-MM-DD.log`; fix by refreshing Claude CLI auth (`claude auth login`, then `claude setup-token` if needed). (2026-06-29)
+- ⚠️ **Opus can have two simultaneous auth blockers** — Claude CLI may be stale (`claude -p` returns `401` even when `claude auth status` says Max/loggedIn), while OpenClaw manual Anthropic token may be valid but blocked by Claude's "third-party apps draw from extra usage" billing gate. → test both paths separately: direct `claude -p` for CLI, `openclaw agent --model anthropic/...` for manual token; fix CLI with `claude auth login`, fix manual token by adding extra usage at `claude.ai/settings/usage` or using a fresh setup token with available balance. (2026-06-29)
+- ⚠️ **Ollama `llama3.2:3b` at 131k context can effectively wedge the laptop** — logs showed CPU runner allocating ~14GB KV cache on a 15GB box after Claude/OpenClaw fallback, followed by Docker/Discord timeouts and stuck OpenClaw runs. → keep Ollama CPU-only for the unsupported GTX 1050 Ti and cap local model context around 4k/8k unless intentionally running a memory test. (2026-06-30)
 - ⚠️ **GLM (& Codex) agentic `claude -p` CLI is UNRELIABLE here** — it **HANGS (124) OR SIGKILLs (137)** on tool
   loops. Root-caused 2026-06-23: the CLI's **agentic orchestration with the backend** is the broken part, NOT GLM or
   the box (GLM via direct API answers in seconds). → use `~/arbor-core/crew/glm-ask.py` (reasoning) or
