@@ -24,6 +24,14 @@
   Stop button does `wsl --shutdown` to free the GPU for gaming). So it's a *tool/pattern to borrow*, not a service to depend on.
 - Mic only works on the **native Windows** side (WSL mic is unreliable) — voice capture is Windows-bound.
 
+## ⭐ TEST-TARGET STATUS (noted 2026-06-30, Skipper's call)
+**JASONWORK is our designated candidate for local-model testing / private local inference.** It has the muscle:
+- **JASONWORK:** RTX 5070 Ti 12GB (working NVIDIA driver) → runs **llama3.1:8b on GPU**. Strong.
+- **jdog1 (my host):** has an NVIDIA **GTX 1050 Ti Mobile 4GB** + Intel iGPU, but the **NVIDIA driver is NOT installed**
+  (`nvidia-smi` fails) → my Ollama **llama3.2:3b runs on CPU only**. Weaker chip *and* a dormant GPU stack.
+→ For any "test a bigger local model" or "keep it fully private/local" experiment, JASONWORK is the better box.
+(Possible future tweak on jdog1: install the NVIDIA driver to wake its 1050 Ti — but it's old/4GB, marginal; needs Skipper sudo.)
+
 ## Forward hook
 When we reach "give Arbor/Herman a voice," start here: keep his voice client, repoint its API base at our agent's
 OpenAI-compatible endpoint, reuse Kokoro/whisper. Minimal new work.
