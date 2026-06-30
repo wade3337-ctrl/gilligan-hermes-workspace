@@ -1,0 +1,57 @@
+==================================================================
+  GILLIGAN RECOVERY USB  (Windows)  🏝️
+  "The main computer died. Get Gilligan back."
+==================================================================
+
+YOU NEED:
+  1. A Windows laptop with internet.
+  2. Your recovery passphrase (in your password manager:
+     "Gilligan recovery bundle").
+     *Skip this if you set up PLUG-AND-GO below.*
+
+DO THIS:
+  1. Plug in this USB.
+  2. Open the USB in File Explorer.
+  3. Double-click:   START-GILLIGAN.bat
+       (If Windows warns "Windows protected your PC", click
+        "More info" -> "Run anyway". It's your own script.)
+  4. It may install a few things (Node, Git, GnuPG) - say yes /
+     let it run. Then it asks for your passphrase. Type it.
+  5. Wait a few minutes. When it says DONE, open Discord and
+     message Gilligan. If he answers and knows you, you're back.
+
+THAT'S IT. The script installs OpenClaw, pulls Gilligan's memory
+from GitHub, restores all his keys, and reconnects him to Discord.
+
+------------------------------------------------------------------
+HEADS-UP (Windows): Gilligan will be back and fully able to chat.
+But his scheduled email jobs (the COO daily report, etc.) run on
+Linux-style cron and won't auto-start on Windows. That's fine for
+an emergency - he's online and working. For the automated emails,
+rebuild on a Linux machine when you can, or just ask Gilligan to
+set up Windows scheduled tasks once he's back.
+------------------------------------------------------------------
+PLUG-AND-GO (optional, less typing, less safe):
+  Want ZERO typing? Create a file on this USB named exactly
+  passphrase.txt  containing only the recovery passphrase.
+  Then the script needs no prompts.
+  TRADE-OFF: anyone who finds this USB then has full access to
+  everything. Only do this if you keep the USB physically locked
+  up. Otherwise leave it off and type the passphrase when asked -
+  that way a lost USB is harmless.
+------------------------------------------------------------------
+
+ON A MAC OR LINUX LAPTOP INSTEAD?  Use bootstrap.sh:
+  open a terminal in this folder and run:  bash bootstrap.sh
+
+WHAT'S ON THIS USB:
+  - START-GILLIGAN.bat ...... double-click this (Windows)
+  - bootstrap.ps1 ........... the Windows recovery script
+  - bootstrap.sh ............ the Mac/Linux recovery script
+  - gilligan-credentials.tar.gz.gpg ... your encrypted keys
+  - START-HERE.txt .......... this file
+
+KEEP IT FRESH: every so often, re-copy the newest
+gilligan-credentials.tar.gz.gpg from the live machine
+(~/.openclaw/workspace/recovery/) onto this USB so the keys
+stay current. (Ask Gilligan - he can do it when the stick's in.)
