@@ -84,3 +84,15 @@ In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> —
 - 🔑 **Cross-vocabulary entity match = sorted-token key.** Two systems named the same tree "Oak - Coast Live" (Genus-Variety) vs "Coast Live Oak" (natural). A Postgres IMMUTABLE `species_key(text)` = lowercase → non-alnum→space → split → **sort tokens** → join, used as a GENERATED column + in the lookup, makes them match regardless of word order/punctuation. Reuse for any messy legacy-vs-clean name join.
 - 🔌 **Keep the clean app decoupled from the legacy DB via nightly MATERIALIZE.** arbor-core's API container can't (and shouldn't) reach TRIM IT's SQL Server. A host-side cron pulls the aggregated grain (price_history ~2.8k rows; site_rebid_history per linked site) → `TRUNCATE`+`\copy` into arbor-core Postgres in one txn. API only ever reads its own DB → fast, offline-safe, decoupled. Constant-size summaries, not raw rows (1.4M invoice lines → ~20k combos).
 - 💵 **Price FORWARD as hours×target to get cost-model distribution for free.** Backtest (25 real jobs) proved distributing a job total by *size* misallocates ~13% of dollars (indefensible unit prices), while distributing by crew-hours reproduces actual prices near-perfectly. So build the reconciler as `unit_price = est_hours × target_TPH` per line (blended TPH = Σrevenue/Σhours; non-tree charges EXCLUDED) — the "rubber-band" distortion literally can't occur, and it's municipal-audit defensible.
+
+## [arbor-core / georeference] Legacy base-map PDF -> real-GPS work-zone (PROVEN 2026-07-02, ~5.6m RMS)
+No CV libs / no pip on this box, and old TRIM IT base maps store NO coordinates. Solved fully automatically:
+render PDF headless (pdfjs-dist + browserless, `URL.parse` polyfill for old Chrome) -> extract the yellow zone
+by color-threshold + **largest connected component** (kills the legend's yellow cell) -> geocode the site
+address (Nominatim) -> pull live **Esri World Imagery** via headless Leaflet so every pixel's lat/lng is exact
+Web-Mercator math -> **Gemini 3.1-pro vision-matching** (extended `crew/gemini-ask.py` with `GEMINI_IMAGES=a,b`
+-> inlineData parts; ask for >=8 shared permanent landmarks as normalized [y,x] in BOTH images) -> old-fraction
+<-> GPS control points -> solve affine with plain 3x3 normal equations (no numpy) -> project the polygon.
+Overlay landed tight on the complex. Keep a one-drag nudge for the ~few-meter residual. The browser container
+is my image toolkit here (canvas pixel-ops, tile stitching via Leaflet, PNG export) since PIL/poppler/OpenCV
+aren't installed.
