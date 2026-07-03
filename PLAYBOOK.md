@@ -96,3 +96,28 @@ Web-Mercator math -> **Gemini 3.1-pro vision-matching** (extended `crew/gemini-a
 Overlay landed tight on the complex. Keep a one-drag nudge for the ~few-meter residual. The browser container
 is my image toolkit here (canvas pixel-ops, tile stitching via Leaflet, PNG export) since PIL/poppler/OpenCV
 aren't installed.
+
+## [arbor-core / crew] Fable 5 added — and which model wins the georeference vision-match (2026-07-02)
+Added crew member #6: `crew/fable-ask.py` = Claude Fable 5 (Anthropic's most-capable tier; `claude-fable-5`;
+vision via `FABLE_IMAGES=`; adaptive-thinking always-on so DON'T set temperature; key `~/.secrets/fable.json`).
+**Head-to-head on the Greenwood georeference landmark-match (same PDF/esri, swap only the matcher via
+`GEOREF_MATCHER=gemini|fable`): Gemini 3.1-pro RMS 0.2–3.8 m vs Fable 5 RMS 12 m.** → For PRECISE pixel/spatial
+grounding (pointing at the same corner in two aerials), **Gemini clearly wins** (Google's native grounding). Keep
+Gemini as the georeference matcher. Fable's value is elsewhere: deep reasoning, hard code, plan/architecture
+review, adversarial verification — call it deliberately (2× Opus 4.8 cost). One-sample but a wide, non-noise gap.
+
+## 🌐 Headless browser can render + auth the TrimIT PLAY site (not just arbor-core) (2026-07-02)
+The `arbor_browser` browserless container can drive a REAL click-through of ColdFusion play pages, giving me + the crew actual screenshots + JS-error counts before the Skipper ever clicks. Play's TLS cert is VALID (`curl` `ssl_verify=0`), so no ignore-HTTPS needed. Auth = the same `ZUserID` cookie gate view.sh uses. Puppeteer via `/function`:
+`await page.setCookie({name:'ZUserID',value:'376',domain:'play.greatscotttreeservice.com',path:'/'});` then `page.goto('https://play.greatscotttreeservice.com/GSTS/<path>')`. To verify a specific column: `page.evaluate` the cell's `getComputedStyle(...).whiteSpace`, sample texts, then set the wrapping `overflow-x` div's `scrollLeft` to reveal a far-right column before the viewport screenshot. (Template script: `steves-projects/diligence-sales-history/work/shot-tph.js`.) Closes the "needs Skipper click-test" gap for TrimIT repairs too.
+
+## 📊 AR digest: property from the invoice Memo + safe per-rep routing (2026-07-02)
+- **Property/community hides in the invoice-level sheet, not the summary.** Dimitry's AR-Aging workbook summary is
+  PM-company-grain (no property). The **"AR Aging Subtotals"** sheet is invoice-level: col Memo carries the community
+  (e.g. "2026 - (AprJun) Creekside Village - (3 Year Plan)"), + per-invoice Aging days + Open Balance. Parse the memo
+  (strip leading "[TAG]"/"N%?"/"(N)"/year/"(SEASON)"; iteratively strip trailing "(3 Year Plan)/(CO ####)/(Revised…)"
+  but KEEP "(Tract ####)"); raw-memo fallback when thin. Anchor account totals on the reviewed **summary** sheet;
+  the parsed property lines reconcile to it (29/31 within $2; Powerstone tied to the $). Cap sub-lines (8 + "+N more").
+- **Per-rep email routing safely:** addresses in a JSON (`ar-report/rep-emails.json`) editable w/o code; a `--live`
+  flag (default preview), a `--dry` flag that prints the recipient plan, and a HARD GUARD that SKIPS any blank address
+  (never guess-sends). Go-live = fill addresses + add `--live` to the cron runner. This let the Skipper confirm exact
+  addresses from a dry-run before a single real email went out.

@@ -8,7 +8,7 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 ## Session Startup
 
-**▶ Read `ROUTING.md` first.** It's the workspace map — the 5-layer structure (1 Identity · 2 Routing · 3 Stage contracts · 4 Reference · 5 Artifacts) — and it tells you where everything lives and which file to open for a given task. **For active work, open `wiki/index/PROJECTS.md`** (the project registry: what we're building, status, resume pointer, standards). Then:
+**▶ Read `ROUTING.md` first.** It's the workspace map — the 5-layer structure (1 Identity · 2 Routing · 3 Stage contracts · 4 Reference · 5 Artifacts) — and it tells you where everything lives and which file to open for a given task. Then:
 
 Use runtime-provided startup context first.
 
@@ -26,29 +26,29 @@ Do not manually reread startup files unless:
 
 ## Memory
 
-You wake up fresh each session. Continuity lives in an **atomic `[[linked]]` wiki** (`wiki/`, Obsidian-style, plain markdown, LLM-agnostic):
+You wake up fresh each session. These files are your continuity:
 
-- **`MEMORY.md` (root, main-session bootstrap):** the LEAN map + non-negotiable guardrails — it points *into* the wiki. Don't fatten it.
-- **`wiki/index/`** — the maps: `HOME` (front page), **`PROJECTS`** (what we're building: status · resume pointer · the standards each uses), `HOW-WE-WORK`, `ENVIRONMENT`, `WORK`, `PERSONAL`.
-- **`wiki/projects/` · `wiki/reference/` · `wiki/facts/`** — one atomic note per project / standard-contract / durable fact, cross-linked.
-- **Daily notes:** `memory/YYYY-MM-DD.md` — raw logs of what happened (the append-only journal). Detail lives in the wiki; dailies are the diary.
+- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
+- **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
 
-**🔎 RETRIEVAL — the anti-forgetting habit (do this; don't rely only on what's bootstrap-loaded):**
-- **Before answering from memory** (prior work, a decision, a date, a person, a project's state): **search** (`Grep`/`memory_search` over `wiki/` + `memory/`), then open the specific note. If still low-confidence, say you checked.
-- **Starting work on a project/topic:** open its **`wiki/projects/<name>.md` note FIRST** — its `applies:` links surface the standards/contracts it must follow. *(This is what stops the "forgot to apply the style guide" class of miss.)*
+Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 
-### 🧠 MEMORY.md — the lean bootstrap index
+### 🧠 MEMORY.md - Your Long-Term Memory
 
-- **ONLY load in main session** (personal context — never leak to Discord/group/shared contexts).
-- It is now a **thin map**: the guardrails + pointers into `wiki/`. Keep it lean — put detail in wiki notes, not here.
-- Pre-decomposition long-form is archived at `memory/_backups/MEMORY.pre-phase2-20260702.md`.
+- **ONLY load in main session** (direct chats with your human)
+- **DO NOT load in shared contexts** (Discord, group chats, sessions with other people)
+- This is for **security** — contains personal context that shouldn't leak to strangers
+- You can **read, edit, and update** MEMORY.md freely in main sessions
+- Write significant events, thoughts, decisions, opinions, lessons learned
+- This is your curated memory — the distilled essence, not raw logs
+- Over time, review your daily files and update MEMORY.md with what's worth keeping
 
 ### 📝 Write It Down - No "Mental Notes"!
 
 - **Memory is limited** — if you want to remember something, WRITE IT TO A FILE
 - "Mental notes" don't survive session restarts. Files do.
 - Before writing memory files, read them first; write only concrete updates, never empty placeholders.
-- When someone says "remember this" (a durable fact/decision/preference) → write it as an **atomic `wiki/` note** (right folder — `facts/`, `projects/`, `reference/`) with frontmatter + `[[links]]`, and add a one-line pointer to its MOC in `wiki/index/`. **Check for an existing note first — update it, don't duplicate.** Raw session events still go to `memory/YYYY-MM-DD.md`.
+- When someone says "remember this" → update `memory/YYYY-MM-DD.md` or relevant file
 - **🔄 KNOWLEDGE CAPTURE (automatic, every session — the Hermes model):**
   - The instant something **fails / wastes real time** → one-line entry in **`LESSONS.md`** (tagged by domain).
   - The instant I **figure out how to do something well** (a non-obvious technique) → one-line entry in
@@ -212,10 +212,10 @@ Periodically (every few days), use a heartbeat to:
 
 1. Read through recent `memory/YYYY-MM-DD.md` files
 2. Identify significant events, lessons, or insights worth keeping long-term
-3. Distill them into the **`wiki/`** — update the relevant atomic note (or add one + its MOC pointer); keep project notes' status/resume current
-4. Prune: fix stale notes, keep `MEMORY.md` + the MOCs lean; archive old dailies to `memory/archive/` when the folder grows
+3. Update `MEMORY.md` with distilled learnings
+4. Remove outdated info from MEMORY.md that's no longer relevant
 
-Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; the `wiki/` is curated wisdom.
+Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; MEMORY.md is curated wisdom.
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 

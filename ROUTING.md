@@ -13,6 +13,8 @@ This workspace is organized in **5 layers** (Skipper's model, Jun 18 2026):
 
 > ⚙️ **Boot note (do not move):** OpenClaw auto-loads these from the workspace **root** at startup — `IDENTITY.md, SOUL.md, USER.md, AGENTS.md, TOOLS.md, MEMORY.md, HEARTBEAT.md` + `memory/`. They stay at root by necessity; this map points to them.
 
+> 🧠 **Memory wiki (2026-07-02):** durable memory now lives as atomic, `[[linked]]` notes in **`wiki/`** (an Obsidian-style vault; LLM-agnostic plain markdown). **Start at `wiki/index/PROJECTS.md`** = the master project registry (what we're building · status · resume pointer · which standards each uses). Also `wiki/index/HOME.md` (lean map), `wiki/reference/` (standards/contracts as `applies:` targets), `wiki/facts/` (env / how-we-work / personal facts). `MEMORY.md` is now the lean bootstrap index that points here. Design + phases: `memory-wiki-project/PROPOSAL.md`.
+
 ---
 ## 1. Identity (who/why) — root
 - `IDENTITY.md` — name (Gilligan), vibe. · `SOUL.md` — persona/values. · `USER.md` — the Skipper (Jason): role, preferences, how he works. · `AGENTS.md` — workspace operating rules. · `MEMORY.md` — curated long-term memory (main session only). · `memory/YYYY-MM-DD.md` — daily logs.

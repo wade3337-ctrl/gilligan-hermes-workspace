@@ -1,0 +1,34 @@
+---
+title: Anomaly-monitor suite
+type: project
+domain: work
+track: 1
+status: shipped
+tags: [monitor, email-engine, coo, salesperson, ar-collections, brent]
+applies: ["[[external-comms-contract]]", "[[dashboard-metric-standards]]"]
+links: ["[[rc-03-city-budgets]]", "[[scott-manager-dashboard]]", "[[sales-cockpit]]"]
+updated: 2026-07-02
+---
+
+# Anomaly-monitor suite
+
+**One-liner:** Nightly email engines off the read-only PLAY endpoint — COO daily report (TPH/OT/revenue-pace/contract burn-down), per-salesperson + Nate rollup, and **AR collections (LIVE, per-rep with property detail)**.
+**Status:** 🟢 shipped — COO daily LIVE; AR collections LIVE per-rep; **salesperson pilot preview-only** (`liveEnabled=false`, previews to Jason).
+**📁 Location:** `arbor-stack/anomaly-monitor/`
+**▶️ Resume:** `arbor-stack/anomaly-monitor/CHECKPOINT.md`
+
+## Applies / uses
+- [[external-comms-contract]] — untrusted inbound (reads a play endpoint; watcher ingests Brent's external municipal doc) → validate before trusting.
+- [[dashboard-metric-standards]] — the numbers emailed (TPH, revenue pace, contract burn-down) follow the same metric rules as the dashboards; multi-crew TPH reconciles to the penny vs the Production-Day page.
+- Data source = read-only endpoint `MonitorData.ReadOnly.cfm` on **PLAY** (token + IP allowlist) — a nightly restore, so it LAGS prod.
+
+## State & flags
+- **What's live (daily, both inboxes):** COO report 6:30am PT (`run-and-email.sh`); salesperson + Nate PREVIEWS 6:35am (`run-salesperson-preview.sh`). System crontab, DST-proof, `--guard-pt-morning`.
+- **AR collections = LIVE per-rep with property detail** (`ar-report/rep-emails.json` maps reps).
+- ⚠️ **brent-citybudgets-check cron** (`brent-citybudgets-check.js`, 9am/3pm PT, Jul 8-20) auto-reconciles Brent's verified municipal doc vs the RC-03 play dashboard, then disables. Feeds [[rc-03-city-budgets]].
+- Sender = `gilligan.gsts@gmail.com` (From≠To so it inboxes).
+- **Pending go-live:** prod endpoint deploy (on hold, needed for same-day salesperson data) · IT allowlist `gilligan.gsts@gmail.com` on M365 · flip `config.liveEnabled=true`.
+
+## Related
+- [[rc-03-city-budgets]] — the Brent watcher cron feeds it.
+- [[scott-manager-dashboard]] — Garrett's salesperson-email buckets seeded that build's My Jobs view.
