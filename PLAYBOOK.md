@@ -129,3 +129,10 @@ Wanted: Herman queries the live SQL Server himself, read-only, without spreading
 3. **Persistence:** the play DB reverts nightly → an hourly `schtasks` runs an idempotent re-grant so the read role self-heals.
 - **When `gh` is absent, create GitHub repos via the API:** `curl -H "Authorization: token $PAT" https://api.github.com/user/repos -d '{"name":"…","private":true}'` then `git remote add origin https://<user>:$PAT@github.com/<user>/<repo>.git && git push`. (PAT at ~/backups/.gh-token.)
 - **Build an agent KB "map, not cache":** pre-document the ~100 core tables + decoders (live-pulled: sys.columns, sys.foreign_keys, StatusDefs, ProjectGroupDefs) + a vetted query playbook; leave the long tail for live `sp_helptext`/catalog lookup. An agent with DB access needs the MAP + recipes, not a data dump.
+
+## 🧠 Wiring a Hermes agent's auto-failover brain (2026-07-03)
+Goal: when Boss Herman's primary model (z.ai/GLM) errors, Hermes auto-switches his OWN thinking to a backup mid-session. TWO things required (a Codex CLI login alone is NOT enough — that's only the `codex exec` *tool*):
+1. **Register the fallback provider in Hermes's OWN credential store:** `hermes auth add openai-codex` (ChatGPT OAuth **device-code** flow — headless-friendly: prints a URL + code the human opens) → confirm with `hermes auth list` (shows `openai-codex-oauth-1`).
+2. **Set the fallback in config:** `/opt/data/config.yaml` → `fallback_providers: [{provider: openai-codex, model: gpt-5.5}]` (prefer `hermes fallback add`, which validates), restart the gateway.
+- **PROVE it fires — don't trust a doctor/tool check:** point the primary `base_url` at a dead addr (192.0.2.1), send a prompt, grep the log for `Fallback activated: <primary> → <fallback>`, then restore the primary. (Failover ~3.5min on dead-host timeouts; near-instant on 429/5xx.)
+- Docs: `hermes-sandbox/website/docs/user-guide/features/fallback-providers.md`. `openai-codex` uses the ChatGPT subscription; fallback provider must differ from primary (z.ai fallback wouldn't survive a z.ai outage).
