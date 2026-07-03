@@ -81,6 +81,11 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 
 ---
 
+## 🧠 Knowledge bases for Boss Herman (2026-07-02, overnight autonomous build)
+- 🟢 **Herman read-only DB access** — HermanRO db_datareader login + forced-command query gateway on gilligan (`~/herman-gateway/`); Herman queries play read-only, autonomously. Hourly re-grant persistence. ⚠️ last-mile install on Herman's box pending (can't SSH in; staged + `HERMAN-SETUP.md`). Detail: `memory/2026-07-02-herman-trimit-kb-overnight.md`, technique in [[PLAYBOOK]].
+- 🟢 **trimit-knowledge vault** (shareable) — 78 notes, live-pulled schema + vetted query playbook + operating model. Repo `wade3337-ctrl/trimit-knowledge`, local `~/trimit-knowledge/`. Crew-verified (2 rounds, clean).
+- 🟢 **arbor-knowledge vault** (BLACK/confidential) — 16 notes, arbor-core strategy/build. Repo `wade3337-ctrl/arbor-knowledge`, local `~/arbor-knowledge/`.
+
 ## 🧹 CLEANUP FLAGS (for Phase 2/3 + a tidy pass)
 - **Stale / retire candidates:** `exec-dashboard-audit/` working copies (superseded by RC-01) · `ex_*` experimental pages · **ZTest-\* proliferation** (fold into Cockpit) · Customer Verifier (done). Confirm before deleting (repair-contract: look first).
 - **Orphans:** old Exec-Performance-Day / Exec$Periods$Overview flagged for hide/rename (V1.5 M2).

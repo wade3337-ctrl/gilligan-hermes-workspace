@@ -121,3 +121,11 @@ The `arbor_browser` browserless container can drive a REAL click-through of Cold
   flag (default preview), a `--dry` flag that prints the recipient plan, and a HARD GUARD that SKIPS any blank address
   (never guess-sends). Go-live = fill addresses + add `--live` to the cron runner. This let the Skipper confirm exact
   addresses from a dry-run before a single real email went out.
+
+## 🔐 Give another agent/box its OWN read-only DB access, safely (2026-07-02)
+Wanted: Herman queries the live SQL Server himself, read-only, without spreading admin keys. Pattern that worked:
+1. **Dedicated read-only SQL login** — `CREATE LOGIN HermanRO ... ; CREATE USER FOR LOGIN; ALTER ROLE db_datareader ADD MEMBER`. Verify BOTH ways (SELECT works, CREATE/INSERT denied). Enforces read-only AT THE DB.
+2. **Forced-command SSH gateway on the RECOVERABLE box (mine, not the DB server)** — a wrapper script that reads SQL on stdin and runs `sqlcmd -U HermanRO`, plus an authorized_keys line `command="…wrapper",no-pty,no-port-forwarding,… <herman-pubkey>`. The agent's key can ONLY run the wrapper (tested: `cat /etc/passwd` is ignored, read query runs). Back up authorized_keys first; put the gateway on a box you can fix, not the DB server.
+3. **Persistence:** the play DB reverts nightly → an hourly `schtasks` runs an idempotent re-grant so the read role self-heals.
+- **When `gh` is absent, create GitHub repos via the API:** `curl -H "Authorization: token $PAT" https://api.github.com/user/repos -d '{"name":"…","private":true}'` then `git remote add origin https://<user>:$PAT@github.com/<user>/<repo>.git && git push`. (PAT at ~/backups/.gh-token.)
+- **Build an agent KB "map, not cache":** pre-document the ~100 core tables + decoders (live-pulled: sys.columns, sys.foreign_keys, StatusDefs, ProjectGroupDefs) + a vetted query playbook; leave the long tail for live `sp_helptext`/catalog lookup. An agent with DB access needs the MAP + recipes, not a data dump.
