@@ -39,6 +39,15 @@ for f in "$HOME"/arbor-stack/anomaly-monitor/.secrets/*; do copy "$f"; done
 copy "$HOME/.ssh/gstsdb_ed25519"
 copy "$HOME/.ssh/gstsdb_ed25519.pub"
 copy "$HOME/backups/.gh-token"
+# --- Boss Herman's brain secrets (arbor-core agent — for full redeploy; encrypted, off-box) ---
+copy "$HOME/.hermes/.env"
+copy "$HOME/.hermes/auth.json"
+copy "$HOME/.hermes/.codex/auth.json"
+copy "$HOME/.hermes/.ssh/gilligan_access"
+copy "$HOME/.hermes/.ssh/herman_selfupdate"
+copy "$HOME/.hermes/.ssh/known_hosts"
+copy "$HOME/.hermes/.secrets/gmail-app.txt"
+copy "$HOME/.hermes/.config/himalaya/config.toml"
 
 # --- crontab + a manifest describing the restore mapping ---
 crontab -l > "$STAGE/crontab.txt" 2>/dev/null || echo "# (no crontab)" > "$STAGE/crontab.txt"
@@ -57,7 +66,9 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 cp -rp "$HERE/files/." "$HOME/"
 chmod 600 "$HOME/.openclaw/openclaw.json" "$HOME"/.secrets/* \
   "$HOME"/arbor-stack/anomaly-monitor/.secrets/* "$HOME/.ssh/gstsdb_ed25519" \
-  "$HOME/backups/.gh-token" 2>/dev/null || true
+  "$HOME/backups/.gh-token" \
+  "$HOME/.hermes/.env" "$HOME/.hermes/auth.json" "$HOME/.hermes/.codex/auth.json" \
+  "$HOME/.hermes/.ssh/gilligan_access" "$HOME/.hermes/.ssh/herman_selfupdate" 2>/dev/null || true
 chmod 644 "$HOME/.ssh/gstsdb_ed25519.pub" 2>/dev/null || true
 echo "Credentials restored. Review crontab.txt, then: crontab crontab.txt"
 EOF
