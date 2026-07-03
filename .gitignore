@@ -11,3 +11,6 @@ memory/_backups/
 .git-credentials
 *.log
 .DS_Store
+
+# Obsidian per-vault local config (viewer state, not memory) — do not track
+.obsidian/
