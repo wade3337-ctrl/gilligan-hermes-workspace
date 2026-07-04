@@ -29,11 +29,14 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 
 ### Steve — Financial reconciliation (CFO ground-truth)
 - 🔵 **Project A — Financial Report Reconciliation** — validate all dashboards vs CFO Financial Report. 📁 `steves-projects/financial-report-reconciliation/` ▶️ `CANONICAL-DEFINITION.md` ⚠️ Exec$Periods$Overview CONFIRMED WRONG (stale period-close); **fixes pinned by Skipper**.
-- 🔴 **Project B — Municipal Accrual (PercentagePerformed)** — phantom muni accrual ($111K May). ▶️ `RECON-02-*.md` ⚠️ **blocked on Steve's accounting rule** (zero vs 1-mo-arrears).
+- 🟡 **Project B — Municipal Accrual (PercentagePerformed)** — phantom muni accrual. ▶️ `RECON-02-*.md` ⚠️ **UNBLOCKED (Steve answered Jul 4):** accrue performed-but-unbilled at close; cycle/EOM municipal (Irvine/Newport/Stanton/Industry) → $0 (killed ~$95K May phantom). Built + 3-agent crew-verified on play (`Exec$PercentagePerformed2$NEW.cfm` full report + `$TEST.cfm` summary, CSV export); review email handed to Skipper to forward to Steve; **awaiting sign-off → proc `Report$PercentagePerformed_npr2` to devs for prod.** Billing-cycle relabel deferred (shared type, 2,250 projects — asked Steve).
 - 🔴 **Project C — Month Performance by Customer** — report ~2× canonical. ▶️ `RECON-03-*.md` ⚠️ **blocked — need Steve's actual complaint**.
 
 ### Monitors / email engines
 - 🟢 **Anomaly-monitor suite** — COO daily · per-salesperson+Nate rollup · **AR collections (LIVE per-rep w/ property detail)**. 📁 `anomaly-monitor/` ▶️ `anomaly-monitor/CHECKPOINT.md` 🔗 METRICS_SPEC, metric-standards, `ar-report/rep-emails.json` ⚠️ COO live; salesperson pilot preview-only; AR live; **brent-citybudgets-check** cron Jul 8-20.
+
+### Project-management tooling (cross-track)
+- 🟢 **Our-Work Kanban (two boards, drag-to-move)** — replaces the repairs-screen tabs as our shared source of truth. TRIM IT board on play (`ZTest-WorkKanban.cfm`, Workbench DB) · arbor-core board on the secure box (`http://100.82.161.7:8088/kanban`, Postgres, BLACK). ▶️ [[our-work-kanban]] ⚠️ **standing rule: keep the boards current when saving/updating (create cards + move columns).**
 
 ### Sales engine (Track-1 prototypes → become arbor-core framework)
 - ⏸️ **Sales Cockpit** — unified CRM front door (folds Workbench+Market Clusters+Customer Leads+My Jobs). 📁 `sales-engine/SALES-COCKPIT-spec.md` + `ZTest-Cockpit*.cfm` ▶️ spec ⚠️ **P0-P2 done, parked mid-P3** (bid on-ramp); 4 old pages not yet retired.
@@ -45,8 +48,8 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 
 ### Other analyses / builds
 - 🔵 **Completed-vs-Sold** — reconcile completed vs sold/invoiced. 📁 `completed-sold/` ▶️ `CHECKPOINT.md` ⚠️ muni section needs direction.
-- 🔵 **Budget Report (municipal)** — per-city FY alignment (Anaheim/Irvine/LB/Newport). 📁 `budget-report/` ▶️ `PROCESS.md` ⚠️ Anaheim GenerateContractPeriod fix done on play → Travis.
-- 🟢 **Contract Dashboard Fix (Long Beach FY26/27)** — analysis complete, runbook ready. 📁 `contract-dashboard-fix/` ⚠️ ready to deploy; RC-03 Bucket C waits on it.
+- 🔵 **Budget Report (municipal)** — per-city FY alignment (Anaheim/Irvine/LB/Newport). 📁 `budget-report/` ▶️ `PROCESS.md` ✅ Anaheim GenerateContractPeriod fix **DEPLOYED to prod (Travis) — verified 2026-07-04** (live proc has the fix + #71 comment; Anaheim rolls up $81,004.95).
+- 🟢 **Contract Dashboard Fix (Long Beach FY26/27)** — DONE. Core fix prod Jun 13; **Long Beach 26/27 verified rolling up 2026-07-04** (CompanyYears 89866 = $80,843.63/552h, ContractCalendars 1034 = 2556 rows) — the IT email became moot (proc fix let normal regen heal it). 📁 `contract-dashboard-fix/`.
 - 📝 **Irvine Billing Reconciliation** — automate Celeste's monthly check. 📁 `billing-reconciliation/PROJECT-irvine-billing-recon.md` ⚠️ Step-1 proven; Step-2 = 3 questions for Celeste.
 - ⏸️ **V1.5 Landing Page** — role-gated TRIM IT home (SALES/PROD/ACCT) + TODAY + LLM chat. 📁 `v1.5-landing-page/PROJECT-*.md` 🔗 UserGroups, [[gsts-ui-style-guide]] ⚠️ design phase; needs R2 (T&A source), R3 (crew photos), accounting-role gap.
 - 🗄️ **Customer Verifier** — 414/414 verified (first automated task). 📁 `customer-verifier/` ⚠️ **done; superseded by Cockpit**.
@@ -74,6 +77,7 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 ## 📚 REFERENCE / STANDARDS (the `Applies:` targets — link these from projects)
 - 📚 **[[dashboard-metric-standards]]** — the 6 metric rules every dashboard follows. 📁 `DASHBOARD-METRIC-STANDARDS.md`
 - 📚 **[[gsts-ui-spec]]** (v1.0) + **[[gsts-ui-style-guide]]** + theme — UI rules, tokens, welcome modal, **emoji→UTF-8 BOM**. 📁 `arbor-stack/gsts-ui-spec-v1.0.md`, `reference/GSTS-UI-STYLE-GUIDE.md`, `reference/gsts-theme.css` ⚠️ **this is the guide that got missed on a UI build — every UI project must link it.**
+- 📚 **[[csv-export-standard]]** — **every data page gets a CSV export** (button + `exportCSV` handler + `csv-export-include.cfm`), wired up front. Skipper standing rule. ⚠️ got missed once (2026-07-04) — build-checklist item.
 - 📚 **Deploy** — `DEPLOY-PLAYBOOK.md` + `contracts/dev-handoff-contract.md` (Jordan=IT/$0, Travis=$75/hr).
 - 📚 **Contracts** — `contracts/{repair,db-repair,dev-handoff,external-comms}-contract.md` (how we do each work type).
 - 📚 **Roadmap/backlog** — `TRIMIT-1.5-ROADMAP.md`, `repairs-needed.md`, `REVIEW-PILE.md`, `DEPLOY-PACKAGE-CHECKPOINT.md`.

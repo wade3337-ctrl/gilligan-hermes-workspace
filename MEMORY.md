@@ -15,6 +15,7 @@ Durable memory is now an **atomic `[[linked]]` wiki** in `wiki/`. This file is t
 - **Repairs:** backup-first (`\GSTS\Jasonsrepairs\`, PLAY-ONLY) · root-cause + **propagate to sibling pages** · **render-verify the served output** · log to `gsts-ship-log.md`. → `wiki/reference/repair-contract.md`
 - **Only trustworthy data to the team;** omit + flag wonky metrics. **TPH target = 130.** → `wiki/facts/only-trustworthy-data.md`
 - **Config `openclaw.json`:** back up + merge-patch, **never clobber.** → `wiki/facts/config-clobber-guard.md`
+- **Keep the Kanban boards live:** when saving/updating project work, also update the right board (**create cards** + move columns). Two boards — TRIM IT (play) · arbor-core (secure/BLACK, holds migration). → `wiki/projects/our-work-kanban.md`
 
 ## 📌 Fresh session
 `ROUTING.md` (map) → `wiki/index/PROJECTS.md` (builds + resume pointers) → `anomaly-monitor/CHECKPOINT.md` (live monitor state).
