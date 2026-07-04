@@ -46,3 +46,11 @@ See [[herman-agent]] for the durable state.
 - **⚠️ Big lesson — email-adapter jam:** the Hermes email gateway adapter feeds inbound into the agent's ONE live convo + auto-replies to sender → a 6-email burst TANGLED requests ("all three drafted"), spammed customers, JAMMED him (needed restart). **FIX:** disabled the adapter; built a standalone gilligan service — `rfp-watcher.py` (cron */2) → one isolated `rfp-intake.py` per email → qualify → **Telegram brief to Skipper via the bot** (never customer, never his live chat). Gauntlet 6/6 correct, parallel, no jam.
 - **Memory:** trimmed MEMORY.md 2077→1848 (lean 7-entry index) + bumped `memory_char_limit` 2200→3500 → ~1650 headroom.
 - **New backup crons:** brain repo (`herman-brain-backup`), HermanRO re-grant (`*/30`), note collector (`*/20`), RFP watcher (`*/2`). Secrets ride the encrypted recovery bundle.
+
+## Late — Arduino Herman (SEPARATE agent) vault published to GitHub
+- Distinct from Boss Herman: **Arduino Herman** = the field companion on the Arduino board (push-only sync to gilligan `~/herman-store/`; I have NO SSH into the board).
+- He completed "EXP-000 Self-Migration" + built an Obsidian vault; Skipper relayed a request to publish it.
+- **Repo:** private `wade3337-ctrl/herman-workspace` (created via API). Path A chosen = **Gilligan is the GitHub gateway; NO creds on the board.**
+- Flow: Herman rsyncs vault (with .git) → `~/herman-store/herman-workspace/` → gilligan `~/herman-gateway/herman-vault-sync.sh` (cron `*/5`) commits+pushes. Token stays in `~/backups/.gh-token` (0600), never in repo/args/logs (credential-helper). Corrupt-sync guard: refuses to push if >50% files would delete. Log: `herman-vault-sync.log`.
+- **First push verified:** commit `a50e23a` ("EXP-000 self-migration vault") on GitHub, all 6 key files 200, 447 files, secret-scanned clean.
+- Future hardening flagged to Skipper: swap the broad PAT for a fine-grained token scoped to these repos.
