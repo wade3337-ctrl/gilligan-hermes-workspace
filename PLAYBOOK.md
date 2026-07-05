@@ -5,6 +5,9 @@ here so future-me (and the crew) reuse it instead of re-deriving. Paired with `L
 **🔄 AUTO-UPDATE RULE:** the instant I nail a non-obvious technique, add it here, tagged by domain — in the moment.
 In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> — <how / why it works>. (date)`
 
+## 🗺️ TRIM IT data / file storage access
+- ✅ **Legacy job maps (base/removal PDFs) are DIRECTLY pullable — no office upload needed** (breakthrough, Boss Herman found it on the Culver Plaza e-traveler, reconfirmed 2026-07-05). `dbo.Maps` catalogs every site's maps keyed by **ProjectID** — cols: `MapID, Desc1, ImagePath, InternalImagePath, IsBaseMap, IsRemovalMap, StatusDefID` (+ CompanyID/LocationID/ProjectAddressID). **`ImagePath` = the real file URL** `https://www.greatscotttreeservice.com/gsts/Storage/Data/{ProjectID}/{name}.pdf` — **HTTP 200, application/pdf, reachable from our box** (prod `www.` AND `play.`). The old One-Stop-UI note that this storage was "firewalled, needs office upload" is **WRONG** — deleted that assumption. Recipe: `SELECT Desc1,ImagePath,IsBaseMap,IsRemovalMap FROM dbo.Maps WHERE ProjectID=<pid>` → download ImagePath (**URL-ENCODE the spaces** or curl exits 3 "malformed") → feed the georef pipeline. This is what unblocks arbor-core One-Stop-UI auto-pull of legacy maps. (2026-07-05)
+
 ## 🤖 Models / crew (cross-model verification)
 - ✅ **GLM via direct z.ai API** — `echo "<prompt>" | python3 ~/arbor-core/crew/glm-ask.py` (Bearer →
   `/api/anthropic/v1/messages`). Reliable single-shot; feed DB evidence inline (it can't run tools). (2026-06-21)
