@@ -3,7 +3,7 @@ title: PROJECTS — Master Registry (MOC)
 type: index
 domain: how-we-work
 status: living
-updated: 2026-07-02
+updated: 2026-07-05
 tags: [index, projects, registry, moc]
 links: ["[[PROPOSAL]]", "[[ROUTING]]"]
 ---
@@ -39,7 +39,7 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 🟢 **Our-Work Kanban (two boards, drag-to-move)** — replaces the repairs-screen tabs as our shared source of truth. TRIM IT board on play (`ZTest-WorkKanban.cfm`, Workbench DB) · arbor-core board on the secure box (`http://100.82.161.7:8088/kanban`, Postgres, BLACK). ▶️ [[our-work-kanban]] ⚠️ **standing rule: keep the boards current when saving/updating (create cards + move columns).**
 
 ### Sales engine (Track-1 prototypes → become arbor-core framework)
-- ⏸️ **Sales Cockpit** — unified CRM front door (folds Workbench+Market Clusters+Customer Leads+My Jobs). 📁 `sales-engine/SALES-COCKPIT-spec.md` + `ZTest-Cockpit*.cfm` ▶️ spec ⚠️ **P0-P2 done, parked mid-P3** (bid on-ramp); 4 old pages not yet retired.
+- 🔵 **Sales Cockpit → Sales Pipeline kanban (Skipper pivot 2026-07-04)** — replaced the noisy Map/List/Book tabs with ONE stage-board `ZTest-SalesPipeline.cfm` (Follow-up-dry/Bidding/Won/Working/Done + Scott's "running dry" flag + Board/Map lens). 📁 `sales-engine/ZTest-SalesPipeline.cfm`(+`-Cockpit-Profile/-Search`) ▶️ [[sales-cockpit]] ⚠️ deployed play; **owed:** per-stage actions · "Start a bid"→arbor-core BidQueue · Prototypes tab to retire 4 old pages. Ship #105/#106.
 - ⏸️ **Bid Process Re-engineering (FLAGSHIP)** — redesign the traveler workflow (Skipper #1). 📁 `bid-process-reengineering/` ▶️ `FUTURE-STATE-v0.1.md` ⚠️ **parked pending a process-walkthrough session**.
 - 🔵 **Pricing Guide → History-Aware Bid Prefill** — Price Buddy → bid-sheet prefill. 📁 `pricing-guide/PROJECT-pricing-bid-prefill.md` 🔗 [[gsts-ui-style-guide]], arbor-core pricing engine ⚠️ Ph1/2 done+live; **5 defects flagged (backwards TPH filter etc.) to fix on BOTH V1 + arbor-core**; Ph3 (AI species) deferred.
 - 📝 **Sales Engine Prototypes** — RFP intake / e-traveler / live inventory spikes. 📁 `sales-engine/` ▶️ `phase1-recon.md` ⚠️ recon only, no builds.
@@ -60,8 +60,11 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 *Clean in-house Agent OS replacing TRIM IT (strangler-fig, sales-engine first). Never on play/team/vendor-facing.*
 
 - 🔵 **Strategy + Foundation** — apex direction + 9 ratified decisions. 📁 `arbor-core/docs/` ▶️ `STRATEGY.md` + `build/FOUNDATION-DECISIONS.md`.
-- 🔵 **One-Stop UI (commercial estimator)** — customer→inventory→quote→work-order app. 📁 `arbor-core/app/api/` ▶️ **`docs/ONESTOP-UI-CHECKPOINT.md`** 🔗 schema v1.7, migrations 0001-0023 ⚠️ pricing engine COMPLETE; **next: Skipper hands-on click-test**; MinIO photo store deferred.
-  - includes: **Pricing Reconciler (Slices ①-④)**, **Legacy-Map Georeferencing** (Gemini vision, 0.2-5.6m), **Big-Site Scaling** (60k+ trees), **Area Cleanup / zone tidy** (Ph1 shipped).
+- 🔵 **One-Stop UI (commercial estimator)** — customer→inventory→quote→work-order app. 📁 `arbor-core/app/api/` + `importer/` ▶️ **[[arbor-core-onestop-ui]]** (BUILD SESSION + PINNED sections). 🔗 migrations 0001-0026. ⚠️ **2026-07-06 heavy build day**; **PINNED: area-scan on non-aerial maps still not right** — revisit w/ a real aerial-map site.
+  - includes: **Pricing Reconciler (Slices ①-④)**, **Legacy-Map Georeferencing** (Gemini vision; **PDF auto-pull UNBLOCKED via `dbo.Maps.ImagePath`**), **Big-Site Scaling** (60k+), **Area Cleanup**.
+  - **Slice 2 map-overlay (2026-07-06 built):** GSTSID crosswalk IMPORTED (mig 0025 `map_label`); robust tiled detector `detect_markers.py` (5-lab crew, anti-hallucination gate, validated 80 palms/0.0 hallucination on Los Olivos 2); propose→commit for trees + preview→commit for areas + Undo; map picker + separate Extract-areas/trees; area color-matching (mig 0026, GSTS `ColorDefs` palette). **3 map classes** — only "WITH ID" numbered maps are AI-readable.
+  - **Pricing sheet redesign Phase 1 (2026-07-06):** group-first **cohort grid** (history-seeded, green/red TPH pills) replacing the +species button wall; per-zone access ×. 5-lab crew-vetted → `docs/PRICING-SHEET-REDESIGN.md`. **Phase 2 pending** (Profit Lens map, map↔grid sync, Tap-to-Rebid).
+  - **~7 inventory bug fixes (Skipper live-test):** pin-dup, no pre-select, map corner-jam guard + Undo, customer-switch stale state (`key`), `Cache-Control: no-store` (stubborn cache), area-scan quality gate.
 - 🔵 **RFP Automation (B1 intake → B2 match/create → B3 draft)** — proven on Rosa's 3 requests, 2-lab verified, **drafts only never sent**. 📁 `arbor-core/rfp-automation/` + `importer/b2_*` ▶️ `INTAKE-SPEC.md` ⚠️ next: B3→pricing hookup; B2 CSV→live TRIM IT (blocked on prod access).
   - 📝 **Bid-Package Electronification** ("kill the PDFs") — design done. ▶️ `rfp-automation/BID-PACKAGE-electronification.md`.
 - 🔵 **Cockpit → arbor-core Bid Handoff** — one-way queue, P0-P4 done + verified. 📁 `importer/bidqueue_import.py`+`import_service.py` ▶️ `docs/COCKPIT-BIDQUEUE-HANDOFF-spec.md` ⚠️ **import_service needs systemd/@reboot** for prod.
