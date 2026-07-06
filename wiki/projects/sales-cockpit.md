@@ -7,7 +7,7 @@ status: parked
 tags: [sales-engine, crm, cockpit, workbench, bid-on-ramp]
 applies: ["[[gsts-ui-style-guide]]", "[[gsts-ui-spec]]", "[[repair-contract]]"]
 links: ["[[bid-process-reengineering]]", "[[scott-manager-dashboard]]", "[[pricing-guide-bid-prefill]]", "[[sales-engine-prototypes]]"]
-updated: 2026-07-02
+updated: 2026-07-04
 ---
 
 # Sales Cockpit
@@ -30,6 +30,7 @@ updated: 2026-07-02
 - **Work Finder** built as its own page (`ZTest-WorkFinder.cfm`, WF-P0/P1 done) — "where's the work to bid?" surface; WF-P2 (Garrett's follow-up list → `Workbench.dbo.Todo`) not built.
 - Caveat: DOM/interaction NOT browser-verified (no headless browser); data endpoints + JS syntax verified independently.
 - State persists to the refresh-proof `Workbench` play DB → becomes the arbor-core cockpit.
+- **🔀 PIVOT (Skipper 2026-07-04):** cockpit judged too noisy/duplicative → replaced the Map/List/My-Book tabs with ONE **kanban stage-board `ZTest-SalesPipeline.cfm`** ("organize by what to do NEXT, not by tool"). 5 cols: Follow-up-now (dry) / Bidding / Won-schedule / Working / Recently-done. Reuses the profile drawer + search; Book selector + running-dry filter; Board/Map toggle (map = a lens). **Scott's sell-ahead flag built in:** account with no future WO **and** no approved go-ahead/proposal → red "Running dry, call the PM." Ship-log #105 (+#106 Work Kanban). Deployed play D:\, old cockpit untouched. **STILL OWED:** per-stage action buttons; a version where "Start a bid" pushes to arbor-core (`Workbench.dbo.BidQueue`); retire the 4 old pages via a Prototypes tab on `Reference-RepairsAndScheme.cfm`.
 
 ## Related
 - [[bid-process-reengineering]] — the cockpit is the SHELL; the 5 stages are what happens inside it.
