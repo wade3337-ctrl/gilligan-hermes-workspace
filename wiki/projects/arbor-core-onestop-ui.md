@@ -7,7 +7,7 @@ status: active
 tags: [arbor-core, estimator, pricing-engine, inventory, georeferencing, confidential]
 applies: ["[[arbor-core-db-importers]]"]
 links: ["[[arbor-core-strategy-foundation]]", "[[arbor-core-cockpit-bidqueue-handoff]]", "[[arbor-core-rfp-automation]]", "[[arbor-core-ai-tree-vision]]", "[[arbor-core-municipal-bid-branch]]"]
-updated: 2026-07-06
+updated: 2026-07-07
 ---
 
 # arbor-core — One-Stop UI (commercial estimator)
@@ -16,6 +16,8 @@ updated: 2026-07-06
 **Status:** 🔵 active — **2026-07-06: numbered-map→GPS-trees pipeline works END-TO-END** (map-corner bug + timeout both fixed; classifier/preview/gating shipped). Skipper live-testing; next = pricing Phase 2. See BUILD SESSION + RESOLVED sections below.
 **📁 Location:** `arbor-core/app/api/` (main.py · index.html · maps_api.py) · `arbor-core/importer/` (georef_map.py · detect_markers.py · bidqueue_import.py)
 **▶️ Resume:** this note's **BUILD SESSION** + **PINNED/OPEN** sections · pricing Phase 2 → `arbor-core/docs/PRICING-SHEET-REDESIGN.md` · map-overlay design → `arbor-core/docs/MAP-OVERLAY-API-spec.md`. Live app `http://100.82.161.7:8088`. Kanban cards 21 (map overlay) + 22 (pricing).
+
+**⏸️ PAUSED 2026-07-07 — Part (b) non-aerial map zone extraction (RESUME HERE):** georef of CAD/colored plans already works (proof + crew plan → `arbor-core/docs/GEOREF-B-NONAERIAL.md`). **Step 1 (multi-color zone extractor) BUILT + refined** in `importer/georef_map.py` (`run(mode='zones')` + MULTIZONE_HTML + `extract_multizone` + `label_zones`; commits 928ba08, f7efaaa). Verified on La Paz Colored Map: 7 labeled GPS zones on satellite (`memory/multizone-step1-labeled.png`). **NEXT:** polish (gold-zone fragmentation + label-match) → wire `mode='zones'` into `maps_api` + a review/commit UI → confidence gate + control-point confirm. Full detail in `memory/2026-07-07.md`.
 
 ## Applies / uses
 - [[arbor-core-db-importers]] — schema v1.7 + migrations 0001–0023, RLS spine (`SET app.tenant_id`).
