@@ -19,3 +19,8 @@ Gilligan provisioned a **full-admin** TRIM IT **play** web login for Boss Herman
 - Login form (`ClientLogin.cfm` → iframe `gsts/Login/index.cfm` → POST `LoginResults$Split.cfm`) validates internal users with: `gsts.dbo.Profiles INNER JOIN flow.Users ON Profiles.userID=Users.UserID` WHERE `UserEmail` (or `LoginName`) = login AND `Password` = pw AND status Active. **A `Profiles` row (userID=UserID) is REQUIRED** — a trigger auto-creates it on flow.Users insert.
 - ⚠️ **SECURITY: passwords are stored PLAINTEXT** in `flow.Users.Password` (and `WebUsers.Password`). Worth flagging to the Skipper as a system-level risk (not fixed here).
 - ⚠️ **Persistence:** created on **play**. Skipper believes play isn't fully refreshed from prod (maybe the DB only) — if the play DB ever gets restored from prod, this user + its UserActions would be wiped and need re-creating.
+
+## Backup + re-provision (if wiped)
+- **Credential backup (host):** `~/.secrets/trimit-herman-login.env` (chmod 600) — same email+password as Herman's container copy, so re-creating the user with these keeps his env file working.
+- **One-command re-provision:** `bash ~/arbor-stack/tools/reprovision-herman-trimit-login.sh` (idempotent — recreates the flow.Users clone-from-115 + copies UserActions from the stored creds). `--check` reports status only (OK / WIPED).
+- **Wipe-test cron:** one-shot job `herman-trimit-login-wipe-test` fires **2026-07-09 09:00 PT** → runs `--check` → reports to Skipper whether the overnight refresh wiped it (answers the persistence question).
