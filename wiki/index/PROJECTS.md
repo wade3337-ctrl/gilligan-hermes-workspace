@@ -3,7 +3,7 @@ title: PROJECTS — Master Registry (MOC)
 type: index
 domain: how-we-work
 status: living
-updated: 2026-07-05
+updated: 2026-07-08
 tags: [index, projects, registry, moc]
 links: ["[[PROPOSAL]]", "[[ROUTING]]"]
 ---
@@ -47,6 +47,8 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 📝 **Apple Contacts ↔ TRIM IT Reconciler** — vCard match/diff. 📁 `pipeline-tool/PROJECT-apple-contacts-reconciler.md` ⚠️ 2 sub-projects (read-only diff first, write-back later); awaiting Scott's vCard export.
 
 ### Other analyses / builds
+- 🔵 **Inland Empire Expansion — BD Target Research** — prioritized HOA + commercial target list for Chad to expand GSTS into the urban western IE. ▶️ **[[inland-empire-expansion]]** 🔗 [[anomaly-monitor-suite]] ✅ **v1 + Round-2 delivered; Top-6 emailed to Scott (CEO) + Nate 2026-07-08** (deep-research workflow ×2). 7 verified mgmt "doors" + Top-6 mapped to manager+phone (Redhawk→Avalon, Daytona/Perris→Core5/Jon Kelly, Paloma del Sol→Packard[weak incumbent], The Lakes→Powerstone, Los Serranos Ranch→KPPM, Haven View→FirstService); Perris-commercial CONFIRMED, I-15-HOA SUPPORTED. Report `inland-empire-expansion-targets.md`. NEXT: close ⚠️ (Vellano HOA mgr, Daytona landscape-PM) + scale to 100+ on CAI-GRIE.
+- 🔵 **Overtime-Cost Forecaster (Herman-run)** — on-demand *"cut OT for [yard/N guys] in [month] → gross forecast + savings"* to settle the Skipper-vs-Scott OT argument. ▶️ **[[overtime-cost-forecaster]]** 🔗 [[gsts-field-labor-rate]], [[anomaly-monitor-suite]], [[herman-agent]] ✅ **method validated live June 2026 + Herman taught/proven (2026-07-08)**; true cost of OT = the ~$11.43/hr **premium** (work is backlog, not lost); North = hotspot. NEXT: May-2026 + Sept/Oct-2025 for the seasonal spread. Prompt `boss-herman-ot-prompt.txt`.
 - 🔵 **Completed-vs-Sold** — reconcile completed vs sold/invoiced. 📁 `completed-sold/` ▶️ `CHECKPOINT.md` ⚠️ muni section needs direction.
 - 🔵 **Budget Report (municipal)** — per-city FY alignment (Anaheim/Irvine/LB/Newport). 📁 `budget-report/` ▶️ `PROCESS.md` ✅ Anaheim GenerateContractPeriod fix **DEPLOYED to prod (Travis) — verified 2026-07-04** (live proc has the fix + #71 comment; Anaheim rolls up $81,004.95).
 - 🟢 **Contract Dashboard Fix (Long Beach FY26/27)** — DONE. Core fix prod Jun 13; **Long Beach 26/27 verified rolling up 2026-07-04** (CompanyYears 89866 = $80,843.63/552h, ContractCalendars 1034 = 2556 rows) — the IT email became moot (proc fix let normal regen heal it). 📁 `contract-dashboard-fix/`.

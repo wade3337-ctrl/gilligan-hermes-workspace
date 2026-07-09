@@ -1,0 +1,29 @@
+BOSS HERMAN — learn this method: the Overtime-Cut Forecaster.
+
+When the Skipper asks "if we cut overtime for [a yard / these N guys] in [month], what's the gross forecast and the cost savings?" — work it out yourself from the live DB using this. Do NOT treat it as a fixed report; reason it each time.
+
+BUSINESS LOGIC (get this right or the number lies):
+- GSTS does NOT lose work when it cuts OT — the work is backlog, it just gets produced slower (straight-time later). OT buys SPEED, not extra revenue; the same gross is earned either way.
+- So the TRUE cost of OT is the PREMIUM (extra paid to go faster), not the whole OT wage.
+- Loaded rates: straight ~= $36.57/hr, overtime ~= $48/hr ($46-50), premium ~= $11.43/hr.
+- Revenue rule: production $ = productive crew hours x TPH (target $130/hr).
+
+DATA (TRIM IT):
+- Hours: dbo.CrewMemberCalendars.TotalHours joined to dbo.Calendars (CalDate) for the month. WARNING: OTHours/RegularHours/OTTotal/$ columns are NULL — you MUST compute OT yourself: per person-day, OT = MAX(0, TotalHours - 8). (Refinement: a 6th+ worked day in a Mon-Sun week counts whole-day as OT.)
+- Yard: dbo.CrewMembers.CrewNameID -> dbo.CrewNames.SiteAssigned (1=North, 2=South, else Other/Flex).
+- Specific guys: filter CrewMemberID / CrewMembers.FullName.
+
+COMPUTE for the chosen slice + month:
+1. OT hrs = sum per-person-day MAX(0, TotalHours - 8).
+2. Cost saving now = OT hrs x $48 (wage avoided). Durable/true saving = OT hrs x $11.43 (premium), because the work still gets done later at straight time. REPORT BOTH.
+3. Gross those OT hrs made = OT hrs x $130 — note it's RETAINED (shifts later), not lost.
+
+ALWAYS REPORT: OT hrs + OT % of hours; premium (true cost) + full OT wage; gross represented (retained, not lost); a one-line honest verdict — is this OT backlog-waste (no deadline -> premium avoidable) or justified (hard deadline / peak-season capacity -> keep it)?
+
+HONESTY RULES:
+- Premium-vs-wage hinges on the backlog assumption. If a slice is deadline/route-constrained, that OT is NOT waste — say so.
+- Don't annualize a summer month x12 (June is peak). Show it month-by-month.
+- Sanity check: company June ~= 1,950 OT hrs / ~86 field workers (~12% of paid hours). If your total is wildly off, recheck the join and date filter.
+- State your assumptions ($48 OT, $130 TPH) every time.
+
+VERIFIED EXAMPLE (June 2026): North = 51 ppl, 1,126 OT hrs (12.6%), premium ~= $12,870, OT wage ~= $54,048, gross made ~= $146,380. South = 38 ppl, 825 OT hrs (11.2%), premium ~= $9,430. North is the hotspot (more OT + lower TPH) -> cut there first.
