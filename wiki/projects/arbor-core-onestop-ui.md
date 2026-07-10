@@ -19,6 +19,12 @@ updated: 2026-07-07
 
 **⏸️ PAUSED 2026-07-07 — Part (b) non-aerial map zone extraction (RESUME HERE):** georef of CAD/colored plans already works (proof + crew plan → `arbor-core/docs/GEOREF-B-NONAERIAL.md`). **Step 1 (multi-color zone extractor) BUILT + refined** in `importer/georef_map.py` (`run(mode='zones')` + MULTIZONE_HTML + `extract_multizone` + `label_zones`; commits 928ba08, f7efaaa). Verified on La Paz Colored Map: 7 labeled GPS zones on satellite (`memory/multizone-step1-labeled.png`). **NEXT:** polish (gold-zone fragmentation + label-match) → wire `mode='zones'` into `maps_api` + a review/commit UI → confidence gate + control-point confirm. Full detail in `memory/2026-07-07.md`.
 
+**✅ 2026-07-08 EVENING — colored-area extractor FIXED + WIRED LIVE, and "Send Bid" tab shipped** (detail + resume: `memory/2026-07-08.md`; extractor design/checkpoint: `arbor-core/docs/GEOREF-B-NONAERIAL.md`):
+- **Extractor fixed** (`importer/georef_map.py`, backup `.bak-20260709-holefill`): interior **hole-fill** (outline parcels fill solid; band zones keep open middles via a white-content guard) + **legend exclusion** (vision bbox; drops swatches <1.2% inside the key box, spares real parcels). Visually proven on La Paz Colored Map (harness: `importer/test-lapaz/`).
+- **Wired into the app:** `maps_api` accepts **`mode='zones'`** (preview) + new **`POST /commit-zones`** (each zone → its own site_area); `index.html` "🗺️ Extract areas" now runs the multi-color extractor, previews all zones, commits N. Quote button renamed "Create work order"→**"Review bid →"**.
+- **Step 4 reworked Work Order → "Send Bid"** (`SendBidStep`): confirm checklist + branded customer preview (internal hidden) + **interactive customer bid map** (`GET /bid/{id}` → `app/api/bid.html`, tap tree → species/service/price + photo placeholder) + **test-email to Skipper** (`POST /proposals/{id}/send-test` → `import_service /send-bid` via gilligan.gsts gmail). Full loop verified on the real Alhambra USD bid.
+- **▶️ RESUME (Skipper, tmrw AM): more work on the QUOTE page** (`QuoteStep`, step 3 — ask what he wants). Open polish: tree photos (gated on capture), real customer send (draft→approve, currently test-to-Skipper), per-zone grouping in the preview, tree→zone tagging on commit-zones.
+
 ## Applies / uses
 - [[arbor-core-db-importers]] — schema v1.7 + migrations 0001–0023, RLS spine (`SET app.tenant_id`).
 - Specs: `schema/STAGE3-pricing-engine-spec.md` · `docs/decisions/AREA-CLEANUP.md` · `docs/ADR-002-mapping.md`.

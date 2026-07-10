@@ -17,6 +17,8 @@ A **SEPARATE SQL db** on the play instance for **prototype state that survives t
 - `dbo.RebidStatus` — Re-bid Radar RFP flags (`ProjectID` + `SalesRepID`).
 - `dbo.WorkbenchNote` — drill relationship/site notes (`Scope` + `RefKey`).
 - `dbo.Todo` — V1.5 home per-user todos (keyed `ZUserID`).
+- `dbo.RepEffectiveDate` (2026-07-10) — reviewed rep hire/effective dates + Role + Source + ReviewedBy. HR-truth anchor for historical attribution (SalesReps has no hire column). See [[sales-rep-attribution]].
+- `dbo.ProposalOriginalRep` (2026-07-10) — per-proposal original-seller override map (`ProposalID`, `OrigRepName`, `Source`, `Conflict`) for reassigned proposals; the Win/Loss report LEFT JOINs it and `COALESCE`s. **Static/reviewed — NOT auto-regenerated nightly** (crew rule: exception report, not silent recompute).
 
 ## Access pattern
 - Reached from ColdFusion via the **GSTS datasource + 3-part names** (`Workbench.dbo.…`; CF connects as **`sa`** → cross-DB, **no new datasource/grant**).

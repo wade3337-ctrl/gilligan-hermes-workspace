@@ -3,15 +3,17 @@ title: Crew — LLMs & helper scripts
 type: fact
 domain: env
 tags: [crew, llm, verification, arbor-core, infra]
-links: ["[[arbor-core-crew-infra]]", "[[env-host-and-tooling]]"]
-updated: 2026-07-02
+links: ["[[arbor-core-crew-infra]]", "[[env-host-and-tooling]]", "[[herman-agent]]"]
+updated: 2026-07-10
 ---
 
 # Crew — the cross-model verification panel + helper scripts
 
 **Foreman/primary:** Opus 4.8 (me, Gilligan). **5-lab cross-model panel** (different lab = different blind spots, proven):
-Claude Opus · **Codex gpt-5.5** (OpenAI, native tool-runner) · **GLM glm-5.2** (Zhipu) · **Gemini 3.1-pro** (Google) ·
+Claude Opus · **Codex/Sol `gpt-5.6-sol`** (OpenAI, native tool-runner) · **GLM glm-5.2** (Zhipu) · **Gemini 3.1-pro** (Google) ·
 **Kimi k2.6** (Moonshot). Full recipes/keys/gotchas → `arbor-core/docs/CREW.md` + `CREW-ONBOARDING.md`.
+
+> [!important] **OpenAI model = `gpt-5.6-sol` (Skipper pref, 2026-07-10).** The "codex" model *names* are retired (API rejects `gpt-5.6-codex`/`gpt-5.6` on a ChatGPT account). Set as the **default** in `~/.codex/config.toml` (`model = "gpt-5.6-sol"`) — no per-call `-m` needed. Needs **codex-cli ≥ 0.144** (older builds error "requires a newer version of Codex" → `codex update`). Fall back to 5.5 only if 5.6 unavailable. This model earned its keep twice on 2026-07-10 (Steve Win/Loss): adversarially **refuted** a wrong "unrecoverable" call, then **blocked** a naive Fix-2 boundary — see [[sales-rep-attribution]].
 
 ## How to call
 - Direct-API helpers `~/arbor-core/crew/*-ask.py` — single-shot, **feed evidence inline** (agentic CLIs are unstable here).
