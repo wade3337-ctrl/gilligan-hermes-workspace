@@ -19,9 +19,11 @@ updated: 2026-07-03
 
 ## Applies / uses
 - Strategy pillar 4 (build it WITH a crew) + the crew rules "no guesses, based in facts" — every claim cites a real source; verification gate before anything counts; Skipper sign-off on decisions + money-critical code; scoped task-packets (least-privilege).
-- Scripts: `gemini-ask.py`, `glm-ask.py` / `glm-judge.py` / `glm-worker.py`, `kimi-ask.py` / `kimi-worker.py`, `fable-ask.py`, `_TEMPLATE-ask.py`.
+- Scripts: `gemini-ask.py`, `glm-ask.py` / `glm-judge.py` / `glm-worker.py`, `kimi-ask.py` / `kimi-worker.py`, `fable-ask.py`, `_TEMPLATE-ask.py`; **Codex** wrappers `codex-code.sh` (headless code work) + `codex-review.sh` (headless review).
 
 ## State & flags
+- **Current models (Skipper-locked 2026-07-11, verified live):** gemini → **gemini-3.5-flash** (was 3.1-pro-preview; heavy-reasoner alt via `GEMINI_MODEL=gemini-3.1-pro-preview`) · kimi → **kimi-k2.7** (was k2.6; also updated in `kimi-worker.py` + `_TEMPLATE`) · glm → glm-5.2 · fable → claude-fable-5 · codex → gpt-5.6-sol. All swappable per-call via `GEMINI_MODEL`/`KIMI_MODEL`/`CREW_MODEL` env.
+- **Codex = code worker + reviewer (Skipper, 2026-07-11).** Unlike the single-shot API asks (gemini/glm/kimi/fable), Codex is a full agentic CLI (`codex exec`, gpt-5.6-sol) that runs commands + edits files. **Call it in for actual code work**, not just reviews: `codex-code.sh "task"` (workspace-write sandbox, least-privilege to the `CODEX_CD` repo; `CODEX_SANDBOX=read-only` for analysis) — verified writing files 2026-07-11. Reviews: `codex-review.sh` (`codex exec review --uncommitted`, part of the multi-lab panel).
 - ⚠️ **kimi-ask SIGKILLs as a long foreground call** (message preemption) — use glm/gemini, or background kimi.
 - **Reporting-design fix:** long crew work runs as **`sessions_spawn` background sub-agents** (survive turn preemption, report through Gilligan).
 - Timeouts raised (gemini/kimi 120/180s → 300s + retry).

@@ -15,11 +15,7 @@ Held for the Skipper; the vault is buildable without them but the wire-up needs 
 4. **Where the wire lives** — build `AI-Chat.cfm` on **play** first (per [[repair-contract]], backup-first, render-verify), never prod until proven. Confirm play-first.
 5. **Network path** — ✅ RESOLVED: **Tailscale**. Different locations, same tailnet. CF → `http://100.82.161.7:11434` (this box = `gilligan`), encrypted by WireGuard. Proven working 2026-07-11. → [[architecture]]
 7. **Confirm the CF/TRIM IT node** — is it `gstsdatabase` (100.86.97.46)? Needed to point the ACL + know where `AI-Chat.cfm` lives.
-8. **🔴 BLOCKER — Tailscale ACL (Skipper's console).** gstsdatabase (tagged device) is NOT in gilligan's allowed-source list, so `gstsdatabase → gilligan:11434` is filtered (tailnet path is up; only the port is blocked). This is *also* the security lock we wanted. Add to the tailnet policy (login.tailscale.com → **Access Controls**):
-   ```json
-   { "action": "accept", "src": ["100.86.97.46"], "dst": ["100.82.161.7:11434"] }
-   ```
-   (Cleaner with names/tags if the policy uses them: `src` = gstsdatabase's tag, `dst` = `gilligan:11434`.) After saving, `AI-Chat.cfm` goes green with no code change. Optional extra hardening: bind Ollama to `100.82.161.7` so it's not also open on gilligan's physical LAN.
+8. **✅ RESOLVED — Tailscale ACL added** (Skipper, 2026-07-11 03:35 UTC). The tailnet only let `autogroup:member` (personal devices) initiate; gstsdatabase carries `tag:reachonly` = reachable-but-can't-initiate, so port 11434 was filtered. Added one grant: `{"action":"accept","src":["100.86.97.46"],"dst":["100.82.161.7:11434"]}` — only that server, only the model port. Page went green immediately, no code change. Remaining optional hardening: bind Ollama to `100.82.161.7` so 11434 isn't also open on gilligan's physical LAN.
 9. **Keep-warm** — set Ollama `keep_alive` (e.g. `-1` / long) so users don't hit the ~21s cold start; warm is ~2s.
 6. **Latency** — 3B is fast but CF→Ollama round-trip adds up; set a "thinking…" state + a timeout in the chat box.
 

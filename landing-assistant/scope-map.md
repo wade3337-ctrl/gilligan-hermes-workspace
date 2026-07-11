@@ -12,9 +12,10 @@ The finite list of landing-page-reachable pages, the data each exposes, and the 
 > Grounding rule: for a number, run the page's **own query** and inject the rows; the model narrates. It never invents figures. → [[architecture]]
 
 ## PRODUCTION / EXECUTIVE node
-### Revenue Performance — `Dashboard-RevenuePerformance.cfm`
+### Revenue Performance — `Dashboard-RevenuePerformance.cfm`  ✅ GROUNDED (live, 2026-07-11)
 - **Exposes:** scheduled revenue vs monthly goal; crew productivity **TPH** (target **130** → [[guardrails]]); Pace-vs-Goal; actual-through-today / projected-after; by day/week/month; filter by territory / work type / revenue source; drill to the work orders.
 - **Query:** `Dashboard-RevenuePerformance.cfm` (+ `.Export.cfm`).
+- **Assistant hook:** `?aisummary=1` emits the page's own computed headline JSON (goal/actual/projected/pace/TPH), and honors POSTed `startDate/endDate/browserToday/groupBy` → **any time period**. `AI-Chat.cfm` parses the period in CF, POSTs the range, composes the exact answer, model only rewords under a number+month guard (trust-guarded compose — see PLAYBOOK). ⚠️ dashboard page is C:\-shadowed → deploy edits to BOTH webroots ([[trimit-dual-webroot-shadow]]).
 - **Good questions:** "Are we on pace to goal this month?" · "What's TPH this week?" · "Revenue by territory MTD?"
 
 ### City Budgets — `Dashboard-CityBudgets.cfm`
