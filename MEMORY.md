@@ -19,4 +19,5 @@ Durable memory is now an **atomic `[[linked]]` wiki** in `wiki/`. This file is t
 
 ## 📌 Fresh session
 `ROUTING.md` (map) → `wiki/index/PROJECTS.md` (builds + resume pointers) → `anomaly-monitor/CHECKPOINT.md` (live monitor state).
+🎯 **ACTIVE GOAL (2026-07-10): 4-dashboard deploy bundle** → open `arbor-stack/release-candidates/DEPLOY-BUNDLE-2026-07-10.md` (RC-02 Revenue · RC-06 Production · RC-03 City Budgets · RC-04 SPM: complete-verify each → pre-prod checks `deploy-manifest.js`+`deploy-smoketest.sh` → one deploy package).
 Two domains kept separate: **🛠️ WORK** (Great Scott / arbor-core) · **🎣 PERSONAL**. Profile: `USER.md`. Pre-wiki snapshot: `memory/_backups/MEMORY.pre-phase2-20260702.md`.

@@ -3,7 +3,7 @@ title: PROJECTS — Master Registry (MOC)
 type: index
 domain: how-we-work
 status: living
-updated: 2026-07-08
+updated: 2026-07-10
 tags: [index, projects, registry, moc]
 links: ["[[PROPOSAL]]", "[[ROUTING]]"]
 ---
@@ -24,6 +24,7 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 🟢 **RC-02 Revenue Performance** — revenue pace vs goal + TPH, drill-through. 📁 `Dashboard-RevenuePerformance.cfm`(+.Export) ▶️ `release-candidates/RC-02-*.md` 🔗 metric-standards, ui-spec ⚠️ **dual-webroot deploy (D:\ + C:\)**; 4-lab cleared.
 - 🔵 **RC-03 City Budgets** — municipal budget tracking by city/FY. 📁 `Dashboard-CityBudgets.cfm`+`CityBudgets.data.cfm` ▶️ `release-candidates/RC-03-*.md` 🔗 metric-standards, GenerateContractPeriod proc ⚠️ **awaiting Brent sign-off**; watcher armed Jul 8-20.
 - 🔵 **RC-04 SPM (Sales Production Meeting)** — funnel by stage (Pipeline/Sold/Production/Results). 📁 `SalesProductionMeeting$*.cfm` ▶️ `release-candidates/RC-04-*.md` 🔗 metric-standards, ui-spec, `csv-export-include.cfm` ⚠️ **5 prod asset 404s** must ship with .cfm; 4-lab green.
+- 🟢 **City Forecasting** — live TRIM-IT Forecasting tab on City Budgets (`ZTab=forecast`) replacing Brent's manual Excel: per-city monthly grid + Scheduled-Ahead + all-cities GRAND-TOTAL + CSV, on ONE shared FY engine feeding City Budgets/Forecast/Production. 📁 `production-dashboard/CityBudgetsForecast.data.cfm`+`citybudget-fy-helpers.cfm` ▶️ [[city-forecasting]] / `city-budgets-review/FORECASTING-BUILD-SPEC.md` 🔗 [[shared-engine-kills-dashboard-drift]], [[brent-forecast-178k-artifact]] ⚠️ live on play, prod-pending; ship #118, Kanban card 47.
 - 🔵 **RC-05 Arborist Workbench** — map + work sheet + My Jobs/Re-bid Radar. 📁 `production-dashboard/ZTest-*.cfm` ▶️ `release-candidates/RC-05-*.md` 🔗 **Workbench PLAY DB** (survives refresh) ⚠️ not review-approved; ships with a new DB; preserved separate from Cockpit.
 - 🔵 **Steve's Diligence Sales-History dash (Project D)** — proposal-grain win% by rep. 📁 `steves-projects/diligence-sales-history/` + `FinancialReport/FinancialReport{Dashboard,Export}.cfm` ▶️ `…/CHECKPOINT-STEVE-DASH.md` 🔗 canonical-definition, [[gsts-ui-style-guide]], **[[sales-rep-attribution]]** ⚠️ **Win/Loss-by-year attribution fix DONE + Skipper-approved (2026-07-10, ship #111/#112); verify email sent to Steve.** Fix 1 (drop current-roster gate) + Fix 2 (reassignment drift → `Workbench.dbo.{RepEffectiveDate,ProposalOriginalRep}`, crew-vetted). Awaiting Steve sign-off → prod. city-excl propagated to 7 surfaces.
 
@@ -54,6 +55,7 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 🟢 **Contract Dashboard Fix (Long Beach FY26/27)** — DONE. Core fix prod Jun 13; **Long Beach 26/27 verified rolling up 2026-07-04** (CompanyYears 89866 = $80,843.63/552h, ContractCalendars 1034 = 2556 rows) — the IT email became moot (proc fix let normal regen heal it). 📁 `contract-dashboard-fix/`.
 - 📝 **Irvine Billing Reconciliation** — automate Celeste's monthly check. 📁 `billing-reconciliation/PROJECT-irvine-billing-recon.md` ⚠️ Step-1 proven; Step-2 = 3 questions for Celeste.
 - ⏸️ **V1.5 Landing Page** — role-gated TRIM IT home (SALES/PROD/ACCT) + TODAY + LLM chat. 📁 `v1.5-landing-page/PROJECT-*.md` 🔗 UserGroups, [[gsts-ui-style-guide]] ⚠️ design phase; needs R2 (T&A source), R3 (crew photos), accounting-role gap.
+- 📝 **V1.5 Landing Assistant** — the landing page's LLM chat, made real: local **llama3.2:3b** (Ollama) grounded on live TRIM IT, scoped to **landing-page-reachable pages only** (inherits the role-gate). 📁 vault `landing-assistant/` 🔗 [[v15-landing-assistant]] ⚠️ vault scaffolded 2026-07-11; next = `AI-Chat.cfm` wire on play. Open Qs: name, Ollama box location.
 - 🗄️ **Customer Verifier** — 414/414 verified (first automated task). 📁 `customer-verifier/` ⚠️ **done; superseded by Cockpit**.
 
 ---
@@ -83,10 +85,16 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 📚 **[[dashboard-metric-standards]]** — the 6 metric rules every dashboard follows. 📁 `DASHBOARD-METRIC-STANDARDS.md`
 - 📚 **[[gsts-ui-spec]]** (v1.0) + **[[gsts-ui-style-guide]]** + theme — UI rules, tokens, welcome modal, **emoji→UTF-8 BOM**. 📁 `arbor-stack/gsts-ui-spec-v1.0.md`, `reference/GSTS-UI-STYLE-GUIDE.md`, `reference/gsts-theme.css` ⚠️ **this is the guide that got missed on a UI build — every UI project must link it.**
 - 📚 **[[csv-export-standard]]** — **every data page gets a CSV export** (button + `exportCSV` handler + `csv-export-include.cfm`), wired up front. Skipper standing rule. ⚠️ got missed once (2026-07-04) — build-checklist item.
+- 📚 **[[shared-engine-kills-dashboard-drift]]** — when N dashboards duplicate a calc, factor it into ONE load-guarded shared include; reconcile the SPINE, keep produced-vs-invoiced as distinct labeled actuals. (from [[city-forecasting]])
+- 📚 **[[brent-forecast-178k-artifact]]** — Brent's forecast "overage/carry-over" lines (e.g. Newport $178,347.51) are hand-typed Excel true-up plugs (budget − short 12-mo base), NOT in TRIM IT or QuickBooks — don't reverse-engineer them.
 - 📚 **Deploy** — `DEPLOY-PLAYBOOK.md` + `contracts/dev-handoff-contract.md` (Jordan=IT/$0, Travis=$75/hr).
 - 📚 **Contracts** — `contracts/{repair,db-repair,dev-handoff,external-comms}-contract.md` (how we do each work type).
 - 📚 **Roadmap/backlog** — `TRIMIT-1.5-ROADMAP.md`, `repairs-needed.md`, `REVIEW-PILE.md`, `DEPLOY-PACKAGE-CHECKPOINT.md`.
 - 📚 **Env/access** — `arbor-stack/gstsdatabase-access.md`, `gilligan-environment-snapshot.md`; **Ship Log** `gsts-ship-log.md`+`ship-log/`.
+
+### Business docs (sensitive — private main-session memory)
+- 📚 **[[gsts-employee-handbook-2026]]** — full GSTC Employee Handbook (Revised 2026), 129 sections extracted verbatim: employment, wage/hour, PTO/vacation, conduct, benefits, leaves, safety. Source `employee-handbook/GSTC Employee Handbook Revised 2026.docx`. Status: draft-for-exec-review.
+- 📚 **[[gsts-financials-2026-summary]]** — 2026 P&L trend (Jan–May actuals vs seasonalized budget) + annual budget/break-even ($24M rev target) + sales seasonality. Links the 5 monthly notes `gsts-financials-2026-{01..05}-*`. June deck missing (only 5 of "6 months" delivered).
 
 ---
 
