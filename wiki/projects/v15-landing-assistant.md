@@ -3,11 +3,11 @@ title: V1.5 Landing Assistant
 type: project
 domain: work
 track: 1
-status: scaffold
+status: live-on-play
 model: llama3.2:3b (Ollama, localhost:11434)
 applies: ["[[repair-contract]]", "[[gsts-ui-spec]]", "[[only-trustworthy-data]]"]
-links: ["[[v15-landing-page]]", "[[rc-02-revenue-performance]]", "[[rc-03-city-budgets]]", "[[rc-04-spm]]", "[[sales-cockpit]]", "[[arbor-core-arbor-ai-system]]"]
-updated: 2026-07-11
+links: ["[[v15-landing-page]]", "[[rc-02-revenue-performance]]", "[[rc-03-city-budgets]]", "[[rc-04-spm]]", "[[sales-cockpit]]", "[[trimit-dual-webroot-shadow]]", "[[arbor-core-arbor-ai-system]]"]
+updated: 2026-07-12
 ---
 
 # V1.5 Landing Assistant
@@ -17,7 +17,9 @@ updated: 2026-07-11
 
 **2026-07-11 — "less scripted" intelligence pass (ship-log #120):** (1) **Semantic fallback** — `classifyIntent()` lets the 3B map a fuzzy question to ONE handler from a closed list when the deterministic router misses (model picks a *category*, SQL still supplies the number → no-hallucination guard intact); dead paraphrases now answer. (2) **Annual gap-to-goal** fixed (was answering monthly goal for "this year"). (3) **Company identity** grounded — name/founded/50yrs/owner/**mission**/**vision**/**core values** (Quality, Integrity, Safety, Innovation, Caring), verbatim from [[gsts-employee-handbook-2026]] + Skipper, in `ai-kb/_site.md` + a `company-identity` handler → see [[skipper-and-company]]. (4) joke-count meta + `jokes?` plural. (5) fixed meta-count over-greedy ("what does the X page do" hijack). All deployed + verified.
 
-**Chat box LIVE in the landing page** (`Dashboard-V15Home.cfm`, #120). **Any-period TPH/revenue/pace** via CF period-parse + trust-guarded compose (#121). **Real seasonal sales goals** now via a durable table [[gsts-2026-sales-goals-monthly]] (`Workbench.dbo.SalesGoal`) with an import/editor page `Dashboard-SalesGoals.cfm` (linked from the dashboard) — assistant + Revenue dashboard both read it, so they agree (#122/#123). **Next = role-gating (inherit landing-page Title gate); repurpose dashboard's old goal input; exec-gate + prod-create the goals table; ground more scope-map pages; audit the 8 shadowed .cfm.**
+**Chat box LIVE in the landing page** (`Dashboard-V15Home.cfm`, #120). **Any-period TPH/revenue/pace** via CF period-parse + trust-guarded compose (#121). **Real seasonal sales goals** now via a durable table [[gsts-2026-sales-goals-monthly]] (`Workbench.dbo.SalesGoal`) with an import/editor page `Dashboard-SalesGoals.cfm` (linked from the dashboard) — assistant + Revenue dashboard both read it, so they agree (#122/#123).
+
+**2026-07-12 — grounded on EVERY V1.5 dashboard + shipped in the deploy package (#125–#130).** Live figures now for all 6: Revenue, City Budgets, Production Performance, **Executive** (Sales-by-Rep, Sales-by-Market penny-tied, Crew Performance — historical years work), **SPM all 4 tabs** (Pipeline/Sold/Production drill-down/Results incl. municipal), **Sales Cockpit** (exclusive stage buckets: 1,559 follow-up / 1,411 bidding / 73 won / 243 active / 52 done = 3,338, + 1,619 running-dry overlay, $40.9M open bids) + **derived math** (gap-to-goal, per-day-to-goal, ahead/behind, at-this-rate). Mascot = sticky voice on/off TTS toggle. **Security hardened:** shared `dashboard-auth-gate.cfm` on all 20 leak surfaces (real `flow.Users` user + authorized set; JSON/HTML 403 for garbage cookie) — see [[LESSONS]] broken-access-control + [[PLAYBOOK]] shared auth-gate. Assembled `DEPLOY-PACKAGE-V15-DASHBOARDS.md`; all 6 mobile-verified (iPhone 390px). **Herman handoff:** Dashboards submenu on `Profile$Main.HiRes.cfm` (Jason pilot). **Next = role-gating on the assistant; ZTest/Beta renames; exec-gate + prod-create the goals table; prod-side execution safety; audit remaining shadowed .cfm.**
 **📁 Vault (the assistant's brain):** `landing-assistant/` → open `landing-assistant/HOME.md`
 **▶️ Resume:** `landing-assistant/open-questions.md` (decisions owed) → then `landing-assistant/architecture.md` build order.
 
