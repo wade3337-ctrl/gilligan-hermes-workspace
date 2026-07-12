@@ -10,6 +10,7 @@ updated: 2026-07-10
 # 💻 ENVIRONMENT / INFRA — map
 Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 
+- [[gilligan-session-settings]] — 📸 my runtime dials snapshot (Opus 4.8 · 1M context · reasoning/fast off · elevated) + what's adjustable. Re-run `session_status` for live values.
 - [[env-host-and-tooling]] — Ubuntu 26.04, Node/Python, headless browser `arbor_browser`, file-reading tools.
 - [[crew-llms-and-helpers]] — the 5-lab verification panel + `crew/*-ask.py` helpers + gotchas. **OpenAI = `gpt-5.6-sol`** (default in `~/.codex/config.toml`, needs codex-cli ≥0.144).
 - [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + **Crew Meter** durable URL **`https://gilligan.tail5807bd.ts.net/`** (Tailscale Serve, tailnet-only).
