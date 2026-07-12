@@ -41,6 +41,7 @@ In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> —
 ## 🌳 TRIM IT / web inspection
 - ✅ **Render a live TRIM IT page (no screenshots):** `bash ~/arbor-stack/production-dashboard/view.sh '<page.cfm?args>'`
   (read-only, bot user 376). Find the real page via `AppForms.ObjectPath`; app endpoints are folder-relative. (2026-06-22)
+- 🔁 **After editing a shared static asset (JS/CSS), version its ref or the fix won't show** (2026-07-12): the .cfm re-renders fresh each load, but browsers cache `js/*.js` + `css/*.css` hard — so a fixed `mtab-bar-chart-style.js` / `protips.css` keeps serving the OLD copy until a manual hard refresh. House convention already in use: append `?v=YYYYMMDD` to the `<script src>`/`<link href>` and **bump the date on every change**. Do it in the *fewest* files — a shared include (`protips-include.cfm`) covers every page at once; the chart JS lives in each of the 5 iframed `Executive$*` tab pages (the Exec shell `data-base`-iframes them). Verify with `curl --cookie ZUserID=9 <page> | grep -oE '<asset>\?v=[0-9]+'`.
 
 ## 📧 Email
 - ✅ **Read my inbox:** Python `imaplib` (stdlib) on `gilligan.gsts@gmail.com` (creds
