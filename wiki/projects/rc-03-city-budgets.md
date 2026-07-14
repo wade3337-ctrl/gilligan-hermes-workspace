@@ -6,16 +6,20 @@ track: 1
 status: active
 tags: [dashboard, municipal, city-budgets, release-candidate, brent]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[repair-contract]]"]
-links: ["[[budget-report-municipal]]", "[[contract-dashboard-fix-longbeach]]", "[[anomaly-monitor-suite]]"]
-updated: 2026-07-02
+links: ["[[budget-report-municipal]]", "[[contract-dashboard-fix-longbeach]]", "[[city-forecasting]]", "[[anomaly-monitor-suite]]"]
+updated: 2026-07-14
 ---
 
 # RC-03 City Budgets Dashboard
 
 **One-liner:** Automates the Municipal Budget Report Contract-Admin Brent Beller built by hand — pick a city + fiscal year → Budgeted / Invoiced / Call-Ins / Scheduled / Remaining, month-by-month, + Work-at-Hand WOs; 2-tab Excel export; 16–17 cities.
 **Status:** 🔵 active — built + crew-verified on play; **awaiting Brent's final sign-off** (RC-03 gate).
-**📁 Location:** `production-dashboard/Dashboard-CityBudgets.cfm` + `CityBudgets.data.cfm` + `Dashboard-CityBudgets.Export.cfm`
+**📁 Location:** `production-dashboard/Dashboard-CityBudgets.cfm` + `CityBudgets.data.cfm` + `CityBudgetsForecast.data.cfm` + `CityBudgetsRenewals.data.cfm` + `Dashboard-CityBudgets.Export.cfm`
 **▶️ Resume:** `arbor-stack/release-candidates/RC-03-city-budgets-dashboard.md`
+**Tabs:** City Budgets (default) · Forecasting (`ZTab=forecast`, → [[city-forecasting]]) · **Renewals** (`ZTab=renewals`, 2026-07-14).
+
+## Renewals tab (built 2026-07-14, Skipper-approved)
+Accounts whose **own current fiscal year has no budget yet** (contract not renewed / budget not entered) — they default off the Forecasting tab, so this tab surfaces every one. Engine `CityBudgetsRenewals.data.cfm` reuses the all-cities structures + the shared `cb*` FY helpers (`cbFyStartFor`+`cbResolveCurrent`) so **Stanton shows** and Industry's $666K-under-label-"26" is NOT a false positive. Split 🏛 Municipal / 🏢 Commercial; **Working** (actively billing/producing with no budget = unbudgeted-work alarm) flagged **red at top**, **Dormant** below; `⬇ Export CSV`. Live at build: 75 accounts / 10 funded / 65 renewals (Commercial 59 = 11 working/48 dormant; Municipal 6). Surfaced San Clemente $258,957 + Fountain Valley $45,936 muni unbudgeted work. Built to [[gsts-ui-spec]] v1.2. Ship #166.
 
 ## Applies / uses
 - [[dashboard-metric-standards]] — metric bands, welcome modal, pro-tips.
