@@ -22,5 +22,10 @@ updated: 2026-07-14
 - ⚠️ **Play-only side tables are NOT on prod.** The refresh-proof **`Workbench`** DB (SalesGoal, `rgc.*`, DashboardAccess, WorkKanban) lives on the **play** SQL Server. `GSTSREADONLY` reaches **prod's `GSTS`** db only — a page can't 3-part-JOIN across the two different servers. So a dashboard that mixes GSTS operational data + Workbench config (e.g. [[revenue-goal-close]]) can't just swap the DSN; adopting live-prod there needs design.
 - Good immediate fit: one-off live figures (inventory, a live customer number) where the ~24h play staleness matters.
 
-## Open question (Skipper, 2026-07-14)
-What to do with it — leave as a known capability, wire specific live lookups, or factor into the RGC/dashboard "live numbers" story. Pending his call.
+## Cutover attempt for the daily emails (2026-07-14) — BLOCKED, reverted
+Tried to point the daily-email endpoint (`/GSTS/api/MonitorData.ReadOnly.cfm`, one var `dsn`) at GSTSREADONLY. Result: **3 of 5 metrics work live-prod instantly** (contracts, overtime, tph_day); **2 fail:**
+- **salesperson_jobs → hard DB error** ("Error Executing Database Query", ~35s). Query joins `flow.Users` — the read-only login almost certainly lacks the **`flow` schema** grant on prod.
+- **revenue → times out** (>120s, never returns). Heavy month-aggregate CTE; likely GSTSREADONLY is a **cross-server/linked** hop that stalls on heavy queries (light ones are fine).
+- **Reverted** to `dsn="GSTS"` (play) — verified both feeds return real data again; daily emails intact. Backups: `Jasonsrepairs\MonitorData.ReadOnly.cfm.bak-20260714-pre-golive` (the working GSTS version).
+- **Note sent** (from gilligan → Travis + Jordan, cc Jason, 2026-07-14): asks Travis to (a) grant the login `db_datareader` on GSTS (or ≥ SELECT on `flow`), and (b) explain/fix the heavy-query timeout (linked-server?). Draft: `anomaly-monitor/email-travis-jordan-gstsreadonly-DRAFT.txt`.
+- **Once Travis clears both → the flip is one line** (proven), then relabel the emails "live production" + send Jason tests. ⚠️ deliverability: gilligan.gsts may hit Jordan's M365 Junk (allowlist still pending).
