@@ -31,6 +31,8 @@ updated: 2026-07-14
 
 - **Results re-cut to RGC markets (2026-07-14, ship #169):** Results "Commercial" (non-PG11) lumped HOA+commercial+schools ($7.53M) and contradicted RGC Commercial ($1.57M). Added a **By-market panel** using RGC's `rgc.vProjectMarket` classifier (HOA/Cities/Commercial/Muni-other) → reconciles to total completed $11.2M and lines up bucket-for-bucket with [[revenue-goal-close]] (Commercial $1.43M vs RGC $1.57M, HOA $5.10M broken out). Aggregate tiles relabeled Commercial→Non-Municipal. Residual per-bucket gaps = completed-WO vs crew-sheet-produced.
 
+- **On-the-books + monthly SNAPSHOT (2026-07-14, ship #170-171):** Results now shows **Completed + Scheduled = on the books** (the fuller picture Nate's report gives; resolves the "−11% vs Nate's +7%" = completed-only vs completed+booked). A faithful same-date YoY needs last year's booking snapshot the live DB doesn't keep — so we now **capture it monthly** in `Workbench.dbo.SpmBookSnapshot` (lazy write on page view, ships with the page). True YoY appears once a year accrues. Prod deploy needs the table + INSERT grant + the `Workbench.rgc.vProjectMarket` cross-DB view — see RC-04 deploy doc DB step.
+
 ## Related
 - [[rc-01-executive-financial]] — close%/win-rate definition shared across surfaces (centralize to prevent drift).
 - [[steve-diligence-dashboard]] — city-exclusion (PG=11) propagated to SPM Pipeline + Drill.
