@@ -3,11 +3,13 @@ title: GSTSREADONLY — read-only DSN to PRODUCTION (on play)
 type: fact
 domain: environment
 tags: [trimit, coldfusion, dsn, production, read-only, data-access, travis]
-links: ["[[email-infrastructure]]", "[[trimit-stack-and-tph]]", "[[revenue-goal-close]]"]
+links: ["[[email-infrastructure]]", "[[trimit-stack-and-tph]]", "[[revenue-goal-close]]", "[[prod-db-access-blocked]]", "[[anomaly-monitor-suite]]"]
 updated: 2026-07-14
 ---
 
 # GSTSREADONLY — read-only DSN to PRODUCTION (on the play server)
+
+> **vs [[prod-db-access-blocked]]:** that note = **direct SQL** to prod from our box (still blocked, AWS/Jordan). THIS = a **CF datasource on play** that reaches prod read-only from inside the allowed network — so CF pages on play can query prod even though our box can't. Same login name, different path.
 
 **Travis Walters (Data Processing, LLC) set this up 2026-07-14** (email "FW: Play Server Update", fwd by Jason). On the **play** ColdFusion server there is now a DSN **`GSTSREADONLY`** that connects to the **production** SQL Server database with a **read-only** login.
 

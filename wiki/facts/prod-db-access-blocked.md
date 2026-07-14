@@ -3,11 +3,13 @@ title: Prod read-only DB access (BLOCKED)
 type: fact
 domain: env
 tags: [infra, prod, database, blocked, aws, security-group, jordan, access]
-links: ["[[play-dev-access]]", "[[trimit-db-gotchas]]"]
-updated: 2026-07-02
+links: ["[[play-dev-access]]", "[[trimit-db-gotchas]]", "[[gstsreadonly-prod-dsn]]"]
+updated: 2026-07-14
 ---
 
-# 🔒 Prod read-only DB — BLOCKED
+# 🔒 Prod read-only DB — DIRECT SQL still BLOCKED (but a CF-DSN path now exists)
+
+> **UPDATE 2026-07-14:** this note is about **direct SQL** to prod from our box (gsql/Codex) — **still blocked** (AWS security group, Jordan). BUT Travis set up a **ColdFusion DSN `GSTSREADONLY` on the PLAY server** that reaches prod read-only from *inside* the allowed network — so CF pages on play CAN now query prod. Different path, now working (partially). → **[[gstsreadonly-prod-dsn]]**. The direct-SQL ask below is still open only if we ever need `gsql`-style direct access.
 
 Snapshot: `arbor-stack/gilligan-environment-snapshot.md`. The ask: `arbor-stack/dev-tasks/prod-db-access-ask-JORDAN.md`.
 
