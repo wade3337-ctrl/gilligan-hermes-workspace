@@ -1,16 +1,21 @@
 # Inland Empire Pipeline — weekly push backlog
 Drip 6 targets/week into the Bigin "Inland Empire Expansion" pipeline (owner Chad Bouck, stage Potential Lead). Re-verify each target's management company + contact BEFORE loading; link to existing Bigin accounts where they exist; never create duplicate accounts/deals.
 
-**LAST PUSHED: Wave 1** (2026-07-08) — Redhawk, Daytona Business Park, Paloma del Sol, The Lakes/Menifee Lakes, Los Serranos Ranch, Haven View Estates.
+**LAST PUSHED: Wave 2** (2026-07-13) — Temeku Hills (Walters/RealManage), Bear Creek (Avalon Mgmt), The Colony at California Oaks (PCM Foothill Ranch), Independence at Terra Vista (FirstService Residential N-IE), Dos Lagos (Pentaco — re-verify owner post-$47M sale). **5 of 6 pushed.** Vellano HELD (see below).
+
+> ⚠️ **HELD — needs Skipper / re-verify before load:** Vellano — Chino Hills — HOA (guard-gated Greg Norman golf, $2M+). Residential HOA mgmt company still UNRESOLVED after web verify (candidates: AMSS 909-444-7655, Spectrum, Keystone Pacific — none confirmed). Do NOT load until mgmt confirmed. Note: "Victory for Vellano" community dispute is active — may complicate the deal.
 
 ---
-## Wave 2 (next)
-1. Temeku Hills — Temecula — HOA (golf, built ~1997, mature canopy)
-2. Bear Creek — Murrieta — HOA (guard-gated golf, off Clinton Keith near I-15)
-3. The Colony at California Oaks — Murrieta — HOA (55+ gated) — mgmt lead: PCM Foothill Ranch, 949-768-7261
-4. Terra Vista — Rancho Cucamonga — HOA (large master-planned; Independence at Terra Vista 545 units)
-5. Dos Lagos — Corona — Commercial (mixed-use retail/office, mature landscape)
-6. Vellano — Chino Hills — HOA (guard-gated Greg Norman golf, $2M+; residential HOA mgr still UNRESOLVED — resolve before load)
+## Wave 1 (done, 2026-07-08)
+Redhawk, Daytona Business Park, Paloma del Sol, The Lakes/Menifee Lakes, Los Serranos Ranch, Haven View Estates.
+
+## Wave 2 (done, 2026-07-13) — Vellano held
+1. Temeku Hills — Temecula — HOA ✅
+2. Bear Creek — Murrieta — HOA ✅
+3. The Colony at California Oaks — Murrieta — HOA ✅
+4. Independence at Terra Vista — Rancho Cucamonga — HOA ✅
+5. Dos Lagos — Corona — Commercial ✅
+6. Vellano — Chino Hills — HOA ⏸️ HELD (mgmt unresolved)
 
 ## Wave 3
 1. Wolf Creek — Temecula — HOA
