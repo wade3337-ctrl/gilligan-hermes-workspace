@@ -7,7 +7,7 @@ status: active
 tags: [dashboard, spm, funnel, pipeline, release-candidate, reconciliation]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
 links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[steve-diligence-dashboard]]"]
-updated: 2026-07-02
+updated: 2026-07-14
 ---
 
 # RC-04 SPM (Sales Production Meeting)
@@ -26,7 +26,7 @@ updated: 2026-07-02
 - ⚠️ **5 prod asset 404s must ship with the .cfm** (chart/pro-tip assets); use `deploy-manifest.js` for the full set (shell + 5 sub-pages + shared CSS/JS/protips). Backups in `\GSTS\Jasonsrepairs\`.
 - **Reconciles to DB to the penny** on headline numbers: Sold $12,875,509 / 1307 WOs; Completed $10,061,151 / 1371 WOs. Discrepancies are in Nate's *reports*, not the dashboard.
 - **Pending:** Go-Aheads weekly match over-counts vs Nate's "Last 7 Days"; the `WorkOrders.Created` fix was disproven (58% of go-aheads have no WO). A scheduled 6:34am PT job reconciles on fresh post-refresh data → flip to ready once it confirms.
-- Awaiting-Schedule backlog tile ($226,988) = Nate's SharePoint list, not cleanly DB-derivable (approximate + flag).
+- **Awaiting-Schedule fixed (2026-07-14, ship #167):** was keyed off `DateScheduled IS NULL` (inconsistently populated → listed 15 already-scheduled jobs). Now `StartDate IS NULL AND no CrewSheets` = truly-not-on-the-board (same signal as the Cockpit). Currently 0 (every approved job is scheduled at approval in TRIM IT). The old SharePoint "$226,988" number was Nate's manual list — the DB doesn't carry a real awaiting-schedule population.
 - **Prod data-fix:** Daniel Ruelas (1108) + Carlos Alcaraz (1145) still `IsMeasured=1` in prod (should be 0) — staged handoff. **Retire** orphaned `SalesProductionMeeting$ComingSoon.cfm`.
 
 ## Related
