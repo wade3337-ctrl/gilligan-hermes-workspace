@@ -13,7 +13,7 @@ updated: 2026-07-15
 # Aspen — retention / marketing / BD agent
 
 **One-liner:** Repurpose the **Arduino Herman** board into **"Aspen"** — a Great Scott customer-**retention, marketing, and business-development** agent. Full teardown + rebuild of memories/vault; **keep the board + Hermes runtime + GPT brain**. Same self-learning loop as [[brent-agent|Muni Bot]]. Comes up retention-first; grows into a "master" of all three via crew-driven best-practices research.
-**Status:** 📝 **PLANNING — awaiting Skipper sign-off. NOTHING BUILT YET (Skipper: don't build until the plan is nailed).**
+**Status:** 🔵 **BUILD APPROVED (Skipper 2026-07-15). Phase 1 IN PROGRESS.** Done: pre-wipe archive of board data + hobby data preserved (`~/aspen-archive/`); `aspen-knowledge` repo scaffolded+pushed (Obsidian). **BLOCKED on 2 Skipper actions:** (1) grant gilligan SSH into the board; (2) create the Aspen Telegram bot.
 **▶️ Resume:** this note.
 
 ## 🌲 Why "Aspen"
@@ -85,3 +85,10 @@ Skipper approves scope + phases. Optional: crew pressure-test of the plan before
 - [[brent-agent]] (Muni Bot) — the just-proven template for standing up an agent-for-a-team (reuse its infra patterns).
 - [[herman-agent]] — the Boss Herman stack this all descends from.
 - [[arbor-core-crew-infra]] — the crew doing research/design/build; Codex writes code.
+
+## ⏳ Build progress (2026-07-15)
+- ✅ **Pre-wipe archive:** board's last-synced recovery snapshot (memories/skills/state) + vault → `~/aspen-archive/pre-wipe-20260715/`; RC-jet/FrSky/arbor-helper hobby data preserved → `~/aspen-archive/PRESERVED-hobby/`. (Will pull a FRESH board snapshot once I have SSH access, before wiping.)
+- ✅ **aspen-knowledge repo** created + scaffolded (retention/marketing/business-development/best-practices/references/skills) + pushed → Skipper's Obsidian.
+- 🔴 **BLOCKER 1 — board SSH access:** gilligan has NO inbound SSH to the Arduino board (sync is one-way board→gilligan). Need gilligan's pubkey authorized on the board to do the teardown/rebuild. Pubkey: `~/.ssh/gilligan_to_aspen.pub` (`ssh-ed25519 AAAA…KoaXIS gilligan-to-aspen-board`). Grant: on the board as `arduino`, append it to `~/.ssh/authorized_keys`.
+- 🔴 **BLOCKER 2 — Telegram bot:** need a new bot via BotFather (name "Aspen"), token to Gilligan (like Muni Bot).
+- **Next once unblocked:** fresh board snapshot → wipe old memories/vault/identity (keep Hermes+GPT) → Aspen SOUL + self-learn loop → Telegram (Skipper+Nate) → TRIM IT read-only DB → seed knowledge → verify.
