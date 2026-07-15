@@ -13,7 +13,7 @@ updated: 2026-07-15
 # Aspen — retention / marketing / BD agent
 
 **One-liner:** Repurpose the **Arduino Herman** board into **"Aspen"** — a Great Scott customer-**retention, marketing, and business-development** agent. Full teardown + rebuild of memories/vault; **keep the board + Hermes runtime + GPT brain**. Same self-learning loop as [[brent-agent|Muni Bot]]. Comes up retention-first; grows into a "master" of all three via crew-driven best-practices research.
-**Status:** 🔵 **BUILD APPROVED (Skipper 2026-07-15). Phase 1 IN PROGRESS.** Done: pre-wipe archive of board data + hobby data preserved (`~/aspen-archive/`); `aspen-knowledge` repo scaffolded+pushed (Obsidian). **BLOCKED on 2 Skipper actions:** (1) grant gilligan SSH into the board; (2) create the Aspen Telegram bot.
+**Status:** 🟢 **PHASE 1 SHELL DONE (2026-07-15) — Aspen REBORN on the Arduino board.** Teardown+rebuild complete: fresh brain (state.db wiped/recreated), Aspen identity (SOUL), knowledge (aspen-knowledge + trimit-knowledge 109), **on Telegram** (@GSTS_Aspen_Bot, locked to Skipper), **TRIM IT read-only DB access** (customer data pulled; arbor DENIED), **self-learning return path** wired. Kept Hermes+GPT-5.5. Remaining: Telegram GROUP (Skipper+Nate) + capstone + Phase 2 retention function.
 **▶️ Resume:** this note.
 
 ## 🌲 Why "Aspen"
@@ -92,3 +92,13 @@ Skipper approves scope + phases. Optional: crew pressure-test of the plan before
 - 🔴 **BLOCKER 1 — board SSH access:** gilligan has NO inbound SSH to the Arduino board (sync is one-way board→gilligan). Need gilligan's pubkey authorized on the board to do the teardown/rebuild. Pubkey: `~/.ssh/gilligan_to_aspen.pub` (`ssh-ed25519 AAAA…KoaXIS gilligan-to-aspen-board`). Grant: on the board as `arduino`, append it to `~/.ssh/authorized_keys`.
 - 🔴 **BLOCKER 2 — Telegram bot:** need a new bot via BotFather (name "Aspen"), token to Gilligan (like Muni Bot).
 - **Next once unblocked:** fresh board snapshot → wipe old memories/vault/identity (keep Hermes+GPT) → Aspen SOUL + self-learn loop → Telegram (Skipper+Nate) → TRIM IT read-only DB → seed knowledge → verify.
+
+## ✅ Phase 1 build — DONE (2026-07-15)
+- **Access:** gilligan→board SSH via `~/.ssh/gilligan_to_aspen` (Skipper authorized). Board = `arduino@100.121.177.31`, service `hermes-gateway` (Restart=always; relaunch via ending the arduino-owned process — no sudo).
+- **Archives (3 safety nets):** `~/aspen-archive/{pre-wipe-20260715 (last synced), fresh-board-20260715 (236M brain + vault), PRESERVED-hobby (RC/FrSky/arbor-helper)}` + on-board `~/_aspen-wiped-20260715`.
+- **Wiped:** state.db/snapshots/skills/SOUL/logs/recovery-backups + herman-workspace vault. **Kept:** hermes-agent runtime, node/bin/lsp/venv, auth.json (GPT-5.5 brain), config.yaml.
+- **Identity:** Aspen SOUL (retention/marketing/BD, Track-1, self-learn standing rule). Channel switched Discord→**Telegram** via `.env` (token `8967961095:…`, allowlist Skipper `8975923324`, GATEWAY_ALLOW_ALL_USERS=false). `.env.bak-discord-20260715` kept.
+- **Knowledge:** `~/aspen-knowledge` (repo `wade3337-ctrl/aspen-knowledge`) + `trimit-knowledge` (109) on the board.
+- **DB access:** board key → gilligan `~/aspen-gateway/aspen-dispatch.sh` (RO query + get-vault + search; **get-arbor + crew DENIED**). Proven: pulled real customers; arbor denied. Board tool `~/trimit-query.sh`.
+- **Self-learn return path:** `~/aspen-gateway/refresh-aspen-vault.sh` (cron `52 * * * *`) — rsync board's new notes → source → GitHub → Obsidian → back to board. BLACK-leak guard.
+- **REMAINING (need Skipper):** create Telegram group (Skipper+Nate+Aspen), make Aspen admin, capture Nate's TG id → allowlist. Then capstone (Aspen answers a retention Q on its own) + Phase 2 (churn/at-risk function).
