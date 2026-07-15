@@ -50,3 +50,9 @@ updated: 2026-07-15
 - [[herman-agent]] — the template: how we stood up an autonomous agent for a person.
 - [[agent-does-its-own-work]] — the build/test principle this must follow.
 - [[municipal-budgets-po-gated]] — the pain point function #1 attacks.
+
+## File base (Brent's municipal history) — sync design
+- Source: GSTS **"200 server"**, reachable only via **OpenVPN Connect → GSTS_VPN** (login+pass). Our DB-box beachhead can't see it (colo box, not on office LAN).
+- **Decision (Skipper 2026-07-15):** daily sync run on **Skipper's PC while connected** — uses his existing login (no creds stored on gilligan).
+- **Pipeline:** Brent's folder → daily helper on Skipper PC → private repo **`wade3337-ctrl/municipal-history`** (created + cloned `~/municipal-history`) → Muni Bot pulls. Separate from curated `~/municipal-knowledge` vault.
+- **Pending inputs:** UNC folder path; whether work PC allows software installs (picks helper delivery method).
