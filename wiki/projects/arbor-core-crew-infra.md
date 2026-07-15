@@ -35,3 +35,4 @@ updated: 2026-07-03
 - [[arbor-core-arbor-ai-system]] — the RUNTIME agent layer (this is the BUILD-TIME crew; keep them distinct).
 - [[arbor-core-v15-auth]] — the crew reviewed the auth spec and re-verifies at P2.
 - [[arbor-core-onestop-ui]] — crew feedback rounds + the vision-match georeference pipeline.
+- **glm-judge DB context (2026-07-15):** its tool-loop queries run via gsql.sh (`-d GSTS` default). For objects in the **Workbench** side-DB (RGC `rgc.*`), run it as `JUDGE_DB=Workbench python3 glm-judge.py` — the env prepends `USE [db];` and tells GLM which DB it's in. Without it the judge searches GSTS, finds nothing, and never reaches a verdict. (Codex-written fix.)
