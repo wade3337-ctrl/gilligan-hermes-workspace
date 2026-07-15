@@ -105,6 +105,9 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 🟢 **trimit-knowledge vault** (shareable) — 78 notes, live-pulled schema + vetted query playbook + operating model. Repo `wade3337-ctrl/trimit-knowledge`, local `~/trimit-knowledge/`. Crew-verified (2 rounds, clean).
 - 🟢 **arbor-knowledge vault** (BLACK/confidential) — 16 notes, arbor-core strategy/build. Repo `wade3337-ctrl/arbor-knowledge`, local `~/arbor-knowledge/`.
 
+## 🤖 Agents-for-a-person (Boss Herman pattern)
+- 🔵 **Muni Bot — Brent's municipal-work agent** (kickoff 2026-07-15) — autonomous agent for **Brent Beller (Contract Admin)** to manage & build municipal work, cloned from the [[herman-agent]] stack. **Come-up path (Skipper-locked):** (4) general muni-assistant shell FIRST → then (1) budget/PO tracking. **Surface:** Telegram channel (Skipper + Brent + Muni Bot) + its own Gmail; later folds into Brent's V1.5 interface. ▶️ **[[brent-agent]]** 🔗 [[herman-agent]], [[agent-does-its-own-work]], [[municipal-budgets-po-gated]], [[city-forecasting]], [[external-comms-contract]] ⚠️ **decisions locked, nothing provisioned yet — next = Phase 1 stand-up.**
+
 ## 🧹 CLEANUP FLAGS (for Phase 2/3 + a tidy pass)
 - **Stale / retire candidates:** `exec-dashboard-audit/` working copies (superseded by RC-01) · `ex_*` experimental pages · **ZTest-\* proliferation** (fold into Cockpit) · Customer Verifier (done). Confirm before deleting (repair-contract: look first).
 - **Orphans:** old Exec-Performance-Day / Exec$Periods$Overview flagged for hide/rename (V1.5 M2).
