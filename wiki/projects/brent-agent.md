@@ -57,3 +57,7 @@ updated: 2026-07-15
 - **Pipeline:** Brent's folder → daily helper on Skipper PC → private repo **`wade3337-ctrl/municipal-history`** (created + cloned `~/municipal-history`) → Muni Bot pulls. Separate from curated `~/municipal-knowledge` vault.
 - **RESOLVED (2026-07-15):** path = `\\gsts-server200\GSTS\Municipal Bid Data\Jason_Compiled` (Joseph Young, via email). Work PC allows installs → **SyncMuni** package built (`~/munibot-gateway/SyncMuni.zip`): Tailscale + robocopy + tar/ssh drop-key → gilligan receiver → repo + Muni Bot; daily 6PM schtask. Delivered to Skipper.
 - **Brain fixed to GLM-5.2 (2026-07-15):** per Boss Herman's setup doc — custom provider `zai-anthropic` (period-preserving) + base_url; proven with fallback disabled. Was silently on gpt-5.6-sol fallback.
+
+## Brain in Obsidian (two-way sync, 2026-07-15)
+- Curated vault pushed to private repo **`wade3337-ctrl/municipal-knowledge`** → Skipper views/edits in Obsidian.
+- **Two-way autosync** `~/munibot-gateway/refresh-munibot-vaults.sh` (cron `27 * * * *`): commit local → pull --rebase (Obsidian edits) → push → docker cp into container. Skipper's Obsidian ⇄ GitHub ⇄ Muni Bot. Skipper can teach Muni Bot by editing the vault.
