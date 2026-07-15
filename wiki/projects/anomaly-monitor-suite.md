@@ -16,6 +16,7 @@ updated: 2026-07-15
 **Status:** 🟢 shipped — COO daily LIVE; AR collections LIVE per-rep; **salesperson pilot preview-only** (`liveEnabled=false`, previews to Jason).
 **📁 Location:** `arbor-stack/anomaly-monitor/`
 **▶️ Resume:** `arbor-stack/anomaly-monitor/CHECKPOINT.md`
+**⏭️ NEXT (Skipper, 2026-07-15):** he wants to **change how some numbers in the COO daily email present** (which ones TBD — he'll specify). Report body = `monitor.js` sections 1–4 (Daily Job TPH · Overtime · Monthly Revenue · Municipal burn-down); numbers follow [[dashboard-metric-standards]]. Just fixed the forward-pace 403 → [[dashboard-auth-gate]].
 
 ## Applies / uses
 - [[external-comms-contract]] — untrusted inbound (reads a play endpoint; watcher ingests Brent's external municipal doc) → validate before trusting.
