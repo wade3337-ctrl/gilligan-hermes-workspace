@@ -13,7 +13,7 @@ updated: 2026-07-15
 # Muni Bot — Brent's municipal-work agent
 
 **One-liner:** Stand up an autonomous agent — working name **"Muni Bot"** — for **Brent Beller (Contract Admin)** to manage and build municipal work, the way Gilligan is to the Skipper. Reuses the **Boss Herman** stack ([[herman-agent]]): its own Hermes runtime, TRIM IT login, email, read-only DB access, and knowledge vault. **The agent does its own work** ([[agent-does-its-own-work]]) — Gilligan builds/wires/verifies; Muni Bot performs.
-**Status:** 🟢 **PHASE 1 COMPLETE (2026-07-15) — Muni Bot LIVE on Telegram** (@GSTS_MuniBot_bot, group -5529154032, locked to Skipper). All 6 pieces done: runtime + read-only DB + TRIM IT login + vault + **Telegram channel** + brain fixed to GLM-5.2. Capstone passed LIVE in-channel (queried 233 City-of rows, recited PO-gap, now on function #1). Remaining: #5 own Gmail (optional); Brent's file base syncing in via SyncMuni.
+**Status:** 🟢 **PHASE 1 COMPLETE (2026-07-15) — Muni Bot LIVE on Telegram** (@GSTS_MuniBot_bot, group -5529154032, locked to Skipper). All 6 pieces done: runtime + read-only DB + TRIM IT login + vault + **Telegram channel** + brain fixed to GLM-5.2. Capstone passed LIVE in-channel (queried 233 City-of rows, recited PO-gap, now on function #1). **ALL 6 pieces + Gmail DONE.** Email = MuniBot.gsts@gmail.com (himalaya, imap+smtp proven, behavioral send-gate). Only ongoing: Brent's file base syncing in via SyncMuni + Brent joining Telegram later.
 **📁 Location:** container `munibot` on jdog1 · mount `~/.munibot` · `~/munibot-gateway/` (dispatch, refresh) · vault `~/municipal-knowledge` · compose `~/munibot/docker-compose.yml`.
 **▶️ Resume:** this note. Next real step = Phase 1 stand-up (see Build plan).
 
