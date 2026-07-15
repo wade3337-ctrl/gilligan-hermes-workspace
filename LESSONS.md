@@ -54,6 +54,7 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
 - ⚠️ **Dual-webroot shadow:** `C:\ColdFusion...\GSTS` can OVERRIDE `D:\...\GSTS` → render-verify the *served* output.
 
 ## ⚙️ Config / infra
+- ⚠️ **Adding an auth gate to a TRIM IT dashboard silently breaks automated CONSUMERS that scraped it unauthenticated** — the V1.5 `dashboard-auth-gate.cfm` (2026-07-12) started 403-ing the anomaly-monitor's `bookedPacing()` POST to `Dashboard-RevenuePerformance.cfm` → the daily email quietly showed "Forward pace unavailable (HTTP 403)" for days. Same bug hit `revenue-block.js` (salesperson + Nate emails). → the gate authorizes on a **`ZUserID` cookie** (bootstrap-allowlist 9=Jason, **376=Arbor Helper bot**); fix = send `Cookie: ZUserID=376` on the fetch. LESSON: when hardening a data surface, **grep for every headless/automation fetch of it** and re-authorize them in the same change. (`m2-revenue.js` has the same cookie-less pattern but is unused legacy.) (2026-07-15)
 - ⚠️ **`~/.openclaw/openclaw.json` has clobber history** → always back up + merge-patch, never overwrite.
 - ⚠️ **Python 3.14 here has no package manager + no passwordless sudo** → use stdlib; Skipper installs system pkgs.
 - ⚠️ **No headless browser** → authenticated HTTP fetch (view.sh) for web/ERP pages.
