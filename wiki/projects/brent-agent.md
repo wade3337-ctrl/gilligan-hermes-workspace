@@ -64,5 +64,5 @@ updated: 2026-07-15
 
 ## Session close 2026-07-15
 - Muni Bot FULLY built: runtime + GLM-5.2 brain + read-only DB + TRIM IT login + Telegram (@GSTS_MuniBot_bot, group -5529154032) + Gmail (MuniBot.gsts@gmail.com) + knowledge (municipal-knowledge two-way Obsidian sync + trimit-knowledge 108-note ref + PO-location note). Answered a full TRIM IT self-description live from the vault.
-- **Brent onboarding (2026-07-15, in progress):** Brent signed up on Telegram. Add him to the group + capture his TG user id → add to `TELEGRAM_ALLOWED_USERS` in `~/.munibot/.env` → restart. (Skipper id 8975923324 already allowlisted.)
+- **Brent ONBOARDED (2026-07-15):** Brent's TG id **8689394897** added to `TELEGRAM_ALLOWED_USERS` (now `8975923324,8689394897`); munibot restarted. Brent can now talk to Muni Bot directly in the group. (Captured his id from the gateway 'Blocked unauthorized user' log — the running poller consumes updates so getUpdates was empty; the deny-log is the reliable capture.)
 - File base (`Jason_Compiled`, LA County big) still syncing via SyncMuni on Skipper's PC.
