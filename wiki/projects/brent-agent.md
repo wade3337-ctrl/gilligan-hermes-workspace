@@ -13,8 +13,8 @@ updated: 2026-07-15
 # Muni Bot — Brent's municipal-work agent
 
 **One-liner:** Stand up an autonomous agent — working name **"Muni Bot"** — for **Brent Beller (Contract Admin)** to manage and build municipal work, the way Gilligan is to the Skipper. Reuses the **Boss Herman** stack ([[herman-agent]]): its own Hermes runtime, TRIM IT login, email, read-only DB access, and knowledge vault. **The agent does its own work** ([[agent-does-its-own-work]]) — Gilligan builds/wires/verifies; Muni Bot performs.
-**Status:** 🟢 active — Phase 1 in progress. **#1 runtime DONE** (container `munibot` up, isolated, brain-verified 2026-07-15); #2 DB / #3 TRIM IT login / #4 vault remaining.
-**📁 Location:** TBD (mirror Herman: container on jdog1 + `~/munibot-gateway/` + a `municipal-knowledge` vault).
+**Status:** 🟢 active — **Phase 1 shell DONE (2026-07-15): #1 runtime + #2 read-only DB + #3 TRIM IT login (UserID 90377, Brent-cloned) + #4 municipal-knowledge vault — capstone agent-does-its-own-work test PASSED.** Remaining: #5 Gmail + #6 Telegram (need Skipper) + ingest Brent's file base.
+**📁 Location:** container `munibot` on jdog1 · mount `~/.munibot` · `~/munibot-gateway/` (dispatch, refresh) · vault `~/municipal-knowledge` · compose `~/munibot/docker-compose.yml`.
 **▶️ Resume:** this note. Next real step = Phase 1 stand-up (see Build plan).
 
 ## Decisions locked (Skipper, 2026-07-15)
