@@ -66,3 +66,9 @@ updated: 2026-07-15
 - Muni Bot FULLY built: runtime + GLM-5.2 brain + read-only DB + TRIM IT login + Telegram (@GSTS_MuniBot_bot, group -5529154032) + Gmail (MuniBot.gsts@gmail.com) + knowledge (municipal-knowledge two-way Obsidian sync + trimit-knowledge 108-note ref + PO-location note). Answered a full TRIM IT self-description live from the vault.
 - **Brent ONBOARDED (2026-07-15):** Brent's TG id **8689394897** added to `TELEGRAM_ALLOWED_USERS` (now `8975923324,8689394897`); munibot restarted. Brent can now talk to Muni Bot directly in the group. (Captured his id from the gateway 'Blocked unauthorized user' log — the running poller consumes updates so getUpdates was empty; the deny-log is the reliable capture.)
 - File base (`Jason_Compiled`, LA County big) still syncing via SyncMuni on Skipper's PC.
+
+## 🧠 Self-improvement loop (STANDING RULE, Skipper 2026-07-15)
+- **Muni Bot writes what it learns to its wiki.** SOUL standing rule: whenever it learns something new (muni fact, TRIM IT gotcha/query, correction, process, contact, PO insight) it writes a NEW atomic note into `municipal-knowledge/` (concepts/ or references/) in the moment.
+- **Return path (built):** `refresh-munibot-vaults.sh` now RESCUES container-side new notes back to source (`rsync --ignore-existing` container→source) → commit → push → Obsidian, before the docker-cp overwrite. BLACK-leak guard quarantines any Track-2/secret markers. Cron `27 * * * *`.
+- **Proven:** Brent's first session had Muni Bot author 8 notes (po-gap-reconciliation, municipal-bid-watch, data-hygiene-pitfalls, workforce-headcount, gps-tree-inventory, oc-public-bid-scan, po-follow-up-identification, cost-estimates-and-contacts). Rescued into source before the refresh clobbered them; vault 8→16 notes.
+- ⏳ SOUL rule loads on Muni Bot's next restart; the return path is live NOW so ongoing writes are safe regardless.
