@@ -18,4 +18,4 @@ updated: 2026-07-02
 - [[sales-rep-attribution]] — dashboards attribute to the actual managing rep (`Projects.SalesRepID`).
 - [[scheduled-revenue-date-basis]] — ⚖️ per-day vs by-end vs by-start (decision pending).
 
-Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]].
+Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]] · [[dashboard-auth-gate]] (security gate + the rule: re-authorize headless consumers when you gate a surface).

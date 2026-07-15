@@ -6,7 +6,7 @@ track: 1
 status: planning
 tags: [agent, aspen, retention, marketing, business-development, arduino, hermes, self-learning, planning]
 applies: ["[[agent-does-its-own-work]]", "[[two-track-confidentiality]]", "[[external-comms-contract]]", "[[repair-contract]]"]
-links: ["[[herman-agent]]", "[[brent-agent]]", "[[arbor-core-crew-infra]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]"]
+links: ["[[herman-agent]]", "[[brent-agent]]", "[[arbor-core-crew-infra]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[play-dev-access]]"]
 updated: 2026-07-15
 ---
 

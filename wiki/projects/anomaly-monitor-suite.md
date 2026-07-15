@@ -5,9 +5,9 @@ domain: work
 track: 1
 status: shipped
 tags: [monitor, email-engine, coo, salesperson, ar-collections, brent]
-applies: ["[[external-comms-contract]]", "[[dashboard-metric-standards]]"]
-links: ["[[rc-03-city-budgets]]", "[[scott-manager-dashboard]]", "[[sales-cockpit]]", "[[gstsreadonly-prod-dsn]]"]
-updated: 2026-07-14
+applies: ["[[external-comms-contract]]", "[[dashboard-metric-standards]]", "[[dashboard-auth-gate]]"]
+links: ["[[rc-03-city-budgets]]", "[[scott-manager-dashboard]]", "[[sales-cockpit]]", "[[gstsreadonly-prod-dsn]]", "[[dashboard-auth-gate]]"]
+updated: 2026-07-15
 ---
 
 # Anomaly-monitor suite
@@ -28,6 +28,7 @@ updated: 2026-07-14
 - ⚠️ **brent-citybudgets-check cron** (`brent-citybudgets-check.js`, 9am/3pm PT, Jul 8-20) auto-reconciles Brent's verified municipal doc vs the RC-03 play dashboard, then disables. Feeds [[rc-03-city-budgets]].
 - Sender = `gilligan.gsts@gmail.com` (From≠To so it inboxes).
 - **Pending go-live:** live-prod data · IT allowlist `gilligan.gsts@gmail.com` on M365 · flip `config.liveEnabled=true`.
+- 🐛 **Silent 403 fixed (2026-07-15):** the V1.5 [[dashboard-auth-gate]] (deployed Jul 12) started 403-ing the monitor's UNauthenticated POST to `Dashboard-RevenuePerformance.cfm` → COO email showed *"Forward pace unavailable (HTTP 403)"* for days; same bug in `revenue-block.js` (salesperson + Nate revenue snapshot). Root cause = our own security hardening blocked our own automation. Fix = send the Arbor Helper bot identity `Cookie: ZUserID=376` in `monitor.js` + `revenue-block.js` (verified HTTP 200 + real produced/scheduled figures). Lesson captured: **when you gate a surface, re-authorize every headless fetch of it** → [[dashboard-auth-gate]]. (`m2-revenue.js` = unused legacy, same pattern, left as-is.)
 - 🔄 **LIVE-PROD cutover attempt (2026-07-14) — BLOCKED, reverted.** Travis's [[gstsreadonly-prod-dsn]] lets the play endpoint read prod (unblocks the old "deploy to prod" hold). Flipped the endpoint's one `dsn` var → **3/5 feeds work live** (contracts/overtime/tph); **revenue times out** (>120s, likely linked-server) + **salesperson_jobs errors** (`flow.Users` — login lacks the `flow` schema grant). Reverted to `dsn="GSTS"` (emails intact; backups `Jasonsrepairs\MonitorData.ReadOnly.cfm.bak-20260714-pre-golive`). **Note sent** gilligan→Travis+Jordan, cc Jason (grant `db_datareader` on GSTS / ≥`flow` + fix heavy-query timeout); draft `anomaly-monitor/email-travis-jordan-gstsreadonly-DRAFT.txt`. Once cleared → **one-line flip** (proven), relabel emails "live production", send Jason tests.
 
 ## Related
