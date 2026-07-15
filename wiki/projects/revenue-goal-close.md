@@ -40,3 +40,9 @@ updated: 2026-07-14
 - [[rc-02-revenue-performance]] — revenue pace vs goal + TPH (RGC is the goal-close companion).
 - [[rc-03-city-budgets]] · [[sales-cockpit]] — sibling V1.5 dashboards.
 - [[our-work-kanban]] — keep the board current.
+
+## 2026-07-15 — Approved&Unscheduled leak FIXED (crew GO)
+- **Bug (Skipper):** the pipeline bucket contained in-progress/completed work — filter only excluded *future* active WOs, not already-started/produced ones. Live: all 132 items ($1,612,544.86) had WOs; 61 ($1.09M) already started + crew-sheeted.
+- **Fix (Skipper-approved def):** pipeline = approved work not yet scheduled or started. `IsScheduledOrWorked` flag on `rgc.vCurrentYearGoAheadCandidate` (any dated WO OR any crew sheet; **hardened** to ignore dead statuses 47 Inactive/315 Revised); all 3 pipeline buckets filter `=0`. Deployed to Workbench (play).
+- **Verified:** approvedUnscheduled **$1,612,544.86 → $520,080.29**; Produced/FutureScheduled/HardCoverage UNCHANGED; all 4 reconcile controls PASS; served endpoint + shell clean.
+- **Crew:** GLM adversarial NO-GO (over-exclusion) → proved non-material in data + hardened → Gemini GO → **GLM judge (JUDGE_DB=Workbench) independently DB-verified → VERDICT PASS**. RGC 'needs work' item CLOSED; ready to rejoin a future deploy. Detail: `revenue-goal-close/CHANGELOG.md`.

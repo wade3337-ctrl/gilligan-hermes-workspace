@@ -61,3 +61,8 @@ updated: 2026-07-15
 ## Brain in Obsidian (two-way sync, 2026-07-15)
 - Curated vault pushed to private repo **`wade3337-ctrl/municipal-knowledge`** → Skipper views/edits in Obsidian.
 - **Two-way autosync** `~/munibot-gateway/refresh-munibot-vaults.sh` (cron `27 * * * *`): commit local → pull --rebase (Obsidian edits) → push → docker cp into container. Skipper's Obsidian ⇄ GitHub ⇄ Muni Bot. Skipper can teach Muni Bot by editing the vault.
+
+## Session close 2026-07-15
+- Muni Bot FULLY built: runtime + GLM-5.2 brain + read-only DB + TRIM IT login + Telegram (@GSTS_MuniBot_bot, group -5529154032) + Gmail (MuniBot.gsts@gmail.com) + knowledge (municipal-knowledge two-way Obsidian sync + trimit-knowledge 108-note ref + PO-location note). Answered a full TRIM IT self-description live from the vault.
+- **Brent onboarding (2026-07-15, in progress):** Brent signed up on Telegram. Add him to the group + capture his TG user id → add to `TELEGRAM_ALLOWED_USERS` in `~/.munibot/.env` → restart. (Skipper id 8975923324 already allowlisted.)
+- File base (`Jason_Compiled`, LA County big) still syncing via SyncMuni on Skipper's PC.
