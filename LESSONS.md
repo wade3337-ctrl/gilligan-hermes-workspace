@@ -20,6 +20,8 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
 - ⚠️ **Kimi empty/truncated output = the HELPER `max_tokens` cap, NOT the account** — K2 is a reasoning model and burns the budget *thinking* before it emits the answer, so "ran out of budget" was `kimi-ask.py`'s cap (raised 8k→16k→**40k**) while the Skipper's Kimi account was ~1% used. Raise `max_tokens` before suspecting billing. (2026-06-28)
 
 ## 🗄️ DB / SQL (TRIM IT, sqlcmd via gsql.sh)
+- ⚠️ **The GSTS play SQL box is SHARED and gets hammered by daytime SSMS load** — a heavy analytical query (retention sessionization) ran **<1s when the box was quiet** but **timed out (>4–5 min)** minutes later while someone ran heavy work in SSMS. `sqlcmd "Timeout expired"` = a **QUERY** timeout (server too slow), **NOT** a network drop — confirmed the tailnet was direct/0%-loss the whole time. → schedule heavy/analytical runs **OFF-PEAK (3am PT)**; don't reboot the box chasing a network ghost. (2026-07-15)
+- ⚠️ **A proc/view "deployed" per the notes may NOT actually be on the server** — `ret.vRetentionTrend` (054) was written + bug-fixed in the .sql file but its `OBJECT_ID` was NULL (never applied). → `SELECT OBJECT_ID('schema.obj')` for every object before validating, and redeploy from the .sql files. (2026-07-15)
 - ⚠️ **`gsql.sh` takes a FILE or STDIN, not an inline arg string** (it `cat`s $1) → pipe SQL on stdin. (2026-06-21)
 - ⚠️ **`gsql.sh` writes ONE shared remote temp file** → concurrent queries clobber each other → run **sequentially**
   or use a per-process isolated wrapper. (2026-06-21)
