@@ -4,6 +4,7 @@
 - **What to call them:** Skipper
 - **Pronouns:**
 - **Timezone:** Pacific (USA)
+- **Computer:** Windows (NOT Mac) — give Windows-appropriate steps; prefer GUI tools over CLI (see technical level below).
 - **Sleep window:** ~11:00 PM – 4:00 AM PT (don't ping during this unless urgent). Works at all other hours, unpredictably.
 - **Role:** COO of Great Scott Tree Care. Building Arbor AI.
 - Prefers to call the assistant Gilligan and be called the Skipper.

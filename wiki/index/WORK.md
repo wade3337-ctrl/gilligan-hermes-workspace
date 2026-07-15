@@ -17,5 +17,6 @@ updated: 2026-07-02
 - [[trimit-stack-and-tph]] — TRIM IT = ColdFusion 2023 + SQL Server; central metric TPH, 2026 target 130.
 - [[sales-rep-attribution]] — dashboards attribute to the actual managing rep (`Projects.SalesRepID`).
 - [[scheduled-revenue-date-basis]] — ⚖️ per-day vs by-end vs by-start (decision pending).
+- [[june-invoicing-lag]] — 💵 month-end "billed" understates ~25%; invoicing finishes ~3–10 days into next month. Read produced/on-pace as the trustworthy close headline.
 
 Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]] · [[dashboard-auth-gate]] (security gate + the rule: re-authorize headless consumers when you gate a surface).
