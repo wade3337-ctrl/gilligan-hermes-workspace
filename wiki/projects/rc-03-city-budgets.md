@@ -42,6 +42,13 @@ Accounts whose **own current fiscal year has no budget yet** (contract not renew
 - ⚠️ **Not yet prod** — awaiting Skipper sign-off. Backup: `Jasonsrepairs\citybudgets-wo-scopeguard-20260716-175144`.
 - 🔎 **Open — Irvine definitional:** dashboard scheduled ($184K) > Brent ($91K); Brent trims forward-scheduled/not-yet-started work as "not at hand." Decide whether to match his tighter cut or show all booked work.
 - 📌 **Data-quality note:** the "05" mislabel is upstream (TRIM IT WO entry). The guard makes the dashboard robust to it, but flagging to Brent/ops to fix the WO label at source is the clean long-term move.
+- ⚠️ **Regression I caught+fixed same session:** the #176 `woByCo` struct→array change broke `CityBudgetsRenewals.data.cfm` (a consumer that reused `woByCo`) → blanked the Renewals tab. Fixed (same guard), lesson logged. **Lesson:** change a shared data shape → grep+update every consumer + render-verify each sibling.
+
+## ✅ 2026-07-16 — renewal-gap cities stay on the main page (ship #177, Skipper: "some cities missing")
+- **Missing = Aliso Viejo + Stanton:** approved contracts end **FY25/26**; it's now **FY26/27** (turned July 1) with no renewal PO/budget → current-FY filter dropped them off the main tiles.
+- **Fix (Skipper's call — keep visible):** **RENEWAL-GAP FALLBACK** in `CityBudgets.data.cfm` all-cities loop — a **municipal** city empty for its current FY falls back to its **most recent FUNDED FY**, stays tiled with real numbers + amber **"RENEWAL DUE"** badge; tile links to that fallback FY (drill matches). Current-FY view only; explicit FY picks unchanged; commercial unaffected.
+- **RECENCY GUARD (Skipper refinement):** fall back ONLY if the last funded year is the **immediately prior FY** (`_bestYr >= cbStartYr(cbCurLabel(_sm,_now)) - 1`) — current FY start from TODAY, not the city's stale labels. Kills zombies: **CAL TRANS (last 17/18), Seal Beach (18/19)** no longer resurface; Aliso/Stanton (25/26) stay. Verified: RENEWAL DUE tiles = exactly those two.
+- **Verified play** (0 CF errors, 5 surfaces): Stanton $115K/$58,320.10 (ties Brent), Aliso $50,900/$32,435.90 (invoiced ties; ⚠️ budget $50,900 vs Brent PO $52,400 = $1,500 contract-vs-PO nit).
 
 ## Related
 - [[budget-report-municipal]] — the per-city FY analysis that feeds this.
