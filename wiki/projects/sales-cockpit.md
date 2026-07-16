@@ -13,7 +13,7 @@ updated: 2026-07-04
 # Sales Cockpit
 
 **One-liner:** The ONE consolidated front door for selling + bidding — folds 4 overlapping experimental pages (Arborist Workbench + Market Clusters + Customer Leads + My Jobs) into one cockpit over a customer relationship-profile spine, every site → drill → bid on-ramp.
-**Status:** ⏸️ parked — **P0-P2 done, parked mid-P3** (bid on-ramp); the 4 old pages not yet retired.
+**Status:** 🟢 active — #174 shipped (property-name search + bid-out badge + orphans retired); Aspen reconciled to canonical defs. Owed: per-stage buttons, "Start a bid"→BidQueue, C (widen filter).
 **📁 Location:** `arbor-stack/sales-engine/ZTest-Cockpit*.cfm` (+ `-Search/-Profile/-List/-Book`); spec `SALES-COCKPIT-spec.md`
 **▶️ Resume:** `arbor-stack/sales-engine/SALES-COCKPIT-spec.md`
 
@@ -36,3 +36,10 @@ updated: 2026-07-04
 - [[bid-process-reengineering]] — the cockpit is the SHELL; the 5 stages are what happens inside it.
 - [[scott-manager-dashboard]] — Workbench My Jobs / Re-bid Radar feed the List/Book views.
 - [[pricing-guide-bid-prefill]] — plugs in at the bid on-ramp (Stage-3 pricing).
+
+## ✅ 2026-07-16 — "can't find my job" repair (#174) + Aspen alignment
+- **Root cause (Skipper: searched "Northwood", missing):** cards labeled by account name only; search = name+company+mgr+city. The $107K "Northwood Estates" bid showed as "Northwood II HOA", unfindable. (NOT the stage bug.)
+- **A shipped:** cards now show the **property name** (JobAddress line-1, `PropName` via CROSS APPLY) as a sub-line + search folds in `prop`+`addr`. **B shipped:** active account w/ an open bid keeps its work column but shows a blue **"Bid out $X" badge** (Skipper chose badge over moving). **D:** retired the 7 `ZTest-Cockpit*/ZTest-SalesPipeline*` orphans on play (`.ORPHAN` + Jasonsrepairs) + archived local — **the live file is `Dashboard-SalesCockpit.cfm`, not the ZTest ones** (Skipper caught this). Backup-first, render-verified 0 CF errors, ship #174.
+- **C deferred (held, not discarded):** widen the InProcess/Pending filter to include Active-status accounts with open bids (~700, many stale).
+- **Aspen reconciled:** the cockpit is now the **canonical** source for pipeline signal defs (open-bid=Proposals 41/106 sent<6mo; running-dry=forward book<3mo + no fresh bid). Aspen's running-dry regenerated to the cockpit-exact set (223→**80**); property naming propagated. See `aspen-knowledge/business-development/CANONICAL-cockpit-alignment.md`.
+- ⚠️ Known limit: property name = JobAddress line-1, imperfect (sometimes a contact/street) in BOTH systems — a recognizer aid.
