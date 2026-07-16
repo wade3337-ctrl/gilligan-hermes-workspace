@@ -57,6 +57,8 @@ In my lookup path via `ROUTING.md` + `MEMORY.md`. Format: `- ✅ <technique> —
   transparent bg; scale 4 ≈ 288dpi. Tight-cropped to the artbox automatically. Used for the GSTC 50th logo. (2026-06-25)
 
 ## 🪟 Windows-over-SSH (Hermes laptop / gstsdatabase)
+
+- 🏗️ **Large-data ingest for an agent (200GB+, reusable pattern — MuniBot Brent bid data 2026-07-16):** DON'T route bulk binaries through the git/GitHub-backed knowledge vault (100MB/file GitHub cap; git doubles+bloats forever). Two-tier it: **(1) Warehouse** = plain files on disk, placed *inside the agent container's bind-mount source* (`~/.munibot` → `/opt/data`) so the bot reads them with ZERO duplication; **(2) Index** = only distilled text notes flow to the git vault/Obsidian. **Transfer = write-only restricted rsync over SSH:** authorized_keys forced command `command="/usr/bin/rrsync -wo /path/to/archive"` (incremental + resumable + can't read back — verified 'reading from write-only server is not allowed'). Windows source has no rsync → portable **cwRsync** (no-install folder, dodges IT install policy), driven by robocopy(share→stage, resilient/skips locked)→rsync(stage→box, delta-only). Never `git add` the raw; treat it as a re-syncable cache (source of truth = the share). Test the whole receiver via loopback rsync before involving the client PC. (2026-07-16)
 - ✅ **PowerShell over SSH:** base64 `-EncodedCommand` (UTF-16LE); run a child `ssh` via `Start-Process` not `&`;
   `scp` large scripts (cmd line-length cap).
 - ✅ **Deploy GLM to a Windows box (laptop Herman, 2026-06-23):** write `glm.json` to `~/.secrets/` (Python
