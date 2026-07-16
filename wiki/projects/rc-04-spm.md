@@ -36,3 +36,5 @@ updated: 2026-07-14
 ## Related
 - [[rc-01-executive-financial]] — close%/win-rate definition shared across surfaces (centralize to prevent drift).
 - [[steve-diligence-dashboard]] — city-exclusion (PG=11) propagated to SPM Pipeline + Drill.
+
+- **Multi-Year Trend by Market (2026-07-16, ship #175):** new Results panel — HOA/Commercial/Muni-cities/Muni-other produced-$ across the **last 5 years (dynamic)**, **same-date YTD** for fair comparison + full-year secondary + YoY badge. Same RGC `vProjectMarket` classifier as the by-market panel (ties out). Answers Skipper's "how are we tracking vs 2023/2024, by segment." Reveals: HOA grew then flat, muni-cities declining every year ($4.75M→$3.89M), commercial bumpy. Optional polish: add a `spm.results.mktyears` pro-tip.
