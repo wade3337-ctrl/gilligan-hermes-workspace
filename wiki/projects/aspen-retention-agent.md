@@ -138,4 +138,18 @@ Skipper approves scope + phases. Optional: crew pressure-test of the plan before
   - **LA County search** (`la-county-expansion-briefing.md` + `la-county-leads-contacts.csv`) — Boss Hermes's 75-lead pilot (City of Industry yard + Long Beach $941K anchors). Full lead DB: `~/.hermes/home/market-search/la-county-leads/`.
   - Synthesis `README-bd-knowledge.md` ties Layer-1 (warm in-system graph) + Layer-2 (net-new searches).
 - **THE SYNTHESIS:** IE Top-6 doors = Powerstone/FirstService/Keystone — the same under-penetrated warm-OC mgmt cos from the graph. Bridge = Scott's warm OC relationship → their IE/LA portfolios. Aspen already had matching strategy notes (trimit-warm-bridges, chad/megan roles) — now data-backed.
-- **STILL OPEN for full self-serve:** Aspen Telegram group (Skipper+Nate) not yet created → needed to *ask Aspen* BD questions live. Capstone (Aspen answers a BD question from its own knowledge) not yet run.
+- **STILL OPEN (B):** Skipper ALREADY has Aspen 1:1 on Telegram. The ONLY blocker for the group = **Nate needs to get on Telegram**. Once Nate is on: create group (Skipper+Nate+Aspen), Aspen admin, grab Nate TG id → allowlist. That is what we are waiting for.
+
+## ✅ Running-Dry → Save+Expand WIRE built (2026-07-16) — Cockpit signal → Aspen
+- Wired the Sales Cockpit's "running dry" concept into Aspen, enriched with value + warm-contact + mgmt-co expansion bundle. Signal from TRIM IT (WorkOrders recency + Proposals.LastGoAheadDate + future-WO).
+- **223 running-dry accounts · ~$24.5M lifetime value · 190 warm · 195 OC/LA/IE.** Top: City of Irvine $9.2M (→rebid watch, muni), Action PM $1.9M (+35 winnable), Trailwood/Keystone (+70), Optimum HOAs (+67).
+- Deliverables in `aspen-knowledge/business-development/`: `running-dry-rebid-wire.md` + `running-dry-save-and-expand.csv` (synced board+GitHub+Obsidian).
+- **Definition caveat:** play snapshot lacks reliable forward-WO/approval → approximated as "active thru ~early-2025 then quiet, nothing in pipeline." Live truth = Cockpit `ZTest-SalesPipeline.cfm`/Workbench on prod; Aspen should read the live flag once prod-wired.
+- **⏭️ REBID half NOT built** — needs contract end/option-year/notice dates (TRIM IT doesn't track cleanly, esp. municipal). City of Irvine shows why (muni quiet = contract cycle, not churn). Next layer = contract-renewal tracker → rebid radar. (Ties to retention-scoreboard's municipal fast-follow.)
+
+## ✅ Contract REBID RADAR built (2026-07-16) — dry+rebid wire now COMPLETE
+- Found TRIM IT's real Contracts subsystem (`Contracts`: StartDate/EndDate/TotalPrice/CurrentContractor/bid-flags; `ContractYears` term windows) — 1,156 contracts. The contract-term data the retention note thought TRIM IT lacked DOES exist.
+- Rebid radar (next ~18mo): **DEFEND 27 ours/$13.3M · WIN 38 competitor-open/$3.3M (all warm) · 60 recently expired.** Top: $2.5M OC "Tree Cutting Services" expires 2026-08-26 (warm: John Dean/OC Public Works); OCWD + Anaheim UHSD.
+- **Municipal-heavy** (formal contracts = public agencies) → converges rebid radar ↔ MuniBot city-budget/RFP intel ↔ the 166 muni contacts. HOA/commercial = the dry wire.
+- Deliverables: `aspen-knowledge/business-development/{contract-rebid-radar.md, contract-rebid-radar.csv}` (synced board+GitHub+Obsidian).
+- Caveats: some contract $ read $0 (value in per-year fields), duplicate rows, CurrentContractor sometimes blank — verify before pursuit.
