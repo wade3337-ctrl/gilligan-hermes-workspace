@@ -34,6 +34,15 @@ Accounts whose **own current fiscal year has no budget yet** (contract not renew
 - Buckets C/D parked (Newport carryover, LB 2nd contract, San Clemente CI re-tag).
 - Play was **stale at 6/30** on 2026-07-02 — verify freshness before the comparison.
 
+## ✅ 2026-07-16 — accrual/scheduled SCOPE GUARD (ship #176) + Brent reconcile
+- **Bug (Skipper, from Brent's report):** City of Industry Forecasting drill-down showed **$0 accrual / $1,876 scheduled** vs Brent's **$20,780 / $71,185**.
+- **Root cause:** WO **166670** (the $152K live Citywide-Maintenance Active job) is data-entry-stamped FY **"05"** (contract 1248's valid labels are 26–30). Both `qFcWO` (forecast) + `qSumWO` (all-cities roll-up) scoped WOs by **`ProjectYearLabel` only** → dropped it → accrual/scheduled ≈ $0.
+- **Fix = FY SCOPE GUARD:** a WO counts for a city's FY if label matches **OR** `DateScheduled ∈ [fyStart,fyEnd)`. `qSumWO` reworked to one-row-per-WO + CFML guard loop (mirrors invoice-fallback); per-city FY window hoisted so invoice + WO calcs share it. **Strictly additive** (label-vs-guard Δ: Industry +$53K sched/+$39K accr = the fix; Irvine +$1,215; Newport +$84; **LB + Anaheim = 0**).
+- **Reconciled to Brent's 12 PDFs** (pulled from email, saved `inbox-pull/brent-budget-2026-07-09/`): **Long Beach ties to the dollar** ($94,601.88 in-FY = Brent $94,602; +$3,470 = one post-July-8 WO). Industry invoiced $380,375.36 ties exactly; accrual/scheduled now populate. Verified on play (ZUserID=376), 0 CF errors, no regression.
+- ⚠️ **Not yet prod** — awaiting Skipper sign-off. Backup: `Jasonsrepairs\citybudgets-wo-scopeguard-20260716-175144`.
+- 🔎 **Open — Irvine definitional:** dashboard scheduled ($184K) > Brent ($91K); Brent trims forward-scheduled/not-yet-started work as "not at hand." Decide whether to match his tighter cut or show all booked work.
+- 📌 **Data-quality note:** the "05" mislabel is upstream (TRIM IT WO entry). The guard makes the dashboard robust to it, but flagging to Brent/ops to fix the WO label at source is the clean long-term move.
+
 ## Related
 - [[budget-report-municipal]] — the per-city FY analysis that feeds this.
 - [[contract-dashboard-fix-longbeach]] — Bucket C depends on it.
