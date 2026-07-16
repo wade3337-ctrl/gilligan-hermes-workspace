@@ -1,0 +1,261 @@
+SUBJECT: Employee Handbook - Full Legal Review by Claude Fable-5 (Detailed Analysis)
+
+Gilligan,
+
+This is the full detailed legal review from the Claude Fable-5 analyst on Jason's request. It is the second independent review. Both analysts independently converged on the same core issues, which gives high confidence in the findings.
+
+# LEGAL RISK REVIEW — GSTC EMPLOYEE HANDBOOK (Revised 2026)
+**Prepared for outside counsel review | Priority-ranked | CA & Federal law**
+
+**Overall assessment:** This handbook is a 2020-era document with layered, un-reconciled amendments. It contains (a) multiple policies that are affirmatively unlawful under current California law, (b) numerous internally contradictory duplicate policies (a plaintiff's lawyer will always argue the version most favorable to the employee controls), and (c) significant PAGA/class exposure given a 100+ person, largely non-exempt field workforce. The wage-and-hour and leave-law defects are the most urgent.
+
+---
+
+## TIER 1 — HIGH SEVERITY
+
+### 1. CFRA eligibility rules are years out of date — unlawfully denies leave
+- **Location:** "California Family Rights Act (CFRA) Leave" — Eligibility
+- **Problem:** "You must work within 75 miles of a Company worksite that employs 50 or more employees."
+- **Legal Risk:** **HIGH.** SB 1383 (effective 1/1/2021) eliminated the 50-employee/75-mile worksite test. CFRA applies to employers with **5+ employees**, and every employee with 12 months' service and 1,250 hours is eligible regardless of worksite size. Applying this policy as written = wrongful denial of protected leave, interference claims, FEHA exposure, and wrongful termination claims for anyone fired after a "denied" leave.
+- **Recommendation:** Delete the worksite test entirely. Rewrite CFRA policy to current law.
+
+### 2. CFRA family-member list and "spouse aggregation" are wrong
+- **Location:** CFRA Leave — covered relations; "Spouse Aggregation"
+- **Problem:** (a) The covered family list omits **domestic partners' children, parents-in-law, and a "designated person"** (AB 1041, eff. 1/1/2023). (b) "If you and your spouse are both employed by GSTC, the combined total... will be limited to 12 weeks" — SB 1383 **eliminated** the parental-bonding aggregation rule; each parent employed by GSTC gets a full 12 weeks.
+- **Legal Risk:** **HIGH.** Interference/denial of statutory leave; FEHA retaliation exposure.
+- **Recommendation:** Add "designated person" and parent-in-law; delete spouse aggregation from CFRA policy (it may remain, in modified form, only in the pure-FMLA policy).
+
+### 3. "New Parent Leave" policy is based on a repealed statute
+- **Location:** "New Parent Leave"
+- **Problem:** Policy replicates the former New Parent Leave Act ("20 employees within a 75-mile radius"), which was **repealed and subsumed into CFRA by SB 1383 in 2021**. It also contains an unlawful term: "GSTC may seek to recover any premiums paid... **by deducting the amount from your final wages**."
+- **Legal Risk:** **HIGH.** (a) Obsolete eligibility standard conflicts with CFRA. (b) Self-help deduction from final wages violates Labor Code §§ 221/224 and triggers waiting-time penalties (§ 203). Premium recoupment must be pursued separately, not by wage deduction.
+- **Recommendation:** Delete the entire section; fold bonding leave into the corrected CFRA policy. Remove all "deduct from final wages" language handbook-wide.
+
+### 4. Drug policy's "measurable quantity" standard violates AB 2188 / SB 700
+- **Location:** "Drug and Alcohol Policy"; "Pre-Employment Screening"
+- **Problem:** "Reporting to or being at work with a **measurable quantity of any... drug... in the blood or urine**" is a per-se violation as applied to cannabis. Since 1/1/2024, Gov. Code § 12954 prohibits adverse action based on (a) off-duty, off-site cannabis use or (b) **non-psychoactive cannabis metabolites** in a drug screen. The Cannabis section correctly recognizes off-duty rights, but the main policy and the pre-employment testing policy contradict it. SB 700 also bars asking applicants about prior cannabis use.
+- **Legal Risk:** **HIGH.** FEHA discrimination claims for any termination or rescinded offer based on a metabolite-positive test. (Note: DOT-regulated CDL drivers are exempt — carve that out expressly.)
+- **Recommendation:** Rewrite testing standard around **impairment and psychoactive-metabolite testing only** for cannabis; add express exemption for DOT/federally regulated positions; reconcile the three drug-related sections.
+
+### 5. Mandatory reporting of drug/alcohol "charges" — Labor Code § 432.7
+- **Location:** Drug and Alcohol Policy; "Criminal Activity | Arrests"
+- **Problem:** Employees "charged with, or convicted of" any drug/alcohol-related law violation must report it, and violation "may result in disciplinary action, up to and including termination." The Arrests section permits discipline for "involvement in criminal activity... on or off Company property."
+- **Legal Risk:** **HIGH.** § 432.7 prohibits using an **arrest or charge that did not result in conviction** as a basis for discipline (limited exceptions). Off-duty conduct discipline also implicates §§ 96(k)/98.6. Statutory penalties plus wrongful termination exposure.
+- **Recommendation:** Limit reporting duty to **convictions** affecting driving privileges/job duties (e.g., CDL holders per DOT rules); delete discipline-for-arrest language.
+
+### 6. "Emergency Incentive" excluded from the regular rate — overtime/premium miscalculation
+- **Location:** Meal and Rest Periods Policy — "Emergency Incentive"
+- **Problem:** "Any emergency incentive is **separate from wages and overtime compensation** required by law."
+- **Legal Risk:** **HIGH.** A promised/expected payment for responding to emergency call-outs is **non-discretionary** and must be included in the regular rate for overtime (Lab. Code § 510; 29 U.S.C. § 207(e)) **and** in the "regular rate of compensation" for meal/rest premiums (*Ferra v. Loews*, 2021). This is textbook PAGA/class exposure across the field workforce. Same issue applies to the $1/hr certification differentials and certification bonuses (bonuses must flow into the regular rate).
+- **Recommendation:** Delete "separate from wages" language; state that non-discretionary incentives are included in regular-rate calculations.
+
+### 7. Rest-break "remain on premises" requirement — *Augustus* violation
+- **Location:** Meal and Rest Periods — Rest Periods
+- **Problem:** "Employees should remain on the employer's premises or job sites during such periods."
+- **Legal Risk:** **HIGH.** Under *Augustus v. ABM Security* (2016), employers must relinquish all control during rest periods. A blanket stay-on-premises rule supports a class/PAGA claim that every rest break was non-compliant (1 hour premium per day per employee).
+- **Recommendation:** Delete the sentence. (Practical geography will keep field crews nearby without a policy mandate.)
+
+### 8. Attendance policy penalizes protected sick leave
+- **Location:** "Attendance Policy"; "Holidays Observed"
+- **Problem:** (a) Absence "includes time off for sickness," and "one or more unreported or unjustified absences... may result in disciplinary action"; "excessive absenteeism" determined "in its sole discretion." (b) "GSTC reserves the right to **apply unused... sick time... to unauthorized absences**." (c) Holiday pay forfeited "if the employee is absent on the day before or the day after the holiday."
+- **Legal Risk:** **HIGH.** Labor Code § 246.5(c) prohibits discipline or **any adverse action** (including denial of a benefit like holiday pay) for using protected paid sick leave; kin-care (§ 233) and CFRA/FMLA absences are likewise protected. An employer also **cannot unilaterally apply an employee's sick leave** — sick leave use is at the employee's election. No-fault attendance policies that count protected absences are a recurring source of FEHA/retaliation verdicts.
+- **Recommendation:** Add an express carve-out: absences covered by paid sick leave, kin care, CFRA/FMLA/PDL, workers' comp, or any legally protected leave never count as occurrences; delete employer-initiated application of sick leave; condition holiday pay carve-out on *unprotected* absence only.
+
+### 9. Employee-paid losses: uniforms, credit cards, devices — Labor Code §§ 221/2802
+- **Location:** Uniform Policy; Use of Employer Credit Cards; both Employer-Provided Cell Phone policies
+- **Problem:** "You will be responsible for the cost of unreturned uniforms at the time of termination"; unauthorized card purchases "will be the cardholder's responsibility... reimburse... within 5 days"; "Employees may be responsible for the cost of damaged or lost/stolen equipment."
+- **Legal Risk:** **HIGH.** California requires employers to furnish and maintain uniforms and bear ordinary business losses. Deductions/chargebacks for losses caused by simple negligence are unlawful (§§ 221, 224, 2802; IWC orders; *Hudgins* line of cases). Any offset against final wages triggers § 203 waiting-time penalties and PAGA claims.
+- **Recommendation:** Remove all cost-shifting language; permit recovery only for **dishonesty, willful misconduct, or gross negligence**, and never via unilateral wage deduction. Use a lawful uniform-return process (deposit-free).
+
+### 10. Missing travel-time policy for field crews — *Morillion* exposure
+- **Location:** Omitted (Wage and Hour Policies)
+- **Problem:** A tree-care company running crews to municipal/HOA job sites has no policy on **compensable travel time** (yard-to-site travel in company vehicles, loading/equipment checks, mandatory reporting to the yard), nor on pre-shift PPE/equipment donning and tailgate meetings.
+- **Legal Risk:** **HIGH.** Under *Morillion v. Royal Packing*, compulsory travel on employer transport is hours worked. This is the single most common off-the-clock theory in tree care/landscaping class actions.
+- **Recommendation:** Add an express policy: time from mandatory report location, vehicle loading, tailgate safety meetings, and inter-site travel is paid and recorded; confirm timekeeping captures it.
+
+### 11. Sick leave policy — multiple compliance defects
+- **Location:** "Paid Sick Leave"
+- **Problem:** (a) Reinstatement of accrued sick leave only if rehired "within the same **calendar year**" — the law requires reinstatement if rehired within **12 months** (§ 246(f)(2)). (b) Family-member definition omits the **"designated person"** (AB 1041). (c) 40 hours capped at "five days" — for field crews on 10-hour alternative schedules, 5 days may exceed 40 hours; statute requires the **greater** of 40 hours or 5 days. (d) Victim-leave uses now governed by AB 2499's broader "qualifying acts of violence" framework (and extends to employees whose **family member** is a victim).
+- **Legal Risk:** **HIGH** (statutory penalties, PAGA).
+- **Recommendation:** Correct all four points; coordinate with Attendance and Personal Leave policies.
+
+### 12. Forced exhaustion of sick leave before personal leave
+- **Location:** Personal Leave of Absence
+- **Problem:** "You will be required to use **all available paid leave balances** prior to taking an unpaid personal leave."
+- **Legal Risk:** **HIGH/MEDIUM.** Employers may not require use of statutory paid sick leave; and requiring vacation exhaustion while an employee receives SDI/PFL is restricted. Same defect appears in the FMLA policy ("you must utilize available sick, personal, and vacation/PTO days").
+- **Recommendation:** Limit mandatory exhaustion to vacation/PTO where lawful; make sick-leave use employee-elective; carve out SDI/PFL coordination.
+
+### 13. Voting leave omits *paid* time off
+- **Location:** "Voting Leave"
+- **Problem:** "GSTC will allow you a reasonable time off to vote" — no mention of pay.
+- **Legal Risk:** **HIGH/MEDIUM.** Elections Code § 14000 requires up to **two hours paid**, at the beginning or end of the shift, plus posted notice 10 days before elections.
+- **Recommendation:** State the two-hour paid entitlement and notice procedure.
+
+### 14. Inventions clause lacks Labor Code § 2870 carve-out
+- **Location:** "Inventions"
+- **Problem:** "Any invention created, in whole or in part, during your work hours, or from the use of equipment... is a 'work for hire' and is the property of GSTC."
+- **Legal Risk:** **HIGH/MEDIUM.** Lab. Code §§ 2870–2872 require that any invention-assignment provision include written notice of the § 2870 exclusion; a blanket assignment without it is unenforceable and unlawful to require as a condition of employment. (Also legally confuses "work for hire" — a copyright concept — with invention assignment.)
+- **Recommendation:** Add the § 2870 notice verbatim; move assignment terms to a signed agreement, not the handbook.
+
+### 15. Cal/OSHA content is outdated and missing tree-care-specific and heat requirements
+- **Location:** Safety and Loss Prevention; IIPP; Heat Illness Prevention
+- **Problem:** (a) IIPP references "**OSHA 200**" logs (replaced by the 300 log in 2002) and "**MSDS**" (replaced by SDS/GHS in 2013). (b) "Bump caps" listed as PPE — tree work requires ANSI-compliant **helmets**; no mention of chainsaw leg protection, eye/hearing protection standards, aerial devices, chippers, **minimum approach distances to energized lines** (the leading cause of tree-worker fatalities), traffic control, or ANSI Z133. (c) Heat policy omits Cal/OSHA § 3395 **high-heat procedures (95°F)** — mandatory for landscaping — acclimatization, and the 2024 **indoor heat standard** (shop/warehouse). (d) Ladder policy is office-oriented; nothing on tree-climbing/fall protection.
+- **Legal Risk:** **HIGH** in this industry — Cal/OSHA citations (willful/serious), and the handbook itself becomes evidence of an inadequate IIPP after a serious incident.
+- **Recommendation:** Replace generic safety text with tree-care-specific program referencing ANSI Z133, § 3395 (including high-heat), § 3396 (indoor heat), current recordkeeping, and SDS terminology. Coordinate with the standalone IIPP/WVPP.
+
+### 16. Timekeeping "5-minute" rule — rounding/off-the-clock exposure
+- **Location:** "Recording Time"
+- **Problem:** "Clock in no more than five minutes ahead of your start time and clock out no later than five minutes after your quitting time."
+- **Legal Risk:** **HIGH/MEDIUM.** If any work occurs in those windows (loading trucks, PPE, briefings), it's unpaid work. Post-*Camp v. Home Depot* and *Troester*, rounding and de minimis defenses are largely dead in CA. Combined with Issue #10, this is a PAGA magnet.
+- **Recommendation:** Replace with: employees must not perform any work off the clock; all time worked, however brief, must be recorded and will be paid.
+
+---
+
+## TIER 2 — MEDIUM SEVERITY
+
+### 17. Expired COVID-19 FFCRA policies still in a "2026" handbook
+- **Location:** "Emergency Paid Sick Leave Policy (COVID-19)"; "Expanded Family and Medical Leave Policy (COVID-19)"
+- **Problem:** Both policies expired 12/31/2020 by their own terms yet occupy ~3,000 words.
+- **Legal Risk:** **MEDIUM.** Risk of confusion and estoppel arguments; evidences a stale handbook.
+- **Recommendation:** Delete both sections.
+
+### 18. Bereavement leave — two contradictory policies; AB 1949 gaps
+- **Location:** "Bereavement Leave" (two consecutive paragraphs)
+- **Problem:** Paragraph 1: 3 days paid. Paragraph 2: 5 days, 3 paid. Neither includes **domestic partners** or matches AB 1949's family definition (which follows CFRA); "Any scheduled days off... counted as both bereavement leave and scheduled days off" undercuts the 5-day entitlement.
+- **Legal Risk:** **MEDIUM.** AB 1949 (Gov. Code § 12945.7) requires 5 days for CFRA-defined family members, usable within 3 months, with confidentiality and anti-retaliation.
+- **Recommendation:** Delete paragraph 1; conform paragraph 2 to AB 1949 (family definition, documentation limits, ability to use accrued paid leave).
+
+### 19. Domestic violence/crime victim provisions superseded by AB 2499
+- **Location:** Accommodations/Leave for Victims of DV, Sexual Assault, Stalking; Crime Victim Leave
+- **Problem:** Policies track pre-2025 Labor Code §§ 230/230.1. Effective 1/1/2025, AB 2499 moved these rights into FEHA, expanded them to "**qualifying acts of violence**," and extended leave to employees whose **family members** are victims, with new time caps and paid-sick-leave interaction.
+- **Legal Risk:** **MEDIUM** (FEHA exposure for denials under the old framework).
+- **Recommendation:** Rewrite to AB 2499; the CRD model policy language is available.
+
+### 20. Lactation policy missing statutorily required elements
+- **Location:** "Accommodations for Nursing Mothers"
+- **Problem:** Labor Code § 1034 requires the handbook policy to include: right to request, employer's response process, **and the employee's right to file a complaint with the Labor Commissioner**. Room requirements (seating, surface, electricity, refrigeration proximity) and multi-site/field considerations aren't stated.
+- **Legal Risk:** **MEDIUM** — each denial is a rest-period violation (1 hour premium) plus Labor Commissioner penalties.
+- **Recommendation:** Add missing elements; address field-crew logistics (this is an outdoor workforce).
+
+### 21. FMLA/CFRA parental leave increments — direct self-contradiction
+- **Location:** FMLA Policy — "Parental Leave"
+- **Problem:** "Leave for the birth or placement of a child **must be taken in a single block and cannot be taken on an intermittent** or reduced schedule basis," immediately followed by "Leave for the birth or placement of a child **can be taken intermittently** but is limited to a maximum of 2 separate block periods... minimum of 2 consecutive weeks."
+- **Legal Risk:** **MEDIUM.** Contradiction; also stricter than CFRA regs (2 Cal. Code Regs. § 11090: minimum 2-week blocks, but employer must grant shorter durations on at least two occasions).
+- **Recommendation:** Delete first paragraph; conform to CFRA regulation.
+
+### 22. Blanket pre-employment/promotion physicals
+- **Location:** "Pre-Employment Screening"; "Promotion Physical Assessment"
+- **Problem:** "**All** candidates selected for employment will be required to undergo a pre-employment physical examination."
+- **Legal Risk:** **MEDIUM.** ADA/FEHA permit post-offer exams only if applied uniformly **by job category** and job-related; requiring physicals of office/administrative hires is hard to defend. Promotion physicals must also be job-related and consistent with business necessity. Also no mention of Fair Chance Act (Gov. Code § 12952) / ICRAA procedures if background checks are run.
+- **Recommendation:** Limit exams to safety-sensitive job categories; add Fair Chance Act–compliant background check policy if applicable.
+
+### 23. Automatic-termination and mandatory-discipline language in leave policies
+- **Location:** PDL ("You **will be terminated** if you provide a false reason for a leave"; "your employment **will be terminated**" for working elsewhere); FMLA/CFRA/Personal Leave (deemed "voluntarily resigned" for failure to return)
+- **Legal Risk:** **MEDIUM.** Mandatory language removes discretion and invites interference/retaliation claims — e.g., an employee on PDL doing physically light self-employment consistent with restrictions; or a "failure to return" that is itself a request for accommodation (extended leave can be a reasonable accommodation under FEHA — *Sanchez v. Swissport*). Automatic-resignation triggers cannot override the interactive-process obligation.
+- **Recommendation:** Soften to "may result in discipline"; add that before treating a non-return as resignation, GSTC will consider whether extended leave is required as a reasonable accommodation.
+
+### 24. Job abandonment — contradictory triggers
+- **Location:** "Job Abandonment" (Wage & Hour chapter) + duplicate empty heading later
+- **Problem:** "three consecutive days" vs. "two (3) consecutive scheduled workdays" in back-to-back paragraphs; a second "Job Abandonment" heading is empty.
+- **Legal Risk:** **MEDIUM** (due-process/consistency attacks in termination cases; protected-leave absences could be swept in).
+- **Recommendation:** One standard (3 consecutive scheduled workdays), with express carve-out for legally protected absences; delete duplicate heading.
+
+### 25. Package/container search policy — privacy overreach
+- **Location:** "Workplace Privacy and Right to Inspect"
+- **Problem:** Managers may demand inspection of "any package or other container brought, carried, **in possession**, or taken from GSTC premises," with discipline for refusal.
+- **Legal Risk:** **MEDIUM.** Employees retain a reasonable expectation of privacy in **personal** effects (purses, personal bags, personal vehicles) under Cal. Const. art. I, § 1. Company property searches are fine; personal-effects searches on demand are not.
+- **Recommendation:** Limit to company property; personal-item searches only on reasonable suspicion with consent, documented.
+
+### 26. Social media policy — NLRA § 7 overbreadth
+- **Location:** Social Media Policy
+- **Problem:** "Your personal posts and social media activity **should not reflect upon or refer to GSTC**." Also requiring "respectful" conduct and confidentiality of "financial or sales records" can reach protected concerted activity despite the savings clause.
+- **Legal Risk:** **MEDIUM.** Under *Stericycle* (NLRB 2023), rules are judged from the employee's perspective; a blanket "don't refer to GSTC" rule is presumptively unlawful. Note GSTC's harassment-investigation policy also threatens discipline for breaching investigation confidentiality — the NLRB and CA law limit blanket confidentiality mandates on complainants/witnesses.
+- **Recommendation:** Delete the "should not refer to GSTC" sentence; narrow investigation-confidentiality to a case-by-case request; strengthen savings clauses.
+
+### 27. 401(k) section directly contradicts itself
+- **Location:** "401(k) Plan"
+- **Problem:** "This plan is for **employee contributions only**" vs. "GSTC currently provides a **Safe Harbor employer contribution**."
+- **Legal Risk:** **MEDIUM** (benefit-plan misrepresentation; ERISA SPD controls, but the contradiction invites claims).
+- **Recommendation:** Delete the outdated sentence; defer to plan documents.
+
+### 28. Cal-WARN not addressed in layoff policy
+- **Location:** "Workforce Reductions (Layoffs)"
+- **Problem:** With 100+ employees, GSTC is a covered establishment under Cal-WARN (Lab. Code § 1400 et seq.) — 60-day notice for mass layoffs (50+ in 30 days), relocations, or closures. The policy is silent.
+- **Legal Risk:** **MEDIUM** (the omission isn't itself unlawful, but the policy should not be executed without WARN analysis — 60 days' back pay per employee if missed).
+- **Recommendation:** Add a sentence that reductions will comply with applicable notice laws; brief management separately.
+
+### 29. Meal-period technical defects
+- **Location:** Meal and Rest Periods
+- **Problem:** (a) Waiver allowed "if you work **fewer than six hours**" — the statute permits waiver where the shift is **no more than six hours** (and the second-meal waiver requires ≤12 hours and no first-meal waiver — stated, good). (b) Premium described as "regular rate" — should say "**regular rate of compensation**" including nondiscretionary pay (*Ferra*). (c) No written meal-waiver procedure for field crews.
+- **Legal Risk:** **MEDIUM** (given premium-pay language is otherwise present — a genuine strength of this handbook).
+- **Recommendation:** Correct wording; implement written, revocable meal waivers; ensure first meal *begins* before the end of the 5th hour.
+
+### 30. Exempt-employee pay practices (jury duty, closures, holidays)
+- **Location:** Jury Duty Leave; Business Closure; Holiday Pay – Non-Field
+- **Problem:** Capping exempt pay at "3 days" for jury duty and paying exempt staff "for a full 8 hours" on holidays conflicts with the salary-basis test — an exempt employee who works any part of a week of jury service, or in a closure week, must receive full salary (29 C.F.R. § 541.602; CA is stricter).
+- **Legal Risk:** **MEDIUM** — improper deductions can destroy the exemption class-wide.
+- **Recommendation:** Add salary-basis compliance language for exempt staff.
+
+### 31. EEO/harassment sections — truncation and inconsistencies
+- **Location:** EEO Statement; Policy Against Workplace Harassment
+- **Problem:** (a) The harassment policy's protected-class list **ends mid-sentence** ("...Family and Medical Leave Act or the California Family Rights Act),"). (b) "Reproductive health decision-making" (SB 523, mandatory FEHA category since 2023) appears in one list but **not** in the EEO statement. (c) References to "CRD DFEH" are garbled (DFEH was renamed CRD in 2022). (d) Complaint deadline: employees have **three years** to file with CRD — stated correctly — but EEOC deadline (300 days) is omitted.
+- **Legal Risk:** **MEDIUM** (defective policy undermines the *Faragher/Ellerth* and avoidable-consequences defenses).
+- **Recommendation:** Fix truncation; harmonize protected-class lists across all three sections; clean up agency names.
+
+### 32. Field vs. office two-tier vacation structure
+- **Location:** "Holiday & Vacation Pay Allowance – Nonexempt Field Employees"; "Unpaid Time Off Policy (Field Employees)" vs. "Vacation Policy – Non-Field"
+- **Problem:** Field employees get an undefined "unit of allowance" per hour paid out each period plus *unpaid* time off; office staff get accrued paid vacation. "One unit of allowance" is never defined in dollar or hour terms.
+- **Legal Risk:** **MEDIUM.** (a) Vague pay term invites wage-statement (§ 226) and regular-rate disputes — is the "allowance" included in the regular rate for overtime? (b) A benefits structure disfavoring the (likely predominantly Latino) field workforce vs. office staff creates FEHA **disparate-impact** optics. (c) If GSTC performs public-agency work, prevailing-wage fringe obligations must be reconciled — the single cryptic sentence ("GSTC reserves the right to compensate according to the [DIR] determination") is inadequate.
+- **Recommendation:** Define the allowance precisely (amount, regular-rate treatment, wage-statement line item); have counsel review prevailing-wage compliance; consider harmonizing benefits.
+
+### 33. Confidential investigation gag on participants
+- **Location:** EEO — Reporting section
+- **Problem:** "anyone involved in an investigation... has an obligation to keep all information about the investigation confidential. Failure... may result in disciplinary action."
+- **Legal Risk:** **MEDIUM.** Blanket confidentiality mandates on complainants/witnesses violate NLRA § 7 (*Stericycle*) and SB 331/Gov. Code § 12964.5 principles (employees can't be restrained from discussing unlawful workplace conduct).
+- **Recommendation:** Replace with a request for discretion, case-by-case, and an express statement that nothing prevents employees from discussing harassment/discrimination.
+
+---
+
+## TIER 3 — LOW SEVERITY / DRAFTING (fix all before circulation)
+
+34. **Duplicated Welcome letter, duplicated Cell Phone and Use of Company Technology policies with *different* terms** (e.g., one says "Data... shall not exceed 1G per month," the other doesn't; different bullet sets). *Risk:* ambiguity construed against drafter. **Delete one version of each.**
+35. **PFL section:** "up to six eight weeks" — un-reconciled edit; current entitlement is **8 weeks**. Also PFL family definition should be checked against current statute (includes designated-person expansion effective 2025 for sick leave; PFL family list should be verified).
+36. **Direct Deposit:** "within 30 calendar days after you submit your completed application. within the next payroll period." — un-reconciled edit.
+37. **Full-time definition:** "more than 30 hours" vs. "at least 30 hours" vs. "fewer than 30" — a 30.0-hour employee falls in a gap; also conditioning "regular full-time" on completing the introductory period conflicts with the 60-day health-insurance eligibility (ACA 90-day waiting-period cap is met, but wording should align).
+38. **"Governing Principals of Employment"** — typo ("Principles"); empty heading.
+39. **Exempt Staff paragraph** is garbled: "you are not eligible for overtime pay ¶ as otherwise required by federal, state, or local laws." Also directing classification questions to "your supervisor" is unwise — route to HR.
+40. **Overtime trigger sentence** ("more than eight hours in any workday or more than six days in any workweek") omits the 40-hour weekly trigger from the lead sentence; the double-time and 7th-day rules are stated correctly — tighten wording.
+41. **Certification incentive policy:** "GSTC will require a refund of 50% of the enrollment fee" from employees who "did not give his best" — subjective repayment trigger; training-repayment agreements (TRAPs) are under active DLSE/CFPB scrutiny and § 2802 risk if training is employer-required. Also gendered language. Move to a carefully drafted separate agreement (the policy already contemplates one).
+42. **Transfers:** pay "may be increased or decreased" — any pay decrease requires advance notice before work is performed (Lab. Code § 2810.5 notice update); prospective-only.
+43. **FMLA policy** says leave available when unable to perform "**any** of the essential functions" — standard is unable to perform **one or more** functions; also health-insurance paragraphs are duplicated with slightly different recoupment language (repeated in CFRA, PDL, Personal Leave, New Parent — pick one compliant version).
+44. **Nonsmoking policy** — limited to "office, client areas, and restrooms"; Labor Code § 6404.5 bans smoking in all enclosed workplaces and vehicles; no vaping/cannabis-smoke reference.
+45. **First aid rule** ("Only employees with a valid first aid care card can perform first aid") — could chill Good-Samaritan response; Cal/OSHA requires first-aid-trained personnel available for remote crews — reframe.
+46. **Holiday list includes Good Friday** — fine, but be prepared for religious-accommodation requests for non-Christian holidays (policy already allows; no change needed, awareness only).
+47. **Acknowledgment page** — generally good (supersession, at-will, President-only modification). Add: acknowledgment that employee received the **sexual harassment prevention pamphlet/poster (CRD 185)** and, ideally, a standalone signature line for the meal-period and handbook receipt. Consider whether the company *wants* an arbitration agreement with PAGA-compliant terms (none exists — a strategic decision for counsel, not a defect).
+48. **No non-compete present — good.** Confirm no side agreements contain one (void under B&P Code § 16600; AB 1076/SB 699 create affirmative liability and required a Feb. 2024 notice to current/former employees if any existed).
+
+---
+
+## MISSING POLICIES CHECKLIST (should be added)
+
+| Missing item | Authority | Priority |
+|---|---|---|
+| Travel time/vehicle time & tailgate meeting pay (field crews) | *Morillion*; Lab. Code § 510 | **HIGH** |
+| High-heat procedures (95°F) & indoor heat | 8 CCR §§ 3395, 3396 | **HIGH** |
+| "Designated person" (sick leave & CFRA) | AB 1041 | **HIGH** |
+| AB 2499 "qualifying acts of violence" rewrite | Gov. Code § 12945.8 | MEDIUM |
+| Paid voting leave terms | Elec. Code § 14000 | MEDIUM |
+| Lactation policy required elements | Lab. Code § 1034 | MEDIUM |
+| Fair Chance Act / background check procedure | Gov. Code § 12952; ICRAA | MEDIUM |
+| Cal-WARN acknowledgment in RIF policy | Lab. Code § 1400 et seq. | MEDIUM |
+| Pay-scale disclosure on request (SB 1162) | Lab. Code § 432.3 | LOW |
+| Whistleblower policy (Lab. Code § 1102.5) | § 1102.8 posting | LOW |
+| Make-up time / day-of-rest / split-shift premium (if applicable to schedules) | Wage Orders | LOW |
+| Civil Air Patrol & emergency-responder leave (100+ EE employer) | Lab. Code §§ 1501, 230.3–230.4 | LOW |
+
+---
+
+## STRENGTHS TO PRESERVE
+For balance when speaking with counsel: the at-will language is consistent and properly limited to President-signed modifications; meal/rest **premium pay** is affirmatively promised; heat-illness cool-down rights, reporting-time pay, § 2802 reimbursement, SB 553 WVPP, harassment-training cadence, final-pay timing, personnel-file access timelines (30/21 days), and organ-donor/military-spouse/school-activities leaves are all present and mostly correct. The core problem is **stale law (2020–2022 era) and un-merged edits**, not structure.
+
+**Recommended next step:** Before the attorney meeting, (1) strip all duplicated/expired sections so counsel reviews a single clean draft; (2) flag Issues 1–16 as must-fix before distribution; (3) hold distribution of the 2026 revision — issuing this draft as-is would create documentary evidence of non-compliant policies with a 2026 date stamp.

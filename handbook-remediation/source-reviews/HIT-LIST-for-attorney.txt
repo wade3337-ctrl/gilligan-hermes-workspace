@@ -1,0 +1,160 @@
+SUBJECT: Employee Handbook - Legal Issues Hit List for Attorney Review
+
+Gilligan,
+
+Forwarding on Jason's request. This is the synthesized legal hit list from the handbook review — two independent AI legal analysts (Claude and GPT-5.6) read the full handbook and flagged issues. They agreed on almost everything, so the items below are high confidence. Items marked BOTH were caught independently by both analysts.
+
+This is a discussion guide for an attorney, not legal advice.
+
+Jason,
+
+Here is the legal hit list from the handbook review. Two independent AI legal analysts (Claude and GPT-5.6) read the full handbook and flagged issues. They agreed on almost everything, so the items below are high confidence. Items marked BOTH were caught independently by both analysts.
+
+This is a discussion guide for your attorney, not legal advice.
+
+
+TOP LINE
+
+Do not distribute this handbook as-is. It is a 2020-era document with layers of un-reconciled edits. The biggest risks are in three areas: stale leave laws that have been amended or repealed, wage-and-hour policies that create class-action and PAGA exposure for a 100+ person field workforce, and a safety program that is obsolete and generic for tree care.
+
+
+TIER 1 - FIX BEFORE DISTRIBUTION (HIGH RISK)
+
+1. CFRA ELIGIBILITY USES A REPEALED RULE [BOTH]
+The handbook says employees must work within 75 miles of a worksite with 50+ employees to qualify for CFRA leave. California eliminated that test in 2021 (SB 1383). CFRA now applies to employers with 5+ employees. GSTC has 100+ employees. Applying this rule as written means wrongfully denying protected leave. Any leave denial since January 2021 that relied on this test should be audited.
+
+2. CFRA SPOUSE AGGREGATION IS UNLAWFUL [BOTH]
+The handbook says if both spouses work at GSTC, their combined CFRA leave is capped at 12 weeks. That rule was eliminated in 2021. Each eligible employee gets their own full 12 weeks. Same defect repeats in the New Parent Leave section.
+
+3. NEW PARENT LEAVE IS BASED ON A REPEALED STATUTE [BOTH]
+This section requires 20+ employees within 75 miles, which was the old New Parent Leave Act. It was repealed and folded into CFRA in 2021. It also says GSTC can recover premiums by deducting from final wages, which violates California Labor Code sections 221 and 224 and triggers waiting-time penalties.
+
+4. DRUG POLICY VIOLATES CANNABIS PROTECTIONS [BOTH]
+The policy prohibits being at work with a measurable quantity of any drug in the blood or urine. Since January 2024, California law (AB 2188 and SB 700) prohibits adverse action based on off-duty cannabis use or non-psychoactive cannabis metabolites. The cannabis section tries to protect off-duty use but directly contradicts the main policy and pre-employment screening section. CDL drivers are exempt and should be carved out expressly.
+
+5. MANDATORY REPORTING OF ARRESTS AND CHARGES [BOTH]
+Employees must report any drug or alcohol charge and may be terminated for off-property criminal involvement. California Labor Code section 432.7 prohibits using an arrest or charge that did not result in conviction as a basis for discipline. Limit the reporting duty to convictions that affect job duties or driving privileges.
+
+6. EMERGENCY INCENTIVE EXCLUDED FROM OVERTIME CALCULATION [BOTH]
+The handbook says emergency incentive pay is separate from wages and overtime. A promised payment for emergency call-outs is non-discretionary and must be included in the regular rate for overtime and meal/rest premiums. This is textbook PAGA and class-action exposure across the entire field workforce.
+
+7. EMPLOYEE-PAID LOSSES AND FINAL-WAGE DEDUCTIONS [BOTH]
+Multiple policies shift costs to employees: unreturned uniforms, damaged or lost equipment, unauthorized credit card charges, and 50% tuition repayment. California requires employers to bear ordinary business losses. Deducting from final wages is unlawful and triggers waiting-time penalties. Recovery should be limited to dishonesty or willful misconduct, pursued separately, never via wage deduction.
+
+8. INVESTIGATION CONFIDENTIALITY MANDATE [BOTH]
+The handbook says anyone involved in a harassment investigation must keep it confidential under threat of discipline. A blanket rule chills protected activity and can violate NLRA section 7 and California law. Replace with a case-by-case request for discretion and a statement that employees are never prevented from discussing unlawful workplace conduct.
+
+9. ATTENDANCE POLICY PENALIZES PROTECTED LEAVE [BOTH]
+The attendance policy counts sick time as an absence, lets GSTC apply unused sick leave to unauthorized absences, and forfeits holiday pay for missing the day before or after a holiday. California prohibits any adverse action for using protected paid sick leave. Sick leave use is the employee's election, not the employer's. Add a carve-out for all legally protected absences.
+
+10. SICK LEAVE HAS MULTIPLE DEFECTS [BOTH]
+Reinstatement of accrued sick leave only if rehired within the same calendar year. The law requires 12 months. The family definition omits the designated person (AB 1041). The 40-hour cap is expressed as five days, but for crews on 10-hour schedules five days may exceed 40 hours and the statute requires the greater amount.
+
+11. NO TRAVEL-TIME POLICY FOR FIELD CREWS [BOTH]
+A tree-care company running crews to job sites has no policy on compensable travel time, mandatory yard reporting, vehicle loading, tailgate safety meetings, or pre-shift PPE. This is the single most common off-the-clock theory in tree-care class actions. The 5-minute clock-in rule makes it worse if crews are loading trucks or gearing up in that window.
+
+12. CAL/OSHA SAFETY PROGRAM IS OBSOLETE AND GENERIC [BOTH]
+The IIPP references OSHA 200 logs (replaced by 300 in 2002) and MSDS (replaced by SDS in 2013). PPE examples include bump caps instead of ANSI helmets. There is nothing on minimum approach distances to energized lines, which is the leading cause of tree-worker fatalities. No chainsaw leg protection, chipper procedures, aerial lift standards, ANSI Z133, or traffic control. The heat illness section omits mandatory high-heat procedures at 95 degrees and the 2024 indoor heat standard. The handbook itself becomes evidence of an inadequate IIPP after a serious incident.
+
+13. FMLA BONDING LEAVE CONTRADICTS ITSELF [BOTH]
+One paragraph says bonding leave must be taken in a single block and cannot be intermittent. The next paragraph says it can be taken intermittently in up to 2 blocks. Both are partially wrong under CFRA, which requires two-week minimum blocks but the employer must grant shorter durations on at least two occasions.
+
+14. BEREAVEMENT LEAVE HAS CONFLICTING ENTITLEMENTS [BOTH]
+One paragraph says 3 paid days. The next says 5 days with 3 paid. It also counts non-workdays against the entitlement, which unlawfully shrinks the leave. California requires 5 days for qualifying family members, usable within 3 months, counting only workdays missed.
+
+15. PDL CERTIFICATION AND TERMINATION LANGUAGE [BOTH]
+The pregnancy disability leave section threatens denial or automatic termination for paperwork issues and permits second and third medical opinions copied from FMLA, which California PDL rules do not generally allow. It also requires a blanket return-to-work release.
+
+
+TIER 2 - FIX BEFORE NEXT REVISION (MEDIUM RISK)
+
+16. EXPIRED COVID-19 LEAVE POLICIES [BOTH]
+About 140 lines describe FFCRA benefits that expired December 31, 2020. Delete both sections.
+
+17. DOMESTIC VIOLENCE AND VICTIM LEAVE IS OUTDATED [BOTH]
+Three overlapping policies track pre-2025 law. AB 2499 moved these rights into FEHA effective January 2025, expanded them to qualifying acts of violence, and extended leave to employees whose family members are victims. Rewrite to current law.
+
+18. EEO AND HARASSMENT SECTIONS HAVE ERRORS [BOTH]
+Protected-class lists are inconsistent across sections. The harassment policy says conduct must unreasonably interfere with work performance, which sets the bar too high. References to the agency are garbled (DFEH was renamed CRD in 2022). Reproductive health decision-making is missing from the main EEO statement.
+
+19. INVENTION ASSIGNMENT LACKS REQUIRED NOTICE [BOTH]
+The inventions clause claims all work-hour creations but does not include the mandatory Labor Code section 2870 notice. Without it the clause is unenforceable. Move to a separate agreement drafted by counsel.
+
+20. REIMBURSEMENT MADE CONTINGENT ON APPROVAL [BOTH]
+Business expense reimbursement is subject to approval and deadlines. Labor Code section 2802 requires reimbursement of all necessary expenses regardless of whether approval procedures were followed. Reserve discipline for bypassing procedures, but never deny reimbursement.
+
+21. MONITORING AND SEARCH POLICY IS OVERBROAD [BOTH]
+The handbook claims the right to monitor telephone conversations and inspect any container an employee possesses. California privacy law and wiretap rules require notice and consent for call interception. Personal effects have reasonable privacy protections. Limit to company property and lawful business systems.
+
+22. SOCIAL MEDIA POLICY [BOTH]
+The policy says personal posts should not reflect upon or refer to GSTC. Under current NLRB standards a blanket ban on referring to the employer is presumptively unlawful because it chills protected concerted activity and union discussion.
+
+23. VOTING LEAVE OMITS PAID TIME [BOTH]
+The handbook allows reasonable time off to vote but does not mention pay. California requires up to 2 paid hours when the employee lacks sufficient nonworking time, plus posted notice before elections.
+
+24. LACTATION POLICY MISSING REQUIRED ELEMENTS [BOTH]
+California requires the policy to include the right to request accommodation, the employer response process, and the right to file a complaint with the Labor Commissioner. Room requirements and field-crew logistics are not addressed.
+
+25. PHYSICAL EXAMS TOO BROAD [BOTH]
+All candidates must undergo a physical. ADA and FEHA permit post-offer exams only if applied uniformly by job category and job-related. Requiring physicals of office hires is hard to defend. Add Fair Chance Act procedures if background checks are run.
+
+26. AUTOMATIC TERMINATION LANGUAGE IN LEAVE POLICIES [BOTH]
+Multiple sections say employment will be terminated automatically for paperwork failures or failure to return from leave. Mandatory language removes discretion and can override the interactive-process obligation. Extended leave can be a reasonable accommodation. Soften to may result in discipline.
+
+27. PROGRESSIVE DISCIPLINE CREATES IMPLIED CONTRACT RISK [BOTH]
+The handbook promises annual written reviews, staged warnings, and efforts to give raises. Mandatory promises conflict with at-will status. State that reviews and coaching are discretionary and do not alter at-will employment.
+
+28. CAL-WARN NOT ADDRESSED [BOTH]
+With 100+ employees GSTC is covered by Cal-WARN, which requires 60-day notice for mass layoffs. The layoff policy is silent. Add a statement that reductions will comply with applicable notice laws.
+
+29. EXEMPT CLASSIFICATION NEEDS REVIEW [BOTH]
+The handbook says exempt employees are ineligible for overtime but does not address salary basis or California salary thresholds. Holiday pay speaks in 8-hour increments for exempt staff, which implies hourly treatment and can destroy the exemption class-wide.
+
+30. 401K SECTION CONTRADICTS ITSELF [FABLE]
+One sentence says the plan is employee contributions only. Another says GSTC provides a Safe Harbor employer contribution. Delete the outdated sentence and defer to plan documents.
+
+
+TIER 3 - DRAFTING AND CLEANUP (FIX ALL BEFORE CIRCULATION)
+
+31. Duplicate welcome letters, duplicate cell phone and technology policies with different terms
+32. PFL section says six eight weeks instead of eight weeks
+33. Full-time definition conflicts: more than 30 vs at least 30 vs fewer than 30
+34. Governing Principals of Employment has a typo and an empty heading
+35. Exempt staff paragraph is garbled
+36. Company name alternates between GSTC, Great Scott Tree Care, Great Scott Tree Service Inc., GSTS, and GTSC
+37. FMLA says unable to perform any essential functions instead of one or more
+38. Nonsmoking policy limited to office and client areas instead of all enclosed workplaces
+39. First aid rule could chill emergency response
+40. Certification repayment trigger is subjective and gendered
+41. Job abandonment says two (3) and has contradictory day counts
+
+
+MISSING POLICIES TO ADD
+
+42. Travel-time and tailgate-meeting pay policy for field crews
+43. High-heat procedures at 95 degrees and indoor heat standard
+44. Designated person in sick leave and CFRA definitions
+45. AB 2499 qualifying acts of violence rewrite
+46. Paid voting leave terms
+47. Lactation policy required elements
+48. Fair Chance Act and background check procedures
+49. Cal-WARN acknowledgment in layoff policy
+50. Whistleblower reporting policy
+51. CCPA/CPRA employee data privacy notice
+52. Workplace Violence Prevention Plan compliance audit
+
+
+STRENGTHS TO KEEP
+
+The at-will language is generally strong and properly limited to President-signed modifications. Meal and rest premium pay is affirmatively promised. Heat-illness cool-down rights, reporting-time pay, expense reimbursement intent, harassment training cadence, final-pay timing, and personnel-file access timelines are all present and mostly correct. The core problem is stale law and un-merged edits, not structure.
+
+
+RECOMMENDED SEQUENCE
+
+1. Freeze distribution and preserve the current draft as a privileged review exhibit
+2. Fix the Tier 1 items before any employee sees this document
+3. Have your attorney direct a privileged payroll and leave-denial audit
+4. Get a qualified Cal/OSHA and tree-operations audit of the actual written safety programs
+5. Consolidate into one clean version with a revision log, removing all duplicates and expired text
+6. Review all separate agreements including arbitration, confidentiality, inventions, and background checks
+7. Train HR, payroll, dispatchers, and crew leaders before obtaining fresh acknowledgments
