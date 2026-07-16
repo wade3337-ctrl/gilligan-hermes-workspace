@@ -21,6 +21,11 @@ updated: 2026-07-14
 ## Renewals tab (built 2026-07-14, Skipper-approved)
 Accounts whose **own current fiscal year has no budget yet** (contract not renewed / budget not entered) — they default off the Forecasting tab, so this tab surfaces every one. Engine `CityBudgetsRenewals.data.cfm` reuses the all-cities structures + the shared `cb*` FY helpers (`cbFyStartFor`+`cbResolveCurrent`) so **Stanton shows** and Industry's $666K-under-label-"26" is NOT a false positive. Split 🏛 Municipal / 🏢 Commercial; **Working** (actively billing/producing with no budget = unbudgeted-work alarm) flagged **red at top**, **Dormant** below; `⬇ Export CSV`. Live at build: 75 accounts / 10 funded / 65 renewals (Commercial 59 = 11 working/48 dormant; Municipal 6). Surfaced San Clemente $258,957 + Fountain Valley $45,936 muni unbudgeted work. Built to [[gsts-ui-spec]] v1.2. Ship #166.
 
+## ✅ 2026-07-16 — Long Beach PO-stream sub-cards (ship #179)
+- **Split found in TRIM IT:** LB's ONE agreement (RFP PR19-126) bills via 2 PO streams = 2 **sub-projects** under company 295947: **Parks & Rec (ProjectID 1098339)** + **Marine/Beaches (1101097)**. (3 dormant sub-projects ignored.) Brent's annual PO numbers (Marine 2260193x) are **NOT in TRIM IT** — contract PO=shared 22501007, invoice PO blank; Brent tracks them manually → split driven by **Project**, PO shown as static label.
+- **Built:** "PO Streams" section on the LB drill-down → 2 sub-cards (Budgeted/Invoiced/Call-Ins/Scheduled/Remaining + "Work attached" WO table), each scoped to its ProjectID w/ same FY window + scope-guard as parent. Data block guarded `companyID EQ 295947` (extensible). Verified play, 0 CF errors; **sub-cards reconcile to parent exactly** ($904K/$730,432.92/$1,993.18/$98,071.98). Invoiced ties Brent's 2 PDFs to the penny.
+- ⚠️ Parks budget = contract **$520,000** (so sub-cards sum to parent); Brent's report uses PO **$586,025** — contract-vs-PO nuance (same as Aliso).
+
 ## Applies / uses
 - [[dashboard-metric-standards]] — metric bands, welcome modal, pro-tips.
 - [[gsts-ui-spec]] — UI/styling; emoji `.cfm` needs a UTF-8 BOM.
