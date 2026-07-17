@@ -48,3 +48,8 @@ updated: 2026-07-04
 - **Fix:** running-dry no longer flags actively-serviced RECURRING accounts (recent completed work ≤60d + a booked upcoming WO). Recurring maintenance books ~1mo ahead, so the raw "<3mo forward book" rule was false-flagging every recurring account (Skipper caught: Newport Coast Shopping Center under Irvine Co Retail = ~40 active centers). Ship #184, live on play, Newport Coast now clears; 52 still flagged (628 clear).
 - **⚠️ Canonical def changed → re-sync Aspen** (its running-dry mirrors the cockpit).
 - **▶ Bigger data fix owed (Skipper):** recurring commercial contracts aren't recorded in TRIM IT (only expired-2021 rows) → no real forward look-ahead. See [[trimit-recurring-contract-lookahead-gap]].
+
+### running-dry: segment-scoped grain (final, 2026-07-17)
+- **Commercial (ProjectTypeID=4):** account grain — not dry if the company is actively serviced (`ca.active`: future booked work + recent completed <=90d across any site). Fixes Irvine Co Retail's ~40 centers.
+- **HOA / Municipal (type<>4):** per-property — clears only if THIS site had work <=60d, so a dying HOA under a busy management company still surfaces (mgmt cos aggregate many independent HOAs under one CompanyID).
+- SQL: `RunningDry ... AND (p.ProjectTypeID <> 4 OR ca.active = 0) AND (dc.d IS NULL OR dc.d < 60d)`. Board flags 32 real. Still owed: Aspen re-sync + the [[trimit-recurring-contract-lookahead-gap]] data fix.
