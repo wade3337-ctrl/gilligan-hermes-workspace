@@ -11,7 +11,7 @@
 You run in container `hermes` (`~/.hermes → /opt/data`). Confirm each resource before you rely on it:
 
 - ✅ **TRIM IT (schedules of comp + Price Buddy):** you have `/opt/data/home/trimit-query.sh` (read-only SQL, pipe on stdin). The Price Buddy engine is the SQL function **`dbo.GetLevel4PriceRange$TPH`** — inspect it directly in TRIM IT. Municipal segment `ProjectGroupDefID = 11`.
-- ⚠️ **The warehouse (historical bids) is NOT mounted in your container.** It lives in **MuniBot's** container at `/opt/data/municipal-archive/` (host: `~/.munibot/municipal-archive/`, ~42 GB, 185 cities). Your `/opt/data` is `~/.hermes` — you cannot see it. **Resolve this FIRST, one of two ways:** (a) ask the Skipper/Gilligan to bind-mount the warehouse **read-only** into your container, or (b) **delegate all warehouse mining to MuniBot** (it has the mount + is the Track-1 owner of this data) and consume its structured results. Do not fabricate the historical-bid layer because you can't reach the files — stop and get access.
+- ✅ **The warehouse (historical bids) IS mounted read-only in YOUR container at `/warehouse/`** (~43 GB, 185 cities, 5 counties — the *same* files MuniBot has, a read-only view, no copy). Wired 2026-07-17. Read it directly; you cannot (and must not) write to it. *(MuniBot sees the same files at `/opt/data/municipal-archive/` — if you delegate to MuniBot, that's its path; in **your** container use `/warehouse/`.)* ⚠️ 7 cities are `.lnk` stubs whose data hasn't transferred yet — see §5C; treat them as missing, not empty.
 - 📎 **Long Beach proof-run packet** (Deliverable 4): `Pricing Worksheet.xlsx` (143K-tree inventory + species×DBH matrix) + `Appendix 1 - Cost Proposal.pdf` (the fill form, "submit AS IS"). Currently staged in Gilligan's workspace; have it placed where you can read it before the proof-run.
 - 🔒 **Confidentiality:** this is Track-1 municipal data. Keep it Track-1; never mix in arbor-core / Track-2 / BLACK material.
 
@@ -79,7 +79,7 @@ Three signal sources, normalized into ONE MuniBot-queryable store.
 - Output: per canonical band, **our cost floor at a given TPH** (parameterized, not hardcoded to 130).
 
 ### 5C. Historical bids — the "what's been competitive" signal *(NEW)*
-- Mine `/opt/data/municipal-archive/` for **our prior bid submissions** and, where the packet reveals it, **outcomes** (who won, at what price). Extract what we bid per line item.
+- Mine the warehouse (`/warehouse/` in your container; `/opt/data/municipal-archive/` if delegating to MuniBot) for **our prior bid submissions** and, where the packet reveals it, **outcomes** (who won, at what price). Extract what we bid per line item.
 - Use as the competitive-range signal. **Flag disposition gaps honestly** — don't imply win/loss we can't source.
 - **Verified warehouse contents (2026-07-17):** 185 city folders across 5 counties — ~3,562 "bid", 1,188 "proposal", 319 "cost", 291 "schedule", 201 "compensation", 210 "award", 7,835 "invoice", 733 "inventory" files, plus GIS shapefiles. Structure = per-city contract lifecycle (agreement, amendments, award staff report, bid working files, invoices, inventory).
 - ⚠️ **Known gap:** 7 cities are Windows `.lnk` shortcut stubs whose data did NOT transfer — **Long Beach, Anaheim, Aliso Viejo, Cerritos, Lake Forest, Stanton** (+ a network-share shortcut). Treat these as **empty/missing** until re-synced; do not report "no history" for them as if it were real absence.

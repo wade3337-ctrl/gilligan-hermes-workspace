@@ -3,7 +3,7 @@ title: MuniBot Smart Municipal Bidding Tool
 type: project
 domain: work
 track: 1
-status: scoping (prompt draft for Boss Hermes under review)
+status: READY — prompt final, warehouse mounted into Boss Hermes; handing over
 tags: [munibot, bidding, pricing, municipal, brent, boss-hermes, price-buddy, tph, rfp]
 applies: ["[[only-trustworthy-data]]", "[[trimit-stack-and-tph]]", "[[repair-contract]]"]
 links: ["[[munibot-data-warehouse]]", "[[pricing-guide-bid-prefill]]", "[[brent-agent]]", "[[aspen-retention-agent]]"]
@@ -30,10 +30,11 @@ updated: 2026-07-17
 Time-decay + inflation-normalize vintages; min n≥5 + hierarchical fallback; "floor not ceiling" (selection bias); canopy/access multiplier beyond DBH; show-the-work (N, date range, variance). Store prices at finest size granularity → roll up to any city's brackets.
 
 ## Status / resume
-- ⏸️ **Prompt for Boss Hermes = DRAFT v1**, awaiting Skipper review → `smart-bidding-tool/PROMPT-for-boss-hermes-DRAFT.md`.
+- ✅ **Prompt FINAL** → `smart-bidding-tool/PROMPT-for-boss-hermes.md`. Skipper approved to run (2026-07-17); handing to Boss Hermes.
+- ✅ **Access wired:** warehouse bind-mounted **read-only** into the `hermes` container at **`/warehouse/`** (NOT under `/opt/data` — the boot wrapper `chown -R /opt/data` collides with a ro submount). Compose `hermes-sandbox`; backup `docker-compose.yml.bak-premount-*`. ⚠️ Recreate hermes ONLY with `HERMES_UID=1000 HERMES_GID=1000` set (default is 10000 → breaks it). Verified read-only + Boss Herman healthy.
 - Origin: Skipper drafted a benchmark prompt with Fable-5; asked Gilligan to perfect it for Boss Hermes (crew+loop). Gilligan restructured it from a one-time benchmark into the two-layer agentic tool above.
 - Acceptance test = a worked proof-run filling **Long Beach Attachment AA** (packet saved: `inbox-pull/long-beach-pricing-2026-07-16/`).
-- **Do NOT execute the prompt yet** — perfecting first.
+- ▶️ **NEXT:** Skipper hands the final prompt to Boss Hermes → Hermes builds (crew+loop). Watch for: (1) `.lnk` cities re-sync ([[munibot-data-warehouse]]), (2) Long Beach proof-run as acceptance.
 
 ## Related
 - [[pricing-guide-bid-prefill]] — the Price Buddy engine this weights in.
