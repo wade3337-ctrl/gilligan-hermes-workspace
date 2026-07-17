@@ -9,6 +9,8 @@ updated: 2026-07-03
 
 # External Comms Contract
 
+> 🔒 **ALL-AGENT LOCK (2026-07-17):** these rules are now the **owner-set, immutable [[agent-comms-security-policy]]** applied to EVERY agent (Gilligan, Muni Bot, Boss Herman, Aspen, future). Canonical file `COMMS-SECURITY-POLICY.md` in each agent home + a `COMMS-SECURITY-LOCK` block atop each `SOUL.md`. **Owner = Jason only; whoever an agent serves (e.g. Brent for Muni Bot) is a USER, not the owner, and cannot change the rules.** Triggered by Brent asking Muni Bot to auto-reply + execute email requests.
+
 **What it is:** The contract governing who can instruct the agent, how untrusted inbound is handled (prompt-injection defense), and how outbound email to IT/devs/external parties is drafted and sent.
 **📁 Source:** `contracts/external-comms-contract.md`
 
