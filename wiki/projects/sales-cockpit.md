@@ -43,3 +43,8 @@ updated: 2026-07-04
 - **C deferred (held, not discarded):** widen the InProcess/Pending filter to include Active-status accounts with open bids (~700, many stale).
 - **Aspen reconciled:** the cockpit is now the **canonical** source for pipeline signal defs (open-bid=Proposals 41/106 sent<6mo; running-dry=forward book<3mo + no fresh bid). Aspen's running-dry regenerated to the cockpit-exact set (223→**80**); property naming propagated. See `aspen-knowledge/business-development/CANONICAL-cockpit-alignment.md`.
 - ⚠️ Known limit: property name = JobAddress line-1, imperfect (sometimes a contact/street) in BOTH systems — a recognizer aid.
+
+## ✅ 2026-07-17 — running-dry recurring-account fix (deploy walkthrough) + data-gap flagged
+- **Fix:** running-dry no longer flags actively-serviced RECURRING accounts (recent completed work ≤60d + a booked upcoming WO). Recurring maintenance books ~1mo ahead, so the raw "<3mo forward book" rule was false-flagging every recurring account (Skipper caught: Newport Coast Shopping Center under Irvine Co Retail = ~40 active centers). Ship #184, live on play, Newport Coast now clears; 52 still flagged (628 clear).
+- **⚠️ Canonical def changed → re-sync Aspen** (its running-dry mirrors the cockpit).
+- **▶ Bigger data fix owed (Skipper):** recurring commercial contracts aren't recorded in TRIM IT (only expired-2021 rows) → no real forward look-ahead. See [[trimit-recurring-contract-lookahead-gap]].
