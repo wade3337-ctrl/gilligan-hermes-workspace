@@ -13,7 +13,7 @@ updated: 2026-07-04
 # Sales Cockpit
 
 **One-liner:** The ONE consolidated front door for selling + bidding — folds 4 overlapping experimental pages (Arborist Workbench + Market Clusters + Customer Leads + My Jobs) into one cockpit over a customer relationship-profile spine, every site → drill → bid on-ramp.
-**Status:** 🟢 active — #174 shipped (property-name search + bid-out badge + orphans retired); Aspen reconciled to canonical defs. Owed: per-stage buttons, "Start a bid"→BidQueue, C (widen filter).
+**Status:** 🟢 active — #180 shipped (per-column dollar totals in the colored header bars: bidding=bidAmt, others=produced $; live-recompute; play-verified). #174 (property-name search + bid-out badge + orphans retired); Aspen reconciled to canonical defs. Owed: per-stage buttons, "Start a bid"→BidQueue, C (widen filter).
 **📁 Location:** `arbor-stack/sales-engine/ZTest-Cockpit*.cfm` (+ `-Search/-Profile/-List/-Book`); spec `SALES-COCKPIT-spec.md`
 **▶️ Resume:** `arbor-stack/sales-engine/SALES-COCKPIT-spec.md`
 
