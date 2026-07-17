@@ -13,10 +13,17 @@ updated: 2026-07-16
 
 **Goal:** get Brent's ~200GB municipal bid folder (`\\gsts-server200\GSTS\Municipal Bid Data\Jason_Compiled`) into MuniBot's brain so it can work the bid pipeline.
 
-## ▶️ RESUME (2026-07-16): waiting on Skipper to run SyncMuni v4 at the OFFICE
-- **What to do:** on VPN/office network, double-click `SyncMuni.cmd` (from the v4 zip). It maps the share to `T:`, then rsyncs STRAIGHT to the warehouse (no local copy). Window stays open + logs to `%LOCALAPPDATA%\MuniSync\sync.log`.
-- **Canonical script = `~/munibot-gateway/SyncMuni-v4-onehop.zip`** (built in-memory to dodge this box's save-hook, which corrupts `>nul`→`>/dev/null` on disk — DO NOT rebuild from the on-disk `.cmd`, it's mangled).
-- **Watchdog armed:** cron `*/30 upload-progress-monitor.sh` emails Skipper when data lands/finishes or stalls, then self-removes. State reset for a clean run.
+## ▶️ RESUME (2026-07-17): TRANSFER RUNNING from Skipper's home laptop
+- The ~42GB was **already staged** on the home laptop from an earlier two-hop attempt at `%LOCALAPPDATA%\MuniSync\data` (`C:\Users\JWade\AppData\Local\MuniSync\data`) — 42.6GB / 22,792 files / 2,082 folders. So we skipped the office/VPN/SMB path entirely.
+- **Launcher = `SyncMuni-LOCAL.cmd` (v5.1, local-source)** — `~/munibot-gateway/SyncMuni-v5_1-local.zip`. Reads the local `data` folder → rsyncs straight to `/opt/data/municipal-archive/` over Tailscale (`wade3337@100.82.161.7`). Self-contained: no cygpath/chmod (stripped cwRsync bundle lacks them), key bundled. Resumable — re-run anytime.
+- **Watchdog armed:** cron `*/30 upload-progress-monitor.sh` emails Skipper on done/stall, self-removes.
+- **MuniBot repointed:** SOUL + memory now name `/opt/data/municipal-archive/` (absolute) as raw source; old empty `~/home/municipal-history/` retired.
+
+## ⚠️ KNOWN GAP — 7 `.lnk` shortcut cities did NOT transfer (2026-07-17)
+rsync copied the 1,973-byte Windows shortcut stub, not the folder behind it. Missing city data: **Long Beach, Anaheim, Aliso Viejo, Cerritos, Lake Forest, Stanton** (+ a `CustomerInfo (192.168.1.6)` network-share shortcut). **To fix:** on the laptop resolve each shortcut's real target and either copy the real folder into `…\MuniSync\data\<County>\<City>\` or add its path to the sync, then re-run `SyncMuni-LOCAL.cmd`. (Long Beach packet itself is in hand from Brent's 2026-07-16 email; only its warehouse *history* is missing.)
+
+## ✅ Verified contents (2026-07-17): 185 city folders / 5 counties
+~3,562 "bid", 1,188 "proposal", 319 "cost", 291 "schedule", 201 "compensation", 210 "award", 7,835 "invoice", 733 "inventory" files + GIS shapefiles. Feeds [[munibot-smart-bidding-tool]] (historical-bids + schedule-of-comp signals).
 
 ## Architecture (built + proven end-to-end, receiver side)
 - **Warehouse** = `~/.munibot/municipal-archive/` on gilligan = MuniBot container bind-mount `/opt/data/municipal-archive` → MuniBot reads it directly, ZERO duplication. 798GB free.
