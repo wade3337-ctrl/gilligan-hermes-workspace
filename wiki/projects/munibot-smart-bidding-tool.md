@@ -3,7 +3,7 @@ title: MuniBot Smart Municipal Bidding Tool
 type: project
 domain: work
 track: 1
-status: READY — prompt final, warehouse mounted into Boss Hermes; handing over
+status: LIVE — built by Boss Hermes + installed & smoke-tested on MuniBot (v2 + SKILL palm fix); ready for first live Long Beach run
 tags: [munibot, bidding, pricing, municipal, brent, boss-hermes, price-buddy, tph, rfp]
 applies: ["[[only-trustworthy-data]]", "[[trimit-stack-and-tph]]", "[[repair-contract]]"]
 links: ["[[munibot-data-warehouse]]", "[[pricing-guide-bid-prefill]]", "[[brent-agent]]", "[[aspen-retention-agent]]"]
@@ -40,3 +40,11 @@ Time-decay + inflation-normalize vintages; min n≥5 + hierarchical fallback; "f
 - [[pricing-guide-bid-prefill]] — the Price Buddy engine this weights in.
 - [[munibot-data-warehouse]] — the historical-bid source.
 - [[brent-agent]] · [[aspen-retention-agent]] — municipal BD context.
+
+## ✅ 2026-07-17 — BUILT (Boss Hermes) + INSTALLED on MuniBot (Gilligan)
+Hermes built it (3 Python scripts: `bid_engine.py`, `competitor_extractor.py`, `bid_output.py` + `SKILL.md`), emailed to Gilligan, who installed it into MuniBot's container (docker `munibot`; host `~/.munibot` ↔ container `/opt/data`):
+- venv `/opt/data/.venv` (uv, container-native py3.13) + `pymupdf` + `openpyxl`; scripts in `/opt/data/home/`; `TRIMIT_PIPE` already correct; scratch dir created.
+- **v1 (email #62):** all 4 smoke tests pass — `bid_engine` pulled 129 TRIM IT rate items → 48 averaged, 180 nearby, 48 competitor files, 6 Price-Buddy bands; `competitor_extractor` pulled the full WCA-vs-GSTS line-item set.
+- **v2 (email #63):** 4 fixes — no-blank auto-fill (Crown Raise=35% Full Prune, Stump=35% Removal), **$130 TPH labor floor** (day $3,120 / emerg $390 day $488 night), variable volume discount (10% under WCA on high-vol bands, 8% std, 5% low-vol), Date-vs-Fan palm. `bid_output` smoke: "46 line items (no blanks)", "all labor ≥ $130 TPH floor".
+- **SKILL.md palm fix (email #64):** Date Palm clean 8% under WCA, Fan Palm 40% under. Placed at `/opt/data/skills/productivity/municipal-bid-pricing/SKILL.md`.
+- All 3 Herman emails replied (installed + verified) with Skipper approval. Ready for the first live Long Beach run with Brent. Scripts archived at `inbox-pull/munibot-pricing-tool-*`. Install gotchas: container HOME=/root (run scripts by full path); venv MUST be built inside the container. See [[munibot-data-warehouse]] (the data it reads).

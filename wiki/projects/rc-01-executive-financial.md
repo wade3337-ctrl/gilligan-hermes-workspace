@@ -10,7 +10,7 @@ links: ["[[rc-02-revenue-performance]]", "[[rc-04-spm]]", "[[steve-diligence-das
 updated: 2026-07-02
 ---
 
-# RC-01 Executive Financial Overview
+# RC-01 Executive Financial Overview → **renamed "Sales Performance" (2026-07-17)**
 
 **One-liner:** 5-tab executive suite in one iframe shell — Sales by Rep, Sales by Market (+ Treatments sub-tab), Closing % by Rep, Closing % by Market, Crew Performance — plus close-% and crew drills. Ships as a UNIT.
 **Status:** 🟢 shipped — **COMPLETE & PARKED** (Skipper, Jun 19). All 5 tabs reviewed, fixed, aligned; welcome modal added. Ships at the next full Executive-dashboard prod deploy.
@@ -32,3 +32,10 @@ updated: 2026-07-02
 ## Related
 - [[rc-04-spm]] — shares the win-rate/close-% definition (centralize to prevent drift).
 - [[steve-diligence-dashboard]] — same close-% shown in a second UI; city-exclusion aligned across both.
+
+## ✅ 2026-07-17 — RENAMED "Sales Performance" + Crew Performance split out (walkthrough, ships #189/#191/#192)
+Skipper: this frame is really a SALES dashboard except the Crew tab. Changes:
+- **Renamed** the frame title/H1 → **"Sales Performance"** (file name kept = `Executive$Financial$Overview$Frame.cfm`, so AppForms 1104 + the Beta→Frame rename SQL are untouched). Now **4 sales tabs**: Sales by Rep · Invoiced Revenue by Market · Closing % by Rep · Closing % by Market.
+- **Crew Performance split into its own standalone `Dashboard-CrewPerformance.cfm`** (single-frame clone, same date-filter + Welcome, iframes `Executive$Sales$ByCrewName.cfm`) for the production team. Classic menu (`Profile$Main.HiRes.cfm`) + V1.5 home (`Dashboard-V15Home.cfm`) both updated: "Executive Review" → "Sales Performance", + a "Crew Performance" link under Production. **New file added to the deploy set.**
+- **Closing % by Market** (#191): "25 active city contracts" was counting contract ROWS incl. a test company → now distinct municipal accounts with adaptive "N cities and M agencies" phrasing (can't go stale).
+- **Closing % by Rep** (#192): municipal-only reps dropped — rep must have ≥1 non-municipal proposal written in the window (the close-rate denominator).
