@@ -53,3 +53,6 @@ updated: 2026-07-04
 - **Commercial (ProjectTypeID=4):** account grain — not dry if the company is actively serviced (`ca.active`: future booked work + recent completed <=90d across any site). Fixes Irvine Co Retail's ~40 centers.
 - **HOA / Municipal (type<>4):** per-property — clears only if THIS site had work <=60d, so a dying HOA under a busy management company still surfaces (mgmt cos aggregate many independent HOAs under one CompanyID).
 - SQL: `RunningDry ... AND (p.ProjectTypeID <> 4 OR ca.active = 0) AND (dc.d IS NULL OR dc.d < 60d)`. Board flags 32 real. Still owed: Aspen re-sync + the [[trimit-recurring-contract-lookahead-gap]] data fix.
+
+## ✅ 2026-07-17 — Aspen re-reconciled to the new running-dry (follow-up done)
+Regenerated Aspen's running-dry set to the cockpit's new segment-scoped def: 80→**32 accounts** (cockpit=Aspen=32). Recurring-commercial false-positives dropped; dying HOAs kept. See [[our-work-kanban]] follow-ups; regenerator `~/contacts-work/recon_dry.py` off the live cockpit's 32-card set.
