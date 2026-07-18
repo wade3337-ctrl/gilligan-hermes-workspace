@@ -41,3 +41,10 @@ The chat box is a UI shell with no brain. We give it a brain (llama3.2) + a wire
 ## Related
 - [[v15-landing-page]] — the host page; this fills its lite-LLM chat placeholder.
 - [[arbor-core-arbor-ai-system]] — the graduation target: swap the brain from llama3.2 to Hermes for tool-use/actions.
+
+## 🧠 2026-07-18 — "sharpen the brain" pass (Skipper: "it feels super limited") — ships #194/#195
+Root cause of the limited feeling: the router only had **canned "top/best" cuts** and the 3B just *rewords* — so "least productive crew" gave the TOP crews, "who sold the least" gave top reps, "most budget left" listed OVER-budget cities, and "how are we doing / should I worry" deflected.
+- **Model decision:** benchmarked a local **qwen2.5:7b** — warm 5.6s, but cold-load 120s AND it **mis-ranked** a small list (picked 71.8 as "lowest" over 61.0). Lesson: **never let the LLM do selection/math.** Kept **llama3.2:3b** (fast, GPU-resident); removed the 7B to keep the box lean for the agents (Skipper's call).
+- **Fix (the pattern): CODE selects the right slice, the 3B only narrates.** Added direction-aware branches — crew/rep **least** (bottom of the sorted list), City Budgets **most/least remaining** (min/max), each code-computed (#194).
+- **Cross-dashboard STATUS synthesis (#195):** `answerStatus()` pulls Revenue pace (`actual_vs_paced_gap`, TPH vs 130) + City Budgets over-budget flags → holistic "how are we doing / should I worry" answer. Router branch catches how-are-we-doing / rundown / should-i-worry / everything-ok.
+- Live-verified all: least crew Jose Ortiz $65.2, lowest rep Rebekah Barker, most-left Newport Beach $1.92M, "how are we doing" → pace + TPH + 3 cities over budget. **Pattern established** → adding more cuts/synthesis is now fast. Next candidates: more "least/bottom" cuts on the other pages, trend/compare ("vs last month"), and write-actions.
