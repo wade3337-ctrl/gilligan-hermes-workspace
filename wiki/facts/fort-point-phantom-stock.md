@@ -3,7 +3,7 @@ title: Skipper's phantom stock (GSTS 2024 LTIP) — payout in the Fort Point sal
 type: fact
 domain: work
 confidential: black
-tags: [mna, fort-point, phantom-stock, psu, ltip, equity, earnout, confidential]
+tags: [mna, fort-point, phantom-stock, psu, ltip, equity, earnout, net-proceeds, confidential]
 applies: ["[[fort-point-confidentiality]]"]
 links: ["[[fort-point-acquisition]]", "[[gsts-adjusted-ebitda]]", "[[gsts-2026-earnout]]", "[[skipper-and-company]]"]
 updated: 2026-07-19
@@ -11,31 +11,34 @@ updated: 2026-07-19
 
 # 🔒 Skipper's phantom stock — how it pays in the Fort Point sale (CONFIDENTIAL)
 
-Applies [[fort-point-confidentiality]]. Legacy LTIP award that pays out AT the [[fort-point-acquisition]] Change in Control (CiC) — SEPARATE from and ON TOP OF his MIP (up to 15% go-forward equity). Source docs: `business-plan/phantom-stock/` (Award Agreement PDF + Second Amendment .doc). The award's own §15 confidentiality clause reinforces BLACK handling.
+Applies [[fort-point-confidentiality]]. Legacy LTIP award that pays out AT the [[fort-point-acquisition]] Change in Control (CiC) — SEPARATE from and ON TOP OF his MIP (up to 15% go-forward equity). The award's own §15 confidentiality clause reinforces BLACK handling.
+Source docs in `business-plan/phantom-stock/`: Award Agreement (PDF) + amendment (.doc) + **the Plan** (`Final EV Great Scott 2024 LTI Plan.docx`) + SPD + Net-PSU-calc examples + beneficiary form. (Scott sent 5; the 5th had not arrived as of 2026-07-19.)
 
 ## The award (GSTS 2024 Long-Term Incentive Plan, Cumulative Award Agreement)
 - **3,333⅓ PSUs**, **Base Price $100/unit**, effective 7/1/2024, expiration 7/1/2029. Signed by Scott Griffiths (Pres).
-- Base Price $100 + original **$10M** company valuation (2021, = ~$2.5M EBITDA × 4×) ⇒ **100,000 total units = whole company** ⇒ Skipper's award = **exactly 3.3333% = 1/30 of the company**.
+- Plan fixes the pool at **100,000 deemed units**. Base Price $100 → whole-company base = **$10M** (= the 7/1/2021 FMV, ~$2.5M EBITDA × 4×). So Skipper's award = **exactly 3.3333% = 1/30 of the company**.
 
-## The formula (both dials confirmed by Skipper 2026-07-19)
-- **Appreciation-only** (gets growth *above* the $10M floor, not full value), and
-- Valued on the **actual Fort Point deal price** (NOT a fixed 4× formula).
+## The formula (confirmed by the Plan + Skipper 2026-07-19)
+- **Appreciation-only:** net value = (Phantom Stock Value − Base Price) × units; PSV = FMV ÷ 100,000. He gets the growth *above* the $10M floor, not full value.
+- **At a CiC, FMV = actual NET PROCEEDS** (Plan §2 FMV def), NOT the gross sticker price and NOT the 4×EBITDA formula.
 
-> **Phantom payout = (deal consideration − $10M) ÷ 30.**  Every +$1M of deal price = **+$33.3K** to him.
+> **Phantom payout = (Net Proceeds − $10M) ÷ 30.**  Worked example in the docs confirms: FMV $12M → ($12M−$10M)/30 = **$66,666.60**.
 
-## Sizing against the LOI (day-1 ceiling $55M; DD may chisel)
-- $45M cash at close → ($45M − $10M)/30 = **~$1.167M**
-- Each $5M earnout (2026/2027 AGP), added to phantom value per Award **§5** as paid → **+$166.7K** each; both = **+$333K**
-- Full $55M (goals hit, no chisel) → ($55M − $10M)/30 = **~$1.5M** (ceiling)
-- Working range until DD: **~$0.8M–$1.5M**. DD chisel costs him **$33.3K per $1M** talked off.
+### ⚠️ Net Proceeds ≠ headline deal price (the correction the Plan forces)
+Plan defines **Net Proceeds** = consideration realized **after** deducting: **(a) debt retained/assumed**, and **(b) transaction costs — "taxes, attorney's fees, investment banking fees, accounting fees, etc."** So the base for his 1/30 is the **net** figure, materially below the **$55M gross** ceiling. Asymmetry to note: his $10M floor was set **gross** (4×EBITDA) but his exit is measured **net** — mildly unfavorable to him.
 
-## Vesting timing — why the Second Amendment mattered
-Second Amendment (eff. **6/15/2026**) extended the full-vest "Initial Vesting Term" from **7/1/2026 → 12/31/2026**. Close is targeted **late Sept/Oct 2026** — *inside* the extended window, so: **50% of PSUs vest at close, 50% at the 1-yr anniversary (~late 2027).** Without the amendment a Q4-2026 close would have dropped him into the worse 25%/25% bucket. Earnout-driven top-ups require **Continuous Service** when each earnout is paid (unless Involuntary Termination).
+## Sizing against the LOI (day-1 ceiling $55M gross; DD may chisel)
+- Formula: **(Net Proceeds − $10M) ÷ 30**; every **$1M** of Net Proceeds = **+$33.3K**.
+- Illustrative: if Net Proceeds land ~$45–52M (after debt + fees off the $55M gross, goals hit) → **~$1.17M–$1.40M**. Lower if net debt is large or DD chisels the price. Earnouts (2026/2027 AGP) added to Net Proceeds **as realized** (Plan: contingent proceeds counted only when realized), each $5M → **+$166.7K**, and only if in Continuous Service when paid.
+- Prior clean estimate of ~$1.5M was **gross-basis** and is now the ceiling before the debt/fee haircut.
+
+## Vesting timing — why the amendment mattered
+Amendment (eff. 6/15/2026) extended the full-vest "Initial Vesting Term" **7/1/2026 → 12/31/2026** (overrides the SPD's original 7/1/2026). Close targeted **late Sept/Oct 2026** → inside the window → **50% vests at close, 50% at the 1-yr anniversary (~late 2027).** Without it, a Q4-2026 close would have dropped him into the worse 25%/25% bucket. Distributions paid within **75 days** of each triggering event.
 
 ## Why it ties to the EBITDA/earnout work
-Since it's the *actual* deal price, adjusted EBITDA drives his phantom **twice**: it sets the multiple Fort Point pays (bigger price → bigger 1/30) AND sizes the earnouts (added via §5). So [[gsts-adjusted-ebitda]] / Steve's AGP definition sizes his MIP, earnout, AND phantom off one number. Defending add-backs in DD = defending his own phantom check.
+Since exit FMV = actual Net Proceeds, adjusted EBITDA drives his phantom **twice**: sets the price Fort Point pays (bigger Net Proceeds → bigger 1/30) AND sizes the earnouts (added as realized). [[gsts-adjusted-ebitda]] / Steve's AGP definition sizes his MIP, earnout, AND phantom. Defending add-backs in DD = defending his own phantom check.
 
 ## Open items to finalize the number (for counsel/Steve)
-- We have only the Award Agreement + **Second** Amendment — the underlying **Plan** doc and the referenced **First** Amendment are still missing.
-- Confirm phantom base uses **enterprise vs equity value** (net-debt adjustment) — 2021 $10M was likely also EV (EBITDA×multiple), so probably EV-to-EV, but verify.
-- Confirm Scott's **$9M rollover** does not reduce the phantom valuation base (it's a use-of-proceeds, not a price cut — but confirm).
+- **The Plan doc is now in hand** — mechanics confirmed. Despite its "SECOND AMENDMENT" title + a stray "Promissory Note/First Amendment" phrase, the amendment is the **first & only** one (template debris; recitals cite only the original 7/1/2024 agreement; Skipper confirmed).
+- To turn the range into a number, need the **Net Proceeds build**: (1) net debt paid off at close; (2) total transaction costs (Augusta/Cam Bryan banker fee, legal, QoE/accounting); (3) **does "taxes" in Net Proceeds mean transaction/transfer taxes only, or the seller's income tax?** — big swing, get counsel's read.
+- 5th of Scott's 5 emails still pending as of 2026-07-19.
