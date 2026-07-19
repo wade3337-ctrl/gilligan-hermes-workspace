@@ -12,7 +12,7 @@ updated: 2026-07-19
 # 🔒 Skipper's phantom stock — how it pays in the Fort Point sale (CONFIDENTIAL)
 
 Applies [[fort-point-confidentiality]]. Legacy LTIP award that pays out AT the [[fort-point-acquisition]] Change in Control (CiC) — SEPARATE from and ON TOP OF his MIP (up to 15% go-forward equity). The award's own §15 confidentiality clause reinforces BLACK handling.
-Source docs in `business-plan/phantom-stock/`: Award Agreement (PDF) + amendment (.doc) + **the Plan** (`Final EV Great Scott 2024 LTI Plan.docx`) + SPD + Net-PSU-calc examples + beneficiary form. (Scott sent 5; the 5th had not arrived as of 2026-07-19.)
+Source docs in `business-plan/phantom-stock/` (complete set, all received 2026-07-19): Award Agreement (signed PDF + Word copy) + amendment (.doc) + **the Plan** (`Final EV Great Scott 2024 LTI Plan.docx`) + SPD + Net-PSU-calc examples + beneficiary form. (The "5 of 5" email was just the editable Word version of the Award Agreement — no new terms.)
 
 ## The award (GSTS 2024 Long-Term Incentive Plan, Cumulative Award Agreement)
 - **3,333⅓ PSUs**, **Base Price $100/unit**, effective 7/1/2024, expiration 7/1/2029. Signed by Scott Griffiths (Pres).
@@ -41,4 +41,4 @@ Since exit FMV = actual Net Proceeds, adjusted EBITDA drives his phantom **twice
 ## Open items to finalize the number (for counsel/Steve)
 - **The Plan doc is now in hand** — mechanics confirmed. Despite its "SECOND AMENDMENT" title + a stray "Promissory Note/First Amendment" phrase, the amendment is the **first & only** one (template debris; recitals cite only the original 7/1/2024 agreement; Skipper confirmed).
 - To turn the range into a number, need the **Net Proceeds build**: (1) net debt paid off at close; (2) total transaction costs (Augusta/Cam Bryan banker fee, legal, QoE/accounting); (3) **does "taxes" in Net Proceeds mean transaction/transfer taxes only, or the seller's income tax?** — big swing, get counsel's read.
-- 5th of Scott's 5 emails still pending as of 2026-07-19.
+- Full document set now in hand (all 5 of Scott's emails received 2026-07-19; the "5 of 5" was just the editable Word copy of the Award Agreement — no new terms). Question emails drafted + sent to Skipper's work inbox: one for his attorney (payout-mechanics interpretation), one for finance/Steve (the Net Proceeds build). Awaiting his forward + the answers to lock the number.
