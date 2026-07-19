@@ -21,3 +21,4 @@ Applies [[fort-point-confidentiality]]. Signed LOI **2026-07-15** (Scott Griffit
 - **Timeline:** 75-day exclusivity from 7/15 → definitive PA + close **~late Sept/Oct 2026.** Diligence: BDO (QoE), Baker Hostetler (legal), IGS (market).
 - **Skipper is NOT the owner** (Scott is the Seller). Sell-side advisor/broker = **Cam Bryan, Augusta Advisors.**
 - **Skipper's phantom stock** (legacy 2024 LTIP, 1/30 of the company, pays out at close ON TOP OF the MIP): **(deal price − $10M) ÷ 30 ≈ $0.8–1.5M** → [[fort-point-phantom-stock]]. Source docs in `business-plan/phantom-stock/`.
+- **Key-Employee Incentive Plan** — repurposing a *departed* employee's forfeited **3.3333%** phantom block into a hybrid close/5-yr retention pool for ~10 key employees → [[key-employee-incentive-plan]] (draft, awaiting Scott's picks).
