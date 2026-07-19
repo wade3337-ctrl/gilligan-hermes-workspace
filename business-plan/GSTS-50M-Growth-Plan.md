@@ -103,5 +103,35 @@ Source: play SQL (nightly prod mirror), CFO-canonical revenue (`SUM(Invoices.Tot
 - **Key finding:** LA already a ~$2.9M business (warm-start); IE true greenfield → drove the "LA leads early, IE back-loaded" call.
 - TTM invoiced $21.29M vs $24M produced plan = ~$2.7M invoiced-vs-booked/below-plan gap.
 
+## 7. 2026 pace — pressure test (the earnout is on the bubble)
+
+Invoiced (canonical) H1 2026 = **$11.08M vs plan $12.25M (−$1.17M, −9.6%)**. **January is 78% of the miss** (−$917K, −36%); Feb–Jun tracked ~plan. Confirmed by Skipper: **real lost work, not a timing artifact.**
+
+- Full-year projections converge ~**$21.7–22.5M** (persist-gap / ex-Jan run-rate / flat-YoY). 2025 finished $21.3M.
+- Earnout translation (AGP ≈ 50% of rev): ~$21.7–22.5M → **AGP ~$10.8–11.2M — below the $11.4M floor.** Floor needs ~$22.9M rev; full $5M needs ~$25.1M (beat plan).
+- **Verdict: 2026 earnout NOT banked.** Partial is the realistic ceiling; zero is possible if H2 slips. Caveats: management add-backs (the "adjusted" cushion, set by QoE) + strong seasonal H2 are the swing factors. **EBITDA is the more fragile number** (operating leverage) — BDO's QoE will probe the $4.8M pace hardest.
+
+## 8. H2 2026 recovery plan (operational — from Boss Herman's deck + earnout reconciliation)
+
+**Boss Herman's "2026 Revenue Goal Action Plan" (data thru 7/10) is the operational recovery plan** — built by Skipper + Herman WITHOUT the LOI (Herman doesn't know about the deal; keep it that way). It targets the **$24M produced goal**; my job maps it to the **AGP earnout**.
+
+**Herman's plan (produced-revenue basis):** produced $12.12M thru 7/10; pace $22.56M; **gap $1.44M.** Close it via:
+- **Municipal Q3–Q4 forecast $5.23M − $4.16M Q1–Q2 baseline = +$1.07M bridge** → residual gap **~$365K**. (Count once — don't double-count scheduled/GoAhead work.)
+- **Protected private sales target $946K** ($747K HOA + $199K commercial) — drops toward **$500K** ONLY after municipal releases proven authorized/incremental/producible.
+- Capacity: 83 field staff → 34 municipal + 49 private → theoretical **$24.82M** finish ($24.52M holiday-adjusted); municipal needs 34–37 staff + 864 recovery hours. Saturdays add ~$625K HOA/commercial (can't fix municipal — weekdays only).
+- Scenarios: Conservative $4.38M (gap $1.22M) / Base $5.23M (gap $365K) / Aggressive $5.61M (gap ~$0).
+- 30-day action plan: confirm city work → confirm authorization → schedule & sell → measure. Weekly scorecard.
+
+**My reconciliation to the earnout (3 things Herman's plan can't see):**
+1. **Basis gap:** Herman closes the *produced* gap; the earnout is on *invoiced/adjusted P&L*. Produced ($12.12M) ≈ invoiced (~$12.0M) today (small lag), so producing ~$24M ≈ invoicing ~$24M ≈ **AGP ~$11.95M = mid-band earnout (~$5M)** — **IF invoiced within 2026.** ⚠️ **Late-Dec production invoiced in Jan 2027 does NOT count for the 2026 AGP.** Close/produce/invoice by ~early Dec.
+2. **The bridge is soft where it's biggest:** 71.5% of the $5.23M municipal forecast is "PROJECTED" ($3.74M), and municipal is **PO-gated** ([[municipal-budgets-po-gated]]). This is BOTH the plan's and the earnout's #1 risk. **Keep the sales target at $946K — do NOT drop to $500K on hope.** My Calendars pull confirms it: Sep–Dec are ~empty ($113K/$880K/$176K/$6K scheduled) = this municipal is unbooked and must be authorized to land.
+3. **Winter-daylight capacity:** Herman's 9–9.5 productive hrs/day is a summer figure; Nov–Dec compresses it (crew-review flag). **Front-load the 864 municipal recovery hours + floating crews into Sep–Oct**, not Nov–Dec.
+
+**Demand de-risked (Skipper, 2026-07-19):** Brent's City Budgets projections are **reliable — municipal is very predictable and lands ~on forecast.** So the ~$3.3M "projected" municipal (incl. Irvine's ~$1.37M) is trustworthy, and the $5.23M bridge holds. The residual risk is no longer *authorization* — it shifts to **execution + timing:** (a) STAFF and PRODUCE the municipal at pace (Herman's 34–37 crew, 864 recovery hrs, **front-loaded Sep–Oct** before winter daylight), and (b) **invoice within 2026** (Dec cutoff for the AGP earnout). Both controllable.
+
+**⚠️ Earnout-max insight (deal-aware; Herman's plan can't see this):** Herman's plan drops the private-sales target to $500K once municipal is proven — correct for a **$24M goal**. But the **earnout rewards going ABOVE $24M.** At $24M rev → AGP ~$12.0M → ~$2.7M of the $5M earned. The full $5M needs ~$25.1M rev ($12.5M AGP). On the sliding scale, **each $1 of revenue from $24M→$25M ≈ $2.27 of earnout** (~$4.55/AGP$). So the private-sales lever above $24M is worth ~2× — **do NOT ease off at $24M; keep the sales target near $946K to chase the full $5M** (produced/invoiced in 2026).
+
+**Bottom line:** with reliable municipal, the 2026 earnout **floor is safe and mid-band is likely** (~$2.7M) — the game is **maximizing toward the $5M cap via private sales + on-time production.**
+
 ---
-*Re-cut 2026-07-19 to the Fort Point deal terms. AGP/EBITDA figures illustrative pending diligence definitions. Confidential — Gilligan + Skipper only.*
+*Re-cut 2026-07-19 to the Fort Point deal terms. §7–8 add the 2026 earnout pressure-test + H2 recovery (Herman's deck reconciled to the earnout). AGP/EBITDA illustrative pending QoE definitions. Confidential — Gilligan + Skipper only.*
