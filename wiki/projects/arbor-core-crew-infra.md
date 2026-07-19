@@ -6,8 +6,8 @@ track: 2
 status: active
 tags: [arbor-core, crew, ai-models, gemini, kimi, glm, confidential]
 applies: []
-links: ["[[arbor-core-strategy-foundation]]", "[[arbor-core-arbor-ai-system]]", "[[arbor-core-v15-auth]]", "[[arbor-core-onestop-ui]]"]
-updated: 2026-07-03
+links: ["[[arbor-core-strategy-foundation]]", "[[arbor-core-arbor-ai-system]]", "[[arbor-core-v15-auth]]", "[[arbor-core-onestop-ui]]", "[[crew-llms-and-helpers]]"]
+updated: 2026-07-19
 ---
 
 # arbor-core — Crew model integration
@@ -22,7 +22,8 @@ updated: 2026-07-03
 - Scripts: `gemini-ask.py`, `glm-ask.py` / `glm-judge.py` / `glm-worker.py`, `kimi-ask.py` / `kimi-worker.py`, `fable-ask.py`, `_TEMPLATE-ask.py`; **Codex** wrappers `codex-code.sh` (headless code work) + `codex-review.sh` (headless review).
 
 ## State & flags
-- **Current models (Skipper-locked 2026-07-11, verified live):** gemini → **gemini-3.5-flash** (was 3.1-pro-preview; heavy-reasoner alt via `GEMINI_MODEL=gemini-3.1-pro-preview`) · kimi → **kimi-k2.7** (was k2.6; also updated in `kimi-worker.py` + `_TEMPLATE`) · glm → glm-5.2 · fable → claude-fable-5 · codex → gpt-5.6-sol. All swappable per-call via `GEMINI_MODEL`/`KIMI_MODEL`/`CREW_MODEL` env.
+- **Current models (Skipper-locked 2026-07-11, verified live):** gemini → **gemini-3.5-flash** (was 3.1-pro-preview; heavy-reasoner alt via `GEMINI_MODEL=gemini-3.1-pro-preview`) · kimi → **k3** (was k2.7/k2.6; default bumped in `kimi-ask.py` 2026-07-19 — Moonshot 2.8T MoE, 1M ctx, released 7/16) · glm → glm-5.2 · fable → claude-fable-5 · codex → gpt-5.6-sol.
+  - **K3 validated 2026-07-19** (blind vs gpt-5.6-sol, 2 rounds incl. a 24-hidden-case `calc()` evaluator → **both 100%**) but runs **~7× slower** (thinking mode) → keep K3 for quality/cross-lab; **route latency-sensitive & agentic coding to Codex.** Detail → [[crew-llms-and-helpers]]. All swappable per-call via `GEMINI_MODEL`/`KIMI_MODEL`/`CREW_MODEL` env.
 - **Codex = code worker + reviewer (Skipper, 2026-07-11).** Unlike the single-shot API asks (gemini/glm/kimi/fable), Codex is a full agentic CLI (`codex exec`, gpt-5.6-sol) that runs commands + edits files. **Call it in for actual code work**, not just reviews: `codex-code.sh "task"` (workspace-write sandbox, least-privilege to the `CODEX_CD` repo; `CODEX_SANDBOX=read-only` for analysis) — verified writing files 2026-07-11. Reviews: `codex-review.sh` (`codex exec review --uncommitted`, part of the multi-lab panel).
 - **⭐ STANDING RULE (Skipper, 2026-07-15, re-emphasized): use Codex to WRITE code, not just analyze/review.** Codex (`codex-code.sh`, gpt-5.6-sol, workspace-write) is the crew's code WRITER — for any real code/SQL/CFM write/refactor/fix, dispatch Codex to author it, then GLM/Gemini review. Don't default to hand-writing code myself or using Codex read-only. `CODEX_SANDBOX=read-only` is the exception (analysis only), not the default.
 - ⚠️ **kimi-ask SIGKILLs as a long foreground call** (message preemption) — use glm/gemini, or background kimi.
