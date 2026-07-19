@@ -3,19 +3,19 @@ title: Sales Cockpit
 type: project
 domain: work
 track: 1
-status: parked
+status: active
 tags: [sales-engine, crm, cockpit, workbench, bid-on-ramp]
 applies: ["[[gsts-ui-style-guide]]", "[[gsts-ui-spec]]", "[[repair-contract]]"]
-links: ["[[bid-process-reengineering]]", "[[scott-manager-dashboard]]", "[[pricing-guide-bid-prefill]]", "[[sales-engine-prototypes]]"]
-updated: 2026-07-04
+links: ["[[bid-process-reengineering]]", "[[scott-manager-dashboard]]", "[[pricing-guide-bid-prefill]]", "[[sales-engine-prototypes]]", "[[trimit-recurring-contract-lookahead-gap]]"]
+updated: 2026-07-17
 ---
 
 # Sales Cockpit
 
 **One-liner:** The ONE consolidated front door for selling + bidding — folds 4 overlapping experimental pages (Arborist Workbench + Market Clusters + Customer Leads + My Jobs) into one cockpit over a customer relationship-profile spine, every site → drill → bid on-ramp.
 **Status:** 🟢 active — #180 shipped (per-column dollar totals in the colored header bars: bidding=bidAmt, others=produced $; live-recompute; play-verified). #174 (property-name search + bid-out badge + orphans retired); Aspen reconciled to canonical defs. Owed: per-stage buttons, "Start a bid"→BidQueue, C (widen filter).
-**📁 Location:** `arbor-stack/sales-engine/ZTest-Cockpit*.cfm` (+ `-Search/-Profile/-List/-Book`); spec `SALES-COCKPIT-spec.md`
-**▶️ Resume:** `arbor-stack/sales-engine/SALES-COCKPIT-spec.md`
+**📁 Location:** LIVE file = `Dashboard-SalesCockpit.cfm` (+ `.Search/.Profile`), deployed play D:\; source in `arbor-stack/sales-engine/`; spec `SALES-COCKPIT-spec.md`. (Old `ZTest-Cockpit*/ZTest-SalesPipeline*` retired as play orphans, #174.)
+**▶️ Resume:** `arbor-stack/sales-engine/SALES-COCKPIT-spec.md`; owed items in the 2026-07-17 sections below + [[trimit-recurring-contract-lookahead-gap]].
 
 ## Applies / uses
 - [[gsts-ui-style-guide]] — page has NO charset meta → keep additions ASCII (entities in innerHTML, `\u` escapes); welcome modal + "?" pro-tips.
