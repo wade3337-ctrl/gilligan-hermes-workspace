@@ -41,4 +41,9 @@ Since exit FMV = actual Net Proceeds, adjusted EBITDA drives his phantom **twice
 ## Open items to finalize the number (for counsel/Steve)
 - **The Plan doc is now in hand** — mechanics confirmed. Despite its "SECOND AMENDMENT" title + a stray "Promissory Note/First Amendment" phrase, the amendment is the **first & only** one (template debris; recitals cite only the original 7/1/2024 agreement; Skipper confirmed).
 - To turn the range into a number, need the **Net Proceeds build**: (1) net debt paid off at close; (2) total transaction costs (Augusta/Cam Bryan banker fee, legal, QoE/accounting); (3) **does "taxes" in Net Proceeds mean transaction/transfer taxes only, or the seller's income tax?** — big swing, get counsel's read.
-- Full document set now in hand (all 5 of Scott's emails received 2026-07-19; the "5 of 5" was just the editable Word copy of the Award Agreement — no new terms). Question emails drafted + sent to Skipper's work inbox: one for his attorney (payout-mechanics interpretation), one for finance/Steve (the Net Proceeds build). Awaiting his forward + the answers to lock the number.
+- Full document set now in hand (all 5 of Scott's emails received 2026-07-19; the "5 of 5" was just the editable Word copy of the Award Agreement — no new terms).
+- **Status 2026-07-19: Skipper has SENT all outbound question emails.** Awaiting three replies (they land in HIS inbox, not Gilligan's — he must forward them here to finalize):
+  - **Attorney** — "taxes" interpretation, gross-vs-net asymmetry, 100%-sale proration, vesting/earnout confirms, amendment-is-only-one, 409A. (Attorney drafted the docs; no attachments needed.)
+  - **Steve #2 (v2, trimmed)** — transaction costs, net-proceeds bridge confirm, taxes-netting. (Steve #1, sent earlier: Adjusted-EBITDA bridge + AGP definitions — already covers EBITDA/earnout outlook, so #2 was trimmed to avoid overlap.)
+  - **Dimitri** — current balance sheet + debt/payoff schedule + cash → the **net-debt** input.
+- Once net debt + transaction costs + the taxes reading are in, plug into **(Net Proceeds − $10M) ÷ 30** to convert the ~$1.17–1.40M range into a hard number.
