@@ -28,6 +28,7 @@ Governed by [[fort-point-confidentiality]]. Detail in `business-plan/`.
 - [[gsts-2026-earnout]] — 2026 pressure test + H2 recovery (Herman's plan reconciled to the earnout).
 - [[gsts-adjusted-ebitda]] — book (~$0.4–1.1M TTM) vs deal-adjusted ($4.1M); add-back bridge = open item (email to Steve).
 - [[fort-point-phantom-stock]] — Skipper's legacy LTIP: 1/30 of the company, **(Net Proceeds − $10M) ÷ 30 ≈ $1.2–1.5M** at close, ON TOP OF the MIP. Full doc set in `business-plan/phantom-stock/`.
-- [[key-employee-incentive-plan]] — repurposing a departed employee's forfeited **3.3333%** into a hybrid close/5-yr retention pool for ~10 key employees (draft, awaiting Scott's picks).
+- [[key-employee-incentive-plan]] — the forfeited **3.3333%** as a **near-term (2026–2027) block** for ~10 key employees: 2026 close tranche + 2027 performance-hold tranche gated on $25M/'26 + $28.75M/'27 (draft, awaiting Scott's picks).
+- [[five-year-incentive-model]] — the **separate** go-forward 5-yr incentive on Fort Point's cap table (blank page; negotiate into the MIP during exclusivity).
 
 Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]] · [[dashboard-auth-gate]] (security gate + the rule: re-authorize headless consumers when you gate a surface).

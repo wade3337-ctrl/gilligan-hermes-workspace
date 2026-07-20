@@ -1,61 +1,68 @@
 # 🔒 GSTS Key-Employee Incentive Plan — DRAFT (CONFIDENTIAL / BLACK)
 
-**Status:** Jason's working draft, 2026-07-19. Awaiting Scott's picks to reconcile (his money, his call). Not yet reviewed by counsel (Gary Vyneman).
-Governs under [[fort-point-confidentiality]]. Related: [[fort-point-phantom-stock]] · [[fort-point-acquisition]].
+**Status:** Jason's working draft, restructured 2026-07-20. Awaiting Scott's picks to reconcile (his money, his call). Not yet reviewed by counsel (Gary Vyneman).
+Governs under [[fort-point-confidentiality]]. Related: [[fort-point-phantom-stock]] · [[fort-point-acquisition]] · [[five-year-incentive-model]].
 
 ## 1. Purpose & source
-Reward and retain the key employees who (a) got GSTS to a sellable state for the Fort Point transaction and (b) are needed to execute the 5-year value-creation plan. **Funding source:** one departed employee's **forfeited 3.3333% phantom block** (3,333⅓ PSUs of the 100,000-unit 2024 LTIP pool), which Scott wants to repurpose. The 3.3333% is the **sizing anchor** for the program.
+Reward and retain the key employees who got GSTS to a sellable state for the Fort Point transaction and who carry it through the earnout year. **Funding source:** one departed employee's **forfeited 3.3333% phantom block** (3,333⅓ PSUs of the 100,000-unit 2024 LTIP pool), which Scott is repurposing.
 
-## 2. Architecture — hybrid, two pools
-- **Pool A — "Close":** re-granted value that pays at the Fort Point close (~Sept/Oct 2026). Reward for getting us here. **Only the ten current contributors** — new hires get $0 here (they didn't help get us to the sale).
-- **Pool B — "Build":** go-forward stake on the PE-owned cap table; vests over the ~5-year hold, pays at the next exit (~2031). Carries a **reserve lane for future high-performers** (Chad + the two new sales reps) to earn 5-year gains without diluting the close pool.
+**Scope (Jason, 2026-07-20):** the 3.3333% block is a **near-term instrument only — fully deployed across 2026–2027.** It is NOT the 5-year plan. The go-forward 5-year incentive is a **separate program** on Fort Point's cap table → see [[five-year-incentive-model]]. Nothing from this block touches it.
 
-## 3. Allocation (of the company; close-$ estimated at ~$400K per 1% at a ~$50M net-proceeds midpoint; ~$450K/1% at the $55M ceiling)
+## 2. Architecture — one near-term block, two tranches
+The full 3.3333% is deployed to the ten current contributors, paid in two tranches:
 
-### Tier 1 — core drivers (40% close / 60% build)
-| Person | Role | Total % | Close (Pool A) | Build (Pool B) |
+- **Tranche 1 — "Close" (2026):** pays at the Fort Point close (~Sept/Oct 2026) if employed. Reward for getting us to the sale. **Unconditional on company performance.** ~6–12 mo post-close clawback to hold through transition.
+- **Tranche 2 — "Performance-Hold" (2027):** holds the team through the earnout year and gates their pay on the same revenue targets that drive the deal's earnout + Jason's phantom. **Split into two milestone slices (50/50):**
+  - **Gate 1 — 50% of the 2027 tranche:** releases on **$25M revenue by end of 2026**.
+  - **Gate 2 — 50% of the 2027 tranche:** releases on **$28.75M by end of 2027** (15% growth over the $25M target).
+  - Miss a gate → that slice forfeits; the other slice still pays if its gate is hit (partial credit, keeps the team fighting for Gate 2 even if Gate 1 slips).
+
+## 3. Allocation (near-term % = each person's slice of the block; $ at ~$400K per 1% at a ~$50M net-proceeds midpoint)
+
+Per person: **Total% → 2026 Close / 2027 Hold**, and the 2027 Hold splits 50/50 across Gate 1 / Gate 2.
+
+### Tier 1 — core drivers
+| Person | Role | Total % | 2026 Close | 2027 Hold (G1 / G2) |
 |---|---|---|---|---|
-| Nate Perkins | Sales Manager | 0.55% | 0.22% (~$88K) | 0.33% |
-| Brent Beller | Contract Admin Lead (municipal/earnout) | 0.55% | 0.22% (~$88K) | 0.33% |
-| Garrett Cornish | Lead Sales Arborist (A-player) | 0.50% | 0.20% (~$80K) | 0.30% |
-| Omar Sanchez | Branch Manager | 0.45% | 0.18% (~$72K) | 0.27% |
-| Manuel Perez | Branch Manager | 0.45% | 0.18% (~$72K) | 0.27% |
-| Jaime Meza | Director of Ops (Acting; upgrade-pending) | 0.45% | 0.18% (~$72K) | 0.27% |
+| Nate Perkins | Sales Manager | 0.55% (~$220K) | 0.33% (~$132K) — 60% | 0.22% (~$88K): 0.11 / 0.11 |
+| Brent Beller | Contract Admin Lead (municipal/earnout) | 0.55% (~$220K) | 0.22% (~$88K) — 40% | 0.33% (~$132K): 0.165 / 0.165 |
+| Garrett Cornish | Lead Sales Arborist (A-player) | 0.50% (~$200K) | 0.30% (~$120K) — 60% | 0.20% (~$80K): 0.10 / 0.10 |
+| Omar Sanchez | Branch Manager | 0.45% (~$180K) | 0.225% (~$90K) — 50% | 0.225% (~$90K): 0.1125 / 0.1125 |
+| Manuel Perez | Branch Manager | 0.45% (~$180K) | 0.225% (~$90K) — 50% | 0.225% (~$90K): 0.1125 / 0.1125 |
+| Jaime Meza | Director of Ops | 0.45% (~$180K) | 0.225% (~$90K) — 50% | 0.225% (~$90K): 0.1125 / 0.1125 |
 
-### Tier 2 — need-for-now (close-weighted)
-| Person | Role | Total % | Close | Build |
+### Tier 2 — through-close insurance
+| Person | Role | Total % | 2026 Close | 2027 Hold (G1 / G2) |
 |---|---|---|---|---|
-| Dimitry Rabyy | Controller (B; needed for now) | 0.10% | 0.10% (~$40K) | — |
+| Dimitry Rabyy | Controller (flight-risk through DD/close) | 0.10% (~$40K) | 0.08% (~$32K) — 80% | 0.02% (~$8K): 0.01 / 0.01 |
 
-### Tier 3 — functional keeps (60% close / 40% build, small)
-| Person | Role | Total % | Close | Build |
+### Tier 3 — functional keeps
+| Person | Role | Total % | 2026 Close | 2027 Hold (G1 / G2) |
 |---|---|---|---|---|
-| Roxanne Montijo | HR Manager (5-year keep) | 0.10% | 0.06% (~$24K) | 0.04% |
-| Rosa Rodriguez | Internal Ops Coordinator | 0.07% | 0.042% (~$17K) | 0.028% |
-| Naomi Carlos | Quality Control Coordinator | 0.07% | 0.042% (~$17K) | 0.028% |
+| Roxanne Montijo | HR Manager | 0.10% (~$40K) | 0.05% (~$20K) — 50% | 0.05% (~$20K): 0.025 / 0.025 |
+| Rosa Rodriguez | Internal Ops Coordinator | 0.07% (~$28K) | 0.035% (~$14K) — 50% | 0.035% (~$14K): 0.0175 / 0.0175 |
+| Naomi Carlos | Quality Control Coordinator | 0.07% (~$28K) | 0.035% (~$14K) — 50% | 0.035% (~$14K): 0.0175 / 0.0175 |
 
-**Totals:** allocated **≈ 3.29%** (Pool A ≈ 1.41% ≈ **~$562K close cash to split** · Pool B ≈ 1.88%). ~0.04% close-side slack. **Newcomer reserve = go-forward (Pool B) carve, sized in the Fort Point MIP negotiation — not from the close block.**
+**Totals:** allocated **≈ 3.29%** of the 3.3333% block (~0.04% slack). Near-term cash ≈ **~$1.32M** at midpoint — **2026 tranche ≈ 1.725% (~$690K)** · **2027 tranche ≈ 1.565% (~$626K)**, each 2027 gate-slice ≈ 0.78% (~$313K).
 
 ## 4. Design principles (the logic locked in)
-- **Fund only keeps.** No retention capital for underperformers or exit candidates (excluded: Raudel, Jordan Kim, Megan, Steve/CFO). Don't lock in people you're trying to move out.
-- **A-players top on both pools.** Revenue/ops leaders lead; branch managers a notch below; functional/support keeps get modest, close-weighted slices.
-- **Newcomers: no close, yes build.** They didn't earn the sale, but get a 5-year lane (Pool B reserve).
-- **Already covered / out:** Jason (15% MIP), Scott (Seller), Jeanie Roulson (holds the *other* 3.3333% phantom award).
+- **Full deployment through 2027.** The whole block is near-term. The old "build" half is now the **2027 Hold tranche paid in cash** (pulled forward from a 2031 illiquid-equity exit) — better for employees, real company cash in the earnout year.
+- **Split logic:** sale-drivers front-loaded to 2026 (Nate, Garrett 60/40); earnout-critical back-loaded to 2027 to hold them (Brent 40/60); managers even (50/50); Dimitry front-loaded as close insurance (80/20).
+- **Performance gate applies to everyone.** The 2027 tranche for all ten is gated on the $25M/'26 and $28.75M/'27 targets — aligns the whole pool with the earnout + Jason's phantom.
+- **Fund only keeps.** Excluded: Raudel, Jordan Kim, Megan, Victoria (gone). Out of pool: Jason (15% MIP), Scott (Seller), Jeanie Roulson (holds the *other* 3.3333% award), **Steve/CFO (covered under his own separate package)**.
 
-## 5. Vesting & triggers
-- **Pool A (close):** paid at the CiC if employed at close; ~6–12 month post-close clawback to hold through transition.
-- **Pool B (build):** ~5-year vest (e.g., 3-yr cliff then ratable, or 20%/yr), accelerating at the next exit; tie a slice to the **same 25% IRR / 3.0x hurdle as Jason's MIP** (Fort-Point-aligned) and a slice to interim EBITDA/AGP + account-retention milestones. Jaime's build carries a performance condition tied to his role upgrade.
+## 5. Open items / structuring flags (for counsel — Gary Vyneman)
+- **Steve / CFO — resolved:** intentionally out of this pool; he's **covered under his own separate package.** No action here.
+- **409A on the block.** Re-granting old $100-base units when FMV is ~$55M = deeply in-the-money = 409A red flag. Cleaner route: a **defined cash-bonus pool sized to the 3.3333% appreciation**, paid on the tranche/gate schedule above, rather than discounted re-granted units. Confirm with counsel.
+- **Tier 3 slivers (Rosa/Naomi, 0.07%)** may retain better as clean cash spot-bonuses outside the equity plan — less 409A admin + cap-table clutter. Decide with counsel.
+- **Define "revenue"** for the gates (booked vs. recognized; whole-company vs. specific segments) so Gate 1/Gate 2 are unambiguous.
 
-## 6. Structuring flags (for counsel — Gary Vyneman)
-- **409A on Pool A.** Re-granting old $100-base units when FMV is ~$55M = deeply in-the-money = 409A red flag. Cleaner route: a **defined closing cash-bonus pool sized to the 3.3333% appreciation**, rather than discounted re-granted units. Confirm with counsel.
-- **Pool B lives on Fort Point's cap table** → must be negotiated into the definitive PA / MIP **during exclusivity, before signing** — not after close.
-- **Confirm with Scott:** is the whole program capped at 3.3333%, or is the go-forward build/newcomer reserve incremental to it?
+## 6. Governance / timing
+- **Scott/Board can act on the block pre-close** (they control the LTIP pool now). Reconcile the roster against **Scott's picks** first.
+- **5-year model** ([[five-year-incentive-model]]) must be negotiated into the definitive PA / MIP **during exclusivity, before signing.**
 
-## 7. Governance / timing
-- **Pool A:** Scott/Board can act **pre-close** (they control the LTIP pool now).
-- **Pool B:** raise with Fort Point **now**, inside the 75-day exclusivity window.
-
-## 8. Next steps
+## 7. Next steps
 1. Reconcile against **Scott's picks** when he replies.
-2. Send structure to **Gary Vyneman** (409A route for Pool A; Pool B into the PA).
+2. Send structure to **Gary Vyneman** (cash-bonus route + gate definitions).
 3. Firm the close-$ once **net proceeds** land (net debt from Dimitry + fees from Steve).
+4. Open the **5-year model** as its own workstream ([[five-year-incentive-model]]).
