@@ -3,7 +3,7 @@ title: TRIM IT database cleanup (structural + stale data)
 type: project
 domain: work
 track: 1
-status: audited-2026-07-20 · blocked-on-prod-access
+status: PARKED 2026-07-20 (Skipper) · audited · blocked-on-prod-access
 tags: [trimit, database, cleanup, dedup, proposals, dead-tables, audit, sql-server]
 applies: ["[[repair-contract]]", "[[db-repair-contract]]"]
 links: ["[[trimit-db-gotchas]]", "[[prod-db-access-blocked]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]"]
@@ -25,6 +25,8 @@ Play is the CODE test-bed but its `GSTS` **DB is DROP+RESTORE'd nightly** (`\GST
 ## Two tools for two problems
 - **Structural junk + logs → clean in place** (reversible `_graveyard` quarantine → soak → drop). Rehearse on `GSTS_cleanup`.
 - **Stale data (dead proposals, dupes) → the arbor-core "extract only what we need" migration handles it by construction:** the 66M derived proposal-lines are never carried; companies come via **B2 match-or-create (dedup on import)**. So the new builds are junk-free without a risky mass-delete. → [[arbor-core-db-importers]].
+
+## ⏸️ PARKED 2026-07-20 (Skipper's call) — audit + plans done, resume when he says go.
 
 ## Blockers / resume
 - **Blocked on prod DB write access** (parked Jordan/AWS ask → [[prod-db-access-blocked]]) to EXECUTE on prod — but all scripts can be **built + rehearsed now** on `GSTS_cleanup` (reads from play, no prod access).
