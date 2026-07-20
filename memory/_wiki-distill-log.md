@@ -13,3 +13,17 @@ Running log of the nightly wiki-distill maintenance job (learns → LESSONS/PLAY
 - **Archived:** none.
 - **Orphans:** full wiki scan (excl. _archive/index) → 0 orphans; all notes have in- or out-links.
 - **Left for the Skipper:** nothing outstanding.
+
+## 2026-07-20 (covers PT 2026-07-19)
+- **Learns reviewed:** the two threads added to `2026-07-19.md` AFTER the first run (which fired ~06:43 UTC 7/19): (1) 🔒 Phantom stock + Key-Employee Incentive Plan (BLACK), (2) 🚀 V1.5 dashboards → PROD handoff (permission-driven menu, realuser-gate, pre-deploy leak sweep, staging-on-play).
+- **Verified already-distilled (session did its own wiki work):**
+  - `wiki/facts/fort-point-phantom-stock.md` — net-proceeds formula (Net Proceeds − $10M)/30, ~$1.17–1.40M range, amendment/vesting, 3 outbound question emails sent. Current (2026-07-19).
+  - `wiki/projects/key-employee-incentive-plan.md` — forfeited 3.3333% → hybrid Pool A/B, full roster, open items. Current (2026-07-19).
+  - `wiki/reference/dashboard-auth-gate.md` — single-source `dashboard-access-check.cfm`, permission-driven menu, 23-user seed, `realuser-gate.cfm`, pre-deploy leak sweep. Current (2026-07-20).
+  - All three referenced from `wiki/index/WORK.md` + cross-linked (fort-point-acquisition, anomaly-monitor-suite). No orphans.
+- **LESSONS.md:** already carries the matching entries (deploy-manifest misses shared libs / un-gated children 2026-07-20; Gmail .js-in-zip block 2026-07-20). +0.
+- **PLAYBOOK.md:** already carries single-source-of-truth gate + realuser-gate + stage-on-play + pre-deploy-crew entries (2026-07-19/20). +0.
+- **Notes created/updated:** 0 (session already captured everything; no near-duplicates to fold).
+- **Archived:** none.
+- **Orphans:** full wiki scan → 0 true orphans (every note has in- or out-links or an index-MOC pointer).
+- **Left for the Skipper:** nothing outstanding.
