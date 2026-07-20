@@ -15,6 +15,7 @@ updated: 2026-07-02
 - [[two-track-confidentiality]] — Track 1 (TRIM IT/play, open) vs Track 2 (arbor-core, BLACK).
 - [[build-principle-v1-first]] — prototype in TRIM IT V1 first → proven model becomes the arbor-core framework.
 - [[trimit-stack-and-tph]] — TRIM IT = ColdFusion 2023 + SQL Server; central metric TPH, 2026 target 130.
+- [[trimit-db-cleanup]] — DB cleanup audited 2026-07-20: proposals 98% never-approved (66M derived rows), ~5.6GB dead tables; frozen `GSTS_cleanup` rehearsal DB feasible; blocked on prod write-access.
 - [[sales-rep-attribution]] — dashboards attribute to the actual managing rep (`Projects.SalesRepID`).
 - [[scheduled-revenue-date-basis]] — ⚖️ per-day vs by-end vs by-start (decision pending).
 - [[june-invoicing-lag]] — 💵 month-end "billed" understates ~25%; invoicing finishes ~3–10 days into next month. Read produced/on-pace as the trustworthy close headline.
