@@ -30,5 +30,6 @@ Governed by [[fort-point-confidentiality]]. Detail in `business-plan/`.
 - [[fort-point-phantom-stock]] — Skipper's legacy LTIP: 1/30 of the company, **(Net Proceeds − $10M) ÷ 30 ≈ $1.2–1.5M** at close, ON TOP OF the MIP. Full doc set in `business-plan/phantom-stock/`.
 - [[key-employee-incentive-plan]] — the forfeited **3.3333%** as a **near-term (2026–2027) block** for ~10 key employees: 2026 close tranche + 2027 performance-hold tranche gated on $25M/'26 + $28.75M/'27 (draft, awaiting Scott's picks).
 - [[five-year-incentive-model]] — the **separate** go-forward 5-yr incentive on Fort Point's cap table (blank page; negotiate into the MIP during exclusivity).
+- [[fort-point-advisors-and-open-questions]] — **who answers which deal question** (Cam/banker=economics · Gary/attorney=phantom · Steve=EBITDA bridge · BDO=QoE) + LOI-settled terms + open items. Cam-call prep: `business-plan/cam-bryan-call-prep-2026-07-22.md`.
 
 Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]] · [[dashboard-auth-gate]] (security gate + the rule: re-authorize headless consumers when you gate a surface).
