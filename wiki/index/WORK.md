@@ -20,6 +20,7 @@ updated: 2026-07-02
 - [[scheduled-revenue-date-basis]] — ⚖️ per-day vs by-end vs by-start (decision pending).
 - [[june-invoicing-lag]] — 💵 month-end "billed" understates ~25%; invoicing finishes ~3–10 days into next month. Read produced/on-pace as the trustworthy close headline.
 - [[50m-growth-goal]] — 🎯 North Star: $25M→$50M in 5yrs via Aspen BD engine; targets = Inland Empire + LA County + grow OC backyard.
+- [[segment-margin-analysis]] — 📊 municipal vs HOA vs commercial: TPH equalized ~$123 all segments; muni "lower rate" = fixed-price erosion (~$6–9/hr mid-contract) + ~$6/hr wage top-up, NOT crew inefficiency. Cost half needs Steve. Feeds growth-plan mix + pricing tools.
 
 ## 🔒 BLACK — Fort Point M&A (need-to-know, main-session only; never Aspen/Herman/team/group)
 Governed by [[fort-point-confidentiality]]. Detail in `business-plan/`.
