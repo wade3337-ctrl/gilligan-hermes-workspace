@@ -33,9 +33,14 @@ They put a **$55M price** on the company. You want two things: **is that number 
 - **Ask:** *"The bonuses are tied to a profit measure. Spell out exactly what counts and what doesn't — and when each bonus actually gets paid."*
 - **Why you care:** Know precisely what to hit and when the money shows up. *(Steve owes part of this too.)*
 
-**5. "How much money do they hold back after closing?"**
-- **Ask:** *"How much of the proceeds sits in escrow or a holdback? For how long? Is there insurance instead that would let us keep more up front?"*
-- **Why you care:** Some of "your money" stays parked a while as a safety net. Know how much and how long.
+**5. "How much money do they hold back after closing?"** *(Note: Scott's already discussed R&W insurance — so it's in play. Don't ask "is there insurance?"; ask the sharper follow-ups below.)*
+- R&W insurance in plain terms: instead of holding *your* cash in case something you promised turns out wrong, the buyer buys a policy that pays *them.* So you keep more up front and less sits at risk — it's the seller's friend.
+- **Ask:**
+  - *"Since we're using R&W insurance, how much does that shrink the holdback — and how much of my money still gets parked, for how long?"*
+  - *"Who pays the premium — buyer, seller, or split?"* (one-time, ~2–4% of coverage)
+  - *"What's the deductible on the policy?"* (a first chunk, often ~1% of the deal, that still comes out of the sellers — the piece genuinely at risk)
+  - *"What's carved OUT of the insurance?"* (the big one — known problems, certain taxes, or fraud usually still fall back on the sellers)
+- **Why you care:** With insurance in play, the questions shift from "how much is held back" to **how small the leftover holdback is, who eats the premium, and what the insurance won't cover.**
 
 **6. "Where are we, and what could blow this up?"**
 - **Ask:** *"Where are we in the timeline right now? What's the single biggest thing that could kill the deal or drop the price — and what do you need from me or Steve to prevent that?"*
