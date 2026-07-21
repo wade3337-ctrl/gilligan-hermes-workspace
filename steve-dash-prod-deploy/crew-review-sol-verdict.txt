@@ -1,0 +1,30 @@
+
+- Emptying the table while the new CFM remains deployed silently restores the attribution bug.
+- Dropping the table before reverting every served CFM copy causes runtime errors.
+- It destroys any prior production table contents.
+
+Correct rollback order is: restore old CFM files in every served root, verify traffic is on the old version, then restore the backed-up DB rows/schema. Do not use an empty override table as a successful rollback.
+
+### 6. Production-only failure modes
+
+- The `GSTS` ColdFusion datasource is used for the queries; there is no separate `Workbench` datasource. The datasource’s SQL login must have cross-database `SELECT` permission on Workbench.
+- The deployment operator separately needs `CREATE TABLE`, `CREATE INDEX`, `DELETE`, and `INSERT` rights in Workbench.
+- Database ownership chaining does not automatically guarantee permission for these ad hoc three-part-name queries.
+- A case-sensitive production database could expose object/name differences not seen in play.
+- Existing `ix_por` is checked only by name and object, not by its columns or uniqueness. An incorrectly defined index with that name is accepted.
+- Production blocking/load may be much higher. Hundreds of individual inserts plus a full delete increase the inconsistent-data window.
+- `NOLOCK` on two override joins permits dirty/inconsistent attribution during deployment.
+- The static 564-row map has no go-forward process for proposals reassigned after July 21; figures will drift again even after a successful release.
+
+Required blockers to clear:
+
+1. Replace the seed script with transactional, fail-closed deployment and a unique `ProposalID` key.
+2. Back up any existing production table and establish a real DB rollback.
+3. Validate all 564 IDs and `CurRepID` values against production; abort on mismatch.
+4. Verify CF datasource cross-database permissions.
+5. Resolve and deploy to the exact served webroot(s), with post-copy hashes.
+6. Add numeric production acceptance checks for dashboard and CSV.
+7. Resolve the `UNDEFINED` override that currently drops proposal `396441`.
+8. Confirm any required CFO sign-off.
+
+**DO-NOT-SHIP — blocking reasons: non-atomic destructive reseed, no production ID/ownership validation, no uniqueness guarantee, unsafe rollback, unresolved cross-database permissions/webroots, and an `UNDEFINED` override that can silently exclude a proposal.**

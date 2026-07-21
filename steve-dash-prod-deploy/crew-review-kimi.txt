@@ -1,0 +1,51 @@
+# Adversarial Deploy Review — Financial Report Dashboard PLAY → PROD
+
+## 1. SQL script defects (blocking)
+
+**1a. `RAISERROR` does NOT stop the batch.** `RAISERROR(...,16,1)` raises an error and *execution continues*. If `Workbench` doesn't exist on prod, you get the error followed by 566 more failed statements (CREATE/DELETE/INSERTs) — a wall of red that a tired deployer scrolls past, or worse, partially succeeds in the wrong database context. Fix: `RETURN` immediately after, or wrap everything in `TRY/CATCH` + `THROW`.
+
+**1b. DELETE + 564 INSERTs is not transactional.** No `BEGIN TRAN`, no `SET XACT_ABORT ON`. If the connection drops, an INSERT fails, or someone kills the session at row 200, the table is left **partially seeded — and the dashboard runs fine with silently wrong attribution**. The worst possible failure mode: no error, wrong numbers for the CFO. Fix: `SET XACT_ABORT ON; BEGIN TRAN; ... COMMIT;` with rollback in catch.
+
+**1c. Concurrent readers during reseed.** This runs on a live prod DB. Between `DELETE` and the last `INSERT`, anyone loading the dashboard sees the table empty/partial → falls back to current-rep → **wrong win% with no error**, or blocking on the DML. A transaction fixes atomicity; without one there's a visible corruption window.
+
+**1d. No row-count assertion.** The final `SELECT COUNT(*)` is advisory — nothing fails the deploy if a line got truncated/corrupted in transit and only 561 rows land. Add `IF (SELECT COUNT(*) ...) <> 564 THROW 50001, 'Seed count mismatch', 1;` and make that a hard deploy gate.
+
+**1e. No uniqueness constraint on ProposalID.** The dashboard assumes a 1:1 join. The table has no PK/unique index, and the seed came from a snapshot query — the `Conflict` column strongly hints the snapshot source *had* ambiguous owners. If the 564 rows contain **any duplicate ProposalID**, every affected proposal double-counts in the LEFT JOIN → inflated/wrong win-by-year numbers. Pre-flight on the seed file: `GROUP BY ProposalID HAVING COUNT(*) > 1`. Then make `ix_por` UNIQUE.
+
+**1f. NULL `OrigRepName` rows silently no-op.** `COALESCE(ov.OrigRepName, current_rep)` falls back to current-rep for seeded-but-NULL rows — the exact bug being fixed, invisibly. Check the seed for NULL `OrigRepName` before deploy.
+
+**1g. Full-table DELETE wipes prod-local state.** "Idempotent" here means "destroys anything not in this file." If anyone ever adds prod-side overrides manually, re-running the script nukes them. Fine if documented as single-source-of-truth; it's not documented.
+
+## 2. Package / file gaps
+
+**2a. Byte-identical to play is a double-edged sword.** The drift check guarantees prod gets *play's exact content* — including any hardcoded play hostname in links/redirects, play datasource names, absolute paths, or debug flags. You verified files match play; you did **not** verify the files are environment-agnostic. Grep all 5 .cfm for: play hostnames, datasource name literals, `cflocation` URLs, and disk paths.
+
+**2b. Export path.** `FinancialReportExport.cfm` almost certainly writes a file (CSV/Excel) somewhere. Prod CF service account needs write perms to that dir; prod dir path must exist. Unverified = prod-only 500 on Export.
+
+**2c. Includes outside the package.** Header/NavBar/JS suggests `cfinclude`. Confirm every include resolves to the 5 deployed files and not to a shared-includes dir or an `Application.cfc/cfm` that exists on play webroot but not prod webroot. Relative includes across webroot roots are a classic play-works-prod-breaks.
+
+## 3. Permissions & cross-DB (blocking until verified)
+
+**3a. No GRANT in the script.** The script creates the table but never grants SELECT. The CF datasource login (likely a limited login, not the admin Jordan deploys with) needs `SELECT` on `Workbench.dbo.ProposalOriginalRep`. On play this presumably works because the login already has broad Workbench rights; prod is a *different server with its own security*. Missing grant → **"permission denied" runtime error on prod**, exactly the failure the LEFT JOIN was supposed to avoid. Add: `GRANT SELECT ON Workbench.dbo.ProposalOriginalRep TO [cf_login];`
+
+**3b. Same-instance assumption.** Three-part names require `Workbench` and `gsts` on the **same SQL Server instance**. "Prod is a separate SQL Server" + "Workbench already used by V1.5" suggests yes, but verify on *prod* specifically — if V1.5 used a linked server or a different CF datasource named 'Workbench', the 3-part join in these .cfm files will fail on prod even though V1.5 works.
+
+## 4. The play==prod ProposalID assumption
+
+Risk direction analysis (play is a ~24h-behind replica of prod):
+
+- **Override row for a proposal deleted in prod:** orphan row, never joins → harmless no-op. ✅
+- **Proposal reassigned in prod in the last 24h (or between snapshot 2026-07-21 and deploy):** the seed has **stale or missing** attribution → silently wrong win%. Not a no-op — wrong data. ⚠️ The snapshot is dated 2026-07-21; every day between then and deploy widens this hole.
+- **ID meaning something different on prod:** only if play isn't a true replica; accepted as low risk.
+
+**Real failure mode: staleness, not ID mismatch.** Also: there is **no ongoing maintenance process** — prod reassignments after deploy day never get overrides. The dashboard is correct at T+0 and drifts wrong forever after. That may be acceptable scope, but Steve should know the attribution table is a frozen snapshot, and ideally the snapshot should be regenerated within hours of deploy, not days.
+
+## 5. Deploy order / rollback
+
+- "Run SQL first" is enforced only by the instructions. If files go first, the dashboard hard-errors (invalid object) until SQL completes — a visible outage window for the CFO. Deploy in a low-traffic window or gate the page.
+- No documented rollback. Rollback = delete 5 .cfm (table is harmless leftover). One line in the runbook; add it.
+- No post-deploy smoke test defined. Minimum: run the count assert, then load the dashboard on prod and spot-check one known reassigned rep's win-by-year against play's numbers.
+
+## Verdict
+
+**DO-NOT-SHIP** — blockers: (1) no transaction/`XACT_ABORT` → risk of silently partial seed = wrong CFO numbers; (2) `RAISERROR` doesn't halt the batch; (3) missing `GRANT SELECT` for the CF datasource login on a fresh prod server; (4) unverified duplicate-ProposalID and NULL-OrigRepName rows in the seed (row-multiplication / silent fallback); (5) no hard assert on the 564 count; (6) unverified play-hostname/datasource literals and Export write-path permissions in the byte-identical files; (7) 2026-07-21 snapshot staleness unaddressed. All fixable in under an hour — fix them, then ship.

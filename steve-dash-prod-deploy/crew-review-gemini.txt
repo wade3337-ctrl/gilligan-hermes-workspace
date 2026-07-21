@@ -1,0 +1,45 @@
+### 1. Package Gaps & Financial Accuracy Risks
+*   **Static Override Drift:** The 564 overrides are hardcoded based on a PLAY snapshot from `2026-07-21`. Any proposal reassignments or new overrides that occurred on PROD in the last 24+ hours are missing. Steve (CFO) will see incorrect, un-overridden numbers for the most recent (and likely most critical) deals.
+*   **No Permissions Script:** The package is missing `GRANT SELECT` statements. The ColdFusion application connects via a specific datasource user (likely restricted to the `gsts` database). Creating a table in `Workbench` without granting `SELECT` to the CF runtime user will cause immediate database permission errors on PROD.
+
+---
+
+### 2. SQL Correctness, Idempotency, and Safety
+*   **CRITICAL: No Unique Constraint / Primary Key (Double-Counting Risk):** The table `Workbench.dbo.ProposalOriginalRep` is created without a `PRIMARY KEY` or `UNIQUE` constraint on `ProposalID`. 
+    *   *The Risk:* If the seed script is run twice, or if any duplicate `ProposalID`s exist in the 564 inserts, the `LEFT JOIN` in the dashboard query will return multiple rows for a single proposal. This will **silently duplicate financial transactions**, multiplying the CFO's sales and win-rate metrics.
+*   **No Transaction Block (Partial State Risk):** The script runs `DELETE FROM` followed by 564 individual `INSERT` statements without a `BEGIN TRANSACTION` / `COMMIT` block. If the script fails halfway through (e.g., network blip, disk space, or syntax error in the omitted lines), the table will be left partially populated. The dashboard will load but display incorrect, incomplete financial data.
+*   **Dirty Reads during Deploy:** Because there is no transaction, the `DELETE` immediately empties the table, and the 564 rows are inserted one-by-one. Any user loading the dashboard during this window will see un-overridden (wrong) numbers.
+
+---
+
+### 3. Runtime Error & Fallback Robustness
+*   **No Graceful Fallback for Missing Table:** While `COALESCE(ov.OrigRepName, current_rep)` handles missing *rows* gracefully, it does **not** handle a missing *table*. If the SQL script fails to run or is rolled back, the ColdFusion page will throw a hard database error (`Invalid object name 'Workbench.dbo.ProposalOriginalRep'`) and crash completely.
+
+---
+
+### 4. Play vs. Prod ID Alignment Risk
+*   **Identity Seed Divergence:** Assuming `ProposalID`s are perfectly identical between PLAY and PROD is highly dangerous. If PLAY has ever had test proposals inserted, or if the identity seeds diverged by even one digit, `ProposalID 382340` on PLAY might represent a completely different client, amount, or rep than `ProposalID 382340` on PROD. 
+    *   *The Failure:* This will not cause a database error; it will **silently corrupt the financial reports** by applying overrides to the wrong proposals.
+
+---
+
+### 5. Deploy-Order & Rollback Gaps
+*   **No Rollback Script:** There is no rollback SQL script provided to drop the table or restore the previous state if the ColdFusion deployment fails.
+*   **Multi-Node Webroot Sync:** If PROD consists of multiple load-balanced web servers, copying files to a single "prod webroot" will cause intermittent "File Not Found" or code-mismatch errors across nodes.
+
+---
+
+### 6. Prod-Only Failure Modes
+*   **Cross-Database Ownership Chaining:** Even if the CF user has access to both databases, if the `gsts` and `Workbench` databases have different owners on PROD, broken ownership chains will block the `LEFT JOIN` unless explicit permissions are granted.
+*   **Collation Conflicts:** If the PROD SQL Server instance uses a case-sensitive collation (e.g., `SQL_Latin1_General_CP1_CS_AS`) and PLAY does not, the mixed-case table name `ProposalOriginalRep` or column names may throw "Invalid Object" or "Invalid Column" errors at runtime.
+
+---
+
+### VERDICT
+**DO-NOT-SHIP** 
+
+**Blocking Reasons:** 
+1. **No Unique Constraint/PK on `ProposalID`:** Risk of duplicate rows causing silent double-counting of CFO financial metrics.
+2. **No SQL Transaction:** Risk of partial data loads and incorrect numbers if the seed script fails mid-execution.
+3. **Missing DB Permissions:** The CF runtime user lacks explicit `SELECT` grants on the new `Workbench` table, which will crash the dashboard.
+4. **Unverified ID Alignment:** High risk of silent data corruption if PLAY and PROD `ProposalID` identity seeds have diverged.
