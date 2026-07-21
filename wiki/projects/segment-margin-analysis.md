@@ -36,6 +36,15 @@ Skipper's "lower rate" = **NOT crew inefficiency** (TPH equal, muni hits targets
 - **Cost:** municipal carries ~$6/hr wage top-up + off-book compliance (certified payroll, DIR reg, apprenticeship, traffic crews).
 - **Combined margin gap ≈ ~$6/hr right after renewal → ~$12/hr mid-contract.** Municipal's value = predictable base-load volume/cash, not margin.
 
+## Top-down margin model (2026-07-21) — built from Dimitry's P&L (costs are whole-company only)
+GSTS only tracks cost whole-company (Dimitry), never by segment. But TPH/crews/equipment are identical across segments, so allocate all non-municipal-specific cost equally per crew-hour, then overlay ONLY the municipal adders.
+- **Company baseline/hr** (from `[[gsts-financials-2026-summary]]`): Revenue $123 · GM ~30% (actuals 28–37%, budget 28.7%) → **~$37/hr gross** · after OpEx ~25% → **~$4–6/hr net** (book net ~3%, razor thin).
+- **Municipal adders:** wage top-up ~$6/hr (quantified) + compliance (est., run at $0 in "fresh") + mid-contract erosion ~$6–9/hr on revenue.
+- **Gross margin/hr by segment:** HOA/Commercial **~$38–40** (above avg — carry no adders) · Municipal **~$32 fresh → ~$23–26 mid-contract**. **Gap ~$6/hr fresh, ~$12–15/hr mid-contract.**
+- **Dollar impact:** municipal ~63,500 crew-hrs/yr × $6–12/hr gap = **~$380K–760K/yr** margin given up vs private — ≈ the size of company book net income (~$540K/yr). Mix + municipal pricing = outsized profit levers.
+- Budget revenue by segment (accounts): 4105 HOA $11.0M · 4000 Muni-Cities $8.5M · 4100 Commercial $3.0M · 4200 Muni-Other $1.5M = $24M.
+- Soft spots: compliance overhead still an estimate (municipal likely slightly worse than shown); equal per-hour allocation of shared cost (fair — same crews/equipment).
+
 ## Strategic use (→ [[50m-growth-goal]])
 - **Escalators on municipal renewals** to kill the erosion (cross-check vs RFP renewal-cap language — the Irvine trap; see [[munibot-smart-bidding-tool]]).
 - **Weight growth toward HOA/commercial** — more margin per crew-hour → more AGP per hour.
