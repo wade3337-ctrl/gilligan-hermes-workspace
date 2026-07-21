@@ -134,4 +134,34 @@ Invoiced (canonical) H1 2026 = **$11.08M vs plan $12.25M (−$1.17M, −9.6%)**.
 **Bottom line:** with reliable municipal, the 2026 earnout **floor is safe and mid-band is likely** (~$2.7M) — the game is **maximizing toward the $5M cap via private sales + on-time production.**
 
 ---
-*Re-cut 2026-07-19 to the Fort Point deal terms. §7–8 add the 2026 earnout pressure-test + H2 recovery (Herman's deck reconciled to the earnout). AGP/EBITDA illustrative pending QoE definitions. Confidential — Gilligan + Skipper only.*
+
+## 9. Cam datapack (7/21/26) — CONFIRMED numbers + defend-the-EBITDA
+Two files from Cam (Augusta), 7/21: **Net Proceeds Estimate (7.21.26)** + **May Datapack (6/30/26, built on FTI's QoE)**. These close the plan's biggest open items (§5): the gross→net bridge and the AGP/EBITDA basis.
+
+### 9a. Gross → net proceeds (was open)
+Stock deal, $55M EV → **~$33.4M net to sellers at close (pre-tax)**. Bridge: −$10M earnouts → $45M price → −$9M rollover (20%) → +$4.18M cash − $2.70M vehicle loans − $1.42M insurance loan − $2.0M Augusta fee (3% to $50M / 10% above) − $0.3M legal − $0.275M RWI escrow − $0.10M NWC escrow = **$33.39M**. (Asset deal: $34.76M with a $1.37M tax gross-up.)
+- **Jason at close: $1.0M equity payout** (placeholder — confirm the base with Gary/Scott; the phantom formula lands ≈ $0.8M at these numbers). MIP + rollover participation are separate upside.
+- Other consideration: $10M earnouts (2026+2027) + escrow releases = $10.375M pre-tax. Rollover $9M → 3.0× → **$27M at exit (2030–31)**. Total to sellers, after-tax, across everything ≈ **$47.1M**.
+
+### 9b. AGP definition — CONFIRMED (unlocks §1)
+FTI ran the QoE (RF report 4/29/26). Method: **adjust COGS/Opex to a truer gross margin → QoE-adjusted GM ≈ 50% of revenue.** This validates the plan's AGP ≈ 50% assumption — **§1 is no longer illustrative**, and the $24M → $25.1M → full-$5M earnout bridge holds.
+
+### 9c. Segment TPH — our margin work independently validated
+Cam's QoE TTM TPH by customer type: **HOA $130.7 · Municipal $127.0 · Commercial $123.3** — the same equalized-TPH pattern we found from the raw data. Corroborates the "grow HOA/commercial, reprice municipal" thesis. → [[segment-margin-analysis]].
+
+### 9d. ⚠️ THE RED FLAG — Adjusted EBITDA has slipped BELOW the deal basis
+Confirmed Adjusted EBITDA (QoE): FY2023 **$4.14M** · FY2024 **$3.81M** · FY2025 **$4.46M** · **TTM May-26 $3.80M** (revenue $21.48M → 17.7% margin).
+- The deal is priced on **~$4.8M forward / $4.1M minimum TTM.** Actual trailing = **$3.80M — below even the floor.**
+- At 10.75×: the $4.1→$3.8M gap ≈ **~$3M of EV**; the $4.8→$3.8M gap ≈ **~$11M of EV** at risk if the forward doesn't materialize. This is the buyer/BDO's chisel — and it's the *same 2026 slowdown* (Jan −$917K, H1 −9.6%) that §7–8 flagged.
+
+### 9e. Defend-the-$4.8M-EBITDA play (H2 recovery = PRICE defense, not just the earnout)
+The H2 production recovery isn't only about the earnout — it's how we **rebuild TTM EBITDA back to the deal basis before diligence closes (~late Sept/Oct).**
+- **Gap:** TTM $3.80M → floor $4.1M = **+$0.3M**; → target $4.8M = **+$1.0M.**
+- **Lever:** at ~20% EBITDA margin, +$1.0M EBITDA ≈ **+$5M of revenue** produced/invoiced in H2 — i.e. hitting the $24M full-year plan (Herman's recovery closes the ~$1.4M production gap). Weight it to **high-margin HOA/commercial** (§9c) so each dollar lifts EBITDA more.
+- **Timing is everything:** the QoE prices off *trailing* figures → H2 production must **invoice before the diligence cutoff (~Sept/Oct)** to lift the TTM EBITDA the buyer sees. Late-Dec production invoiced in Jan '27 helps the *earnout* but NOT the *closing-diligence* TTM.
+- **The double win:** one operational push — front-loaded Sep–Oct, high-margin private, invoiced on time — both **defends the $55M price** (TTM EBITDA) AND **chases the earnout** (2026 AGP).
+
+Source files: `Great Scott - Net Proceeds Estimate - 7.21.26.xlsx` · `Great Scott - May Datapack - 6.30.26.xlsx` (media/inbound). Net-proceeds capture: `net-proceeds-estimate-7.21.md`.
+
+---
+*Re-cut 2026-07-19 to the Fort Point deal terms. §7–8 add the 2026 earnout pressure-test + H2 recovery. **§9 added 2026-07-21 from Cam's datapack: net-proceeds bridge, AGP ≈ 50% CONFIRMED, TTM Adj EBITDA $3.80M (below the $4.1M floor), defend-the-EBITDA play.** Confidential — Gilligan + Skipper only.*

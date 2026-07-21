@@ -32,13 +32,17 @@ The deck's built-in **"EBITDA (Final)"** runs roughly **$150K–$420K/month** �
 
 The **deal** uses **"Management Adjusted EBITDA" = $4.1M TTM / $4.8M target** — *higher*, because it adds back more (owner comp normalization, one-time items). **The ~$0.5–1.0M gap between the two is the management add-backs**, and it's exactly what BDO's Quality of Earnings will validate line-by-line.
 
-**➡️ Action to lock the live number:** read the **EBITDA line on the "IS – 12m rolling" tab** of the latest deck — that's the current TTM EBITDA. (I couldn't extract it cleanly by script; this workbook's tabs use coded labels. Easiest: you open that tab, or hand me the single EBITDA cell value and I'll plug it in + track it forward.)
+**✅ LOCKED (Cam datapack 7/21/26, built on FTI's QoE — RF report 4/29/26):**
+- **Adjusted EBITDA series:** FY2023 **$4.14M** · FY2024 **$3.81M** · FY2025 **$4.46M** · **TTM May-26 $3.80M** (revenue $21.48M → 17.7% margin).
+- **AGP basis CONFIRMED ≈ 50% of revenue** (QoE-adjusted GM; COGS/Opex reclassified). So current TTM Adj GP ≈ **$10.7M** — below the $11.4M earnout floor (needs ~$22.9M rev to clear the floor, ~$25.1M for the full $5M).
+- ⚠️ **TTM Adj EBITDA $3.80M is BELOW the $4.1M floor** the $55M price leans on (target $4.8M). At 10.75×, that's ~$3M (to floor) to ~$11M (to target) of EV at risk → **the H2 recovery must rebuild TTM EBITDA before diligence closes** (defend-the-EBITDA play, growth-plan §9e). Same 2026 slowdown as §7.
 
 ## 📊 One-glance scorecard (fill each month)
 ```
-TTM Adjusted EBITDA :  $____  /  $4.8M   (floor $4.1M)   [__% of target]
-2026 Adj Gross Profit:  $____  /  $11.4–12.5M band        [earnout: $____]
-2026 Revenue pace   :  ~$21.7–22.5M  /  $24M plan         [gap: ~$1.5–2.3M]
+TTM Adjusted EBITDA :  $3.80M  /  $4.8M  (floor $4.1M)   [79% — BELOW FLOOR; need +$0.3M→floor, +$1.0M→target]
+2026 Adj Gross Profit:  ~$10.7M TTM (≈50%×$21.48M)  /  $11.4–12.5M   [below floor; needs ~$22.9M rev to clear]
+2026 Revenue pace   :  ~$21.7–22.5M  /  $24M plan        [gap: ~$1.5–2.3M]
+AGP definition      :  CONFIRMED ≈ 50% of revenue (FTI QoE via Cam datapack, 7/21/26)
 ```
 
 ## Monthly update routine (what Gilligan does)
