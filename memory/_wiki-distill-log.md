@@ -27,3 +27,16 @@ Running log of the nightly wiki-distill maintenance job (learns → LESSONS/PLAY
 - **Archived:** none.
 - **Orphans:** full wiki scan → 0 true orphans (every note has in- or out-links or an index-MOC pointer).
 - **Left for the Skipper:** nothing outstanding.
+
+## 2026-07-21 (covers PT 2026-07-20)
+- **Learns reviewed** from `2026-07-20.md` + `2026-07-21.md` (PT-evening 07-20 rolling into 07-21 UTC): (1) TRIM IT DB-cleanup audit→PARKED, (2) MuniBot given its own Kimi K3 + Gemini 3.1 Pro bid-check crew (sol failed on cloned codex-oauth), (3) TRIM IT profile-pic install on play + the "play is NOT read-only" correction, (4) Steve's Financial Report Dashboard PROD deploy → Jordan (crew DO-NOT-SHIP r1 → hardened, 564→563), (5) Dimitry Convene financials + $2.0M→$4.1M EBITDA-bridge gap, (6) Cam Bryan(t) investment-banker call prep + advisor routing.
+- **Verified already-distilled by the session** (it did its own wiki work per Skipper "save all in your atomic wiki"): DB-cleanup (`trimit-db-cleanup`, WORK/PROJECTS, kanban #53) ✅; advisor routing (`fort-point-advisors-and-open-questions.md`, updated 07-21, Cam-vs-Gary-vs-Steve lanes + call-prep artifact) ✅. LESSONS already carried the two big new gotchas (codex-oauth can't clone into a 2nd container 07-20; "I have WRITE access to play, don't say read-only" 07-21; advisor-routing 07-21) and PLAYBOOK the db-audit/db-infra/db-data-model + deploy-staging/pre-deploy-crew/realuser-gate entries (07-20). **LESSONS +0, PLAYBOOK +0.**
+- **Notes UPDATED (4) — KEEP-CURRENT status freshness the session hadn't folded back:**
+  1. `wiki/projects/steve-diligence-dashboard.md` — status 🔵awaiting-signoff → 🟠 **PROD package built + crew-verified + emailed to Jordan (07-21)**; added a deploy section (byte-identical source, `Workbench.dbo.ProposalOriginalRep` prod-missing hidden dep, DO-NOT-SHIP r1 catches, UNDEFINED 564→563, staged `D:\GSTS-Deploy\STEVE-FRD-DEPLOY-20260721\`); +[[deploy-playbook]] link; date→07-21.
+  2. `wiki/index/PROJECTS.md` — Project-D line synced to the same 🟠 deploy-to-Jordan status.
+  3. `wiki/projects/munibot-smart-bidding-tool.md` — added 07-20 section: MuniBot now runs a Kimi K3 + Gemini 3.1 Pro 2-judge bid-check crew (sol dropped on the cloned-codex-oauth failure); links [[herman-agent]].
+  4. `wiki/facts/play-dev-access.md` — added "play is a WRITE path, not read-only" clarification (Administrator key vs the separate HermanRO/GSTSREADONLY/gilligan-bot RO accounts); date→07-21.
+- **Notes created:** 0 (all learns folded into existing notes — no near-duplicates; profile-pic recipe deemed too niche to add).
+- **Archived:** none.
+- **Orphans:** full scan (excl _archive/index) → 4 notes have zero OUTBOUND links but all 4 have inbound refs (`herman-trimit-login`←brent-agent · `gilligan-session-settings`←ENVIRONMENT · `gsts-employee-handbook-2026`←4 notes · `analysis-north-yard-hours`←gsts-field-labor-rate+overtime-cost-forecaster) → **0 true orphans.**
+- **Left for the Skipper:** nothing outstanding (Steve-dash now waits on Jordan; EBITDA bridge intentionally parked pending Steve's data).

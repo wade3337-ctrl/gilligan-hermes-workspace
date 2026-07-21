@@ -6,14 +6,21 @@ track: 1
 status: active
 tags: [dashboard, steve, diligence, win-rate, sales-performance, treatments, city-exclusion]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[steve-recon-a-financial-report]]", "[[rc-01-executive-financial]]", "[[rc-04-spm]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[workbench-play-db]]"]
-updated: 2026-07-10
+links: ["[[steve-recon-a-financial-report]]", "[[rc-01-executive-financial]]", "[[rc-04-spm]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[workbench-play-db]]", "[[deploy-playbook]]"]
+updated: 2026-07-21
 ---
 
 # Steve's Diligence Sales-History Dashboard (Project D)
 
 **One-liner:** Financial Report dashboard for Steve's diligence — proposal-grain win% by rep (jobs + $), Invoice Details (+ Direct Costs + Type), a Sales Performance tab, and a 20-col proposal-grain detail table keyed off Proposal#; feeds/aligns the company-wide win-rate fix.
-**Status:** 🔵 active — **built + render-verified on PLAY, awaiting Steve's sign-off**; nothing on prod yet. Latest: **Win/Loss-by-year attribution fix (2026-07-10, ship #111/#112)** — Skipper reviewed + approved; **verify email sent to Skipper to forward to Steve** (`steves-projects/financial-report-reconciliation/email-steve-winloss-READY.txt`). Prior: Steve's feedback build (Tree Health Care rename, proposal detail table, view=2 Columns/Export) Jul 2.
+**Status:** 🟠 **PROD deploy package built + crew-verified + emailed to Jordan Kim (2026-07-21)** — Steve (via Skipper) asked to push it live today; it was NOT in yesterday's V1.5 bundle (siblings were) so it ships separately. Awaiting Jordan to run it. Prior: Win/Loss-by-year attribution fix (2026-07-10, ship #111/#112, Skipper-approved). Prior: Steve's feedback build (Tree Health Care rename, proposal detail table, view=2 Columns/Export) Jul 2.
+
+## 🚚 PROD deploy package → Jordan (2026-07-21)
+- **Canonical source** = `winloss-fix/` (Jul 10, ship #111/#112), confirmed **byte-identical to play-live** (no drift).
+- **Hidden dep:** the dashboard LEFT JOINs `Workbench.dbo.ProposalOriginalRep` (attribution overrides) — that table exists on play but **NOT prod** → deploy includes a create+seed SQL. (General deploy gotcha: a dashboard joining a `Workbench.dbo.*` side-table needs that table stood up on prod or it silently returns nulls.)
+- **Crew review (Kimi K3 + Gemini 3.1 Pro + gpt-5.6-sol) = DO-NOT-SHIP round 1** → hardened: non-atomic reseed → `XACT_ABORT`+tran, `RAISERROR`→`THROW` asserts that actually halt, `UNIQUE` index (no double-count), count assert, `GRANT` for the CF login, AND a real data bug — proposal **396441** override `='UNDEFINED'` would EXCLUDE it (sol caught) → dropped UNDEFINED (**564→563**). Re-validated on a throwaway play table (clean, 563).
+- **Package** (5 cfm + hardened SQL + `DEPLOY-INSTRUCTIONS.md` + `CREW-REVIEW.md`) staged on play `D:\GSTS-Deploy\STEVE-FRD-DEPLOY-20260721\` (outside the webroot). Emailed Jordan (jkim) cc Steve (sguzowski@gstsinc.com) + Skipper, framed as Steve's fresh request today (not an add-on). Jordan runs DB-first → files, + supplies the CF-login GRANT.
+- **OPEN:** Jordan to execute; play still has the 564/UNDEFINED row (offered to Skipper to clean for parity). See [[deploy-playbook]] (stage-on-play pattern) + [[sales-rep-attribution]] (the override table).
 
 ## 🩹 Win/Loss-by-Year attribution fix (2026-07-10) — see [[sales-rep-attribution]]
 Steve (CFO) flagged 2024 "looks off." Two stacked bugs, both historical-years-only:
