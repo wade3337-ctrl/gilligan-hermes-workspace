@@ -11,6 +11,11 @@ updated: 2026-07-22
 
 # 🔒 Deal Tracker — live private dashboard + 2026 re-goal
 
+## 🔷 REBUILT as COUNT-ONCE LEDGER (2026-07-22, per Boss Herman's spec + Gilligan reconciliation)
+Skipper forwarded Herman's detailed "count-once path to goal" prompt; verified every layer LIVE (Herman's snapshot #s were pre-refresh). **Skipper decisions:** goal=**GoalSettings×12 $25.05M** (live, ZUserID9 $2,087,119/mo — flat, supersedes the SalesGoal monthly shape) · muni=**calendar-H2 $3.74M** (config `MUNI_H2_CALENDAR_FORECAST`; engine budget−invoiced reconciles ~$3.19M — TODO live calendar-muni calc) · accrual=**pursue** (needs Brent/accounting feed — canNOT infer from WO−invoice; adjusted actual = invoiced until fed).
+**Count-once bridge (live):** actual(acct-period, status-filtered) **$12.01M** + muni **$3.74M** + firm sold WO(46/109 dated ≤12/31, nonmuni) **$3.11M** + fresh pipeline(GoAheads 49 <90d HOA/Comm/PM deduped $3.88M ×40%) **$1.55M** = $20.42M covered → **UNCOVERED $4.63M** (vs Herman snapshot $2.95M — real gap is bigger). Muni classification `ProjectGroups.ProjectGroupDefID=11` validated (muni invoiced $4,192,062 = Herman's TRIM IT to the $). Actuals basis = `Invoices.PeriodID→Periods.StartDate`, `StatusDefID IN (21,100,22,23,148)`, no proforma/credit (was InvoiceDate+unfiltered = $66K high). Action lists: undated sold WOs $3.17M/251 · pending nearing 90d $0.55M/24 · muni over-budget cities · reconciliation diffs. Full proof: `business-plan/count-once-ledger-2026-07-22.md`. Script fully rewritten.
+**▶️ OPEN:** (1) accrual feed from Brent (needs Skipper OK to contact) · (2) live calendar-muni calc to replace the $3.74M config · (3) confirm sold-status list (46,109) w/ Herman (firm-WO recompute $1.5M under his snapshot) · (4) per-month coverage cols + drill-throughs (Herman §11 full table) not yet built.
+
 Applies [[fort-point-confidentiality]]. Skipper-only glanceable view of the numbers the $55M Fort Point deal rides on. Built 2026-07-21.
 
 ## The dashboard — REDESIGNED 2026-07-22 → revenue-productivity board
