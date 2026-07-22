@@ -17,7 +17,7 @@ updated: 2026-07-04
 **Why (Skipper 2026-07-04):** the sales-cockpit kanban rebuild sparked it — a board he can drag projects on, where "you can see when I move something," is far more productive than tabs on the repairs screen (and stops Gilligan forgetting things).
 
 ## Spec (Skipper 2026-07-04)
-- **Columns (both boards):** Backlog · Repairs · New builds · Alpha build · Beta build · Waiting on others · Release candidates · Shipped · **Abandoned prototypes** (keep, don't delete; out of the stack — supersedes the old "Prototypes tab on Reference page" idea).
+- **Columns (both boards):** Backlog · Repairs · **Database cleanup** (added 2026-07-22, TRIM IT board) · New builds · Alpha build · Beta build · Waiting on others · Release candidates · Shipped · **Abandoned prototypes** (keep, don't delete; out of the stack — supersedes the old "Prototypes tab on Reference page" idea).
 - **TWO separate boards** (separate projects, some intersection = mostly TRIM IT -> arbor-core **migration**):
   1. **TRIM IT board** -> on **play** (Track-1, team-safe). Persist to the refresh-proof `Workbench` DB; Gilligan reads moves via SSH+sqlcmd. *(Build first — proven pattern from `ZTest-SalesPipeline.cfm`; Skipper already reaches play in his browser.)*
   2. **arbor-core board** -> on the **in-house secure server** (Track-2 BLACK, Skipper-eyes-only — see [[two-track-confidentiality]]). Persist to the `arbor_core` Postgres DB. **Migration plans live HERE** (on the arbor-core board), not on the TRIM IT one. ⚠️ arbor-core has no running web UI yet -> serving + Skipper-access must be set up.

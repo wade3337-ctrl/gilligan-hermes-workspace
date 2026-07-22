@@ -3,11 +3,11 @@ title: TRIM IT database cleanup (structural + stale data)
 type: project
 domain: work
 track: 1
-status: PARKED 2026-07-20 (Skipper) · audited · blocked-on-prod-access
-tags: [trimit, database, cleanup, dedup, proposals, dead-tables, audit, sql-server]
-applies: ["[[repair-contract]]", "[[db-repair-contract]]"]
-links: ["[[trimit-db-gotchas]]", "[[prod-db-access-blocked]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]"]
-updated: 2026-07-20
+status: ACTIVE — dedicated "Database cleanup" kanban lane (Skipper 2026-07-22) · structural audit PARKED/blocked-on-prod-access
+tags: [trimit, database, cleanup, dedup, proposals, dead-tables, audit, sql-server, goaheads, stale-records]
+applies: ["[[repair-contract]]", "[[db-repair-contract]]", "[[only-trustworthy-data]]"]
+links: ["[[trimit-db-gotchas]]", "[[prod-db-access-blocked]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]", "[[our-work-kanban]]", "[[v15-landing-assistant]]"]
+updated: 2026-07-22
 ---
 
 # 🗄️ TRIM IT database cleanup
@@ -26,7 +26,12 @@ Play is the CODE test-bed but its `GSTS` **DB is DROP+RESTORE'd nightly** (`\GST
 - **Structural junk + logs → clean in place** (reversible `_graveyard` quarantine → soak → drop). Rehearse on `GSTS_cleanup`.
 - **Stale data (dead proposals, dupes) → the arbor-core "extract only what we need" migration handles it by construction:** the 66M derived proposal-lines are never carried; companies come via **B2 match-or-create (dedup on import)**. So the new builds are junk-free without a risky mass-delete. → [[arbor-core-db-importers]].
 
-## ⏸️ PARKED 2026-07-20 (Skipper's call) — audit + plans done, resume when he says go.
+## 🧹 2026-07-22 — dedicated "Database cleanup" kanban lane (Skipper) + first live item
+Skipper asked to give DB cleanup its **own column on the [[our-work-kanban]] TRIM IT board** ("Database cleanup", teal, after Repairs) so cleanup items are visible and worked, not buried. Board updated (`ZTest-WorkKanban.cfm`), column live.
+- **Card #54 — Stale GoAheads (~$2.88M / 413 records):** *Active* go-aheads (`StatusDefID=44`) **over 2 years old with no start date**, never marked Lost/Expired. Surfaced 2026-07-22 while building Arbor Helper's "work to schedule" answer — they inflated the naive number to $6.53M when the real live to-schedule queue is ~$332K (`WorkOrders StatusDefs.Desc1='InProcess'`). Action: review → mark Lost/Expired/Complete. List query: `GoAheads WHERE StatusDefID=44 AND OriginalStartDate IS NULL AND Created < DATEADD(month,-24,GETDATE())`. Context: [[v15-landing-assistant]], [[LESSONS]].
+- **Note:** this "bad records inflate live numbers" class is distinct from the structural/proposal-bloat audit below — same project, different lane. Cleanup writes touch LIVE TRIM IT records → backup-first, reviewable batches, log to ship-log ([[repair-contract]]).
+
+## ⏸️ Structural audit PARKED 2026-07-20 (Skipper's call) — audit + plans done, resume when he says go.
 
 ## Blockers / resume
 - **Blocked on prod DB write access** (parked Jordan/AWS ask → [[prod-db-access-blocked]]) to EXECUTE on prod — but all scripts can be **built + rehearsed now** on `GSTS_cleanup` (reads from play, no prod access).
