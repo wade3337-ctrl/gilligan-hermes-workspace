@@ -7,7 +7,7 @@ confidential: black
 tags: [ebitda, adjusted-ebitda, add-backs, qoe, open-item, confidential]
 applies: ["[[fort-point-confidentiality]]"]
 links: ["[[fort-point-acquisition]]", "[[gsts-2026-earnout]]"]
-updated: 2026-07-19
+updated: 2026-07-21
 ---
 
 # 🔒 GSTS EBITDA — book vs deal-adjusted (OPEN ITEM)
