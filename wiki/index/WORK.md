@@ -25,7 +25,8 @@ updated: 2026-07-02
 ## 🔒 BLACK — Fort Point M&A (need-to-know, main-session only; never Aspen/Herman/team/group)
 Governed by [[fort-point-confidentiality]]. Detail in `business-plan/`.
 - [[fort-point-acquisition]] — signed LOI 2026-07-15; Fort Point buys GSTS, EV $55M, earnouts, Skipper's 15% MIP.
-- [[gsts-growth-plan-fort-point]] — deal-aware $24M→$50M plan (AGP/EBITDA-led); LA-leads architecture.
+- [[gsts-growth-plan-fort-point]] — deal-aware $24M→$50M plan (AGP/EBITDA-led); LA-leads architecture. **§9 (7/21): Cam datapack — AGP ≈50% CONFIRMED, net-proceeds ~$33.4M, TTM EBITDA $3.80M (below floor), defend-the-EBITDA play.**
+- [[deal-tracker-dashboard]] — 🖥️ LIVE private deal dashboard (Tailscale, Docker `deal-dash` :8091) + 2026 team re-goal $24M→$25.1M front-loaded. **▶️ RESUME: Skipper mid-tuning the dashboard.**
 - [[gsts-2026-earnout]] — 2026 pressure test + H2 recovery (Herman's plan reconciled to the earnout).
 - [[gsts-adjusted-ebitda]] — book (~$0.4–1.1M TTM) vs deal-adjusted ($4.1M); add-back bridge = open item (email to Steve).
 - [[fort-point-phantom-stock]] — Skipper's legacy LTIP: 1/30 of the company, **(Net Proceeds − $10M) ÷ 30 ≈ $1.2–1.5M** at close, ON TOP OF the MIP. Full doc set in `business-plan/phantom-stock/`.
