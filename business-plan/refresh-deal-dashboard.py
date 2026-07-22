@@ -5,16 +5,18 @@
 import subprocess, os, pathlib, datetime
 
 ROOT = pathlib.Path(__file__).parent
-GATEWAY = os.path.expanduser("~/herman-gateway/trimit-ro-query.sh")
+GATEWAY = os.path.expanduser("~/herman-gateway/trimit-ro-query.sh")            # read-only login: Invoices + CrewSheets + (since 7/22) Workbench.SalesGoal
+# Municipal forecast — pulled from Brent's CANONICAL City Budgets forecast engine (all-cities CSV), so this
+# board can't drift from his dashboard. Read-only GET, ZUserID cookie (same as view.sh).
+MUNI_CSV_URL = "https://play.greatscotttreeservice.com/GSTS/Dashboard-CityBudgets.cfm?ZProjectID=all&ZTab=forecast&exportForecastAllCSV=1"
 TPH_TARGET = 130
 FIELD_STAFF = 83
 WEEK_CAP_HRS = FIELD_STAFF * 40                # ~3,320 weekday crew-hrs/week
 
-# --- Set monthly revenue goals (post re-goal to $25.1M, front-loaded H2). Static: set in TRIM IT SalesGoal. ---
-# Source: recovery/salesgoal-2026-backup-20260721.sql + the 7/21 re-goal. Update here if goals change.
-TARGET = {1:2534354, 2:1829430, 3:1831427, 4:2117795, 5:1950446, 6:1987524,
-          7:2087119, 8:2300000, 9:2350000, 10:2300000, 11:1900000, 12:1910000}
-GOAL = sum(TARGET.values())            # $25.10M
+# --- Monthly revenue goals: pulled LIVE from Workbench.dbo.SalesGoal (edit in TRIM IT → dash follows). ---
+# FALLBACK if the admin read path is unavailable (keep current so the board never shows stale/blank goals).
+FALLBACK_TARGET = {1:2534354, 2:1829430, 3:1831427, 4:2117795, 5:1950446, 6:1987524,
+                   7:2087119, 8:2200000, 9:2200000, 10:2200000, 11:2200000, 12:2050000}  # snapshot 2026-07-22
 MONTHS = ["", "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
 # --- Deal-context constants (collapsed strip). Update when a new financials deck / QoE lands. ---
@@ -26,6 +28,19 @@ def q(sql):
     r = subprocess.run(["bash", GATEWAY], input=sql, capture_output=True, text=True, timeout=120)
     return r.stdout
 
+def muni_forecast_remaining():
+    """All-cities grand-total 'Remaining' from Brent's canonical forecast engine (contracted, not-yet-invoiced/scheduled)."""
+    try:
+        r = subprocess.run(["curl","-s","-k","--max-time","30","-H","Cookie: ZUserID=376", MUNI_CSV_URL],
+                           capture_output=True, text=True, timeout=40)
+        for line in r.stdout.splitlines():
+            if line.startswith('"GRAND TOTAL'):
+                cols = [c.strip().strip('"') for c in line.split(",")]
+                return float(cols[-1])          # Remaining = last column
+    except Exception:
+        pass
+    return None
+
 def rows_of(out, ncol):
     """parse pipe-delimited gateway output into lists of stripped fields (data rows only)."""
     res = []
@@ -34,6 +49,18 @@ def rows_of(out, ncol):
         if len(p) == ncol and p[0] not in ("", "-") and not p[0].startswith("-") and "=" not in line:
             res.append(p)
     return res
+
+# --- live pull 0: 2026 monthly revenue GOALS from Workbench.dbo.SalesGoal (fallback to snapshot) ---
+TARGET, goals_live = dict(FALLBACK_TARGET), False
+try:
+    got = {}
+    for p in rows_of(q("SET NOCOUNT ON; SELECT MonthNum, CAST(Goal AS decimal(14,0)) FROM Workbench.dbo.SalesGoal WHERE FiscalYear=2026 ORDER BY MonthNum;"), 2):
+        if p[0].isdigit(): got[int(p[0])] = float(p[1])
+    if len(got) == 12:            # only trust a complete 12-month pull
+        TARGET, goals_live = got, True
+except Exception:
+    pass
+GOAL = sum(TARGET.values())
 
 # --- live pull 1: 2026 monthly invoiced revenue (ACTUAL) ---
 rev = {}
@@ -68,10 +95,16 @@ target_complete = sum(TARGET[m] for m in complete)
 pace_delta = actual_complete - target_complete
 last_complete = max(complete) if complete else 0
 
-# schedule coverage of the remaining goal: booked (on schedule, not yet invoiced) vs still-to-sell
-booked_remaining = sum(sched.get(m, 0) for m in range(cur_mo, 13))    # current+future scheduled backlog
-still_to_sell = max(0, remaining_to_goal - booked_remaining)
-booked_pct = booked_remaining / remaining_to_goal * 100 if remaining_to_goal else 0
+# coverage of the remaining goal, 3 ways: booked (on schedule) · forecasted muni (contracted) · still-to-sell (open)
+booked_remaining = sum(sched.get(m, 0) for m in range(cur_mo, 13))    # current+future scheduled crew backlog (all work)
+muni_fc = muni_forecast_remaining()                                   # Brent's engine; None if fetch failed
+muni_live = muni_fc is not None
+muni_fc = muni_fc or 0.0                                              # contracted muni remaining (excl. already-invoiced & already-scheduled → no overlap w/ booked/actual)
+still_to_sell = max(0, remaining_to_goal - booked_remaining - muni_fc)
+den = remaining_to_goal if remaining_to_goal else 1
+booked_pct = booked_remaining / den * 100
+muni_pct   = muni_fc / den * 100
+sell_pct   = still_to_sell / den * 100
 
 ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 def m2(x): return f"${x/1e6:.2f}M"
@@ -132,6 +165,7 @@ html = f"""<!DOCTYPE html>
  .covwrap .lab{{color:#8b949e;font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}}
  .cov{{display:flex;height:26px;border-radius:6px;overflow:hidden;font-size:12px;font-weight:700;color:#0d1117}}
  .cov .b{{background:#3fb950;display:flex;align-items:center;justify-content:center}}
+ .cov .m{{background:#58a6ff;display:flex;align-items:center;justify-content:center}}
  .cov .s{{background:#d29922;display:flex;align-items:center;justify-content:center}}
  .covleg{{color:#8b949e;font-size:12px;margin-top:8px}}
  h3{{margin:26px 0 6px;font-size:15px}}
@@ -148,7 +182,7 @@ html = f"""<!DOCTYPE html>
  .foot{{color:#6e7681;font-size:11px;margin-top:16px}}
 </style></head><body>
 <h1>🎯 GSTS Revenue Tracker — 2026 goal $25.1M</h1>
-<div class="sub"><span class="live">● LIVE</span> actuals + schedule from TRIM IT · goals set in SalesGoal · updated {ts} · auto-refresh 15 min. Confidential (Skipper only).</div>
+<div class="sub"><span class="live">● LIVE</span> actuals + schedule + {'goals' if goals_live else 'goals(snapshot)'} from TRIM IT · goal ${GOAL/1e6:.2f}M · updated {ts} · auto-refresh 15 min. Confidential (Skipper only).</div>
 
 <div class="hero">
  <div class="card"><div class="lab">Booked YTD (invoiced)</div><div class="big">{m2(ytd_actual)}</div><div class="tgt">of $25.1M goal · {pct:.0f}% · through {MONTHS[cur_mo]} (partial)</div><div class="bar"><div class="fill" style="width:{min(100,pct):.0f}%"></div></div></div>
@@ -156,9 +190,9 @@ html = f"""<!DOCTYPE html>
  <div class="card"><div class="lab">Pace vs plan (thru {MONTHS[last_complete]})</div><div class="big {'gk' if pace_delta>=0 else 'gb'}">{'+' if pace_delta>=0 else '−'}{m2(abs(pace_delta))}</div><div class="tgt">{pace_word} · booked ${actual_complete/1e6:.1f}M vs goal ${target_complete/1e6:.1f}M</div></div>
 </div>
 
-<div class="covwrap"><div class="lab">Coverage of the {m2(remaining_to_goal)} remaining — on the schedule vs still to sell</div>
- <div class="cov"><div class="b" style="width:{max(6,booked_pct):.0f}%">{m2(booked_remaining)} booked</div><div class="s" style="width:{max(6,100-booked_pct):.0f}%">{m2(still_to_sell)} to sell</div></div>
- <div class="covleg">▶ <b style="color:#3fb950">{booked_pct:.0f}%</b> of what's left is already on the schedule (booked crew work). The other <b style="color:#e3b341">{m2(still_to_sell)}</b> still has to be sold &amp; scheduled to land $25.1M.</div>
+<div class="covwrap"><div class="lab">Coverage of the {m2(remaining_to_goal)} remaining — booked · forecasted muni · still to sell</div>
+ <div class="cov"><div class="b" style="width:{max(5,booked_pct):.0f}%">{m2(booked_remaining)} booked</div><div class="m" style="width:{max(5,muni_pct):.0f}%">{m2(muni_fc)} muni</div><div class="s" style="width:{max(5,sell_pct):.0f}%">{m2(still_to_sell)} to sell</div></div>
+ <div class="covleg">▶ <b style="color:#3fb950">{m2(booked_remaining)}</b> on the schedule (booked crew work) · <b style="color:#58a6ff">{m2(muni_fc)}</b> forecasted municipal (contracted city budget still to invoice{'' if muni_live else ' — snapshot, live fetch failed'}) · <b style="color:#e3b341">{m2(still_to_sell)}</b> still to sell. <span style="color:#6e7681">Muni forecast is FY-based per city (some invoices past Dec) — pulled live from Brent's City Budgets forecast, so it matches that dashboard.</span></div>
 </div>
 
 <h3>Monthly goal · actual · on schedule · still to sell</h3>
@@ -185,10 +219,11 @@ html = f"""<!DOCTYPE html>
  </table>
 </details>
 
-<div class="foot">Live: invoiced revenue + scheduled crew work (TRIM IT CrewSheets, read-only, nightly mirror). Goals hardcoded from SalesGoal (2026-07-21 re-goal). Deal constants: Cam datapack 7/21, FTI QoE. Detail: GSTS-50M-Growth-Plan.md §9.</div>
+<div class="foot">Live: invoiced revenue + scheduled crew work + monthly goals (TRIM IT, nightly mirror; goals {'read live from SalesGoal' if goals_live else 'from 2026-07-22 snapshot — live read unavailable this run'}). Deal constants: Cam datapack 7/21, FTI QoE. Detail: GSTS-50M-Growth-Plan.md §9.</div>
 </body></html>"""
 
 (ROOT / "deal-tracker-dashboard.html").write_text(html)
-print(f"regenerated: YTD {m2(ytd_actual)} ({pct:.0f}%); remaining {m2(remaining_to_goal)}; "
-      f"on-schedule {m2(booked_remaining)} ({booked_pct:.0f}%); still-to-sell {m2(still_to_sell)}; "
-      f"pace {'+' if pace_delta>=0 else '-'}{m2(abs(pace_delta))} thru {MONTHS[last_complete]}")
+print(f"regenerated: goals {'LIVE' if goals_live else 'FALLBACK'} ${GOAL:,.0f}; YTD {m2(ytd_actual)} ({pct:.0f}%); "
+      f"remaining {m2(remaining_to_goal)}; on-schedule {m2(booked_remaining)} ({booked_pct:.0f}%); "
+      f"muni-forecast {'LIVE' if muni_live else 'FAIL→0'} {m2(muni_fc)} ({muni_pct:.0f}%); "
+      f"still-to-sell {m2(still_to_sell)}; pace {'+' if pace_delta>=0 else '-'}{m2(abs(pace_delta))} thru {MONTHS[last_complete]}")
