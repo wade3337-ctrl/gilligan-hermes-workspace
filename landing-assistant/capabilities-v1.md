@@ -9,6 +9,14 @@ updated: 2026-07-11
 
 What the first real version does. Deliberately small — earn trust, then widen.
 
+> **Update 2026-07-22:** grounding widened to the **count-once path-to-goal** (Track-1 figures only) and the read-only posture was intentionally crossed for a tiny **write surface** — see "Write-actions (B1)" below. The rest of this note is the original v1 scope.
+
+## Write-actions (B1, live 2026-07-22)
+- ✅ **Personal to-dos & notes** — "add a to-do to…", "remind me to…", "note that…", "show my to-dos/notes". Stored in isolated **Workbench** tables (`AssistantTodo`/`AssistantNote`), keyed by the caller's cookie ZUserID. **No live TRIM IT record is touched.**
+- ✅ **Set-goal = deep-link**, not a direct write (goals feed every dashboard → navigate to `Dashboard-SalesGoals.cfm`).
+- 🔒 Safety: parameterized inserts only (the CF datasource is `sa` → zero SQL-injection surface allowed), user-scoped, length-capped, confirmation echo.
+- ⏭️ Not yet: role-gating (C), "mark to-do done".
+
 ## Can (read-only, grounded, in-scope)
 - Answer plain-English questions whose answer lives on an in-scope page → [[scope-map]]:
   - "Are we on pace to goal this month?" / "TPH this week?" (Revenue Performance)

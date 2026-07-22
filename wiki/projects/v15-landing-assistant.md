@@ -55,3 +55,9 @@ Skipper A1: teach the team assistant the new count-once revenue model (behind th
 - **Perf fix (the lesson):** `GetPeriodAccrual` UDF = ~90s (the whole cost; other layers ~3s). Cached in application scope — accrual 4h, figures 30min — so warm calls are 0.23–0.33s. `landing-assistant/warm-coverage.sh` cron `*/15` keeps it primed; no human eats the cold hit. → see [[LESSONS]].
 - Router placed before the monthly-revenue keyword router so annual "hit our goal" ≠ monthly pace; `meta-date` guarded against "sold work with no date." Backup `ah-coverage-20260722-032049`.
 - **Next:** write-actions (B, in progress) · role-gate the assistant (C) · keep muni config in sync with the ledger script.
+
+## ✍️ 2026-07-22 — write-actions B1: personal to-dos + notes (first write surface) — `addTodo`/`saveNote`
+Skipper B1: the assistant was deliberately **read-only** in v1; this is the first, intentionally-tiny write surface. It can now take **personal to-dos & notes** ("add a to-do to…", "remind me to…", "note that…", "show my to-dos/notes") and **deep-link** to the goals editor for "change the goal" (goals feed every dashboard → navigate, not mutate).
+- **Storage:** two NEW isolated tables in **Workbench** (refresh-proof) — `dbo.AssistantTodo` + `dbo.AssistantNote`, indexed by ZUserID. **No live TRIM IT record touched.** Revert: `recovery/workbench-assistant-tables-revert-20260722.sql`.
+- **Safety (the key point):** the CF "GSTS" datasource connects as **`sa`** — so every write MUST be **parameterized `queryExecute`** (chat text is never concatenated into SQL) and **scoped to the caller's cookie ZUserID** (not the message). Router runs before figure routing so "remind me to check Anaheim's budget" saves a to-do, not a City Budgets lookup (verified).
+- **Not yet:** role-gating (C) · "mark done" (add + list only for v1). See [[LESSONS]] for the sa-datasource injection-safety note.
