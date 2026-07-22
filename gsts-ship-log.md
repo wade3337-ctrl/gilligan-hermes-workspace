@@ -1,4 +1,10 @@
 
+### 2026-07-22 — Arbor Helper to-dos now LIVE-populate the V1.5 "Get it done today" widget (no refresh)
+- **What:** A chat-added to-do now appears on the home-page list instantly. `AI-Chat.cfm` addTodo captures `OUTPUT INSERTED.TodoID` and returns `action:"todo-add"` + `todoId` + `todoBody`; `Dashboard-V15Home.cfm` exposes `window.ahTodoInsert(id,body)` (splices into the widget's `TODOS` + re-renders) and the chat handler calls it on that action (instead of a nav button).
+- **Why:** Skipper: "it says it added a to-do but it did not populate." Root cause = the widget renders its list at page-load (server-side), so a chat-add only showed on refresh. Now it live-inserts.
+- **CF gotcha fixed:** struct keys added via dot-notation (`out.todoId=`) serialize UPPERCASE (`TODOID`) → `j.todoId` was `undefined`. Fix: quoted bracket keys `out["todoId"]` to keep camelCase (matches how the pre-existing quoted `out` keys serialize). → [[LESSONS]].
+- **Backup:** `Jasonsrepairs\ah-livetodo-<ts>\` (both files). **Verified:** AI-Chat returns `todoId=12, todoBody='…'`; deployed page has the hook + handler; round-trip confirmed (existing dedupe via `find(id)` prevents doubles on later refresh). Skipper must reload the V1.5 page once to pick up the new JS.
+
 ### 2026-07-22 — Arbor Helper write-actions B1: personal to-dos + notes + set-goal deep-link (AI-Chat.cfm, play)
 - **What:** Arbor Helper can now DO small things, not just report. New handlers `addTodo`/`saveNote`/`listTodos`/`listNotes` + a set-goal deep-link. "add a to-do to…" / "remind me to…" / "note that…" / "show my to-dos" / "show my notes" all work; "change the sales goal" navigates to `Dashboard-SalesGoals.cfm` (goals feed every dashboard → navigate, don't mutate from chat).
 - **Why:** Skipper B1 (2026-07-22). The assistant was deliberately read-only (v1); this is the first, deliberately-tiny write surface.
