@@ -1,4 +1,10 @@
 
+### 2026-07-22 — Arbor Helper: accurate "go-aheads to schedule" (fix a mis-routed answer)
+- **What:** New `answerGoaheads()` handler + router. "how much in go-aheads to schedule" now returns **approved (Active, `GoAheads.StatusDefID=44`) go-aheads with no start date** (`OriginalStartDate IS NULL`) = awaiting scheduling, period-filterable by `Created`, with a stale-records flag. Router placed before the SPM funnel so "go.?ahead"+schedule words stop hitting the broad 12-month pipeline.
+- **Why:** Skipper flagged the old answer ("pipeline holds $23.5M / 2,963 over 12 months") as inaccurate — that was the raw un-deduped pipeline, not won work to schedule. He wants "actual go-aheads not scheduled for the specified period."
+- **Data reality found:** GoAhead lifecycle Pending(49)→**Active(44)**→Complete(45). Of 1,372 Active, **652 ($6.53M) have no start date** = truly unscheduled — BUT **413 ($2.88M) are >2yr old** (dead records never marked Lost/Expired) → the handler flags stale. Recent (YTD) = $3.54M/212; July = $0.66M/49. *(WorkOrder-side `DateScheduled`/awaiting-schedule is always ~empty because approval auto-sets a StartDate — per SPM Sold's 2026-07-14 note — so the GoAheads table is the right source.)*
+- **Verified live (play):** open $6,530,956/652 (+stale $2,877,530/413), YTD $3,536,977/212, July $661,795/49; pipeline question regression intact. Backup `Jasonsrepairs\ah-goaheads-<ts>\`.
+
 ### 2026-07-22 — Arbor Helper to-dos now LIVE-populate the V1.5 "Get it done today" widget (no refresh)
 - **What:** A chat-added to-do now appears on the home-page list instantly. `AI-Chat.cfm` addTodo captures `OUTPUT INSERTED.TodoID` and returns `action:"todo-add"` + `todoId` + `todoBody`; `Dashboard-V15Home.cfm` exposes `window.ahTodoInsert(id,body)` (splices into the widget's `TODOS` + re-renders) and the chat handler calls it on that action (instead of a nav button).
 - **Why:** Skipper: "it says it added a to-do but it did not populate." Root cause = the widget renders its list at page-load (server-side), so a chat-add only showed on refresh. Now it live-inserts.
