@@ -1,4 +1,10 @@
 
+### 2026-07-22 — Persist Jason's profile pic across the nightly play refresh
+- **What:** Profile pic (UserID 9) kept getting wiped by the 3 AM `GSTS DB RESTORE`. The IMAGE (`art/profilepictures/jwade001.jpg`) lives in the webroot and survives; the DB pointer `dbo.Profiles.ProfilePicturePath` lives in GSTS and gets reset to prod's `blank.png` every night.
+- **Fix:** `~/gsts-gateway/reapply-play-profilepic.sh` (idempotent UPDATE via `gsql.sh`, only writes when wiped) + cron `*/30 3-6 * * *` (post-restore window). Same pattern as `regrant-hermanro.sh`. Logs to `~/gsts-gateway/reapply-profilepic.log`.
+- **Verified:** re-applied now (rowcount 1) → `Profiles.ProfilePicturePath='art/profilepictures/jwade001.jpg'`; image serves HTTP 200 (50,927 b). Rollback: remove the cron line; `UPDATE ... SET ProfilePicturePath='art/profilepictures/blank.png' WHERE UserID=9`.
+
+
 ### 2026-07-22 — Arbor Helper: "work to schedule" = TRIM IT's InProcess work orders (2 corrections to get it right)
 - **What:** `answerGoaheads()` now returns **TRIM IT's own "To Be Scheduled" set: WorkOrders with `StatusDefs.Desc1='InProcess'`** (mirrors `Sched.WorkOrders.ToBeScheduled.Content.cfm`, the Scheduling-Meeting source Nate uses), commercial/municipal split. Router before the SPM funnel; broadened to "work/jobs to schedule" too.
 - **Why (2 wrong turns corrected):** (1) Original answer returned the raw 12-month SPM pipeline ($23.5M/2,963) — not won work. (2) First fix used `GoAheads.StatusDefID=44` (Active) + `OriginalStartDate IS NULL` → **$6.53M** — Skipper: "not a real number, most already scheduled/consumed." Root cause: `GoAheads.OriginalStartDate` is sparse (not a real schedule signal). The true schedule signal is the **WorkOrder status** — once scheduled it flips InProcess→Active.
