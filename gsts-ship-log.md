@@ -1,4 +1,13 @@
 
+### 2026-07-22 — Location Lat/Long geocoder fix: dead keyless-Google → free US Census [PLAY-VERIFIED · prod pending Travis]
+- **What:** `dbo.Locations_LatLong_upr` (the SQL proc the Locations AFTER-UPDATE trigger calls to auto-populate coordinates) rewritten to geocode via the free **US Census** geocoder over HTTPS with native JSON parse (SQL2019), replacing the **retired keyless Google endpoint** (`http://maps.google.com/maps/api/geocode/xml?sensor=false`) that Google shut off — which silently failed so new/edited locations saved as **0/0** (Rosa/Jeanie "HIGH PRIORITY Lat/Long bug"; blocked Scott's Gothic/Goodman RFP portfolio map).
+- **Diagnosis path:** looked like a UI/permissions bug (field is Inventory-Admin-gated) but Rosa's team already had the role. Real cause = the DB geocoder. Geocoding is **centralized** — the same proc is hit by address edits, new-site insert, RFP generation, and the batch sweep — so fixing the proc fixes every path (a webpage-only fix would miss RFP-gen/insert/batch).
+- **Two extra bugs found + fixed:** OLE HTTP output var must be **fixed-size `varchar(8000)`** (varchar(max) → ODSOLE "Error in srv_paramset" → NULL body); `open()` async must be **0**. Removed the old **`RAISERROR`-on-failure** so a geocode miss no longer **aborts the whole Location save**.
+- **Env note:** proc uses OLE automation (`sp_OACreate MSXML2.ServerXMLHttp`). **`Ole Automation Procedures` was OFF on play → I enabled it to test** (prod already has it on — that's how the old geocoder ran; Travis to confirm on prod).
+- **Verified (play):** direct EXEC → Fontana `34.0542/-117.4486`, Avalon `33.8974/-118.2653`; trigger path (address edit) 20 City Blvd W Orange `0/0 → 33.7824/-117.8899`, address restored clean.
+- **Artifacts:** `trimit-geocode-fix/Locations_LatLong_upr.PROD-ALTER.sql` (clean prod deliverable) + `…ORIGINAL.sql` (backup; prod untouched = source of truth). Trial CFM edit to `Profile.Location.Update.New.cfm` was **reverted** (fix lives in the proc).
+- **NOT yet shipped to prod** — awaiting Skipper OK to hand Travis. Play proc reverts at tonight's 3AM refresh.
+
 ### 2026-07-22 — Persist Jason's profile pic across the nightly play refresh
 - **What:** Profile pic (UserID 9) kept getting wiped by the 3 AM `GSTS DB RESTORE`. The IMAGE (`art/profilepictures/jwade001.jpg`) lives in the webroot and survives; the DB pointer `dbo.Profiles.ProfilePicturePath` lives in GSTS and gets reset to prod's `blank.png` every night.
 - **Fix:** `~/gsts-gateway/reapply-play-profilepic.sh` (idempotent UPDATE via `gsql.sh`, only writes when wiped) + cron `*/30 3-6 * * *` (post-restore window). Same pattern as `regrant-hermanro.sh`. Logs to `~/gsts-gateway/reapply-profilepic.log`.
