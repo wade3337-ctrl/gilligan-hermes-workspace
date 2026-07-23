@@ -42,7 +42,7 @@ Per person: **Total% → 2026 Close / 2027 Hold**, and the 2027 Hold splits 50/5
 |---|---|---|---|---|
 | Roxanne Montijo | HR Manager | 0.10% (~$23.4K) | 0.05% (~$11.7K) — 50% | 0.05% (~$11.7K): $5.85K / $5.85K |
 | Ba Tran | Inventory | 0.08% (~$18.7K) | 0.04% (~$9.4K) — 50% | 0.04% (~$9.4K): $4.68K / $4.68K |
-| Arthur Margaryian | (role TBD) | 0.08% (~$18.7K) | 0.04% (~$9.4K) — 50% | 0.04% (~$9.4K): $4.68K / $4.68K |
+| Arthur Margaryian | Fleet Manager | 0.08% (~$18.7K) | 0.04% (~$9.4K) — 50% | 0.04% (~$9.4K): $4.68K / $4.68K |
 | Rosa Rodriguez | Internal Ops Coordinator | 0.07% (~$16.4K) | 0.035% (~$8.2K) — 50% | 0.035% (~$8.2K): $4.1K / $4.1K |
 | Naomi Carlos | Quality Control Coordinator | 0.07% (~$16.4K) | 0.035% (~$8.2K) — 50% | 0.035% (~$8.2K): $4.1K / $4.1K |
 
