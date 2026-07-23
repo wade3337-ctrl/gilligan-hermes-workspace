@@ -1,4 +1,9 @@
 
+### 2026-07-23 — Profile-pic reapply cron: fix timezone window (was missing the restore)
+- **What:** widened the `reapply-play-profilepic.sh` cron from `*/30 3-6 * * *` → **`*/30 * * * *`** (every 30 min, all day).
+- **Why:** the reapply window was **3–6 UTC**, but the `GSTS DB RESTORE` runs **3 AM Pacific ≈ 10–11 UTC** — *after* the window. So the restore wiped the pointer and nothing re-applied it until the next day's 3–6 UTC (before the next restore) → pic blank all day. Log proof: 07-22 runs 04:34–06:30 UTC all rowcount 0 (pic still intact then); wipe came later, unreapplied. Same all-day pattern as the HermanRO regrant cron (which never had this issue).
+- **Verified:** re-applied now → `Profiles.ProfilePicturePath='art/profilepictures/jwade001.jpg'` (UserID 9); image serves HTTP 200 (50,927 b). Crontab preserved (46 lines). Cost: 48 idempotent runs/day (rowcount 0 when not needed) — negligible.
+
 ### 2026-07-22 — Location Lat/Long geocoder fix: dead keyless-Google → free US Census [PLAY-VERIFIED · prod pending Travis]
 - **What:** `dbo.Locations_LatLong_upr` (the SQL proc the Locations AFTER-UPDATE trigger calls to auto-populate coordinates) rewritten to geocode via the free **US Census** geocoder over HTTPS with native JSON parse (SQL2019), replacing the **retired keyless Google endpoint** (`http://maps.google.com/maps/api/geocode/xml?sensor=false`) that Google shut off — which silently failed so new/edited locations saved as **0/0** (Rosa/Jeanie "HIGH PRIORITY Lat/Long bug"; blocked Scott's Gothic/Goodman RFP portfolio map).
 - **Diagnosis path:** looked like a UI/permissions bug (field is Inventory-Admin-gated) but Rosa's team already had the role. Real cause = the DB geocoder. Geocoding is **centralized** — the same proc is hit by address edits, new-site insert, RFP generation, and the batch sweep — so fixing the proc fixes every path (a webpage-only fix would miss RFP-gen/insert/batch).
