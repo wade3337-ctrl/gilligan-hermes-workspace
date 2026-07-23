@@ -1,4 +1,11 @@
 
+### 2026-07-23 — Field-app tree dots fixed: `AND 1 = 0` was disabling the tree-dot query for EVERY project
+- **What:** `FieldApp/Field.Map.Map.Municipal.Desktop.cfm` — the `SelectedPoints` query that feeds every tree marker (→ `store_locations` → `newTreeMarker` loop) had a hardcoded **`AND 1 = 0`** in its WHERE clause → returned **zero rows for all projects, always** → the field-app map loaded but showed **no tree dots for anyone** (even fully-set-up properties like Alicia Business Center).
+- **Why it mattered:** it MASKED all the GPS/import work — made it look like Herman's inventory (missing FK chain) was the problem, when the app itself couldn't draw a single dot. Root-caused by reading the actual render path, not guessing at data.
+- **Fix:** removed the `AND 1 = 0` line. Backup: `FieldApp\Jasonsrepairs\Field.Map.Map.Municipal.Desktop.cfm.bak-<ts>`.
+- **Verified (play):** Skipper hard-refreshed Alicia → **tree dots returned.** PLAY only (.cfm persist through the nightly DB refresh). **✅ Prod confirmed FINE** (Skipper: crews see dots on prod) — so the `AND 1 = 0` was a stray *play-only* dev edit; this just restored play to match prod. No prod deploy needed.
+- **Separate/remaining:** Herman's Fullerton pilot still needs the real GPS import (`Process$IMP$Standard`) to populate the zip-region/season/service FK chain before *its* dots show.
+
 ### 2026-07-23 — Boss Herman PLAY write access ACTIVATED (was staged Jul-10, never wired)
 - **What:** Fixed the 2 gaps blocking Herman's play-write. His RW key (`herman_trimit_rw`) sat at `/opt/data/home/.ssh/` but `gsql.sh` reads `$HOME/.ssh` (`/opt/data/.ssh`, since HOME=/opt/data) → copied key there (600, hermes); seeded play's host key into the container `known_hosts` (accept-new). Both on the durable `~/.hermes:/opt/data` mount → survive recreate.
 - **Verified from the container:** `gsql.sh` reads GSTS; write proven — login `GSTSDATABASE\Administrator`, `HAS_PERMS_BY_NAME` UPDATE dbo.Locations=1, INSERT dbo.Projects=1. Tools: `gsql.sh` (read+**write**), `view.sh` (render-verify), `deploy-to-play.sh` (webroot, auto-backup).
