@@ -19,6 +19,9 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 
 ## 🛠️ WORK — Track 1 (TRIM IT / play · team-facing)
 
+### Active bids / builds
+- 🔵 **Goodman Portfolio RFP bid (via Gothic) — DUE 8/3** — sub to Gothic for ~28 properties / ~6,400 trees (LA+IE), per-property awards, cost + labor hrs. 📁 `inbox-pull/goodman-rfp-2026-07-22/` ▶️ [[goodman-rfp-bid]] — **pilot GLC Fullerton Bldg 4 (Proj 1105465) COMPLETE + verified via TRIM IT's official GPS import; NEXT = pricing (Price Buddy), then scale the other 27.** 🔗 [[trimit-gps-import-pipeline]] (reverse-engineered), [[herman-agent]] (Boss Herman built it, his first write work) ⚠️ PLAY only; Kanban trimit card 56.
+
 ### Dashboards (release-candidate → prod)
 - 🟢 **RC-01 Executive Financial Overview** — 5-tab exec suite (Sales by Rep/Market, Closing %, Crew Perf). 📁 `production-dashboard/Executive$*.cfm` ▶️ `release-candidates/RC-01-*.md` 🔗 [[dashboard-metric-standards]], [[gsts-ui-spec]] ⚠️ prod-ready, gated on whole-dashboard review.
 - 🟢 **RC-02 Revenue Performance** — revenue pace vs goal + TPH, drill-through. 📁 `Dashboard-RevenuePerformance.cfm`(+.Export) ▶️ `release-candidates/RC-02-*.md` 🔗 metric-standards, ui-spec ⚠️ **dual-webroot deploy (D:\ + C:\)**; 4-lab cleared.

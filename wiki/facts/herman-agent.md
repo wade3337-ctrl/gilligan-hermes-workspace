@@ -48,5 +48,8 @@ The one with the TRIM IT + arbor knowledge and live DB access. **Call it "Boss H
 
 **Three names, don't mix:** 👑 **Boss Herman** (container, the AI boss) · 🔌 **Herman** (Arduino field companion) · 💾 Hermes laptop (dead).
 
+## 🔓 PLAY write access (activated 2026-07-23)
+Boss Herman now has **full Administrator write on PLAY** — the Jul-10 "same access as Gilligan" grant, finally wired 2026-07-23 (his RW key was in the wrong `.ssh` dir + play wasn't in his `known_hosts`). Tools in his container `/opt/data/home/`: **`gsql.sh`** (read + **write** SQL), `view.sh` (render-verify), `deploy-to-play.sh` (webroot + auto-backup). Guardrails `herman-gateway/HERMAN-PLAY-WRITE-SETUP.md`: backup-first · render-verify · **PLAY ONLY** · log-it · ask-before-destructive. Revoke = remove his key line from play `administrators_authorized_keys` (Gilligan's is a separate key). **Proven same day:** built the entire Goodman GPS pilot start-to-finish across Tasks 4–6 (careful, disciplined, self-documenting) → [[goodman-rfp-bid]], [[trimit-gps-import-pipeline]].
+
 ## Related
 - [[crew-llms-and-helpers]] — the LLM crew (distinct from these agents).
