@@ -7,7 +7,7 @@ confidential: black
 tags: [mna, fort-point, phantom-stock, retention, incentive, mip, confidential]
 applies: ["[[fort-point-confidentiality]]"]
 links: ["[[fort-point-acquisition]]", "[[fort-point-phantom-stock]]", "[[five-year-incentive-model]]", "[[skipper-and-company]]"]
-updated: 2026-07-20
+updated: 2026-07-23
 ---
 
 # 🔒 Key-Employee Incentive Plan — the forfeited 3.3333% as a near-term block
@@ -24,11 +24,12 @@ The 3.3333% is a **NEAR-TERM instrument only — fully deployed across 2026–20
   - **Gate 2 (50%):** **$28.75M by end of 2027** (15% growth over the $25M target).
   - Gate applies to **all ten** — aligns the pool with the earnout + Jason's phantom.
 
-## Roster (≈3.29% of the block; ~$1.32M near-term at ~$400K/1% midpoint)
+## Roster (2.82% of the block; ~$660K near-term at **$234K/1%** — pegged to actual $33.4M at-close net proceeds)
+**Peg (2026-07-23):** $/1% = (Net Proceeds − $10M)/100 = $234K at NP $33.4M (was $400K at the old $50M placeholder). **2026-07-23: Nate removed** (0.55% back to slack) · **Ba Tran added 0.08%**. Unallocated slack now 0.51% (~$120K).
 Total% → 2026 Close / 2027 Hold split:
-- **Tier 1:** Nate 0.55 (60/40) · Brent 0.55 (40/60, earnout-critical→back-loaded) · Garrett 0.50 (60/40) · Omar 0.45 (50/50) · Manuel 0.45 (50/50) · **Jaime 0.45 (50/50 — now a manager peer, special condition dropped)**
+- **Tier 1:** Brent 0.55 (40/60, earnout-critical→back-loaded) · Garrett 0.50 (60/40) · Omar 0.45 (50/50) · Manuel 0.45 (50/50) · **Jaime 0.45 (50/50 — now a manager peer, special condition dropped)**
 - **Tier 2 (close-insurance):** Dimitry 0.10 (80/20)
-- **Tier 3:** Roxanne 0.10 (50/50) · Rosa 0.07 (50/50) · Naomi 0.07 (50/50)
+- **Tier 3:** Roxanne 0.10 (50/50) · **Ba Tran 0.08 (50/50 — inventory)** · Rosa 0.07 (50/50) · Naomi 0.07 (50/50)
 - **Excluded:** Raudel, Jordan Kim, Megan, Victoria (gone). **Out of pool:** Jason (MIP), Scott (Seller), Jeanie (other 3.3333%), Steve/CFO (own separate package).
 
 ## Open / next
