@@ -24,3 +24,4 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[github-offchip-backup]] — nightly off-machine backup + ⏰ PAT rotation ~Sep 15.
 - [[disaster-recovery]] — rebuild-from-scratch runbook (`RECOVERY.md`), gpg bundle, USB kit.
 - [[herman-agent]] — Arduino companion agent (Herman ≠ decommissioned Hermes laptop).
+- [[kling-ai]] — 🎬 video/image generation (`kling/kling_gen.py`, key `~/.secrets/kling.json`); two-wallet gotcha (sub ≠ API prepaid pack); ffmpeg compress for Discord's 8MB cap.
