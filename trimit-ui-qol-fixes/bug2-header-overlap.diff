@@ -1,0 +1,70 @@
+--- Profile.Project.Detail.ORIGINAL.cfm	2026-07-23 14:13:33.063284074 +0000
++++ Profile.Project.Detail.PATCHED.cfm	2026-07-23 14:13:31.145214894 +0000
+@@ -227,9 +227,9 @@
+ <style type="text/css">
+ <!--
+ #MainDiv {
+-	position: absolute;
+-	left: 9px;
+-	top: 43px;
++	/* was position:absolute; top:43px - now flows below #ProjHdrBar so a tall (wrapped) title never overlaps the tabs */
++	position: relative;
++	margin: 4px 0 0 9px;
+ 	width: 1160px;
+ 	height: 817px;
+ 	z-index: 1;
+@@ -281,11 +281,9 @@
+ .style19 {color: #006600}
+ .style20 {color: #333333}
+ #apDiv {
+-	position: absolute;
+-	left: 19px;
+-	top: 7px;
+-	width: 535px;
+-	height: 29px;
++	/* was a fixed 535x29 absolute box that clipped/overflowed long project names - now a flex item that grows with the text */
++	flex: 1 1 auto;
++	min-width: 0;
+ 	z-index: 2;
+ }
+ .style21 {font-size: 18px}
+@@ -297,11 +295,9 @@
+ .style24 {color: #FFFF00; font-size: 18px; font-weight: bold; }
+ .style26 {color: #FF0000; font-size: 18px; font-weight: bold; }
+ #apDiv3 {
+-	position: absolute;
+-	left: 558px;
+-	top: 7px;
+-	width: 547px;
+-	height: 30px;
++	/* HTD box - now pinned to the right end of the header bar */
++	flex: 0 0 auto;
++	white-space: nowrap;
+ 	z-index: 3;
+ }
+ 
+@@ -331,6 +327,12 @@
+ </head>
+ <body bgcolor="#D5EDB3">
+ 
++<!--- Header bar: title (grows with text) on the left, HTD on the right. Flows above #MainDiv so long/wrapped names never overlap the tabs (header-overlap fix 2026-07-23). --->
++<div id="ProjHdrBar" style="display:flex; align-items:center; justify-content:space-between; gap:14px; width:1086px; margin:0 0 0 19px; padding:6px 0 2px;">
++<div id="apDiv"><span class="pageName  style6"><cfoutput><span class="style18">#Projects.Desc1#</span></cfoutput> &nbsp;&nbsp;(<span class="style19"><cfoutput>#Company.Nickname#</cfoutput></span>)</span></div>
++<div id="apDiv3"><iframe name="HTDContent" id="HTDContent" height="29" width="545" frameborder="0" scrolling="no" src="Profile.ProjectYears.HTD.cfm?ZProjectID=<cfoutput>#URL.ZProjectID#</cfoutput>"></iframe></div>
++</div>
++
+ <div id="MainDiv">
+   <div id="TabbedPanels1" class="TabbedPanels" style="background-color:#D5EDB3">
+     <ul class="TabbedPanelsTabGroup">
+@@ -1058,10 +1060,7 @@
+     </div>
+   </div>
+ </div>
+-<div id="apDiv3">
+-<iframe name="HTDContent" id="HTDContent" height="29" width="545" frameborder="0" scrolling="no" src="Profile.ProjectYears.HTD.cfm?ZProjectID=<cfoutput>#URL.ZProjectID#</cfoutput>"></iframe></div>
+-</div>
+-<div id="apDiv"><span class="pageName  style6"><cfoutput><span class="style18">#Projects.Desc1#</span></cfoutput> &nbsp;&nbsp;(<span class="style19"><cfoutput>#Company.Nickname#</cfoutput></span>)</span></div>
++<!--- #apDiv (title) + #apDiv3 (HTD) relocated to #ProjHdrBar at the top of <body> (header-overlap fix 2026-07-23); pre-existing stray </div> removed here too --->
+ <blockquote>&nbsp;</blockquote>
+ <iframe name="SynchCodeFrame" id="SynchCodeFrame" width="1" height="1" onload="hideAjaxSpinner();"></iframe>
+ 
