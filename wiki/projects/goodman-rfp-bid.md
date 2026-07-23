@@ -38,7 +38,15 @@ Build via **TRIM IT's official GPS import**, NOT raw SQL inserts. Full pipeline 
 - Official GPS import → full FK chain (zip-region 129778, District 19082→ZoneDef 8827, Season, ServiceType=Structural Pruning) → **dots render on field map** (SelectedPoints=81, IsNewPlot=1) → **all detail fields populated** the surveyed-tree way (SizeCode `0-6` + SizeModelSizeID 8, HeightRange, PruningFrequency, SpaceSize/GrowSpace) → 81 Observations → LocationCompany set.
 - Backups on PLAY: `dbo.HermanBackup_*Task4/5/6*` + `HermanBackup_FullertonB4_*`.
 
-## ▶️ RESUME (next session)
+## ✅ SOP lifecycle audit (2026-07-23, Herman built → Gilligan-verified) — gates 1–9 complete
+Herman audited the pilot against the 4 SOPs (rfp-handling/intake/go-aheads/arborist-workflow) and filled the missing **bid-workflow records** (we'd built inventory but skipped the RFP itself): created **RFPID 1972953** + set the project Setup fields. **Gilligan independently verified every field in the live DB** — all correct:
+- RFP 1972953 → ProjectID 1105465, Type 2, Status 157 (Pending), SalesRep 1143 (Rebekah), ProposalDue 2026-08-03, `RFPNote001 = ==New Site No History==`, scope in Desc1 (SOP format), NeedMap/NeedPricing/NeedRecs/NeedProposal=1. Exactly **1** RFP on the project (no test dupes).
+- Project 1105465 → CurrentYear 2026, FiscalYearConfirmed 1, ProjectNewSiteNoHistory 1, Status 104 (InProcess).
+- Skill bumped → `commercial-portfolio-bid-pricing v1.1.0` (15-gate RFP→GoAhead checklist, pitfall #15). Herman ship #79.
+- **Minor/non-blocking:** `NeedSiteWalk` is NULL (decide if a walk is wanted for a new site); one benign `GENERAL`/Pending RFPAction (692910) has `UserID` NULL — real pending RFPs route via SalesRepID, so harmless.
+
+## ▶️ RESUME (next session) — gates 10–15 walkthrough (Skipper teaching)
+Skipper walks the remaining lifecycle: **E-Traveler → Pricing Worksheet → Project Master → Arborist/IQC → Proposal → GoAhead → Work Order.** The crux inside that:
 1. **PRICING = the last standalone piece.** The GPS importer does **NOT** run Price Buddy → all prices null, no labor hours. Figure out **Price Buddy** (how GSTS prices a pruning job by species × size × service). Then the bid = cost + labor hours per property.
 2. **Then scale** the proven pipeline + converter spec to the **other ~27 properties**.
 3. **No-source fields** (need site data from Gothic, not in RFP): Crown, on-site LocationContact/Phone/Fax/Email/AccessInstructions.
