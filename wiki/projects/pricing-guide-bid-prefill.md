@@ -6,13 +6,16 @@ track: 1
 status: active
 tags: [pricing, price-buddy, bid-prefill, rebid, tph, estimating-engine]
 applies: ["[[gsts-ui-style-guide]]", "[[gsts-ui-spec]]", "[[repair-contract]]"]
-links: ["[[bid-process-reengineering]]", "[[sales-cockpit]]"]
-updated: 2026-07-02
+links: ["[[bid-process-reengineering]]", "[[sales-cockpit]]", "[[pricing-true-labor-method]]"]
+updated: 2026-07-23
 ---
 
 # Pricing Guide → History-Aware Bid Prefill
 
 **One-liner:** Evolve "Price Buddy" into a tool that **pre-fills a bid sheet from a site's own invoiced history** so the arborist adjusts a draft instead of building each bid from scratch — the estimating engine that feeds the arbor-core Stage-3 pricing.
+
+## 🆕 CORE UPGRADE (2026-07-23) — price from TRUE labor, not price-derived hours → [[pricing-true-labor-method]]
+The **current** engine is circular: `GetLevel4PriceRange$TPH` + `pricing-helper-v2.js` back-solve `hours = price ÷ TPH` then `price = Target$/hr × hours` — i.e. it just **re-marks-up old prices** (carries forward any past under/over-pricing). **The fix:** use **`InvoiceLines.HoursEach`** — the *actual booked hours per tree*, already split by species × size × service — take the **median** (clean junk, min N≥8, hierarchical fallback species×size→size-level→service), then `price = median hrs/tree × $130/hr × access`. Verified on the Goodman pilot: true-labor prices land on the historical workhorse prices (validates) AND yield the **labor-hours** an RFP asks for. **Also note: `TPH` = dollars/hour (`Total ÷ TotalHours`), NOT trees/hour.** This is the estimator to build into V1 Price Buddy AND arbor-core Stage-3. Full recipe + pilot numbers + limits → **[[pricing-true-labor-method]]**.
 **Status:** 🔵 active — **Ph1 + Ph2 (rebid) done + live** on play; **5 defects flagged** by the 4-lab crew review to fix on BOTH V1 + arbor-core; Ph3 (AI species) deferred.
 **📁 Location:** `Maint.InventoryGroups.Pricing.cfm` + `Maint.InventoryCategories.Pricing.cfm` + `js/pricing-helper-v2.js` + `api/PricingChartData/SiteSearch/SiteHistory.cfm`
 **▶️ Resume:** `arbor-stack/pricing-guide/PROJECT-pricing-bid-prefill.md`
