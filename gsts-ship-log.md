@@ -1,4 +1,10 @@
 
+### 2026-07-23 — Boss Herman PLAY write access ACTIVATED (was staged Jul-10, never wired)
+- **What:** Fixed the 2 gaps blocking Herman's play-write. His RW key (`herman_trimit_rw`) sat at `/opt/data/home/.ssh/` but `gsql.sh` reads `$HOME/.ssh` (`/opt/data/.ssh`, since HOME=/opt/data) → copied key there (600, hermes); seeded play's host key into the container `known_hosts` (accept-new). Both on the durable `~/.hermes:/opt/data` mount → survive recreate.
+- **Verified from the container:** `gsql.sh` reads GSTS; write proven — login `GSTSDATABASE\Administrator`, `HAS_PERMS_BY_NAME` UPDATE dbo.Locations=1, INSERT dbo.Projects=1. Tools: `gsql.sh` (read+**write**), `view.sh` (render-verify), `deploy-to-play.sh` (webroot, auto-backup).
+- **Level:** FULL Administrator on **PLAY** (integrated auth = sa) — the Skipper's Jul-10 "same access Gilligan has" grant, reaffirmed 2026-07-23 (play-only). **PLAY ONLY** (prod has no write path anyway). Nightly play revert = safety net. Guardrails doc: `herman-gateway/HERMAN-PLAY-WRITE-SETUP.md` (backup-first · render-verify · play-only · log-it · ask-before-destructive). Revoke = remove Herman's key line from play `administrators_authorized_keys` (Gilligan's key is separate/unaffected).
+- **Unblocks:** Herman Stage 3–5 of the Goodman bid build (create/split projects, load RFP inventory, GIS, e-Traveler). Arbor-core runtime upgrade → also fold into `arbor-knowledge` boss-herman-runtime.
+
 ### 2026-07-23 — Profile-pic reapply cron: fix timezone window (was missing the restore)
 - **What:** widened the `reapply-play-profilepic.sh` cron from `*/30 3-6 * * *` → **`*/30 * * * *`** (every 30 min, all day).
 - **Why:** the reapply window was **3–6 UTC**, but the `GSTS DB RESTORE` runs **3 AM Pacific ≈ 10–11 UTC** — *after* the window. So the restore wiped the pointer and nothing re-applied it until the next day's 3–6 UTC (before the next restore) → pic blank all day. Log proof: 07-22 runs 04:34–06:30 UTC all rowcount 0 (pic still intact then); wipe came later, unreapplied. Same all-day pattern as the HermanRO regrant cron (which never had this issue).
