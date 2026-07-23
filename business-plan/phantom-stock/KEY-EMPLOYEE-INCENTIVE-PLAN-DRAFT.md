@@ -21,6 +21,32 @@ The full 3.3333% is deployed to the ten current contributors, paid in two tranch
 
 **Dollar peg (2026-07-23):** the block converts % → $ with the **same phantom formula as Jason's award** — $/1% = (Net Proceeds − $10M) ÷ 100. At the **actual at-close net proceeds ≈ $33.4M** (Cam call / FTI QoE), that is **$234K per 1%** (down from the old $400K/$50M-midpoint assumption). Earnouts (2026/2027 AGP) would add to this **as realized** — and the 2027 gates track that same revenue, so the pool self-corrects upward if the company hits the targets.
 
+### Clean summary (the version shown to Scott)
+`%` = share of the whole company · `SHARE` = share of this incentive block (block = 3.3333% = 100%).
+
+```
+NAME               ROLE               %      SHARE    TOTAL    2026 CLOSE   2027 HOLD
+──────────────────────────────────────────────────────────────────────────────────
+Brent Beller       Contract Admin    0.55   16.5%    $128.7K   $51.5K       $77.2K
+Garrett Cornish    Lead Sales Arb    0.50   15.0%    $117.0K   $46.8K       $70.2K
+Omar Sanchez       Branch Manager    0.45   13.5%    $105.3K   $52.7K       $52.7K
+Manuel Perez       Branch Manager    0.45   13.5%    $105.3K   $52.7K       $52.7K
+Jaime Meza         Director of Ops   0.45   13.5%    $105.3K   $52.7K       $52.7K
+Dimitry Rabyy      Controller        0.10    3.0%    $23.4K    $18.7K       $4.7K
+Roxanne Montijo    HR Manager        0.10    3.0%    $23.4K    $11.7K       $11.7K
+Ba Tran            Inventory Mgr     0.08    2.4%    $18.7K    $9.4K        $9.4K
+Arthur Margaryian  Fleet Manager     0.08    2.4%    $18.7K    $9.4K        $9.4K
+Rosa Rodriguez     Ops Coordinator   0.07    2.1%    $16.4K    $8.2K        $8.2K
+Naomi Carlos       QC Coordinator    0.07    2.1%    $16.4K    $8.2K        $8.2K
+──────────────────────────────────────────────────────────────────────────────────
+ALLOCATED                            2.90   87.0%    $679K     $322K        $357K
+Unallocated (left on table)          0.43   13.0%    $101K       —            —
+──────────────────────────────────────────────────────────────────────────────────
+FULL BLOCK                           3.33  100.0%    $780K
+```
+*Emailed to jwade@gstsinc.com 2026-07-23. The 2027 Hold is still gated (50/50 on the two milestones — Gate 1 $25M/'26, Gate 2 $28.75M/'27); gate detail is broken out per person below.*
+
+### Detail by tier
 Per person: **Total% → 2026 Close / 2027 Hold**, and the 2027 Hold splits 50/50 across Gate 1 / Gate 2.
 
 ### Tier 1 — core drivers
