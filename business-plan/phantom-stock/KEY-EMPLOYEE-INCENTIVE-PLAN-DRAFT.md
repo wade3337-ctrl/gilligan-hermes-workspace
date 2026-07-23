@@ -27,7 +27,7 @@ Per person: **Total% → 2026 Close / 2027 Hold**, and the 2027 Hold splits 50/5
 | Person | Role | Total % | 2026 Close | 2027 Hold (G1 / G2) |
 |---|---|---|---|---|
 | Brent Beller | Contract Admin Lead (municipal/earnout) | 0.55% (~$128.7K) | 0.22% (~$51.5K) — 40% | 0.33% (~$77.2K): $38.6K / $38.6K |
-| Garrett Cornish | Lead Sales Arborist (A-player) | 0.50% (~$117K) | 0.30% (~$70.2K) — 60% | 0.20% (~$46.8K): $23.4K / $23.4K |
+| Garrett Cornish | Lead Sales Arborist (A-player) | 0.50% (~$117K) | 0.20% (~$46.8K) — 40% | 0.30% (~$70.2K): $35.1K / $35.1K |
 | Omar Sanchez | Branch Manager | 0.45% (~$105.3K) | 0.225% (~$52.7K) — 50% | 0.225% (~$52.7K): $26.3K / $26.3K |
 | Manuel Perez | Branch Manager | 0.45% (~$105.3K) | 0.225% (~$52.7K) — 50% | 0.225% (~$52.7K): $26.3K / $26.3K |
 | Jaime Meza | Director of Ops | 0.45% (~$105.3K) | 0.225% (~$52.7K) — 50% | 0.225% (~$52.7K): $26.3K / $26.3K |
@@ -41,16 +41,16 @@ Per person: **Total% → 2026 Close / 2027 Hold**, and the 2027 Hold splits 50/5
 | Person | Role | Total % | 2026 Close | 2027 Hold (G1 / G2) |
 |---|---|---|---|---|
 | Roxanne Montijo | HR Manager | 0.10% (~$23.4K) | 0.05% (~$11.7K) — 50% | 0.05% (~$11.7K): $5.85K / $5.85K |
-| Ba Tran | Inventory | 0.08% (~$18.7K) | 0.04% (~$9.4K) — 50% | 0.04% (~$9.4K): $4.68K / $4.68K |
+| Ba Tran | Inventory Manager | 0.08% (~$18.7K) | 0.04% (~$9.4K) — 50% | 0.04% (~$9.4K): $4.68K / $4.68K |
 | Arthur Margaryian | Fleet Manager | 0.08% (~$18.7K) | 0.04% (~$9.4K) — 50% | 0.04% (~$9.4K): $4.68K / $4.68K |
 | Rosa Rodriguez | Internal Ops Coordinator | 0.07% (~$16.4K) | 0.035% (~$8.2K) — 50% | 0.035% (~$8.2K): $4.1K / $4.1K |
 | Naomi Carlos | Quality Control Coordinator | 0.07% (~$16.4K) | 0.035% (~$8.2K) — 50% | 0.035% (~$8.2K): $4.1K / $4.1K |
 
-**Totals (Nate removed; Ba Tran + Arthur Margaryian added — 2026-07-23):** allocated **2.90%** of the 3.3333% block (**0.43% slack ≈ $101K** unallocated). Near-term cash ≈ **~$679K** at the $33.4M peg — **2026 Close tranche ≈ 1.475% (~$345K)** · **2027 Hold tranche ≈ 1.425% (~$333K)**, each 2027 gate-slice ≈ 0.7125% (~$167K).
+**Totals (Nate removed; Ba Tran + Arthur Margaryian added — 2026-07-23):** allocated **2.90%** of the 3.3333% block (**0.43% slack ≈ $101K** unallocated). Near-term cash ≈ **~$679K** at the $33.4M peg — **2026 Close tranche ≈ 1.375% (~$322K)** · **2027 Hold tranche ≈ 1.525% (~$357K)**, each 2027 gate-slice ≈ 0.7625% (~$178K).
 
 ## 4. Design principles (the logic locked in)
 - **Full deployment through 2027.** The whole block is near-term. The old "build" half is now the **2027 Hold tranche paid in cash** (pulled forward from a 2031 illiquid-equity exit) — better for employees, real company cash in the earnout year.
-- **Split logic:** sale-drivers front-loaded to 2026 (Garrett 60/40); earnout-critical back-loaded to 2027 to hold them (Brent 40/60); managers even (50/50); Dimitry front-loaded as close insurance (80/20).
+- **Split logic:** retention/earnout-critical back-loaded to 2027 to hold them (Brent 40/60, Garrett 40/60); managers even (50/50); Dimitry front-loaded as close insurance (80/20).
 - **Nate removed (2026-07-23):** pulled from the pool; his 0.55% returns to the block's unallocated slack for Scott to redeploy or leave unspent.
 - **Dollars pegged to actual net proceeds.** The $/1% is now driven by the real at-close figure ($33.4M → $234K/1%), not the earlier $50M placeholder. Numbers rise with earnouts as realized.
 - **Performance gate applies to everyone.** The 2027 tranche for all ten is gated on the $25M/'26 and $28.75M/'27 targets — aligns the whole pool with the earnout + Jason's phantom.
