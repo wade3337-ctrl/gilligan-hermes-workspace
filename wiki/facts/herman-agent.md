@@ -51,5 +51,8 @@ The one with the TRIM IT + arbor knowledge and live DB access. **Call it "Boss H
 ## 🔓 PLAY write access (activated 2026-07-23)
 Boss Herman now has **full Administrator write on PLAY** — the Jul-10 "same access as Gilligan" grant, finally wired 2026-07-23 (his RW key was in the wrong `.ssh` dir + play wasn't in his `known_hosts`). Tools in his container `/opt/data/home/`: **`gsql.sh`** (read + **write** SQL), `view.sh` (render-verify), `deploy-to-play.sh` (webroot + auto-backup). Guardrails `herman-gateway/HERMAN-PLAY-WRITE-SETUP.md`: backup-first · render-verify · **PLAY ONLY** · log-it · ask-before-destructive. Revoke = remove his key line from play `administrators_authorized_keys` (Gilligan's is a separate key). **Proven same day:** built the entire Goodman GPS pilot start-to-finish across Tasks 4–6 (careful, disciplined, self-documenting) → [[goodman-rfp-bid]], [[trimit-gps-import-pipeline]].
 
+## ✍️ Task hand-off = copy-paste via chat, NOT an automated line (Skipper, 2026-07-24)
+**STANDING PREFERENCE:** dispatch Boss Herman tasks by handing the Skipper a **clean, paste-ready prompt** he pastes into Herman's chat — do **not** stand up / pitch the staged Gilligan→Herman direct hook (`gilligan-to-hermes-line-SETUP.md`) or dispatch via `docker exec`. Rationale: copy-paste through the chat channel **trains Herman to operate the way he really will in production** (chat-driven, no privileged pipe). So: craft the prompt to the repair/build contract, hand it over, and verify Herman's returned output — that's the loop. (Direct line stays deferred; don't re-offer it.)
+
 ## Related
 - [[crew-llms-and-helpers]] — the LLM crew (distinct from these agents).
