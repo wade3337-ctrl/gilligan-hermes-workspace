@@ -86,3 +86,11 @@
 - **Durable?** Yes — `Workbench` is NOT in the nightly refresh (only GSTS is restored; verified via msdb restorehistory). Grant persists.
 - **Revert:** `recovery/workbench-hermanro-grant-revert-20260722.sql`.
 - **Verified:** RO gateway now reads SalesGoal; `refresh-deal-dashboard.py` switched to RO login, regenerated live ($25.19M), container serving HTTP 200.
+
+### 2026-07-24 — Sales-by-Rep "Unattributed" drill ignored the date range → showed all-time (Executive$Sales$Unattributed.cfm, play)
+- **Symptom (Skipper):** On Sales by Rep, range 7/01/26–7/23/26, Unattributed = $65,775; clicking "view list" opened a drill showing work back to **2015**.
+- **Root cause:** The parent (`Executive$Sales$ByRep$Scope.cfm`) moved to a custom date-range model and links the drill with `ZStartDate`/`ZEndDate` (line 287). The drill `Executive$Sales$Unattributed.cfm` was never propagated — it still `cfparam`'d only `ZPeriodID`/`ZQuarterID`/`ZYearID` (each default 0 = **no date filter**), so it ran unfiltered = every unattributed invoice in history (2015+). The **headline $65,775 was correct** (parent query is date-scoped, line 125); only the drill was broken. Classic missed "propagate-to-sibling-page."
+- **Fix:** Rewrote the drill's list + total queries to filter `Invoices.InvoiceDate BETWEEN ZStartDate AND ZEndDate`, mirroring the parent's exact unattributed definition (status set, IsInternal=0, `SalesRepID IS NULL OR IsMeasured=0`) so they reconcile. Header + back-link now carry the date range (back-link points to the parent Scope page). **Regression guard:** with no range passed, the drill shows an empty-state and runs **no query** — it can never silently return all-time again.
+- **Backup:** `Jasonsrepairs\gilligan-unattrib-fix-20260724-024420\Executive$Sales$Unattributed.cfm` (pre-change). Deployed via my key (`gstsdb_ed25519`).
+- **Verified live (play, view.sh):** range 7/01–7/23/26 → drill total **$65,775 / 13 invoices, all dates in July 2026** (no pre-range rows) = reconciles to the headline. No-range guard → empty-state, 0 rows, 0 leak.
+- **DEPLOY:** PLAY ONLY. **NOT added to the currently-staged V15-DASHBOARDS package** (Skipper's call 2026-07-24 — leave that deploy as-is). **Carry this file in the NEXT prod deploy batch.**
