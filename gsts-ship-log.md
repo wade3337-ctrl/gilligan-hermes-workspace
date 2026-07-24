@@ -123,3 +123,21 @@
 - **Found while resending the COO email (Skipper request):** `monitor.js` passed `sampleDay` (latest reported day, ~yesterday) as browserToday to `bookedPacing`, so the elapsed/future split was off — tracking stayed ~93% ($2.05M) even after the dashboard's source-independent fix. `revenue-block.js` correctly used todayPT ($1.72M/78%).
 - **Fix:** monitor.js now passes `todayPT` to bookedPacing (matches revenue-block.js + dashboard). sampleDay still used for the TPH metric only.
 - **Verified:** regen COO report → Produced $1,295,329 (59%), Tracking $1,721,424 (78%), "produced $1.295M + scheduled $426K rest of mo". Resent to jwade only (NO exec CC). Automated 6:30 AM send now honest starting 2026-07-25.
+
+### 2026-07-24 (AM) — 3-bucket model: pending (unposted lag) days no longer read $0 (Dashboard-RevenuePerformance.cfm)
+- **Symptom (Skipper):** dashboard showed $0 revenue for 7/22–7/24 — an artificial dip. Cause: play restores from prod nightly + completions post ~1–2 days late, so recent days have $0 posted; the strict "split at today" then showed them as $0 actual.
+- **Fix (3-bucket, keyed on posted-status not just date):** a PAST day is CONFIRMED actual only if completions posted (`CompletedDollars > 0`); recent worked-but-unposted days fall through to the schedule ESTIMATE and bucket as PROJECTED/pending — not a $0 actual. `row.isPostedActual` drives the actual/projected split + drill. Self-adjusts to the daily data lag.
+- **Verified (play):** Actual-to-date stays $1,295,328.55 (confirmed only, matches production report); 7/22 Projected $146,127 · 7/23 $91,542 · 7/24 $88,657 (was $0). Total/tracking $2,047,751 (93%) = confirmed + pending + scheduled (accurate landing; the earlier 78% was understated by dropping the lag days). Deployed BOTH webroots + cleared cfclasses; refreshed NEXT-DEPLOY-20260724. Emails inherit it (tomorrow 6:30 AM).
+
+### 2026-07-24 (AM) — Projected days now value from scheduled hours × target TPH (Dashboard-RevenuePerformance.cfm)
+- **Symptom (Skipper):** 7/22 projected read $146K — too high. Cause: raw Calendars/CrewSheets EstValue front-loads whole-job values onto single crew sheets (e.g. "Grid 2 All trees and Palms" = $45,878 EstValue on an 18-hr sheet = $2,548/hr). EstValue-based projection is lumpy/inflated.
+- **Fix:** projected/pending days now = scheduled hours × targetTPH ($130), not EstValue. Confirmed (posted-actual) days unchanged (real CompletedDollars). Consistent, robust to lumpy per-job estimates.
+- **Verified (play):** 7/22 $146,127 → $114,442 (880 hrs × 130); Actual-to-date unchanged $1,295,328; Total landing $1,931,104 (was $2,047,751). Deployed both webroots + cleared cfclasses; refreshed package. Data-quality flag: the $45,878/18hr "Grid 2" sheet is a likely TRIM IT data error (distorts native reports too).
+
+### 2026-07-24 (AM) — FEATURE: dual TPH (Productive vs True) + Non-Productive Time tab (Dashboard-RevenuePerformance.cfm)
+- **Skipper request:** see both the productive TPH and the "actual" TPH incl non-productive hours, and a dedicated tab (not a tooltip blurb) breaking down the non-productive time.
+- **Built:**
+  - **True (blended) TPH** = revenue ÷ ALL paid field hours (billable + non-productive). New "True TPH" KPI tile next to "Productive TPH" (relabeled from "Period TPH"), with the per-hour drag; also added to every bar's tooltip.
+  - **Internal-hours subtyping** (`internalSubtype()`): Yard / Safety Training / OJT / Modified Duty / Meetings / Other, tracked per bucket (`internalByType`).
+  - **"Non-Productive Time" collapsible tab** below the chart: 4 summary stats (Productive TPH, True TPH, TPH Drag, NP hrs + % of labor) + a per-period breakdown table by category with totals + % of labor.
+- **Verified live (play, July):** Productive $134.98 vs True $132.47 (−$2.51/hr drag); 270.9 NP hrs = 1.9% of paid field hours; per-day category rows populated (e.g. 7/1 Yard 17.4 / OJT 4.4 / ModDuty 7.9). Built on temp filename first, promoted to both webroots + cleared cfclasses; refreshed NEXT-DEPLOY package.
