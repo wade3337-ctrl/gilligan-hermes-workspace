@@ -103,3 +103,12 @@
 - **Backups:** D: `Jasonsrepairs\gilligan-revperf-actuals-20260724-040742\`; C: shadow `...\cfusion\wwwroot\GSTS\Jasonsrepairs\Dashboard-RevenuePerformance.cfm.pre-actuals-*`.
 - **Verified live (play, ZUserID=9):** June 1 → **$84,909.71** (matches Day Sheets), Jun 2 $103,500.61, Jun 3 $86,140.10, month **$2,145,256**. CF Application Server was restarted (Skipper-approved) during the fix.
 - **DEPLOY:** PLAY ONLY (both webroots on play). NOT in the staged V15 package — carry in the NEXT prod deploy batch (prod may have the same dual-webroot; deploy to both there too).
+
+### 2026-07-24 — Daily COO/rep report + dashboard: report ESTIMATES as PRODUCED (monitor.js, revenue-block.js, Dashboard-RevenuePerformance.cfm)
+- **Symptom (Skipper):** the daily "Great Scott — Daily Monitor" email labeled a "🔨 Produced to date" figure that was actually the SCHEDULE-BOARD ESTIMATE (EstValue) — same overstatement as the dashboard. (Per-rep + Nate rollup were already accurate — they use `completedDollars`.)
+- **Root cause:** `monitor.js` + `revenue-block.js` fetched the Revenue Performance dashboard with `revenueSource:'ScheduleBoard'` (= EstValue) and printed its "Actual to date" as "Produced."
+- **Fix (Option A — Skipper's call, strict actuals):**
+  1. **Dashboard** `Dashboard-RevenuePerformance.cfm`: "True Produced Work" now uses actual `CrewSheets.CompletedDollars` for past+today days even when $0 (unposted work reads $0 until it posts, then self-corrects) — no EstValue fallback. Produced-to-date now = strict completed $.
+  2. **Report** (`monitor.js` + `revenue-block.js`): each line pulls its CORRECT source in one dashboard — **Produced** from `TrueProduced` "Actual to date"; **Tracking-to-goal** from `ScheduleBoard` "Total" (expected month-end landing incl scheduled + recent unposted). Two POSTs per run.
+- **Verified (play, July MTD):** Produced to date **$1,295,329** (matches DB `SUM(CompletedDollars)` to the penny; was ~$1.57M estimate). Tracking incl scheduled **$2,108,766 (96%)**. June 1 dashboard still $84,909.71. Dry-run only — no live send triggered. `node --check` passed on both scripts.
+- **Deploy:** dashboard on BOTH play webroots (D: + C: shadow) + refreshed in NEXT-DEPLOY-20260724 package. Report scripts run locally via cron (no deploy) — next 6:30/7:30 AM send uses the fix.
