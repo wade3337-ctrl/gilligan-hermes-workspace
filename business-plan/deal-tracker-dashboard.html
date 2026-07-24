@@ -29,26 +29,26 @@
  .foot{color:#6e7681;font-size:11px;margin-top:14px}
 </style></head><body>
 <h1>🎯 GSTS Revenue Ledger — count-once path to $26.40M</h1>
-<div class="sub"><span class="live">● LIVE</span> from TRIM IT (play, ~24h behind prod) · 2026-07-24 04:01 UTC · auto-refresh 15 min · Confidential (Skipper only). Financial = accounting-period, status-filtered. Production board kept separate.</div>
+<div class="sub"><span class="live">● LIVE</span> from TRIM IT (play, ~24h behind prod) · 2026-07-24 06:01 UTC · auto-refresh 15 min · Confidential (Skipper only). Financial = accounting-period, status-filtered. Production board kept separate.</div>
 
 <div class="hero">
 <div class="card"><div class="lab">Annual Goal</div><div class="big ">$26.40M</div><div class="tgt">GoalSettings×12 · $2,200,000/mo</div></div>
 <div class="card"><div class="lab">Adjusted Actual YTD</div><div class="big gk">$12.04M</div><div class="tgt">invoiced $12.13M + accrual bridge (live)</div></div>
 <div class="card"><div class="lab">Municipal Forecast (rem.)</div><div class="big gbl">$3.74M</div><div class="tgt">calendar H2 · engine recon $3.19M</div></div>
-<div class="card"><div class="lab">Firm Sold Coverage</div><div class="big gk">$3.17M</div><div class="tgt">nonmuni WOs dated ≤12/31</div></div>
+<div class="card"><div class="lab">Firm Sold Coverage</div><div class="big gk">$3.04M</div><div class="tgt">nonmuni WOs dated ≤12/31</div></div>
 <div class="card"><div class="lab">Risk-Adj Fresh Pipeline</div><div class="big gbl">$1.61M</div><div class="tgt">$4.02M HOA/Comm × 40%</div></div>
-<div class="card"><div class="lab">Uncovered Gap</div><div class="big gb">$5.84M</div><div class="tgt">still needs NEW sales/scheduling</div></div>
+<div class="card"><div class="lab">Uncovered Gap</div><div class="big gb">$5.96M</div><div class="tgt">still needs NEW sales/scheduling</div></div>
 </div>
 
 <div class="covwrap"><div class="lab">Count-once bridge to $26.40M — every dollar counted once</div>
  <div class="cov">
   <div class="a" style="width:46%">$12.04M actual</div>
   <div class="mu" style="width:14%">$3.74M muni</div>
-  <div class="fw" style="width:12%">$3.17M firm</div>
+  <div class="fw" style="width:12%">$3.04M firm</div>
   <div class="pp" style="width:6%">$1.61M pipe</div>
-  <div class="gap" style="width:22%">$5.84M gap</div>
+  <div class="gap" style="width:23%">$5.96M gap</div>
  </div>
- <div class="covleg">Actual <b style="color:#2f81f7">$12.04M</b> + Muni forecast <b style="color:#58a6ff">$3.74M</b> + Firm sold <b style="color:#3fb950">$3.17M</b> + Pipeline@40% <b style="color:#a371f7">$1.61M</b> = <b>$20.56M</b> covered → <b style="color:#e3b341">$5.84M</b> still needs new sales. <span style="color:#6e7681">No layer double-counted: firm/pipeline exclude municipal &amp; each other; muni forecast is contract budget, not scheduled crew.</span></div>
+ <div class="covleg">Actual <b style="color:#2f81f7">$12.04M</b> + Muni forecast <b style="color:#58a6ff">$3.74M</b> + Firm sold <b style="color:#3fb950">$3.04M</b> + Pipeline@40% <b style="color:#a371f7">$1.61M</b> = <b>$20.44M</b> covered → <b style="color:#e3b341">$5.96M</b> still needs new sales. <span style="color:#6e7681">No layer double-counted: firm/pipeline exclude municipal &amp; each other; muni forecast is contract budget, not scheduled crew.</span></div>
 </div>
 
 <div class="warn" style="border-left-color:#3fb950"><b style="color:#3fb950">✔ Accrual bridge (live):</b> Adjusted Actual = invoiced <b>$12.13M</b> + current-period accrual <b>$75K</b> − year-start (Dec) accrual <b>$161K</b> = <b>$12.04M</b>. From <code>dbo.GetPeriodAccrual</code> — the billing-cycle-aware municipal accrual Steve confirmed &amp; shipped to prod (% -of-completion, only work whose billing period is after the current period). <span style="color:#6e7681">Current period is partial-month, so the accrual grows toward month-end.</span></div>
@@ -67,7 +67,7 @@
  <div><h3>🏛️ Municipal contracts at/over budget</h3><div class="panel"><table><tr><td>City of Fountain Valley</td><td class='gb'>$-0.03M over</td></tr><tr><td>City of Irvine</td><td class='gb'>$-0.50M over</td></tr><tr><td>City of San Clemente</td><td class='gb'>$-0.26M over</td></tr></table></div>
   <h3>🔁 Reconciliation differences</h3><div class="panel"><table>
    <tr><td>Muni invoiced: Brent workbook vs TRIM IT</td><td>$4.16M vs $4.19M (+$32K)</td></tr>
-   <tr><td>Firm WO: Herman snapshot vs live</td><td>$4.60M vs $3.17M</td></tr>
+   <tr><td>Firm WO: Herman snapshot vs live</td><td>$4.60M vs $3.04M</td></tr>
    <tr><td>Muni forward: calendar vs engine-FY recon</td><td>$3.74M vs $3.19M</td></tr></table></div>
  </div>
 </div>
