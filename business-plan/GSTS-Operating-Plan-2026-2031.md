@@ -179,7 +179,7 @@ This is exactly the discipline our repair contract already requires: **render-ve
 
 ### 4.4 Make TPH real, then manage it
 - Productive TPH today: **commercial $157.53 · municipal $146.70**. Blended "true" TPH is far lower because non-revenue hours are large and unevenly distributed.
-- **Do:** publish both measures with a single agreed definition; investigate the **~21,000 commercial field hours currently carrying no revenue** (unbilled work vs. attribution error — unresolved, and material either way).
+- **Do:** publish both measures with a single agreed definition. ✅ **The ~21,000 zero-revenue commercial hours are RESOLVED (2026-07-25): an attribution artifact, not leakage** — 99.5% are zero-dollar crew sheets on work orders that carry revenue on *other* sheets, because multi-visit jobs post the dollars once while the hours land on every visit. **Nothing is unbilled.** The fix is to compute TPH at **work-order level**, not crew-sheet level.
 - **Target:** definition agreed and reported weekly by Q4 2026; non-revenue hours explained and reduced.
 
 ---
@@ -293,6 +293,6 @@ All figures measured from live production data 2026-07-24; step times confirmed 
 
 **Open items before external use:**
 1. Share of bids requiring a site visit ("most" — the data cannot say; biggest swing factor in cost-per-bid).
-2. The ~21,000 commercial field hours carrying no revenue — unbilled work or attribution artifact. **Unresolved; do not present.**
+2. ~~The ~21,000 commercial field hours carrying no revenue~~ — ✅ **CLOSED 2026-07-25:** attribution artifact (multi-visit jobs), not leakage. Fix = work-order-level TPH. See §4.4.
 3. Loaded-burden multiplier (1.3× assumed) — confirm with the CFO.
 4. Municipal proposal premium — unquantified.
