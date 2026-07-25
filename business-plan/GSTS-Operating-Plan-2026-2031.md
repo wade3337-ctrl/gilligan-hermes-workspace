@@ -116,6 +116,46 @@ Cheap, reversible, and it establishes adoption reality before any commitment.
 
 ---
 
+## 3B. Phase 1 STARTING POSITION — we are inheriting an asset, not starting clean
+**Assessed 2026-07-24 via independent walkthrough of the vendor dev environment (`dev.greatscotttreeservice.com`, a separate host from our play sandbox).**
+
+### What exists — more than expected
+A genuine rebuild of the field/project application, **not a reskin**:
+- **Eight-step Company/Project wizard** — every form bound to live records, populated selects (21 sales reps, ~85 GeoMarkets), inline help, coherent Back/Save/Save-&-Next progression, fiscal-year lock with a real explanation.
+- **Boundary editor** — per-shape tooling, draggable vertices, complete Edit Area modal, layer state persisting server-side.
+- **Artwork/print layout designer** — 7 paper sizes, 4 zoom modes, 13 toggleable print items, live legends with real counts.
+- **Field App BETA** — the strongest screen: satellite view, **WebGL marker layer**, working filter rail, species-colour legend, deep asset edit modal (Details/Images/Observations).
+- **Its own JSON API** (`FieldApp/api/map/…`), own CSS/JS, Bootstrap 5.3.
+- **Zero application JavaScript errors and no 500s** across every page walked. The code is clean at runtime.
+
+**Genuinely new vs wrapped:** the wizard, Boundaries, Plotting and Field App BETA are new builds. **Exceptions:** the Artwork tab is new chrome around **8 legacy `Tan/Wizard-Map-*.cfm` iframes**, and the Pricing Worksheet is a legacy WebPortal page wearing the new skin.
+
+### 🔍 The real problem — verification discipline, not capability
+> **The build quality is good. Nobody opened the tool and looked at it.**
+
+Four small data defects sit in the critical path and make four screens *present* as broken even though the machinery behind three of them is sound:
+1. `labelLat`/`labelLng` returned as **empty strings** → plotted at **lat 0 / lng 0** → the map opens on the Atlantic Ocean.
+2. The **"Fit" button is inert** — no recovery from (1).
+3. **Saved map views unset** → Artwork and Print inherit the broken base map. *The printed map — presumably the deliverable — renders the ocean.*
+4. **Six located assets** where the same project's pricing legend totals hundreds.
+
+This is exactly the discipline our repair contract already requires: **render-verify the served output.** It is the cheapest gap in the whole programme to close.
+
+### Additional gaps to carry into Phase 1
+- **No tablet breakpoint.** One media query at `767.98px`; **250px nav + 350px sidebar = 600px of fixed chrome.** At iPad width the desktop layout applies in full. **This is a desktop tool today** — a direct gap against the field-capture premise (§4.3).
+- **"Add Contact" inserts a blank record before the user types anything** (`Field.Contact.Create.cfm`) — creates junk data by design.
+- **Dev app links attachments to PRODUCTION storage** (`www.greatscotttreeservice.com/gsts/Storage/…`) — an environment-boundary problem.
+- Project Contacts renders blank fields; Notes flag toggles have **no visible on/off state** and are state-changing GETs; Setup's Inventory Actions are bare links to legacy scripts **with no confirmation step**.
+- Company contact data is dirty (duplicates, typos, one email stored as `mailto:…`).
+
+### Consequences for the plan
+1. **Phase 1 is NOT greenfield.** Preserve and finish this. **Recover the source before any vendor change** (§3A.1 item 5).
+2. **Estimated distance: a handful of focused fixes plus a data backfill to be demonstrable** — further to field-ready, principally the tablet layer.
+3. **The vendor conversation is now specific and factual:** *"the map tool opens over the Atlantic and the Fit button does nothing — walk me through how this was tested."* Far stronger ground than a productivity argument.
+4. **Institute render-verification as a condition of acceptance** for all delivered work, in-house or vendor.
+
+---
+
 ## 4. Phase 1 (2026–2027) — Protect and win the earnouts
 **Objective: AGP. Speed and field productivity, not office savings.**
 

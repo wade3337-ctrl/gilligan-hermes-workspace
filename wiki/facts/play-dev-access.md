@@ -7,7 +7,18 @@ links: ["[[workbench-play-db]]", "[[prod-db-access-blocked]]", "[[trimit-db-gotc
 updated: 2026-07-21
 ---
 
-# 🔑 Direct play/dev access
+# 🔑 Direct PLAY access
+
+## 🚨 THREE SEPARATE ENVIRONMENTS — do not conflate (corrected 2026-07-24)
+| Hostname | IP | What it is | My access |
+|---|---|---|---|
+| `play.greatscotttreeservice.com` | **173.208.162.142** | **OUR sandbox.** Everything in this note. | ✅ SSH (tailnet **100.86.97.46**, Administrator) + HTTP |
+| `dev.greatscotttreeservice.com` | **198.207.148.188** | **THE VENDOR'S dev server** (Travis/Jordan build the sales-workflow / Field App here) | ❌ no SSH · ✅ **HTTP reachable** (`view.sh` with `BASE=https://dev.greatscotttreeservice.com/GSTS`) |
+| `www.greatscotttreeservice.com` | 198.207.148.169 | **PROD** (AWS; same /24 as dev) | ❌ none — see [[prod-db-access-blocked]] |
+
+⚠️ **THE TRAP THAT FOOLED ME:** the play box's IIS webroot folder is *named* **`D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS`** — so the word "dev" appears in our own paths while pointing at PLAY. I concluded "dev and play are the same server" and assessed the vendor's output from the wrong machine. **They are different hosts.** Quick check: `getent hosts dev.greatscotttreeservice.com play.greatscotttreeservice.com` — different IPs. A page 404-ing on play but rendering on dev proves it.
+
+## Play access (this note's subject)
 
 Full detail: `arbor-stack/gstsdatabase-access.md`. Snapshot: `arbor-stack/gilligan-environment-snapshot.md`.
 
