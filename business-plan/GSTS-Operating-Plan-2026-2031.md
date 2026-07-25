@@ -149,6 +149,14 @@ This is exactly the discipline our repair contract already requires: **render-ve
 - Project Contacts renders blank fields; Notes flag toggles have **no visible on/off state** and are state-changing GETs; Setup's Inventory Actions are bare links to legacy scripts **with no confirmation step**.
 - Company contact data is dirty (duplicates, typos, one email stored as `mailto:…`).
 
+### 📄 The vendor's own roadmap confirms the direction (received 2026-07-25)
+A draft **"Field Sales Acceleration Roadmap"** from the IT/vendor side proposes seven enhancements consolidating the Sales Arborist workflow into one guided field app: field-side company/project setup, RFP creation, attachment automation, **E-Traveler**, Area Builder, Pricing Worksheet (explicitly *"ArborNote-style"*), and a digital proposal with a **live client link and interactive tree map**.
+
+- ✅ **It names the E-Traveler as "the biggest bottleneck"** — independently matching our measurement (30 min/bid, team-confirmed, the largest single friction step). **Two analyses from different directions, same answer.**
+- ✅ **It is aimed at Phase 1's targets**, and items 1 and 6 are already in QC — further evidence that **Phase 1 inherits work rather than starting clean.**
+- ⚠️ **But it is a feature register, not a plan:** target dates are explicitly **TBD**, there is **no baseline and no success measure** on any item (every benefit is qualitative), **5 of 7 remain "In discovery"**, and it covers **only quote-to-client** — nothing on field capture, billing, AR or the control gaps.
+- ⇒ **Adopt the list, not the format.** Attaching a baseline, a target and a date to each item is precisely what §4.1–4.2 do. Assessment: `bid-process-reengineering/WORKPHLOEM-ROADMAP-assessment.md`.
+
 ### Consequences for the plan
 1. **Phase 1 is NOT greenfield.** Preserve and finish this. **Recover the source before any vendor change** (§3A.1 item 5).
 2. **Estimated distance: a handful of focused fixes plus a data backfill to be demonstrable** — further to field-ready, principally the tablet layer.
