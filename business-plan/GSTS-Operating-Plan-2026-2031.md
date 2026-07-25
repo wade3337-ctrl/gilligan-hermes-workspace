@@ -286,6 +286,29 @@ Most of it is same-day, which is good. **But one in ten pieces of signed work wa
 
 > **For twelve years, every invoice this company has issued has been recorded as "Pending" and never marked paid.** Payment lands in QuickBooks and never returns. "Who owes us" lives in a spreadsheet emailed from accounting.
 
+#### ⭐ Bring AR ageing into our system (COO directive, 2026-07-25)
+**AR ageing lives in QuickBooks and reaches us as a spreadsheet emailed weekly. It should live in the system that knows the job.**
+
+**The good news — this is not a build. The tables already exist and have simply never been used:**
+
+| Structure | State |
+|---|---|
+| **`dbo.Payments`** table | **exists · 0 rows, ever** |
+| `Invoices.InvoiceBalance` | exists · populated on **0 of 3,112** |
+| `Invoices.DueDate` | exists · populated on **1,126 of 3,112 (36%)** |
+| `Invoices.Total` | ✅ populated — **$22.09M** in the last 12 months |
+
+> **"We have a Payments table. In twenty years it has never had a row in it."**
+> That single fact is this plan's whole thesis in miniature — **the capability was built and never connected.**
+
+**Staged path — deliberately sequenced so we get the answer early, not at the end:**
+1. **Now (weeks, near-zero cost):** we *already* parse Dimitry's weekly AR ageing file automatically for the collections emails. **Point that same feed at the database** — write balances into `Invoices.InvoiceBalance` and receipts into `Payments`. **AR ageing then lives in TRIM IT at weekly granularity immediately**, without waiting for any integration.
+2. **Then:** set `DueDate` on 100% of invoices at creation (36% today) — ageing buckets are meaningless without it.
+3. **Then (Phase 2 proper):** the **two-way accounting integration** so payment status returns to the job automatically and the weekly file becomes unnecessary.
+4. **Then:** retire the emailed spreadsheet as the source of truth.
+
+**Targets:** AR ageing reportable **from TRIM IT** by **Q2 2027** (weekly-refresh basis) · `DueDate` on **100%** of new invoices by Q4 2026 · payment status automatic — **no spreadsheet in the path** — by end-2028 · **DSO trend produced from the system of record**, which is the form a buyer will ask for it in.
+
 - **Do:** automated invoice delivery; a **two-way accounting integration** so payment status returns to the job it belongs to.
 - **Targets:** invoice→QuickBooks manual entry **eliminated** (recovering the 506 hrs in §2) · **DSO measurable inside the operating system** by end-2028 · every job traceable **sold → completed → billed → paid** · **invoice status reflects reality on ≥95% of invoices** — the simplest test that the loop is actually closed.
 - **Why it pays at exit:** a buyer's diligence team will ask for a DSO trend and an AR ageing straight from the system of record. Today that request cannot be met from the ERP at all.
