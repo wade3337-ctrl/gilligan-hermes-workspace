@@ -199,6 +199,29 @@ Measured on the bids where turnaround is computable:
 **Making it clean is a Phase 1 deliverable**, because it converts "faster quoting wins more work" from an industry belief into our own measured number — and that is what turns a speed target into a revenue forecast.
 **Target:** a defensible win-rate-by-turnaround curve, on the full proposal population, by **Q1 2027**.
 
+### 4.0c ⚠️ Whose clock is it? — every Phase 1 speed target is on OUR time only
+**Raised by the COO 2026-07-25, and it must be answered before any target is presented:** *"the time it takes to get a go-ahead isn't always something we control — we wait for the customer to sign, and sometimes it has to go in front of their board."* **Correct — so the targets are deliberately set only on the part we own.**
+
+| Clock | Span | Whose | Do we target it? |
+|---|---|---|---|
+| **Quote production** | customer request → **proposal sent** | **OURS** | ✅ **Yes — every target in §4.1/4.2 is this clock.** median 6d, p90 32 |
+| **Customer decision** | proposal sent → go-ahead | **THEIRS** — signature, board meeting cadence, budget cycle | ❌ **No.** Not ours to promise. |
+| Activation | go-ahead → work order | ours | ⚠️ p90 37 days — see §4.2 |
+
+**And the data confirms the split is clean.** On *our* clock, board-governed customers are no slower than direct ones:
+
+| Segment | Bids | Median | p90 |
+|---|---|---|---|
+| Commercial / direct | 1,017 | **6.9 d** | 33.4 |
+| **HOA / property management (board-driven)** | 1,615 | **6.8 d** | 36.1 |
+| Municipal / public | 1,059 | **4.4 d** | 25.0 |
+
+> **If customer governance were driving our quote turnaround, HOA work would be visibly slower than direct commercial. It is 0.1 days different. The six days are ours.**
+
+That closes the most likely objection in the room — *"that's not us waiting, that's the customer"* — with our own data, before it is raised.
+
+⚠️ **Customer decision time is genuinely invisible to us today** (`Proposals.DateApproved` and `GoAheads.ApprovedDate` are empty, and go-aheads are back-entered so 97% appear same-day). **Capturing it is worth doing** — not to target it, but because a customer who takes 60 days to approve is a forecasting fact and a follow-up trigger. Understanding *their* cadence (e.g. an HOA that meets monthly) is a **sales-timing advantage**, not a stick.
+
 ### 4.1 Bid velocity — quote on site, same day
 - **Now:** median 6 days; **1 in 4 over two weeks; 1 in 10 over a month.** Competitors quote on site from a tablet. *(3,663 bids with measurable elapsed time; a further 27% of bid records are created within an hour of being "sent" and have no elapsed time at all.)*
 - **Do:** on-site quoting for bids that don't require a full inventory; eliminate the manual e-traveler assembly (7 reports saved to PDF and combined by hand, 30 min/bid); live totals at the point of scope; customer receives a **live map and approves with a click**.
