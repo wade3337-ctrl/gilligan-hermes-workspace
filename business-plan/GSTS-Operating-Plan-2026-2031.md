@@ -263,12 +263,12 @@ Most of it is same-day, which is good. **But one in ten pieces of signed work wa
 ### 4.3 Field capture at source — tablets
 - **Now:** paper packets printed, handed out, collected, and typed in by 8 managers, ~1 hr nightly. **$11.1M of production per 6 months recorded second-hand.**
 - **Do:** crews report **as they go** on a tablet — hours, work completed, **photos**. Real-time job progress visible to office and customer.
-- **Why it pays now:** (a) **TPH becomes trustworthy**, so field productivity can be managed toward the $130 target; (b) photos and live progress are a **retention and upsell asset**; (c) same-day completion data accelerates billing.
+- **Why it pays now:** (a) **TPH becomes trustworthy**, so field productivity can be managed toward the $130 target — municipal is the segment below it ($126), with Irvine the lowest contract in that book; (b) photos and live progress are a **retention and upsell asset**; (c) same-day completion data accelerates billing.
 - ⚠️ **Adoption is the whole risk.** Pilot with one crew (§3A.5) and hold to one rule: **if it is not faster than paper for the crew, it fails.** Do not scale on a mandate.
 - **Targets:** ≥80% of crew sheets captured in the field by end-2027 · manager nightly entry **60 min → ≤15 min** · TPH reported within 24 hrs of work.
 
 ### 4.4 Make TPH real, then manage it
-- **Now:** productive TPH **commercial $157.53 · municipal $146.70**. Blended "true" TPH is far lower because non-revenue hours are large and unevenly distributed between segments.
+- **Now:** productive TPH **commercial $157.53 · municipal $126** (portfolio level: $9.04M over 71,730 field hours — confirmed by the COO 2026-07-25; the earlier $146.70 was on a narrower denominator and is retired). Blended "true" TPH is far lower because non-revenue hours are large and unevenly distributed between segments.
 - **✅ The zero-revenue-hours question is resolved (2026-07-25) and it changes this target.** The ~21,000 hours were **not** unbilled work — **99.5% are zero-dollar crew sheets on work orders that carry revenue on other sheets**, because a multi-visit job posts the dollars once while the hours land on every visit.
 - ⇒ **The defect is the denominator, not the money.** **Per-crew-sheet TPH is invalid for any job taking more than one visit** — which is most real work. We have been managing the field on a metric that miscounts multi-visit jobs.
 - **Do:** compute and report TPH at **work-order level**; publish productive and true TPH side by side with one agreed definition; keep internal time (Yard / Safety Training / OJT / Modified Duty) visible as its own line rather than buried in the denominator.
@@ -402,7 +402,8 @@ One is a **full-time human API** between our system and **Davey TreeKeeper** for
 | Duplicate entry events/yr | 17,800 | 10,000 | <4,000 |
 | Crew sheets captured in field | 0% | ≥80% | ≥95% |
 | Manager nightly data entry | ~1 hr | ≤15 min | ~0 |
-| TPH — productive (commercial) | $157.53 | — | manage to target |
+| TPH — productive (commercial) | $157.53 | — | hold above target |
+| TPH — productive (municipal) | $126 | ≥$130 | **the segment carrying the gap** |
 | Jobs traceable sold→paid | not possible | partial | **100%** |
 | DSO measurable in-system | no | — | **yes** |
 | Days to integrate an acquisition | n/a | — | **≤90** |
