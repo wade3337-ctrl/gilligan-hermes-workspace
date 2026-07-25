@@ -17,7 +17,7 @@ updated: 2026-07-14
 
 ## Where this shows up / how we handle it
 - **SPM Results Classic View** now carries a ⚠️ note: "Municipal reflects only budgets entered in TRIM IT… trails reports that include not-yet-issued work." Points readers to the Renewals tab.
-- **City Budgets → Renewals tab** ([[rc-03-city-budgets]], ship #166) is exactly the surfacing of this: it lists municipal (and commercial) accounts with **no current-FY budget yet** — i.e., the PO-pending renewals. The [[City of Stanton]] case (expired contract, no budget → vanished from Forecasting) is the same phenomenon.
+- **City Budgets → Renewals tab** ([[rc-03-city-budgets]], ship #166) is exactly the surfacing of this: it lists municipal (and commercial) accounts with **no current-FY budget yet** — i.e., the PO-pending renewals. The City of Stanton case (expired contract, no budget → vanished from Forecasting) is the same phenomenon.
 - **[[revenue-goal-close]]** municipal (produced/crew-sheet, not budget) is less exposed to this, but municipal *goal/budget* comparisons inherit it.
 
 ## Rule of thumb

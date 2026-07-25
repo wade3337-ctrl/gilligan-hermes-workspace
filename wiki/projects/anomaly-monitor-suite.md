@@ -5,15 +5,28 @@ domain: work
 track: 1
 status: shipped
 tags: [monitor, email-engine, coo, salesperson, ar-collections, brent]
-applies: ["[[external-comms-contract]]", "[[dashboard-metric-standards]]", "[[dashboard-auth-gate]]"]
-links: ["[[rc-03-city-budgets]]", "[[scott-manager-dashboard]]", "[[sales-cockpit]]", "[[gstsreadonly-prod-dsn]]", "[[dashboard-auth-gate]]"]
-updated: 2026-07-15
+applies: ["[[external-comms-contract]]", "[[dashboard-metric-standards]]", "[[dashboard-auth-gate]]", "[[data-freshness-contract]]"]
+links: ["[[rc-03-city-budgets]]", "[[scott-manager-dashboard]]", "[[sales-cockpit]]", "[[gstsreadonly-prod-dsn]]", "[[dashboard-auth-gate]]", "[[prod-backup-chain]]", "[[data-freshness-contract]]", "[[prod-db-access-blocked]]"]
+updated: 2026-07-25
 ---
 
 # Anomaly-monitor suite
 
 **One-liner:** Nightly email engines off the read-only PLAY endpoint — COO daily report (TPH/OT/revenue-pace/contract burn-down), per-salesperson + Nate rollup, and **AR collections (LIVE, per-rep with property detail)**.
 **Status:** 🟢 shipped — COO daily LIVE; AR collections LIVE per-rep; **salesperson pilot preview-only** (`liveEnabled=false`, previews to Jason).
+
+## ⏸️ 2026-07-25 — ALL TEAM-FACING EMAILS HELD (Skipper)
+Play was stuck on **7/21 data** ([[prod-backup-chain]]) — no point pushing 5-day-old numbers at the people we're trying to win onto the tools. **Paused 6 cron lines (3 jobs × 2 DST fires):** `run-and-email.sh`, `run-salesperson-live.sh`, `run-nate-rollup.sh` — commented in place with a `# HELD 2026-07-25 …` prefix, nothing deleted (backup `~/crontab.bak-preholdemails-20260725T161427Z`). **Left running** (Skipper-only/internal): bounce + reply watchers, AR weekly, retention scoreboard.
+▶️ **TO RESUME:** uncomment when a fresh backup lands, or when the `GSTSREADONLY` grant makes reporting live-prod and independent of the copy chain ([[prod-db-access-blocked]]). **The team is currently getting nothing — this state does not exit itself.**
+
+## 🛠️ 2026-07-25 — AR collections pipeline: 3 defects found, 4 fixes shipped
+Skipper asked a simple question — *"is the team getting THIS week's AR data, or a 3-week-old report?"* — and the answer was worse than stale:
+- **Dimitry is reliable**: 6 reports, every Monday (6/16 → 7/21). **We produced output twice.** Only 3 xlsx ever saved; `logs/ar-weekly.log` had 2 entries total. **~3 of 6 weekly reports silently lost.**
+- **Cause of the losses:** `ar-fetch.js` searched `{seen:false}` — any human opening the inbox, or our own `inbox-recent.js` (downloads bodies → sets `\Seen`), consumed that week.
+- 🔴 **Headline defect: AR emails carried NO DATE AT ALL.** `wk` was parsed with `/(\d{2}\.\d{2}\.\d{2})/`, matching Dimitry's *original* attachment name (`AR Aging 07.21.26.xlsx`) but not the name `ar-fetch.js` saves it under (`AR-Aging-2026-07-21.xlsx`). Never matched → `wk=''` → every `(week of …)` silently vanished from subject **and** body.
+**Fixes (backups `*.bak-arfix-20260725T162918Z`):** ① date parse handles ISO + legacy · ② staleness guard `MAX_AGE_DAYS=10`, exits non-zero, `--allow-stale` override (tested: 6/30 file refused, "25 days old") · ③ `dateTag()`/`subjTag()` stamp *"— data as of 07/21/26"* on all 5 send paths, `(DATE UNKNOWN)` if unparseable · ④ `ar-fetch.js` now tracks processed reports by **message-id** in `ar-report/ar-fetch-state.json` (seeded with all 6), and `inbox-recent.js` restores the flags it found.
+→ generalised into the standard: **[[data-freshness-contract]]**
+- ⚠️ Also corrected: the crontab comment said AR was *"PREVIEW to Skipper while piloting"* — it had been `--live` to every rep + Nate + Brent for weeks. **Don't trust a cron comment; trace to the flag.**
 **📁 Location:** `arbor-stack/anomaly-monitor/`
 **▶️ Resume:** `arbor-stack/anomaly-monitor/CHECKPOINT.md`
 **⏭️ NEXT (Skipper, 2026-07-15):** he wants to **change how some numbers in the COO daily email present** (which ones TBD — he'll specify). Report body = `monitor.js` sections 1–4 (Daily Job TPH · Overtime · Monthly Revenue · Municipal burn-down); numbers follow [[dashboard-metric-standards]]. Just fixed the forward-pace 403 → [[dashboard-auth-gate]].

@@ -3,11 +3,13 @@ title: Disaster recovery
 type: fact
 domain: env
 tags: [infra, disaster-recovery, backup, gpg, credentials, usb, recovery]
-links: ["[[github-offchip-backup]]", "[[env-host-and-tooling]]", "[[play-dev-access]]"]
-updated: 2026-07-02
+links: ["[[github-offchip-backup]]", "[[env-host-and-tooling]]", "[[play-dev-access]]", "[[prod-backup-chain]]"]
+updated: 2026-07-25
 ---
 
 # 🆘 Disaster recovery (built 2026-06-30)
+
+> ⚠️ **This note covers rebuilding GILLIGAN. It does NOT cover the COMPANY's DR posture — which has an open, unowned exposure:** production database backups stopped reaching play for 3+ days (7/22→7/25), and the same gap recurred 8–9 and 19–20 July. Whether production is still *producing* backups is unconfirmed. → **[[prod-backup-chain]]**
 
 Rebuild Gilligan on a **fresh machine from GitHub**. Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`.
 

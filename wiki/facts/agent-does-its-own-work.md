@@ -1,6 +1,6 @@
 ---
 title: Boss Herman does his OWN work — no Gilligan proxy
-type: feedback
+type: fact
 domain: how-we-work
 tags: [boss-herman, arbor-ai-system, architecture, testing, separation-of-concerns, principle]
 links: ["[[herman-agent]]", "[[two-track-confidentiality]]"]

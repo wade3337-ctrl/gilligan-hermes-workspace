@@ -2,6 +2,7 @@
 title: V1.5 Landing Assistant
 type: project
 domain: work
+tags: [v15, landing, assistant, trimit, ui]
 track: 1
 status: live-on-play
 model: llama3.2:3b (Ollama, localhost:11434)

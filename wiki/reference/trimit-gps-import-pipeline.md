@@ -2,6 +2,7 @@
 title: TRIM IT GPS inventory import pipeline (reverse-engineered)
 type: reference
 domain: work
+tags: [trimit, gps, import, inventory, procedure]
 track: 1
 status: proven
 updated: 2026-07-24

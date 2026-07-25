@@ -35,3 +35,4 @@ Governed by [[fort-point-confidentiality]]. Detail in `business-plan/`.
 - [[fort-point-advisors-and-open-questions]] — **who answers which deal question** (Cam/banker=economics · Gary/attorney=phantom · Steve=EBITDA bridge · BDO=QoE) + LOI-settled terms + open items. Cam-call prep: `business-plan/cam-bryan-call-prep-2026-07-22.md`.
 
 Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]] · [[dashboard-auth-gate]] (security gate + the rule: re-authorize headless consumers when you gate a surface).
+- [[gsts-revenue-by-geography]] — revenue split by county (OC / LA / IE), the base for the geography plan.

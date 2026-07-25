@@ -3,6 +3,7 @@ title: GSTS loaded field-labor cost ≈ $36/hour
 type: fact
 domain: work-gsts
 tags: [gsts, labor-cost, dl-cost-per-hour, payroll, budget]
+links: ["[[trimit-stack-and-tph]]", "[[only-trustworthy-data]]"]
 updated: 2026-07-08
 ---
 

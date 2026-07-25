@@ -2,6 +2,7 @@
 title: Deal Tracker — live private dashboard + 2026 re-goal
 type: project
 domain: work
+tags: [deal, dashboard, fort-point, tailscale, black]
 status: active — LIVE; pending Skipper "tune-up" (see Resume)
 confidential: black
 applies: ["[[fort-point-confidentiality]]"]

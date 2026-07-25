@@ -31,7 +31,7 @@ rsync copied the 1,973-byte Windows shortcut stub, not the folder behind it. Mis
 - **Transfer = ONE HOP** (v4): rsync reads the SMB share directly (mapped drive `T:` → `/cygdrive/t/...`) → warehouse. NO 200GB local staging. Flags: `-rt --no-perms --partial --whole-file --modify-window=2`.
 
 ## Hard-won lessons (this build)
-- **Two-hop was the bug:** staging 200GB to the user's C: filled the disk → console died mid-copy at a deterministic point, no readable error. → one-hop. ([[playbook]])
-- **SSH key rejected → password fallback BYPASSES the rrsync forced command** (rsync hit `~/` not the warehouse). Fixed client-side: `icacls` key-lock + `PreferredAuthentications=publickey`/`BatchMode`/`NumberOfPasswordPrompts=0` (fail-safe, no password). ([[lessons]])
+- **Two-hop was the bug:** staging 200GB to the user's C: filled the disk → console died mid-copy at a deterministic point, no readable error. → one-hop. ([[PLAYBOOK]])
+- **SSH key rejected → password fallback BYPASSES the rrsync forced command** (rsync hit `~/` not the warehouse). Fixed client-side: `icacls` key-lock + `PreferredAuthentications=publickey`/`BatchMode`/`NumberOfPasswordPrompts=0` (fail-safe, no password). ([[LESSONS]])
 - ⚠️ **Server hardening owed (flag to Jordan/IT):** box still allows `PasswordAuthentication` → a key-only drop box should set `PasswordAuthentication no` so the forced command can't be bypassed. Needs sudo I don't have.
 - Bulk raw data NEVER goes to git/GitHub/Obsidian — on-disk warehouse only; distilled notes ride the vault.

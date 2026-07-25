@@ -15,6 +15,8 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[crew-llms-and-helpers]] — the 5-lab verification panel + `crew/*-ask.py` helpers + gotchas. **OpenAI = `gpt-5.6-sol`** (default in `~/.codex/config.toml`, needs codex-cli ≥0.144).
 - [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + **Crew Meter** durable URL **`https://gilligan.tail5807bd.ts.net/`** (Tailscale Serve, tailnet-only).
 - [[play-dev-access]] — SSH to `gstsdatabase`, `gsql.sh`/`view.sh`, PLAY nightly refresh = DB-only.
+- [[play-gsts-is-ephemeral]] — 🧨 the `GSTS` db on play is SCRATCH; the restore erases whole projects. Durable work → `Workbench` + an idempotent replay script.
+- [[prod-backup-chain]] — prod→play backups **fail ~weekly**; play silently re-restores a stale file. Check `restorehistory` before trusting any play number.
 - [[prod-db-access-blocked]] — DIRECT SQL to prod still blocked; Jordan/AWS security group + IP `76.32.188.157`.
 - [[gstsreadonly-prod-dsn]] — **CF DSN `GSTSREADONLY` on play → prod read-only (Travis 2026-07-14)**; works for CF pages (3/5 monitor feeds), grant+perf pending. The daily-email live-prod path.
 - [[workbench-play-db]] — side SQL db that survives the nightly GSTS refresh (prototype state).
@@ -25,3 +27,4 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[disaster-recovery]] — rebuild-from-scratch runbook (`RECOVERY.md`), gpg bundle, USB kit.
 - [[herman-agent]] — Arduino companion agent (Herman ≠ decommissioned Hermes laptop).
 - [[kling-ai]] — 🎬 video/image generation (`kling/kling_gen.py`, key `~/.secrets/kling.json`); two-wallet gotcha (sub ≠ API prepaid pack); ffmpeg compress for Discord's 8MB cap.
+- [[herman-trimit-login]] — Boss Herman's TRIM IT (play) web login.

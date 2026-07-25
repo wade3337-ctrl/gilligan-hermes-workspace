@@ -2,14 +2,18 @@
 title: Goodman Portfolio RFP bid (via Gothic)
 type: project
 domain: work
+tags: [rfp, bid, goodman, gothic, gps-import, herman]
 track: 1
 status: active
-updated: 2026-07-24
+updated: 2026-07-25
 applies: ["[[trimit-gps-import-pipeline]]", "[[repair-contract]]", "[[herman-agent]]", "[[our-work-kanban]]"]
-links: ["[[PROJECTS]]", "[[sales-cockpit]]", "[[50m-growth-goal]]"]
+links: ["[[PROJECTS]]", "[[sales-cockpit]]", "[[50m-growth-goal]]", "[[play-gsts-is-ephemeral]]", "[[prod-backup-chain]]"]
 ---
 
 # 🌳 Goodman Portfolio RFP bid (via Gothic)
+
+> 🧨 **2026-07-25 — ALL THREE BUILDS WIPED.** The nightly restore ([[prod-backup-chain]]) re-applied a 7/22 backup, erasing projects **1105465** (Fullerton pilot), **1105467** (Eastvale, 313 trees) and **1105468** (El Monte, 298 trees) plus LocationIDs 1285095/96/97 and Herman's in-flight El Monte fixes. **Survived:** the `Workbench.dbo.*_bak_*` snapshots (full tree rows), all source xlsx/answer keys, and the recipe [[trimit-gps-import-pipeline]]. Skipper: *"no big deal — an opportunity to run another build test."* **Parked pending his call.**
+> ▶️ **Recommendation on the table:** don't hand-rebuild. Have Herman write ONE parameterized, idempotent build script (project → location → trees → address FKs → height model → publish) and run it for all three — it tests the recipe just as hard, survives the nightly wipe, and is the tool needed for the remaining 26 properties. → [[play-gsts-is-ephemeral]]
 
 **One-liner:** Bid the entire **Goodman industrial portfolio** tree-trimming — **~28 biddable properties / ~6,400 trees, LA + Inland Empire** — as a **subcontractor to Gothic Landscape Maintenance** (Lacy Anderson). Our relationship is **Rebekah Barker's**. **DUE 2026-08-03.** Kanban: trimit board card **56** (New builds).
 

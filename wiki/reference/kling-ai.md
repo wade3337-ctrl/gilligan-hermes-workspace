@@ -2,6 +2,7 @@
 title: Kling AI (video/image generation)
 type: reference
 domain: env
+tags: [ai, video, generation, tooling]
 status: live
 updated: 2026-07-23
 links: ["[[env-host-and-tooling]]"]

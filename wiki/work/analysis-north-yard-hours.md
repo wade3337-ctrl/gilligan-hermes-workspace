@@ -1,9 +1,10 @@
 ---
 title: North yard 45→40 hour cut — revenue-impact analysis (COMPLETE)
-type: analysis
+type: reference
 domain: work-gsts
 status: complete
 tags: [gsts, production, tph, crew-hours, revenue, labor-cost, seasonality, schedule-board]
+links: ["[[gsts-field-labor-rate]]", "[[trimit-stack-and-tph]]"]
 updated: 2026-07-08
 ---
 

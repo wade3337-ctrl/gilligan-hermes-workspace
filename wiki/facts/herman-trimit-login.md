@@ -3,6 +3,7 @@ title: Boss Herman's TRIM IT (play) web login
 type: fact
 domain: work-arbor-core
 tags: [herman, trimit, login, credentials, play, security]
+links: ["[[herman-agent]]", "[[play-dev-access]]"]
 updated: 2026-07-08
 ---
 

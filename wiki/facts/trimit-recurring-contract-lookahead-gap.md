@@ -6,6 +6,7 @@ track: 1
 tags: [trimit, contracts, sales-cockpit, data-model, running-dry, backlog]
 links: ["[[sales-cockpit]]", "[[aspen-retention-agent]]"]
 created: 2026-07-17
+updated: 2026-07-25
 ---
 
 # TRIM IT recurring-contract look-ahead gap

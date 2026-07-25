@@ -4,6 +4,7 @@ type: reference
 domain: environment
 updated: 2026-07-11
 tags: [settings, config, model, opus, context, session, environment]
+links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 ---
 
 # Gilligan — Session Settings Snapshot

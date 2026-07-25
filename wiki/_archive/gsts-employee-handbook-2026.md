@@ -4,6 +4,7 @@ type: reference
 domain: work
 status: draft-for-exec-review
 tags: [handbook, hr, policy, gstc, employment, pto, benefits, conduct, reference]
+links: ["[[gsts-handbook-legal-review-2026]]", "[[handbook-remediation]]"]
 updated: 2026-07-10
 ---
 

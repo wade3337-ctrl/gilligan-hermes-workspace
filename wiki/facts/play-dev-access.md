@@ -3,8 +3,8 @@ title: Play/dev access
 type: fact
 domain: env
 tags: [infra, ssh, sqlcmd, play, gstsdatabase, access]
-links: ["[[workbench-play-db]]", "[[prod-db-access-blocked]]", "[[trimit-db-gotchas]]", "[[disaster-recovery]]", "[[vendor-fieldapp-build]]"]
-updated: 2026-07-24
+links: ["[[prod-db-access-blocked]]", "[[trimit-db-gotchas]]", "[[disaster-recovery]]", "[[vendor-fieldapp-build]]", "[[play-gsts-is-ephemeral]]", "[[prod-backup-chain]]"]
+updated: 2026-07-25
 ---
 
 # 🔑 Direct PLAY access
@@ -28,6 +28,8 @@ Full detail: `arbor-stack/gstsdatabase-access.md`. Snapshot: `arbor-stack/gillig
 - **SQL:** `sqlcmd -S localhost,14333 -d GSTS` — wrapped by `production-dashboard/gsql.sh`.
 - **Pages:** `view.sh`.
 - **PLAY nightly refresh = DB-ONLY** — procs/data revert; `.cfm/.css/.js` persist.
+- 🧨 **CONSEQUENCE (learned the hard way 2026-07-25): the `GSTS` db is EPHEMERAL — whole projects/locations we create are ERASED by the restore.** Never build multi-day work in it. → **[[play-gsts-is-ephemeral]]**
+- ⚠️ **The restore is only as fresh as the backup that reaches `D:\Backups\` — and that chain fails ~weekly, silently re-restoring a stale file.** Check before trusting any play number. → **[[prod-backup-chain]]**
 
 ## ⚠️ This is a WRITE path — play is NOT read-only (2026-07-21)
 My `gstsdb_ed25519` key logs in as **Administrator** → I have **full write** on play: push files to the webroot `D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS\...` via `scp`, and run **write** SQL on GSTS via `gsql.sh` (SQLCMD `-E` integrated auth = full perms). The read-only things are *separate accounts*: `HermanRO`/`GSTSREADONLY` query logins + the `gilligan-bot` (376) view-only web login used by `view.sh`. **Don't reflexively say "play is read-only"** — I once refused to install a profile pic for that reason and was wrong (cost a round-trip). Still follow [[repair-contract]] (backup-first + verify), but know the write path is mine.
