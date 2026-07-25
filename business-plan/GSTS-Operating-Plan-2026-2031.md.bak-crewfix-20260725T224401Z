@@ -43,7 +43,7 @@ That single pattern explains our cost structure, our data quality, and our inabi
 | **Transcription only** (re-keying we already timed) | **≈5,473 hrs/yr ≈ 2.6 FTE ≈ $165.7K base / $215.3K loaded** |
 | **Total identified friction** (transcription + the rest of bid production) | **≈15,000 hrs/yr ≈ 7.2 FTE ≈ $469K base / $610K loaded** |
 
-**$610K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.4 margin points.** Recovering two-thirds of it is ≈$407K — **1.6 points on today's revenue, and 0.8 points on the $50M base where the 5-point expansion is actually promised.** The larger prize is not the $407K itself but the overhead we never add on the way to $50M. *(Note: this lands on EBITDA and therefore enterprise value. It does **not** move the earnouts, which run on AGP and exclude overhead.)*
+**$610K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.4 margin points.** Recovering two-thirds of it delivers roughly **one third of the promised expansion from cleanup alone** — before a dollar of growth.
 
 ---
 
@@ -175,9 +175,9 @@ A draft **"Field Sales Acceleration Roadmap"** from the IT/vendor side proposes 
 
 | Where you'd look | What you find | Verdict |
 |---|---|---|
-| `Proposals.Approved` | **0 of 5,033** | dead field |
-| `Proposals.DateApproved` | **0 of 5,033** | dead field |
-| Proposal status = "Lost" | 194 of 5,033 (3.9%) | **misleading on its own** |
+| `Proposals.Approved` | **0 of 5,015** | dead field |
+| `Proposals.DateApproved` | **0 of 5,015** | dead field |
+| Proposal status = "Lost" | 194 of 5,015 (3.9%) | **misleading on its own** |
 | **`GoAheads.StatusDefID`** | Archived 951 · Inactive 412 · **Lost 345** · Expired 31 | ⭐ **this is the real loss signal** |
 
 Take the obvious route and you get a **96% win rate**, which is nonsense. Take the correct one and you get **70.2%**, which is a real number. *(This was tested the hard way on 2026-07-25 — the obvious route was taken first and it was wrong.)*
@@ -214,7 +214,7 @@ Measured on the bids where turnaround is computable:
 |---|---|---|---|
 | **Quote production** | customer request → **proposal sent** | **OURS** | ✅ **Yes — every target in §4.1/4.2 is this clock.** median 6d, p90 32 |
 | **Customer decision** | proposal sent → go-ahead | **THEIRS** — signature, board meeting cadence, budget cycle | ❌ **No.** Not ours to promise. |
-| Activation | go-ahead → work order | ours | ⚠️ p90 29 days — see §4.2 |
+| Activation | go-ahead → work order | ours | ⚠️ p90 37 days — see §4.2 |
 
 **And the data confirms the split is clean.** On *our* clock, board-governed customers are no slower than direct ones:
 
@@ -336,7 +336,7 @@ Every invoice for twenty years is attributed to a single service account belongi
 - ⚠️ **Raise with the CFO privately before diligence** (§Appendix). A QoE or audit team finds these. **Far better volunteered than discovered.**
 
 ### 5.4 Retire the friction
-- **Target: recover ≥60% of the $610K loaded friction (≈15,000 hrs) by end-2029 as a reduction in administrative overhead.** The recovery is taken as cost, not redeployed — that is what makes it an EBITDA and valuation lever rather than a capacity story. Front-line selling and supervision capacity comes from growth, not from re-labelling saved admin hours.
+- **Target: recover ≥60% of the $610K loaded friction (≈15,000 hrs) by end-2029**, redeployed into selling and supervision rather than removed as headcount.
 - **This is the target that drives the scoreboard (§7):** ≈15,000 hrs less 60% ≈ **6,000 hrs**, spread across $50M of 2031 revenue ≈ **120 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
 - **Interim checkpoint so it cannot drift:** **≥30% recovered by end-2027**, reported on the same monthly instrument as everything else (§3A.3).
 
@@ -383,7 +383,7 @@ One is a **full-time human API** between our system and **Davey TreeKeeper** for
 
 > ### Administrative hours per $1M of revenue
 > **Today: ≈600** (≈15,000 hrs of identified friction ÷ $25.1M, the 2026 goal).
-> **If nothing changes, $50M of revenue requires ≈29,900 hours ≈ 14.4 FTE of administrative friction** — we would add the equivalent of **seven more full-time people who never touch a tree**, on top of the seven we already carry.
+> **If nothing changes, $50M of revenue requires ≈29,900 hours ≈ 14.4 FTE of administrative friction** — we would add the equivalent of twelve full-time people who never touch a tree.
 > **Target 2031: ≤125** — revenue more than doubles *while* administrative labor falls ~60% (§5.4). The ratio improves **five-fold**.
 
 *Basis: "identified friction" = bid-production friction + field transcription + invoice re-keying (§2), the same non-overlapping stack behind the $469K/$610K. Stated on plan revenue in every year so the trend reflects process change, not billing timing.*
@@ -427,7 +427,7 @@ One is a **full-time human API** between our system and **Davey TreeKeeper** for
 | Diligence/close distraction (H2 2026) | Phase 1 items are small and operational; nothing structural before close |
 | Contractually mandated foreign systems (Davey) | Integrate or price it in — do not assume it can be removed |
 
-**In scope, and stated plainly:** the recovered friction comes out as **lower administrative overhead** — that is the EBITDA and valuation case. **What we are not doing is cutting the field.** The reduction is in administrative labor created by the system, taken primarily by **not hiring into growth** rather than by cutting today's team where that is achievable. *We are buying the ability to double revenue without doubling the back office.*
+**Explicitly out of scope:** headcount reduction. Recovered capacity is redeployed to selling, supervision, and quality. *We are not buying software to cut people; we are buying back the capacity of the people we have.*
 
 ---
 
