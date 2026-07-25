@@ -34,16 +34,16 @@ That single pattern explains our cost structure, our data quality, and our inabi
 
 | | |
 |---|---|
-| **Bid turnaround** | median **6 days**, p75 14, p90 **36** |
-| **Handoffs per bid** (logged) | **5.6** average, p90 11, max 25 |
-| **Duplicate data-entry events** | **≈17,800/yr** (≈3.4 per bid, 10 min each) |
+| **Bid turnaround** | median **6 days**, p75 14, p90 **32** (3,663 bids with genuine elapsed time) |
+| **Handoffs per bid** (logged) | **5.6** average, p90 12, max 25 |
+| **Duplicate data-entry events** | **≈17,800/yr** (≈3.6 per bid, 10 min each) |
 | **Cost to produce one bid** | **≈$215**, of which **≈35% is friction** |
 | **Field data** | 87,189 hrs / **$11.1M** per 6 months, keyed by **8 managers**, ~1 hr each per night; **83 field staff, none enter their own work** |
 | **Billing** | 3,033 invoices / **$21.5M** manually extracted and re-keyed into QuickBooks |
 | **Transcription only** (re-keying we already timed) | **≈5,473 hrs/yr ≈ 2.6 FTE ≈ $165.7K base / $215.3K loaded** |
-| **Total identified friction** (transcription + the rest of bid production) | **≈15,400 hrs/yr ≈ 7.4 FTE ≈ $480K base / $624K loaded** |
+| **Total identified friction** (transcription + the rest of bid production) | **≈15,000 hrs/yr ≈ 7.2 FTE ≈ $469K base / $610K loaded** |
 
-**$624K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.5 margin points.** Recovering two-thirds of it delivers roughly **one third of the promised expansion from cleanup alone** — before a dollar of growth.
+**$610K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.4 margin points.** Recovering two-thirds of it delivers roughly **one third of the promised expansion from cleanup alone** — before a dollar of growth.
 
 ---
 
@@ -104,7 +104,7 @@ This determines the order of everything below.
 - **Diligence narrative:** *"We restructured a role that was creating deployment latency; the technical work is performed by a direct vendor under contract and has continued uninterrupted."*
 
 ### 3A.2 Recover the bid tail — no capital required
-The **p90 of 36 days** is where qualified deals die. Ownership rules, aging alerts and a day-7 escalation are a report and a process change, not a build. **Revenue recovery inside the earnout window at effectively zero cost.**
+The **p90 of 32 days** is where qualified deals die. Ownership rules, aging alerts and a day-7 escalation are a report and a process change, not a build. **Revenue recovery inside the earnout window at effectively zero cost.**
 
 ### 3A.3 Instrument the baseline
 Publish monthly from now: bid turnaround (median/p90), handoffs per bid, admin hours per $1M revenue, TPH by segment. **By the time investment is requested, we will have trend data rather than a snapshot.**
@@ -161,13 +161,13 @@ This is exactly the discipline our repair contract already requires: **render-ve
 **Objective: AGP. Speed and field productivity, not office savings.**
 
 ### 4.1 Bid velocity — quote on site, same day
-- **Now:** median 6 days; **1 in 4 over two weeks; 1 in 10 over a month.** Competitors quote on site from a tablet.
+- **Now:** median 6 days; **1 in 4 over two weeks; 1 in 10 over a month.** Competitors quote on site from a tablet. *(3,663 bids with measurable elapsed time; a further 27% of bid records are created within an hour of being "sent" and have no elapsed time at all.)*
 - **Do:** on-site quoting for bids that don't require a full inventory; eliminate the manual e-traveler assembly (7 reports saved to PDF and combined by hand, 30 min/bid); live totals at the point of scope; customer receives a **live map and approves with a click**.
 - **Why it pays now:** win rate decays with every day elapsed. **Faster quoting is revenue from existing headcount** — and revenue is what AGP is built on.
-- **Targets:** median **≤2 days** by end-2027 · **p90 ≤10 days** (from 36) · 50% of simple bids quoted **same day**.
+- **Targets:** median **≤2 days** by end-2027 · **p90 ≤10 days** (from 32) · 50% of simple bids quoted **same day**.
 
 ### 4.2 Kill the tail, not just the average
-- The **p90 of 36 days** is where deals die. Those are qualified opportunities lost to elapsed time.
+- The **p90 of 32 days** is where deals die. Those are qualified opportunities lost to elapsed time.
 - **Do:** aging alerts on open bids; a single owner per bid; escalation at day 7.
 - **Target:** no bid older than 14 days without an owner and a next action.
 
@@ -203,8 +203,8 @@ This is exactly the discipline our repair contract already requires: **render-ve
 - **Why:** audit-ready records are worth real money at exit and remove a diligence objection.
 
 ### 5.4 Retire the friction
-- **Target: recover ≥60% of the $624K loaded friction (≈15,400 hrs) by end-2029**, redeployed into selling and supervision rather than removed as headcount.
-- **This is the target that drives the scoreboard (§7):** ≈15,400 hrs less 60% ≈ **6,160 hrs**, spread across $50M of 2031 revenue ≈ **123 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
+- **Target: recover ≥60% of the $610K loaded friction (≈15,000 hrs) by end-2029**, redeployed into selling and supervision rather than removed as headcount.
+- **This is the target that drives the scoreboard (§7):** ≈15,000 hrs less 60% ≈ **6,000 hrs**, spread across $50M of 2031 revenue ≈ **120 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
 
 ---
 
@@ -233,18 +233,18 @@ This is exactly the discipline our repair contract already requires: **render-ve
 **The headline operating-leverage metric:**
 
 > ### Administrative hours per $1M of revenue
-> **Today: ≈615** (≈15,400 hrs of identified friction ÷ $25.1M, the 2026 goal).
-> **If nothing changes, $50M of revenue requires ≈30,700 hours ≈ 14.8 FTE of administrative friction** — we would add the equivalent of twelve full-time people who never touch a tree.
+> **Today: ≈600** (≈15,000 hrs of identified friction ÷ $25.1M, the 2026 goal).
+> **If nothing changes, $50M of revenue requires ≈29,900 hours ≈ 14.4 FTE of administrative friction** — we would add the equivalent of twelve full-time people who never touch a tree.
 > **Target 2031: ≤125** — revenue more than doubles *while* administrative labor falls ~60% (§5.4). The ratio improves **five-fold**.
 
-*Basis: "identified friction" = bid-production friction + field transcription + invoice re-keying (§2), the same non-overlapping stack behind the $480K/$624K. Stated on plan revenue in every year so the trend reflects process change, not billing timing.*
+*Basis: "identified friction" = bid-production friction + field transcription + invoice re-keying (§2), the same non-overlapping stack behind the $469K/$610K. Stated on plan revenue in every year so the trend reflects process change, not billing timing.*
 
 | Metric | Baseline (2026) | 2027 | 2031 |
 |---|---|---|---|
-| Admin hrs per $1M revenue | ≈615 | ≈510 | **≤125** |
+| Admin hrs per $1M revenue | ≈600 | ≈495 | **≤125** |
 | **Deployment lead time** (staged → live) | **weeks** | ≤5 days | ≤2 days |
 | Bid turnaround — median | 6 days | ≤2 days | ≤1 day |
-| Bid turnaround — p90 | 36 days | ≤10 days | ≤5 days |
+| Bid turnaround — p90 | 32 days | ≤10 days | ≤5 days |
 | Handoffs per bid | 5.6 | 3 | ≤2 |
 | Duplicate entry events/yr | 17,800 | 10,000 | <4,000 |
 | Crew sheets captured in field | 0% | ≥80% | ≥95% |
