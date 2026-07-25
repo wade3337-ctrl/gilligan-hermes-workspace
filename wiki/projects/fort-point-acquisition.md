@@ -6,8 +6,8 @@ status: active
 confidential: black
 tags: [mna, fort-point, acquisition, earnout, mip, confidential]
 applies: ["[[fort-point-confidentiality]]"]
-links: ["[[gsts-growth-plan-fort-point]]", "[[gsts-2026-earnout]]", "[[gsts-adjusted-ebitda]]", "[[skipper-and-company]]"]
-updated: 2026-07-19
+links: ["[[gsts-growth-plan-fort-point]]", "[[gsts-2026-earnout]]", "[[gsts-adjusted-ebitda]]", "[[skipper-and-company]]", "[[gsts-operating-plan-2026-2031]]", "[[trimit-investor-case]]", "[[vendor-fieldapp-build]]"]
+updated: 2026-07-24
 ---
 
 # 🔒 Fort Point Capital — acquisition of Great Scott (CONFIDENTIAL)
@@ -22,3 +22,11 @@ Applies [[fort-point-confidentiality]]. Signed LOI **2026-07-15** (Scott Griffit
 - **Skipper is NOT the owner** (Scott is the Seller). Sell-side advisor/broker = **Cam Bryan, Augusta Advisors.**
 - **Skipper's phantom stock** (legacy 2024 LTIP, 1/30 of the company, pays out at close ON TOP OF the MIP): **(deal price − $10M) ÷ 30 ≈ $0.8–1.5M** → [[fort-point-phantom-stock]]. Source docs in `business-plan/phantom-stock/`.
 - **Key-Employee Incentive Plan** — repurposing a *departed* employee's forfeited **3.3333%** phantom block into a hybrid close/5-yr retention pool for ~10 key employees → [[key-employee-incentive-plan]] (draft, awaiting Scott's picks).
+
+## 📉 June financials review — the EBITDA gap and what closes it (2026-07-24)
+Reviewed Dimitry's June pack; exec talking points (Track-1 clean) emailed to jwade.
+- **2026 net income is down mostly because 2025 was juiced** by roughly **$320K/mo of one-time income** — not an operating collapse.
+- **Real operating overhead is up ~$110K/mo**, and **5 accounts account for the entire increase.** **Accounting / Lobbyist / Legal are add-back candidates.**
+- ⚠️ **TTM adj EBITDA per the Dimitry pack is ~$2.02M vs the deal's $3.80M** → the difference is the **add-back bridge Steve owes.** Parked pending Steve's data. (Deal floor is ~$4.1M → see [[gsts-adjusted-ebitda]].)
+- 💡 **Run-rate item for QoE:** Jordan Kim (~$143K base / **~$186K loaded**) — Scott wants him out ASAP and the capability is *not* at risk because GSTS pays the vendor (Travis) directly. That alone **closes ~62% of the $3.80M→$4.1M floor gap.** **Tell Steve so QoE catches it.** Context + the assessment of what the vendor actually built → [[vendor-fieldapp-build]].
+- 🚩 **Raise PRIVATELY with Steve before it surfaces in diligence:** the ERP **cannot tell paid vs open** (`Invoices.StatusDefID` dead since ~2014) so DSO isn't measurable, and pipeline/backlog/aging figures rest on **back-entered dates** — confirm nothing external depends on them. Could read as a control weakness. Detail → [[trimit-investor-case]], [[trimit-db-gotchas]].

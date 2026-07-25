@@ -19,7 +19,7 @@ updated: 2026-07-16
 **⏰ Deadline:** team feedback to Roxanne (rmontijo@gstsinc.com) due **7/24/2026**.
 
 ## Where it stands
-- **Source:** 2 independent AI legal reviews (Claude Fable-5 + GPT-5.6), synthesized into a **52-item hit list** (Herman emailed 2026-07-16). Reviews ran on a FLAT text export → couldn't see the draft's markup.
+- **Source:** 2 independent AI legal reviews (Claude Fable-5 + GPT-5.6), synthesized into a **52-item hit list** (Herman emailed 2026-07-16). Reviews ran on a FLAT text export → couldn't see the draft's markup. The written-up findings live in **[[gsts-handbook-legal-review-2026]]**; the draft itself is **[[gsts-employee-handbook-2026]]**.
 - **Draft markup decoded:** Roxanne's convention — red strikethrough = REMOVE, yellow highlight = new/revised. Parsed the .docx: 440 strikethrough runs (~5,447 words) + 350 highlighted.
 - **Reconciled + manually verified** each finding vs the actual markup.
 

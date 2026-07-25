@@ -4,7 +4,7 @@ type: project
 domain: work
 track: 1
 status: active
-updated: 2026-07-23
+updated: 2026-07-24
 applies: ["[[trimit-gps-import-pipeline]]", "[[repair-contract]]", "[[herman-agent]]", "[[our-work-kanban]]"]
 links: ["[[PROJECTS]]", "[[sales-cockpit]]", "[[50m-growth-goal]]"]
 ---
@@ -44,6 +44,30 @@ Herman audited the pilot against the 4 SOPs (rfp-handling/intake/go-aheads/arbor
 - Project 1105465 → CurrentYear 2026, FiscalYearConfirmed 1, ProjectNewSiteNoHistory 1, Status 104 (InProcess).
 - Skill bumped → `commercial-portfolio-bid-pricing v1.1.0` (15-gate RFP→GoAhead checklist, pitfall #15). Herman ship #79.
 - **Minor/non-blocking:** `NeedSiteWalk` is NULL (decide if a walk is wanted for a new site); one benign `GENERAL`/Pending RFPAction (692910) has `UserID` NULL — real pending RFPs route via SalesRepID, so harmless.
+
+## ✅ PROPERTY 2 — Eastvale (proj **1105467**), publish + full field population (2026-07-24)
+Herman built; Gilligan verified live off play. **PUBLISH WORKS** — 313 trees, `IsNewPlot=0` on all (grey dots + info-card, no blue = "complete"), `apiCall.cfm` GeoJSON generator contract-correct, backup kept, PLAY-only. Mechanism → `trimit-knowledge/procedures/gps-publish-info-card-mechanism.md`.
+⚠️ **Trees resolve via `Projects.LocationID → InventoryDetail.LocationID`, NOT `InventoryDetail.ProjectID`** (unset on GPS rows). My first pass queried ProjectID, got 0, and wrongly reported "trees wiped / publish gate missing." → LESSONS.
+⚠️ *The 07-24 log records Eastvale's LocationID as **1285096**, which collides with the Fullerton pilot's above — confirm which is right before reusing either ID.*
+
+**Skipper's drill-down punch list — COMPLETE, one at a time, each verified:**
+- **Tree ID (GSTSID)** ✅ card read "tree id 0" because GSTSID was NULL on all 313; customer tags lived in `LegacyRef` (2043–2937). `LegacyRef`→`GSTSID`, 313/313. Safe — **GSTSID is per-site, not globally unique.**
+- **Address** ✅ Herman replicated Irvine's **4-field model** (StreetNumber + StreetName + `StreetNameID`→StreetNames + `LocationStreetID`→LocationStreets); created 2 streets (GOODMAN WAY ×112, BELLGRAVE AVE ×201), joined per-tree by tag. Verify: **313/313 match the source sheet on street AND number, 0 mismatch, 0 orphan FK, 0 unmatched tag.** Backup `Workbench.dbo.InventoryDetail_bak_address_1285096_20260724`.
+- **Observations** ✅ **not broken** — the records show in the real **Observations tab**; the Details-tab "Observations:" field is `LineNote001`, which the import ignores. Closed, no fix.
+- **Height** ✅ numeric was NULL (only the bucket set). Location height dropdowns are scoped to the location's HeightModel and the default ("USC", ID 2) is **shared by 35 locations → untouchable**; so Herman created a dedicated **HeightModel 11 "Goodman Survey (10ft bands)"** + 4 ranges (0-10/11-20/21-30/31-40 ft), repointed the location, set all 313 by tag. Verify: 313/313 match the sheet, 0 off-model, JSON regenerated.
+- 🧹 **Landmine cleared for backup:** 197 orphaned `InventoryGPSModel` staging rows for proj 1094998 "USC Contract" — **it's a GLOBAL staging table**, so they'd contaminate the next import. Assessed as **2014 leftovers already in InventoryDetail** → safe to clear; backed up to `Workbench.dbo.InventoryGPSModel_bak_USC1094998_20260724`. ⏳ **Awaiting Skipper's nod on the `DELETE FROM dbo.InventoryGPSModel WHERE ProjectID=1094998`** (only bites at the next import).
+- 📄 Reusable recipe for the other 27 properties → `trimit-knowledge/procedures/gps-inventory-import-pipeline.md`.
+
+## 🧪 PROPERTY 3 — El Monte Bldg 1 (proj **1105468** / Loc **1285097**), Herman solo — STRONG PASS, 1 gap
+Skipper had Herman build a second property **unaided** to test generalization (new county, 15 species). Verified tag-by-tag against `inbox-pull/goodman-rfp-2026-07-22/elmonte-bldg1-verify-answerkey.md`:
+- ✅ 298 trees, tags 4382-4795, 0 duplicate GSTSID, IsNewPlot cleared, Condition/LZR/lat-lng all 298.
+- ✅ **Height 298/298** match the sheet (dedicated HeightModel 17). Nit: 4 bands created, only 3 used (templated from Eastvale).
+- ✅✅ **Species 15/15 correct including the hard aliases** — Christmasberry→Toyon, Afghan Pine→Pine-Eldarica, Chinese Flame Tree→Koelreuteria-Bipinnata, Goldenrain→Koelreuteria-Paniculata, African Sumac→Rhus. The trickiest step, nailed.
+- ❌ **Address incomplete (the one gap):** StreetNumber + StreetName text correct (4300 NORTH SHIRLEY AVE) but **`StreetNameID`=0/298 and `LocationStreetID`=0/298** — the two FK links skipped. A regression against his own Eastvale build; fix = Eastvale address recipe steps 3-4.
+
+### ⏳ IN FLIGHT — verify when Herman reports
+1. **Address FKs** → expect 298/298 on both, 0 orphan FK, drill-down showing "4300 NORTH SHIRLEY AVE, El Monte".
+2. **Pricing worksheet** was blank. **DB counts EXIST** (`InventorySummary`=15, 298 trees; Price=0 is normal pre-Price-Buddy) ⇒ it's a **worksheet GENERATION** issue. Verify it's fetched from **El Monte's own ProjectID 1105468** (`ReportDev/Project$PricingWorksheet$…cfr?ZProjectID=1105468`) with **El Monte's address baked in** — NOT copied from another property (that trap = `genuine-pricing-worksheet-overlay.md`) — and shows the 298-tree counts by species/service.
 
 ## ▶️ RESUME (next session) — gates 10–15 walkthrough (Skipper teaching)
 Skipper walks the remaining lifecycle: **E-Traveler → Pricing Worksheet → Project Master → Arborist/IQC → Proposal → GoAhead → Work Order.** The crux inside that:

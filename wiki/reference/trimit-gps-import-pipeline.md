@@ -4,9 +4,9 @@ type: reference
 domain: work
 track: 1
 status: proven
-updated: 2026-07-23
+updated: 2026-07-24
 applies: ["[[repair-contract]]", "[[play-dev-access]]"]
-links: ["[[goodman-rfp-bid]]", "[[trimit-db-gotchas]]", "[[herman-agent]]"]
+links: ["[[goodman-rfp-bid]]", "[[trimit-db-gotchas]]", "[[herman-agent]]", "[[workbench-play-db]]"]
 ---
 
 # 🗺️ TRIM IT GPS inventory import pipeline (how a spreadsheet becomes visible, priced-ready tree inventory)
@@ -37,6 +37,23 @@ The detail popup (`FieldApp/Field-Inventory-Update.cfm?ZInventoryDetailID=<id>` 
 - **Observations:** separate **`dbo.Observations`** table (`Desc1='Observation Recorded'`, `ObservationClassID`, `StatusDefID=392`, `LongDesc1`=text, per-tree `InventoryDetailID`). ObservationDefs: 19=Declining, 28=Limb Damage, 30=Trunk Damage, 43=Sucker branches, 47=Dead top.
 - **Location "Name"** box on `Profile.Location.Update.New.cfm` reads **`LocationCompany`**, not `LocationName`.
 - **Crown / on-site contact/phone/gate** = no RFP source (operational, from client).
+
+## ✅ Step 4 — PUBLISH (blue "selected" dots → grey published dots + info-card) — 2026-07-24
+**Two different layers, and the finished state is grey-only:**
+- **Blue dots = `SelectedPoints`** (the server-side query above, `IsNewPlot=1`) — the *working* layer.
+- **Grey dots + info-card = pre-generated GeoJSON** files under **`/GSTS/API/JSON/`** (apiJS → `apiCall.cfm` → Taffy), gated **server-side to EXCLUDE `IsNewPlot=1`** — the *published* layer.
+- ⇒ **Publish = (a) clear `IsNewPlot` + (b) generate the GeoJSON.** While IsNewPlot is still 1 you see BOTH; when the job is right you see **only grey**. (windowControl/FusionTables is an orphaned red herring — ignore.)
+- **On PLAY** the Taffy route 404s (stub proc, `xp_cmdshell` off): patch `apiCall.cfm` to write the GeoJSON locally via `<cffile>` (the dir + icons already exist on play). Full mechanism → `trimit-knowledge/procedures/gps-publish-info-card-mechanism.md`. Reverse-engineered by the Kimi K3 crew, verified against code + server.
+- ⚠️ **Regenerate the GeoJSON after ANY field-population change** — the card reads the file, not the table.
+
+## ⚠️ Post-import FIELD POPULATION (the importer leaves these blank) — recipe, 2026-07-24
+Proven across Eastvale (313 trees) + El Monte (298). Full recipe: `trimit-knowledge/procedures/gps-inventory-import-pipeline.md`. **Back up per-change** (`Workbench.dbo.<table>_bak_<what>_<loc>_<date>`), one item at a time, verify tag-by-tag against the source sheet.
+- 🚨 **Trees resolve via `Projects.LocationID → InventoryDetail.LocationID`, NOT `InventoryDetail.ProjectID`** (unset on GPS rows). Querying by ProjectID returns 0 and looks like "the import was wiped."
+- **Tree ID:** the importer parks the customer tag in **`LegacyRef`** and leaves **`GSTSID` NULL** → card reads "tree id 0". Copy `LegacyRef`→`GSTSID`. Safe: **GSTSID is per-site, not globally unique.**
+- **Address = a 4-field model** (copy Irvine's): `StreetNumber` + `StreetName` text **plus the two FKs** `StreetNameID`→`StreetNames` and `LocationStreetID`→`LocationStreets`. Setting only the text leaves the drill-down blank — this is the single most-repeated miss. Create the street rows once per location, then join per-tree by tag.
+- **Height:** the importer sets the bucket but leaves the numeric NULL. Dropdowns are **scoped to the location's HeightModel**, and the default model ("USC", ID 2) is **shared by ~35 locations → never edit it.** Create a **dedicated HeightModel per survey** (+ its ranges), repoint the location, then set trees by tag.
+- **Observations are NOT broken:** they live in the real **Observations tab**. The Details-tab "Observations:" box is `LineNote001`, which the import ignores — blank there is expected.
+- 🧹 **`dbo.InventoryGPSModel` is a GLOBAL staging table, not per-project.** Orphaned rows from old projects contaminate the next import — check for and back up/clear strays before importing (e.g. 197 rows left from 2014 proj 1094998 "USC Contract").
 
 ## Known field-app bug (fixed)
 `SelectedPoints` had a hardcoded **`AND 1 = 0`** → zero dots for EVERY project. Removed on PLAY 2026-07-23 (was a play-only stray line; **prod was fine**). See `gsts-ship-log.md`.

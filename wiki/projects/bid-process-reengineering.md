@@ -28,7 +28,11 @@ updated: 2026-07-02
 - Prototype candidates ranked: (1) info@ → draft RFP · (2) auto-assemble E-Traveler button · (3) Price Buddy inline · (4) one-click Go-Ahead activate. Pick the first to build.
 - Reference for the arbor-core sales engine (Track 2) — reference, don't copy into the black repo.
 
+## 📊 The measured case for it (2026-07-24)
+The evidence that this redesign is worth doing — bid records created after the fact, 3 transcription points, the department bottleneck map, ≈$391K/yr of measured friction — now lives in **[[trimit-investor-case]]** (same folder). Headline: **"we don't have a delivery problem, we have an intake problem."**
+
 ## Related
+- [[trimit-investor-case]] — the factbase + the two decks built out of this folder.
 - [[sales-cockpit]] — the unifying shell / CRM front door.
 - [[sales-engine-prototypes]] — the spikes that prove each stage.
 - [[pricing-guide-bid-prefill]] — the Stage-3 estimating engine.

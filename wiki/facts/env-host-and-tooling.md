@@ -3,13 +3,17 @@ title: Env — host & tooling
 type: fact
 domain: env
 tags: [infra, host, os, node, python, browser, file-reading]
-links: ["[[crew-llms-and-helpers]]", "[[github-offchip-backup]]", "[[disaster-recovery]]"]
-updated: 2026-07-02
+links: ["[[crew-llms-and-helpers]]", "[[github-offchip-backup]]", "[[disaster-recovery]]", "[[gilligan-session-settings]]"]
+updated: 2026-07-24
 ---
 
 # Env — host & tooling
 
 Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`.
+
+## 🧠 Brain (current)
+- **Claude Opus 5** — `anthropic/claude-opus-5`, alias **`opus5`**, claude-cli backend. Released 2026-07-24, verified reachable, registered in `openclaw.json` as `model.primary` (+ provider def), then `openclaw gateway restart` to make it the **system-wide default for all sessions / crons / subagents**. Rollback: `openclaw.json.bak-preopus5-20260724T200145Z`.
+- ⚠️ Changing `model.primary` does **not** move an already-running session (sticky per-session binding) — use a session override or start fresh. See [[gilligan-session-settings]].
 
 ## Host
 - **Ubuntu 26.04**, kernel **7.0.0-22**; **OpenClaw 2026.6.1**.

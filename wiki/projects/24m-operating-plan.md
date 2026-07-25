@@ -45,6 +45,7 @@ Field plan produces the $11.78M ($7.72M booked + $4.06M new); Sales plan sells t
 - **Bridge outputs (Gilligan, workspace root):** `GSTS-24M-Sales-Operating-Plan-WITH-BRIDGE.pptx` (bridge = opening slide) · `GSTS-24M-Bridge-Slide-standalone.pptx` (drop-in). On-brand: `#26332E` bg, `#B9D77A`/`#D99028` accents, Aptos fonts.
 
 ## Related
+- [[gsts-operating-plan-2026-2031]] — **don't confuse the two.** That one is the *company's* multi-year operating plan (EBITDA/overhead/exit mechanism); this one is the *2026 revenue* plan ($24M produced).
 - [[revenue-goal-close]] — the live dashboard measuring this same goal (count-once coverage vs gap).
 - [[municipal-budgets-po-gated]] — why part of the sold book is soft (the Q4 firmness risk).
 - [[completed-vs-sold]] · [[rc-02-revenue-performance]] · [[trimit-stack-and-tph]] — TPH $130 target lineage.

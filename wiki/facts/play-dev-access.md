@@ -3,8 +3,8 @@ title: Play/dev access
 type: fact
 domain: env
 tags: [infra, ssh, sqlcmd, play, gstsdatabase, access]
-links: ["[[workbench-play-db]]", "[[prod-db-access-blocked]]", "[[trimit-db-gotchas]]", "[[disaster-recovery]]"]
-updated: 2026-07-21
+links: ["[[workbench-play-db]]", "[[prod-db-access-blocked]]", "[[trimit-db-gotchas]]", "[[disaster-recovery]]", "[[vendor-fieldapp-build]]"]
+updated: 2026-07-24
 ---
 
 # 🔑 Direct PLAY access
@@ -17,6 +17,8 @@ updated: 2026-07-21
 | `www.greatscotttreeservice.com` | 198.207.148.169 | **PROD** (AWS; same /24 as dev) | ❌ none — see [[prod-db-access-blocked]] |
 
 ⚠️ **THE TRAP THAT FOOLED ME:** the play box's IIS webroot folder is *named* **`D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS`** — so the word "dev" appears in our own paths while pointing at PLAY. I concluded "dev and play are the same server" and assessed the vendor's output from the wrong machine. **They are different hosts.** Quick check: `getent hosts dev.greatscotttreeservice.com play.greatscotttreeservice.com` — different IPs. A page 404-ing on play but rendering on dev proves it.
+
+What's actually ON the dev box (assessed 2026-07-24, HTTP-only, auth = `&ZUserID=9`) → **[[vendor-fieldapp-build]]**.
 
 ## Play access (this note's subject)
 
