@@ -70,11 +70,23 @@ This determines the order of everything below.
 - Technical delivery runs through **a coordination layer between the company and the vendor who performs the work**, adding latency without adding output. Fully loaded cost of that layer: **≈$186K/yr**.
 - The **capability itself sits with a single external vendor** under a direct company contract (minimum-spend commitment). Internal technical capability is thin.
 
-**The change:**
-1. **Manage the delivery vendor directly**, under a defined process rather than an intermediary.
-2. **Institute a real deployment path:** build on play → verify → staged package → **scheduled production window with a named approver and a logged record of what shipped.** Not ad-hoc personal access — a controlled, auditable procedure. *(This also avoids creating a new internal-control gap of the kind identified in §5.3.)*
-3. **Restructure the coordination role.** Owner-directed; execute cleanly through HR with a full credential/access inventory completed **before** notice, and continuity confirmed with the delivery vendor **first**.
-4. **Develop internal capability** as durability against single-vendor dependence.
+**The change — a different delivery model, not just a cheaper one:**
+
+> ### **Design, build and verification move in-house. The external vendor's role narrows to production deployment and specialist work — not primary development.**
+
+1. **Build in-house at a demonstrated cadence.** In roughly the same period the outsourced sales-workflow build produced a shell page (a filter panel and an iframe over an existing results page, unchanged on our server since 25 April), in-house work delivered and verified: **seven V1.5 dashboards · a shared authorisation gate closing real data-exposure across ~20 pages · City Budgets (3 tabs) · the Revenue Performance rebuild (actual-vs-estimate correction, 3-bucket model, dual TPH, non-productive-time analysis) · a landing-page assistant with live write actions · the field-map fix · and the GPS import pipeline reverse-engineered end to end.** All documented and render-verified. **The capability doesn't need to be hired — it needs to be recognised and resourced.**
+2. **Narrow the vendor to deployment and specialist work** — production releases, ColdFusion internals, database procedures, and anything touching money. Managed **directly**, under contract with the company.
+3. **Institute a real deployment path:** build on play → verify → staged package → **scheduled production window with a named approver and a logged record of what shipped.** Not ad-hoc personal access — a controlled, auditable procedure. *(This also avoids creating a new internal-control gap of the kind identified in §5.3.)*
+4. **Restructure the coordination layer.** Owner-directed; execute through HR with a full credential/asset inventory completed **before** notice, and vendor continuity confirmed **first**.
+5. **Recover in-flight work product before any change** — source, database objects, specs and current state, deployed to our own dev environment. Salvage what has value (the field-map colour-coding work feeds Phase 1); treat the rest as greenfield.
+
+**Limits of this model — named, not glossed:**
+| Limit | Mitigation |
+|---|---|
+| In-house build capability operates on the dev/play environment, **not production** | The vendor's core role: a controlled production deployment path |
+| **Key-person concentration** in the in-house model | Document the process rather than the person; develop a second internal resource; retain vendor capacity |
+| Some work genuinely requires a professional developer — CF internals, procs, anything financial | Keep that capacity under contract; scope it correctly rather than defaulting all work to it |
+| **In-flight development is invisible** — work has not been living on company infrastructure, so progress cannot be verified or recovered | All development lands on our dev environment as a condition of engagement |
 
 **Effect:**
 | | |
