@@ -270,25 +270,44 @@ Most of it is same-day, which is good. **But one in ten pieces of signed work wa
 **Objective: EBITDA. This is where the margin points are earned.**
 
 ### 5.1 One record, end to end
-- **Now:** the same site and scope data is re-keyed **5 times** (RFP → e-traveler → proposal → work order → invoice), across **5.6 handoffs** per bid.
+- **Now:** the same site and scope data is re-keyed **5 times** (RFP → e-traveler → proposal → work order → invoice), across **5.6 handoffs** per bid (p90 12, max 25). **≈17,800 duplicate entry events/yr ≈ 3.6 per bid ≈ 36 minutes of pure re-typing on every bid.**
 - **Do:** collapse 11 steps into 5 stages around **one record**; every handoff becomes a status change with automatic notification instead of an email with a PDF attached.
-- **Target:** duplicate entry events **17,800 → under 4,000**.
+- **Targets:** duplicate entry events **17,800 → under 4,000** by end-2029 · handoffs per bid **5.6 → ≤3** · **p90 handoffs 12 → ≤6** (the worst decile is where rework actually lives).
 
-### 5.2 Close the billing loop
-- **Now:** invoices manually extracted, sent, then re-keyed into QuickBooks. Payment never returns to the operating system — **invoice status has not updated since ~2014**, so the ERP cannot distinguish paid from open.
-- **Do:** automated invoice delivery; a two-way accounting integration so payment status lives with the job.
-- **Targets:** invoice→QuickBooks manual entry **eliminated** · **DSO measurable inside the operating system** · every job traceable **sold → completed → billed → paid**.
+### 5.2 Close the billing loop — the ERP has not known whether an invoice was paid since 2014
+**Measured 2026-07-25, and it is worse than "the status field is stale":**
 
-### 5.3 Close the control gaps
-- **Now:** every invoice for twenty years is attributed to a **single inactive account**; the completed-work→invoice link is severed on revised work orders.
-- **Do:** real user attribution on financial records; preserve the work-order→invoice chain through revisions.
-- **Why:** audit-ready records are worth real money at exit and remove a diligence objection.
+| | |
+|---|---|
+| Invoices created in the last 12 months | **3,112** |
+| …carrying status **"Pending"** | **3,112 — 100%** |
+| Last invoice ever marked **"Paid"** | **24 June 2014** |
+| Invoices sitting in "Pending" all-time | **38,001** |
+
+> **For twelve years, every invoice this company has issued has been recorded as "Pending" and never marked paid.** Payment lands in QuickBooks and never returns. "Who owes us" lives in a spreadsheet emailed from accounting.
+
+- **Do:** automated invoice delivery; a **two-way accounting integration** so payment status returns to the job it belongs to.
+- **Targets:** invoice→QuickBooks manual entry **eliminated** (recovering the 506 hrs in §2) · **DSO measurable inside the operating system** by end-2028 · every job traceable **sold → completed → billed → paid** · **invoice status reflects reality on ≥95% of invoices** — the simplest test that the loop is actually closed.
+- **Why it pays at exit:** a buyer's diligence team will ask for a DSO trend and an AR ageing straight from the system of record. Today that request cannot be met from the ERP at all.
+
+### 5.3 Close the control gaps — audit-ready records are worth real money at exit
+**Measured 2026-07-25:**
+
+| | |
+|---|---|
+| Invoices in the system, 2006 → 2026 | **50,283** |
+| **Distinct creators recorded across all of them** | **1** |
+
+Every invoice for twenty years is attributed to a single service account belonging to an employee who left four years ago. **Segregation of duties cannot be evidenced on $21.5M/yr of billing.** Separately, when a work order is revised the link to its invoice is severed (`ParentWorkOrderID` unset), so it is not possible to prove systematically that all completed work was billed — a **traceability** gap, not a leakage one (§4.4 established the money is fine).
+
+- **Do:** real user attribution on financial records; preserve the work-order→invoice chain through revisions; retire the shared service account.
+- **Targets:** **100% of new invoices attributed to a real, active user** by Q2 2027 · revision chain preserved on 100% of revised work orders · **both gaps closed before a data room opens.**
+- ⚠️ **Raise with the CFO privately before diligence** (§Appendix). A QoE or audit team finds these. **Far better volunteered than discovered.**
 
 ### 5.4 Retire the friction
 - **Target: recover ≥60% of the $610K loaded friction (≈15,000 hrs) by end-2029**, redeployed into selling and supervision rather than removed as headcount.
 - **This is the target that drives the scoreboard (§7):** ≈15,000 hrs less 60% ≈ **6,000 hrs**, spread across $50M of 2031 revenue ≈ **120 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
-
----
+- **Interim checkpoint so it cannot drift:** **≥30% recovered by end-2027**, reported on the same monthly instrument as everything else (§3A.3).
 
 ## 6. Phase 3 (2029–2031) — The platform that scales
 **Objective: make growth and acquisitions cheap to absorb.**
