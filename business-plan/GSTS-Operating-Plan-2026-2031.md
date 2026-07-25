@@ -160,27 +160,44 @@ This is exactly the discipline our repair contract already requires: **render-ve
 ## 4. Phase 1 (2026–2027) — Protect and win the earnouts
 **Objective: AGP. Speed and field productivity, not office savings.**
 
-### 4.0 ⚠️ FIRST — we cannot currently measure the thing this phase is supposed to improve
-**Discovered 2026-07-25.** The case for faster bidding rests on win rate. **We do not record whether we win.**
+### 4.0 Make the win-rate measurement canonical — it exists, but only one place knows how
+**We do measure win rate: 70.2%** (trailing 12 months, 3,335 net-new proposals; municipal recurring work excluded). The definition lives in `Executive$ClosePercentage$ByRep` and is correct.
 
-| Field | State |
-|---|---|
-| `Proposals.Approved` | **0 of 5,015** sent proposals |
-| `Proposals.DateApproved` | **0 of 5,015** |
-| Proposals carrying the **"Lost"** status | **194 of 5,015 — 3.9%** |
+**The problem is that the definition is non-obvious and undocumented outside that one file.** Win and loss are recorded on the **go-ahead**, not the proposal:
 
-That implies a **96% win rate**, which is not credible in competitive bidding. Losing bids are simply never updated — the same pattern as everywhere else: **the record is created when the work is confirmed, so the system only ever sees wins.**
+| Where you'd look | What you find | Verdict |
+|---|---|---|
+| `Proposals.Approved` | **0 of 5,015** | dead field |
+| `Proposals.DateApproved` | **0 of 5,015** | dead field |
+| Proposal status = "Lost" | 194 of 5,015 (3.9%) | **misleading on its own** |
+| **`GoAheads.StatusDefID`** | Archived 951 · Inactive 412 · **Lost 345** · Expired 31 | ⭐ **this is the real loss signal** |
 
-> **We are about to commit to targets on a metric we cannot report. That is the first thing to fix — and it costs nothing.**
+Take the obvious route and you get a **96% win rate**, which is nonsense. Take the correct one and you get **70.2%**, which is a real number. *(This was tested the hard way on 2026-07-25 — the obvious route was taken first and it was wrong.)*
 
-**Do (Q3 2026, before anything else in this phase):**
-1. **Make bid outcome a required field** — Won / Lost / No-Decision, with a reason code on Lost, set at the point the answer is known.
-2. **Backfill the last 12 months** where the answer is knowable (a bid with no work order after 90 days is a loss).
-3. **Report win rate weekly**, segmented and banded by turnaround time.
+> **Two people asked for "our win rate" today would produce 70% and 96%, both in good faith. That is a reporting risk in a diligence year.**
 
-**Targets:** outcome recorded on **≥95% of sent proposals** by Q4 2026 · **first credible win-rate baseline published by Q4 2026** · win-rate-by-turnaround curve published by Q1 2027.
+**Do (Q3 2026, near-zero cost):**
+1. **Canonise the definition** — into the metric-standards reference, not just one dashboard's comments: *net-new proposals in window (excluding municipal recurring) with a live go-ahead ÷ all such proposals.*
+2. **Populate the proposal-level outcome too**, so the answer doesn't depend on knowing the go-ahead trick — Won / Lost / No-Decision with a reason code on Lost.
+3. **Publish win rate weekly**, segmented by rep and segment, from the one canonical query.
 
-> **Why this is non-negotiable:** every other target in Phase 1 is measurable today. This one is the *reason* for the others, and it is the only one an investor cannot verify. **Fix the measurement before making the promise.**
+**Targets:** canonical definition published and adopted by **Q4 2026** · win rate reported weekly from a single source by **Q4 2026** · proposal-level outcome populated on **≥95% of new proposals** by **Q1 2027**.
+
+### 4.0b The win-rate/speed link — directionally supportive, not yet clean
+Measured on the bids where turnaround is computable:
+
+| Turnaround | Bids | Win rate |
+|---|---|---|
+| ≤1 day | 429 | **97.2%** |
+| 2–3 days | 285 | 92.3% |
+| 4–7 days | 393 | 92.4% |
+| 8–14 days | 422 | 90.8% |
+| 15–30 days | 342 | **88.9%** |
+
+**An ~8-point spread between same-day and three-week quoting** — which is the mechanism this whole phase rests on. ⚠️ **But do not present it as proof yet:** this subset requires an RFP→proposal link, and linked bids skew toward wins, so the levels are inflated and the 30+ day bucket is noisy.
+
+**Making it clean is a Phase 1 deliverable**, because it converts "faster quoting wins more work" from an industry belief into our own measured number — and that is what turns a speed target into a revenue forecast.
+**Target:** a defensible win-rate-by-turnaround curve, on the full proposal population, by **Q1 2027**.
 
 ### 4.1 Bid velocity — quote on site, same day
 - **Now:** median 6 days; **1 in 4 over two weeks; 1 in 10 over a month.** Competitors quote on site from a tablet. *(3,663 bids with measurable elapsed time; a further 27% of bid records are created within an hour of being "sent" and have no elapsed time at all.)*
