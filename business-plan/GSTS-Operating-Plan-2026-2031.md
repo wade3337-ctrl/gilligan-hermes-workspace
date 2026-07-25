@@ -40,7 +40,8 @@ That single pattern explains our cost structure, our data quality, and our inabi
 | **Cost to produce one bid** | **≈$215**, of which **≈35% is friction** |
 | **Field data** | 87,189 hrs / **$11.1M** per 6 months, keyed by **8 managers**, ~1 hr each per night; **83 field staff, none enter their own work** |
 | **Billing** | 3,033 invoices / **$21.5M** manually extracted and re-keyed into QuickBooks |
-| **Total identified friction** | **≈5,473 hrs/yr ≈ 2.6 FTE ≈ $480K base / $624K loaded** |
+| **Transcription only** (re-keying we already timed) | **≈5,473 hrs/yr ≈ 2.6 FTE ≈ $165.7K base / $215.3K loaded** |
+| **Total identified friction** (transcription + the rest of bid production) | **≈15,400 hrs/yr ≈ 7.4 FTE ≈ $480K base / $624K loaded** |
 
 **$624K of loaded friction on $24M of revenue ≈ 2.6 margin points.** Recovering two-thirds of it delivers roughly **one third of the promised expansion from cleanup alone** — before a dollar of growth.
 
