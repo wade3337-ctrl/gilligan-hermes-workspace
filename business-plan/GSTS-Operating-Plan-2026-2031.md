@@ -223,28 +223,48 @@ That closes the most likely objection in the room — *"that's not us waiting, t
 ⚠️ **Customer decision time is genuinely invisible to us today** (`Proposals.DateApproved` and `GoAheads.ApprovedDate` are empty, and go-aheads are back-entered so 97% appear same-day). **Capturing it is worth doing** — not to target it, but because a customer who takes 60 days to approve is a forecasting fact and a follow-up trigger. Understanding *their* cadence (e.g. an HOA that meets monthly) is a **sales-timing advantage**, not a stick.
 
 ### 4.1 Bid velocity — quote on site, same day
-- **Now:** median 6 days; **1 in 4 over two weeks; 1 in 10 over a month.** Competitors quote on site from a tablet. *(3,663 bids with measurable elapsed time; a further 27% of bid records are created within an hour of being "sent" and have no elapsed time at all.)*
-- **Do:** on-site quoting for bids that don't require a full inventory; eliminate the manual e-traveler assembly (7 reports saved to PDF and combined by hand, 30 min/bid); live totals at the point of scope; customer receives a **live map and approves with a click**.
-- **Why it pays now:** competitors quote on site the same day; elapsed time is when a customer collects other quotes. **Faster quoting is revenue from existing headcount** — and revenue is what AGP is built on. *(Note: the industry premise that win rate decays with elapsed time is not yet evidenced in our own data — see §4.0. Speed and tail targets below are measurable today regardless.)*
-- **Targets:** median **≤2 days** by end-2027 · **p90 ≤10 days** (from 32) · 50% of simple bids quoted **same day**.
+- **Now:** median **6.0 days** · p75 **14.2** · p90 **32**. *(Our clock — §4.0c.)*
+- **⭐ The target is not a stretch — a third of the work already does it.** **1,159 of 3,691 bids (31.4%) already go out within 2 days.** The job is not inventing a new capability; it is **making the fast path the normal path** and finding out why the other two thirds don't take it.
+- **Do:** on-site quoting for bids that don't need a full inventory; eliminate manual e-traveler assembly (7 reports saved to PDF and combined by hand, 30 min/bid); live totals at the point of scope; customer receives a **live map and approves with a click**.
+- **Targets** — *stated as moving the existing fast cohort, which is how they will actually be managed:*
 
-### 4.2 Kill the tail, not just the average
-- The **p90 of 32 days** is where deals die. Those are qualified opportunities lost to elapsed time.
-- **Do:** aging alerts on open bids; a single owner per bid; escalation at day 7.
-- **Target:** no bid older than 14 days without an owner and a next action.
+| Measure | Now | End-2026 | End-2027 |
+|---|---|---|---|
+| Bids quoted **within 2 days** | **31.4%** | ≥45% | **≥60%** |
+| Median turnaround | 6.0 d | ≤4 d | **≤2 d** |
+| p90 turnaround | 32 d | ≤20 d | **≤10 d** |
+
+- **Why it pays inside the earnout window:** every day removed is quoting capacity returned to the same arborists. **Revenue from existing headcount is exactly what AGP is built on** (§3).
+
+### 4.2 Kill the tail — it is where the money actually is
+- **Now: 981 bids (26.6%) take more than 14 days**, and they carry **≈$13.5M of quoted value.** That is not a rounding error at the edge of the distribution — **it is a quarter of our quoting, and more than half a year's revenue in slow-moving work.**
+- Applying the ~8-point win-rate spread from §4.0b to that cohort implies **roughly $1M of value exposed to elapsed time alone** — directional, and the reason §4.0b's clean measurement is a Phase 1 deliverable rather than a nice-to-have.
+- **Do:** aging alerts on open bids; a single named owner per bid; escalation at day 7; a weekly list of everything over 14 days with a next action.
+- **Targets:** bids over 14 days **26.6% → ≤10%** by end-2027 · **no bid over 14 days without a named owner and a next action** by Q4 2026.
+
+**Plus the second half of our own clock — activation.** Once the customer says yes, turning a go-ahead into a scheduled work order is entirely ours:
+
+| Go-ahead → work order | Now |
+|---|---|
+| Median | **0 days** |
+| p75 | 4 days |
+| **p90** | **29 days** |
+
+Most of it is same-day, which is good. **But one in ten pieces of signed work waits a month to reach the production queue** — revenue already won, sitting still, inside the earnout window. Likely the two-step status flip that fails silently. **Target: p90 ≤5 days by end-2027**, and it is a process fix, not a build.
 
 ### 4.3 Field capture at source — tablets
 - **Now:** paper packets printed, handed out, collected, and typed in by 8 managers, ~1 hr nightly. **$11.1M of production per 6 months recorded second-hand.**
 - **Do:** crews report **as they go** on a tablet — hours, work completed, **photos**. Real-time job progress visible to office and customer.
-- **Why it pays now:** (a) **TPH becomes trustworthy**, so field productivity can actually be managed toward the $130 target; (b) photos and live progress are a **retention and upsell asset**; (c) same-day completion data accelerates billing.
-- **Targets:** ≥80% of crew sheets captured in the field by end-2027 · manager nightly entry ≤15 min · TPH reported within 24 hrs of work.
+- **Why it pays now:** (a) **TPH becomes trustworthy**, so field productivity can be managed toward the $130 target; (b) photos and live progress are a **retention and upsell asset**; (c) same-day completion data accelerates billing.
+- ⚠️ **Adoption is the whole risk.** Pilot with one crew (§3A.5) and hold to one rule: **if it is not faster than paper for the crew, it fails.** Do not scale on a mandate.
+- **Targets:** ≥80% of crew sheets captured in the field by end-2027 · manager nightly entry **60 min → ≤15 min** · TPH reported within 24 hrs of work.
 
 ### 4.4 Make TPH real, then manage it
-- Productive TPH today: **commercial $157.53 · municipal $146.70**. Blended "true" TPH is far lower because non-revenue hours are large and unevenly distributed.
-- **Do:** publish both measures with a single agreed definition. ✅ **The ~21,000 zero-revenue commercial hours are RESOLVED (2026-07-25): an attribution artifact, not leakage** — 99.5% are zero-dollar crew sheets on work orders that carry revenue on *other* sheets, because multi-visit jobs post the dollars once while the hours land on every visit. **Nothing is unbilled.** The fix is to compute TPH at **work-order level**, not crew-sheet level.
-- **Target:** definition agreed and reported weekly by Q4 2026; non-revenue hours explained and reduced.
-
----
+- **Now:** productive TPH **commercial $157.53 · municipal $146.70**. Blended "true" TPH is far lower because non-revenue hours are large and unevenly distributed between segments.
+- **✅ The zero-revenue-hours question is resolved (2026-07-25) and it changes this target.** The ~21,000 hours were **not** unbilled work — **99.5% are zero-dollar crew sheets on work orders that carry revenue on other sheets**, because a multi-visit job posts the dollars once while the hours land on every visit.
+- ⇒ **The defect is the denominator, not the money.** **Per-crew-sheet TPH is invalid for any job taking more than one visit** — which is most real work. We have been managing the field on a metric that miscounts multi-visit jobs.
+- **Do:** compute and report TPH at **work-order level**; publish productive and true TPH side by side with one agreed definition; keep internal time (Yard / Safety Training / OJT / Modified Duty) visible as its own line rather than buried in the denominator.
+- **Targets:** work-order-level TPH published as the managed measure by **Q4 2026** · single agreed definition adopted across every dashboard by **Q4 2026** · both measures reported weekly · **Irvine closes its ≈$290K/yr gap to the $130 target by end-2027.**
 
 ## 5. Phase 2 (2027–2029) — Decouple overhead from growth
 **Objective: EBITDA. This is where the margin points are earned.**
@@ -305,8 +325,12 @@ That closes the most likely objection in the room — *"that's not us waiting, t
 |---|---|---|---|
 | Admin hrs per $1M revenue | ≈600 | ≈495 | **≤125** |
 | **Deployment lead time** (staged → live) | **weeks** | ≤5 days | ≤2 days |
-| Bid turnaround — median | 6 days | ≤2 days | ≤1 day |
+| Bid turnaround — median | 6.0 days | ≤2 days | ≤1 day |
 | Bid turnaround — p90 | 32 days | ≤10 days | ≤5 days |
+| **Bids quoted within 2 days** | **31.4%** | **≥60%** | ≥80% |
+| **Bids taking over 14 days** | **26.6%** | **≤10%** | ≤5% |
+| **Go-ahead → work order, p90** | **29 days** | **≤5 days** | ≤2 days |
+| **Win rate** (canonical defn, net-new) | **70.2%** | reported weekly | managed |
 | Handoffs per bid | 5.6 | 3 | ≤2 |
 | Duplicate entry events/yr | 17,800 | 10,000 | <4,000 |
 | Crew sheets captured in field | 0% | ≥80% | ≥95% |
