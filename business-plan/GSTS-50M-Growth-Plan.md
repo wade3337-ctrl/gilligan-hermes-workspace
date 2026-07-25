@@ -29,9 +29,11 @@ Fort Point (Boston PE; $340M fund; **route-based field-services roll-up speciali
 
 Organic plan (pre-acquisition). AGP ≈ 50–53% of revenue; EBITDA margin expands 20%→25% via operating leverage (the PE playbook). **2026 & 2027 tuned to land in the earnout bands.**
 
+> ⚠️ **2026 goal re-set to $25.1M** (from the original $24.0M budget) — deliberately, to reach **$12.5M AGP = the TOP of the earnout band = the full $5M**, rather than $12.0M AGP mid-band ≈ $2.7M. See §8. **The $24.0M figure still appears throughout §6–§9 and is correct there** — it is the plan of record Herman's action plan targets and the basis the deal was priced on. **EBITDA is held at $4.8M**, the number the deal is priced against (§9e); the re-set is a *revenue/AGP* move to max the earnout, so the 2026 margin reads 19.1% rather than 20.0%. *(Open: whether to instead show $5.0M @ 20.0% — see §9e.)*
+
 | Year | Revenue | Adj. Gross Profit | AGP % | Adj. EBITDA | EBITDA % | Earnout |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | $24.0M | **$12.0M** | 50.0% | **$4.8M** | 20.0% | 🎯 band $11.4–12.5M → ~full $5M |
+| 2026 | **$25.1M** | **$12.5M** | 50.0% | **$4.8M** | 19.1% | 🎯 band $11.4–12.5M → **top of band = full $5M** |
 | 2027 | $27.3M | **$14.0M** | 51.3% | $5.7M | 20.9% | 🎯 band $13.3–14.9M → ~full $5M |
 | 2028 | $31.3M | $16.3M | 52.1% | $6.9M | 22.0% | (Olympics year) |
 | 2029 | $36.1M | $19.0M | 52.6% | $8.3M | 23.0% | |
@@ -47,14 +49,15 @@ The geography plan is what *produces* the AGP/EBITDA above. **LA leads early** (
 
 | Year | Total | OC/core | LA | IE |
 | --- | --- | --- | --- | --- |
-| 2026 | $24.0M | $20.4M | $3.3M | $0.3M |
+| 2026 | **$25.1M** | **$21.5M** | $3.3M | $0.3M |
 | 2027 | $27.3M | $21.7M | $4.8M | $0.8M |
 | 2028 | $31.3M | $23.0M | $6.5M | $1.8M |
 | 2029 | $36.1M | $24.8M | $7.5M | $3.8M |
 | 2030 | $42.2M | $26.9M | $9.0M | $6.3M |
 | 2031 | $50.0M | $29.5M | $11.0M | $9.5M |
 
-- **$26M organic increment:** LA +$7.7M (warm-start), IE +$9.2M (greenfield, back-loaded), OC +$9.1M (deepen).
+- **$24.9M organic increment** (2026 base re-set to $25.1M): LA +$7.7M (warm-start), IE +$9.2M (greenfield, back-loaded), OC +$8.0M (deepen).
+- ⚠️ The +$1.1M of the 2026 re-set sits in **OC/core** ($20.4M → $21.5M) — it is the **private/commercial sales lever** §8 says not to ease off (target ~$946K), not new geography. IE and LA are unchanged.
 - ⚠️ **Earnout-year caveat:** IE greenfield contributes ~nothing in 2026–27 → the earnouts must be earned from **OC deepening + LA/Olympics + margin/mix**. That's exactly why LA leads.
 - **By motion (explains, doesn't add):** retention & rebid defense · warm portfolio expansion · territory pods · municipal bids · service penetration/recurring · price/margin correction.
 
@@ -73,7 +76,7 @@ Only the *truly new* build (IE greenfield + LA growth above base) carries the lo
 
 | Year | Total Rev | Mature Rev | Investment Rev | Inv GP% | Blended GP$ | Blended GP% |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | $24.0M | $23.7M | $0.3M | ~25% | $7.7M | 31.9% |
+| 2026 | **$25.1M** | **$24.8M** | $0.3M | ~25% | **$8.0M** | 31.9% |
 | 2027 | $27.3M | $25.0M | $2.3M | 8% | $8.2M | 30.0% |
 | 2028 | $31.3M | $26.3M | $5.0M | 15% | $9.2M | 29.3% |
 | 2029 | $36.1M | $28.1M | $8.0M | 22% | $10.8M | 29.8% |
@@ -123,7 +126,7 @@ Invoiced (canonical) H1 2026 = **$11.08M vs plan $12.25M (−$1.17M, −9.6%)**.
 - 30-day action plan: confirm city work → confirm authorization → schedule & sell → measure. Weekly scorecard.
 
 **My reconciliation to the earnout (3 things Herman's plan can't see):**
-1. **Basis gap:** Herman closes the *produced* gap; the earnout is on *invoiced/adjusted P&L*. Produced ($12.12M) ≈ invoiced (~$12.0M) today (small lag), so producing ~$24M ≈ invoicing ~$24M ≈ **AGP ~$11.95M = mid-band earnout (~$5M)** — **IF invoiced within 2026.** ⚠️ **Late-Dec production invoiced in Jan 2027 does NOT count for the 2026 AGP.** Close/produce/invoice by ~early Dec.
+1. **Basis gap:** Herman closes the *produced* gap; the earnout is on *invoiced/adjusted P&L*. Produced ($12.12M) ≈ invoiced (~$12.0M) today (small lag), so producing ~$24M ≈ invoicing ~$24M ≈ **AGP ~$11.95M = mid-band ≈ $2.6M of the $5M** *(corrected 2026-07-25 — this cell previously read "(~$5M)", contradicting the sliding-scale math below; full $5M needs $12.5M AGP ≈ $25.1M revenue, which is why the goal was re-set)* — **IF invoiced within 2026.** ⚠️ **Late-Dec production invoiced in Jan 2027 does NOT count for the 2026 AGP.** Close/produce/invoice by ~early Dec.
 2. **The bridge is soft where it's biggest:** 71.5% of the $5.23M municipal forecast is "PROJECTED" ($3.74M), and municipal is **PO-gated** ([[municipal-budgets-po-gated]]). This is BOTH the plan's and the earnout's #1 risk. **Keep the sales target at $946K — do NOT drop to $500K on hope.** My Calendars pull confirms it: Sep–Dec are ~empty ($113K/$880K/$176K/$6K scheduled) = this municipal is unbooked and must be authorized to land.
 3. **Winter-daylight capacity:** Herman's 9–9.5 productive hrs/day is a summer figure; Nov–Dec compresses it (crew-review flag). **Front-load the 864 municipal recovery hours + floating crews into Sep–Oct**, not Nov–Dec.
 

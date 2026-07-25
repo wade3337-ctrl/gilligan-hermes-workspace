@@ -43,7 +43,7 @@ That single pattern explains our cost structure, our data quality, and our inabi
 | **Transcription only** (re-keying we already timed) | **≈5,473 hrs/yr ≈ 2.6 FTE ≈ $165.7K base / $215.3K loaded** |
 | **Total identified friction** (transcription + the rest of bid production) | **≈15,400 hrs/yr ≈ 7.4 FTE ≈ $480K base / $624K loaded** |
 
-**$624K of loaded friction on $24M of revenue ≈ 2.6 margin points.** Recovering two-thirds of it delivers roughly **one third of the promised expansion from cleanup alone** — before a dollar of growth.
+**$624K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.5 margin points.** Recovering two-thirds of it delivers roughly **one third of the promised expansion from cleanup alone** — before a dollar of growth.
 
 ---
 
@@ -203,7 +203,8 @@ This is exactly the discipline our repair contract already requires: **render-ve
 - **Why:** audit-ready records are worth real money at exit and remove a diligence objection.
 
 ### 5.4 Retire the friction
-- **Target: recover ≥60% of the $624K loaded friction by end-2029**, redeployed into selling and supervision rather than removed as headcount.
+- **Target: recover ≥60% of the $624K loaded friction (≈15,400 hrs) by end-2029**, redeployed into selling and supervision rather than removed as headcount.
+- **This is the target that drives the scoreboard (§7):** ≈15,400 hrs less 60% ≈ **6,160 hrs**, spread across $50M of 2031 revenue ≈ **123 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
 
 ---
 
@@ -232,12 +233,15 @@ This is exactly the discipline our repair contract already requires: **render-ve
 **The headline operating-leverage metric:**
 
 > ### Administrative hours per $1M of revenue
-> **Today: ≈228** (5,473 friction hrs ÷ $24M). If nothing changes, $50M of revenue requires **≈11,400 hours ≈ 5.5 FTE** of transcription.
-> **Target 2031: ≤100** — meaning we double revenue while holding administrative labor flat.
+> **Today: ≈615** (≈15,400 hrs of identified friction ÷ $25.1M, the 2026 goal).
+> **If nothing changes, $50M of revenue requires ≈30,700 hours ≈ 14.8 FTE of administrative friction** — we would add the equivalent of twelve full-time people who never touch a tree.
+> **Target 2031: ≤125** — revenue more than doubles *while* administrative labor falls ~60% (§5.4). The ratio improves **five-fold**.
+
+*Basis: "identified friction" = bid-production friction + field transcription + invoice re-keying (§2), the same non-overlapping stack behind the $480K/$624K. Stated on plan revenue in every year so the trend reflects process change, not billing timing.*
 
 | Metric | Baseline (2026) | 2027 | 2031 |
 |---|---|---|---|
-| Admin hrs per $1M revenue | 228 | 170 | **≤100** |
+| Admin hrs per $1M revenue | ≈615 | ≈510 | **≤125** |
 | **Deployment lead time** (staged → live) | **weeks** | ≤5 days | ≤2 days |
 | Bid turnaround — median | 6 days | ≤2 days | ≤1 day |
 | Bid turnaround — p90 | 36 days | ≤10 days | ≤5 days |
