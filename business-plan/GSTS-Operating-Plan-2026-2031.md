@@ -343,22 +343,39 @@ Every invoice for twenty years is attributed to a single service account belongi
 ## 6. Phase 3 (2029–2031) — The platform that scales
 **Objective: make growth and acquisitions cheap to absorb.**
 
-### 6.1 Municipal expansion without human bridges
-- **Now:** one person is a **full-time human API** between our system and Davey TreeKeeper for City of Irvine (**contractually mandated**); a second does the equivalent for every other municipality. Irvine — our largest contract by labor — runs **≈$290K/yr below our TPH target**.
-- **Do:** build the integration so a person isn't the bridge; where a foreign system is contractually required, **price that administrative burden into the bid or renewal**.
-- **Target:** win a new municipal contract **without adding administrative headcount** — the test of whether this worked.
+### 6.1 Municipal expansion without human bridges — the ceiling, measured
+**Municipal is our largest growth lever and the one with a hard administrative ceiling.**
+
+| Municipal portfolio (trailing 12 months) | |
+|---|---|
+| Contracts with field activity | **20** |
+| …over $100K | 11 |
+| …over $500K | 3 |
+| Field hours | **71,730** |
+| Production value | **$9.04M** |
+| **People manually bridging them** | **2** |
+
+One is a **full-time human API** between our system and **Davey TreeKeeper** for the City of Irvine (**contractually mandated** — this cannot simply be dropped); the second does the equivalent for the other nineteen. Irvine alone is 29,898 hours and **$3.6M**, running **≈$290K/yr below our $130 TPH target** — and **TPH cannot see the office cost at all**, because it measures crews.
+
+> ### **"Twenty municipal contracts worth nine million dollars, bridged by hand by two people. The growth plan adds cities. At what point does contract twenty-one need a third person — and what happens at forty?"**
+
+**That is "overhead scales with revenue" in its purest observable form, and it is the ceiling on the segment we most want to grow.**
+
+- **Do:** build the integration so a person is not the bridge; where a foreign system is contractually required, **price that administrative burden into the bid or the renewal** rather than absorbing it.
+- **Targets:** **win a new municipal contract with zero added administrative headcount** — the single honest test of whether this worked · **administrative hours per municipal contract** published and falling from 2027 · Irvine's ≈$290K TPH gap closed (§4.4) · **no new contract signed on a foreign system without its bridging cost priced in** — effective immediately, and it costs nothing.
 
 ### 6.2 An acquisition-integration playbook
-- Fort Point's thesis is add-on acquisitions. **Every acquisition must be onboarded onto a system.** A platform that is typed into after the fact cannot absorb another company's volume without adding back-office staff — which erodes the very synergy the deal is underwritten on.
+**Fort Point's thesis is add-on acquisitions. Every acquisition has to be onboarded onto a system.** A platform that is typed into after the fact cannot absorb another company's volume without adding back-office staff — which erodes the very synergy the deal is underwritten on.
+
 - **Do:** a documented, repeatable onboarding path — data migration, crew onboarding, customer and contract transfer — with a target time-to-integrate.
-- **Target:** onboard an acquisition in **≤90 days** with **no permanent back-office headcount added**.
+- **⭐ We are further along than it looks.** The **GPS inventory import pipeline** (reverse-engineered end to end, 2026-07) is a working, documented bulk data-migration capability: external survey data → projects, locations, assets, species mapping, addresses, pricing structures. **That is the hard half of onboarding an acquired book of business, and it exists.**
+- **Targets:** onboard an acquisition in **≤90 days** with **no permanent back-office headcount added** · the runbook **proven on a real migration before it is needed** — a dry run on our own data counts, and is far cheaper than learning during a deal · **cost-to-onboard published per acquisition** so the synergy case can be checked rather than assumed.
 
 ### 6.3 Job-level unit economics
-- **Now:** we manage margin at the crew-hour level and cannot attribute cost-to-serve at the job level. The fields exist and are empty — `NeedInventory` and `NeedSiteWalk` are populated on **0 of 22,369** RFPs this year.
-- **Do:** capture job attributes at source (because capture is a by-product of the work, not extra typing).
-- **Target:** margin by job type, service line, and contract — reported monthly.
-
----
+- **Now:** we manage margin at the crew-hour level and cannot attribute cost-to-serve at the job level. The fields exist and are empty — `NeedInventory` and `NeedSiteWalk` are populated on **0 of 22,369** RFPs this year, and RFP estimated value is blank.
+- **Consequence:** *"do bigger jobs make more money?"* is unanswerable. So is *"which service line should we push?"* We are allocating sales effort and crews without knowing which work earns.
+- **Do:** capture job attributes at source — **because capture is a by-product of doing the work, not extra typing.** This is why §4.3 (field capture) and §5.1 (one record) come first: they make this possible rather than adding to it.
+- **Targets:** job attributes captured on **≥90% of new bids** by end-2029 · **margin reported monthly by job type, service line and contract** · the first "which work should we stop taking?" decision made on data rather than instinct — **that decision, made once, is the proof the whole programme worked.**
 
 ## 7. The scoreboard
 
@@ -389,6 +406,8 @@ Every invoice for twenty years is attributed to a single service account belongi
 | Jobs traceable sold→paid | not possible | partial | **100%** |
 | DSO measurable in-system | no | — | **yes** |
 | Days to integrate an acquisition | n/a | — | **≤90** |
+| **Municipal contracts per bridging FTE** | **10** (20 contracts / 2 people) | ≥15 | **no ceiling — integration, not people** |
+| Admin hrs per municipal contract | not measured | published | falling |
 
 ---
 
