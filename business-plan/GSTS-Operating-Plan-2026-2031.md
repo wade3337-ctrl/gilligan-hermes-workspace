@@ -160,10 +160,32 @@ This is exactly the discipline our repair contract already requires: **render-ve
 ## 4. Phase 1 (2026–2027) — Protect and win the earnouts
 **Objective: AGP. Speed and field productivity, not office savings.**
 
+### 4.0 ⚠️ FIRST — we cannot currently measure the thing this phase is supposed to improve
+**Discovered 2026-07-25.** The case for faster bidding rests on win rate. **We do not record whether we win.**
+
+| Field | State |
+|---|---|
+| `Proposals.Approved` | **0 of 5,015** sent proposals |
+| `Proposals.DateApproved` | **0 of 5,015** |
+| Proposals carrying the **"Lost"** status | **194 of 5,015 — 3.9%** |
+
+That implies a **96% win rate**, which is not credible in competitive bidding. Losing bids are simply never updated — the same pattern as everywhere else: **the record is created when the work is confirmed, so the system only ever sees wins.**
+
+> **We are about to commit to targets on a metric we cannot report. That is the first thing to fix — and it costs nothing.**
+
+**Do (Q3 2026, before anything else in this phase):**
+1. **Make bid outcome a required field** — Won / Lost / No-Decision, with a reason code on Lost, set at the point the answer is known.
+2. **Backfill the last 12 months** where the answer is knowable (a bid with no work order after 90 days is a loss).
+3. **Report win rate weekly**, segmented and banded by turnaround time.
+
+**Targets:** outcome recorded on **≥95% of sent proposals** by Q4 2026 · **first credible win-rate baseline published by Q4 2026** · win-rate-by-turnaround curve published by Q1 2027.
+
+> **Why this is non-negotiable:** every other target in Phase 1 is measurable today. This one is the *reason* for the others, and it is the only one an investor cannot verify. **Fix the measurement before making the promise.**
+
 ### 4.1 Bid velocity — quote on site, same day
 - **Now:** median 6 days; **1 in 4 over two weeks; 1 in 10 over a month.** Competitors quote on site from a tablet. *(3,663 bids with measurable elapsed time; a further 27% of bid records are created within an hour of being "sent" and have no elapsed time at all.)*
 - **Do:** on-site quoting for bids that don't require a full inventory; eliminate the manual e-traveler assembly (7 reports saved to PDF and combined by hand, 30 min/bid); live totals at the point of scope; customer receives a **live map and approves with a click**.
-- **Why it pays now:** win rate decays with every day elapsed. **Faster quoting is revenue from existing headcount** — and revenue is what AGP is built on.
+- **Why it pays now:** competitors quote on site the same day; elapsed time is when a customer collects other quotes. **Faster quoting is revenue from existing headcount** — and revenue is what AGP is built on. *(Note: the industry premise that win rate decays with elapsed time is not yet evidenced in our own data — see §4.0. Speed and tail targets below are measurable today regardless.)*
 - **Targets:** median **≤2 days** by end-2027 · **p90 ≤10 days** (from 32) · 50% of simple bids quoted **same day**.
 
 ### 4.2 Kill the tail, not just the average
