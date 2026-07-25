@@ -2,7 +2,7 @@
 title: Gilligan — Session Settings Snapshot
 type: reference
 domain: environment
-updated: 2026-07-11
+updated: 2026-07-25
 tags: [settings, config, model, opus, context, session, environment]
 links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 ---
@@ -32,3 +32,18 @@ links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 - OpenAI/Codex calls default to `gpt-5.6-sol` (crew code+review).
 - Knowledge cutoff: **January 2026** — newer facts require live lookup.
 - To change a dial I can set it directly (e.g. model via `session_status`); config-file edits go through the `gateway` tool (backup + merge-patch).
+
+## 🔎 Reading the `/status` card — four independent axes on one line (2026-07-25)
+`⚙️ Execution: direct · Runtime: OpenClaw Default · Think: off · Fast: off · Reasoning: on · elevated`
+
+| Field | Command | What it actually controls |
+|---|---|---|
+| `Think:` | `/think` | **Thinking EFFORT** (off/low/medium/high/max). Sent to the Claude CLI backend as `--effort`. |
+| `Reasoning:` | `/reasoning` | **Visibility only** — whether the thinking is shown. Appears on the card only when ON. |
+| `Fast:` | `/fast` | Faster output on Opus (not a smaller model). |
+| `elevated` | `/elevated` | **Tool/command PERMISSIONS.** Nothing to do with reasoning — it just sits next to it on the line and reads as "reasoning elevated". |
+
+**Thinking resolution order** (`docs/tools/thinking.md`): inline directive → **session override** → per-agent default → `agents.defaults.thinkingDefault` → fallback (**medium** for reasoning-capable models).
+- ⚠️ Config defaults govern **new** sessions; a long-running session can sit on the fallback (`medium`) while config says `high`.
+- ✅ Authoritative check: send **`/think`** alone. `/think high` pins the session; `/think default` clears the override and inherits config.
+- 🤖 **Spawned sub-agents and cron jobs resolve their own level** — fresh sessions, so they inherit `agents.defaults.thinkingDefault` (currently `high`) regardless of what the main session is on. Claude Code `Agent`-tool sub-agents instead inherit the **parent's** resolved model.
