@@ -47,3 +47,9 @@ links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 - ⚠️ Config defaults govern **new** sessions; a long-running session can sit on the fallback (`medium`) while config says `high`.
 - ✅ Authoritative check: send **`/think`** alone. `/think high` pins the session; `/think default` clears the override and inherits config.
 - 🤖 **Spawned sub-agents and cron jobs resolve their own level** — fresh sessions, so they inherit `agents.defaults.thinkingDefault` (currently `high`) regardless of what the main session is on. Claude Code `Agent`-tool sub-agents instead inherit the **parent's** resolved model.
+
+### 🎚️ Standing preference: thinking = `high` (re-confirmed 2026-07-25)
+- `agents.defaults.thinkingDefault: "high"` (= OpenClaw's "ultrathink"). Applies to **all new sessions, crons and spawned sub-agents**.
+- ✅ **`high` is a CEILING, not a floor** — a budget the model *may* use, not one it must spend. A trivial question doesn't burn max reasoning just because the ceiling is high. That is what makes `high` a low-regret everyday default rather than a blanket cost.
+- ⚠️ **A long-running session can be stranded below it** (this one sat on the `medium` fallback all day). Fix must come **from the Skipper** — thinking directives are stripped before I see them, so I cannot set my own level. He sends `/think high` (pin) or `/think default` (inherit config).
+- 🧭 Counterweight worth keeping: thinking improves *reasoning*, not *facts*. The two best catches of 2026-07-25 (the dead backup chain, the undated AR emails) came from **running a query** and **testing a regex** — verification, not deliberation. → [[data-freshness-contract]]
