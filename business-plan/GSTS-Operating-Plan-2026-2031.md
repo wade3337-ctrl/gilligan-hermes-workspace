@@ -59,6 +59,51 @@ This determines the order of everything below.
 
 ---
 
+## 3A. Phase 0 (now → close, H2 2026) — Build the capacity to execute
+**Objective: remove the constraints that would make Phases 1–3 undeliverable — at near-zero cost, with no structural change during diligence.**
+
+### 3A.1 Technical delivery capability — the gating constraint ⭐
+**Nothing else in this plan is deliverable without the ability to build, deploy and maintain software at a reasonable cadence. Today we cannot.**
+
+**Current state:**
+- A fully built, crew-reviewed, security-audited dashboard package has been **staged and waiting since 20 July** — tested work that cannot reach production.
+- Technical delivery runs through **a coordination layer between the company and the vendor who performs the work**, adding latency without adding output. Fully loaded cost of that layer: **≈$186K/yr**.
+- The **capability itself sits with a single external vendor** under a direct company contract (minimum-spend commitment). Internal technical capability is thin.
+
+**The change:**
+1. **Manage the delivery vendor directly**, under a defined process rather than an intermediary.
+2. **Institute a real deployment path:** build on play → verify → staged package → **scheduled production window with a named approver and a logged record of what shipped.** Not ad-hoc personal access — a controlled, auditable procedure. *(This also avoids creating a new internal-control gap of the kind identified in §5.3.)*
+3. **Restructure the coordination role.** Owner-directed; execute cleanly through HR with a full credential/access inventory completed **before** notice, and continuity confirmed with the delivery vendor **first**.
+4. **Develop internal capability** as durability against single-vendor dependence.
+
+**Effect:**
+| | |
+|---|---|
+| Deployment lead time (staged → live) | weeks → **target ≤5 business days** |
+| Run-rate cost removed | **≈$186K/yr loaded** → flows to EBITDA; treat as a **run-rate adjustment in the quality-of-earnings work** |
+| Enterprise value of that run-rate @ 10–12× | **≈$1.8–2.2M** |
+| Backlog released | the V1.5 dashboard suite and the pending fix package |
+
+**Risks to manage in execution:**
+- **Vendor continuity is the critical dependency** — confirm the delivery vendor holds independent credentials before any access is revoked. *(Their application accounts are currently inactive; server-level access must be verified.)*
+- **Credential and asset inventory before notice:** production/server admin, domain registrar and DNS, SSL certificates, software licences, hosting/backup/monitoring portals, recovery emails and MFA devices, and any source code held locally.
+- **Single-vendor concentration remains** after the change — internal capability development is the mitigation, not an optional extra.
+- **Diligence narrative:** *"We restructured a role that was creating deployment latency; the technical work is performed by a direct vendor under contract and has continued uninterrupted."*
+
+### 3A.2 Recover the bid tail — no capital required
+The **p90 of 36 days** is where qualified deals die. Ownership rules, aging alerts and a day-7 escalation are a report and a process change, not a build. **Revenue recovery inside the earnout window at effectively zero cost.**
+
+### 3A.3 Instrument the baseline
+Publish monthly from now: bid turnaround (median/p90), handoffs per bid, admin hours per $1M revenue, TPH by segment. **By the time investment is requested, we will have trend data rather than a snapshot.**
+
+### 3A.4 Decide buy vs. build
+Formal evaluation of the market platform (ArborNote) against extending our own — completed as a Phase 0 deliverable so the answer exists before the question is asked.
+
+### 3A.5 Pilot field capture with one crew
+Cheap, reversible, and it establishes adoption reality before any commitment.
+
+---
+
 ## 4. Phase 1 (2026–2027) — Protect and win the earnouts
 **Objective: AGP. Speed and field productivity, not office savings.**
 
@@ -140,6 +185,7 @@ This determines the order of everything below.
 | Metric | Baseline (2026) | 2027 | 2031 |
 |---|---|---|---|
 | Admin hrs per $1M revenue | 228 | 170 | **≤100** |
+| **Deployment lead time** (staged → live) | **weeks** | ≤5 days | ≤2 days |
 | Bid turnaround — median | 6 days | ≤2 days | ≤1 day |
 | Bid turnaround — p90 | 36 days | ≤10 days | ≤5 days |
 | Handoffs per bid | 5.6 | 3 | ≤2 |
@@ -163,7 +209,8 @@ This determines the order of everything below.
 | Risk | Mitigation |
 |---|---|
 | Field adoption of tablets | Pilot with one crew; make it *faster* than paper or it fails |
-| Deployment capacity (one part-time developer today) | Sequence work; a fully-tested dashboard suite has already waited weeks to deploy — this is a real constraint on any plan |
+| **Technical delivery capacity** — the binding constraint | Addressed directly in **Phase 0 §3A.1**: direct vendor management, a defined deployment path, and internal capability development |
+| **Single-vendor concentration** on technical delivery | Build internal capability; document the deployment process so it isn't person-dependent; keep the vendor contract with the company, not an intermediary |
 | Change fatigue in the office | Remove typing before adding process; the first change must give time back |
 | Diligence/close distraction (H2 2026) | Phase 1 items are small and operational; nothing structural before close |
 | Contractually mandated foreign systems (Davey) | Integrate or price it in — do not assume it can be removed |
