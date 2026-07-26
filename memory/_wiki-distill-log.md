@@ -87,3 +87,10 @@ Running log of the nightly wiki-distill maintenance job (learns → LESSONS/PLAY
 - **Archived:** none (superseded specifics moved into dated in-note sections, per the archive-don't-delete rule).
 - **Orphans:** `wiki-lint.py` over 147 notes + 1 archived → **0 orphans · 0 MOC gaps · 0 broken links · 0 frontmatter defects · 0 stale.** (3 planned forward-references, allowed.)
 - **Left for the Skipper:** Deck A §10 still carries the old ArborNote framing + the parenthetical caveat — approved as-is, awaiting his call. Deck B still in read-through. Next build = [[capacity-growth-model]].
+
+## 2026-07-26 — WEEKLY HYGIENE (cron, covers 07-20 → 07-26)
+- **Backups refreshed** → `memory/_backups/{LESSONS,PLAYBOOK,MEMORY,PROJECTS}.pre-review.md` (rollback point; note the four live files sit at the *workspace root*, not in `memory/`).
+- **Content pass:** independent re-read of the week's dailies + the dumps the daily runs straddled (`2026-07-23-1900`, `2026-07-24-1626`). Everything was already distilled by the daily runs — the Goodman species-crosswalk arc (v2 hardened rule + junk-entry exclusion, v3 two-phase same-plant rule, `Workbench.dbo.GoodmanSpeciesCrosswalk` 59 rows wired ahead of `GetBestInventoryGroup`, Fullerton 50-tree remap w/ full Class/Summary chain + backups, ship #81-85) is fully carried in `wiki/projects/goodman-rfp-bid.md` L80-83 and LESSONS L270/272. **LESSONS +0 · PLAYBOOK +0 · notes created 0 · notes updated 0.**
+- **ARCHIVE (step 4a):** `git mv` of 7 session dumps older than ~7d → `memory/_archive/session-dumps/` (07-14-2225, 07-14-2359, 07-15-1829, 07-17-0200, 07-17-0526, 07-18-0350, 07-18-1459). **SKIPPED `2026-06-19-2302.md`** — still cited by `wiki/facts/email-infrastructure.md` and `wiki/facts/herman-agent.md`. 07-19 onward left in place as the recovery window.
+- **ARCHIVE (step 4b):** 21 clean dailies on hand (< the ~45 threshold) → no daily rotation this week.
+- **Lint:** `wiki-lint.py` over 147 notes + 1 archived → **0 orphans · 0 MOC gaps · 0 broken links · 0 frontmatter defects · 0 stale. CLEAN ✅** (3 planned forward-refs, allowed.)
