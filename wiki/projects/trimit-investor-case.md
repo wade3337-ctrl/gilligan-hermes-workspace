@@ -8,7 +8,7 @@ confidentiality: black
 tags: [deck, investor, fort-point, workflow, cost-model, bottleneck, transcription, tph, diligence]
 applies: ["[[two-track-confidentiality]]", "[[only-trustworthy-data]]", "[[external-comms-contract]]"]
 links: ["[[gsts-operating-plan-2026-2031]]", "[[bid-process-reengineering]]", "[[vendor-fieldapp-build]]", "[[trimit-db-gotchas]]", "[[trimit-stack-and-tph]]", "[[gsts-field-labor-rate]]", "[[fort-point-acquisition]]"]
-updated: 2026-07-24
+updated: 2026-07-26
 ---
 
 # 📊 TRIM IT investor/owner case (2026-07-24)
@@ -68,3 +68,41 @@ Every handoff request→cash measured: scheduling median **1 day**; completed→
 - [[bid-process-reengineering]] — the FLAGSHIP redesign this measures the case for.
 - [[vendor-fieldapp-build]] — what already exists to build on.
 - [[trimit-db-gotchas]] — the dead/untrustworthy fields called out above.
+
+## ✅ 2026-07-26 — BOTH DECKS BUILT, RENDERED AND REVIEWED
+**Deck A — "How Work Actually Moves Through This Company"** (owners + CFO) → **✅ APPROVED by the Skipper, v5.1**, git tag `deck-a-approved-20260726`. Frozen.
+**Deck B — "Where the Operating Leverage Is"** (Fort Point) → built, reviewed, still in the Skipper's read-through.
+📁 `arbor-stack/bid-process-reengineering/` · PDFs in `pdf/` · renderer `make-deck-pdf.js` · queries `VERIFY-deck-numbers.sql`.
+⚠️ **`arbor-stack` is its own git repo** (`gilligan-arborstack`, private) — **NOT covered by the workspace's 30-min push.** Commit and push it separately. → [[github-offchip-backup]]
+
+### The headline numbers (all re-derived 2026-07-25/26 off a 25 Jul 03:03 prod restore)
+- **Identified administrative friction ≈17,100 hrs/yr ≈ 8.2 FTE ≈ $560K base / $729K loaded** — bid production excl. IQC ≈8,400 · **inventory QC ≈6,200 (3 FTE, headcount)** · field transcription 2,000 · invoice re-keying 500.
+- **≈680 admin hrs per $1M** revenue (on the $25.1M 2026 goal).
+- Bid turnaround: median **6 days**, 1 in 4 over two weeks, 1 in 10 over a month (n=3,663).
+- **The $610K/$737K figures are superseded.** Do not quote them.
+
+### ⭐ THE BIG NEW FINDING — the bid loop is measurable
+The process is a **loop, not a line**: sales admin → **IQC pulls/builds maps** → field counts trees → **IQC enters all data + builds pricing sheets** → arborist prices → **back to IQC for corrections** → repeat → bid packet.
+Measured via `RFPActions.UserGroupID=11` (Review = IQC): **2,882 bids, 5,555 visits, 53.5% revisited, 2,673 extra trips/yr, worst bid 9 passes.**
+
+| Trips through IQC | Bids | **Median** days to get the bid out |
+|---|---|---|
+| One clean pass | 1,277 | **2.3** |
+| One round trip | 755 | **9.0** |
+| More than one | 782 | 11.1 |
+
+**A round trip roughly quadruples turnaround.** ⚠️ Association, not proven cause — job size is **not** controlled for; that is Phase 1's first measurement.
+
+### Corrections that cost real time (don't repeat)
+- **Multi-CREW, not multi-visit:** the ~30,000 zero-revenue field hours happen when two crews work one job and all production posts to one crew's sheet. I invented "multi-visit" from the pattern; the Skipper knew the mechanism. → [[trimit-db-gotchas]]
+- **Double-count:** I added the new 2,800-hr IQC line on top of a total that already held a ≈4,200-hr estimate for the same work. **Net out what new evidence replaces.**
+- **Means vs medians:** quoted a "13-day" round-trip penalty off averages with a 285-day tail; on medians it is ~7 days.
+- **TPH basis:** contract = blended · segment = productive. → [[trimit-stack-and-tph]]
+- **Municipal book is 11 cities**, not 20 contracts — a plan KPI ("contracts per bridging FTE") was built on the phantom count.
+- **ArborNote is the benchmark, NOT the answer** (Skipper): no municipal capability, breaks past ~5,000 trees, monthly subscription, zero control over the roadmap. Deck B now says so in the body. *(Deck A §10 still carries the old framing — approved, awaiting his call.)*
+
+### Deck safety rails (in `make-deck-pdf.js`, both verified by test)
+1. **Name guard** — aborts the build if any employee name would print.
+2. **Coaching guard** — aborts if presenter-directed language would print (*"never improvise", "that's the win", "not for the room"…*). Added because Deck A's aside was stripped only by luck of starting `*(Prep note` while Deck B's identical one printed for weeks.
+3. Emphasis stripping handles `*italic*` as well as `**bold**` — 7 literal asterisks were printing.
+
