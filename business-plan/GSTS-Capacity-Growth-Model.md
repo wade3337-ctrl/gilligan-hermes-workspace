@@ -89,9 +89,9 @@ Irvine is **2 crews serving one contract**. The other **23 crews** sit across **
 | FTE person-years (hours ÷ 2,080) | **84** |
 | 2026 payroll, field direct labor | **83** |
 
-The gap is the **length of the working day**. At 8 hours the fleet implies 110 bodies; **at 10-hour days it implies 88 — which reconciles with the 83 on payroll.** So either the crews work well past 8 hours (unbudgeted OT — [[gsts-field-labor-rate]] notes the budget assumes 40-hour weeks with only ~3.5% OT), or headcount genuinely exceeds the payroll DL line.
+✅ **RESOLVED 2026-07-26 from the timeclock** → `GSTS-Overtime-Audit-2026.md`. **The working day is 8.68 hours, and 87% of person-days run past 8.** The clock reconciles with the crew sheets to **±1.5%** (97,710 vs 96,219 hours), so the hours are sound.
 
-**This is not cosmetic — it decides the hiring number at $50M**, and the two bases differ by ~30%. **§5 uses the FTE/payroll basis (83), the conservative one.** ❓ Resolving it is now a top open question → §7.
+At 8.68 hrs/day the fleet implies **~101 bodies**, still above the 83 on payroll — the residual is people appearing on crew sheets who don't sit on the field-DL payroll line (supervisors, shop, temporary labour). **§5 stays on the payroll basis (83), the conservative one**, but the *hours* basis is now measured rather than assumed.
 
 ## 3 — Where the revenue comes from (📏 measured, → [[gsts-revenue-by-geography]])
 
@@ -166,7 +166,7 @@ The gap is the **length of the working day**. At 8 hours the fleet implies 110 b
 ---
 
 ## 7 — What I could not measure (blocking v0.3)
-1. **How long is the working day?** Crew size at 8 hrs implies **110** field bodies; at 10 hrs it implies **88**, which reconciles with the **83** on payroll (§2a). **The two bases differ by ~30% and this sets the hiring number at $50M.** Ask the field, or pull actual clock hours per person.
+1. ✅ ~~How long is the working day?~~ **ANSWERED: 8.68 hrs** from the timeclock → `GSTS-Overtime-Audit-2026.md`.
 2. **Yard capacity** — how many crews Stanton and Laguna Hills can each actually hold. 11.5 is current load, not capacity, and it swings the $50M answer by a whole facility.
 3. **The Stanton / Laguna Hills split** — which crew groups sit at which. Plausible from the names (LWV-COM = Laguna Woods Village), but not asserted without confirmation.
 4. **Is the third IRVINE-focus crew (Jose L Ortiz — 4 people, $1.09M, TPH 166) at the Irvine yard?** The Skipper named only two crews there; the data shows three carrying that focus.
