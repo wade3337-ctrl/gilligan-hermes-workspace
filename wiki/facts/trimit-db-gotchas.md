@@ -32,7 +32,8 @@ Snapshot: `arbor-stack/gilligan-environment-snapshot.md`.
 - Full context + what each of these does to the numbers → [[trimit-investor-case]].
 
 ## 🧨 Column traps that return clean, plausible, WRONG answers (2026-07-26)
-- **`CrewSheets.Total` is EMPTY on every row — production dollars live in `CrewSheets.NetTotal`.** Querying `Total` makes every crew sheet look zero-revenue and every zero-dollar sheet look orphaned. Cost me a wrong conclusion before I caught it.
+- **`CrewSheets.Total` is EMPTY on every row — production dollars live in `CrewSheets.ActValue`** (`CompletedDollars` carries the same figure). Querying `Total` makes every crew sheet look zero-revenue and every zero-dollar sheet look orphaned. Cost me a wrong conclusion before I caught it.
+  ⚠️ **Corrected 2026-07-26: this note used to say `CrewSheets.NetTotal` — that column DOES NOT EXIST on CrewSheets.** `NetTotal` lives on `Invoices`, `WorkOrders`, `CrewNamePeriods` and others, never the crew sheet, so the "fix" would have failed with an invalid-column error at best. Verified basis: 6 mo to 2026-07-22 = **4,837 sheets · $10,810,918 `ActValue` · 85,351 `ActHours`**.
 - **`Proposals` has NO `CreatedByID`** — the creator is **`Proposals.UserID`**. **`GoAheads` has no creator column at all.** So "who entered this" is answerable for RFPs and proposals, *not* for go-aheads. Never say "neither record has a creator field."
 - **Municipal vs commercial = `ProjectGroups.ProjectGroupDefID = 11`** (municipal), commercial = `NOT EXISTS` that row. Join `CrewSheets → WorkOrders → Projects`.
 - **`RFPActions.UserGroupID` IS the traveler step** (`UserGroups`: 3 Inventory · 4 Pricing · 5 Proposal · **11 Review = inventory QC** · 17 Prep · 18 Map · 27 Re-inventory). **A repeat visit to the same group on one RFP = a measurable return trip** — this is how the bid rework loop became countable. → [[trimit-investor-case]]
