@@ -41,10 +41,11 @@ That single pattern explains our cost structure, our data quality, and our inabi
 | **Field data** | 87,189 hrs / **$11.1M** per 6 months, keyed by **8 managers**, ~1 hr each per night; **83 field staff, none enter their own work** |
 | **Billing** | 3,033 invoices / **$21.5M** manually extracted and re-keyed into QuickBooks |
 | **Transcription only** (re-keying we already timed) | **≈5,473 hrs/yr ≈ 2.6 FTE ≈ $165.7K base / $215.3K loaded** |
-| **Total identified friction** (transcription + bid production + inventory QC) | **≈17,900 hrs/yr ≈ 8.6 FTE ≈ $567K base / $737K loaded** |
-| *of which inventory QC* (5,555 counted passes @ 30 min — the floor; headcount says ≈6,200 hrs) | **≈2,800 hrs ≈ $98K base / $127K loaded** |
+| **Total identified friction** (transcription + bid production + inventory QC) | **≈17,100 hrs/yr ≈ 8.2 FTE ≈ $560K base / $729K loaded** |
+| *of which inventory QC* (3 FTE — tree counts, prices, pricing sheets, hand-built maps) | **≈6,200 hrs ≈ $218K base / $283K loaded** |
+| ⚠️ *Inventory QC **replaces** the earlier per-bid map-prep + photo-sheet estimates (≈4,200 hrs) — same work, counted as headcount. Do **not** add both.* | |
 
-**$737K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.9 margin points.** Recovering two-thirds of it is ≈$491K — **1.6 points on today's revenue, and 0.8 points on the $50M base where the 5-point expansion is actually promised.** The larger prize is not the $407K itself but the overhead we never add on the way to $50M. *(Note: this lands on EBITDA and therefore enterprise value. It does **not** move the earnouts, which run on AGP and exclude overhead.)*
+**$729K of loaded friction on $25.1M of revenue (the 2026 goal) ≈ 2.9 margin points.** Recovering two-thirds of it is ≈$486K — **1.6 points on today's revenue, and 0.8 points on the $50M base where the 5-point expansion is actually promised.** The larger prize is not the $407K itself but the overhead we never add on the way to $50M. *(Note: this lands on EBITDA and therefore enterprise value. It does **not** move the earnouts, which run on AGP and exclude overhead.)*
 
 ---
 
@@ -337,8 +338,8 @@ Every invoice for twenty years is attributed to a single service account belongi
 - ⚠️ **Raise with the CFO privately before diligence** (§Appendix). A QoE or audit team finds these. **Far better volunteered than discovered.**
 
 ### 5.4 Retire the friction
-- **Target: recover ≥65% of the $737K loaded friction (≈17,900 hrs) by end-2029 as a reduction in administrative overhead.** *(Raised from 60% on 2026-07-25: the inventory-QC line added ≈2,900 hrs, and ≤125 hrs per $1M at $50M requires 65% recovery, not 60%. The target is coupled to this rate — if recovery slips, ≤125 moves.)* The recovery is taken as cost, not redeployed — that is what makes it an EBITDA and valuation lever rather than a capacity story. Front-line selling and supervision capacity comes from growth, not from re-labelling saved admin hours.
-- **This is the target that drives the scoreboard (§7):** ≈17,900 hrs less 65% ≈ **6,265 hrs**, spread across $50M of 2031 revenue ≈ **125 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
+- **Target: recover ≥65% of the $729K loaded friction (≈17,100 hrs) by end-2029 as a reduction in administrative overhead.** *(Raised from 60% on 2026-07-25: ≤125 hrs per $1M at $50M requires ~64% recovery on this basis. The target is coupled to this rate — if recovery slips, ≤125 moves.)* The recovery is taken as cost, not redeployed — that is what makes it an EBITDA and valuation lever rather than a capacity story. Front-line selling and supervision capacity comes from growth, not from re-labelling saved admin hours.
+- **This is the target that drives the scoreboard (§7):** ≈17,100 hrs less 65% ≈ **5,985 hrs**, spread across $50M of 2031 revenue ≈ **120 admin hrs per $1M**. The headline metric is not an aspiration bolted on at the end — it is the arithmetic of this section plus the growth plan's revenue ramp.
 - **Interim checkpoint so it cannot drift:** **≥30% recovered by end-2027**, reported on the same monthly instrument as everything else (§3A.3).
 
 ## 6. Phase 3 (2029–2031) — The platform that scales
@@ -383,15 +384,15 @@ One is a **full-time human API** between our system and **Davey TreeKeeper** for
 **The headline operating-leverage metric:**
 
 > ### Administrative hours per $1M of revenue
-> **Today: ≈715** (≈17,900 hrs of identified friction ÷ $25.1M, the 2026 goal).
+> **Today: ≈680** (≈17,100 hrs of identified friction ÷ $25.1M, the 2026 goal).
 > **If nothing changes, $50M of revenue requires ≈29,900 hours ≈ 14.4 FTE of administrative friction** — we would add the equivalent of **seven more full-time people who never touch a tree**, on top of the seven we already carry.
 > **Target 2031: ≤125** — revenue more than doubles *while* administrative labor falls ~65% (§5.4). The ratio improves **nearly six-fold**.
 
-*Basis: "identified friction" = bid-production friction + inventory QC + field transcription + invoice re-keying (§2), the same non-overlapping stack behind the $567K/$737K. Stated on plan revenue in every year so the trend reflects process change, not billing timing.*
+*Basis: "identified friction" = bid-production friction + inventory QC + field transcription + invoice re-keying (§2), the same non-overlapping stack behind the $560K/$729K. Stated on plan revenue in every year so the trend reflects process change, not billing timing.*
 
 | Metric | Baseline (2026) | 2027 | 2031 |
 |---|---|---|---|
-| Admin hrs per $1M revenue | ≈715 | *recompute* | **≤125** |
+| Admin hrs per $1M revenue | ≈680 | *recompute* | **≤125** |
 | **Deployment lead time** (staged → live) | **weeks** | ≤5 days | ≤2 days |
 | Bid turnaround — median | 6.0 days | ≤2 days | ≤1 day |
 | Bid turnaround — p90 | 32 days | ≤10 days | ≤5 days |
