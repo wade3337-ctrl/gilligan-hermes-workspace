@@ -15,7 +15,7 @@ updated: 2026-07-26
 
 **One-liner:** Two decks making the case that GSTS's constraint is **intake, not delivery** — built on measured TRIM IT data, not opinion.
 **📁** `arbor-stack/bid-process-reengineering/` — `INVESTOR-CASE-FACTBASE.md` (shared facts) · `DECK-A-STEVE-SCOTT.md` (built) · `COST-MODEL-rekeying.md` · `COST-PER-BID-worksheet.md` · `DEPARTMENT-BOTTLENECK-MAP.md`
-**Status:** 🔵 Deck A built. **Deck B (Fort Point) not yet built.**
+**Status (2026-07-26):** ✅ **Deck A APPROVED v5.1** (tag `deck-a-approved-20260726`, frozen) · 🔵 **Deck B built**, in the Skipper's final read-through. ⚠️ **The figures in the sections below are the 07-24 build — several were re-derived on 07-25/26. The current headline numbers are in [the 2026-07-26 section](#-2026-07-26--both-decks-built-rendered-and-reviewed) at the bottom; read it first.**
 
 ## Audience & goal
 - **(A) Steve + Scott** — honest condition. **(B) Fort Point investment team** — efficiency / less overhead / more output per labor hour.
@@ -26,16 +26,17 @@ Hard to **FIND** info · can't **TRUST** info · hard to **GET info IN**.
 Benchmark = **ArborNote** (one-stop on-site setup + inventory + bid, live map, click-to-approve) vs our **11 steps / 7 teams / 5× re-keying**.
 
 ## 🚨 The killer finding — bid records are created *after the fact*
-RFP + proposal-sent + go-ahead are stamped **within the same second** (RFP 1972933: 15:14:45.093 / .070 / 15:14:44.377). **12% within 60 seconds, 25% within 1 hour, 97% of sent→approved same-day.**
+RFP + proposal-sent + go-ahead are stamped **within the same second** (RFP 1972933: 15:14:45.093 / .070 / 15:14:44.377 — and the proposal RECORD was created **2025-11-17, eight months before its own RFP**, with the go-ahead stamped before both: **the record was built backwards**). **16.2% within 60 seconds, 26.8% within 1 hour, 97.4% of sent→approved same-day.**
 ⇒ **TRIM IT is a filing cabinet, not a workflow tool.** Proves "hard to get info in" *and* explains why dates/metrics can't be trusted.
-- **Real turnaround** (back-entry excluded, 2,329 bids): median **6d**, p75 **14d**, p90 36d, avg ~17d → Skipper's "10 days" **VALIDATED**. ⚠️ My first pass said median 2d — **WRONG**, contaminated by back-entry. Don't reuse.
+- **Real turnaround** (back-entry excluded, **n=3,663** of 5,004 bids that reached a sent proposal): median **6.0 d**, p75 **14.2**, p90 **32**, avg **13.5** → Skipper's "10 days" **VALIDATED**. ⚠️ My first pass said median 2d — **WRONG**, contaminated by back-entry. Don't reuse.
+- 📐 **ONE documented basis for every bid figure:** trailing 12 months to **2026-07-22** · population = RFPs with a **sent proposal** · exclude <1 hr as after-the-fact · cap 365 days. Runnable proof: `VERIFY-deck-numbers.sql`. (The 07-24 figures were unreproducible because that pass **mixed windows** — back-entry % from calendar-2026, turnaround from TTM.)
 - **Dead fields:** `NeedInventory`/`NeedSiteWalk` = **0 of 22,369** RFPs; `EstValue` empty → "we can't answer a basic question about our own sales process."
 - Flagged privately for Steve: pipeline/backlog/aging figures rest on back-entered dates — confirm nothing external depends on them.
 
 ## 🏭 THREE transcription points (the spine of the case)
 1. **Bid desk** — ~23,000 bid-chain records/yr → **≈17,800 duplicate data-entry events**, bid desk **~8 people** ⇒ **~9 duplicate entries/person/working day (~1.5 hr each)**. (⚠️ my raw distinct-ID count said 24 people — Skipper corrected it; see LESSONS.)
 2. **Production** — paper crew packets → collected → **a manager types each day in**. 6 months measured: **4,736 crew sheets · 87,189 field hrs · $11,085,071**, keyed by **8 managers** (Manuel Perez 1,491 · Celeste 1,232 · Omar 723 · Larry 592; 499 no enterer). **83 field staff, none enter their own work.** ⚠️ **So TPH — our margin metric — is computed from transcribed paper self-reports.** Present TPH as *"what the system says,"* not verified truth. Fix = tablet field reporting w/ photos + real-time progress.
-3. **Billing/AR** — manual extract from TRIM IT → send → **manual QuickBooks entry**. 3,033 invoices / $21.5M per year. 🚨 **No audit trail:** all **50,233 invoices since 2006** stamped `CreatedByID=11` = Rosanna Baez, **inactive, left 4 yrs ago**, `Role001="Generate Invoices"` = a **service account** (I first misread this as key-person risk — Skipper caught it). Payment lands in QuickBooks and never returns ⇒ the AR blind spot is **architecture, not a bug**.
+3. **Billing/AR** — manual extract from TRIM IT → send → **manual QuickBooks entry**. 3,033 invoices / $21.5M per year. 🚨 **No audit trail:** all **50,283 invoices since 2006** (verified against the DB 2026-07-26 — a review agent claimed 50,233; **the deck was right and the fact base was stale**) stamped `CreatedByID=11` = Rosanna Baez, **inactive, left 4 yrs ago**, `Role001="Generate Invoices"` = a **service account** (I first misread this as key-person risk — Skipper caught it). Payment lands in QuickBooks and never returns ⇒ the AR blind spot is **architecture, not a bug**.
 
 ## 🗺️ Department bottleneck map — THE HEADLINE
 > **"We don't have a delivery problem, we have an intake problem."**
@@ -45,10 +46,10 @@ Every handoff request→cash measured: scheduling median **1 day**; completed→
 - ⚫ **AR blind spot:** `Invoices.StatusDefID` dead since ~2014 → **the ERP can't tell paid vs open**; truth = Dimitry's emailed AR xlsx; **DSO not measurable**. **Raise with Steve PRIVATELY first** — reads as a control weakness in diligence.
 - ✅ **"$207K/$1.16M uninvoiced work" INVESTIGATED → NOT leakage, do NOT present.** The uninvoiced set is status `Revised` (superseded by change order); split is clean (Complete 2,763/2,764 invoiced · Revised 0/17); project-level check confirms billing (Moog WO $15,765 vs $15,879 invoiced, 0.7% apart). **Real finding underneath = traceability:** the revised WO→invoice link is severed (`ParentWorkOrderID` NULL on all 17), so you can't systematically prove all completed work was billed. A control gap, **not dollarized**. Skipper to spot-check WO 166236 himself.
 
-## 💰 Cost model — COMPLETE, all times team-confirmed
+## 💰 Cost model — COMPLETE, all times team-confirmed *(⚠️ the TOTALS below are the 07-24 stack — superseded by the ≈17,100 hrs / $729K re-derivation in the 2026-07-26 section; the per-bid mechanics still hold)*
 - **Transcription:** bid desk **2,967 hrs** (17,800 dup entries × **10 min**) + production **2,000 hrs** (8 mgrs × 1 hr/night) + invoice→QuickBooks **506 hrs** (3,033 × 10 min) = **≈5,473 hrs ≈ 2.6 FTE ≈ $165.7K base / ≈$215K loaded.** Sting: partly done by people paid $90–110K.
-- **Per bid (RFP→go-ahead):** **≈5.7 hrs ≈ $215 base**, of which **⚙️ friction ≈$76 (35%)**; × 5,145 bids = **≈$1.1M/yr to produce bids, ≈$391K/yr friction (≈$509K loaded).**
-- Handoffs are **measured**, not estimated: `dbo.RFPActions` → **29,063 actions / 5,145 bids = 5.6 per bid** (median 5, p90 11, max 25).
+- **Per bid (RFP→go-ahead):** **≈5.7 hrs ≈ $215 base**, of which **⚙️ friction ≈$76 (35%)**; × **5,004 bids** (re-based 2026-07-25 to the single documented window — *was 5,145*) = **≈$1,076,000/yr to produce bids, ≈$380K/yr friction (≈$494K loaded).**
+- Handoffs are **measured**, not estimated: `dbo.RFPActions` → **27,865 actions / 5,004 bids = 5.57 ≈ 5.6 per bid** (median 6, p90 12, max 25). ⚠️ Re-measured, not re-divided — dividing the old numerator by the new population would have produced a fabricated 5.8. → [[LESSONS]]
 - Confirmed times: e-traveler assembly **30 min** · go-ahead activation **10 min** · sales site visit **1–4 hrs** · **inventory 500 trees/day** (→ ≈$0.70/tree; **Goodman 6,400 trees ≈ 13 crew-days ≈ $4,500** — useful for Price Buddy → [[goodman-rfp-bid]]).
 - Rates from `gsts-payroll-2026.md`: Sales Admin ≈$26/hr · Arborist ≈$45 · Inventory ≈$44 · IQC ≈$35. **Never put employee names or salaries in a deck.**
 - ❓ Open: what % of bids need a site visit ("most" — the data can't say, `Need*` flags empty) = the biggest swing factor; municipal proposal premium unquantified.
@@ -59,7 +60,7 @@ Every handoff request→cash measured: scheduling median **1 day**; completed→
 
 ## ⚠️ Measurement corrections to carry forward
 - **Always state WHICH TPH.** On **productive hours** commercial **$157.53** > municipal **$146.70** (as always). My earlier "municipal beats commercial" used **blended** TPH including $0-revenue hours (commercial carries 27,325 = 24.4% vs muni 9,716 = 14.5%), which **inverts** the ranking.
-- 🚫 **Do-not-present / open:** ~**21,000 commercial field hours with $0 revenue** (T&A explains only ~6,377) — unbilled work or an attribution artifact, unresolved.
+- ✅ **RESOLVED 2026-07-25, and no longer do-not-present:** the ~21,000 commercial (≈30,000 all-segment) field hours at **$0 revenue** are **NOT leakage**. Of 36,888 zero-dollar hours TTM: **6,377** are internal non-productive (Yard · Safety Trg · OJT · Mod Duty — exactly the already-known T&A figure) and **30,351 (99.5% of the rest)** sit on 583 WOs that DO carry revenue on another crew sheet; only **160 hrs / 13 WOs** have genuinely no revenue (11 deliberate "$0 Go-Ahead" goodwill/storm + a Christmas-tree setup). ⚠️ **Mechanism corrected 2026-07-26: multi-CREW, not multi-visit** — two crews on one job, all production posts to one sheet (53% of the hours; multi-visit is 27%). **The real finding is a metric defect: per-crew-sheet TPH is invalid on these jobs — only WO-level TPH is valid**, and this is what inverted the blended segment comparison. 🔒 One of the 13 is an owner's residence (3.8 hrs) — immaterial, but a **related-party item for QoE**; Skipper-only, not for any deck.
 - **`Invoices.InvoiceDate` is a BACKDATED accounting date** (reads before completion, median −3d) — measure billing speed off `Invoices.Created`.
 - Skipper's corrections: **TRIM IT is not 50 years old** (the *company* is); the **$91K-vs-$84K example was OUR dashboard's bug** — never use it as TRIM IT evidence; don't inflate ship counts (77 files ≈ ~33 streams / ~12-15 deliverables).
 
@@ -105,4 +106,13 @@ Measured via `RFPActions.UserGroupID=11` (Review = IQC): **2,882 bids, 5,555 vis
 1. **Name guard** — aborts the build if any employee name would print.
 2. **Coaching guard** — aborts if presenter-directed language would print (*"never improvise", "that's the win", "not for the room"…*). Added because Deck A's aside was stripped only by luck of starting `*(Prep note` while Deck B's identical one printed for weeks.
 3. Emphasis stripping handles `*italic*` as well as `**bold**` — 7 literal asterisks were printing.
+
+## Superseded / historical
+Kept so an old copy of a deck can be dated, and so no one re-derives a figure that was already retired.
+- (2026-07-24, superseded) Bid population **5,145** (and **5,166** in the cost model) → re-based **5,004** on 07-25; friction **$391K/$509K** → **$380K/$494K**; total bid-production cost **$1,106,000** → **$1,076,000**.
+- (2026-07-24, superseded) Turnaround population **2,329** · p90 **36** · avg **~17** · back-entry **12% within 60s / 25% within 1 hr** → **3,663 · 32 · 13.5 · 16.2% / 26.8%**. Cause: the 07-24 pass mixed a calendar-2026 window with a trailing-12-month one.
+- (2026-07-25, superseded) Total identified friction **≈15,400 hrs ≈ 7.4 FTE ≈ $480K/$624K**, then **15,000 hrs / 7.2 FTE / $469K/$610K** → **≈17,100 hrs / 8.2 FTE / $560K/$729K** once **inventory QC (≈6,200 hrs, 3 FTE)** was added on 07-26.
+- (2026-07-25, superseded) Admin hrs per $1M: **615 → 600 → ≈680**.
+- (2026-07-24, superseded) Invoice count **50,233** → **50,283** (verified against the DB).
+- (2026-07-26, superseded) Zero-revenue field hours explained as **multi-visit** → the mechanism is **multi-CREW**. The hours figure was right; the cause was invented from the pattern.
 
