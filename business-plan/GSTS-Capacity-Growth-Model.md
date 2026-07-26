@@ -26,7 +26,7 @@
 | **Production per crew per year** | **$861,600** | 📏 measured |
 | **Field hours per crew per year** | **6,990** | 📏 measured |
 | **Crews per $1M of production** | **1.16** | 📏 derived |
-| **Field employees per crew** | **3.3** | 📏 83 payroll ÷ 25 crews |
+| **Field employees per crew** | **3.3** *(fleet average)* | 📏 83 payroll ÷ 25 crews — ⚠️ **an average only; derive per crew from hours ÷ 2,080 (§2a). Real range 2.5–10.5.** |
 
 ---
 
@@ -106,7 +106,7 @@ Irvine is **2 crews serving one contract**. The other **23 crews** sit across **
 
 ## 5 — What $50M physically requires (🔧 scaffold — ratios measured, the arithmetic is the assumption)
 
-**Held constant:** hours per crew (6,990/yr), crew size (3.3), yard density (8.3 crews). **Every one of those is a lever, not a law** — §6.
+**Held constant:** hours per crew (6,990/yr), people per crew (3.3 average — but see §2a: derive from hours, the real spread is 2.5–10.5), general-yard density (11.5 crews). **Every one of those is a lever, not a law** — §6.
 
 | | Today | At $50M, **TPH $123** (today's) | At $50M, **TPH $130** (target) |
 |---|---|---|---|
@@ -135,9 +135,9 @@ Irvine is **2 crews serving one contract**. The other **23 crews** sit across **
 ---
 
 ## 6 — What would change the answer (the levers, unmodelled)
-- **Hours per crew.** 6,990/yr against a 2,080-hr budgeted year for 3.3 people (6,864) means crews are running *at* or slightly over budgeted capacity — there is little slack to absorb growth. → [[gsts-field-labor-rate]] notes the 2026 budget assumes 40-hour weeks with only ~3.5% OT.
+- **Hours per crew.** 6,990/yr against a 2,080-hr budgeted year for 3.3 people (6,864) means the fleet is running *at* or slightly over budgeted capacity — there is little slack to absorb growth. → [[gsts-field-labor-rate]] notes the 2026 budget assumes 40-hour weeks with only ~3.5% OT.
 - **Crew size / mix.** The core fleet ranges 1.6 to 7.6 people per sheet. A different mix changes both headcount and TPH.
-- **Yard density.** 8.3 crews/yard is what we *do*, not what a yard *holds*. If a yard holds 12, $50M needs 5 yards, not 7.
+- **Yard density.** 11.5 crews per general yard is what Stanton and Laguna Hills *carry*, not what they *hold*. At 15 apiece, $50M needs 4 general yards instead of 5 — a whole facility of difference, and facilities are the longest lead item here.
 - **TPH spread is the biggest unexploited lever in the data:** the core fleet runs **$22 to $183 per hour**. Closing the bottom quartile toward the median does more than adding crews — and costs no capital. **Not modelled here; it needs the job-mix explanation before it means anything.**
 
 ---

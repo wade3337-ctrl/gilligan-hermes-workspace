@@ -43,17 +43,18 @@ The operating plan and both investor decks establish the **administrative** side
 ## 📏 v0.1 BASELINE — measured 2026-07-26 (trailing 12 mo to 2026-07-22)
 **The four ratios everything derives from:** production per crew **$861,600/yr** · field hours per crew **6,990** · **1.16 crews per $1M** · **3.3 field employees per crew**.
 - **25 core crews** (100+ working days) produce **98.5%** of output: 174,686 hrs · **$21,539,106** · blended **TPH $123.30** (target 130).
-- **3 yards** (`CrewNames.SiteAssigned` 1/2/3), **8.3 crews per yard**. Site 2 = 10 crews/$11.3M/TPH 132 · Site 1 = 12 crews/$9.1M/TPH 117 · Site 3 = 3 crews/$1.1M/TPH 101. **Site 2 beats Site 1 with two fewer crews.**
+- **3 yards: Stanton · Laguna Hills · Irvine** (Skipper). **Irvine is a DEDICATED single-contract yard** — only the City of Irvine work: Isahi (production, 10.5 FTE) + Gerardo (planting, 2.5) = **13.0 FTE / $2.95M**, his *"about 15 guys"*. 🚫 **`CrewNames.SiteAssigned` is NOT the yard** — both Irvine crews sit in value 2, which holds ten crews. v0.1 used it as the yard key and was wrong. → the other **23 crews split across Stanton + Laguna Hills ≈ 11.5 per general yard**.
+- ✅ **Headcount = field hours ÷ 2,080** — validated twice: 84.0 FTE vs 83 payroll, and 13.0 vs his "about 15" at Irvine. **Crew-size average (2.9) understates badly; real range 2.5–10.5.**
 - **Fleet: 210 of 435 units Active** — core rig ≈ **5.2 units per crew** (chipper 1.64 · dump 1.48 · boom 1.20 · crew truck 0.92).
 - **⚠️ TRIM IT cannot cost the fleet** — `Equipment.PurchasePrice` empty on all 435 records. Capex must come from the fixed-asset schedule / CFO.
 
 ### ▶️ The headline answer to "$50M"
-**Crews 25 → 59** (56 at TPH 130) · **field staff 83 → ~195** (+112, ≈20 net hires a year for five years) · **yards 3 → 7** · field DL cost $6.4M → **$14.8M**.
+**Crews 25 → 59** (56 at TPH 130) · **field staff 83 → ~195** (+112, ≈20 net hires a year for five years) · **general yards 2 → 5, plus one contract outpost per Irvine-shaped municipal win** · field DL cost $6.4M → **$14.8M**.
 **Growth is a build-out problem, not a productivity problem** — hitting TPH 130 saves only 3 crews and ~10 hires. The lumpy, long-lead constraint is **yards**.
 ⭐ **Biggest unexploited lever, not yet modelled: the core fleet runs TPH $22 → $183.** Closing the bottom toward the median needs no capital — but needs the job-mix explanation first.
 
 ### ❓ Blocking v0.2 (cannot be measured)
-1. **Which physical yard is Site 1/2/3, and how many crews each holds** (8.3 is current practice, not capacity).
+1. **Yard CAPACITY** — how many crews Stanton and Laguna Hills can each hold. 11.5 is current load, not capacity, and it swings $50M by a whole facility. ❓ Also open: the Stanton/Laguna Hills crew split, and whether the 3rd IRVINE-focus crew (Jose L Ortiz, TPH 166) yards at Irvine.
 2. **Span of control** — `StaffMembers.StaffRole` is NULL on every active record; crews per foreman/supervisor/manager is not derivable.
 3. **Equipment capital cost + replacement cycle.**
 
