@@ -100,7 +100,7 @@ Measured via `RFPActions.UserGroupID=11` (Review = IQC): **2,882 bids, 5,555 vis
 - **Means vs medians:** quoted a "13-day" round-trip penalty off averages with a 285-day tail; on medians it is ~7 days.
 - **TPH basis:** contract = blended · segment = productive. → [[trimit-stack-and-tph]]
 - **Municipal book is 11 cities**, not 20 contracts — a plan KPI ("contracts per bridging FTE") was built on the phantom count.
-- **ArborNote is the benchmark, NOT the answer** (Skipper): no municipal capability, breaks past ~5,000 trees, monthly subscription, zero control over the roadmap. Deck B now says so in the body. *(Deck A §10 still carries the old framing — approved, awaiting his call.)*
+- **ArborNote is the benchmark, NOT the answer** (Skipper): no municipal capability, breaks past ~5,000 trees, monthly subscription, zero control over the roadmap. ✅ **Both decks now say so in the body** (Deck A §10 v5.7 / Deck B §9 v4.2, 2026-07-26) — identical paragraph, same "pattern, not the product" line, both headed *"The bar our competition has set"*. The operator (Arbor Group) is **not named** in either deck. **The decks no longer diverge on any known claim.**
 
 ### Deck safety rails (in `make-deck-pdf.js`, both verified by test)
 1. **Name guard** — aborts the build if any employee name would print.
