@@ -357,9 +357,9 @@ Every invoice for twenty years is attributed to a single service account belongi
 | Production value | **$9.04M** |
 | **People manually bridging them** | **2** |
 
-One is a **full-time human API** between our system and **Davey TreeKeeper** for the City of Irvine (**contractually mandated** — this cannot simply be dropped); the second does the equivalent for the other nineteen. Irvine alone is 29,898 hours and **$3.6M**, running **≈$290K/yr below our $130 TPH target** — and **TPH cannot see the office cost at all**, because it measures crews.
+One is a **full-time human API** between our system and **Davey TreeKeeper** for the City of Irvine (**contractually mandated** — this cannot simply be dropped); the second does the equivalent for the other ten cities. Irvine alone is 29,898 hours and **$3.6M**, running **≈$290K/yr below our $130 TPH target** — and **TPH cannot see the office cost at all**, because it measures crews.
 
-> ### **"Twenty municipal contracts worth nine million dollars, bridged by hand by two people. The growth plan adds cities. At what point does contract twenty-one need a third person — and what happens at forty?"**
+> ### **"Eleven cities and eight million dollars of work, bridged by hand by two people — one of them consumed entirely by a single contract. The growth plan adds cities. Every foreign-system city we win costs another head."**
 
 **That is "overhead scales with revenue" in its purest observable form, and it is the ceiling on the segment we most want to grow.**
 
@@ -409,7 +409,7 @@ One is a **full-time human API** between our system and **Davey TreeKeeper** for
 | Jobs traceable sold→paid | not possible | partial | **100%** |
 | DSO measurable in-system | no | — | **yes** |
 | Days to integrate an acquisition | n/a | — | **≤90** |
-| **Municipal contracts per bridging FTE** | **10** (20 contracts / 2 people) | ≥15 | **no ceiling — integration, not people** |
+| **Municipal cities per bridging FTE** | **5.5** (11 cities / 2 people) | ≥10 | **no ceiling — integration, not people** |
 | Admin hrs per municipal contract | not measured | published | falling |
 
 ---
