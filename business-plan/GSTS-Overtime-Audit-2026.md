@@ -1,29 +1,49 @@
 # Overtime vs Straight Time Audit — 2026 YTD
 **Period: 1 January 2026 → 25 July 2026** (last punch in the system). Built 2026-07-26.
-**Source: the TRIM IT timeclock** — `CrewAssignments` clock-in/clock-out punches, routed to crews via `CrewSheets`.
+**Source: the TRIM IT timeclock** — clock-in/clock-out punches (`CrewAssignments`), routed to crews via `CrewSheets`. **The timeclock went live October 2025**, so this is the first full stretch of real punch data.
 **⚠️ BLACK — deal-aware.**
 
 ---
 
-## 🚨 Finding 1 — TRIM IT stopped recording the overtime split in October 2025
+## ✅ Finding 1 — The timeclock went live in October 2025. Nobody has computed the split since.
 
-The payroll calendar (`CrewMemberCalendars`) has separate Regular / OT / Double-time fields. **They decayed through 2025 and have been exactly zero for ten months.** Total hours still record normally.
+> **CORRECTION (Skipper, 2026-07-26).** My first draft read this as *"TRIM IT stopped recording overtime."* **Wrong, and backwards.** The timekeeping function was **built last year and put into use in October 2025**. Nothing broke — the company changed how it captures time.
 
-| Year | Total hours | Regular | **OT** |
+The data shows the cutover precisely. In `UserCalendars`, **the legacy summary hour fields go to zero in October 2025 at exactly the moment clock-ins climb**:
+
+| Month | Clock-ins | Summary hours | Summary OT |
 |---|---|---|---|
-| 2022 | 177,440 | 147,243 | **27,547** |
-| 2023 | 208,578 | 168,513 | **30,300** |
-| 2024 | 200,470 | 167,492 | **24,364** |
-| 2025 | 172,748 | 108,366 | **11,211** |
-| **2026** | **104,306** | **0** | **0** |
+| 2025-07 | 1,495 | 10,059 | 555 |
+| 2025-08 | 1,484 | 9,550 | 273 |
+| 2025-09 | 1,615 | 6,699 | 197 |
+| **2025-10** ← go-live | **1,865** | **0** | **0** |
+| 2025-11 | 2,022 | 0 | 0 |
+| 2026-06 | 2,144 | 0 | 0 |
 
-**Month it died:** Jan-25 2,598 OT hrs → Jul-25 709 → Sep-25 126 → **Oct-25 onward: 0.00, every month.**
+**Before October 2025:** hours were entered as summary totals, with the regular/OT split typed in.
+**From October 2025:** people clock in and out for real — raw punches, with meal start/end and GPS.
 
-**So the ERP cannot currently tell you what overtime costs.** Everything below is reconstructed from the raw punches, which *do* still work.
+### The finding that survives, and it is the important one
+**The new system captures the punches but nothing computes the overtime split from them.** The legacy Regular/OT/DT fields sit empty because they've been superseded, and no replacement calculation was built. **So since go-live — ten months — nobody at Great Scott has been able to see overtime by crew.** The numbers below are the first time it has been derived since the timeclock started.
+
+*(That is a gap in the reporting layer, not the data. The punches are complete and clean — see Finding 4.)*
+
+### Cross-check: the derived figure sits exactly where the trend says it should
+The old manual-entry basis and the new punch basis are **different measurement methods and should not be compared casually** — but the OT share tracks sensibly across the boundary, which is good evidence the derivation is sound:
+
+| Year | Basis | Total hours | OT hours | **OT share** |
+|---|---|---|---|---|
+| 2022 | manual entry | 177,440 | 27,547 | **15.5%** |
+| 2023 | manual entry | 208,578 | 30,300 | **14.5%** |
+| 2024 | manual entry | 200,470 | 24,364 | **12.2%** |
+| 2025 (part) | manual entry | 172,748 | 11,211 | *partial year* |
+| **2026 YTD** | **derived from punches** | **97,710** | **9,832** | **10.1%** |
+
+**Overtime share has been falling for four years, and 10.1% continues that line.** The derivation isn't producing a figure out of keeping with the company's own history.
 
 ---
 
-## 📏 Finding 2 — The audit (reconstructed from clock punches)
+## 📏 Finding 2 — The audit (derived from clock punches)
 
 **99 people · 11,252 person-days · 97,710 hours clocked.**
 
@@ -89,11 +109,13 @@ The payroll calendar (`CrewMemberCalendars`) has separate Regular / OT / Double-
 
 | Source | Hours, same period |
 |---|---|
-| Timeclock punches | 97,710 |
+| Timeclock punches (`CrewAssignments`) | 97,710 |
 | Crew sheets (`ActHours`) | 96,219 |
 | **Variance** | **+1,491 (+1.5%)** |
 
 **The two systems agree at company level** — the crew sheets are not materially over- or under-stating field hours. That is a genuinely reassuring result and worth knowing before anyone audits us.
+
+**Why this basis and not `UserCalendars`.** `UserCalendars` is the company-wide timeclock (**115 people, 118,292 hrs, 8.83 hrs/day average** for the same period) and is the right source for a *payroll* view. It carries ~20,000 more hours because it includes everyone who punches — shop, office, sales — not just people assigned to crew sheets. **For a per-crew field audit, `CrewAssignments` is correct and it reconciles to the crew sheets.** Both sources agree the day runs well past 8 (8.68 vs 8.83).
 
 ---
 
