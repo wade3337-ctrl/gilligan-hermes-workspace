@@ -1,4 +1,24 @@
 
+### 2026-07-27 — Revenue Performance fixlist, batch 4: posted/unposted now decided PER CREW SHEET [Skipper-directed · PLAY ✅]
+**Skipper's calls:** #11 *"unposted should show as projected"* · #10 *"let's try it and see how it presents… I do not want to overstate projections."*
+- **#11 — the posted/unposted decision moved from the DAY to the CREW SHEET.** It used to flip the whole day to "actual" the moment ANY crew posted, counting only the posted dollars — so crews that had not posted contributed nothing and the day understated. `qActualChunk` now groups by `CalendarID, CrewSheetID` and each sheet stands on its own: posted → its own actual; not posted → projected from its own scheduled hours. A part-posted day is now part actual, part projected, which is what it actually is. The day-level `dollarRatio`/`hourRatio` apportionment is retired for this branch.
+- **#10 — non-productive hours are no longer monetized.** Projected days valued `dayHours x targetTPH` using the day's TOTAL scheduled hours (internal crews included) and handed all of it to revenue jobs.
+- ⚠️ **MY FIRST CUT OVERSHOT — caught by measuring, not by review.** Treating every past sheet with no dollars as "unposted" pushed **Projected from $413,585 to $654,767 (+$241K)** and **Productive TPH from $135.44 to $149.21** — the exact overstatement the Skipper warned against. The data said why: **386 past July sheets have no dollars but carry 1,944.9 COMPLETED hours** — the signature of yard time, safety training, OJT and meetings. **Hours recorded with no dollars is ZERO-REVENUE WORK, not unposted work.** Refined to a three-way rule:
+  1. dollars posted → **actual**
+  2. no dollars but hours recorded → **zero-revenue work**: contributes hours, earns $0 (never projected)
+  3. no dollars and no hours → genuinely **not yet posted** → projected from scheduled hours
+
+  | | Original | First cut | **Shipped** |
+  |---|---|---|---|
+  | Actual to date | $1,618,804.26 | $1,618,204.26 | **$1,618,204.26** |
+  | Projected | $413,585.03 | $654,767.10 | **$441,932.40** |
+  | Total | $2,032,389.29 | $2,272,971.36 | **$2,060,136.66** |
+  | Productive TPH | $135.44 | $149.21 | **$135.24** |
+
+  **+$28,347 of projection** is the genuinely-unposted work now showing — believable; **+$241K was not.**
+- ⚠️ **UNRESOLVED, DISCLOSED: "Actual to date" is $600 lower than the raw DB sum** ($1,618,204.26 vs $1,618,804.26, **0.037%**). Mechanism is understood — the old code apportioned each DAY's actual across its visible rows, so money on sheets the page does not display still landed somewhere; per-sheet assignment no longer leaks it. **The specific sheet was not identified.** Ruled out by query: sheets with no work order · "DAY OFF" work orders · non-Active crews · internal crews · dates outside the window · both $600 sheets trace to WO 167882 with two Active, non-internal South crews and nothing disqualifying. **Told the Skipper rather than papering over it.**
+- Backup `Jasonsrepairs\persheet-20260727\RP.PRIOR.cfm`. Both webroots, cfclasses cleared, 0 CF errors. **17 of 36 closed.**
+
 ### 2026-07-27 — Revenue Performance fixlist, batch 3: chunking + status filter [PLAY ✅ verified · 2 items ESCALATED]
 - **#16 status filter — applied, verified NO-OP.** `qActualChunk` read `dbo.CrewSheets` with no status filter while every other number on the page comes through the proc's `Live$CrewSheets$Thin('Active')` path. **Measured first:** July is **$1,618,804.26 / 1,093 sheets with OR without** the Inactive filter, and identical again excluding internal crews — so there is no live discrepancy. Added `AND cs.StatusDefID <> dbo.GetStatus('CrewSheets','Inactive')` as consistency insurance so a voided sheet can never quietly enter "actual produced". **Regression confirms every headline unchanged.**
 - **#8/#31 (a failed chunk anchor silently drops 241 days) and #9/#30 (cross-chunk double counting) — INVESTIGATED, NOT MANIFESTING.** Both only bite past 240 days, so I ran the real test: **full-year 2026 (365 days = 2 chunks)**. 0 CF errors, 12 chart buckets, and **"Actual to date" $12,907,730.51 vs DB truth $12,914,500.51 — the dashboard is $6,770 LOWER (0.05%), not higher.** Double counting would read HIGH; a dropped chunk would show a massive shortfall. Neither is happening. The small gap + 5 fewer jobs (1,965 vs 1,970) is the proc's Active-crew filtering, which is by design. **Closed without speculative changes** — exactly the trap #15 taught this morning.
