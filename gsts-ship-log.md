@@ -1,4 +1,15 @@
 
+### 2026-07-27 — Package 1 landed FILES ONLY: the menu/permission half was never deployed to prod
+- **Context:** Skipper noted nothing links to the V1.5 suite from the TRIM IT landing page. Checked prod directly (read-only via `GSTSREADONLY` on `.168`) — **he is right, and here is why.**
+- **`dbo.AppForms` on prod has exactly ONE V1.5 entry:** `AppFormID 1287 · "City Budgets" · /GSTS/Dashboard-CityBudgets.cfm`. **The other six dashboards have no menu entry at all** — V15Home, RevenuePerformance, SalesCockpit, CrewPerformance, ProductionPerf, the Exec suite. (City Budgets almost certainly predates this package — RC-03 shipped separately.) So the suite is reachable on prod **only by direct URL**.
+- **`GoalSettings` IS present on prod** (the RevenuePerformance page auto-creates it in a `cftry`, so this may be self-healing rather than deployed).
+- **`Workbench.dbo.DashboardAccess` — UNDETERMINED.** `GSTSREADONLY` cannot read `Workbench` on prod (error 916), so I cannot see it. **It does not matter much either way:** `dashboard-access-check.cfm` wraps the lookup in `<cftry>` and falls back to a leadership check if the table is absent — verified by reading the file. **No landmine.**
+- ⚠️ **TWO WRONG ANSWERS ON THE WAY TO THE RIGHT ONE — both from guessing at schema instead of reading it:**
+  1. First checked `OBJECT_ID('dbo.DashboardAccess')` → "MISSING". **Wrong name** — the table lives in **`Workbench`**, which I cannot even read. The "finding" was an artifact.
+  2. Then searched `AppForms.Desc1` for page names → "0 entries". **Wrong column** — the path lives in **`ObjectPath`**. Correct answer is 1, not 0.
+  **Rule: read the schema (`sys.columns`) BEFORE searching a table you did not build.** Both errors would have been reported as alarming findings if I had not re-checked.
+- ▶️ **OPEN for the Travis conversation:** the remaining deploy step for package 1 is the **menu/AppForms wiring** (+ the `DashboardAccess` seed if it is not already there). `release-candidates/RC-AppForms-ExecFrame-rename-PROD.sql` + `RC-DashboardAccess-create-seed-PROD.sql`. Until that runs, the team cannot reach six of the seven dashboards.
+
 ### 2026-07-27 — RENDER SWEEP of the whole V1.5 package on play (the `##`-class blind spot) [CLEAN + 2 findings]
 - **Why:** the `##` bug reached production because we verified *numbers* and *error logs*, never the rendered page. That blind spot applied to all 40 `.cfm` in package 1, **none of which had been render-checked** — and the team has not opened them yet (Travis deployed today), so first impressions were still recoverable.
 - **Swept 28 user-facing pages on play.** Checked served HTML for: CF errors · literal `##` · raw `&##NNNN;` entities · unresolved `#var#` · blank output.
