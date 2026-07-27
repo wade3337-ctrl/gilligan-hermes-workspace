@@ -21,6 +21,7 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[gstsreadonly-prod-dsn]] — **CF DSN `GSTSREADONLY` on play → prod read-only (Travis 2026-07-14)**; works for CF pages (3/5 monitor feeds), grant+perf pending. The daily-email live-prod path.
 - [[workbench-play-db]] — side SQL db that survives the nightly GSTS refresh (prototype state).
 - [[trimit-db-gotchas]] — dual-webroot shadow (C:\ overrides D:\) + DB-driven menus (AppForms).
+- [[gstscalendars-stale-cache]] — accounting's daily production report reads a CACHED day total that only refreshes when a human clicks "Update". Stale by $17,281 in July 2026. The dashboard is the accurate one.
 - [[email-infrastructure]] — gilligan.gsts sending rules, watchers, ImapFlow uid gotcha.
 - [[trimit-web-pull]] — read-only web pull via `gilligan-bot` (UserID 376).
 - [[github-offchip-backup]] — nightly off-machine backup + ⏰ PAT rotation ~Sep 15.
