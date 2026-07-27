@@ -6,14 +6,14 @@ track: 1
 status: shipped
 tags: [dashboard, revenue, tph, pace, drill-through, release-candidate]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[anomaly-monitor-suite]]", "[[trimit-dual-webroot-shadow]]", "[[trimit-investor-case]]"]
-updated: 2026-07-24
+links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[anomaly-monitor-suite]]", "[[trimit-dual-webroot-shadow]]", "[[trimit-investor-case]]", "[[v15-prod-deploy-state]]"]
+updated: 2026-07-27
 ---
 
 # RC-02 Revenue Performance
 
 **One-liner:** Live view of scheduled revenue vs monthly goal + crew productivity (TPH) — actual-through-today / projected-after, by day/week/month, filterable by territory / work type / revenue source; Pace-vs-Goal tile, click-a-bar drill-through to the work orders, per-job deep-links, CSV export.
-**Status:** 🟢 shipped — **REVIEWED & PARKED** (Jun 28), crew-cleared, verified on PLAY. Ready to ship with the Executive-dashboard prod deploy; kept in release candidates.
+**Status:** 🚧 **(2026-07-27) LIVE ON PROD, and it is the whole content of the HELD package 3** — built, staged and render-verified, but gated behind **36 pre-existing defects** in this file. → [[v15-prod-deploy-state]] · fixlist `arbor-stack/predeploy-pkg3/MORNING-FIXLIST.md`. Prior: 🟢 shipped — REVIEWED & PARKED (Jun 28), crew-cleared, verified on PLAY.
 **📁 Location:** `Dashboard-RevenuePerformance.cfm` + `Dashboard-RevenuePerformance.Export.cfm` (+ shared `css/gsts-protips.css`)
 **▶️ Resume:** `arbor-stack/release-candidates/RC-02-revenue-performance-dashboard.md`
 
@@ -40,7 +40,36 @@ Staged in `arbor-stack/release-candidates/NEXT-DEPLOY-20260724/` (manifest warns
 
 ⚠️ **Always say WHICH TPH.** Productive-hours TPH and blended/True TPH rank segments *differently* — see [[trimit-investor-case]].
 
+## 🩹 2026-07-27 — package 3: the two bugs prod exposed, plus the gate
+**Package 3 = this file + `Executive$Sales$Unattributed.cfm`.** Both render-verified on play; **HELD** pending
+the 36 fixes. Re-stamp the manifest MD5s after they land — *editing a shipped artifact and updating its
+manifest are one action, not two.*
+
+1. **The `##` render bug (found on PROD).** ColdFusion only collapses `##`→`#` **inside `<cfoutput>`**; outside
+   it the raw entities print (`&##9662;`) and **~a dozen CSS colours are silently invalid** — no gradient bar,
+   black text instead of white. ⚠️ **Reading the source found only 13 of 18.** The 5 missed have an inline
+   `<cfoutput>` wrapping *only the variable*, so the surrounding HTML looks inside cfoutput but is not.
+   **Settle it by deploying to play and grepping the SERVED HTML for `##` — expect zero.** The render also
+   proves which lines are genuinely inside cfoutput, so correct ones don't get "fixed".
+2. **Crew Sheets was showing an ESTIMATE under the word "Actual."** Line 581 applies the actual-completed
+   override to `ScheduleBoard` and `TrueProduced` only; `CrewSheets` falls through and takes `row.csValue`
+   raw — no posted/pending bucketing, no hours × TPH projection. **Skipper's call (option b): keep it as a
+   deliberate raw lens and RELABEL** — *"the three sources exist to be different views; hiding the difference
+   is how people stop trusting the number later."* Tile → **"Estimated to date"**, dropdown → "Crew Sheets
+   (raw estimates — not actuals)". Labels only; no query or calculation touched.
+   Verified by POST on play: TrueProduced/ScheduleBoard **$1,618,804** (identical — override working) vs
+   CrewSheets **$1,670,085**. **The $51,281 gap is exactly what had been labelled "Actual."**
+   ⚠️ The source selector is a **POST form** — a GET query string silently does not switch it, which made the
+   first three "renders" identical and nearly read as a failed fix.
+3. **The Unattributed drill's header bug was prod running the OLD file** — package 3's version already fixes it.
+   Its date filter was deliberately **left on `BETWEEN`**: the parent `Executive$Sales$ByRep$Scope.cfm` still
+   uses `BETWEEN` in four queries, and **a drill must share its parent's date predicate** or it explains a
+   headline with a different number. Change both in one deploy or neither.
+4. 🆕 **Found, not fixed** (awaiting the Skipper): the drill's *Current Rep* column prints a raw DB flag to
+   users — `RG · Raudel Gutierrez (IsMeasured=0)`, line 152.
+
 ## Related
+- [[v15-prod-deploy-state]] — the batched-deploy inventory this package sits in.
 - [[rc-01-executive-financial]] — ships in the same Executive prod-deploy batch.
 - [[anomaly-monitor-suite]] — COO monitor shares the invoiced/accrued revenue source scoped in the Billed backlog.
 - [[trimit-dual-webroot-shadow]] — why this file must go to both roots.

@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [dashboard, steve, diligence, win-rate, sales-performance, treatments, city-exclusion]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[steve-recon-a-financial-report]]", "[[rc-01-executive-financial]]", "[[rc-04-spm]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[workbench-play-db]]", "[[deploy-playbook]]"]
-updated: 2026-07-21
+links: ["[[steve-recon-a-financial-report]]", "[[rc-01-executive-financial]]", "[[rc-04-spm]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[workbench-play-db]]", "[[deploy-playbook]]", "[[trimit-server-topology]]", "[[v15-prod-deploy-state]]"]
+updated: 2026-07-27
 ---
 
 # Steve's Diligence Sales-History Dashboard (Project D)
@@ -21,6 +21,22 @@ updated: 2026-07-21
 - **Crew review (Kimi K3 + Gemini 3.1 Pro + gpt-5.6-sol) = DO-NOT-SHIP round 1** → hardened: non-atomic reseed → `XACT_ABORT`+tran, `RAISERROR`→`THROW` asserts that actually halt, `UNIQUE` index (no double-count), count assert, `GRANT` for the CF login, AND a real data bug — proposal **396441** override `='UNDEFINED'` would EXCLUDE it (sol caught) → dropped UNDEFINED (**564→563**). Re-validated on a throwaway play table (clean, 563).
 - **Package** (5 cfm + hardened SQL + `DEPLOY-INSTRUCTIONS.md` + `CREW-REVIEW.md`) staged on play `D:\GSTS-Deploy\STEVE-FRD-DEPLOY-20260721\` (outside the webroot). Emailed Jordan (jkim) cc Steve (sguzowski@gstsinc.com) + Skipper, framed as Steve's fresh request today (not an add-on). Jordan runs DB-first → files, + supplies the CF-login GRANT.
 - **OPEN:** Jordan to execute; play still has the 564/UNDEFINED row (offered to Skipper to clean for parity). See [[deploy-playbook]] (stage-on-play pattern) + [[sales-rep-attribution]] (the override table).
+
+## 🔌 2026-07-27 — it 500'd on PLAY, and the cause was the datasource, not the page
+`FinancialReport/FinancialReportDashboard.cfm` died on play with SQL **916** — `GSTSREADONLY` cannot reach the
+`Workbench` database. The page carries 3 `LEFT JOIN Workbench.dbo.ProposalOriginalRep`, and **that table lives
+on the play box's own SQL instance, not on `.168`.** Play's copy was **not** stale (byte-identical to our
+package, `0f4d331d…`) — it simply could not run.
+- **Root cause:** the whole play website's `GSTS` datasource pointed at **production** (`.168`), read-only,
+  across the lossy Ayera tunnel. **Fixed 2026-07-27 by repointing `GSTS`+`GSTSAPI` to `localhost,14333`**
+  (Skipper-authorised) → the dashboard went **500 → 0.8s**, and `view=2` returns 2.1 MB with override rep names
+  resolving (Scott Griffiths ×424) = `Workbench` genuinely reachable. Full story → [[trimit-server-topology]].
+- ▶️ **Still owed on PROD:** a **GRANT** giving the CF `GSTS` datasource login access to `Workbench` — without
+  it this dashboard hits the same 916 on production. **Bundled into the one batched database ask**, not sent on
+  its own → [[v15-prod-deploy-state]]. *(Travis created the `Workbench` DB on prod 7/26 13:23 without extending
+  the grant — correct hygiene on his part, just not matched to what the page needs.)*
+- 💡 **Generalises:** a 916 means the database **exists but you lack rights**; a **208** means it is **not there
+  at all.** That one digit tells you whether you are asking for a deploy or a permission.
 
 ## 🩹 Win/Loss-by-Year attribution fix (2026-07-10) — see [[sales-rep-attribution]]
 Steve (CFO) flagged 2024 "looks off." Two stacked bugs, both historical-years-only:

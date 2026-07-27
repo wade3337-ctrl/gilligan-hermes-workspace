@@ -3,7 +3,10 @@ title: GSTSCalendars — the accounting day-total cache that only refreshes when
 type: reference
 domain: work
 created: 2026-07-27
-applies: [[trimit-db-gotchas]] · [[rc-02-revenue-performance]] · [[canonical-definition]] · [[only-trustworthy-data]]
+updated: 2026-07-27
+tags: [trimit, sql, cache, revenue, reporting, gotcha]
+applies: ["[[trimit-db-gotchas]]", "[[canonical-definition]]", "[[only-trustworthy-data]]"]
+links: ["[[rc-02-revenue-performance]]", "[[dashboard-metric-standards]]", "[[data-freshness-contract]]"]
 ---
 
 # `GSTSCalendars` is a stale cache, not a live total

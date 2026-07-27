@@ -3,8 +3,8 @@ title: GSTSREADONLY — read-only DSN to PRODUCTION (on play)
 type: fact
 domain: environment
 tags: [trimit, coldfusion, dsn, production, read-only, data-access, travis]
-links: ["[[email-infrastructure]]", "[[trimit-stack-and-tph]]", "[[revenue-goal-close]]", "[[prod-db-access-blocked]]", "[[anomaly-monitor-suite]]"]
-updated: 2026-07-14
+links: ["[[email-infrastructure]]", "[[trimit-stack-and-tph]]", "[[revenue-goal-close]]", "[[prod-db-access-blocked]]", "[[anomaly-monitor-suite]]", "[[trimit-server-topology]]"]
+updated: 2026-07-27
 ---
 
 # GSTSREADONLY — read-only DSN to PRODUCTION (on the play server)
@@ -14,6 +14,15 @@ updated: 2026-07-14
 **Travis Walters (Data Processing, LLC) set this up 2026-07-14** (email "FW: Play Server Update", fwd by Jason). On the **play** ColdFusion server there is now a DSN **`GSTSREADONLY`** that connects to the **production** SQL Server database with a **read-only** login.
 
 - Normal pages use the **`GSTS`** datasource = the **play** copy (nightly-refreshed from prod; can be ~24h stale). `GSTSREADONLY` = **live prod, read-only.**
+
+> ⚠️ **CORRECTION 2026-07-27 — that first bullet was NOT true between ~7/14 and 7/27.** Play's `GSTS` datasource
+> was itself pointed at **`198.207.148.168` = PRODUCTION** (proven by a controlled write), so everyone treating
+> play as a sandbox was reading live prod data across the lossy Ayera tunnel. `GSTS`+`GSTSAPI` were repointed to
+> the play box's own `localhost,14333` on 2026-07-27 (Skipper-authorised) and the bullet is true again.
+> **`GSTSREADONLY` is left as the deliberate remote read-only link, and it is scoped to `GSTS` ONLY** — on `.168`
+> it cannot open `Workbench` (916) or `ARBORTOOLS`. Full topology + the proof → **[[trimit-server-topology]]**.
+> 🔎 **208 vs 916 tells you which problem you have:** 208 = the database/object is **not there**; 916 = it **is
+> there and you lack rights**. Deploy vs GRANT.
 - Test page: `https://play.greatscotttreeservice.com/zDBTest.cfm` (root, NOT under `/GSTS/`). Verified 2026-07-14: dumps `SELECT TOP 1 * FROM GSTS.dbo.InventoryDetail` from prod. ✅
 - Usage: `<cfquery name="x" datasource="GSTSREADONLY">SELECT ... FROM GSTS.dbo.Table</cfquery>`
 - **First query is slow (20–30s cold warm-up), then fast.** Don't put it on a hot path uncached; best for specific live lookups.

@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [dashboard, spm, funnel, pipeline, release-candidate, reconciliation]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[steve-diligence-dashboard]]"]
-updated: 2026-07-14
+links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[steve-diligence-dashboard]]", "[[revenue-goal-close]]", "[[v15-prod-deploy-state]]"]
+updated: 2026-07-27
 ---
 
 # RC-04 SPM (Sales Production Meeting)
@@ -16,6 +16,21 @@ updated: 2026-07-14
 **Status:** 🔵 active — **VERIFYING** (Jun 25). Audited + hardened + DB-reconciled; **one item pending** (Go-Aheads weekly match, confirmed by a scheduled post-refresh check). Ships as a UNIT at the next prod deploy after that confirms.
 **📁 Location:** `SalesProductionMeetingDashboard.cfm` (shell) + `SalesProductionMeeting$Pipeline/Sold/Production/Results.cfm` + `$Drill.cfm`
 **▶️ Resume:** `arbor-stack/release-candidates/RC-04-sales-production-meeting-dashboard.md`
+
+## 🔥 2026-07-27 — the **Results** tab is CRASHING on PRODUCTION (fix built + proven, awaiting the batched deploy)
+`208 Invalid object name 'Workbench.rgc.vProjectMarket'` at `SalesProductionMeeting$Results.cfm:116`. The
+by-market and multi-year panels below `LEFT JOIN` that RGC view — and **[[revenue-goal-close]] was deliberately
+held out of the V1.5 deploy**, so the `rgc` schema was never created on prod. The join is **UNGUARDED**, so the
+page dies instead of degrading. Play works because play's `Workbench` has the full `rgc` schema (32 objects).
+- **Fix:** `arbor-stack/dev-tasks/spm-results-prod-fix/01-create-rgc-vProjectMarket-PROD.sql` — creates *only*
+  the `rgc` schema, the 21-row `MarketMap` and the view. Idempotent, `SET XACT_ABORT ON`, `THROW`s and rolls
+  back if the row count ≠ 21. **Does NOT install Revenue Goal Close.**
+- ✅ **Proven from nothing, not just re-run where it already worked** — created a scratch DB, ran it in cold, and
+  queried the view: COMMERCIAL 6,418 · HOA 3,626 · MUNI_OTHER 1,438 · MUNI_CITIES 734 · UNCLASSIFIED 608.
+- ▶️ Needs Travis to run it **plus `GRANT SELECT ON SCHEMA::rgc`** — without the grant the page fails with 916
+  instead of 208. **Bundled into the one batched database ask** → [[v15-prod-deploy-state]].
+- ⚠️ **The scan that missed this** grepped `Workbench.dbo.` only; the killer was in a different schema.
+  **Match `Db.<anyschema>.<obj>` — a dependency scan that assumes `dbo` is not a dependency scan.**
 
 ## Applies / uses
 - [[dashboard-metric-standards]] — close-% cohort, TPH tiles; municipal on the City Budgets engine (Allocated = $7.97M to the dollar).
