@@ -1,4 +1,26 @@
 
+### 2026-07-27 — Revenue Performance fixlist COMPLETE: 31 fixed/closed, 5 deferred with reasons [PLAY ✅ · package restaged]
+**Batch 5 (robustness + display) — every item verified against the code first:**
+- **#1** no cap on the requested span while `requestTimeOut="6000"` (100 min) → **date range clamped to 3 years**, silently, so the page still renders.
+- **#18** `Val(URL.hide)` on an undefined variable — `?action=hideWelcome` with no `hide` param threw → guarded. **Verified HTTP 200.**
+- **#20** `csvField` had **no spreadsheet formula-injection guard** → values opening `= + - @` now prefixed with an apostrophe. *(The `="mm/dd/yyyy"` date cells are Excel's text-literal idiom on OUR OWN constant, deliberately left.)*
+- **#25** `cfparam form.revenueSource default="ScheduleBoard"` **silently defeated the documented 7/24 intent** — the cfparam always supplied a value so the TrueProduced fallback never fired. Now genuinely TrueProduced.
+- **#34** Total tile read *"N hrs; internal excluded M hrs"* while `totalHours` **INCLUDED** those hours — caption contradicted the figure beside it. Now **"281 jobs, 15,233.1 revenue hrs · 322.5 non-productive"**.
+- **#19** deprecated `HTMLEditFormat` on user-editable DB text → `EncodeForHTML`, matching file B.
+- **#28** a net-negative bucket (credits / posting reversals) produced a **negative SVG height**, so the browser dropped the rect and the bar silently vanished → clamped at 0; tooltip and CSV keep the true signed figure.
+- **#36** pro-tip key only split TrueProduced vs everything-else, so under Crew Sheets the tile said "Estimated to date" while its tip described posted actuals → now source-aware.
+- **#2** (file B) **row cap 2,000** on the list; the **TOTAL is deliberately left uncapped** so the headline stays correct even if the list truncates.
+- **#21/#22/#24/#33** (file B) `showdebugoutput="false"` added · InvoiceID `URLEncodedFormat` · **rows and total now both show cents and FOOT** — $109,686.16.
+
+**⏸️ 5 DEFERRED — verified real, deliberately NOT fixed, reasons recorded in `MORNING-FIXLIST.md`:**
+- **#3 CSRF** — real, but needs a token framework, not an end-of-session patch. App is auth-gated and internal; the goal MERGE is POST-only and **#12 (the silent goal overwrite) is already fixed**, so the residual is a forged POST altering Target TPH.
+- **#23 partial SalesGoal coverage** — needs a **business answer**: when only some months in a range have a goal row, should the period goal be today's partial sum, or prorated? Changing it would move the goal number on a guess. The all-NULL crash path is already inside the cftry.
+- **#26** cosmetic wording on the hours-only internal view · **#27** Weekly/Monthly buckets report their FULL period boundaries (definitional — truncating would misrepresent the bucket) · **#32** an edge case never observed in any test range.
+
+**Final state — all verified on play, 0 CF errors, 0 literal `##` on all three sources:**
+Goal $2,200,000.00 · Actual $1,618,204.26 · Projected $441,932.40 · Total $2,060,136.66 · **281 jobs (Group-By independent)** · Unattributed $109,686.16 / 21.
+**Package restaged and byte-identical to BOTH play webroots** — `Dashboard-RevenuePerformance.cfm` `8227d6b76a57` (109,592 b) · `Executive$Sales$Unattributed.cfm` `065c5db51f11` (11,765 b). Manifest re-stamped **as the last step**, per the lesson.
+
 ### 2026-07-27 — Revenue Performance fixlist, batch 4: posted/unposted now decided PER CREW SHEET [Skipper-directed · PLAY ✅]
 **Skipper's calls:** #11 *"unposted should show as projected"* · #10 *"let's try it and see how it presents… I do not want to overstate projections."*
 - **#11 — the posted/unposted decision moved from the DAY to the CREW SHEET.** It used to flip the whole day to "actual" the moment ANY crew posted, counting only the posted dollars — so crews that had not posted contributed nothing and the day understated. `qActualChunk` now groups by `CalendarID, CrewSheetID` and each sheet stands on its own: posted → its own actual; not posted → projected from its own scheduled hours. A part-posted day is now part actual, part projected, which is what it actually is. The day-level `dollarRatio`/`hourRatio` apportionment is retired for this branch.
