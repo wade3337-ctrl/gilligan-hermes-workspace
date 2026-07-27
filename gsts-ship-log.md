@@ -1,4 +1,24 @@
 
+### 2026-07-27 — Revenue Performance fixlist, batch 2: the JOBS COUNT was inflated ~27% [PLAY ✅ verified]
+- **#17 CONFIRMED and PROVEN.** `jobShareByBucket` is keyed **`bucket|workorder`**, so a job spanning buckets got one entry per bucket and the headline summed them. **The same July range reported a different job count depending on the Group By selector:**
+
+  | Group By | Jobs shown |
+  |---|---|
+  | Daily | **721** |
+  | Weekly | **358** ← what the Skipper had been reading |
+  | Monthly | **281** |
+  | **DB truth — `COUNT(DISTINCT WorkOrderID)`** | **281** |
+
+  Hours stayed constant at 15,326.8 throughout, which is why nobody caught it — only the count moved.
+- **FIX:** added a second accumulator keyed by the **job only**; the headline now counts distinct work orders with the territory rule applied once per job over its whole-range hours. **Per-bucket counts left untouched** — "jobs active in this bucket" is the correct meaning for the chart, tooltip and CSV.
+- ✅ **Verified:** **281 on Daily, Weekly AND Monthly**, matching the database exactly. 0 CF errors.
+- ⚠️ **#15 "North + South ≠ ALL" — INVESTIGATED, NOT A DEFECT, and I reverted my own fix for it.**
+  - All crews do have a valid `SiteAssigned` (1×46, 2×14, 3×6) — no NULLs, so the "dropped crew" premise is false.
+  - `141 + 137 = 278` vs ALL `281` looked like a gap, so I added a weight-based fallback for zero-hour jobs. It moved the counts to `149 + 143 = 292` — **+14 when only 3 jobs were unattributed. I could not account for the other 11, so I reverted it rather than ship it.**
+  - **The premise was wrong anyway:** **49 of July's 281 jobs are worked by crews from BOTH territories**, so a shared job legitimately appears on both sides. "North + South == ALL" is not a valid invariant for a *count*. **HOURS are the reconciling measure and they tie out exactly: 7,721.8 + 7,605.0 = 15,326.8 = ALL.**
+  - Left a comment at the call site recording the reverted attempt and why, so nobody re-derives it.
+- **Running total: 10 of 36 closed.**
+
 ### 2026-07-27 — Revenue Performance fixlist, batch 1 of N: the GOAL & PACE cluster [PLAY ✅ verified]
 Working the 36 pre-existing defects so package 3 can ship in one deploy. **Every item verified against the code before touching it.** Batch 1 = the five that make the goal/pace numbers wrong.
 - **#4/#14 Target TPH of 0 was accepted.** Line 325 rejected a Monthly Goal of 0 (`LTE 0`) but line 327 only rejected TPH **below** zero (`LT 0`). Projected days are valued `hours x targetTPH`, so 0 silently zeroed EVERY projected dollar, turned every bucket Rainbow — **and persisted via the goal MERGE.** → `LTE 0`.
