@@ -28,3 +28,4 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[herman-agent]] — Arduino companion agent (Herman ≠ decommissioned Hermes laptop).
 - [[kling-ai]] — 🎬 video/image generation (`kling/kling_gen.py`, key `~/.secrets/kling.json`); two-wallet gotcha (sub ≠ API prepaid pack); ffmpeg compress for Discord's 8MB cap.
 - [[herman-trimit-login]] — Boss Herman's TRIM IT (play) web login.
+- [[trimit-server-topology]] — which box is which; **my analysis runs on a daily prod restore (isolated); the play WEBSITE uses a different DB (198.207.148.168)**; the 21s connect blackhole.
