@@ -62,11 +62,22 @@ Measured from the play box, 2026-07-26 evening:
 
 ⭐ **Why only play suffers:** production's web server (.169) and its database (.168) are **both inside Ayera's network** — that hop never crosses the tunnel. **Play is the only system reaching across it**, which is why play is flaky and prod is not. **Do not conclude from play's behaviour that prod has the same problem.**
 
+### 📅 This is NOT new — it dates to the tunnel going up on 14 July
+A Codex session transcript (supplied by the Skipper 2026-07-26) shows the **same 20-second stall being investigated at 08:48 on 14 July — twenty-one minutes after the `Ayera-VPN` tunnel process started at 08:27 that morning.** Their measurement then: *"every page load is paying about 19-20 seconds to open/acquire the first GSTSREADONLY SQL connection… actual SQL queries are fast, about 60ms."* Identical to what I measured on 26 July.
+**So: not caused by the Jordan email, the prod dashboard deploy, or yesterday's `GSTSAPI` repoint. It arrived with the tunnel.**
+
+### ⚠️ Connection pooling is a MASK, not the fix
+That session diagnosed it as ColdFusion not maintaining pooled connections, and proposed **Maintain Connections + a `zDBKeepAlive.cfm` hit every 5 minutes**. That will hide the symptom — a permanently warm pool never pays the reconnect — **but the link underneath is dropping packets** (measured: 30% ICMP loss, **2 of 12 TCP connects fail outright**). A keepalive does not fix packet loss; it just means you notice it later, as mid-session query failures and timeouts under load instead of a slow first page.
+*(To their credit the same session did flag the real suspect at the end — "the ~20 sec delay looks like connection/login negotiation or network fallback, not query time… CF may be opening through a route that works only after a timeout/fallback." That line is the correct diagnosis; it just wasn't the headline.)*
+**Fix the tunnel with Ayera. Pool warming is worth doing anyway, but it is a comfort measure.**
+
 ## 🐛 The 21-second blackhole (cause of "play is down / I can't log in")
 First TCP connect from the play box to `198.207.148.168:1433` **after the link idles fails after ~21,152 ms**; attempts 2–5 connect in ~60 ms. Surfaces as a 20–23 s hang on first page load or login POST, then everything is instant. A refresh appears to fix it because the retry rides the now-open path. **Firewall/NAT session-table idle timeout between web and DB — not a TRIM IT bug.**
 Diagnose with `curl -w time_starttransfer` from outside, then `TcpClient.ConnectAsync` in a loop **from the web server itself**. Pinging the web server proves nothing.
 
 ## Change log observed
+- **2026-07-14 08:27** — `Ayera-VPN` tunnel configured and started. **The 20s stall appears the same morning.**
+- **2026-07-26 ~10:00** — vendor/Codex hardened `D:\DownloadAndRestoreLatestGSTS.bat` (listing snapshots, candidate logging, manual date override, delete-after-confirm) and edited `zDBTest.cfm` to print step timings — *which is why that page's output changed size between my two fetches.*
 - **2026-07-25 18:35** — `neo-datasource.xml` edited: **`GSTSAPI` repointed `localhost` → `198.207.148.168`**. `GSTS` and `GSTSREADONLY` were already remote. (CF's own `.bak` from the same minute is the diff source.) Plausibly the vendor wiring up the read-only access we asked for.
 
 ## Don'ts
