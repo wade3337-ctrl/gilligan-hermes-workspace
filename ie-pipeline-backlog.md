@@ -1,7 +1,9 @@
 # Inland Empire Pipeline — weekly push backlog
 Drip 6 targets/week into the Bigin "Inland Empire Expansion" pipeline (owner Chad Bouck, stage Potential Lead). Re-verify each target's management company + contact BEFORE loading; link to existing Bigin accounts where they exist; never create duplicate accounts/deals.
 
-**LAST PUSHED: Wave 3** (2026-07-20) — Wolf Creek (Avalon Mgmt), Morgan Hill (Walters/RealManage), Victoria Gardens (Prism Places — commercial), Eagle Glen (Walters). **4 of 6 pushed.** Los Serranos + Vintage Hills HELD (see below).
+**LAST PUSHED: Wave 4** (2026-07-27) — Sierra Del Oro (The Management Trust–Tustin), Payne Ranch (mgmt unconfirmed, direct HOA line), Butterfield Ranch (MGR Property Mgmt), Rolling Ridge (MGR Property Mgmt), Fairfield Ranch Business Park (CBRE — commercial), Perris Logistics Centers (IDI Logistics — commercial). **6 of 6 pushed.**
+
+*Prior: Wave 3 (2026-07-20) — 4 of 6 pushed; Los Serranos + Vintage Hills HELD (see below).*
 
 > ⚠️ **HELD — needs Skipper / re-verify before load:**
 > - **Vellano** — Chino Hills — HOA (guard-gated Greg Norman golf, $2M+). Residential HOA mgmt company still UNRESOLVED after web verify (candidates: AMSS 909-444-7655, Spectrum, Keystone Pacific — none confirmed). Do NOT load until mgmt confirmed. Note: "Victory for Vellano" community dispute is active — may complicate the deal.
@@ -28,13 +30,15 @@ Redhawk, Daytona Business Park, Paloma del Sol, The Lakes/Menifee Lakes, Los Ser
 5. Vintage Hills — Temecula — HOA ⏸️ HELD — already a closed-lost deal in standard pipeline (see HELD note)
 6. Eagle Glen — Corona — HOA (golf) ✅ (Walters Management, 951-691-5610)
 
-## Wave 4
-1. Sierra Del Oro — Corona — HOA
-2. Payne Ranch — Chino Hills — HOA
-3. Butterfield Ranch — Chino Hills — HOA
-4. Rolling Ridge — Chino Hills — HOA
-5. Fairfield Ranch — Chino Hills — HOA
-6. Perris Logistic Centers — Perris — Commercial
+## Wave 4 (done, 2026-07-27) — all 6 pushed
+1. Sierra Del Oro — Corona — HOA ✅ (The Management Trust – Tustin, 714-285-2626 — linked existing account; assn = The Terraces at Sierra del Oro, 120 units. MEDIUM: multiple sub-HOAs in the neighborhood)
+2. Payne Ranch — Chino Hills — HOA ✅ (mgmt UNCONFIRMED; direct assn line 909-923-2924. LOW confidence on manager — Vintage Management Consultants is an unverified candidate)
+3. Butterfield Ranch — Chino Hills — HOA ✅ (MGR Property Management – Ontario, 909-581-6600; New Traditions-Butterfield Ranch, 137 units)
+4. Rolling Ridge — Chino Hills — HOA ✅ (MGR Property Management – Ontario, 909-581-6600; Rolling Ridge Village CA, 78 units. Also "Rolling Ridge Vista HOA" exists — future target)
+5. Fairfield Ranch — Chino Hills — **Commercial**, not HOA ✅ (Chino Hills Corporate Park + Fairfield Ranch Business Center; CBRE – Ontario 909-418-2000. MEDIUM: CBRE confirmed as leasing agent, PM role unconfirmed)
+6. Perris Logistic Centers — Perris — Commercial ✅ (IDI Logistics, LA market office 213-334-4807; North Bldg 1 ~982k SF + South Bldgs 2-3 535k SF)
+
+New Bigin accounts created this wave: MGR Property Management, IDI Logistics, Payne Ranch Estates HOA. Linked existing: The Management Trust (id …428889), CBRE (id …635001).
 
 ## Wave 5+ (scale via CAI-GRIE directory + transparencyhoa.org)
 - Menifee EDC "Northern Gateway" business parks / Countryside Marketplace (Menifee, commercial)
