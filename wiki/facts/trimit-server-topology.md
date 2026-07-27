@@ -39,6 +39,29 @@ All three ColdFusion datasources (`GSTS`, `GSTSAPI`, `GSTSREADONLY`) point at **
 ❓ **UNRESOLVED — worth settling: is `198.207.148.168` the PRODUCTION database, or a separate play database?**
 It sits adjacent to the prod web server (.169) on the same ayera.net range, which is suggestive but not proof. **If it is prod, the play website is not a sandbox at the data layer** — which matters a great deal given [[herman-agent]] has play write access and we treat play as safe. Could not inspect it: integrated auth does not cross the hop (`NT AUTHORITY\ANONYMOUS LOGON`); TCP reaches it fine once warm.
 
+## 🔑 THE LINK EVERYTHING HANGS ON — the Ayera WireGuard VPN
+The play box reaches **all** TRIM IT infrastructure through a **WireGuard tunnel named `Ayera-VPN`** (seen on the box itself, 2026-07-26):
+
+| | |
+|---|---|
+| Play box address inside Ayera's network | **`172.20.3.3/32`** |
+| Endpoint (Ayera's VPN server) | `208.74.10.5:51831` |
+| MTU | 1420 |
+| Persistent keepalive | 21 s |
+| **Allowed IPs — what it routes** | `208.74.8.128/25`, `208.74.9.0/24`, `208.74.11.0/24`, `74.112.192-196.0/24`, **`198.207.148.0/24`**, `172.20.0.0/18` |
+
+**`198.207.148.0/24` is in there — so the DB (.168), production web (.169) and the vendor dev box (.188) are ALL on the far side of this tunnel.**
+Confirmed by routing: `Find-NetRoute 198.207.148.168` → interface **`Ayera-VPN`**.
+
+### 🚨 The tunnel is LOSSY — this is the real fault
+Measured from the play box, 2026-07-26 evening:
+- **ICMP: 14 of 20 replies (30% loss)**, RTT 59 ms when packets arrive.
+- **TCP 1433: 10 of 12 connects succeeded, 2 FAILED** (6 s cap); successful connects averaged **363 ms** (vs ~60 ms clean).
+
+**That is what produces the "site is down" experience.** A dropped SYN gets no rejection — WireGuard just swallows it — so Windows retries on a backoff and gives up around **21 s**. A refresh sends a new SYN, which usually gets through. Nothing is "down"; the path is dropping packets.
+
+⭐ **Why only play suffers:** production's web server (.169) and its database (.168) are **both inside Ayera's network** — that hop never crosses the tunnel. **Play is the only system reaching across it**, which is why play is flaky and prod is not. **Do not conclude from play's behaviour that prod has the same problem.**
+
 ## 🐛 The 21-second blackhole (cause of "play is down / I can't log in")
 First TCP connect from the play box to `198.207.148.168:1433` **after the link idles fails after ~21,152 ms**; attempts 2–5 connect in ~60 ms. Surfaces as a 20–23 s hang on first page load or login POST, then everything is instant. A refresh appears to fix it because the retry rides the now-open path. **Firewall/NAT session-table idle timeout between web and DB — not a TRIM IT bug.**
 Diagnose with `curl -w time_starttransfer` from outside, then `TcpClient.ConnectAsync` in a loop **from the web server itself**. Pinging the web server proves nothing.
