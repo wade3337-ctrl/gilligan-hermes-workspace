@@ -20,7 +20,7 @@ Mapped 2026-07-26 while diagnosing the Skipper's play login failures. **Read thi
 |---|---|---|---|
 | **🔴 PRODUCTION DATABASE** | `198.207.148.168:1433` | *(none; PTR `198-207-148-168.ayera.net`)* | **PROVEN 2026-07-27** — see below |
 | **Production website** | `198.207.148.169` | `www.greatscotttreeservice.com` + apex | DNS; IIS 10/ASP.NET; serves `/GSTS` |
-| **Vendor DEV website** | `198.207.148.188` | `dev.greatscotttreeservice.com` | DNS; IIS 10; serves `/GSTS`. **Its DB is NOT .168** (the Spyder test did not appear on the dev view) — which DB it uses is still unknown |
+| **Vendor DEV website** | `198.207.148.188` | `dev.greatscotttreeservice.com` | DNS; IIS 10; serves `/GSTS`. **CONFIRMED genuinely separate** — see the dev half of the Spyder test below. Its database is **not reachable from us at all** (1433 and 14333 both closed), so it lives on that box or behind its own segment |
 | **Play website (ours)** | `173.208.162.142` | `play.greatscotttreeservice.com` | Windows host `GSTSDATABASE`; IIS 10 + CF2023 |
 | **Play box local SQL** | `localhost,14333` on the play box | — | instance `GSTSDATABASE`: nightly GSTS restore + `Workbench` (564 override rows) |
 | Ayera VPN endpoint | `208.74.10.5:51831` | — | WireGuard `Ayera-VPN`; play box sits at `172.20.3.3` |
@@ -57,6 +57,20 @@ the Fleet area **on the production website**, then I looked for it.
 | ID 466 | **`Spyder (Copy)`, EquipmentTypeID 1 = Boom** | **absent** |
 
 His production save was on `.168` within minutes. **`.168` carries live production writes.**
+
+**Then the control, same night:** he created the *same* record on **dev** (`.188`). Production stayed at
+**436 rows / max ID 466**, with only the two Spyders (424 original, 466 his prod one). **Dev's writes do not
+reach production — the two environments are genuinely separate.** One test, run twice, settled both directions.
+
+**Where dev's data actually lives is unknown and not reachable from us:** `.188:1433` and `.188:14333` are both
+closed from the play box. `.169:1433` is closed too — prod web is web-only and uses `.168`. So `.168` is the only
+TRIM IT SQL server we can see.
+
+### 🔑 `GSTSREADONLY` is correctly scoped — GSTS only
+On `.168` that login can open **`GSTS` and nothing else**. `Workbench` → error 916; `ARBORTOOLS` → "Login failed
+/ cannot open database". `sys.databases` still *lists* them (name visibility isn't restricted), but access is
+denied. **That scoping is why Steve's dashboard broke** — Travis created `Workbench` on 7/26 without extending
+the grant. Good hygiene on his part; it just wasn't matched to what the page needed.
 
 ⚠️ **How I got it wrong first, so I don't repeat it.** Before the test I compared `.168` against the restore and
 found **identical row counts to the exact row** — RFPs 1,685,753 · Proposals 266,852 · CrewSheets 158,160 — plus
