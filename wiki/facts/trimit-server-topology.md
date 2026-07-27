@@ -15,15 +15,29 @@ updated: 2026-07-27
 
 Mapped 2026-07-26 while diagnosing the Skipper's play login failures. **Read this before assuming which data you are looking at.**
 
-## The boxes
-| Role | Address | Notes |
-|---|---|---|
-| **Production website** | `198.207.148.169` | `greatscotttreeservice.com` / `www.` |
-| **Database the PLAY WEBSITE uses** | `198.207.148.168:1433` | `198-207-148-168.ayera.net` — **adjacent to prod web** |
-| **Play website** | `173.208.162.142` | `play.greatscotttreeservice.com` — ours |
-| **Play box local SQL** | `localhost,14333` on the play box | server name `GSTSDATABASE` |
-| Vendor dev box | `198.207.148.188` | `198-207-148-188.ayera.net` — **not ours** |
-| My SSH/SQL route | `Administrator@100.86.97.46` (Tailscale) | → `gsql.sh` → `localhost,14333` |
+## The boxes — full inventory, DNS-verified 2026-07-27
+| Role | Address | DNS name | Evidence |
+|---|---|---|---|
+| **🔴 PRODUCTION DATABASE** | `198.207.148.168:1433` | *(none; PTR `198-207-148-168.ayera.net`)* | **PROVEN 2026-07-27** — see below |
+| **Production website** | `198.207.148.169` | `www.greatscotttreeservice.com` + apex | DNS; IIS 10/ASP.NET; serves `/GSTS` |
+| **Vendor DEV website** | `198.207.148.188` | `dev.greatscotttreeservice.com` | DNS; IIS 10; serves `/GSTS`. **Its DB is NOT .168** (the Spyder test did not appear on the dev view) — which DB it uses is still unknown |
+| **Play website (ours)** | `173.208.162.142` | `play.greatscotttreeservice.com` | Windows host `GSTSDATABASE`; IIS 10 + CF2023 |
+| **Play box local SQL** | `localhost,14333` on the play box | — | instance `GSTSDATABASE`: nightly GSTS restore + `Workbench` (564 override rows) |
+| Ayera VPN endpoint | `208.74.10.5:51831` | — | WireGuard `Ayera-VPN`; play box sits at `172.20.3.3` |
+| My SSH/SQL route | `Administrator@100.86.97.46` (Tailscale) | — | → `gsql.sh` → `localhost,14333` |
+| ❓ **Unexplained** | `91.246.63.118` | `trimit.greatscotttreeservice.com` **(+ matching PTR)** | Forward **and** reverse DNS deliberately configured — not a wildcard (a random subdomain does not resolve) — but **nothing answers on :443**, and it is on a network unrelated to Ayera. Origin unknown. Worth asking about. |
+
+**All three Ayera hosts (.168/.169/.188) are reached from the play box only through the `Ayera-VPN` tunnel** —
+confirmed by `Find-NetRoute` for each. Production's own web→DB hop (.169→.168) stays inside Ayera and never
+crosses it.
+
+## 🚨 NAMES ON THESE BOXES LIE — do not trust them
+- **`198.207.148.168` is PRODUCTION, but its Windows machine is named `WIN-GSTSDB-DEV`.** SQL's `@@SERVERNAME`
+  there is `WIN-WBTRXGSTSDB` — the two disagreeing is the signature of a box cloned or renamed after SQL was
+  installed. Anyone reading "DEV" would reasonably assume it is safe to experiment on. **It is not.**
+- **The play box's webroot folder is literally `D:\home\dev.greatscotttreeservice.com\wwwroot\`** — also says
+  "dev", but it is our play box at `173.208.162.142`.
+- Judge a server by what its data does, never by its name or folder.
 
 ## ✅ What I query is a DAILY RESTORE OF PRODUCTION — and it is isolated
 `D:\DownloadAndRestoreLatestGSTS.bat`, scheduled task **"GSTS DB RESTORE"**, runs ~07:00 daily:
@@ -32,12 +46,45 @@ Mapped 2026-07-26 while diagnosing the Skipper's play login failures. **Read thi
 
 **So every number I produce comes from a point-in-time copy of production, restored locally. Nothing I run can touch live data.** Verified 2026-07-26: last restore 11:58 from the 03:00 backup; `restorehistory` confirms the chain.
 
-## ⚠️ The play WEBSITE does NOT use that copy
-All three ColdFusion datasources (`GSTS`, `GSTSAPI`, `GSTSREADONLY`) point at **`198.207.148.168`**, not the local restore.
-**Consequence: what the play website shows you and what my analysis reports are different databases.** Don't cross-check one against the other and expect a match.
+## ✅ RESOLVED 2026-07-27 — `198.207.148.168` **IS PRODUCTION**
+**The decisive test (the Skipper's idea, and it beat my inference):** he created a new Spyder under Booms in
+the Fleet area **on the production website**, then I looked for it.
 
-❓ **UNRESOLVED — worth settling: is `198.207.148.168` the PRODUCTION database, or a separate play database?**
-It sits adjacent to the prod web server (.169) on the same ayera.net range, which is suggestive but not proof. **If it is prod, the play website is not a sandbox at the data layer** — which matters a great deal given [[herman-agent]] has play write access and we treat play as safe. Could not inspect it: integrated auth does not cross the hop (`NT AUTHORITY\ANONYMOUS LOGON`); TCP reaches it fine once warm.
+| | `.168` | local restore |
+|---|---|---|
+| Equipment rows | **436** | 435 |
+| Max `EquipmentID` | **466** | 465 |
+| ID 466 | **`Spyder (Copy)`, EquipmentTypeID 1 = Boom** | **absent** |
+
+His production save was on `.168` within minutes. **`.168` carries live production writes.**
+
+⚠️ **How I got it wrong first, so I don't repeat it.** Before the test I compared `.168` against the restore and
+found **identical row counts to the exact row** — RFPs 1,685,753 · Proposals 266,852 · CrewSheets 158,160 — plus
+five matching MAX timestamps, and leaned toward "`.168` is a copy." **It was Sunday evening and nothing had been
+entered since Friday 16:55.** A live database with a quiet weekend is indistinguishable from a frozen copy.
+**Static data never proves a database is not live — only a write you control does.** I had flagged the weakness
+and still leaned the wrong way; the machine being named `-DEV` reinforced the error.
+
+### What that meant in practice
+Until **2026-07-27 ~02:30 UTC**, the play website's `GSTS` datasource pointed at **production**. Read-only
+(`GSTSREADONLY`), so nothing could be written — but **everyone treating play as a sandbox was reading live
+production data.** [[herman-agent]]'s write access goes to `localhost,14333` via `gsql.sh`, not through the
+website, so his writes never reached prod.
+
+### Current state (changed 2026-07-27, Skipper-authorised)
+| DSN | Now points at |
+|---|---|
+| `GSTS` | **`localhost,14333`** (the local restore) |
+| `GSTSAPI` | **`localhost,14333`** |
+| `GSTSREADONLY` | `198.207.148.168` — untouched, the deliberate read-only production link |
+
+**Play is genuinely isolated at the data layer for the first time.** Revert kit + full write-up:
+`arbor-stack/dev-tasks/play-dsn-revert/`. **Do NOT point play back at `.168`** — that is aiming a sandbox at
+production. If Steve's dashboard needs to work against `.168` again, the fix is a `Workbench` grant there, not
+a datasource change here.
+
+**Consequence to keep straight:** play now shows the **nightly restore** (data through the last backup), while
+production is live. Numbers will legitimately differ by a day or so.
 
 ## 🔑 THE LINK EVERYTHING HANGS ON — the Ayera WireGuard VPN
 The play box reaches **all** TRIM IT infrastructure through a **WireGuard tunnel named `Ayera-VPN`** (seen on the box itself, 2026-07-26):
