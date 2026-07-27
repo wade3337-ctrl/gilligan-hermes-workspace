@@ -536,12 +536,18 @@ html, body {
 }
 
 /* IDs kept (other pages/JS reference them) �?" positioning rewritten */
+/* 2026-07-27 iPad fix: z-index was 7. This div has position+z-index so it CREATES A STACKING CONTEXT --
+   the Spry submenu's own z-index:1020 is trapped inside it and cannot compete with anything outside.
+   THIS number is what competes. It must beat #CenterContentDiv (which holds the nested DailyCloseFrame
+   notepad iframe) and #apDiv5 (fixed widget, z-index 20). Desktop worked only because "positive beats
+   auto" is implicit; iOS Safari does not honour that across an iframe compositing layer.
+   Do not lower below 21. */
 #ActionMenuDiv {
 	position: absolute;
 	left: 3px;
 	top: 144px;
 	width: 132px;
-	z-index: 7;
+	z-index: 100;
 }
 #apDiv4 {
 	position: absolute;
@@ -551,6 +557,9 @@ html, body {
 	height: 100px;
 	z-index: 5;
 }
+/* 2026-07-27 iPad fix: explicit z-index:0 added. This was position:relative with NO z-index (auto), so
+   the menu painted above it only by the implicit "positive beats auto" rule. Making BOTH sides explicit
+   is what stops iOS painting the nested iframe layer over the menu flyout. */
 #CenterContentDiv {
 	position: relative;
 	left: auto;
@@ -561,6 +570,7 @@ html, body {
 	height: auto;
 	background: #ffffff;
 	box-shadow: 0 0 0 1px #e3e3e3;
+	z-index: 0;
 }
 #ProfileBaseFrame {
 	display: block;

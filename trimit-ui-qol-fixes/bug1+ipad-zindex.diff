@@ -1,0 +1,22 @@
+538a539,544
+> /* 2026-07-27 iPad fix: z-index was 7. This div has position+z-index so it CREATES A STACKING CONTEXT --
+>    the Spry submenu's own z-index:1020 is trapped inside it and cannot compete with anything outside.
+>    THIS number is what competes. It must beat #CenterContentDiv (which holds the nested DailyCloseFrame
+>    notepad iframe) and #apDiv5 (fixed widget, z-index 20). Desktop worked only because "positive beats
+>    auto" is implicit; iOS Safari does not honour that across an iframe compositing layer.
+>    Do not lower below 21. */
+544c550
+< 	z-index: 7;
+---
+> 	z-index: 100;
+553a560,562
+> /* 2026-07-27 iPad fix: explicit z-index:0 added. This was position:relative with NO z-index (auto), so
+>    the menu painted above it only by the implicit "positive beats auto" rule. Making BOTH sides explicit
+>    is what stops iOS painting the nested iframe layer over the menu flyout. */
+563a573
+> 	z-index: 0;
+976,977c986
+< <div id="apDiv5">
+< <iframe name="ProfileWidgetsFrame" frameborder="0" allowtransparency="true" id="ProfileWidgetsFrame" scrolling="no" src="Maint-Customer-Broadcast.cfm" style="width:100%;height:100%;border:0;"></iframe></div>
+---
+> <!--- ProfileWidgetsFrame (Availability / Customer-Broadcast widget) removed 2026-07-23 per Skipper - vestigial; showed a stray SystemLists CustomerBroadcast value. Widget file left on disk; backup in Jasonsrepairs. --->
