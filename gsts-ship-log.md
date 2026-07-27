@@ -1,4 +1,21 @@
 
+### 2026-07-27 — Revenue Performance: Crew Sheets relabelled so an ESTIMATE stops being shown under the word "Actual" [PLAY ✅ render-verified]
+- **The bug (Skipper spotted on prod):** switching Revenue Source to **Crew Sheets** moved the "Actual to date" number. Line 581 applies the actual-completed override to `ScheduleBoard` and `TrueProduced` only — `CrewSheets` falls to the `else` and takes `row.csValue` **raw**: the crew sheet's *scheduled* value, with no posted/pending bucketing and no hours x TPH projection. **It never substitutes posted actuals on past days**, so its "to date" figure is an estimate wearing the label "Actual".
+- **Decision (Skipper, option b):** keep CrewSheets as a deliberate **raw lens** and relabel, rather than extend the override. Rationale: the three sources exist to be different views — hiding the difference is how people stop trusting the number later.
+- **Changed (labels only — no query, no calculation touched):** KPI tile relabels to **"Estimated to date"** under CrewSheets · sub-caption gains *"· raw crew-sheet estimates, not posted actuals"* · dropdown → **"Crew Sheets (raw estimates — not actuals)"** · `revenueSourceLabel()` → "Crew Sheets (raw estimates)" with a comment recording why it is exempt.
+- **Verified by POST on play** (⚠️ the source selector is a **POST form** — a GET query string silently does NOT switch it, which made my first three "renders" identical and nearly read as a failed fix):
+
+  | Source | Tile | Amount |
+  |---|---|---|
+  | TrueProduced | Actual to date | **$1,618,804** |
+  | ScheduleBoard | Actual to date | **$1,618,804** (identical — override working) |
+  | CrewSheets | **Estimated to date** | **$1,670,085** |
+
+  **The $51,281 gap is the whole point** — that is what was being displayed as "Actual". 0 CF errors, 0 literal `##`, all three sources.
+- Both webroots + package MD5 `92c08806f3de3eb7deb89ec119dad056` (96,505 b). Backup `Jasonsrepairs\crewsheetlabel-20260727-0326\`. `cfclasses` cleared.
+- **Also closed:** the "header name bug" the Skipper saw on the Unattributed drill was **prod running the OLD file** — its header is `Unattributed Sales · ##ThisPeriod.Desc1##`, fed by Period/Quarter/Year IDs the V15 parent no longer sends (it links with `ZStartDate`/`ZEndDate`), so the name resolves to nothing. **Package 3's version already fixes it** — renders "Unattributed Sales · 7/1/2026 – 7/26/2026", $109,686 / 21 invoices, 0 errors. No new work needed; it ships with the package.
+- 🆕 **Found, not yet fixed:** the drill's *Current Rep* column prints a raw DB flag to users — `RG · Raudel Gutierrez (IsMeasured=0)` (line 152). Awaiting the Skipper's nod.
+
 ### 2026-07-27 — Play website repointed to its OWN SQL instance: Steve's dashboard un-broken + play is a sandbox again [Skipper-authorised]
 - **Problem:** Steve's `FinancialReport/FinancialReportDashboard.cfm` **500'd on play** (worked on prod). SQL error **916** — `GSTSREADONLY` cannot reach the `Workbench` database. The page carries 3 `LEFT JOIN Workbench.dbo.ProposalOriginalRep` (564 reviewed original-seller overrides), and **that table lives on the play box's own SQL instance, not on `.168`.** Play's copy of the page was NOT stale — byte-identical to our package (`0f4d331d…`); it simply couldn't run.
 - **Root cause found by diffing `neo-datasource.xml` against the `.bak` CF wrote at the same second:** the 2026-07-25 18:35 vendor edit changed **exactly one DSN** — `GSTSAPI` from `localhost:14333/sa` → `198.207.148.168/GSTSREADONLY`. **`GSTS` was already on `.168` before that.** So the whole play website was running **read-only against a remote server across the lossy Ayera tunnel** — no writes possible, no `Workbench`, and every query paying the tunnel's packet loss. Skipper: *"It's stupid slow and I can't work with it that way."*
