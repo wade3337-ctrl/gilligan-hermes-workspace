@@ -1,5 +1,5 @@
 
-### 2026-07-27 — iPad landing-page menu bug root-caused: a trapped z-index, not a touch problem [PLAY ✅ deployed · awaiting Skipper's iPad test]
+### 2026-07-27 — iPad landing-page menu bug root-caused: a trapped z-index, not a touch problem [PLAY ✅ deployed · ✅ SKIPPER-CONFIRMED ON IPAD 2026-07-27 18:35]
 - **Symptom (Skipper):** on iPad, opening a left-menu item makes the flyout render **underneath the Daily Close notepad**. Desktop is fine.
 - **Structure:** the notepad is **two iframes deep** — shell `Profile$Main.HiRes.cfm` → `#CenterContentDiv` → `iframe ProfileBaseFrame` → `Overview/Quick$Base$WithList.cfm` → **`iframe DailyCloseFrame`** (`Profile.My.DailyCloseActions.Content.cfm`).
 - **ROOT CAUSE — two parts:**
@@ -11,7 +11,7 @@
 - **FIX (CSS only, no logic/markup):** `#ActionMenuDiv` **z-index 7 → 100** · `#CenterContentDiv` **gains explicit `z-index: 0`**. Make the ordering explicit on both sides instead of relying on auto. Both rules carry a comment explaining the stacking-context trap and "do not lower below 21".
 - **Deployed to play** (single copy — `Get-ChildItem` confirmed **no shadow copy** of this file). **Byte-transparent patch** (latin-1 read/write): **non-ASCII 15 → 15 preserved**, 41,572 → 42,408 b, md5 `256c2e9619216e25aa676f47eb1266bf` — on-disk hash matches what I built. `cfclasses` cleared. Backup: `Jasonsrepairs\ipad-zindex-20260727-1830\Profile-Main-HiRes.cfm.PRIOR`.
 - ✅ **Hash-convention checked** (last night's trap): the `<style>` block is at **cfoutput depth 0**, so single `#` is correct — 17 pre-existing single-`#` tokens beside the edit, and **zero `##` introduced**. CF `application.log` shows **no new compile error** after the deploy.
-- ⚠️ **NOT self-verifiable:** this shell **bounces the read-only bot to login** (316-byte redirect), so no served-render check is possible — and my browser is **Chrome, which renders the *unfixed* code correctly**, so it cannot reproduce a WebKit-on-iOS compositing bug either. **Verification depends entirely on the Skipper's iPad test.**
+- ⚠️ **NOT self-verifiable:** this shell **bounces the read-only bot to login** (316-byte redirect), so no served-render check is possible — and my browser is **Chrome, which renders the *unfixed* code correctly**, so it cannot reproduce a WebKit-on-iOS compositing bug either. **Verification depended entirely on the Skipper's iPad test — he confirmed it working 18:35 UTC.** The CSS diagnosis held: it was a trapped stacking context, not a touch/event problem.
 - **Batch:** folded into `trimit-ui-qol-fixes/bug1+ipad-zindex.diff` — that file now carries BOTH the widget removal and this fix. Section C of `predeploy-pkg3/OUTSTANDING-FOR-PROD.md`.
 
 ### 2026-07-27 — PROD CRASH root-caused: SalesProductionMeeting$Results dies on a Revenue-Goal-Close view that was never deployed [FIX BUILT + PROVEN]
