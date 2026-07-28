@@ -62,9 +62,46 @@ flipped to `Complete`+checked-in+hours-entered.** Dollars remain the meaningful 
 - **Oldest outlier: Windflower Community Association — 1 sheet, $15,786, NULL hours, `WorkDate` 2026-07-31
   but `Created` 2025-09-24.** A ten-month-old placeholder.
 
-**Sharper question for the team than the original one:** why did City of Industry WOs **166631/166670**
-get 44 sheets marked complete + checked in for August dates, some created back in March? Bulk schedule
-generation, or a bulk "complete" action applied to a route block?
+## 🔄 REVISED 2026-07-28 (evening) — it is ROUTINE PRACTICE, not a bulk action
+The Skipper supplied a live example, **WO 168010 (City of Irvine 2024 Import)**, and it reframes everything.
+
+**What that one work order shows:**
+- WO is **Active, StartDate 7/13/26, EndDate 7/31/26** — but **11 of its 12 crew sheets are dated
+  8/4 → 8/26, past the work order's own end date.**
+- **All 12 sheets were created in a single batch on 7/13 at 15:03–15:06** when the schedule was generated.
+- Within this one WO you can see the whole gradient: 1 past-dated Complete · 2 future-dated **Complete** ·
+  3 future-dated **`Pending` but checked-in with dollars** ($1,485/$990/$340) · 1 partial · 5 clean `Pending`/$0.
+- `LastModified` never moved off 7/13 15:0x, so the populated "actuals" were **written at generation**.
+
+**Who is credited with completing the 148 future-dated sheets — FIVE different people:**
+| CompletedByID | Name | Sheets | Value |
+|---|---|---|---|
+| 340 | Larry Baldwin | 60 | $299,069 |
+| 209 | Celeste Armenta | 39 | $171,471 |
+| 190 | Omar Sanchez | 29 | $117,170 |
+| 119 | Manuel Perez | 18 | $72,319 |
+| 37 | Victoria Farias | 2 | $11,109 |
+
+**Five people independently doing the same thing = normal practice, not a rogue action or a script.**
+(Also checked and rejected: the shared `LastUpdateDate` of 2026-07-23 08:50 is *not* a batch sweep — it
+covers only 11 sheets among dozens of ordinary timestamps that day.)
+
+🚨 **So my earlier framing was wrong twice over.** It is not "someone bulk-flipped a route block," and the
+question is not "who did this." **The real question is a PROCESS one:** when a crew finishes work ahead of
+the generated schedule, does the crew sheet keep its original future date? If it does, production is being
+booked to the wrong month systematically — the total is right and the *timing* is wrong.
+
+⛔ **THEREFORE: DO NOT SHIP THE CAP-AT-TODAY FIX YET.** If this is real completed work carrying a stale
+scheduled date, capping production at today **deletes real revenue from the numbers** instead of correcting
+them. The cap is only the right fix if the work genuinely has not happened.
+
+**The question that settles it, and it is not a database query** — ask any of the five:
+*"When you complete a crew sheet dated August 11, has the crew already done that work?"*
+- **Yes** → the work is real and misdated; fix is to stamp the actual completion date, not to hide the row.
+- **No** → the work is being pre-completed; the cap is right and the entry practice needs to change.
+
+*Supporting hint, not proof: June clocked attendance was 16,765 hrs against only 12,228 hrs of June-dated
+crew-sheet time — a 4,537-hour gap consistent with real work whose sheets are dated elsewhere.*
 
 ## How to SEE them (Skipper, 2026-07-28)
 - **SPM dashboard** → set **From `2026-08-01`, To `2026-12-31`**, then the **Production** or **Results** tab.
