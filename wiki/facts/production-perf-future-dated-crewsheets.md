@@ -30,6 +30,43 @@ Irvine's Aug slice = the $81,403.90 (e.g. "Service Request Trimming", "Citywide 
 - ⚠️ This changes **headline production for every city** (excludes ~$557K company-wide) — that's why it needs the Skipper's + team's OK.
 - 🔎 Same future-dated `CrewSheets` likely also touch **SPM Production/Results** ([[rc-04-spm]]) and any crew-sheet-fed surface — check those when we act.
 
+## 🔬 DIAGNOSIS 2026-07-28 — it is NOT how TRIM IT schedules; 148 sheets were flipped
+Skipper asked *"how do I have crew sheets for the future?"* The status split of **every** future-dated
+crew sheet answers it:
+- **741 sheets — `Pending`, `IsCheckedIn` NULL, `HoursEntered` NULL, ActValue $0.** ← the **correct** state
+  for scheduled future work. The schedule exists; nothing is claimed as produced.
+- **148 sheets — `Complete` + `IsCheckedIn=1` + `HoursEntered=1`, carrying $671,137** (of which $644,086
+  falls in Aug/Sep/Oct; the rest is Jul 29–31).
+- 21 more are `Pending` yet checked-in with hours = $64,937.
+
+**So the system does it right 741 times and wrong 148 times — "that's just how scheduling works" is refuted.**
+
+🔑 **The hours on those 148 are the ESTIMATE, copied.** `ActHours = EstHours` on **144 of 148 (97%)**.
+For genuinely completed June work the equivalent match rate is **20% (135/675)**. Recorded hours vary;
+these don't. (Dollars differ — `ActValue = EstValue` on only 9/148 — so the value comes from the sheet
+lines, not a straight estimate copy.)
+
+**It is concentrated, not scattered** — this is a handful of recurring municipal/HOA route blocks, not
+148 independent mistakes:
+- **City of Industry — 44 sheets · $353,949 · 1,693 hrs · all Aug 4–19 · one crew (Daniel Cruz Aranda) ·
+  WOs 166631 + 166670 · created Mar–Jul.** That alone is **~53% of the whole problem.**
+- City of Irvine (2024 Import) 34 · $80,004 · WOs 167561/167259 — Isahi M Vazquez
+- Del Prado HOA 9 · $45,190 · Sep 7–18 · City of Fountain Valley 21 · $36,587 · WO 166685
+- Vista Pointe Ridge 7 · $33,374 · Baker Ranch HOA 6 · $23,895 · Pacific Hills East 5 · $20,219
+- **Oldest outlier: Windflower Community Association — 1 sheet, $15,786, NULL hours, `WorkDate` 2026-07-31
+  but `Created` 2025-09-24.** A ten-month-old placeholder.
+
+**Sharper question for the team than the original one:** why did City of Industry WOs **166631/166670**
+get 44 sheets marked complete + checked in for August dates, some created back in March? Bulk schedule
+generation, or a bulk "complete" action applied to a route block?
+
+## How to SEE them (Skipper, 2026-07-28)
+- **SPM dashboard** → set **From `2026-08-01`, To `2026-12-31`**, then the **Production** or **Results** tab.
+  Any non-zero figure is work that has not happened.
+- **Production Performance** for a single project (`Dashboard-ProductionPerf.cfm?ZProjectID=…`) — future
+  months show non-zero. This is how the Irvine case was originally spotted.
+- Straight to the biggest offender: **work orders 166631 and 166670 (City of Industry)**.
+
 ## Upstream question for the team
 Why is ~$557K of work logged as **Complete + checked-in** with **Aug–Oct 2026** dates while it's still July? Crew-sheet WorkDate entry pattern (crews pre-dating? scheduled sheets mis-flagged checked-in?). Fixing the entry is the real cure; the dashboard cap only hides the symptom.
 
