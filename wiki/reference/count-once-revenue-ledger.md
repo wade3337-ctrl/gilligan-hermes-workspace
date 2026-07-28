@@ -36,7 +36,38 @@ The **coverage model** behind the [[deal-tracker-dashboard]]: how far the 2026 r
 ## Count-once hard rules (honored)
 Pending proposals >90 days excluded · undated sold work quarantined until Production dates it · duplicate GoAhead revisions deduped (MAX/project) · never add GoAheads + their WorkOrders wholesale · **production board (CrewSheets) ≠ accounting actual** (kept off the financial ledger).
 
-## Live snapshot 2026-07-22 (recompute each run — NOT constants)
+## 🚨 2026-07-28 — TWO CORRECTIONS found on a live rerun
+
+**1. The dashboard's GOAL is stale and fails SILENTLY.** `dbo.GoalSettings` no longer exists in the GSTS
+restore (SQL **error 208** — object not there), so `refresh-deal-dashboard.py` falls back to the hardcoded
+`GOAL_FALLBACK_MONTHLY = 2,087,119` × 12 = **$25.05M**. That constant is **July's monthly goal from the OLD
+$24.0M budget** — an annual goal derived by multiplying one month's seasonal number by 12.
+Meanwhile the authoritative table [[gsts-2026-sales-goals-monthly]] (`Workbench.dbo.SalesGoal`, which the
+V1.5 assistant and Revenue Performance dashboard both read) has been **revised up: Jul–Nov $2.20M each,
+Dec $2.05M → annual $25,300,976 ($25.30M).** So the deal dashboard understates the gap by ~$256K **and will
+drift again whenever someone edits the dashboard's inline "Monthly Goal" box.**
+→ **Fix: read `Workbench.dbo.SalesGoal` (SUM of the 12 months), and fail loudly instead of falling back.**
+
+**2. "Undated sold work" is mostly NOT undated — it is 2027 work.** The $3.20M / 247 figure splits as:
+- **`EndDate` beyond 2026 — $3,144,745 / 238 WOs** ← the overwhelming bulk. Real future-dated work
+  (multi-season plans, future-year COs → [[goahead-status-lifecycle]]), **not a 2026 lever.**
+- **genuinely no date — only $53,189 / 9 WOs.**
+- **past-due, not marked complete — $153,473 / 25 WOs**, which falls through **both** buckets (firm coverage
+  requires `EndDate >= today`), so it is invisible on the board today. Close-out / hygiene item.
+**Do not describe this pile as "sold work just needing production dates" — that framing overstates the
+recoverable 2026 revenue by ~60×.**
+
+## Live snapshot 2026-07-28 (restore of 2026-07-28 08:51)
+Adj actual **$12.53M** (invoiced $12.54M by acct period; accrual bridge net **−$8K**: cur $153K − base $161K)
+· Muni **$3.74M** · Firm sold dated-in-2026 **$2.91M** · Pipeline@40% **$1.55M** (raw $3.87M) → **covered $20.73M.**
+**Uncovered vs the live $25.30M goal = $4.57M** (vs the $25.1M team number = **$4.37M**; the dashboard's own
+stale $25.05M shows $4.32M).
+**H1 actual $11.078M vs H1 plan $12.251M → behind by $1.173M (90.4%).** H1 run rate $1.846M/mo; hitting
+$25.1M needs **$2.514M/mo Aug–Dec = 36% above the H1 run rate**, and ~14% above the plan's own raised
+$2.2M H2 shape. ⚠️ **July ($1.46M vs $2.2M) is NOT callable** — partial month plus the known ~25% month-end
+invoicing lag → [[june-invoicing-lag]]; the −$8K accrual bridge looks too small to be carrying that lag.
+
+## Prior snapshot 2026-07-22 (recompute each run — NOT constants)
 Goal $25.05M − [ Adj actual **$11.91M** + Muni **$3.74M** + Firm **$3.11M** + Pipeline@40% **$1.55M** = $20.31M ] = **Uncovered $4.73M**. ⚠️ Materially larger than Herman's snapshot "$2.95M" — his firm-WO/pipeline figures were pre-refresh; live recompute runs ~$1.5M lower.
 
 ## Key adjustments to Herman's spec
