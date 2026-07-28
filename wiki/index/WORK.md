@@ -15,6 +15,7 @@ updated: 2026-07-02
 - [[two-track-confidentiality]] — Track 1 (TRIM IT/play, open) vs Track 2 (arbor-core, BLACK).
 - [[build-principle-v1-first]] — prototype in TRIM IT V1 first → proven model becomes the arbor-core framework.
 - [[trimit-stack-and-tph]] — TRIM IT = ColdFusion 2023 + SQL Server; central metric TPH, 2026 target 130.
+- [[coldfusion-2025-upgrade-case]] — 🔍 research only, no decision. **CF2025 Update 8 (May 2026) turns ColdFusion into an MCP server/client** — TRIM IT's existing CFCs become agent-callable tools without a rewrite; plus local Ollama inference, RAG, prompt-injection guardrails, and passkey auth (the *category* of fix `ZUserID=9` needs). Cost: subscription-only ($760/$2,930 yr) and a real breaking-change list (`htmlEditFormat`, `cftable`/`cftree`, silent `cfmx_compat` decryption loss). CF2023 supported to May 2028 — no clock. Try free **MCPCFC on CF2023** first.
 - [[trimit-db-cleanup]] — DB cleanup audited 2026-07-20: proposals 98% never-approved (66M derived rows), ~5.6GB dead tables; frozen `GSTS_cleanup` rehearsal DB feasible; blocked on prod write-access.
 - [[sales-rep-attribution]] — dashboards attribute to the actual managing rep (`Projects.SalesRepID`).
 - [[scheduled-revenue-date-basis]] — ⚖️ per-day vs by-end vs by-start (decision pending).
