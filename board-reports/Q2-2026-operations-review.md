@@ -138,8 +138,8 @@ This is the finding that shapes the plan, and it is not the obvious one.
 **We moved roughly 5,400 hours out of non-revenue work and into billable work.** Revenue-bearing hours rose
 **5.1%** while total scheduled hours *fell* 2.4%.
 
-*(These are scheduled hours, the basis our productivity metric uses. Payroll hours were flat year over
-year — 91,736 to 91,976 — which is covered in Lever 2.)*
+*(These are scheduled hours — the basis our productivity metric uses, and consistent across both years.
+Clocked hours are a separate measure, available only from November 2025; see Lever 2.)*
 
 The on-the-job rate — revenue divided by revenue-bearing hours — was **$158.62 in H1 2025 and $156.89 in
 H1 2026, down 1.1%.**
