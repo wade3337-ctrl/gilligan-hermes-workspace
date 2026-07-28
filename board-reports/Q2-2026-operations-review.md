@@ -155,42 +155,49 @@ nothing to add.** Holding 17% and pushing toward 12% removes about a quarter of 
 
 ### Lever 2 — Field headcount. This is the decision I need.
 
-**We currently have 94 active field crew members** (plus 57 active non-field staff). Hours below are
-man-hours; a full-time month is roughly 173 hours per person.
+**Three headcount numbers are all true and mean different things. Using the wrong one produces the wrong
+answer, so all three are stated here:**
 
-| Month | Man-hours | Per person | % of a full-time month |
+| Measure | Count |
+|---|---|
+| On the field-crew roster | **94** |
+| Logging hours in a given month | **~83** |
+| **Working on a typical weekday** | **~76** |
+
+The third is the one that governs capacity — and it is the number that matches both the Controller's
+reporting and the daily schedule.
+
+#### What has actually happened to the field workforce
+
+| H1 | Paid field hours | Distinct people per month | Hours per person per month |
 |---|---|---|---|
-| February | 11,109 | 118 | 68% |
-| March | 16,052 | 171 | 99% |
-| **April** *(best month)* | **16,513** | **176** | **102%** |
-| May | 13,223 | 141 | 81% |
-| June | 12,228 | 130 | 75% |
-| **H1 average** | **13,761** | **146** | **85%** |
+| 2025 | 91,736 | ~91 | 168 |
+| **2026** | **91,976** | **~83** | **184** |
 
-At 17% non-revenue we need **17,762 man-hours per month**. What that means:
+**Paid hours are flat year over year (+0.3%) while the field workforce is down about 8 people (−8.3%).
+The remaining crew absorbed it — each person is now working roughly 16 more hours a month.**
 
-| At this headcount | Requires per person | Reality check |
-|---|---|---|
-| **94 *(today)*** | **189 hrs/month = 44 hrs/week** | **8% above April, sustained for five months** |
-| 101 | 176 | exactly April's proven level |
-| 103 | 173 | a normal full-time month, no overtime |
-| 121 | 146 | H1's actual average utilization |
+On a typical weekday, both years look nearly identical: **about 76 people working about 8.9 hours each.**
+**That is already a long day.** There is no meaningful utilization headroom left in the existing crew.
 
-**This is the crux of the report.** At today's headcount the goal requires every field employee to work
-about **44 hours a week for five consecutive months** — above our single best month, without let-up.
+#### What the goal requires
 
-**The honest range is 101 to 121 field crew — roughly 7 to 27 additional people.** Where we land inside
-that range is decided by utilization, not by hiring:
+We need **17,762 job-hours per month**. Job sheets capture about 90% of paid time, so that equates to
+**19,786 paid hours per month against roughly 15,329 today — an increase of 29%.**
 
-- If we can hold **April-level** productivity per person, **+7 people** is enough.
-- At **H1's average** utilization, it takes **+27**.
+At the intensity people are already working:
 
-**That spread — 20 people — is the single largest cost variable in the plan, and it is an operational
-question, not a recruiting one.** Utilization varied from 68% in February to 102% in April with essentially
-the same roster. Understanding and closing that swing is worth more than the hiring decision itself.
+| Measure | Today | Required | Gap |
+|---|---|---|---|
+| Paid hours per month | 15,329 | 19,786 | **+29%** |
+| People logging hours per month | ~83 | ~108 | **+24** |
+| **People working per weekday** | **~76** | **~99** | **+23** |
 
-*Sanity check: June's 12,228 hours across 28 working days is about 437 man-hours a day — roughly 67 people
-producing billable work on a given day, against a roster of 94.*
+**This is the crux of the report. The goal requires roughly 23 to 24 additional field staff.**
+
+It cannot be met by asking the current crew for more. They are already averaging 8.9 hours a day and have
+absorbed the loss of eight colleagues without a drop in total hours. **Asking for another 29% on top of
+that is not a scheduling adjustment; it is a staffing decision.**
 
 ### Lever 3 — Price and job mix. Untouched.
 
@@ -200,12 +207,13 @@ year and is the cheapest of the three.
 
 ### Putting it together — the scenario that reaches $25.1M
 
-**Grow field headcount from 94 toward ~105, and hold per-person utilization near April's level (176
-hours) rather than H1's average (146), with non-revenue at or under 17%.**
+**Add roughly 23 field staff — from ~76 working per weekday to ~99 — while holding non-revenue at or
+under 17% and beginning to move the on-the-job rate.**
 
-That is the plan. It is not a productivity stretch — April already proved the per-person number. It is a
-staffing commitment plus a scheduling discipline. Every point of non-revenue we recover, and every few
-dollars of on-the-job rate, reduces the headcount required.
+That is the plan, and it is primarily a hiring plan. The utilization lever has already been pulled: it is
+what produced this year's productivity gain, and the crew is now working 8.9-hour days. Each further point
+of non-revenue recovered, and each few dollars of on-the-job rate, reduces the hiring requirement — but
+neither can substitute for it.
 
 ### How the operating initiatives feed these levers
 
@@ -252,8 +260,9 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 | Item | Assessment |
 |---|---|
-| **Field headcount** | The binding constraint. At today's 94 the goal demands 44 hrs/week per person for five months — 8% above our best month ever. **This is a hiring decision with a deadline: people added in October cannot deliver a Q4 number.** |
-| **Utilization swing** | Per-person output ranged 68%–102% of full time across H1 on essentially the same roster. That swing decides whether we need +7 people or +27 — a 20-person cost difference. |
+| **Field headcount** | The binding constraint, and the report's main finding. We need roughly **+23 people**. **This is a hiring decision with a deadline: staff added in October cannot deliver a Q4 number.** |
+| **The crew is already stretched** | Field staff are down ~8 people year over year while total paid hours held flat — the remaining crew absorbed it and now averages 8.9 hours a day. There is no slack left to ask for. |
+| **Retention** | Losing 8 field staff over the year cost us no hours only because others covered. A further loss converts directly into missed revenue, and recruiting has to outrun attrition before it adds net capacity. |
 | **Holding the utilization gain** | The entire 2026 productivity improvement is the 23%→17% non-revenue shift. If it slips back toward 23%, the hours requirement rises from +29% to +39% and the goal moves out of reach regardless of hiring. |
 | **On-the-job rate is flat** | Down 1.1% year over year. Not a crisis, but it means no help is currently coming from price. |
 | **Pipeline conversion** | Roughly $4.4M of the goal depends on business not yet sold. |
@@ -264,10 +273,10 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 ## 8. What I would ask of the Board
 
-1. **A decision on field headcount, with a date.** We have 94 active field crew. The goal needs roughly
-   **101–121** depending on utilization. At today's 94 it requires 44 hours per person per week for five
-   straight months — above our best month, sustained. Hiring lead time means this decision has to be made
-   now to affect Q4.
+1. **A decision on field headcount, with a date.** About 76 field staff work on a typical weekday. The
+   goal requires roughly **99 — some 23 additional people.** The current crew is already averaging 8.9-hour
+   days and has absorbed the loss of eight colleagues this year without a drop in hours; there is no slack
+   left to draw on. Hiring lead time means this decision has to be made now to affect Q4.
 2. **Endorse re-basing the H2 plan** to a monthly figure that actually reaches $25.1M. The organization is
    currently working to a plan that lands ~$800K short.
 3. **Support for holding the utilization discipline.** The 23%→17% shift is this year's real achievement and
