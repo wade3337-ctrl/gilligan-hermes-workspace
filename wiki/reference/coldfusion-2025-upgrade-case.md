@@ -95,10 +95,13 @@ TRIM IT is exactly the vintage CF2025 prunes. Every item below is a page that st
 - 💵 A recurring subscription is a small but real EBITDA line item. Worth knowing before it surfaces in diligence.
 
 ## Free alternative worth checking first
-**MCPCFC** (`github.com/revsmoke/mcpcfc`, `mcpcfc.dev`) — an open-source remote MCP server *for ColdFusion*,
-claiming to let CFML apps talk to Claude and other assistants. If it works on **CF2023**, we could test the
-entire "TRIM IT as agent-callable tools" thesis **for $0 and with no migration**, then only buy CF2025 if the
-thesis proves out. **Unvetted — found, not evaluated.**
+**MCPCFC** (`github.com/revsmoke/mcpcfc`, MIT) — an open-source MCP server written in pure CFML.
+✅ **Now evaluated at source level → [[mcpcfc-coldfusion-mcp-server]].** Verdict: **it does not require
+CF2025** (zero CF2025-only syntax in 6,082 lines; everything it uses is CF2016+), implements MCP `2025-06-18`
+with a full method surface, and is ~3,000 lines of protocol core we could fork and own. **So the entire
+"TRIM IT as agent-callable tools" thesis can be tested for $0 with no migration, and CF2025 bought later
+with evidence.** Caveats there too: no authentication, a demo `sendEmail` tool that violates our comms
+policy, and a SQL denylist proven to reject ordinary reporting SQL.
 
 ## Where this stands / what to do next (nothing started)
 1. Confirm **production's actual CF version** — we only ever *inferred* it from date-mask behavior
