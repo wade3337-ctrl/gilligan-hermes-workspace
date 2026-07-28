@@ -82,11 +82,15 @@ penny — while total crew hours ran 2.4% *below* H1 2025.**
 **Conclusion: the operating engine is performing to specification. We are not losing ground on efficiency,
 pricing discipline or crew execution. We are constrained on the volume of hours worked.**
 
-> **A note on how this metric is built.** Revenue per crew-hour is measured against *scheduled* crew hours,
-> which is how we have always reported it and how the target was set. Scheduled hours run about 90% of paid
-> hours, so the same result measured against payroll hours is **$116.87 for H1, not $130.19**. The basis is
-> consistent year over year, so the improvement is real either way — **+6.5% as reported, +3.7% on payroll
-> hours.** Capacity and headcount in Section 4 are sized on payroll hours, not scheduled hours.
+> **A note on how this metric is built.** Revenue per crew-hour is measured against *scheduled* crew hours —
+> how we have always reported it, and the basis on which the $130 target was set. Scheduled hours run about
+> 10% below the hours our crews actually clock, so measured against attendance the same result is roughly
+> **$117 rather than $130**. The basis has been consistent for years, so the improvement is real on either
+> measure: **+6.5% as reported, +3.7% on attendance hours.** Capacity and headcount in Section 4 are sized on
+> attendance hours, not scheduled hours.
+>
+> *This comparison is an internal cross-check drawn from our own attendance records and has not yet been
+> reconciled to payroll. I am validating it with the Controller.*
 
 ---
 
