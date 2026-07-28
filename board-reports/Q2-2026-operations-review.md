@@ -153,28 +153,44 @@ H1 ran **11,419**. But how many *paid* hours that costs depends entirely on the 
 **Every one point of non-revenue reduction is worth roughly 210 crew-hours a month — capacity that costs
 nothing to add.** Holding 17% and pushing toward 12% removes about a quarter of the hiring requirement.
 
-### Lever 2 — Crew capacity. This is the decision I need.
+### Lever 2 — Field headcount. This is the decision I need.
 
-Crews working per month in H1 ranged from 25 to 28, averaging **26**.
+**We currently have 94 active field crew members** (plus 57 active non-field staff). Hours below are
+man-hours; a full-time month is roughly 173 hours per person.
 
-| Month | Crews | Hours | Hours per crew |
+| Month | Man-hours | Per person | % of a full-time month |
 |---|---|---|---|
-| February | 25 | 11,109 | 444 |
-| **April** *(best month)* | 26 | 16,513 | **635** |
-| June | 28 | 12,228 | 437 |
-| **H1 average** | **26** | **13,761** | **526** |
+| February | 11,109 | 118 | 68% |
+| March | 16,052 | 171 | 99% |
+| **April** *(best month)* | **16,513** | **176** | **102%** |
+| May | 13,223 | 141 | 81% |
+| June | 12,228 | 130 | 75% |
+| **H1 average** | **13,761** | **146** | **85%** |
 
-At 17% non-revenue we need **17,762 hours per month**. What that requires:
+At 17% non-revenue we need **17,762 man-hours per month**. What that means:
 
-| Crews | Hours per crew per month | vs. April's proven peak (635) |
+| At this headcount | Requires per person | Reality check |
 |---|---|---|
-| 26 *(today)* | 683 | **+8% — above anything we have achieved** |
-| 28 | 634 | level with April |
-| **30** | **592** | **7% below April — achievable with margin** |
+| **94 *(today)*** | **189 hrs/month = 44 hrs/week** | **8% above April, sustained for five months** |
+| 101 | 176 | exactly April's proven level |
+| 103 | 173 | a normal full-time month, no overtime |
+| 121 | 146 | H1's actual average utilization |
 
-**This is the crux of the report.** At today's crew count the goal requires every crew to sustain 8% above
-our best month for five straight months. **At roughly 30 crews it requires each crew to run below what we
-already proved in April.** The difference between "heroic" and "achievable" is about four crews.
+**This is the crux of the report.** At today's headcount the goal requires every field employee to work
+about **44 hours a week for five consecutive months** — above our single best month, without let-up.
+
+**The honest range is 101 to 121 field crew — roughly 7 to 27 additional people.** Where we land inside
+that range is decided by utilization, not by hiring:
+
+- If we can hold **April-level** productivity per person, **+7 people** is enough.
+- At **H1's average** utilization, it takes **+27**.
+
+**That spread — 20 people — is the single largest cost variable in the plan, and it is an operational
+question, not a recruiting one.** Utilization varied from 68% in February to 102% in April with essentially
+the same roster. Understanding and closing that swing is worth more than the hiring decision itself.
+
+*Sanity check: June's 12,228 hours across 28 working days is about 437 man-hours a day — roughly 67 people
+producing billable work on a given day, against a roster of 94.*
 
 ### Lever 3 — Price and job mix. Untouched.
 
@@ -184,10 +200,12 @@ year and is the cheapest of the three.
 
 ### Putting it together — the scenario that reaches $25.1M
 
-**~30 crews, running at 592 hours each — below April's proven peak — with non-revenue held at or under 17%.**
+**Grow field headcount from 94 toward ~105, and hold per-person utilization near April's level (176
+hours) rather than H1's average (146), with non-revenue at or under 17%.**
 
-That is the plan. It is not a productivity stretch; it is a staffing and scheduling commitment. If we also
-recover a few points of non-revenue or a few dollars of rate, the crew requirement falls further.
+That is the plan. It is not a productivity stretch — April already proved the per-person number. It is a
+staffing commitment plus a scheduling discipline. Every point of non-revenue we recover, and every few
+dollars of on-the-job rate, reduces the headcount required.
 
 ### How the operating initiatives feed these levers
 
@@ -234,7 +252,8 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 | Item | Assessment |
 |---|---|
-| **Crew count** | The binding constraint. At 26 crews the goal demands 8% above our best month ever, sustained. At ~30 crews it sits below a level we already proved. **This is a hiring decision, and it has a deadline — crews added in October cannot deliver a Q4 number.** |
+| **Field headcount** | The binding constraint. At today's 94 the goal demands 44 hrs/week per person for five months — 8% above our best month ever. **This is a hiring decision with a deadline: people added in October cannot deliver a Q4 number.** |
+| **Utilization swing** | Per-person output ranged 68%–102% of full time across H1 on essentially the same roster. That swing decides whether we need +7 people or +27 — a 20-person cost difference. |
 | **Holding the utilization gain** | The entire 2026 productivity improvement is the 23%→17% non-revenue shift. If it slips back toward 23%, the hours requirement rises from +29% to +39% and the goal moves out of reach regardless of hiring. |
 | **On-the-job rate is flat** | Down 1.1% year over year. Not a crisis, but it means no help is currently coming from price. |
 | **Pipeline conversion** | Roughly $4.4M of the goal depends on business not yet sold. |
@@ -245,9 +264,10 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 ## 8. What I would ask of the Board
 
-1. **A decision on crew capacity, with a date.** The goal is reachable at roughly 30 crews running *below*
-   April's proven output. It is not reachable at 26 crews without sustained performance we have never
-   achieved. Hiring lead time means this decision has to be made now to affect Q4.
+1. **A decision on field headcount, with a date.** We have 94 active field crew. The goal needs roughly
+   **101–121** depending on utilization. At today's 94 it requires 44 hours per person per week for five
+   straight months — above our best month, sustained. Hiring lead time means this decision has to be made
+   now to affect Q4.
 2. **Endorse re-basing the H2 plan** to a monthly figure that actually reaches $25.1M. The organization is
    currently working to a plan that lands ~$800K short.
 3. **Support for holding the utilization discipline.** The 23%→17% shift is this year's real achievement and
