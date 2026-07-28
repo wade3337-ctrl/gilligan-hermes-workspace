@@ -1,4 +1,15 @@
 
+### 2026-07-27 — Root-caused the crew stalls: the 180s watchdog was killing MY process and orphaning its subagents
+- **Symptom (Skipper spotted the pattern):** three multi-agent runs each stalled **exactly 6 agents short** — 13/7, 60/54, 43/37. He called it: *"why does the crew keep stalling out at 6."*
+- **The 6 is the concurrency cap.** This box has **8 cores**; workflows run `min(16, cores - 2)` = **6 concurrent agents**. Every run lost precisely the batch that was IN FLIGHT — everything already finished, finished. That is not a workflow fault; it is the whole running batch dying at once, which points at the parent.
+- **The parent was being killed by the CLI watchdog** after **180s with no output** — the same `CLI subprocess: timed out after 180s (no-output stall)` errors he kept seeing. Long silent stretches (multi-agent waits, slow SSH/`Get-ChildItem -Recurse` scans, big SQL) tripped it, my process died, and the 6 in-flight subagents were orphaned. **Both symptoms were the same event seen from two sides.**
+- ⚠️ **The fix was NOT where the error message pointed — two traps found by reading the source instead of guessing:**
+  1. The knob is under **`agents.defaults.cliBackends`**, not top-level `cliBackends`; and the watchdog sits under **`reliability.watchdog`**, not `watchdog`.
+  2. **Raising `timeoutSeconds` alone would have done NOTHING.** The 180s ceiling is `CLI_RESUME_WATCHDOG_DEFAULTS.maxMs` — a hard cap on the *resume* profile, which is what a continuing conversation uses. `resolveCliNoOutputTimeoutMs` also caps the window at **`timeoutMs - 1000`**, so the turn budget must exceed it too. Setting one without the other is useless.
+- **Applied (Skipper-authorised, 6 minutes):** `agents.defaults.timeoutSeconds = 900` · `cliBackends.claude-cli.reliability.watchdog.{fresh,resume}.noOutputTimeoutMs = 360000`. The required `command: "claude"` matches the built-in fallback in `resolveClaudeCliCommand`, so it changes nothing.
+- **Method:** `openclaw config patch` (validated recursive merge) with **`--dry-run` first** — no hand-editing. Verified after: **4 keys added, 0 removed, 0 changed** except `meta.lastTouchedAt`. Backup `openclaw.json.bak-prewatchdog-20260727T220041Z`. **Needs a gateway restart** (Skipper doing it).
+- 🔒 **Also persisted before the restart:** the 51 suite-audit findings existed ONLY in workflow transcripts. Written to `arbor-stack/predeploy-pkg3/SUITE-AUDIT-FINDINGS.md` with a confidence warning — only 21 of 51 reached a verifier, so they are LEADS, not confirmed defects.
+
 ### 2026-07-27 — Revenue Performance fixlist COMPLETE: 31 fixed/closed, 5 deferred with reasons [PLAY ✅ · package restaged]
 **Batch 5 (robustness + display) — every item verified against the code first:**
 - **#1** no cap on the requested span while `requestTimeOut="6000"` (100 min) → **date range clamped to 3 years**, silently, so the page still renders.
