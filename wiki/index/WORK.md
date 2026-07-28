@@ -36,3 +36,4 @@ Governed by [[fort-point-confidentiality]]. Detail in `business-plan/`.
 
 Standards these follow: [[dashboard-metric-standards]] · [[gsts-ui-style-guide]] · [[gsts-ui-spec]] · [[canonical-definition]] · [[deploy-playbook]] · [[dashboard-auth-gate]] (security gate + the rule: re-authorize headless consumers when you gate a surface).
 - [[gsts-revenue-by-geography]] — revenue split by county (OC / LA / IE), the base for the geography plan.
+- [[goahead-status-lifecycle]] — GoAhead statuses decoded from the SOP: **activation is a TWO-step flip (InProcess → Active), so a record left in `InProcess` is a half-finished activation.** 8 stuck ($121K) incl. **5 near-identical Irvine/Crystal Cove attempts at $22,649 each**. Also: future-year COs are activated by temporarily setting the wrong year (restore it or it bills wrong), and multi-season plans legitimately fan out into several go-aheads.
