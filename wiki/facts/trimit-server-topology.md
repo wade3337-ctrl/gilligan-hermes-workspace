@@ -136,6 +136,12 @@ That session diagnosed it as ColdFusion not maintaining pooled connections, and 
 First TCP connect from the play box to `198.207.148.168:1433` **after the link idles fails after ~21,152 ms**; attempts 2–5 connect in ~60 ms. Surfaces as a 20–23 s hang on first page load or login POST, then everything is instant. A refresh appears to fix it because the retry rides the now-open path. **Firewall/NAT session-table idle timeout between web and DB — not a TRIM IT bug.**
 Diagnose with `curl -w time_starttransfer` from outside, then `TcpClient.ConnectAsync` in a loop **from the web server itself**. Pinging the web server proves nothing.
 
+## 🔴 2026-07-27 ~21:24 UTC — the box WEDGED (services hung, TCP still answering)
+Full signature, the one-command test, the disk-full hypothesis and the Nocix/IPMI fix path:
+**[[play-box-wedge-signature]]**. ⚠️ **Do not read Tailscale `offline` as "the box is down"** — I did,
+and it was wrong; `tailscaled` was simply one of the wedged services.
+🔑 Host is **WholeSale Internet, Inc. (nocix.net)**, not Ayera. **Travis holds that account.**
+
 ## Change log observed
 - **2026-07-14 08:27** — `Ayera-VPN` tunnel configured and started. **The 20s stall appears the same morning.**
 - **2026-07-26 ~10:00** — vendor/Codex hardened `D:\DownloadAndRestoreLatestGSTS.bat` (listing snapshots, candidate logging, manual date override, delete-after-confirm) and edited `zDBTest.cfm` to print step timings — *which is why that page's output changed size between my two fetches.*
