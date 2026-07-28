@@ -20,6 +20,7 @@ updated: 2026-07-02
 - [[sales-rep-attribution]] — dashboards attribute to the actual managing rep (`Projects.SalesRepID`).
 - [[scheduled-revenue-date-basis]] — ⚖️ per-day vs by-end vs by-start (decision pending).
 - [[june-invoicing-lag]] — 💵 month-end "billed" understates ~25%; invoicing finishes ~3–10 days into next month. Read produced/on-pace as the trustworthy close headline.
+- [[path-to-25m-2026]] — 📈 run-rate + capacity math to the 2026 goal. **H1 $11.22M = 91.6% of plan; TPH $130.19 vs target 130 → efficiency is ON target, the shortfall is VOLUME. $2.2M/mo lands $24.42M; required is $2.31M/mo = 17,792 crew hrs/mo (+29%).** ERP reconciles to Dimitry's books within 1.28%.
 - [[50m-growth-goal]] — 🎯 North Star: $25M→$50M in 5yrs via Aspen BD engine; targets = Inland Empire + LA County + grow OC backyard.
 - [[segment-margin-analysis]] — 📊 municipal vs HOA vs commercial: TPH equalized ~$123 all segments; muni "lower rate" = fixed-price erosion (~$6–9/hr mid-contract) + ~$6/hr wage top-up, NOT crew inefficiency. Cost half needs Steve. Feeds growth-plan mix + pricing tools.
 
