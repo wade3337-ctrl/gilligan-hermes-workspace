@@ -52,7 +52,36 @@ PY
 **Fast connect + zero bytes = wedged, not down.** Services that greet you unprompted (SSH, SQL Server) are
 the good probes; HTTP is a poor one because it waits for a request.
 
-## Leading hypothesis (UNPROVEN — needs the console)
+## ✅ REVISED 2026-07-28 — most likely PLANNED VENDOR WORK, not a fault
+**Skipper:** *"Jordan and Travis are working on a way for us to share the dev server with Travis and his
+team along with a repository for changes. I think the play server is offline because they are working
+through these changes."*
+
+**My own evidence favours his read over mine.** The connect time was **0.18 s uniformly across four very
+different services** (sshd, IIS, IIS-TLS, SQL Server). A wedged Windows host would not be that consistent —
+but **a firewall/NAT that answers SYNs on forwarded ports with no live backend behind them produces exactly
+this**. Supporting: **:3389 did NOT answer** (fits a new forward list that omits RDP), and **the Skipper's
+own VPN stopped connecting** — far better explained by "they changed the VPN config" than by "a service hung."
+
+➡️ **DO NOT escalate to Nocix for a power cycle.** If this is planned work, a hard reboot could interrupt a
+migration mid-flight. **Confirm with Jordan/Travis before touching the provider portal.**
+
+⚠️ **Keep the signature below anyway** — the probe and the read-out are correct and reusable; only the
+*cause* changed. "Fast connect + zero bytes" means **something is answering that is not the service** —
+that is either a wedged host **or** a proxying middlebox with a dead backend. The probe cannot tell them
+apart; ask a human what changed.
+
+## 🚨 RISK — play-only data with no local backup
+If the box is rebuilt/reimaged as part of this work, data that exists **only on play** is lost:
+`Workbench` overrides (~564 rows), `BidQueue` (16 rows of our working data), the `DashboardAccess` list
+(23 users, edited via the UI since seeding), and saved `GoalSettings`/`DashboardPrefs`.
+We hold **create+seed scripts** (`RC-DashboardAccess-create-seed-PROD.sql`, `RC-02-SalesGoal-create-seed-PROD.sql`,
+`dev-tasks/spm-results-prod-fix/01-create-workbench-objects-PROD.sql`) — **but no current data dump**, and it
+cannot be taken while the box is unreachable.
+▶️ **FIRST ACTION when play returns: dump `Workbench` and commit it.** Also re-check the DSN repoint
+(`GSTS`/`GSTSAPI` → `localhost,14333`) survived — revert kit at `arbor-stack/dev-tasks/play-dsn-revert/`.
+
+## Superseded hypothesis (kept for the record — disk-full)
 **The nightly restore filled the disk.** `D:\DownloadAndRestoreLatestGSTS.bat` (scheduled task
 **"GSTS DB RESTORE"**, ~07:00 daily) pulls a **~113 GB** `GSTS_backup_*.bak` from rsync.net and restores it
 into `localhost,14333`. A full volume wedges Windows services in exactly this pattern while the kernel keeps
