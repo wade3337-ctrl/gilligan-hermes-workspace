@@ -128,13 +128,16 @@ price. Most likely both.** Section 4 sets out how much each lever is actually wo
 
 This is the finding that shapes the plan, and it is not the obvious one.
 
-| H1 | Total paid crew hours | Revenue-bearing | Non-revenue | Non-revenue share |
+| H1 | Scheduled crew hours | Revenue-bearing | Non-revenue | Non-revenue share |
 |---|---|---|---|---|
 | 2025 | 84,616 | 65,180 | 19,436 | **23.0%** |
 | **2026** | **82,565** | **68,512** | **14,053** | **17.0%** |
 
 **We moved roughly 5,400 hours out of non-revenue work and into billable work.** Revenue-bearing hours rose
-**5.1%** while total paid hours *fell* 2.4%.
+**5.1%** while total scheduled hours *fell* 2.4%.
+
+*(These are scheduled hours, the basis our productivity metric uses. Payroll hours were flat year over
+year — 91,736 to 91,976 — which is covered in Lever 2.)*
 
 The on-the-job rate — revenue divided by revenue-bearing hours — was **$158.62 in H1 2025 and $156.89 in
 H1 2026, down 1.1%.**
@@ -144,12 +147,12 @@ H1 2026, down 1.1%.**
 
 That matters because it tells us exactly which levers still have room.
 
-### Lever 1 — Utilization (non-revenue hours). Proven, and still has room.
+### Lever 1 — Utilization (non-revenue hours). Proven, and partly spent.
 
 To bill $2.31M/month at the current on-the-job rate we need **14,742 revenue-bearing hours per month**.
-H1 ran **11,419**. But how many *paid* hours that costs depends entirely on the non-revenue share:
+H1 ran **11,419**. How many scheduled hours that costs depends on the non-revenue share:
 
-| Non-revenue share | Total paid hours required | vs H1 average (13,761) |
+| Non-revenue share | Scheduled hours required | vs H1 average (13,761) |
 |---|---|---|
 | 23% *(where we were in 2025)* | 19,146 | +39% |
 | **17% *(where we are now)*** | **17,762** | **+29%** |
@@ -157,7 +160,11 @@ H1 ran **11,419**. But how many *paid* hours that costs depends entirely on the 
 | 12% | 16,752 | **+22%** |
 
 **Every one point of non-revenue reduction is worth roughly 210 crew-hours a month — capacity that costs
-nothing to add.** Holding 17% and pushing toward 12% removes about a quarter of the hiring requirement.
+nothing to add.** Holding 17% and pushing toward 12% would remove about a quarter of the hiring requirement.
+
+**But this lever has already done most of its work.** The 23%→17% shift is what produced this year's
+productivity gain, and as Lever 2 shows, the crew is now working 8.9-hour days. Further gains here are
+worth having and worth protecting — they are not a substitute for headcount.
 
 ### Lever 2 — Field headcount. This is the decision I need.
 
