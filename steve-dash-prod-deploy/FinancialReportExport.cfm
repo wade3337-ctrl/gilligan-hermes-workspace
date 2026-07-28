@@ -1,3 +1,4 @@
+<cfinclude template="../realuser-gate.cfm">   <!--- SECURITY 2026-07-28 (Gilligan): this file streams the FULL customer/invoice CSV and had NO gate. TRIM IT's native ClientLogin only checks that the ZUserID cookie EXISTS, so a junk value (e.g. 99999999) read it. MUST remain the first executable line — above every cfparam and every cfquery. Blocks garbage/anonymous cookies; allows any real logged-in user. Swap to dashboard-auth-gate.cfm if this report should be allow-list restricted (Skipper's call — would also restrict Steve). --->
 <cfparam name="URL.search" default="" type="string">
 <cfparam name="URL.cols" default="" type="string">
 <cfparam name="URL.mode" default="invoice" type="string">
