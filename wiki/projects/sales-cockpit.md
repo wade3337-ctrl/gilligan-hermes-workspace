@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [sales-engine, crm, cockpit, workbench, bid-on-ramp]
 applies: ["[[gsts-ui-style-guide]]", "[[gsts-ui-spec]]", "[[repair-contract]]"]
-links: ["[[bid-process-reengineering]]", "[[scott-manager-dashboard]]", "[[pricing-guide-bid-prefill]]", "[[sales-engine-prototypes]]", "[[trimit-recurring-contract-lookahead-gap]]"]
-updated: 2026-07-17
+links: ["[[bid-process-reengineering]]", "[[scott-manager-dashboard]]", "[[pricing-guide-bid-prefill]]", "[[sales-engine-prototypes]]", "[[trimit-recurring-contract-lookahead-gap]]", "[[v15-prod-deploy-state]]", "[[rc-04-spm]]", "[[dev-handoff-contract]]"]
+updated: 2026-07-28
 ---
 
 # Sales Cockpit
@@ -36,6 +36,18 @@ updated: 2026-07-17
 - [[bid-process-reengineering]] — the cockpit is the SHELL; the 5 stages are what happens inside it.
 - [[scott-manager-dashboard]] — Workbench My Jobs / Re-bid Radar feed the List/Book views.
 - [[pricing-guide-bid-prefill]] — plugs in at the bid on-ramp (Stage-3 pricing).
+
+## 🔌 2026-07-27/28 — the customer pop-out never loaded on prod: an undeployed table, swallowed by one `cftry`
+The pop-out silently returned `{"ok":false}` because **`Dashboard-SalesCockpit.Profile.cfm:20` subqueries
+`Workbench.dbo.BidQueue`**, which was never deployed to prod — and the whole endpoint sits inside a **single
+`cftry`**, so a missing-object 208 came back as a generic failure with nothing in the UI to diagnose from.
+🧭 **A blanket `cftry` around an endpoint converts every distinct fault into the same silent one.** The tell
+was that it failed for *all* customers, which is a dependency signature, not a data one.
+- **Fix:** create the table **empty** (the cockpit only needs it to exist to satisfy the subquery) — folded
+  into the one DB visit rather than becoming its own ask, per [[dev-handoff-contract]].
+- 📦 **Shipped 2026-07-28** inside `database\01-create-workbench-objects-PROD.sql` — the SPM Results crash
+  script ([[rc-04-spm]]) was **renamed and widened** to stand up `BidQueue` in the same idempotent run.
+  → [[v15-prod-deploy-state]]. This closes the "Start a bid"→BidQueue plumbing dependency, not the feature.
 
 ## ✅ 2026-07-16 — "can't find my job" repair (#174) + Aspen alignment
 - **Root cause (Skipper: searched "Northwood", missing):** cards labeled by account name only; search = name+company+mgr+city. The $107K "Northwood Estates" bid showed as "Northwood II HOA", unfindable. (NOT the stage bug.)

@@ -3,8 +3,8 @@ title: Dev Handoff Contract
 type: reference
 domain: how-we-work
 tags: [contract, handoff, deploy, prod, resourcing]
-links: ["[[deploy-playbook]]", "[[repair-contract]]", "[[db-repair-contract]]", "[[v15-prod-deploy-state]]"]
-updated: 2026-07-27
+links: ["[[deploy-playbook]]", "[[repair-contract]]", "[[db-repair-contract]]", "[[v15-prod-deploy-state]]", "[[external-comms-contract]]"]
+updated: 2026-07-28
 ---
 
 # Dev Handoff Contract
@@ -25,6 +25,31 @@ known-outstanding is ready, then send once."**
 - **Urgency is the only override, and it is the Skipper's call, not mine** — surface the tradeoff, let him decide.
 - **Keep a live inventory** so the next batch is assembled in minutes rather than rediscovered:
   `arbor-stack/predeploy-pkg3/OUTSTANDING-FOR-PROD.md` → summarised in **[[v15-prod-deploy-state]]**.
+
+## 📦 THE PACKAGE READS AS A WORK ORDER, NOT AN AUDIT — standing rule (Skipper, 2026-07-28)
+> *"files, descriptions of the fixes and instructions, no fluff"* — and *"remove the production is behind references."*
+
+The vendor needs to know **what the file is, where it goes, what it fixes, and how to confirm it.** Nothing
+about what someone else missed, no deployment history, no blame. Proven on `TRIMIT-BUGFIXES-20260728.zip`
+(→ [[v15-prod-deploy-state]]):
+- **Strip the internal working record.** Our `MANIFEST.md` was 21 mentions of "crew" and 5 of "Skipper" —
+  pulled from the package, identical copy kept in our own repo so nothing is lost.
+- **Folder names make claims too.** `patches-sectionC\` → `ui-files\`, `prod-should-currently-be\` →
+  `baseline\`. The old name asserted a claim about prod *in the path*.
+- **🔍 Run a leak scan over every text file AND every filename** before zipping: `behind · drift · crew ·
+  Skipper · stale · vendor · missed · prod-should · password · secret · <internal folder names> · <nicknames> ·
+  <internal hostnames/IPs>`. It caught a **CFML comment** reading *"removed … per Skipper … backup in
+  Jasonsrepairs"* inside a file we were about to hand a vendor. Source comments ship too.
+  - When you reword a file to fix a leak, **prove the change is comment-only** by diffing against the
+    last confirmed version — then push the same file to play so **play == what ships**.
+- **🔢 Never hand-type a checksum or a byte count.** Generate the table from the staged folder
+  (`Get-FileHash` + `Length`) and **assert every row**. A typed 66,927 for a 66,595-byte file slipped through
+  once — the hash was right, so nothing downstream would have caught it, and a vendor verifying by size stops
+  mid-deploy. Same class of error as the stale-manifest checksums that blocked us twice before.
+- **Shared shells go as verify-then-copy, never as an overwrite** — `install-this\` + `baseline\` + a unified
+  `.diff`, so the dev can confirm their copy matches the baseline before replacing it.
+- **Confirm the exact draft with the Skipper before sending** (per the [[external-comms-contract]] per-email
+  rule), and keep the hold marker (`DO-NOT-SEND-HELD.txt`) in the staged folder until he releases it.
 
 ## Key rules
 - **Resourcing:** **Jordan Kim — IT Manager (salaried, $0 marginal):** prod deploys + menu/AppForms config (broken links, hardcoded IDs, placement, titles, dedupe). **Travis / Data Processing LLC ($75/hr):** ONLY deep DB/security/proc work we can't run ourselves.

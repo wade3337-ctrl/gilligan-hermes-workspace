@@ -7,13 +7,13 @@ status: shipped
 tags: [dashboard, revenue, tph, pace, drill-through, release-candidate]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
 links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[anomaly-monitor-suite]]", "[[trimit-dual-webroot-shadow]]", "[[trimit-investor-case]]", "[[v15-prod-deploy-state]]"]
-updated: 2026-07-27
+updated: 2026-07-28
 ---
 
 # RC-02 Revenue Performance
 
 **One-liner:** Live view of scheduled revenue vs monthly goal + crew productivity (TPH) — actual-through-today / projected-after, by day/week/month, filterable by territory / work type / revenue source; Pace-vs-Goal tile, click-a-bar drill-through to the work orders, per-job deep-links, CSV export.
-**Status:** 🚧 **(2026-07-27) LIVE ON PROD, and it is the whole content of the HELD package 3** — built, staged and render-verified, but gated behind **36 pre-existing defects** in this file. → [[v15-prod-deploy-state]] · fixlist `arbor-stack/predeploy-pkg3/MORNING-FIXLIST.md`. Prior: 🟢 shipped — REVIEWED & PARKED (Jun 28), crew-cleared, verified on PLAY.
+**Status:** 📦 **(2026-07-28) SHIPPED to Jordan** in `TRIMIT-BUGFIXES-20260728.zip` (md5 `8227d6b7…`, 109,592 b) — the 36-defect gate **CLOSED 07-27** (31 fixed/closed, 5 deferred with recorded reasons), so this file went out with the batch; awaiting install on prod. → [[v15-prod-deploy-state]] · fixlist `arbor-stack/predeploy-pkg3/MORNING-FIXLIST.md`. ⚠️ It is the **only file in the package that also needs the C:\ CF shadow webroot** ([[trimit-dual-webroot-shadow]]) — the other 7 are D: only, verified. Prior: 🚧 (07-27) HELD behind the 36; 🟢 shipped — REVIEWED & PARKED (Jun 28), crew-cleared, verified on PLAY.
 **📁 Location:** `Dashboard-RevenuePerformance.cfm` + `Dashboard-RevenuePerformance.Export.cfm` (+ shared `css/gsts-protips.css`)
 **▶️ Resume:** `arbor-stack/release-candidates/RC-02-revenue-performance-dashboard.md`
 

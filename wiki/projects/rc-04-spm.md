@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [dashboard, spm, funnel, pipeline, release-candidate, reconciliation]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[steve-diligence-dashboard]]", "[[revenue-goal-close]]", "[[v15-prod-deploy-state]]"]
-updated: 2026-07-27
+links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[steve-diligence-dashboard]]", "[[revenue-goal-close]]", "[[v15-prod-deploy-state]]", "[[dashboard-auth-gate]]", "[[sales-cockpit]]"]
+updated: 2026-07-28
 ---
 
 # RC-04 SPM (Sales Production Meeting)
@@ -17,7 +17,31 @@ updated: 2026-07-27
 **📁 Location:** `SalesProductionMeetingDashboard.cfm` (shell) + `SalesProductionMeeting$Pipeline/Sold/Production/Results.cfm` + `$Drill.cfm`
 **▶️ Resume:** `arbor-stack/release-candidates/RC-04-sales-production-meeting-dashboard.md`
 
-## 🔥 2026-07-27 — the **Results** tab is CRASHING on PRODUCTION (fix built + proven, awaiting the batched deploy)
+## 🔓 2026-07-28 — SPM's auth gate was BYPASSABLE ON PROD by one URL param (finding #5, fixed + shipped)
+The Results auth gate sat **inside `<cfif showComm>`** — so `?ZCustType=municipal` took the branch that
+skipped the include, and the page ran ungated. A **forged cookie got HTTP 200 / 19,291 b**; after hoisting the
+gate above every conditional it is **403 on all three paths**, real users unchanged. Hoisting it also fixed
+**#31** — the municipal CSV export called `csvField()` from that same skipped include.
+🧭 **Rule:** an auth gate belongs on **line 1**, never inside a branch — a gate a URL parameter can route around
+is not a gate. → [[dashboard-auth-gate]]
+Same pass, same file: **#26** a stack-trace leak (`?page=abc` rendered `coldfusion.runtime` + `D:\home`),
+**#23** reflected XSS (18 hrefs + 1 input value), and an unvalidated `?step=` that built a 180 KB page.
+
+## 📅 2026-07-28 — `DateCompleted` end-day truncation (finding #4): Results was the worst hit
+`BETWEEN` excludes the end day's own timestamps. **18 sites found suite-wide, 17 fixed, 1 correctly left** —
+`Results.cfm` alone held **12**, including a second Municipal query block and the 5 year-over-year comparison
+bars no finding mentioned, so it was **silently dropping today from every YTD figure, permanently**.
+Measured (2026-07-18→24, all customers): 56 WOs / $582,445 / 3,937.9 h → **64 WOs / $644,250 / 4,369.4 h** —
+**Completed $ had been reading 9.6% LOW**, and **3,088 of 3,088** WOs in the last 400 days carry a non-midnight
+time, so it hit every window. Verified end-to-end through the served `exportCSV=1` file.
+⚠️ **`exportCSV=1`, not `export=csv`** — the wrong param silently returns the HTML page at an identical byte
+count, which is exactly how a bogus "verified" happens.
+
+## 🔥 2026-07-27 — the **Results** tab was CRASHING on PRODUCTION (fix ✅ **SHIPPED 2026-07-28**)
+📦 Shipped in `TRIMIT-BUGFIXES-20260728.zip` as **`database\01-create-workbench-objects-PROD.sql`** — renamed
+and widened from `01-create-rgc-vProjectMarket-PROD.sql` because it now also stands up the empty
+`Workbench.dbo.BidQueue` that the Sales Cockpit pop-out needs ([[sales-cockpit]]). Awaiting Jordan's run.
+
 `208 Invalid object name 'Workbench.rgc.vProjectMarket'` at `SalesProductionMeeting$Results.cfm:116`. The
 by-market and multi-year panels below `LEFT JOIN` that RGC view — and **[[revenue-goal-close]] was deliberately
 held out of the V1.5 deploy**, so the `rgc` schema was never created on prod. The join is **UNGUARDED**, so the

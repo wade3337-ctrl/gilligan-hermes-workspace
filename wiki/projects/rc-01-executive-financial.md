@@ -6,8 +6,8 @@ track: 1
 status: shipped
 tags: [dashboard, executive, financial, release-candidate, win-rate, tph]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[rc-02-revenue-performance]]", "[[rc-04-spm]]", "[[steve-diligence-dashboard]]", "[[dashboard-metric-standards]]"]
-updated: 2026-07-02
+links: ["[[rc-02-revenue-performance]]", "[[rc-04-spm]]", "[[steve-diligence-dashboard]]", "[[dashboard-metric-standards]]", "[[v15-prod-deploy-state]]"]
+updated: 2026-07-28
 ---
 
 # RC-01 Executive Financial Overview → **renamed "Sales Performance" (2026-07-17)**
@@ -32,6 +32,21 @@ updated: 2026-07-02
 ## Related
 - [[rc-04-spm]] — shares the win-rate/close-% definition (centralize to prevent drift).
 - [[steve-diligence-dashboard]] — same close-% shown in a second UI; city-exclusion aligned across both.
+
+## 📦 2026-07-28 — two of this suite's pages SHIPPED to prod (in the batched bugfix package)
+`Executive$ClosePercentage$Detail.cfm` and `Executive$Sales$Unattributed.cfm` went to Jordan inside
+`TRIMIT-BUGFIXES-20260728.zip` → [[v15-prod-deploy-state]]. Note the ship rule above ("whole dashboard together")
+still holds for *features* — these are defect fixes to two files, not a suite release.
+- **Close-rate drill now foots to its tile (audit finding #3).** All three status lists are now
+  **byte-identical across `$Detail` / `ByRep` / `ByMarket`**, and the city exclusion follows `entityKind`
+  rather than being restated per page — so the drill can no longer return a different cohort than the
+  headline it explains.
+- **`Executive$Sales$Unattributed.cfm` kept its `BETWEEN` deliberately.** The half-open range is individually
+  more correct, but its parent `Executive$Sales$ByRep$Scope.cfm` uses `BETWEEN` in four queries — a drill must
+  share its parent's date predicate or it explains a number it doesn't match. Comment in the file names the
+  parent's line numbers. (Contrast: the `DateCompleted` end-day sweep fixed **17 of 18** sites suite-wide —
+  see [[rc-04-spm]] — this one is the deliberate exception, along with `SalesPipeline:695`.)
+- ⚠️ Still open, parked for the Skipper: the Unattributed drill prints `(IsMeasured=0)` to users.
 
 ## ✅ 2026-07-17 — RENAMED "Sales Performance" + Crew Performance split out (walkthrough, ships #189/#191/#192)
 Skipper: this frame is really a SALES dashboard except the Crew tab. Changes:

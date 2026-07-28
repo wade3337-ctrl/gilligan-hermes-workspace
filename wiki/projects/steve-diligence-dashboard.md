@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [dashboard, steve, diligence, win-rate, sales-performance, treatments, city-exclusion]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[steve-recon-a-financial-report]]", "[[rc-01-executive-financial]]", "[[rc-04-spm]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[workbench-play-db]]", "[[deploy-playbook]]", "[[trimit-server-topology]]", "[[v15-prod-deploy-state]]"]
-updated: 2026-07-27
+links: ["[[steve-recon-a-financial-report]]", "[[rc-01-executive-financial]]", "[[rc-04-spm]]", "[[dashboard-metric-standards]]", "[[sales-rep-attribution]]", "[[workbench-play-db]]", "[[deploy-playbook]]", "[[trimit-server-topology]]", "[[v15-prod-deploy-state]]", "[[dashboard-auth-gate]]"]
+updated: 2026-07-28
 ---
 
 # Steve's Diligence Sales-History Dashboard (Project D)
@@ -21,6 +21,20 @@ updated: 2026-07-27
 - **Crew review (Kimi K3 + Gemini 3.1 Pro + gpt-5.6-sol) = DO-NOT-SHIP round 1** → hardened: non-atomic reseed → `XACT_ABORT`+tran, `RAISERROR`→`THROW` asserts that actually halt, `UNIQUE` index (no double-count), count assert, `GRANT` for the CF login, AND a real data bug — proposal **396441** override `='UNDEFINED'` would EXCLUDE it (sol caught) → dropped UNDEFINED (**564→563**). Re-validated on a throwaway play table (clean, 563).
 - **Package** (5 cfm + hardened SQL + `DEPLOY-INSTRUCTIONS.md` + `CREW-REVIEW.md`) staged on play `D:\GSTS-Deploy\STEVE-FRD-DEPLOY-20260721\` (outside the webroot). Emailed Jordan (jkim) cc Steve (sguzowski@gstsinc.com) + Skipper, framed as Steve's fresh request today (not an add-on). Jordan runs DB-first → files, + supplies the CF-login GRANT.
 - **OPEN:** Jordan to execute; play still has the 564/UNDEFINED row (offered to Skipper to clean for parity). See [[deploy-playbook]] (stage-on-play pattern) + [[sales-rep-attribution]] (the override table).
+
+## 🔓 2026-07-28 — BOTH pages were completely UNGATED (audit finding #1) — fixed + shipped
+`FinancialReportDashboard.cfm` and `FinancialReportExport.cfm` carried **zero** auth-gate includes, and TRIM
+IT's native ClientLogin only checks that the `ZUserID` cookie *exists* — so a junk cookie read customer names,
+addresses and invoice amounts, and downloaded the **full customer CSV**. Proven: `ZUserID=99999999` →
+**200 / 14,810 b** → **403** after the fix; a real user (376) still gets the identical 14,810 b.
+- Fixed with `<cfinclude template="../realuser-gate.cfm">` as the **first executable line** of both (deploy path
+  is `…\wwwroot\GSTS\FinancialReport\`, hence the `../`). `realuser-gate` over `dashboard-auth-gate` was
+  deliberate — closes the hole with **zero risk of locking Steve out mid-QoE**; allow-list tightening is a
+  separate policy call. → [[dashboard-auth-gate]]
+- Same file, same pass: **#26** stack-trace leak (`?page=abc` rendered `coldfusion.runtime` + `D:\home`) and
+  **#23** reflected XSS (18 hrefs + 1 input value) — both fixed, XSS encoded **at the sink** (14 `URL.search`
+  uses inside `cfqueryparam` deliberately left raw).
+- 📦 **Both files shipped 2026-07-28** in `TRIMIT-BUGFIXES-20260728.zip` → [[v15-prod-deploy-state]].
 
 ## 🔌 2026-07-27 — it 500'd on PLAY, and the cause was the datasource, not the page
 `FinancialReport/FinancialReportDashboard.cfm` died on play with SQL **916** — `GSTSREADONLY` cannot reach the
