@@ -34,7 +34,7 @@ Payout = **(Net Proceeds − $10M) ÷ 30**; Net Proceeds = gross − debt assume
 Income statement (annual, from IS sheet; 2026 = H1 Jan–Jun):
 | Line | 2023 | 2024 | 2025 | 2026 H1 |
 |---|---|---|---|---|
-| Total Income (revenue) | $22.56M | $22.63M | $21.32M | $11.88M |
+| Total Income (revenue) | $22.56M | $22.63M | $21.32M | **$11.22M** ⚠️ *(was $11.88M — corrected 2026-07-28)* |
 | Gross Profit | $6.83M | $6.22M | $6.55M | $3.86M |
 | Total Expense (overhead) | $5.03M | $5.24M | $5.66M | $3.64M |
 | **Net Ordinary (operating) Income** | **$1.80M** | **$0.98M** | **$0.90M** | **$0.21M** |
@@ -47,7 +47,10 @@ Income statement (annual, from IS sheet; 2026 = H1 Jan–Jun):
 ### Connections / flags
 - **Adjusted-EBITDA thread ([[gsts-adjusted-ebitda]]):** book operating income ~$0.9M vs deal-adjusted EBITDA ~$4.1M — the gap is add-backs (owner comp, D&A ~$1.15M/yr, interest, one-timers). **The 2025 $3.06M "Other Income" must be NORMALIZED OUT** (non-recurring) — identify it with Steve (asset sale? Raffles captive distribution? settlement?).
 - **The incentive gates I helped design are AGGRESSIVE vs. this trajectory** ([[key-employee-incentive-plan]]):
-  - **Gate 1 = $25M/2026:** 2026 H1 = $11.88M → run-rate ~$23.8M; needs a strong H2 (~$13.1M) and **~+17% over 2025's $21.3M**. Has teeth.
+  - **Gate 1 = $25M/2026:** 2026 H1 = **$11.22M → run-rate ~$22.4M**; needs an H2 of **~$13.88M** and **~+18% over 2025's $21.3M**. Has teeth — **more than first written.**
+
+> 🚨 **CORRECTION 2026-07-28.** The "$11.88M H1" above was **wrong: it summed a stray partial `Jul 26` column ($654,744) into Jan–Jun.** True Jan–Jun Total Income = **$11,222,433**. Run-rate is **$22.44M, not $23.8M**, so Gate 1 is harder than this doc originally claimed. The IS sheet is labelled `01.01.23 - 06.30.26` but **carries a July column anyway** — never trust a sheet's title for its date range; sum only the columns you have named and print them.
+> ✅ **Reconciliation done the same day (good news):** TRIM IT invoiced (accounting-period basis, status-filtered) H1 = **$11,078,312** vs book **$11,222,433** — **TRIM IT runs just $144K / 1.28% light**, with individual months swinging ±$183K in both directions (pure timing). **So the ERP is a sound proxy for the books at the half-year, within ~1%.** Detail → [[count-once-revenue-ledger]].
   - **Gate 2 = $28.75M/2027:** requires **reversing a multi-year flat/declining revenue trend** — a real stretch. Good for alignment/cost discipline; employees may read it as hard to hit.
 
 ## 3. Open
