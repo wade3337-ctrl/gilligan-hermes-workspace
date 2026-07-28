@@ -983,7 +983,7 @@ function resize(which, max) {
 
 </div><!-- /.gsts-shell -->
 
-<!--- ProfileWidgetsFrame (Availability / Customer-Broadcast widget) removed 2026-07-23 per Skipper - vestigial; showed a stray SystemLists CustomerBroadcast value. Widget file left on disk; backup in Jasonsrepairs. --->
+<!--- ProfileWidgetsFrame (Availability / Customer-Broadcast widget) removed 2026-07-23 at Jason Wade's request - vestigial; it displayed a stray SystemLists CustomerBroadcast value. The widget file itself is left in place on disk. --->
 
 
 
