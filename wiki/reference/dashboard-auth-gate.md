@@ -70,6 +70,22 @@ When you add/extend an auth gate on a data page, **every headless/automation fet
 - **Proven incident (2026-07-15):** the July-12 gate silently 403'd the anomaly-monitor's `bookedPacing()` POST to `Dashboard-RevenuePerformance.cfm` → the COO daily email showed *"📅 Forward pace unavailable today (HTTP 403)"* for days. Same bug in `revenue-block.js` (per-salesperson + Nate rollup revenue snapshot). Fix = `Cookie: ZUserID=376` in `monitor.js` + `revenue-block.js`; verified HTTP 200 + real data. (`m2-revenue.js` has the same cookie-less pattern but is unused legacy.)
 - Symptom to watch: a report line that reads "unavailable / N/A" instead of a number, with the underlying error swallowed into a fallback string. → grep the report text for `unavailable|403|N/A` after any security deploy.
 
+## 🐛 `Dashboard-Access.cfm` — the SEARCH BOX misses ~80% of staff (found 2026-07-28)
+Granting access to Celeste Armenta exposed this. The add-user search runs:
+`WHERE FullName LIKE %q% OR LoginName LIKE %q%` — but **staff names live in `flow.Users.Desc1`, and
+`FullName` is NULL on 272 of 339 users (only 67 populated).**
+- Searching **"Celeste" returns 0 rows.** Searching **"carmenta"** (her login) finds her — UserID **209**.
+- Same cause makes the granted-list display fall back to `LoginName`, so people show as
+  `carmenta@gstsinc.com` rather than "Celeste Armenta".
+- **Workarounds today:** search by the **login/email prefix**, or use **"Add by UserID"** directly.
+- **Fix when we touch it:** add `Desc1` to both the search predicate and the display
+  (`ISNULL(NULLIF(Desc1,''), ISNULL(FullName, LoginName))`), and order by the same expression.
+- ⚠️ `HermanRO` **cannot read `Workbench.dbo.DashboardAccess`** (error 229 — the grant covers
+  `Workbench.dbo.SalesGoal` but not this table), so I cannot verify the current roster from SQL; read it
+  off the page. Object-level grants here are per-table, not per-database.
+- Bootstrap confirmed in source: **UserID 9 = Jason Wade** and the Arbor Helper assistant are always
+  allowed, so the list cannot lock the admin out. (`376` = Ulises Mario Muniz.)
+
 ## Related
 - [[anomaly-monitor-suite]] — the consumer that broke + was fixed.
 - [[play-dev-access]] — the play box these dashboards + the monitor run against.
