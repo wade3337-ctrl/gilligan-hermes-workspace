@@ -53,18 +53,36 @@
 <cfset URL.endPeriod = URL.startPeriod + 11>
 
 <cfparam name="URL.step" default="10" type="string">
+<!--- 2026-07-28: unvalidated row count. ?step=abc rendered a 180KB page (vs 41KB); any large
+     value is a free way to make the server build an enormous result. Clamp to the dropdown. --->
+<cfif NOT IsNumeric(URL.step) OR NOT ListFind("10,25,50,100,250,500,1000", Int(URL.step))>
+  <cfset URL.step = 10>
+<cfelse>
+  <cfset URL.step = Int(URL.step)>
+</cfif>
 
 <cfif URL.step NEQ 10 AND URL.step NEQ 25 AND URL.step NEQ 50 AND URL.step NEQ 100 AND URL.step NEQ 250 AND URL.step NEQ 500 AND URL.step NEQ 1000>
   <cfset URL.step = 100>
 </cfif>
 
 <cfparam name="URL.search" default="" type="string">
+<!--- 2026-07-28: URL.search was written raw into 18 href query strings and one input value,
+     so ?search=zz"onmouseover=alert(1) x=" broke out of the attribute (reflected XSS).
+     SQL was NEVER at risk - every query uses cfqueryparam, and those must keep the RAW
+     value or search stops matching. Use searchURL inside a URL, searchAttr inside an HTML
+     attribute, and URL.search ONLY inside cfqueryparam. --->
+<cfset searchURL  = URLEncodedFormat(URL.search)>
+<cfset searchAttr = EncodeForHTMLAttribute(URL.search)>
 
 <cfparam name="URL.page" default="1" type="string">
 
-<cfif URL.page LT 1>
+<!--- 2026-07-28: was `URL.page LT 1` on a string cfparam. A non-numeric ?page= threw an
+     unhandled exception and rendered the stack trace, including server file paths, to the
+     browser. Validate as a number FIRST. --->
+<cfif NOT IsNumeric(URL.page) OR URL.page LT 1>
   <cfset URL.page = 1>
 </cfif>
+<cfset URL.page = Int(URL.page)>
 
 <cfset URL.start_row = URL.page * URL.step - URL.step>
 <cfset URL.end_row = (URL.page+1) * URL.step - URL.step - 1>
@@ -73,7 +91,7 @@
 
   <CFSTOREDPROC procedure="dbo.CURSOR$BumpProjectBillingAddressConfirmed$SelectedNew" datasource="GSTS"></CFSTOREDPROC>
 
-  <cflocation url="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=1&completed=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#&startDate=#URL.startDate#&endDate=#URL.endDate#" addtoken="false">
+  <cflocation url="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=1&completed=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#&startDate=#URL.startDate#&endDate=#URL.endDate#" addtoken="false">
 
 </cfif>
 
@@ -83,7 +101,7 @@
     <CFPROCPARAM type="IN" dbvarname="@ZDocumentActionModelID" value="2" cfsqltype="CF_SQL_INTEGER">
   </CFSTOREDPROC>
 
-  <cflocation url="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=1&staged=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#&startDate=#URL.startDate#&endDate=#URL.endDate#" addtoken="false">
+  <cflocation url="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=1&staged=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#&startDate=#URL.startDate#&endDate=#URL.endDate#" addtoken="false">
 
 </cfif>
 
@@ -465,10 +483,10 @@
 
       <ul class="nav nav-tabs" style="margin-bottom:15px;margin-top:15px;">
         <li class="nav-item">
-          <a class="nav-link <cfif URL.view EQ 1>active</cfif>" aria-current="page" href="FinancialReportDashboard.cfm?view=1&step=#URL.step#&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">Invoice Details Report <span class="badge bg-light">#NumberFormat(ProjectCount.MyCount,'___,___')#</span></a>
+          <a class="nav-link <cfif URL.view EQ 1>active</cfif>" aria-current="page" href="FinancialReportDashboard.cfm?view=1&step=#URL.step#&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">Invoice Details Report <span class="badge bg-light">#NumberFormat(ProjectCount.MyCount,'___,___')#</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <cfif URL.view EQ 2>active</cfif>" href="FinancialReportDashboard.cfm?view=2&step=#URL.step#&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">Sales Performance</a>
+          <a class="nav-link <cfif URL.view EQ 2>active</cfif>" href="FinancialReportDashboard.cfm?view=2&step=#URL.step#&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">Sales Performance</a>
         </li>
       </ul>
 
@@ -504,7 +522,7 @@
         <label for="mySearch" class="form-label" style="font-size:12px;margin-bottom:2px;">Search</label>
         <div class="input-group">
 
-          <input class="form-control border-end-0 border" type="search" value="#URL.search#" id="mySearch" name="mySearch" placeholder="Search" onkeypress="if(event.keyCode==13) searchNow();">
+          <input class="form-control border-end-0 border" type="search" value="#searchAttr#" id="mySearch" name="mySearch" placeholder="Search" onkeypress="if(event.keyCode==13) searchNow();">
           
           <span class="input-group-append">
             <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="button" onclick="searchNow()">
@@ -759,33 +777,33 @@
             <li style="margin-right:15px;padding-top:5px;">#Int(URL.start_row+1)# - #Int(URL.end_row+1)# of #URL.myCount#</li>
 
             <cfif URL.page NEQ 1>
-              <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#"><<</a></li>
+              <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#"><<</a></li>
             </cfif>
 
             <cfif #Int(URL.page-1)# GTE 1>
-              <li class="page-item"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=#Int(URL.page-1)#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#"><</a></li>
+              <li class="page-item"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=#Int(URL.page-1)#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#"><</a></li>
             </cfif>
 
             <cfloop index="i" from="#Int(URL.page-2)#" to="#Int(URL.page-1)#">
               <cfif i GTE 1>
-                <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=#i#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">#NumberFormat(i,'___,___')#</a></li>
+                <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=#i#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">#NumberFormat(i,'___,___')#</a></li>
               </cfif>
             </cfloop>
 
-            <li class="page-item hideMobile active"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=#URL.page#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">#NumberFormat(URL.page,'___,___')#</a></li>
+            <li class="page-item hideMobile active"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=#URL.page#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">#NumberFormat(URL.page,'___,___')#</a></li>
             
             <cfloop index="i" from="#Int(URL.page+1)#" to="#Int(URL.page+2)#">
               <cfif i LTE URL.max_page>
-                <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=#i#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">#NumberFormat(i,'___,___')#</a></li>
+                <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=#i#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">#NumberFormat(i,'___,___')#</a></li>
               </cfif>
             </cfloop>
 
             <cfif #Int(URL.page+1)# LTE URL.max_page>
-              <li class="page-item"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=#Int(URL.page+1)#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">></a></li>
+              <li class="page-item"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=#Int(URL.page+1)#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">></a></li>
             </cfif>
 
             <cfif URL.page LT URL.max_page>
-              <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#URL.search#&page=#URL.max_page#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">>></a></li>
+              <li class="page-item hideMobile"><a class="page-link" href="FinancialReportDashboard.cfm?view=#URL.view#&step=#URL.step#&search=#searchURL#&page=#URL.max_page#&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">>></a></li>
             </cfif>
 
             <li style="margin-left:15px;">
@@ -794,13 +812,13 @@
                   #step# / Page
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item <cfif URL.step EQ 10>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=10&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">10</a></li>
-                  <li><a class="dropdown-item <cfif URL.step EQ 25>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=25&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">25</a></li>
-                  <li><a class="dropdown-item <cfif URL.step EQ 50>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=50&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">50</a></li>
-                  <li><a class="dropdown-item <cfif URL.step EQ 100>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=100&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">100</a></li>
-                  <li><a class="dropdown-item <cfif URL.step EQ 250>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=250&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">250</a></li>
-                  <li><a class="dropdown-item <cfif URL.step EQ 500>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=500&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">500</a></li>
-                  <li><a class="dropdown-item <cfif URL.step EQ 1000>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=1000&search=#URL.search#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">1000</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 10>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=10&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">10</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 25>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=25&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">25</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 50>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=50&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">50</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 100>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=100&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">100</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 250>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=250&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">250</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 500>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=500&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">500</a></li>
+                  <li><a class="dropdown-item <cfif URL.step EQ 1000>active</cfif>" href="FinancialReportDashboard.cfm?view=#URL.view#&step=1000&search=#searchURL#&page=1&startYear=#URL.startYear#&startMonth=#URL.startMonth#&endYear=#URL.endYear#&endMonth=#URL.endMonth#">1000</a></li>
                 </ul>
               </div>
             </li>
