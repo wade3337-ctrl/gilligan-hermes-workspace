@@ -85,12 +85,10 @@ pricing discipline or crew execution. We are constrained on the volume of hours 
 > **A note on how this metric is built.** Revenue per crew-hour is measured against *scheduled* crew hours —
 > how we have always reported it, and the basis on which the $130 target was set. Scheduled hours run about
 > 10% below the hours our crews actually clock, so measured against attendance the same result is roughly
-> **$117 rather than $130**. The basis has been consistent for years, so the improvement is real on either
-> measure: **+6.5% as reported, +3.7% on attendance hours.** Capacity and headcount in Section 4 are sized on
-> attendance hours, not scheduled hours.
->
-> *This comparison is an internal cross-check drawn from our own attendance records and has not yet been
-> reconciled to payroll. I am validating it with the Controller.*
+> **$117 rather than $130** for H1 2026. The reported basis has been consistent for years, so **the +6.5%
+> year-over-year improvement is sound.** An equivalent attendance-based comparison to 2025 is not possible:
+> we only adopted electronic timekeeping in late 2025, so clocked hours begin in November. Capacity and
+> headcount in Section 4 are sized on clocked hours.
 
 ---
 
@@ -184,18 +182,25 @@ answer, so all three are stated here:**
 The third is the one that governs capacity — and it is the number that matches both the Controller's
 reporting and the daily schedule.
 
-#### What has actually happened to the field workforce
+#### What the field workforce actually looks like
 
-| H1 | Paid field hours | Distinct people per month | Hours per person per month |
-|---|---|---|---|
-| 2025 | 91,736 | ~91 | 168 |
-| **2026** | **91,976** | **~83** | **184** |
+**We adopted electronic timekeeping in late 2025, so clocked hours are only available from November 2025
+onward.** Everything below is measured on that system; a clean prior-year hours comparison does not yet
+exist and will first be possible in November 2026.
 
-**Paid hours are flat year over year (+0.3%) while the field workforce is down about 8 people (−8.3%).
-The remaining crew absorbed it — each person is now working roughly 16 more hours a month.**
+| H1 2026 | Figure |
+|---|---|
+| Clocked field hours | **91,976** (≈15,329/month) |
+| People logging hours per month | **~83** |
+| **People working on a typical weekday** | **~76** |
+| **Hours per person per working day** | **~8.9** |
 
-On a typical weekday, both years look nearly identical: **about 76 people working about 8.9 hours each.**
-**That is already a long day.** There is no meaningful utilization headroom left in the existing crew.
+**Our crews are already working 8.9-hour days.** Whatever slack existed in the schedule has largely been
+taken up — the utilization gain described above is what took it. There is no meaningful headroom left in
+the existing crew, and the plan should not assume any.
+
+*Field headcount also appears to have declined roughly 8 people over the past year. I am treating that as
+indicative rather than firm, because the count spans the timekeeping changeover.*
 
 #### What the goal requires
 
