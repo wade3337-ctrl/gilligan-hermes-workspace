@@ -112,11 +112,96 @@ What that means operationally:
    meeting. That is not a realistic operating assumption and I will not present it as one.
 
 **The path to $25.1M therefore runs through capacity — hours available to sell and to work — or through
-price. Most likely both.** Every dollar of productivity above $130 reduces the hours we must add.
+price. Most likely both.** Section 4 sets out how much each lever is actually worth.
 
 ---
 
-## 4. What is already committed
+## 4. The plan — three levers, and what each one is worth
+
+### First, where this year's productivity gain actually came from
+
+This is the finding that shapes the plan, and it is not the obvious one.
+
+| H1 | Total paid crew hours | Revenue-bearing | Non-revenue | Non-revenue share |
+|---|---|---|---|---|
+| 2025 | 84,616 | 65,180 | 19,436 | **23.0%** |
+| **2026** | **82,565** | **68,512** | **14,053** | **17.0%** |
+
+**We moved roughly 5,400 hours out of non-revenue work and into billable work.** Revenue-bearing hours rose
+**5.1%** while total paid hours *fell* 2.4%.
+
+The on-the-job rate — revenue divided by revenue-bearing hours — was **$158.62 in H1 2025 and $156.89 in
+H1 2026, down 1.1%.**
+
+> **We did not get faster on the job. We spent a far larger share of the day on billable work.**
+> The entire productivity improvement is a scheduling and utilization result, not a pricing or speed result.
+
+That matters because it tells us exactly which levers still have room.
+
+### Lever 1 — Utilization (non-revenue hours). Proven, and still has room.
+
+To bill $2.31M/month at the current on-the-job rate we need **14,742 revenue-bearing hours per month**.
+H1 ran **11,419**. But how many *paid* hours that costs depends entirely on the non-revenue share:
+
+| Non-revenue share | Total paid hours required | vs H1 average (13,761) |
+|---|---|---|
+| 23% *(where we were in 2025)* | 19,146 | +39% |
+| **17% *(where we are now)*** | **17,762** | **+29%** |
+| 15% | 17,344 | +26% |
+| 12% | 16,752 | **+22%** |
+
+**Every one point of non-revenue reduction is worth roughly 210 crew-hours a month — capacity that costs
+nothing to add.** Holding 17% and pushing toward 12% removes about a quarter of the hiring requirement.
+
+### Lever 2 — Crew capacity. This is the decision I need.
+
+Crews working per month in H1 ranged from 25 to 28, averaging **26**.
+
+| Month | Crews | Hours | Hours per crew |
+|---|---|---|---|
+| February | 25 | 11,109 | 444 |
+| **April** *(best month)* | 26 | 16,513 | **635** |
+| June | 28 | 12,228 | 437 |
+| **H1 average** | **26** | **13,761** | **526** |
+
+At 17% non-revenue we need **17,762 hours per month**. What that requires:
+
+| Crews | Hours per crew per month | vs. April's proven peak (635) |
+|---|---|---|
+| 26 *(today)* | 683 | **+8% — above anything we have achieved** |
+| 28 | 634 | level with April |
+| **30** | **592** | **7% below April — achievable with margin** |
+
+**This is the crux of the report.** At today's crew count the goal requires every crew to sustain 8% above
+our best month for five straight months. **At roughly 30 crews it requires each crew to run below what we
+already proved in April.** The difference between "heroic" and "achievable" is about four crews.
+
+### Lever 3 — Price and job mix. Untouched.
+
+The on-the-job rate is flat to slightly down. **Every $5 of on-the-job rate removes about 455 revenue hours
+a month from the requirement** — roughly one crew's monthly output. This lever has not been pulled this
+year and is the cheapest of the three.
+
+### Putting it together — the scenario that reaches $25.1M
+
+**~30 crews, running at 592 hours each — below April's proven peak — with non-revenue held at or under 17%.**
+
+That is the plan. It is not a productivity stretch; it is a staffing and scheduling commitment. If we also
+recover a few points of non-revenue or a few dollars of rate, the crew requirement falls further.
+
+### How the operating initiatives feed these levers
+
+| Initiative | Lever it moves | Effect |
+|---|---|---|
+| Weekly sales-and-production meeting on live data | Utilization | Made the 23%→17% shift visible and held it week to week — this is what produced the gain |
+| Production and crew performance dashboards | Utilization + price | Per-crew, per-job visibility of which work misses target and why |
+| Automated municipal budget forecasting | Price / mix | Earlier visibility on our largest segment; less contract erosion mid-term |
+| Recruiting and retention | Capacity | The binding constraint on everything above |
+| Pipeline development | Coverage | The ~$4.4M of the goal not yet sold |
+
+---
+
+## 5. What is already committed
 
 Of the $25.1M goal, approximately **$20.7M is covered** by revenue recognized to date, contracted municipal
 work, sold work already scheduled, and risk-adjusted pipeline.
@@ -129,7 +214,7 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 ---
 
-## 5. Systems and operating discipline
+## 6. Systems and operating discipline
 
 - **Executive reporting suite deployed.** Six management dashboards — revenue performance, production
   performance, crew performance, sales pipeline, the weekly sales-and-production meeting, and municipal
@@ -145,25 +230,30 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 ---
 
-## 6. Risks and watch items
+## 7. Risks and watch items
 
 | Item | Assessment |
 |---|---|
-| **Capacity to deliver the H2 run-rate** | The primary risk. Requires ~29% more crew hours per month than H1 averaged. Needs a staffing and scheduling answer before Q4. |
-| **H2 plan not re-based after Q1** | The published monthly plan reaches ~$24.3M, not $25.1M. Recommend formally re-basing so the organization works to a number that reaches the goal. |
+| **Crew count** | The binding constraint. At 26 crews the goal demands 8% above our best month ever, sustained. At ~30 crews it sits below a level we already proved. **This is a hiring decision, and it has a deadline — crews added in October cannot deliver a Q4 number.** |
+| **Holding the utilization gain** | The entire 2026 productivity improvement is the 23%→17% non-revenue shift. If it slips back toward 23%, the hours requirement rises from +29% to +39% and the goal moves out of reach regardless of hiring. |
+| **On-the-job rate is flat** | Down 1.1% year over year. Not a crisis, but it means no help is currently coming from price. |
 | **Pipeline conversion** | Roughly $4.4M of the goal depends on business not yet sold. |
 | **Seasonality** | Q4 is historically our softest quarter (Q4 2025: $5.02M). The plan places $2.05–2.20M per month into that window. |
+| **H2 plan not re-based after Q1** | The published monthly plan reaches ~$24.3M, not $25.1M. Recommend formally re-basing so the organization works to a number that reaches the goal. |
 
 ---
 
-## 7. What I would ask of the Board
+## 8. What I would ask of the Board
 
-1. **Endorse re-basing the H2 plan** to a monthly figure that actually reaches $25.1M.
-2. **Direction on capacity.** Closing the gap requires materially more crew hours than we ran in H1. That is
-   a hiring, retention and scheduling decision with cost implications, and I would like alignment before
-   committing to it.
-3. **Acknowledge the productivity result.** Crews delivered target productivity through a soft first quarter
-   and exceeded it in the second, on fewer hours than last year. Whatever we decide on volume, the operating
+1. **A decision on crew capacity, with a date.** The goal is reachable at roughly 30 crews running *below*
+   April's proven output. It is not reachable at 26 crews without sustained performance we have never
+   achieved. Hiring lead time means this decision has to be made now to affect Q4.
+2. **Endorse re-basing the H2 plan** to a monthly figure that actually reaches $25.1M. The organization is
+   currently working to a plan that lands ~$800K short.
+3. **Support for holding the utilization discipline.** The 23%→17% shift is this year's real achievement and
+   it is worth about 210 crew-hours a month per point. Protecting it matters as much as adding crews.
+4. **Acknowledge the result.** Crews delivered target productivity through a soft first quarter and exceeded
+   it in the second, on 2.4% fewer hours than last year. Whatever we decide on volume, the operating
    discipline is working.
 
 ---
