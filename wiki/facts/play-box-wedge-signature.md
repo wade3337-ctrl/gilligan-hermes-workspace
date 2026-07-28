@@ -52,34 +52,36 @@ PY
 **Fast connect + zero bytes = wedged, not down.** Services that greet you unprompted (SSH, SQL Server) are
 the good probes; HTTP is a poor one because it waits for a request.
 
-## ✅ REVISED 2026-07-28 — most likely PLANNED VENDOR WORK, not a fault
-**Skipper:** *"Jordan and Travis are working on a way for us to share the dev server with Travis and his
-team along with a repository for changes. I think the play server is offline because they are working
-through these changes."*
+## ✅ CONFIRMED CAUSE 2026-07-28 — a GENUINE HARD FREEZE. Not planned work. Cause still unknown.
+**Jordan (via Skipper, 2026-07-28): "they were not working on it. They hard rebooted to get it online again."**
 
-**My own evidence favours his read over mine.** The connect time was **0.18 s uniformly across four very
-different services** (sshd, IIS, IIS-TLS, SQL Server). A wedged Windows host would not be that consistent —
-but **a firewall/NAT that answers SYNs on forwarded ports with no live backend behind them produces exactly
-this**. Supporting: **:3389 did NOT answer** (fits a new forward list that omits RDP), and **the Skipper's
-own VPN stopped connecting** — far better explained by "they changed the VPN config" than by "a service hung."
+### The timeline, from the box's own logs
+| Local (CDT) | UTC | What |
+|---|---|---|
+| 07:00 7/27 | 12:00 | `GSTS DB RESTORE` ran — **Result=0, success** |
+| ~16:24 7/27 | ~21:24 | **Box freezes.** Last Tailscale contact. |
+| 16:24 → 21:58 | | **5.5 hours with ZERO System event-log entries** |
+| 21:58 7/27 | 02:58 7/28 | **Jordan hard-resets it.** Kernel-Power **41** + **6008**, **no 1074** |
+| — | 04:33 | Back up, healthy, `Workbench` intact and backed up |
 
-➡️ **DO NOT escalate to Nocix for a power cycle.** If this is planned work, a hard reboot could interrupt a
-migration mid-flight. **Confirm with Jordan/Travis before touching the provider portal.**
+### Why this is the decisive evidence
+**The System event log is completely empty for the 5.5-hour window.** A network/firewall change leaves the box
+running and logging. **An empty log means the machine itself stopped executing** — it could not even write its
+own event log while the NIC kept completing TCP handshakes. Combined with **no 1074** (no graceful shutdown
+was ever requested), this was a hard hang recovered by a power cycle.
 
-⚠️ **Keep the signature below anyway** — the probe and the read-out are correct and reusable; only the
-*cause* changed. "Fast connect + zero bytes" means **something is answering that is not the service** —
-that is either a wedged host **or** a proxying middlebox with a dead backend. The probe cannot tell them
-apart; ask a human what changed.
+### Both of my hypotheses were wrong — and the disk one is fully cleared
+- ❌ **Disk full:** C: **38% free**, D: **15% free (138 GB)**, and the restore job succeeded 9 hours earlier.
+- ❌ **Planned vendor work:** Jordan says no. See the lesson below — I abandoned a correct read too fast.
 
-## 🚨 RISK — play-only data with no local backup
-If the box is rebuilt/reimaged as part of this work, data that exists **only on play** is lost:
-`Workbench` overrides (~564 rows), `BidQueue` (16 rows of our working data), the `DashboardAccess` list
-(23 users, edited via the UI since seeding), and saved `GoalSettings`/`DashboardPrefs`.
-We hold **create+seed scripts** (`RC-DashboardAccess-create-seed-PROD.sql`, `RC-02-SalesGoal-create-seed-PROD.sql`,
-`dev-tasks/spm-results-prod-fix/01-create-workbench-objects-PROD.sql`) — **but no current data dump**, and it
-cannot be taken while the box is unreachable.
-▶️ **FIRST ACTION when play returns: dump `Workbench` and commit it.** Also re-check the DSN repoint
-(`GSTS`/`GSTSAPI` → `localhost,14333`) survived — revert kit at `arbor-stack/dev-tasks/play-dsn-revert/`.
+### ⚠️ Cause remains UNDIAGNOSED — a freeze this deep is storage, kernel, or host hardware
+The hard reset destroyed the live state, so there is nothing left to examine. **If it recurs:**
+1. **Tell Travis it FROZE HARD — not "it was down."** The distinction is what makes Nocix take a hardware look.
+2. Ask Nocix (**WholeSale Internet**, RDAP `WII-NET-173-208`; **Travis holds the account**) to check the IPMI
+   **System Event Log** — host-level power/thermal/storage faults land there, not in Windows.
+3. **Screenshot the IPMI console BEFORE power-cycling.** A frozen Windows console often shows the fault; a
+   hard reset erases it. That is exactly what we lost this time.
+🔑 **Still the single point of failure: we have no Nocix portal access. Get the Skipper added.**
 
 ## Superseded hypothesis (kept for the record — disk-full)
 **The nightly restore filled the disk.** `D:\DownloadAndRestoreLatestGSTS.bat` (scheduled task

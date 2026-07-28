@@ -30,4 +30,4 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[kling-ai]] — 🎬 video/image generation (`kling/kling_gen.py`, key `~/.secrets/kling.json`); two-wallet gotcha (sub ≠ API prepaid pack); ffmpeg compress for Discord's 8MB cap.
 - [[herman-trimit-login]] — Boss Herman's TRIM IT (play) web login.
 - [[trimit-server-topology]] — which box is which; **my analysis runs on a daily prod restore (isolated); the play WEBSITE uses a different DB (198.207.148.168)**; the 21s connect blackhole.
-- [[play-box-wedge-signature]] — 🔴 play box "wedge": **fast TCP connect + ZERO bytes = wedged, NOT down** (Tailscale offline is a symptom). One-command probe, disk-full hypothesis, and the blocker: **Travis holds the Nocix/WholeSale Internet account — get the Skipper added.**
+- [[play-box-wedge-signature]] — 🔴 play box froze hard 5.5h on 2026-07-27 (Jordan hard-rebooted; **cause undiagnosed**). **Fast TCP connect + ZERO bytes = frozen, NOT down**; an **empty event log** is the tell. If it recurs: IPMI SEL + screenshot before power-cycling. **Travis holds the Nocix account — get the Skipper added.**
