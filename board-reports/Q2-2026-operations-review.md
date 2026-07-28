@@ -82,6 +82,12 @@ penny — while total crew hours ran 2.4% *below* H1 2025.**
 **Conclusion: the operating engine is performing to specification. We are not losing ground on efficiency,
 pricing discipline or crew execution. We are constrained on the volume of hours worked.**
 
+> **A note on how this metric is built.** Revenue per crew-hour is measured against *scheduled* crew hours,
+> which is how we have always reported it and how the target was set. Scheduled hours run about 90% of paid
+> hours, so the same result measured against payroll hours is **$116.87 for H1, not $130.19**. The basis is
+> consistent year over year, so the improvement is real either way — **+6.5% as reported, +3.7% on payroll
+> hours.** Capacity and headcount in Section 4 are sized on payroll hours, not scheduled hours.
+
 ---
 
 ## 3. Position against the annual goal
@@ -194,6 +200,10 @@ At the intensity people are already working:
 | **People working per weekday** | **~76** | **~99** | **+23** |
 
 **This is the crux of the report. The goal requires roughly 23 to 24 additional field staff.**
+
+*Cross-check: $2.31M per month divided by the payroll-hour productivity rate of $116.87 gives 19,791 paid
+hours — within five hours of the 19,786 derived above by a different route. The conclusion does not depend
+on which way it is calculated.*
 
 It cannot be met by asking the current crew for more. They are already averaging 8.9 hours a day and have
 absorbed the loss of eight colleagues without a drop in total hours. **Asking for another 29% on top of

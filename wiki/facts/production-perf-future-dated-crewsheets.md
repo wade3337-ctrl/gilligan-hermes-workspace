@@ -41,10 +41,16 @@ crew sheet answers it:
 
 **So the system does it right 741 times and wrong 148 times — "that's just how scheduling works" is refuted.**
 
-🔑 **The hours on those 148 are the ESTIMATE, copied.** `ActHours = EstHours` on **144 of 148 (97%)**.
-For genuinely completed June work the equivalent match rate is **20% (135/675)**. Recorded hours vary;
-these don't. (Dollars differ — `ActValue = EstValue` on only 9/148 — so the value comes from the sheet
-lines, not a straight estimate copy.)
+~~🔑 **The hours on those 148 are the ESTIMATE, copied.** `ActHours = EstHours` on **144 of 148 (97%)**
+vs 20% for genuinely completed June work.~~
+❌ **STRUCK 2026-07-28 — this evidence was invalid.** I compared future-sheet **hours** against past-sheet
+**dollars**. The true baseline is **`ActHours = EstHours` on 98.2% of June sheets** — indeed 98–99% of
+*every* month — because **`ActHours` is the estimate on every crew sheet, always**
+→ [[crewsheet-acthours-is-the-estimate]]. So 97% is entirely normal and proves nothing here.
+**The finding below stands on its real evidence — 741 future sheets correctly `Pending`/$0 versus 148
+flipped to `Complete`+checked-in+hours-entered.** Dollars remain the meaningful signal
+(`ActValue = EstValue` on only 9/148, matching the ~20% norm).
+*Compare like with like: same field, same population.*
 
 **It is concentrated, not scattered** — this is a handful of recurring municipal/HOA route blocks, not
 148 independent mistakes:
