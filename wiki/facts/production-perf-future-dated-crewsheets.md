@@ -62,7 +62,48 @@ flipped to `Complete`+checked-in+hours-entered.** Dollars remain the meaningful 
 - **Oldest outlier: Windflower Community Association — 1 sheet, $15,786, NULL hours, `WorkDate` 2026-07-31
   but `Created` 2025-09-24.** A ten-month-old placeholder.
 
-## 🔄 REVISED 2026-07-28 (evening) — it is ROUTINE PRACTICE, not a bulk action
+## ✅ SOLVED 2026-07-28 (late) — `CrewSheets.WorkDate` IS CORRUPT; `CalendarID → Calendars.CalDate` IS TRUTH
+
+**The Skipper: "I don't see where the dates are wrong?" He was right — his screen is correct and the field
+I was binning on is broken.** A crew sheet carries TWO dates:
+
+| WO 168010 sheet | `WorkDate` (what dashboards bin on) | `CalendarID → CalDate` (what the UI shows) |
+|---|---|---|
+| 538891 | 2026-07-13 | 2026-07-13 |
+| 538892 | **2026-08-04** | 2026-07-14 |
+| 538893 | **2026-08-05** | 2026-07-15 |
+| 538896–538905 | **2026-08-11 → 08-26** | 2026-07-20 → 07-31 |
+
+**Every `CalDate` falls inside the work order's own 7/13–7/31 window and forms consecutive working days.**
+`StartTime` agrees with `CalDate`, not `WorkDate`.
+
+### Proven at scale
+- **All 148 "future-dated" sheets have a `CalDate` in the PAST** (2025-12-15 → 2026-07-23). **Not one is
+  genuinely future work.** Mean forward corruption of `WorkDate`: **65.9 days**.
+- Across H1 2026, **2,064 of 4,355 sheets (47%) have `WorkDate ≠ CalDate`** — $5,224,993 and 41,433 hours.
+- ⭐ **Decisive validation — rebinning on `CalDate` reconciles production to the Controller's revenue:**
+  H1 production by `CalDate` = **$11,295,695** vs book revenue **$11,222,433** = **0.65% apart.**
+  By `WorkDate` it was $10,748,976 — **4.2% adrift.**
+
+### Corrected figures (bin on `CalDate`)
+| | by `WorkDate` (wrong) | by `CalDate` (right) |
+|---|---|---|
+| Q1 2026 production | $5,092,289 · TPH $125.42 | **$5,213,233 · TPH $124.33** |
+| Q2 2026 production | $5,656,686 · TPH $134.80 | **$6,082,462 · TPH $136.69** |
+| H1 TPH | $130.19 | **$130.69** |
+
+### Consequences
+1. ⛔ **The cap-at-today fix is WRONG and must never ship** — it would delete real, already-worked revenue.
+   **The fix is to bin production on `Calendars.CalDate` via `CalendarID`, not `CrewSheets.WorkDate`.**
+2. ✅ **The five staff are entirely exonerated.** They completed real work on real dates. Nothing they did
+   was wrong, and the earlier "who completed these" table below must not be read as fault.
+3. ✅ **Production was never overstated.** ~$12.7M completed-to-date was right; my "$12.1M" was the artifact.
+   The August accumulation on Production Performance is a *display* bug, not phantom work.
+4. The same corruption likely explains the June gap (16,765 clocked hrs vs 12,228 June-dated sheet hrs).
+
+---
+
+## 🔄 Superseded 2026-07-28 (evening) — "routine practice" reading, kept for the trail
 The Skipper supplied a live example, **WO 168010 (City of Irvine 2024 Import)**, and it reframes everything.
 
 **What that one work order shows:**
