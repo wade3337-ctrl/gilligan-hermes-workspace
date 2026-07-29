@@ -14,6 +14,11 @@ updated: 2026-07-29
 Found 2026-07-29 when the Skipper asked where a 5.7% gap between clocked payroll hours and crew-sheet
 hours was going. **The answer is: nowhere. It is an attribution mismatch, not lost time.**
 
+> ⚠️ **CORRECTED 2026-07-29 — this note explains the wrong thing.** The 2,696-hr gap below is **98%
+> unclosed crew sheets**: 2,640.69 hrs sit on 959 Q2 sheets still in `StatusDefID=39` (Pending), 902 of
+> them checked in → [[pending-crewsheet-closeout-gap]]. Crew-assignment drift is real and still makes
+> **per-crew** TPH untrustworthy — that part of this note stands — but it is **not** the company-level gap.
+
 ## The measurement (Q2 2026)
 Clocked payroll hours **47,195** vs crew-sheet hours **44,499** — a gap of **2,696**. Broken down by crew,
 **~2,100 (78%) sits in four crew records with ZERO active members**:

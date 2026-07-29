@@ -34,8 +34,14 @@ framings on hover or in the subtitle.
 Get any of these wrong and the dashboard will disagree with what the Board was told.
 
 1. **Productivity = CFO revenue ÷ CLOCKED payroll hours.** Not production, not crew-sheet hours.
-   - Revenue: `Invoices` × `Periods` on `PeriodID`, `StatusDefID IN (21,100,22,23,148)`,
-     `IsProForma=0`, `IsCredit=0`, bucketed by **accounting period** (`Periods.StartDate`).
+   - Revenue: **`SUM(dbo.Invoices.Total)`** × `Periods` on `PeriodID`, bucketed by **accounting period**
+     (`Periods.StartDate`). Verified 2026-07-29: H1 = **$11,078,311.77** ✅.
+   - 🚨 **CORRECTED 2026-07-29 — do NOT add `IsProForma=0 AND IsCredit=0`.** Both columns are **100% NULL**
+     (0 of 1,501 H1 invoices have either set), so that filter returns **ZERO rows** and the tile would read
+     $0. The earlier version of this rule was wrong. `StatusDefID` is 21 on every H1 invoice, so the
+     `IN (21,100,22,23,148)` list is currently a no-op — keep it only if you also handle NULL.
+   - Amount column is **`Total`**, not `NetTotal` ($10.86M, net of something) and not `InvoiceSubTotal`
+     (all NULL). `SurchargeTotal` is $37,674 of the H1 figure; retention is $0.
    - Hours: `CrewMemberCalendars.TotalHours` joined `CalendarID → Calendars.CalDate`.
    - ⛔ **Never `CrewSheets.ActHours`** — it is the ESTIMATE (= `EstHours` on 98–99% of sheets)
      → [[crewsheet-acthours-is-the-estimate]].
@@ -66,8 +72,30 @@ H1 $11,222,433 / 91,976 = **$122.01** · Q2 job-booked share 44,499 / 47,195 = *
 - Check `Workbench` for anywhere to store targets so they are editable without a redeploy (the
   `SalesGoal` pattern), rather than hard-coding 91 / $127.86 / 95.3%.
 
-## Open before building
-- Does he want the **$130 target and the $127.86 plan requirement** shown as two lines, or one with the
-  gap called out? (He asked for both in the report.)
-- Should tile 4 track **CFO revenue** (matches the Board) or **our accrual-adjusted actual** (matches the
-  count-once ledger)? They differ; the Board saw CFO revenue.
+## ✅ LOCKED — design decisions (Skipper, 2026-07-29 02:20–02:50 UTC)
+1. **Audience: the Skipper's cockpit, him only.** Blunt framing, data caveats visible on the page.
+   Gate to UserID 9 — not the general dashboard list.
+2. **Control panel, not a scoreboard, + the lever math.** Every tile recomputes **what it now takes to
+   still land the number** as the quarter burns ("Sep–Dec now needs $2.35M/mo"; "you're at 79, you need
+   12 more by Sept 30"). Plus the substitution line he gave the Board: **+$5 of rate removes ~465 hrs/mo**
+   of hiring need; **one point of booked share ≈ 153 hrs/mo**.
+3. **Tile 4 revenue = invoiced (board basis) as the headline, count-once accrual as a shadow line.**
+   Partial months always labelled — invoicing lags 3–10 days ([[june-invoicing-lag]]).
+4. **Targets are a monthly RAMP the Skipper edits** — stored in `Workbench`, no redeploy. Applies to all
+   four commitments, not just headcount. (Derive a starting ramp from "anyone hired after September cannot
+   meaningfully contribute to Q4" — all 15 landed by Sept 30 — then let him re-base it.)
+5. **Productivity shows BOTH gaps explicitly** — "vs commitment $130: −$4.90" and "vs plan requirement
+   $127.86: −$2.76". $130 never moves; $127.86 is derived from the re-based plan and will drift as hours
+   land, so it must never silently become the scored target.
+6. **CFO revenue is STORED, with the ERP delta monitored.** The board numerator is the Controller's income
+   statement, *not* queryable from TRIM IT — ERP invoiced revenue runs **~1.3% low** (H1 $11,078,312 vs
+   $11,222,433). A `Workbench` table holds the CFO monthly figure; until it is entered the month shows the
+   ERP estimate labelled **"ERP est. — awaiting CFO"**, and a small indicator tracks ERP-vs-CFO drift.
+7. **Tile 3 ships exactly as committed (94.3% → 95.3%) with a "why it moved" breakdown** splitting the
+   change into *sheets closed out* vs *everything else*. **Mandatory** — the metric is blind to returned
+   field time and improves when someone closes old sheets → [[pending-crewsheet-closeout-gap]]. Without the
+   breakdown the dashboard would hand the Board a false causal story next quarter.
+
+## Verified against play 2026-07-29 (all reproduce exactly)
+`clocked Q2 = 47,195.05` · `Complete-sheet hrs = 44,498.72` · `production = $6,082,462` → **94.3%** ✅
+Status codes: **`CrewSheets`: 5 = Complete · 39 = Pending.** `Invoices`: 21/22/23/100/148.
