@@ -73,9 +73,22 @@ and **all four self-reconciliation controls PASS** (GOAL_RECONCILE, MARKET_PRODU
 MARKET_SCHEDULED_RECONCILE, COUNT_ONCE_HARDCOVERAGE). Output then reads: produced **$13.34M**, future
 scheduled **$2.75M**, hard coverage **$16.09M**, hard gap **$9.21M**.
 
-▶️ **BLOCKED ON A DECISION, not on code.** Which figure is the approved annual goal — **$25,300,976**
-(what `SalesGoal` currently sums to), **$25.1M** (the team goal), or another? ⚠️ If it is $25.1M then the
-**monthly `SalesGoal` rows must be re-based too**, because the guard compares the plan figure to their
-*sum*. Three goals remain in circulation → see [[path-to-25m-2026]]. Changing an `Approved` plan row is a
-governance act, so it waits for him. Backup of the landing page before the change:
+### ✅ FIXED 2026-07-29 — the Skipper set the approved annual goal to **$25,300,976**
+`Workbench.rgc.Plan` PlanID 1: `ApprovedAnnualGoal` **24,000,000 → 25,300,976**, `ApprovedAt` restamped,
+`ApprovedBy` = jwade. Prior row saved to
+`arbor-stack/backups/play-workbench/rgc-Plan-before-goal-rebase-20260729.txt`.
+**⚠️ `Workbench` is NOT in the nightly restore — that backup file is the only copy of the old row.**
+
+**Verified live:** `RevenueGoalClose.data.cfm` now returns **HTTP 200**, `ok: true`, and all four controls
+**PASS**. Figures as of 2026-07-28, scenario PROTECTED:
+annual goal **$25,300,976** · produced **$13,343,214** · future scheduled **$2,748,430** ·
+hard coverage **$16,091,644** · **hard gap $9,209,332** · approved-unscheduled $234,711 ·
+pending current-year $10,043,741 · future-year pending excluded $21,354,539.
+
+🔑 **This also settles which goal is authoritative: $25,300,976**, matching the live `dbo.SalesGoal` rows.
+That retires the $24.0M figure. The team's $25.1M and the deal dashboard's $25.05M are still adrift →
+[[path-to-25m-2026]].
+
+▶️ **The landing-page link is still pulled** — removed before the cause was known. Re-adding it is a
+one-line change (`showRGC` back to `zuid EQ 9` plus the `<li>`), pending his say-so. Backup of the landing page before the change:
 `D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`.
