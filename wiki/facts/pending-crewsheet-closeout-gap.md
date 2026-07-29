@@ -1,5 +1,5 @@
 ---
-title: 🚨 The 5.7% "hours not booked to jobs" is unclosed crew sheets, not idle time
+title: 🚨 The 5.7% "hours not booked to jobs" is INTERNAL time (meetings/yard/OJT/modified duty)
 type: fact
 domain: work
 track: 1
@@ -9,7 +9,30 @@ links: ["[[crewsheet-acthours-is-the-estimate]]", "[[crew-assignment-drift]]", "
 updated: 2026-07-29
 ---
 
-# The job-booked gap is a close-out gap
+# The job-booked gap is INTERNAL non-productive time
+
+> ⚠️ **REVISED AGAIN 2026-07-29 (third pass) — this note's original conclusion was wrong.**
+> The gap is **not** unclosed paperwork. **Q2: of 2,640 unbooked hours, 2,526 (96%) are INTERNAL work
+> orders** — Safety Training/Meetings, Modified Duty, On-the-Job Training, Yard Hours — booked to the
+> `PRODUCTION` crew record (`CrewNameID 38`, 1 member record, 0 active). They never reach Complete
+> **because there is nothing to bill**. Only **115 Q2 hours** are genuinely unclosed real-job sheets.
+> H1: **4,910 internal vs 313 real-job** pending hours.
+>
+> **This is good news and it inverts the recommendation.** The metric is not measuring sloppiness — it is
+> measuring exactly the thing the plan committed to attack ("yard time, travel, standby and equipment
+> downtime"), and the categories are individually trackable month by month:
+> *H1 monthly avg — Safety/Meetings 296 · OJT 257 · Modified Duty 168 · Yard 99.*
+> The safety-meeting change should land in the Safety/Meetings row (~59 crew-hrs/mo estimated).
+> Do **not** claim the effect until several closed months move together.
+> Now shown on [[bod-commitment-dashboard]] as a monthly category table.
+>
+> 🔑 **Why I got this wrong twice:** I decomposed by *crew* (→ "attribution drift"), then by *status*
+> (→ "unclosed paperwork"), and stopped each time the first plausible story appeared. The answer needed a
+> third axis — **what the work order IS**. My own internal-category classifier already existed in
+> `Dashboard-RevenuePerformance.cfm`; I had even queried it, but filtered `StatusDefID=5` and got zero
+> internal hours, which I read as "the categories are unused" instead of "they are all in the other
+> status." **A filter that returns zero is a question, not an answer.**
+
 
 Found 2026-07-29 while specifying [[bod-commitment-dashboard]], verifying the basis of the metric the
 Skipper committed to the Board: *"share of paid hours booked to jobs, from 94.3% toward 95.3%."*
