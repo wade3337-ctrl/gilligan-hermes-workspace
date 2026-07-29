@@ -15,23 +15,31 @@
 
 **One sentence: the engine is running well and it is running at its limit.**
 
+**The plan is 15 hires plus three points of utilization — not 19 hires.** The arithmetic behind that choice
+is in section 1.
+
 ---
 
 ## The three things I am doing about it
 
 ### 1. Field capacity — the binding constraint
 
-**Problem:** the second half needs ~24% more crew hours per month than the first half delivered. That is
-roughly **19 additional field staff** — about 76 work a typical weekday today, we need about 95.
+**Problem:** the second half needs ~24% more crew hours per month than the first half delivered. About 76
+field staff work a typical weekday today.
 
-**Plan:**
-- Recruiting targeted at ~19 net additions, front-loaded — anyone hired after September cannot
-  meaningfully contribute to Q4.
-- Retention first: we lost ~8 field staff over the year and covered it with the crew we kept. Replacing
-  attrition is not growth — recruiting has to outrun it before it adds a single net hour.
-- Report net field headcount to this Board monthly, not revenue alone.
+**Plan: 15 net additions, paired with a utilization step-up.**
+- **15 hires takes us to ~91 working per weekday and delivers about $24.55M** — roughly $550K short on
+  hiring alone.
+- **Closing that $550K does not require more people.** Taking non-revenue hours from 17% to 14% covers it
+  outright, and every $5 of on-the-job rate covers about half of it. **15 hires plus three points of
+  utilization reaches $25.1M.**
+- I would rather commit to 15 we can actually recruit and hold, and take the balance out of utilization
+  and price, than plan on 19 and miss on both.
+- **Front-loaded** — anyone hired after September cannot meaningfully contribute to Q4.
+- **Retention first:** we lost ~8 field staff over the year and covered it with the crew we kept.
+  Replacing attrition is not growth — recruiting has to outrun it before it adds a single net hour.
 
-**How we will know it is working:** people working per weekday, tracked monthly against the ~95 needed.
+**How we will know it is working:** people working per weekday, tracked monthly against ~91.
 
 ### 2. Utilization — protect the gain we already made
 
@@ -41,8 +49,9 @@ billable time. Non-revenue hours fell **29.3%** — from 22.8% of the day to 17.
 **Plan:**
 - Hold the weekly sales-and-production meeting on live data — that discipline is what produced the shift,
   and it is what will keep it.
-- Treat 17% as a floor, not an achievement. Every point recovered is worth ~205 crew-hours a month at no
-  added cost; every point lost has to be bought back with hiring.
+- **Target 14%, not 17%.** This is no longer just protecting a gain — with 15 hires rather than 19, three
+  points of utilization is what closes the remaining gap. Each point is worth ~218 crew-hours a month at
+  no added cost; each point lost has to be bought back with hiring we may not be able to do.
 
 **How we will know it is working:** non-revenue share of hours, reported monthly.
 
@@ -53,7 +62,8 @@ utilization; none came from price. That is the cheapest lever available and it i
 
 **Plan:**
 - Review pricing and job mix on the work we are winning, starting with the segments where rate has slipped.
-- Every $5 of on-the-job rate removes roughly one crew's monthly output from the hiring requirement.
+- Every $5 of on-the-job rate removes about 450 revenue hours a month from the requirement — roughly half
+  the gap that 15 hires leaves open. Rate and utilization are interchangeable here; we need one of them.
 
 **How we will know it is working:** revenue per revenue-bearing hour, reported monthly.
 
@@ -72,7 +82,7 @@ utilization; none came from price. That is the cheapest lever available and it i
 
 ## What I will bring back next quarter
 
-- Net field headcount against the ~95 target.
-- Non-revenue share of hours against the 17% floor.
+- Net field headcount against the ~91 target.
+- Non-revenue share of hours against the 14% target.
 - On-the-job rate against this quarter's baseline.
 - Progress against the re-based $2.31M monthly plan.
