@@ -3,7 +3,7 @@ title: BOD Commitment Dashboard — track what the Skipper told the Board he wou
 type: project
 domain: work
 track: 1
-status: 🟢 BUILT on play 2026-07-29 — render-verified, gate proven. Reconcile headcount basis before reporting.
+status: 🟢 BUILT on play 2026-07-29 — render-verified, gate proven, headcount basis reconciled.
 tags: [dashboard, board, kpi, trimit, play, q3-2026]
 applies: ["[[repair-contract]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[dashboard-metric-standards]]", "[[only-trustworthy-data]]", "[[dashboard-auth-gate]]"]
 links: ["[[pending-crewsheet-closeout-gap]]", "[[path-to-25m-2026]]", "[[crewsheet-acthours-is-the-estimate]]", "[[timekeeping-live-nov-2025]]", "[[crew-assignment-drift]]", "[[production-perf-future-dated-crewsheets]]"]
@@ -128,9 +128,18 @@ revenue **$1,996,306**, required run-rate **$127.70/hr** and **$2.31M/mo** for t
    with 3 people**. Cap the month list at the live month.
 
 ## ⏭️ Open
-- **Reconcile the headcount basis.** My query gives **78.1 people/weekday for Q2**; the delivered plan
-  says "about 76". Same metric, ~2 people apart — find which filter differs before this is reported to
-  anyone. Everything else on the page reproduces the board figures exactly.
+- ✅ **RESOLVED — the headcount basis.** Not a population filter (`IsFieldCrew` is a red herring: it yields
+  ~29 people/weekday and is set on only 266 of 572 records). It was **the statistic and the window**:
+  the board's "about 76" is the **H1 mean, 75.75**. The H1 **median** is **77.0**, Q2 is 78.1 mean, and
+  **July's median weekday is 78.5**.
+  🚨 **A mean is the wrong statistic here** — public holidays land as near-empty weekdays and fake a
+  staffing collapse: 6 Jul had **18 people**, 3 Jul 60, April has a **3-person** day, February a 13.
+  July's mean is 74.1 against a median of 78.5. The page now uses the **median** ("typical weekday" is
+  literally a median) and shows the mean plus the quietest day underneath.
+  ▶️ **DECISION FOR THE SKIPPER:** the plan told the Board *"about 76 today"* **and** *"15 net additions"*
+  **and** *"tracked monthly against 91"*. At a true ~78.5 today those no longer agree — **91 needs ~12.5
+  more, while 15 adds lands ~93.5.** Pick which half is the commitment; the tile currently scores
+  against 91.
 - Decide whether tile 4 should score an H1 month at all before the first H2 month closes (currently
   shows June against $2.31M with a banner explaining it is a starting line, not a result).
 - The on-job rate is built on the honest denominator (~$137, not $155) — confirm he wants that shown
