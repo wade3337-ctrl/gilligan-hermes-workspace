@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [dashboard, revenue, goal, executive, pilot, release-candidate]
 applies: ["[[gsts-ui-spec]]", "[[dashboard-metric-standards]]", "[[repair-contract]]", "[[two-track-confidentiality]]"]
-links: ["[[rc-02-revenue-performance]]", "[[rc-03-city-budgets]]", "[[sales-cockpit]]", "[[our-work-kanban]]"]
-updated: 2026-07-14
+links: ["[[rc-02-revenue-performance]]", "[[rc-03-city-budgets]]", "[[sales-cockpit]]", "[[our-work-kanban]]", "[[path-to-25m-2026]]", "[[bod-commitment-dashboard]]", "[[v15-landing-page]]"]
+updated: 2026-07-29
 ---
 
 # Revenue Goal Close (RGC) Dashboard
@@ -53,7 +53,8 @@ The Skipper had the **Revenue Goal Close link removed from the V1.5 landing page
 with a comment; the previous condition was `zuid EQ 9`.
 
 **The page itself is untouched** — `Dashboard-RevenueGoalClose.cfm` still exists and is reachable by
-direct URL. Only the entry point is gone. **Do not re-add the link until he says so.**
+direct URL. Only the entry point went. **↩️ Restored the same day once the cause was found and fixed —
+see the bottom of this section.**
 
 ### ✅ DIAGNOSED same day — it is NOT a code bug, it is goal-governance drift
 Symptom: every tile renders as an em-dash. `RevenueGoalClose.data.cfm` returns **HTTP 422
@@ -89,9 +90,11 @@ pending current-year $10,043,741 · future-year pending excluded $21,354,539.
 That retires the $24.0M figure. The team's $25.1M and the deal dashboard's $25.05M are still adrift →
 [[path-to-25m-2026]].
 
-▶️ **The landing-page link is still pulled** — removed before the cause was known. Re-adding it is a
-one-line change (`showRGC` back to `zuid EQ 9` plus the `<li>`), pending his say-so. Backup of the landing page before the change:
-`D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`.
+✅ **The landing-page link was RESTORED the same day (2026-07-29)** to the V1.5 Executive tab, once the page
+returned real numbers — `showRGC` back to `zuid EQ 9` plus the `<li>` → [[v15-landing-page]]. Backup taken
+before the removal: `D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`.
+*(2026-07-29, superseded: "the link is still pulled pending his say-so" — true only for the ~2 hours between
+the pull and the fix.)*
 
 ## 🐛 FIXED 2026-07-29 — APPROVED drill did not match its own tile
 The *Approved · unscheduled* drill listed go-aheads that were already scheduled or finished (**GA 214331,

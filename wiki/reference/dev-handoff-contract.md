@@ -4,7 +4,7 @@ type: reference
 domain: how-we-work
 tags: [contract, handoff, deploy, prod, resourcing]
 links: ["[[deploy-playbook]]", "[[repair-contract]]", "[[db-repair-contract]]", "[[v15-prod-deploy-state]]", "[[external-comms-contract]]"]
-updated: 2026-07-28
+updated: 2026-07-29
 ---
 
 # Dev Handoff Contract
@@ -50,6 +50,19 @@ about what someone else missed, no deployment history, no blame. Proven on `TRIM
   `.diff`, so the dev can confirm their copy matches the baseline before replacing it.
 - **Confirm the exact draft with the Skipper before sending** (per the [[external-comms-contract]] per-email
   rule), and keep the hold marker (`DO-NOT-SEND-HELD.txt`) in the staged folder until he releases it.
+
+## 🔒 A PACKAGE IS FROZEN THE MOMENT IT IS FORWARDED (2026-07-28)
+Batching governs what goes into the **next** package — it never licenses reopening one already sent.
+- I kept appending to package 4 (2 files → 4, zip rebuilt, old zip deleted) while the Skipper had **already
+  forwarded the 2-file version**. Our staged folder then described something the developer never received.
+- **New work opens the next number, even for the same defect class.** (That is why the crew-sheet date fix
+  went as packages 4 *and* 5 → [[v15-prod-deploy-state]].)
+- **Record the sent state before touching anything else:** a `SHIPPED.md` carrying zip name + md5 + per-file
+  hashes, folder marked **do-not-add**. Don't delete the shipped zip until its hash is durable somewhere.
+- **Assert package doc == package contents == shipped record** — three-way, because two of the three agreeing
+  is exactly what fooled me.
+- **Lead each `START-HERE.md` with the symptom a user would report** (*"the page returns rows"*), not the
+  internal defect name — that is the check the dev can actually run.
 
 ## Key rules
 - **Resourcing:** **Jordan Kim — IT Manager (salaried, $0 marginal):** prod deploys + menu/AppForms config (broken links, hardcoded IDs, placement, titles, dedupe). **Travis / Data Processing LLC ($75/hr):** ONLY deep DB/security/proc work we can't run ourselves.

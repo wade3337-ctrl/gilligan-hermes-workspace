@@ -6,8 +6,8 @@ track: 1
 status: parked
 tags: [ui, landing-page, v1.5, role-gating, login, home-base, responsive]
 applies: ["[[gsts-ui-style-guide]]", "[[gsts-ui-spec]]", "[[repair-contract]]"]
-links: ["[[sales-cockpit]]", "[[rc-03-city-budgets]]", "[[rc-04-spm]]", "[[rc-02-revenue-performance]]"]
-updated: 2026-07-03
+links: ["[[sales-cockpit]]", "[[rc-03-city-budgets]]", "[[rc-04-spm]]", "[[rc-02-revenue-performance]]", "[[v15-landing-assistant]]", "[[revenue-goal-close]]"]
+updated: 2026-07-29
 ---
 
 # V1.5 Landing Page
@@ -30,6 +30,19 @@ updated: 2026-07-03
 - **Design decisions D1–D17** locked: 3-node lifecycle IA, role-gated landing, home-base (node hub + TODAY list + in-house lite-LLM AI chat + messaging), phased build 1→4, phone+iPad responsive (D9 hard req), premium/light-airy feel with photographic canopy hero + 50th-anniversary logo login.
 - ⚠️ **Open gaps:** R2 (which T&A system + hourly-crew login/kiosk tension), R3 crew photography (50th logo ✅ resolved), no dedicated Accounting role in `RoleDefs` (map the ~20 logins by hand). **Login stays visual-only** — real auth wiring is the one security-sensitive step (do with Jordan/dev; fix plaintext-password then).
 - ⏭️ Next: add the menu tab (INSERT `dbo.AppForms` + `dbo.MyAppForms`), decide login→home wiring, keep populating nodes.
+
+## 2026-07-29 — the Executive node's RGC link: pulled, then restored
+The Skipper: *"remove revenue goal because it doesnt work"* → `showRGC` hard-`false` in
+`Dashboard-V15Home.cfm` (backup `D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`).
+**Diagnosed the same session and it was not the page** — the RGC proc was failing closed on a goal
+mismatch, so every tile rendered an em-dash → [[revenue-goal-close]]. Goal re-based, page returned real
+numbers, **link restored to the Executive tab the same day.**
+🪧 **Worth keeping:** a landing-page link is the only thing most users see — *"it doesnt work"* about a
+destination is a report about the destination's DATA at least as often as its code. Pull the link if he
+asks, but diagnose before treating the removal as the fix.
+
+Also on this page today: its chat assistant got a personality and a KB-owned joke file
+→ [[v15-landing-assistant]].
 
 ## Related
 - [[sales-cockpit]] — the SALES node's single consolidated destination.

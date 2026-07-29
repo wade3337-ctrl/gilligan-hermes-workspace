@@ -6,8 +6,8 @@ track: 1
 status: active
 tags: [deploy, prod, trimit, travis, jordan, batch, outstanding]
 applies: ["[[dev-handoff-contract]]", "[[deploy-playbook]]", "[[trimit-dual-webroot-shadow]]"]
-links: ["[[rc-02-revenue-performance]]", "[[rc-04-spm]]", "[[steve-diligence-dashboard]]", "[[revenue-goal-close]]", "[[trimit-server-topology]]", "[[v15-landing-assistant]]", "[[sales-cockpit]]", "[[dashboard-auth-gate]]"]
-updated: 2026-07-28
+links: ["[[rc-02-revenue-performance]]", "[[rc-04-spm]]", "[[steve-diligence-dashboard]]", "[[revenue-goal-close]]", "[[trimit-server-topology]]", "[[v15-landing-assistant]]", "[[sales-cockpit]]", "[[dashboard-auth-gate]]", "[[production-perf-future-dated-crewsheets]]", "[[timekeeping-live-nov-2025]]", "[[crewsheet-acthours-is-the-estimate]]"]
+updated: 2026-07-29
 ---
 
 # V1.5 prod deploy state — what production is still missing
@@ -52,9 +52,31 @@ someone else missed.** Concretely: internal `MANIFEST.md` pulled (kept at
 - **F — not shipping, decided:** Arbor Helper (*"not ready"*) · `Dashboard-V15Home.cfm` (pulled 7/27, its only
   delta is the Arbor Helper hook) · [[revenue-goal-close]] (D-1 ships one view it needs, not the subsystem).
 
+## 📦 Packages 4 and 5 — the crew-sheet date fix (2026-07-28)
+The `WorkDate` → `Calendars.CalDate` rebind (→ [[production-perf-future-dated-crewsheets]]) went out as its
+own numbered packages because package 3 was already in the developer's hands.
+- **Package 4 — SHIPPED, CLOSED.** `TRIMIT-PRODUCTIONPERF-DATEFIX-20260728.zip`, md5
+  `cbfe29905ba0c053c513cf44ab800f43`, 12,530 b — `ProductionPerf.data.cfm` (`d79b027f…`) +
+  `Dashboard-ProductionPerf.Day.cfm` (`9ef12414…`). **Both must deploy together**; check 4 in its `START-HERE.md`
+  (the day drill must sum to its period row) is what catches a half-deploy. Recorded in `predeploy-pkg4/SHIPPED.md`.
+- **Package 5 — staged, HELD.** `TRIMIT-EXECSALES-DATEFIX-20260728.zip`, md5
+  `45186d1f96bb12b9ec42d55079f602f8`, 13,381 b — `Executive$Sales$Detail.cfm` +
+  `Executive$Sales$Detail$Customer.cfm`. Emailed to the Skipper to forward; **not sent to the developer by me.**
+  Its lead check is *"the page returns rows"* — the symptom a user would actually report, since on the old
+  basis crew 38 / June 2026 rendered **empty**.
+- 📌 **Rule learned: once a package is forwarded it is FROZEN.** I kept appending to pkg4 (2 files → 4) after
+  the Skipper had already sent the 2-file version, which would have left our record disagreeing with what the
+  vendor actually holds. New work opens the next number even for the same defect class. → [[dev-handoff-contract]]
+- ▶️ **Still open on this defect:** `Executive$Sales$ByCrewName.cfm` gates a metric on
+  `cs.WorkDate >= TIMECLOCK_GOLIVE` — changing the basis changes which sheets qualify, so it needs a decision
+  about what the metric is meant to measure, not a sweep. → [[timekeeping-live-nov-2025]] ·
+  [[crewsheet-acthours-is-the-estimate]]
+
 ## Why this note exists
 **Every Travis trip is billed** — the Skipper's standing rule of 2026-07-27 is *batch it all, send once*
 (→ [[dev-handoff-contract]]). A newly found bug joins this inventory; it does not become its own email.
+**Exception, learned the hard way:** that rule governs what goes into the *next* package — it does not license
+reopening one already sent (see packages 4/5 above).
 
 ## The inventory as it stood before the ship (2026-07-27 — kept for the shape of the ask)
 *Superseded by the section above: A/C/D/G shipped, B closed, F unchanged. **Row E was wrong** — the

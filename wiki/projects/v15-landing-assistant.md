@@ -8,7 +8,7 @@ status: live-on-play
 model: llama3.2:3b (Ollama, localhost:11434)
 applies: ["[[repair-contract]]", "[[gsts-ui-spec]]", "[[only-trustworthy-data]]"]
 links: ["[[v15-landing-page]]", "[[rc-02-revenue-performance]]", "[[rc-03-city-budgets]]", "[[rc-04-spm]]", "[[sales-cockpit]]", "[[trimit-dual-webroot-shadow]]", "[[arbor-core-arbor-ai-system]]"]
-updated: 2026-07-12
+updated: 2026-07-29
 ---
 
 # V1.5 Landing Assistant
@@ -62,3 +62,15 @@ Skipper B1: the assistant was deliberately **read-only** in v1; this is the firs
 - **Storage:** to-dos write to the **pre-existing "Get it done today" table `Workbench.dbo.Todo`** (keyed `UserID`, the same table the home-page widget + `ZTest-Todo.cfm` use) → a chat-added item **appears on the V1.5 home page** (Skipper follow-up 2026-07-22). Notes → `dbo.AssistantNote`. **No live TRIM IT record touched.** Revert: `recovery/workbench-assistant-tables-revert-20260722.sql`.
 - **Safety (the key point):** the CF "GSTS" datasource connects as **`sa`** — so every write MUST be **parameterized `queryExecute`** (chat text is never concatenated into SQL) and **scoped to the caller's cookie ZUserID** (not the message). Router runs before figure routing so "remind me to check Anaheim's budget" saves a to-do, not a City Budgets lookup (verified).
 - **Not yet:** role-gating (C) · "mark done" (add + list only for v1). See [[LESSONS]] for the sa-datasource injection-safety note.
+
+## 🗣️ 2026-07-29 — he got a personality (Skipper: *"give the lil fella some personality"*)
+**The complaint:** *"it's easy to ask it a question and have it go to the stock answer… Like how about the Raiders? It should say Raiders SUCK!"* — and explicitly **not** a big build.
+**The diagnosis:** `AI-Chat.cfm` routed to **nine data handlers** and dropped everything else onto one canned line (*"That's outside my canopy"*). llama3.2:3b was always able to chat — **our code was gagging it.** No model download; the answer was a system prompt.
+- **Built `answerBanter()` + `ai-kb/_persona.md`.** The persona lives in the KB, so the Skipper can rewrite the character with **no code change and no redeploy** (`?kbreload=1`). The nine handlers still own every data question — SQL is still the only source of a number.
+- 🚨 **First guard FAILED in testing.** Free chat replied *"about 80 folks in the field and around 70 more in the office."* Two faults: I had left "about 80 people in the field" **in the persona file itself**, and the guard was a **blocklist of business nouns** that missed "folks" and "office". **A blocklist cannot work — the model always finds a word you didn't think of.** Replaced with **zero digits allowed in banter** (sole exception: OC freeways by name, so *"the 405 is a nightmare"* survives), and every company fact stripped from the persona. → [[LESSONS]] · [[only-trustworthy-data]]
+- **Fixed something worse than deflecting:** the semantic fallback forced unmatched questions into the nearest of nine buckets, so *"how many people work here?"* returned **top crews by TPH** — a confident answer to a *different* question, with real numbers. The classifier is now told a nearly-fitting category is a serious error and `none` is a good answer — safe only because `none` now leads to banter instead of a dead end.
+- **Jokes moved into his hands.** 8 tree jokes → **56** (48 added) plus **32 dad jokes**, all in `ai-kb/_persona.md` so every future joke edit happens in one file he owns; the handler pools the `## Tree jokes` section from **both** `_site.md` and `_persona.md`. **Counted from the served files: 56 + 32 = 88, 0 exact duplicates.** He laughs at his own jokes now (a rotating `😂 I slay me.` / `😂 Timber! Sorry. Sorry.`).
+- 🔁 **Checking the neighbours caught two more:** the joke *counter* still advertised "8 tree jokes" while 41 were loaded, and both the joke and laugh pickers were **clock-based** — two asks in the same second returned the same joke. Both now ride an `application.ahJokeN` counter that advances per ask, at different strides so the joke↔laugh pairing never repeats either.
+- **Verified live:** Raiders → *"total dumpster fire this season"* · traffic → *"the 405 is like a living thing"* · "how many people work here?" → *"Look it up yourself, I don't have a branch on that info!"* · every data question still routes to SQL.
+- ⚠️ **Known trait:** he will invent **sports** facts (claimed a loss to the Bengals). Harmless — the digit guard only protects company data — but he is not a sports oracle.
+- ⏭️ **Open:** *"how many crews/trucks do we have?"* still mis-routes to a crew-TPH answer — a deterministic keyword branch grabs it before the classifier. Needs a headcount/roster handler or a narrower keyword test. Backup `D:\GSTS\Jasonsrepairs\2026-07-29-AI-Chat-prebanter.bak`.
