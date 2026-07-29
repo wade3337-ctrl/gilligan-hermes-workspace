@@ -41,18 +41,25 @@ About 76 field staff work a typical weekday today.
 
 **Measure:** people working per weekday, tracked monthly against 91.
 
-## 2. Holding the rate — utilization
+## 2. Returning time to the field
 
-**Problem:** the Q1→Q2 improvement came from converting non-revenue time into billable time, not from
-working faster. Non-revenue hours fell 29.3% over the year — from 22.8% of scheduled time to 17.0%.
-**The hiring plan assumes we keep that gain**, so the first job is to understand precisely what produced
-it and make it deliberate rather than incidental.
+**Problem:** every hour a crew is not on a job is an hour we pay for and cannot bill. Our job-booked hours
+run about 17% below the hours we pay for.
 
-**Plan:**
-- **Push from 17% toward 14%.** Every point recovered is worth roughly 218 crew-hours a month at no added
-  cost — and it is the cheapest insurance against a hiring shortfall.
+**What I have already done:** replaced three of the four weekly 30-minute safety meetings each month with
+a two-minute daily video briefing. Net of the video time that returns **about 47 minutes per person per
+month — roughly 700 crew-hours a year, or $90,000 at our current rate.** Safety coverage went up, not
+down: crews now get a briefing every day instead of a half-hour block once a week.
 
-**Measure:** non-revenue share of hours, reported monthly.
+**What I am doing next:** the same exercise on the rest of it — yard time, travel, standby and equipment
+downtime. Each point of non-job time returned is worth roughly 218 crew-hours a month at no added cost,
+and it is the cheapest insurance against a hiring shortfall.
+
+**Measure:** share of paid hours booked to jobs, reported monthly.
+
+*One caution on the year-over-year figure: our non-job hours fell 29.3% against last year, but a
+meaningful part of that is a 1,643-hour swing in inclement-weather time — 2025 had a wind event and 2026
+did not. I would not represent that portion as an operating gain, and I am not building the plan on it.*
 
 ## 3. Price and job mix — the lever we have not pulled
 
