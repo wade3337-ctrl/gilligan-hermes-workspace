@@ -221,7 +221,7 @@ hours — the same figure reached above by a different route. The conclusion doe
 on which way it is calculated.*
 
 It cannot be met by asking the current crew for more. They are already averaging 8.9 hours a day and have
-absorbed the loss of eight colleagues without a drop in total hours. **Asking for another 29% on top of
+absorbed the loss of eight colleagues without a drop in total hours. **Asking for another 23% on top of
 that is not a scheduling adjustment; it is a staffing decision.**
 
 ### Lever 3 — Price and job mix. Untouched.
@@ -288,8 +288,8 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 | **Field headcount** | The binding constraint, and the report's main finding. We need roughly **+19 people**. **This is a hiring decision with a deadline: staff added in October cannot deliver a Q4 number.** |
 | **The crew is already stretched** | Field staff are down ~8 people year over year while total paid hours held flat — the remaining crew absorbed it and now averages 8.9 hours a day. There is no slack left to ask for. |
 | **Retention** | Losing 8 field staff over the year cost us no hours only because others covered. A further loss converts directly into missed revenue, and recruiting has to outrun attrition before it adds net capacity. |
-| **Holding the utilization gain** | The entire 2026 productivity improvement is the 23%→17% non-revenue shift. If it slips back toward 23%, the hours requirement rises from +29% to +39% and the goal moves out of reach regardless of hiring. |
-| **On-the-job rate is flat** | Down 1.1% year over year. Not a crisis, but it means no help is currently coming from price. |
+| **Holding the utilization gain** | The entire 2026 productivity improvement is the 23%→17% non-revenue shift. If it slips back toward 23%, the hours requirement rises from +23% to +32% and the goal moves out of reach regardless of hiring. |
+| **On-the-job rate is flat** | Down 0.8% year over year. Not a crisis, but it means no help is currently coming from price. |
 | **Pipeline conversion** | Roughly $4.4M of the goal depends on business not yet sold. |
 | **Seasonality** | Q4 is historically our softest quarter (Q4 2025: $5.02M). The plan places $2.05–2.20M per month into that window. |
 | **H2 plan not re-based after Q1** | The published monthly plan reaches ~$24.3M, not $25.1M. Recommend formally re-basing so the organization works to a number that reaches the goal. |
@@ -305,7 +305,7 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 2. **Endorse re-basing the H2 plan** to a monthly figure that actually reaches $25.1M. The organization is
    currently working to a plan that lands ~$800K short.
 3. **Support for holding the utilization discipline.** The 23%→17% shift is this year's real achievement and
-   it is worth about 210 crew-hours a month per point. Protecting it matters as much as adding crews.
+   it is worth about 205 crew-hours a month per point. Protecting it matters as much as adding crews.
 4. **Acknowledge the result.** Crews delivered target productivity through a soft first quarter and exceeded
    it in the second, on 5.5% fewer hours than last year. Whatever we decide on volume, the operating
    discipline is working.
