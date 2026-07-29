@@ -62,30 +62,30 @@ We manage crew productivity as **revenue per crew-hour**. The 2026 target is **$
 
 | Quarter | Revenue produced | Crew hours | Per crew-hour |
 |---|---|---|---|
-| Q1 2025 | $5.23M | 43,398 | $120.42 |
-| Q2 2025 | $5.11M | 41,218 | $124.04 |
-| Q3 2025 | $5.63M | 45,841 | $122.89 |
-| Q4 2025 | $5.36M | 40,968 | $130.79 |
-| Q1 2026 | $5.09M | 40,601 | $125.42 |
-| **Q2 2026** | **$5.66M** | **41,964** | **$134.80** |
+| Q1 2025 | $5.93M | 48,866 | $121.34 |
+| Q2 2025 | $5.28M | 42,547 | $123.98 |
+| Q3 2025 | $5.02M | 39,685 | $126.47 |
+| Q4 2025 | $5.07M | 39,508 | $128.40 |
+| Q1 2026 | $5.21M | 41,930 | $124.33 |
+| **Q2 2026** | **$6.08M** | **44,499** | **$136.69** |
 
 **Q2 2026 is the highest productivity quarter in the series, and the first to clear target with margin.**
 
 The most important line in this report:
 
-> **In Q2 we produced 10.6% more revenue on 1.8% more crew hours.**
-> Essentially all of the gain came from productivity, not from added labor.
+> **In Q2 we produced 15.3% more than the same quarter last year, on 4.6% more crew hours.**
+> Two thirds of that gain came from productivity, not from added labor.
 
-For the half year, productivity averaged **$130.19 per crew-hour against a $130 target — on plan to the
-penny — while total crew hours ran 2.4% *below* H1 2025.**
+For the half year, productivity averaged **$130.69 per crew-hour against a $130 target — while total crew
+hours ran 5.5% *below* H1 2025.** We produced slightly more than last year on materially fewer hours.
 
 **Conclusion: the operating engine is performing to specification. We are not losing ground on efficiency,
 pricing discipline or crew execution. We are constrained on the volume of hours worked.**
 
 > **A note on how this metric is built.** Revenue per crew-hour is measured against *scheduled* crew hours —
 > how we have always reported it, and the basis on which the $130 target was set. Scheduled hours run about
-> 10% below the hours our crews actually clock, so measured against attendance the same result is roughly
-> **$117 rather than $130** for H1 2026. The reported basis has been consistent for years, so **the +6.5%
+> about 6% below the hours our crews actually clock, so measured against attendance the same result is
+> roughly **$123 rather than $131** for H1 2026. The reported basis has been consistent for years, so **the +6.5%
 > year-over-year improvement is sound.** An equivalent attendance-based comparison to 2025 is not possible:
 > we only adopted electronic timekeeping in late 2025, so clocked hours begin in November. Capacity and
 > headcount in Section 4 are sized on clocked hours.
@@ -102,12 +102,11 @@ What that means operationally:
 
 | Monthly revenue | Crew hours required at target productivity | vs. H1 monthly average |
 |---|---|---|
-| $2.20M | 16,900 | +23% |
-| **$2.31M — required** | **17,800** | **+29%** |
+| $2.20M | 16,900 | +17% |
+| **$2.31M — required** | **17,800** | **+24%** |
 
-- H1 averaged **13,761 crew hours per month**.
-- Our strongest month, April, delivered **16,513 hours**.
-- **The required run-rate is roughly 8% above our best month, sustained for five consecutive months.**
+- H1 averaged **14,405 crew hours per month**.
+- **The required run-rate is roughly 24% above the H1 average, sustained for five consecutive months.**
 
 **Two observations I want the Board to have plainly:**
 
@@ -132,17 +131,17 @@ This is the finding that shapes the plan, and it is not the obvious one.
 
 | H1 | Scheduled crew hours | Revenue-bearing | Non-revenue | Non-revenue share |
 |---|---|---|---|---|
-| 2025 | 84,616 | 65,180 | 19,436 | **23.0%** |
-| **2026** | **82,565** | **68,512** | **14,053** | **17.0%** |
+| 2025 | 91,413 | 70,612 | 20,801 | **22.8%** |
+| **2026** | **86,429** | **71,729** | **14,700** | **17.0%** |
 
-**We moved roughly 5,400 hours out of non-revenue work and into billable work.** Revenue-bearing hours rose
-**5.1%** while total scheduled hours *fell* 2.4%.
+**Non-revenue hours fell 29.3% — about 6,100 hours.** Revenue-bearing hours rose 1.6% while total
+scheduled hours *fell* 5.5%: almost the entire reduction came out of non-revenue work.
 
 *(These are scheduled hours — the basis our productivity metric uses, and consistent across both years.
 Clocked hours are a separate measure, available only from November 2025; see Lever 2.)*
 
-The on-the-job rate — revenue divided by revenue-bearing hours — was **$158.62 in H1 2025 and $156.89 in
-H1 2026, down 1.1%.**
+The on-the-job rate — revenue divided by revenue-bearing hours — was **$158.69 in H1 2025 and $157.48 in
+H1 2026, down 0.8%.**
 
 > **We did not get faster on the job. We spent a far larger share of the day on billable work.**
 > The entire productivity improvement is a scheduling and utilization result, not a pricing or speed result.
@@ -151,17 +150,17 @@ That matters because it tells us exactly which levers still have room.
 
 ### Lever 1 — Utilization (non-revenue hours). Proven, and partly spent.
 
-To bill $2.31M/month at the current on-the-job rate we need **14,742 revenue-bearing hours per month**.
-H1 ran **11,419**. How many scheduled hours that costs depends on the non-revenue share:
+To bill $2.31M/month at the current on-the-job rate we need **14,687 revenue-bearing hours per month**.
+H1 ran **11,955**. How many scheduled hours that costs depends on the non-revenue share:
 
 | Non-revenue share | Scheduled hours required | vs H1 average (13,761) |
 |---|---|---|
-| 23% *(where we were in 2025)* | 19,146 | +39% |
-| **17% *(where we are now)*** | **17,762** | **+29%** |
-| 15% | 17,344 | +26% |
-| 12% | 16,752 | **+22%** |
+| 23% *(where we were in 2025)* | 19,074 | +32% |
+| **17% *(where we are now)*** | **17,695** | **+23%** |
+| 15% | 17,279 | +20% |
+| 12% | 16,690 | **+16%** |
 
-**Every one point of non-revenue reduction is worth roughly 210 crew-hours a month — capacity that costs
+**Every one point of non-revenue reduction is worth roughly 205 crew-hours a month — capacity that costs
 nothing to add.** Holding 17% and pushing toward 12% would remove about a quarter of the hiring requirement.
 
 **But this lever has already done most of its work.** The 23%→17% shift is what produced this year's
@@ -204,21 +203,21 @@ indicative rather than firm, because the count spans the timekeeping changeover.
 
 #### What the goal requires
 
-We need **17,762 job-hours per month**. Job sheets capture about 90% of paid time, so that equates to
-**19,786 paid hours per month against roughly 15,329 today — an increase of 29%.**
+We need **17,695 job-hours per month**. Job sheets capture about 94% of paid time, so that equates to
+**18,833 paid hours per month against roughly 15,329 today — an increase of 23%.**
 
 At the intensity people are already working:
 
 | Measure | Today | Required | Gap |
 |---|---|---|---|
-| Paid hours per month | 15,329 | 19,786 | **+29%** |
-| People logging hours per month | ~83 | ~108 | **+24** |
-| **People working per weekday** | **~76** | **~99** | **+23** |
+| Paid hours per month | 15,329 | 18,833 | **+23%** |
+| People logging hours per month | ~83 | ~102 | **+19** |
+| **People working per weekday** | **~76** | **~95** | **+19** |
 
-**This is the crux of the report. The goal requires roughly 23 to 24 additional field staff.**
+**This is the crux of the report. The goal requires roughly 19 additional field staff.**
 
-*Cross-check: $2.31M per month divided by the payroll-hour productivity rate of $116.87 gives 19,791 paid
-hours — within five hours of the 19,786 derived above by a different route. The conclusion does not depend
+*Cross-check: $2.31M per month divided by the payroll-hour productivity rate of $122.81 gives 18,833 paid
+hours — the same figure reached above by a different route. The conclusion does not depend
 on which way it is calculated.*
 
 It cannot be met by asking the current crew for more. They are already averaging 8.9 hours a day and have
@@ -233,7 +232,7 @@ year and is the cheapest of the three.
 
 ### Putting it together — the scenario that reaches $25.1M
 
-**Add roughly 23 field staff — from ~76 working per weekday to ~99 — while holding non-revenue at or
+**Add roughly 19 field staff — from ~76 working per weekday to ~95 — while holding non-revenue at or
 under 17% and beginning to move the on-the-job rate.**
 
 That is the plan, and it is primarily a hiring plan. The utilization lever has already been pulled: it is
@@ -286,7 +285,7 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 
 | Item | Assessment |
 |---|---|
-| **Field headcount** | The binding constraint, and the report's main finding. We need roughly **+23 people**. **This is a hiring decision with a deadline: staff added in October cannot deliver a Q4 number.** |
+| **Field headcount** | The binding constraint, and the report's main finding. We need roughly **+19 people**. **This is a hiring decision with a deadline: staff added in October cannot deliver a Q4 number.** |
 | **The crew is already stretched** | Field staff are down ~8 people year over year while total paid hours held flat — the remaining crew absorbed it and now averages 8.9 hours a day. There is no slack left to ask for. |
 | **Retention** | Losing 8 field staff over the year cost us no hours only because others covered. A further loss converts directly into missed revenue, and recruiting has to outrun attrition before it adds net capacity. |
 | **Holding the utilization gain** | The entire 2026 productivity improvement is the 23%→17% non-revenue shift. If it slips back toward 23%, the hours requirement rises from +29% to +39% and the goal moves out of reach regardless of hiring. |
@@ -300,7 +299,7 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 ## 8. What I would ask of the Board
 
 1. **A decision on field headcount, with a date.** About 76 field staff work on a typical weekday. The
-   goal requires roughly **99 — some 23 additional people.** The current crew is already averaging 8.9-hour
+   goal requires roughly **95 — some 19 additional people.** The current crew is already averaging 8.9-hour
    days and has absorbed the loss of eight colleagues this year without a drop in hours; there is no slack
    left to draw on. Hiring lead time means this decision has to be made now to affect Q4.
 2. **Endorse re-basing the H2 plan** to a monthly figure that actually reaches $25.1M. The organization is
@@ -308,7 +307,7 @@ into 2027 has been deliberately excluded rather than counted toward this year.
 3. **Support for holding the utilization discipline.** The 23%→17% shift is this year's real achievement and
    it is worth about 210 crew-hours a month per point. Protecting it matters as much as adding crews.
 4. **Acknowledge the result.** Crews delivered target productivity through a soft first quarter and exceeded
-   it in the second, on 2.4% fewer hours than last year. Whatever we decide on volume, the operating
+   it in the second, on 5.5% fewer hours than last year. Whatever we decide on volume, the operating
    discipline is working.
 
 ---
