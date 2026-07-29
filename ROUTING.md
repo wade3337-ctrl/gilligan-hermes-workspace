@@ -24,9 +24,9 @@ This workspace is organized in **5 layers** (Skipper's model, Jun 18 2026):
 - `ROUTING.md` — you are here. Update it when the structure changes.
 
 ## 3. Stage contracts (how we do each kind of work) — `contracts/`
-- `contracts/repair-contract.md` — UI vs DB repair, backup-first, play→prod, root-cause, ship-log + reference update.
+- **`wiki/reference/repair-contract.md`** ← **START HERE for any repair or build.** UI vs DB, backup-first, blast radius + sibling propagation, render-verify the SERVED output, ship-log + reference update, and the **verification gate** (`verify-build.sh`). *(`contracts/repair-contract.md` is a stub — it fell behind.)*
 - `contracts/dev-handoff-contract.md` — manifest before, bundle + exact paths, prod smoke-test after, sign-off.
-- `contracts/db-repair-contract.md` — build+test on play, prod-appropriate backup, exact dev instructions.
+- **`wiki/reference/db-repair-contract.md`** — build+test on play, prod-appropriate backup, exact dev instructions. *(`contracts/` copy is a stub.)*
 - `contracts/external-comms-contract.md` — untrusted senders, inline-text emails, who can instruct me.
 
 ## 4. Reference (look it up) — `reference/` + pointers
@@ -59,7 +59,7 @@ This workspace is organized in **5 layers** (Skipper's model, Jun 18 2026):
 
 - **🔧 TRIM IT** (the ERP we repair):
   - Schema / DB / architecture → `~/arbor-stack/Arbor AI/Trim IT Repairs/` + live `Reference-TrimITArchitecture.cfm`
-  - How we repair it (UI vs DB, backup-first) → `contracts/repair-contract.md` + `contracts/db-repair-contract.md`
+  - How we repair it (UI vs DB, backup-first) → `wiki/reference/repair-contract.md` + `wiki/reference/db-repair-contract.md`
   - System-wide menu audit (119 links) → `~/arbor-stack/Arbor AI/A.I/TrimIT Menu Audit … .pdf`
   - UI/style standards → `reference/GSTS-UI-STYLE-GUIDE.md` + `~/arbor-stack/gsts-ui-spec-v1.0.md`
   - Server/DB access → `~/arbor-stack/gstsdatabase-access.md`; run SQL/pages → `production-dashboard/gsql.sh` · `view.sh`

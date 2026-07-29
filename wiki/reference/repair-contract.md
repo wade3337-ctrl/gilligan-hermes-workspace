@@ -10,7 +10,7 @@ updated: 2026-07-03
 # Repair Contract
 
 **What it is:** The contract for any fix or change to a GSTS/TRIM IT page, query, proc, or data — root-cause it, map the blast radius, propagate to siblings, back up first, verify the served output, and log it. The base workflow every dashboard repair follows.
-**📁 Source:** `contracts/repair-contract.md`
+**📁 CANONICAL — this file is the contract.** `contracts/repair-contract.md` is a stub pointing here (it fell 5 weeks behind and `ROUTING.md` pointed at it; fixed 2026-07-29).
 
 **Used by:** [[rc-01-executive-financial]], [[rc-02-revenue-performance]], [[rc-03-city-budgets]], [[rc-04-spm]], [[rc-05-arborist-workbench]], [[steve-diligence-dashboard]], [[anomaly-monitor-suite]], [[completed-vs-sold]] — **any TRIM IT repair.**
 

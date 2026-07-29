@@ -10,7 +10,7 @@ updated: 2026-07-28
 # Dev Handoff Contract
 
 **What it is:** The contract for handing a deploy to the devs (play → PROD). Prod misses came from incomplete + unverified handoffs; devs deploy exactly what's named, so we hand the full dependency tree and verify prod. The contract form of the [[deploy-playbook]].
-**📁 Source:** `contracts/dev-handoff-contract.md`
+**📁 CANONICAL — this file is the contract.** `contracts/dev-handoff-contract.md` is a stub pointing here (it fell 5 weeks behind and `ROUTING.md` pointed at it; fixed 2026-07-29).
 
 **Used by:** [[rc-01-executive-financial]], [[rc-02-revenue-performance]], [[rc-03-city-budgets]], [[rc-04-spm]], [[rc-05-arborist-workbench]], [[steve-diligence-dashboard]] — **any play→prod handoff.**
 

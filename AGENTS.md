@@ -24,6 +24,20 @@ Do not manually reread startup files unless:
 2. The provided context is missing something you need
 3. You need a deeper follow-up read beyond the provided startup context
 
+## 🔧 Before ANY TRIM IT repair or build — read the contract first
+
+**This is a hard gate, not a suggestion.** Any repair, fix, new page, or data change on TRIM IT / GSTS:
+
+1. **Open `wiki/reference/repair-contract.md` BEFORE writing code.** Backup-first · map the blast radius ·
+   propagate to sibling pages · render-verify the SERVED output · log to `gsts-ship-log.md`.
+2. **Run `arbor-stack/production-dashboard/verify-build.sh` before saying "verified."** Exit code is the
+   FAIL count. It checks auth · render · **drill total == tile** · assets · stale figures.
+3. **Two rules that need no tooling:** *verify the neighbours, not just the change* — and *every figure I
+   report must come from a query I ran THIS session*, never from a note.
+
+Adopted 2026-07-29 after the Skipper personally found four defects in work already reported as verified.
+None were reasoning failures; all four were scope failures. → `wiki/reference/repair-contract.md`
+
 ## Memory
 
 You wake up fresh each session. Continuity lives in an **atomic `[[linked]]` wiki** (`wiki/`, Obsidian-style, plain markdown, LLM-agnostic):

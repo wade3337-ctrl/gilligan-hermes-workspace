@@ -1,9 +1,13 @@
-# Contract: DATABASE repair (proc / data / schema)
-**Why separate:** play DB reverts on the nightly prod→play refresh, so DB fixes must be deployed to prod by devs to stick.
+# ⛔ MOVED — this is not the live contract
 
-## Steps
-1. **Build + TEST on PLAY first** to prove it's right (play reverts nightly — fine for testing). Use `gsql.sh`.
-2. **Back up prod-appropriately** (NOT Jasonsrepairs — that's play-only): `SELECT * INTO dbo.zBak_<thing>_<date>` for affected rows, and/or script out the current proc definition to a file. Let IT use their own restore process.
-3. **Hand devs exact, scoped steps** — name every object (`dbo.<Proc>`), which server/env it lives on and deploys TO, and the exact action/params (run this proc with these params / regenerate these IDs). No "the files we changed."
-4. **Devs deploy to PROD.**
-5. **Verify on prod** against a stated acceptance check (e.g., "Long Beach 26/27 now ~$97K, not $0").
+**The canonical contract is `wiki/reference/db-repair-contract.md`** (wiki link: `[[db-repair-contract]]`).
+
+**When it applies:** DB-side repairs (rows/procs/schema) that devs must deploy to prod.
+
+## Why this file is a stub
+Both copies existed for weeks and **this one silently fell behind** — on 2026-07-29 it was 17 lines from
+25 June while the wiki copy was 53 lines and carried the mandatory verification gate. `ROUTING.md` pointed
+*here*, so following the workspace map led to the outdated rules. One contract, one file.
+
+**Do not add content to this file.** Edit `wiki/reference/db-repair-contract.md`.
+Superseded text is in git history (`git log --follow -- contracts/db-repair-contract.md`).

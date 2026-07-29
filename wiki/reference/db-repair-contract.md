@@ -10,7 +10,7 @@ updated: 2026-07-03
 # DB Repair Contract
 
 **What it is:** The contract for a DATABASE repair (proc / data / schema) — separate from a UI repair because the play DB reverts on the nightly prod→play refresh, so DB fixes must be deployed to prod by devs to stick.
-**📁 Source:** `contracts/db-repair-contract.md`
+**📁 CANONICAL — this file is the contract.** `contracts/db-repair-contract.md` is a stub pointing here (it fell 5 weeks behind and `ROUTING.md` pointed at it; fixed 2026-07-29).
 
 **Used by:** [[rc-03-city-budgets]], [[completed-vs-sold]], [[anomaly-monitor-suite]] — **any proc/data/schema fix** (and the DB-proc-level metric fixes flagged in [[dashboard-metric-standards]]).
 

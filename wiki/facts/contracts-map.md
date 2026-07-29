@@ -7,7 +7,12 @@ links: ["[[repair-contract]]", "[[db-repair-contract]]", "[[dev-handoff-contract
 updated: 2026-07-03
 ---
 
-# 📐 How we do each kind of work = `contracts/`
+# 📐 How we do each kind of work = `wiki/reference/`
+
+> ⚠️ **2026-07-29: the `contracts/` folder is now STUBS.** Every contract's live text lives in
+> `wiki/reference/<name>.md`. The two copies had diverged — `contracts/repair-contract.md` was five weeks
+> stale and `ROUTING.md` pointed at it, so following the map produced the wrong rules. The paths in
+> parentheses below are historical.
 
 **Open the contract, don't re-derive.** Each work type has a contract; summarized here, one line each, with a link to its reference note.
 
