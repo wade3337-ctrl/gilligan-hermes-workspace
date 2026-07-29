@@ -1,100 +1,44 @@
-# Q2 2026 — COO Operating Plan
-**Jason Wade · Board of Directors, quarterly meeting**
+WHERE OPERATIONS STAND
+• Productivity improved 5.3% in a single quarter — from $118.76 per paid hour in Q1 to $125.10 in Q2, against a $130 target. We finished the quarter about five dollars short of target, having started the year eleven dollars short.
+• The constraint is capacity, not execution. The crews are converting hours into revenue at close to the rate we ask of them. We simply do not have enough hours to reach $25.1M.
+• The team is already stretched. Field headcount is down about 8 people year over year, the remaining crew absorbed it with no drop in total hours, and they now average 8.9-hour days.
 
-> *Financial results are presented by the CFO. This covers operations: what the numbers say about how the
-> business is running, and what I am doing about it.*
->
-> *Productivity below is stated **fully weighted** — production dollars divided by every hour we actually
-> paid for, not just the hours booked to a job. It is the harder measure and the one that reflects what the
-> work truly costs us in labor.*
+The engine is running well, and it is running at its limit. My plan is 15 field hires, a small rate improvement, and a small further reduction in non-productive time.
 
-## Where operations stand
 
-- **Productivity improved 10.7% in a single quarter** — from **$116.42 per paid hour in Q1 to $128.88 in
-  Q2**, against a $130 target. We finished the quarter about a dollar short of target, having started the
-  year fourteen dollars short.
-- **The constraint is capacity, not execution.** The crews are converting hours into revenue at close to
-  the rate we ask of them. We simply do not have enough hours to reach $25.1M.
-- **The team is already stretched.** Field headcount is down about 8 people year over year, the remaining
-  crew absorbed it with no drop in total hours, and they now average 8.9-hour days.
+FIELD CAPACITY
+The second half needs about 21% more paid crew hours per month than the first half delivered. About 76 field staff work a typical weekday today. Plan: 15 net field additions.
+• At the rate we achieved in Q2, 15 hires takes us to roughly 91 working per weekday and delivers about $24.8M — around $300K short of the goal.
+• We close that $300K without hiring further: it takes about $1.38 per paid hour on rate and five minutes per person per day of non-productive time returned. Either lever alone would also do it — $2.76 on rate, or eleven minutes a day — but the balanced version is the one I am running.
+• That margin depends on holding Q2's rate. At the H1 average of $122.01 the same 15 hires land around $24.47M, roughly $635K short. Holding the rate is therefore not a bonus on top of the hiring plan — it is half of the plan.
+• Front-loaded. Anyone hired after September cannot meaningfully contribute to Q4.
+• Retention comes first. We lost about 8 field staff over the year and covered it with the crew we kept.
 
-**The engine is running well, and it is running at its limit.**
+Measure: people working per weekday, tracked monthly against 91.
 
-**My plan is 15 field hires, and holding the productivity rate we just demonstrated.**
 
----
+RETURNING TIME TO THE FIELD
+Every hour a crew is not on a job is an hour we pay for and cannot bill. Our job-booked hours run about 6% below the hours we pay for.
+What I have already done: replaced three of the four weekly 30-minute safety meetings each month with a two-minute daily video briefing. Net of the video time that returns about 47 minutes per person per month — roughly 700 crew-hours a year, or $89,000 at our current rate. Safety coverage went up, not down: crews now get a briefing every day instead of a half-hour block once a week. What I am doing next: the same exercise on the rest of it — yard time, travel, standby and equipment downtime. I need five minutes per person per day, worth about 190 crew-hours a month. Each point of booked share is worth roughly 153 crew-hours a month at no added cost, and it is the cheapest insurance against a hiring shortfall.
 
-## 1. Field capacity — the binding constraint
+Measure: share of paid hours booked to jobs, from 94.3% toward 95.3%.
 
-**Problem:** the second half needs about 17% more paid crew hours per month than the first half delivered.
-About 76 field staff work a typical weekday today.
 
-**Plan: 15 net field additions.**
-- At the rate we achieved in Q2, **15 hires takes us to roughly 91 working per weekday and delivers about
-  $25.2M** — the goal, with a small margin.
-- **That margin depends entirely on holding Q2's rate.** At the H1 average of $122.81 the same 15 hires
-  land around **$24.55M, roughly $550K short.** Holding the rate is therefore not a bonus on top of the
-  hiring plan — it is half of the plan.
-- **Front-loaded.** Anyone hired after September cannot meaningfully contribute to Q4.
-- **Retention comes first.** We lost about 8 field staff over the year and covered it with the crew we
-  kept. Replacing attrition is not growth — recruiting has to outrun it before it adds a single net hour.
+PRICE AND JOB MIX — THE LEVER WE HAVE NOT PULLED
+Our rate on the job itself is flat to slightly down. None of this year's improvement came from price
+• Review pricing and job mix on the work we are winning, starting with Municipal where the rate has slipped.
+• I need $1.38 per paid hour — about 1.1%. Every $5 of rate removes about 465 hours a month from what we need — roughly one crew's monthly output.
 
-**Measure:** people working per weekday, tracked monthly against 91.
+Measure: revenue per revenue-bearing hour, reported monthly.
 
-## 2. Returning time to the field
 
-**Problem:** every hour a crew is not on a job is an hour we pay for and cannot bill. Our job-booked hours
-run about 17% below the hours we pay for.
+TWO THINGS I AM CORRECTING
+• The old 2ND half plan does not reach the goal. It was built assuming a first half of $12.25M; we delivered $11.22M and it was never re-based. As written it lands around $24.3M. I am re-basing it to the $2.31M per month the goal actually requires, so the organization is working to a real number.
+• Management reporting had a date defect that placed completed work in the wrong month — in some views it hid entire crew-months. It is identified, fixed and being deployed. Operational reporting now reconciles to the CFO's statements within 1.3% for the half.
 
-**What I have already done:** replaced three of the four weekly 30-minute safety meetings each month with
-a two-minute daily video briefing. Net of the video time that returns **about 47 minutes per person per
-month — roughly 700 crew-hours a year, or $90,000 at our current rate.** Safety coverage went up, not
-down: crews now get a briefing every day instead of a half-hour block once a week.
 
-**What I am doing next:** the same exercise on the rest of it — yard time, travel, standby and equipment
-downtime. Each point of non-job time returned is worth roughly 218 crew-hours a month at no added cost,
-and it is the cheapest insurance against a hiring shortfall.
-
-**Measure:** share of paid hours booked to jobs, reported monthly.
-
-*One caution on the year-over-year figure: our non-job hours fell 29.3% against last year, but a
-meaningful part of that is a 1,643-hour swing in inclement-weather time — 2025 had a wind event and 2026
-did not. I would not represent that portion as an operating gain, and I am not building the plan on it.*
-
-## 3. Price and job mix — the lever we have not pulled
-
-**Problem:** our rate on the job itself is flat to slightly down. None of this year's improvement came
-from price — it is the one lever we have not touched.
-
-**Plan:**
-- Review pricing and job mix on the work we are winning, starting with the segments where rate has slipped.
-- Every $5 of rate removes about 450 hours a month from what we need — roughly one crew's monthly output.
-  This is the cheapest lever available and it is untouched.
-
-**Measure:** revenue per revenue-bearing hour, reported monthly.
-
----
-
-## Two things I am correcting
-
-- **The H2 plan does not reach the goal.** It was built assuming a first half of $12.25M; we delivered
-  $11.22M and it was never re-based. As written it lands around **$24.3M**. I am re-basing it to the
-  **$2.31M per month** the goal actually requires, so the organization is working to a real number.
-- **Management reporting had a date defect** that placed completed work in the wrong month — in some views
-  it hid entire crew-months. It is identified, fixed and being deployed. Operational reporting now
-  reconciles to the CFO's statements within 1.3% for the half.
-
----
-
-## What I will bring back next quarter
-
-- Net field headcount against the 91 target
-- Fully weighted productivity against the $130 target
-- Share of paid hours booked to jobs, against the current 83%
-- Progress against the re-based $2.31M monthly plan
-
----
-
-*A note on comparisons: we adopted electronic timekeeping in late 2025, so hours we actually paid for are
-only measurable from November onward. Quarter-over-quarter comparisons are sound; a like-for-like
-year-over-year productivity comparison on this basis first becomes possible in November 2026.*
+WHAT I WILL BRING BACK NEXT QUARTER
+• Net field headcount against the 91 target
+• Fully weighted productivity against the $130 target, and against the $127.86 the plan needs
+• Share of paid hours booked to jobs, from 94.3% toward 95.3%
+• Progress against the re-based $2.31M monthly plan
