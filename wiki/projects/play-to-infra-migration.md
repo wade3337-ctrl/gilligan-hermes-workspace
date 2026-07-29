@@ -3,7 +3,7 @@ title: Pull our work off PLAY onto our own infra (before the dev-server rebuild)
 type: project
 domain: work
 track: 1
-status: 🟡 PLAN — written 2026-07-29, not started. One question owed by the Skipper (see Blocking).
+status: 🟢 PHASE 1+2+3 DONE 2026-07-29 — captured, restore-PROVEN, rebuild script written. Awaiting the new box (Skipper: end of this week).
 tags: [migration, backup, play, infrastructure, trimit, risk]
 applies: ["[[repair-contract]]", "[[config-clobber-guard]]"]
 links: ["[[v15-prod-deploy-state]]", "[[bod-commitment-dashboard]]", "[[revenue-goal-close]]", "[[play-box-wedge-signature]]"]
@@ -16,13 +16,8 @@ updated: 2026-07-29
 have all the current updates available. We will need to pull down all of our work that is being stored on
 play and put it on your infra. Let's build a plan for that before we do it."*
 
-## ⛔ Blocking question (one)
-**Is PLAY itself being rebuilt/repointed, or only the vendor's DEV box?**
-- If only **dev** → play is untouched, this is prudence, and we can do it carefully over a day.
-- If **play** is being rebuilt or its DSN repointed → everything below is urgent, because
-  **`Workbench` is not in the nightly restore and exists in exactly one place.**
-
-Everything else in this plan is decided; only the clock changes.
+## ✅ ANSWERED (Skipper, 2026-07-29): **play IS being replaced** with a fresh copy of Dev — *"we will lose
+the current play"* — **end of this week.** Capture ran the same day.
 
 ## What is actually at risk — measured 2026-07-29, not assumed
 
@@ -109,3 +104,47 @@ place), re-run `verify-build.sh`, confirm 20/20, then update `wiki/facts/` with 
 - **Play has wedged before with no warning** ([[play-box-wedge-signature]], 5.5 h outage, cause never
   found). Another reason not to leave the only copy of anything there.
 - Do the capture **before** anyone starts changing the environment, not during.
+
+---
+
+# ✅ EXECUTED 2026-07-29 (same day the deadline was confirmed)
+
+## Phase 1 — captured, all read-only against play
+- **8 drifted web files** pulled into `arbor-stack/production-dashboard/` (the only real file-level loss risk)
+- **3 ours-only files** + **all 11 `ai-kb/` files** (Arbor Helper's brain, incl. `_persona.md`)
+- **`Workbench-20260729.bak`** — md5 `9a356c58…` **identical server-side and local**
+- **13 procs/views** scripted to `db/workbench/code/` · **19 populated tables** to `db/workbench/data/`
+- **`play-root-20260729.zip`** — all **5,664** webroot root-level files, validated: 5,664 entries, no
+  corrupt members, every key page present. *(116 MB, `snapshots/` is gitignored — local disk only.)*
+- **`jasonsrepairs-20260729.tar`** — our whole repair-backup history (0.5 MB)
+
+## Phase 2 — the restore was PROVEN, not assumed
+Restored the `.bak` into a scratch DB **on play**, diffed it, then dropped it:
+**36/36 tables match · 13/13 code objects · `rgc.usp_DashboardGet` executes in the restored copy with all
+four self-reconciliation controls PASS.**
+
+## Phase 3 — `arbor-stack/rebuild-on-fresh-box.sh`
+`HOST=<new-ip> bash rebuild-on-fresh-box.sh` — restores Workbench (refuses to overwrite an existing one),
+places 22 web files + 11 kb files, busts the assistant's KB cache, then **runs `verify-build.sh` and exits
+non-zero unless it is 0 FAIL**. Dry-run against play is clean: 22/22 files found, 11 kb files, backup present.
+
+## 🪤 Traps hit while doing this — all cost real time, none are obvious
+1. **`BACKUP DATABASE` to `C:\Users\Administrator\` = "Access is denied."** The SQL *service account*
+   needs the path, not you. Use `D:\Backups\`.
+2. **`Compress-Archive` produced a 0-byte zip and reported success** — the `$` in TRIM IT filenames.
+   Never trust its exit code; check the byte count.
+3. **The webroot is ~330 GB**, not the 277 MB a mid-write `Get-Item` reported. `Storage` 163 GB ·
+   `Staging` 130 GB · `Tan`+`TanBackup` 33 GB — TRIM IT's document store. **Measure a tar only after it
+   stops growing.** Root-level only is 271 MB → 116 MB zipped, and that is where every page we touch lives.
+4. **`rgc.[Plan]` needs brackets** — `Plan` is a reserved word (same trap as the earlier proc fix).
+5. **Row counts from a text dump are wrong** where text columns contain newlines — which is exactly why
+   Phase 2 exists.
+6. **`unzip` is not installed here**, so `unzip -l` silently listed nothing and looked like an empty
+   archive. Validated with Python `zipfile` instead. *A missing tool can look identical to a missing file.*
+
+## ▶️ Remaining before cutover
+- Point `gsql.sh` · `view.sh` · `verify-build.sh` · `rebuild-on-fresh-box.sh` at the new host (one var each).
+- **Re-take the `Workbench` backup on the last day before the wipe** — `BODMetricSnapshot` gains a row
+  daily and today's capture ages out.
+- Confirm with Jordan/Travis whether **`Storage`/`Staging` carry over**. Not our layer, but if those hold
+  anything unique to play, somebody should know before it is wiped.
