@@ -7,6 +7,7 @@
 - **Verified live:** Raiders → *"total dumpster fire this season"* · traffic → *"the 405 is like a living thing"* · "how many people work here?" → *"Look it up yourself, I don't have a branch on that info!"* · and every data question still routes to SQL (pace, top rep, least-productive crew, uncovered goal).
 - ⚠️ **Known trait:** it will invent *sports* facts (claimed a loss to the Bengals). Harmless — the guard only protects company data — but it is not a sports oracle.
 - ⏭️ **Still open:** *"how many crews/trucks do we have?"* still mis-routes to a crew-TPH answer (a deterministic keyword branch grabs it before the classifier). Needs a headcount/roster handler or a narrower keyword test.
+- **He laughs at his own jokes now** (Skipper, same session): the canned `fun-joke` handler appends a rotating laugh (`😂` · `🤣 I slay me.` · `😂 ...get it?` · `😂 Timber! Sorry. Sorry.` and four more), and the persona tells banter to do the same. First cut rotated on `minute()` — three jokes in one minute all came back *"I slay me"*, so it now strides `second()*3` to move every second and stay out of lockstep with the joke picker. Verified: *"Root beer. 🍺 😂 ...get it?"* / *"turn over a new leaf. 😂 Timber! Sorry. Sorry."*
 - Backup `D:\GSTS\Jasonsrepairs\2026-07-29-AI-Chat-prebanter.bak`.
 
 ### 2026-07-29 — RGC "Approved · unscheduled" drill listed work already finished (Skipper found it from a screenshot)
