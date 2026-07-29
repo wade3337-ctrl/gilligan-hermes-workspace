@@ -63,8 +63,8 @@ did not. I would not represent that portion as an operating gain, and I am not b
 
 ## 3. Price and job mix — the lever we have not pulled
 
-**Problem:** our rate on the job itself is flat to slightly down. Every dollar of improvement this year
-came from utilization; none came from price.
+**Problem:** our rate on the job itself is flat to slightly down. None of this year's improvement came
+from price — it is the one lever we have not touched.
 
 **Plan:**
 - Review pricing and job mix on the work we are winning, starting with the segments where rate has slipped.
@@ -90,7 +90,7 @@ came from utilization; none came from price.
 
 - Net field headcount against the 91 target
 - Fully weighted productivity against the $130 target
-- Non-revenue share of hours against the 14% target
+- Share of paid hours booked to jobs, against the current 83%
 - Progress against the re-based $2.31M monthly plan
 
 ---
