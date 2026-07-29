@@ -3,10 +3,10 @@ title: BOD Commitment Dashboard — track what the Skipper told the Board he wou
 type: project
 domain: work
 track: 1
-status: 🔵 NEXT — spec written 2026-07-29, not started
+status: 🟢 BUILT on play 2026-07-29 — render-verified, gate proven. Reconcile headcount basis before reporting.
 tags: [dashboard, board, kpi, trimit, play, q3-2026]
 applies: ["[[repair-contract]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[dashboard-metric-standards]]", "[[only-trustworthy-data]]", "[[dashboard-auth-gate]]"]
-links: ["[[path-to-25m-2026]]", "[[crewsheet-acthours-is-the-estimate]]", "[[timekeeping-live-nov-2025]]", "[[crew-assignment-drift]]", "[[production-perf-future-dated-crewsheets]]"]
+links: ["[[pending-crewsheet-closeout-gap]]", "[[path-to-25m-2026]]", "[[crewsheet-acthours-is-the-estimate]]", "[[timekeeping-live-nov-2025]]", "[[crew-assignment-drift]]", "[[production-perf-future-dated-crewsheets]]"]
 updated: 2026-07-29
 ---
 
@@ -99,3 +99,39 @@ H1 $11,222,433 / 91,976 = **$122.01** · Q2 job-booked share 44,499 / 47,195 = *
 ## Verified against play 2026-07-29 (all reproduce exactly)
 `clocked Q2 = 47,195.05` · `Complete-sheet hrs = 44,498.72` · `production = $6,082,462` → **94.3%** ✅
 Status codes: **`CrewSheets`: 5 = Complete · 39 = Pending.** `Invoices`: 21/22/23/100/148.
+
+## ✅ BUILT 2026-07-29 — `Dashboard-BODCommitments.cfm`
+Play: `https://play.greatscotttreeservice.com/GSTS/Dashboard-BODCommitments.cfm`
+Source: `arbor-stack/production-dashboard/Dashboard-BODCommitments.cfm` · webroot
+`D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS\`
+
+**Access proven, not assumed:** UserID **9** and **376** → 200. **340** and **209** (both hold V1.5
+dashboard access) → **403**. No cookie → 302. Narrower than `dashboard-access-check.cfm` by design.
+
+**Workbench tables created (all editable without a redeploy):**
+- `BODCommitmentTargets` — 36 rows: `headcount` 79/84/91/91/91/91 · `productivity_commit` 130 ·
+  `productivity_plan` 127.86 · `bookedshare` 94.5→95.3 · `revenue` $2.31M · `paidhours` 18,089.
+- `BODCfoRevenue` — the Controller's figure, `GrainCode` M or Q. Seeded Q1 $5,318,331 / Q2 $5,904,101.
+- `BODMetricSnapshot` — one capture per month per day, written on page load. **This is what makes the
+  tile-3 decomposition evidence rather than assertion**; the split only becomes meaningful from the
+  second capture onward (baseline captured 2026-07-28).
+
+**Render-verified on the served page** (per [[repair-contract]]): reporting month Jun 2026 —
+productivity **$119.08**, booked share **94.7%** (873 pending hrs = 5.2 pts, ceiling 99.9%),
+revenue **$1,996,306**, required run-rate **$127.70/hr** and **$2.31M/mo** for the remaining six.
+
+### Three CFML traps hit while building (all cost a render cycle)
+1. `NumberFormat(v,"+9.9;-9.9")` → `IllegalNumberFormatArgumentException`. CF has no negative-clause
+   mask form; build the sign by hand.
+2. A `>` inside a `<cfset>` expression **closes the tag** → `Invalid CFML construct`. Use `GT`.
+3. `dbo.Calendars` carries future-dated rows with stray crew hours — the "latest month" was **October
+   with 3 people**. Cap the month list at the live month.
+
+## ⏭️ Open
+- **Reconcile the headcount basis.** My query gives **78.1 people/weekday for Q2**; the delivered plan
+  says "about 76". Same metric, ~2 people apart — find which filter differs before this is reported to
+  anyone. Everything else on the page reproduces the board figures exactly.
+- Decide whether tile 4 should score an H1 month at all before the first H2 month closes (currently
+  shows June against $2.31M with a banner explaining it is a starting line, not a result).
+- The on-job rate is built on the honest denominator (~$137, not $155) — confirm he wants that shown
+  given $136.69 is also the production-TPH figure that must stay off board material.
