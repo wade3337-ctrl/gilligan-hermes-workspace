@@ -1,3 +1,13 @@
+### 2026-07-29 — RGC "Approved · unscheduled" drill listed work already finished (Skipper found it from a screenshot)
+- **His report:** the drill for *Approved · unscheduled* showed a work order in progress. He was right, and it was worse than a display glitch.
+- **Worst example:** **GA 214331, City of Newport Beach Grid 4 (Fashion Island)** — listed as $86,737 "approved unscheduled" while carrying **29 crew sheets, all Complete, $78,118 already produced**. GA 214745: 32 sheets, 20 complete, $42,822 produced.
+- **The tell was in the header, not the rows:** the drill reported **82 rows / $713,281.37** against a tile of **$234,711.16**. The proc's own comment says the header *"must equal the summary tile."* It did not.
+- **Root cause:** `rgc.usp_DrillGet`'s APPROVED branch filtered effective dates but **omitted `IsScheduledOrWorked=0`**, the flag `usp_DashboardGet` uses. **The tile was always correct** — 21 go-aheads, $234,711.16, reproduced exactly by adding the predicate.
+- **Blast radius checked before fixing** (repair contract): the other three drill types — PENDING **$10,043,740.65**, STALE_PENDING **$11,397,105.84**, FUTURE_YEAR_EXCLUDED **$21,354,539.42** — already reconciled to the cent, so the defect was isolated to one branch and they were left alone.
+- **Fixed + verified on play:** APPROVED drill now **21 rows / $234,711.16 = the tile**; all four reconcile; GA 214331 no longer appears; and the surviving 21 have **0 crew sheets and 0 completed work** between them. Data endpoint still 200.
+- Proc backed up first to `arbor-stack/backups/play-workbench/usp_DrillGet-before-approved-fix-20260729.sql` (**`Workbench` is not in the nightly restore**).
+- 🔑 **No double-count in the headline:** APPROVED_UNSCHEDULED carries `inHardCoverage=0`, so hard coverage and the $9.21M gap were never affected — the damage was confined to the pipeline drill.
+
 ### 2026-07-29 — Revenue Goal Close "shows no numbers": diagnosed and fixed — it was goal governance, not code
 - **Symptom (Skipper):** every tile an em-dash. **The page has zero `cfquery` tags** — it fetches `RevenueGoalClose.data.cfm` client-side, so the HTML said nothing.
 - **Three steps to root cause:** curl the endpoint → **HTTP 422 `RECONCILIATION_FAILED`** · grep the endpoint for that code → it maps a proc THROW containing *"does not reconcile"* · `EXEC Workbench.rgc.usp_DashboardGet` in a try/catch → **err 50022, "RGC: SalesGoal does not reconcile to the approved annual goal."**

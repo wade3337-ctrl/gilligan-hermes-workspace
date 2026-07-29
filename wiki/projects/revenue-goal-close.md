@@ -92,3 +92,13 @@ That retires the $24.0M figure. The team's $25.1M and the deal dashboard's $25.0
 ▶️ **The landing-page link is still pulled** — removed before the cause was known. Re-adding it is a
 one-line change (`showRGC` back to `zuid EQ 9` plus the `<li>`), pending his say-so. Backup of the landing page before the change:
 `D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`.
+
+## 🐛 FIXED 2026-07-29 — APPROVED drill did not match its own tile
+The *Approved · unscheduled* drill listed go-aheads that were already scheduled or finished (**GA 214331,
+Newport Beach: 29 completed crew sheets, $78,118 produced**). `rgc.usp_DrillGet`'s APPROVED branch omitted
+**`IsScheduledOrWorked=0`**; `usp_DashboardGet` applies it, so **the tile was right and the drill was wrong**
+— 82 rows / $713,281.37 vs the tile's 21 / $234,711.16.
+Added the predicate; drill now equals the tile exactly and the surviving 21 have zero crew sheets.
+The other three drill types already reconciled to the cent and were left untouched.
+Backup: `arbor-stack/backups/play-workbench/usp_DrillGet-before-approved-fix-20260729.sql`.
+**Hard coverage was never affected** — that stage carries `inHardCoverage=0`.
