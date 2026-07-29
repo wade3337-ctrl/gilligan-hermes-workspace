@@ -155,7 +155,7 @@ then set **$25,300,976** as the authoritative FY2026 goal ([[revenue-goal-close]
 half. `BODCommitmentTargets.revenue` updated; H2 total $14,078,544, landing at $25,300,977.
 *The cockpit shows what it actually takes; the board doc's $2.31M is the superseded figure.*
 
-## ⛔ Deliberately NOT done — do not "fix" `dbo.SalesGoal` without reading this
+## ⛔ DECIDED (Skipper, 2026-07-29): leave `dbo.SalesGoal` alone — it is the plan of record
 `SalesGoal` FY2026 currently holds the **original approved plan**: H1 $12,250,976 + H2 $13,050,000
 ($2,175,000/mo) = **$25,300,976**. It already reconciles exactly, which is what `usp_DashboardGet`'s
 `GOAL_RECONCILE` control requires.
@@ -176,5 +176,5 @@ with H1 actuals — and that erases this:
 
 **January alone is 89% of the H1 miss.** Overwrite the goal rows and every H1 month reads ~100%, and the
 one month that actually explains the shortfall disappears from every dashboard that compares actual to
-goal. **Recommendation: leave `SalesGoal` as the approved plan of record** — one immutable budget, with the
+goal. ✅ **His call: "leave it."** `SalesGoal` stays the approved plan of record — one immutable budget, with the
 live re-based requirement carried on this cockpit, which recomputes it from actuals every month anyway.
