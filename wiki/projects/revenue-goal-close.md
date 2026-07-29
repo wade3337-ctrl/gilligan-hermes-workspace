@@ -46,3 +46,14 @@ updated: 2026-07-14
 - **Fix (Skipper-approved def):** pipeline = approved work not yet scheduled or started. `IsScheduledOrWorked` flag on `rgc.vCurrentYearGoAheadCandidate` (any dated WO OR any crew sheet; **hardened** to ignore dead statuses 47 Inactive/315 Revised); all 3 pipeline buckets filter `=0`. Deployed to Workbench (play).
 - **Verified:** approvedUnscheduled **$1,612,544.86 → $520,080.29**; Produced/FutureScheduled/HardCoverage UNCHANGED; all 4 reconcile controls PASS; served endpoint + shell clean.
 - **Crew:** GLM adversarial NO-GO (over-exclusion) → proved non-material in data + hardened → Gemini GO → **GLM judge (JUDGE_DB=Workbench) independently DB-verified → VERDICT PASS**. RGC 'needs work' item CLOSED; ready to rejoin a future deploy. Detail: `revenue-goal-close/CHANGELOG.md`.
+
+## ⛔ LINK PULLED 2026-07-29 — "it doesnt work"
+The Skipper had the **Revenue Goal Close link removed from the V1.5 landing page** (Executive node):
+*"remove revenue goal because it doesnt work"*. `showRGC` is now hard `false` in `Dashboard-V15Home.cfm`
+with a comment; the previous condition was `zuid EQ 9`.
+
+**The page itself is untouched** — `Dashboard-RevenueGoalClose.cfm` still exists and is reachable by
+direct URL. Only the entry point is gone. **Do not re-add the link until the page is reworked and he says
+so.** What specifically is broken has not been diagnosed yet — that is the open question if this is picked
+back up. Backup of the landing page before the change:
+`D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`.
