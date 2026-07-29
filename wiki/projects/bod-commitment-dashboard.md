@@ -147,3 +147,34 @@ revenue **$1,996,306**, required run-rate **$127.70/hr** and **$2.31M/mo** for t
   shows June against $2.31M with a banner explaining it is a starting line, not a result).
 - The on-job rate is built on the honest denominator (~$137, not $155) — confirm he wants that shown
   given $136.69 is also the production-TPH figure that must stay off board material.
+
+## 💵 Revenue target re-based 2026-07-29 — $2,310,000 → $2,346,424/month
+The **$2.31M/month** in the delivered board plan was derived against the **$25.1M** team goal. The Skipper
+then set **$25,300,976** as the authoritative FY2026 goal ([[revenue-goal-close]]). Off H1 actual of
+**$11,222,433** that requires **$2,346,424/month** for Jul–Dec — **$36,424/month more**, $218,543 over the
+half. `BODCommitmentTargets.revenue` updated; H2 total $14,078,544, landing at $25,300,977.
+*The cockpit shows what it actually takes; the board doc's $2.31M is the superseded figure.*
+
+## ⛔ Deliberately NOT done — do not "fix" `dbo.SalesGoal` without reading this
+`SalesGoal` FY2026 currently holds the **original approved plan**: H1 $12,250,976 + H2 $13,050,000
+($2,175,000/mo) = **$25,300,976**. It already reconciles exactly, which is what `usp_DashboardGet`'s
+`GOAL_RECONCILE` control requires.
+
+**Re-basing H2 to the real requirement is not possible without destroying H1 variance history.** Proven in
+a rolled-back transaction: setting H2 to $2,346,424 while leaving H1 makes the sum $26,329,520 and RGC
+**fails closed again with err 50022**. The only shape that satisfies both is to overwrite the H1 goal rows
+with H1 actuals — and that erases this:
+
+| 2026 | Planned goal | Actual | Variance | % of goal |
+|---|---|---|---|---|
+| **Jan** | 2,534,354 | 1,617,531 | **−916,823** | **63.8%** |
+| Feb | 1,829,430 | 1,699,714 | −129,716 | 92.9% |
+| Mar | 1,831,427 | 1,686,601 | −144,826 | 92.1% |
+| Apr | 2,117,795 | 2,179,282 | +61,487 | 102.9% |
+| May | 1,950,446 | 1,898,879 | −51,567 | 97.4% |
+| Jun | 1,987,524 | 1,996,306 | +8,782 | 100.4% |
+
+**January alone is 89% of the H1 miss.** Overwrite the goal rows and every H1 month reads ~100%, and the
+one month that actually explains the shortfall disappears from every dashboard that compares actual to
+goal. **Recommendation: leave `SalesGoal` as the approved plan of record** — one immutable budget, with the
+live re-based requirement carried on this cockpit, which recomputes it from actuals every month anyway.
