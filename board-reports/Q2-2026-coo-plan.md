@@ -44,12 +44,11 @@ About 76 field staff work a typical weekday today.
 ## 2. Holding the rate — utilization
 
 **Problem:** the Q1→Q2 improvement came from converting non-revenue time into billable time, not from
-working faster. Non-revenue hours fell 29.3% over the year — from 22.8% of scheduled time to 17.0%. That
-is the gain the hiring plan now assumes we keep.
+working faster. Non-revenue hours fell 29.3% over the year — from 22.8% of scheduled time to 17.0%.
+**The hiring plan assumes we keep that gain**, so the first job is to understand precisely what produced
+it and make it deliberate rather than incidental.
 
 **Plan:**
-- Continue the weekly sales-and-production meeting on live data. That discipline is what produced the
-  shift and it is what will hold it.
 - **Push from 17% toward 14%.** Every point recovered is worth roughly 218 crew-hours a month at no added
   cost — and it is the cheapest insurance against a hiring shortfall.
 
