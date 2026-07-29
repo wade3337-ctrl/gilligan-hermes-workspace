@@ -13,7 +13,7 @@
 ## The quarter in one line
 
 **Revenue grew for a second consecutive quarter, reversing a four-quarter decline, and crew productivity
-reached its highest level on record — $134.80 per crew-hour against a $130 target.**
+reached its highest level on record — $136.69 per crew-hour against a $130 target.**
 
 The first half finished at **91.6% of plan**. That shortfall was created in Q1 and largely recovered in Q2.
 **The remaining gap to the annual goal is a capacity question, not a productivity one.**
@@ -83,10 +83,10 @@ hours ran 5.5% *below* H1 2025.** We produced slightly more than last year on ma
 pricing discipline or crew execution. We are constrained on the volume of hours worked.**
 
 > **A note on how this metric is built.** Revenue per crew-hour is measured against *scheduled* crew hours —
-> how we have always reported it, and the basis on which the $130 target was set. Scheduled hours run about
+> how we have always reported it, and the basis on which the $130 target was set. Scheduled hours run
 > about 6% below the hours our crews actually clock, so measured against attendance the same result is
-> roughly **$123 rather than $131** for H1 2026. The reported basis has been consistent for years, so **the +6.5%
-> year-over-year improvement is sound.** An equivalent attendance-based comparison to 2025 is not possible:
+> roughly **$123 rather than $131** for H1 2026. The reported basis has been consistent for years, so
+> **the +6.6% year-over-year improvement is sound.** An equivalent attendance-based comparison to 2025 is not possible:
 > we only adopted electronic timekeeping in late 2025, so clocked hours begin in November. Capacity and
 > headcount in Section 4 are sized on clocked hours.
 
@@ -153,7 +153,7 @@ That matters because it tells us exactly which levers still have room.
 To bill $2.31M/month at the current on-the-job rate we need **14,687 revenue-bearing hours per month**.
 H1 ran **11,955**. How many scheduled hours that costs depends on the non-revenue share:
 
-| Non-revenue share | Scheduled hours required | vs H1 average (13,761) |
+| Non-revenue share | Scheduled hours required | vs H1 average (14,405) |
 |---|---|---|
 | 23% *(where we were in 2025)* | 19,074 | +32% |
 | **17% *(where we are now)*** | **17,695** | **+23%** |
