@@ -136,10 +136,13 @@ revenue **$1,996,306**, required run-rate **$127.70/hr** and **$2.31M/mo** for t
   staffing collapse: 6 Jul had **18 people**, 3 Jul 60, April has a **3-person** day, February a 13.
   July's mean is 74.1 against a median of 78.5. The page now uses the **median** ("typical weekday" is
   literally a median) and shows the mean plus the quietest day underneath.
-  ▶️ **DECISION FOR THE SKIPPER:** the plan told the Board *"about 76 today"* **and** *"15 net additions"*
-  **and** *"tracked monthly against 91"*. At a true ~78.5 today those no longer agree — **91 needs ~12.5
-  more, while 15 adds lands ~93.5.** Pick which half is the commitment; the tile currently scores
-  against 91.
+  ✅ **DECIDED (Skipper, 2026-07-29): the commitment is the 15 NET ADDITIONS, not the absolute 91.**
+  Tile 1 is now a net-adds tracker. Baseline **frozen at 79** = the Q2 2026 **pooled** median weekday
+  (64 weekdays) — measured exactly the way the tracking is measured. **15 adds therefore lands at 94, not
+  91**; the 91 in the delivered plan came from the holiday-contaminated mean of 76.
+  Targets: `headcount_baseline` = 79 (frozen) · `headcount_netadds` 0/7/15/15/15/15 · `headcount`
+  79/86/94/94/94/94, front-loaded so all 15 land by the 30 Sep cut-off.
+  Reads today: **−0.5 net adds** vs a July ramp of 0 (78.5 working, 15.5 to go, 7.8/month).
 - Decide whether tile 4 should score an H1 month at all before the first H2 month closes (currently
   shows June against $2.31M with a banner explaining it is a starting line, not a result).
 - The on-job rate is built on the honest denominator (~$137, not $155) — confirm he wants that shown
