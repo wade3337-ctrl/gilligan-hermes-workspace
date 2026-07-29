@@ -52,8 +52,6 @@ is the gain the hiring plan now assumes we keep.
   shift and it is what will hold it.
 - **Push from 17% toward 14%.** Every point recovered is worth roughly 218 crew-hours a month at no added
   cost — and it is the cheapest insurance against a hiring shortfall.
-- **Close the reporting gap:** about 5.7% of hours we pay for never reach a crew sheet at all. Those hours
-  are invisible to our productivity reporting and are the first place to look for recoverable time.
 
 **Measure:** non-revenue share of hours, reported monthly.
 
