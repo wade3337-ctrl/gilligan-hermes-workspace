@@ -74,3 +74,27 @@ Skipper B1: the assistant was deliberately **read-only** in v1; this is the firs
 - **Verified live:** Raiders → *"total dumpster fire this season"* · traffic → *"the 405 is like a living thing"* · "how many people work here?" → *"Look it up yourself, I don't have a branch on that info!"* · every data question still routes to SQL.
 - ⚠️ **Known trait:** he will invent **sports** facts (claimed a loss to the Bengals). Harmless — the digit guard only protects company data — but he is not a sports oracle.
 - ⏭️ **Open:** *"how many crews/trucks do we have?"* still mis-routes to a crew-TPH answer — a deterministic keyword branch grabs it before the classifier. Needs a headcount/roster handler or a narrower keyword test. Backup `D:\GSTS\Jasonsrepairs\2026-07-29-AI-Chat-prebanter.bak`.
+
+## 😄 2026-07-29 — PERSONALITY (Skipper: *"give the lil fella some personality... Raiders SUCK!"*)
+**Root cause of "it goes to the stock answer":** nine data handlers own every data question; **everything
+else hit one canned line.** llama3.2:3b was already installed and perfectly able to chat — **our code was
+gagging it. Nothing needed downloading.**
+- `answerBanter()` + **`ai-kb/_persona.md`** — the persona is a KB file, so the Skipper rewrites the
+  personality with **no code change and no redeploy** (`?kbreload=1` to pick it up).
+- **Jokes: 56 tree + 32 dad = 88**, zero duplicates. Tree jokes pool from `_site.md` **and** `_persona.md`
+  so all future joke edits happen in the one file he owns. He laughs at his own jokes (8 rotating laughs).
+- **Also fixed something worse than deflecting:** the semantic fallback forced unmatched questions into the
+  nearest of nine buckets, so *"how many people work here?"* returned **top crews by TPH** — a confident
+  answer to a different question, with real numbers. Classifier now told a near-fit is a serious error.
+  Only safe because `none` now leads to conversation instead of a dead end.
+
+### 🚨 The guard that failed, and why it matters
+First numeric guard was a **blocklist of business nouns** (`crew|employees|accounts`). Free chat walked
+straight past it: *"about 80 folks in the field, and around 70 more in the office."* Two faults — **"folks"
+and "office" were not on the list**, and the **80 came from a stray fact I had written into the persona
+file myself**. Now: **banter may contain NO digits at all**, sole exception OC freeway names, and the
+persona holds zero company facts. **A blocklist cannot work — enumerate what is permitted.**
+
+⏭️ **Still open:** *"how many crews/trucks do we have?"* still mis-routes to a crew-TPH answer (a
+deterministic keyword branch grabs it before the classifier). Needs a headcount/roster handler.
+He will also invent **sports** facts — harmless, the guard only protects company data.
