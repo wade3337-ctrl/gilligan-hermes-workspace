@@ -53,7 +53,29 @@ The Skipper had the **Revenue Goal Close link removed from the V1.5 landing page
 with a comment; the previous condition was `zuid EQ 9`.
 
 **The page itself is untouched** — `Dashboard-RevenueGoalClose.cfm` still exists and is reachable by
-direct URL. Only the entry point is gone. **Do not re-add the link until the page is reworked and he says
-so.** What specifically is broken has not been diagnosed yet — that is the open question if this is picked
-back up. Backup of the landing page before the change:
+direct URL. Only the entry point is gone. **Do not re-add the link until he says so.**
+
+### ✅ DIAGNOSED same day — it is NOT a code bug, it is goal-governance drift
+Symptom: every tile renders as an em-dash. `RevenueGoalClose.data.cfm` returns **HTTP 422
+`RECONCILIATION_FAILED`**; the underlying proc `Workbench.rgc.usp_DashboardGet` throws error **50022 —
+*"RGC: SalesGoal does not reconcile to the approved annual goal."***
+
+**The mismatch:**
+- `Workbench.rgc.Plan.ApprovedAnnualGoal` = **$24,000,000** — approved by jwade **2026-07-13**
+- `Workbench.dbo.SalesGoal` FY2026, 12 monthly rows, now sums to **$25,300,976**
+
+The team goal was re-set upward *after* the RGC plan was approved; `SalesGoal` was updated and the plan row
+never was. **The page is behaving correctly — it is fail-closed by design and refused to show numbers it
+could not stand behind.** That guard did its job.
+
+**Fix proven in a rolled-back transaction:** setting `ApprovedAnnualGoal` to match makes the proc succeed
+and **all four self-reconciliation controls PASS** (GOAL_RECONCILE, MARKET_PRODUCED_RECONCILE,
+MARKET_SCHEDULED_RECONCILE, COUNT_ONCE_HARDCOVERAGE). Output then reads: produced **$13.34M**, future
+scheduled **$2.75M**, hard coverage **$16.09M**, hard gap **$9.21M**.
+
+▶️ **BLOCKED ON A DECISION, not on code.** Which figure is the approved annual goal — **$25,300,976**
+(what `SalesGoal` currently sums to), **$25.1M** (the team goal), or another? ⚠️ If it is $25.1M then the
+**monthly `SalesGoal` rows must be re-based too**, because the guard compares the plan figure to their
+*sum*. Three goals remain in circulation → see [[path-to-25m-2026]]. Changing an `Approved` plan row is a
+governance act, so it waits for him. Backup of the landing page before the change:
 `D:\GSTS\Jasonsrepairs\2026-07-29-Dashboard-V15Home-preRGCremoval.bak`.
