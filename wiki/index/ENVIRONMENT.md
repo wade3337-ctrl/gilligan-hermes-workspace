@@ -4,13 +4,14 @@ type: index
 domain: env
 tags: [index, moc, environment, infra]
 links: ["[[HOME]]"]
-updated: 2026-07-10
+updated: 2026-07-30
 ---
 
 # 💻 ENVIRONMENT / INFRA — map
 Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 
-- [[gilligan-session-settings]] — 📸 my runtime dials snapshot (Opus 4.8 · 1M context · reasoning/fast off · elevated) + what's adjustable. Re-run `session_status` for live values.
+- [[gilligan-session-settings]] — 📸 my runtime dials snapshot. **⭐ Current: default = `anthropic/claude-opus-5`, thinking `high`, OpenClaw 2026.7.1-2; `sol` = `openai/gpt-5.6-sol` (NOT `codex/`) and is verified working.** Re-run `session_status` for live values.
+- [[openclaw-plugin-install-trust-gate]] — 🔌 **after ANY OpenClaw core update, check the gateway log for `failed during register`.** A stale row in the plugin install index un-trusts other plugins → `openSyncKeyedStore` undefined → crashed turns + "couldn't safely resume" messages. The *"conflicting plugin install metadata"* doctor notice IS the bug, not noise. Fix + one-command diagnostic in the note.
 - [[env-host-and-tooling]] — Ubuntu 26.04, Node/Python, headless browser `arbor_browser`, file-reading tools.
 - [[crew-llms-and-helpers]] — the 5-lab verification panel + `crew/*-ask.py` helpers + gotchas. **OpenAI = `gpt-5.6-sol`** (default in `~/.codex/config.toml`, needs codex-cli ≥0.144).
 - [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + **Crew Meter** durable URL **`https://gilligan.tail5807bd.ts.net/`** (Tailscale Serve, tailnet-only).

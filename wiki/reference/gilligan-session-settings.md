@@ -4,25 +4,40 @@ type: reference
 domain: environment
 updated: 2026-07-30
 tags: [settings, config, model, openai, sol, context, session, environment]
-links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
+links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]", "[[openclaw-plugin-install-trust-gate]]"]
 ---
 
 # Gilligan — Session Settings Snapshot
 
 > Snapshot of my runtime/session settings, captured **2026-07-11 ~20:47 UTC** at the Skipper's request. These are the live dials; re-run `session_status` for current values (usage numbers drift every turn).
 
-## Model & reasoning
-- **Default model as of 2026-07-30:** `openai/gpt-5.5` (stable fallback while 5.6 setup is blocked by runtime version).
-- **Correct direct Codex CLI call:** `codex --model gpt-5.6-sol ...` (or omit `--model` because `~/.codex/config.toml` already sets `model = "gpt-5.6-sol"`).
-- **OpenClaw 5.6 Sol ref in this install:** `codex/gpt-5.6-sol`. The provider catalog row is staged in `~/.openclaw/openclaw.json`, but it is not in the active picker/allowlist because live gateway use fails until Codex/OpenClaw is upgraded.
-- **Reasoning / thinking effort:** **off** (direct-answer mode; toggle `/reasoning`).
-- **Fast mode:** **off** (speed boost available on Opus 4.8/4.7/4.6; toggle `/fast`).
+## Model & reasoning — ⭐ CURRENT as of 2026-07-30 03:00 UTC
+- **Default model (`model.primary`): `anthropic/claude-opus-5`** — set back to Opus 5 at the Skipper's request 2026-07-30 02:29 UTC (it had been flipped to `openai/gpt-5.6-sol` earlier that night). Backup: `~/.openclaw/openclaw.json.bak-preopus5switch-20260730-022912`.
+- **`agents.defaults.thinkingDefault: "high"`** — unchanged, standing preference.
+- ✅ **GPT-5.6 Sol WORKS and is the `openai/` ref, not the `codex/` one.** Allowlisted as
+  **`openai/gpt-5.6-sol`** with alias **`sol`**. Verified live this session:
+  `openclaw infer model run --gateway --model sol --prompt "Reply with exactly: SOL_OK"`
+  → `provider: openai · model: gpt-5.6-sol · SOL_OK`.
+- ⚠️ **`codex/gpt-5.6-sol` returns *"Model override not allowed for agent main"* — that is the
+  allowlist working as intended, NOT a fault.** The `codex/` route may inspect fine via the Codex
+  app-server catalog but can fail on run; the `openai/` route is the one that actually runs. Both
+  rows appear in `openclaw models list`; only the `openai/` one is configured.
+- **Reasoning visibility:** `stream`. **Fast mode:** off.
 
 ## Execution & context
 - **Execution mode:** `direct` · **elevated** (fewer permission prompts).
-- **Runtime:** OpenClaw Default. **OpenClaw version:** 2026.6.1 (2e08f0f).
-- **Context window:** **1.0M tokens.** At snapshot: 215k used (20%), **0 compactions**, cache 100% hit.
+- **Runtime:** OpenClaw Default. **OpenClaw version:** **2026.7.1-2 (0790d9f)** — CLI and gateway matched.
+- **Context window:** **1.0M tokens.**
 - **Queue:** steer (depth 0).
+
+## ⚠️ Restarting the gateway from inside a session kills that session's turn
+If I run `openclaw gateway restart` (or anything that trips a restart) **from an exec call**, I am
+running *inside* the gateway — my own turn is torn down and the Skipper sees:
+> *"I was interrupted by a gateway restart and couldn't safely resume the previous turn."*
+
+That message is **self-inflicted, not a new fault**. Expect it, and tell him so rather than letting
+it read as another crash. The exec call also returns `Command aborted by signal SIGTERM` — also
+expected. Re-check with `openclaw gateway status` after ~20–30s.
 
 ## The adjustable dials (quick reference)
 - **Per-session (cheap, reversible):** model (opus48 / sonnet / haiku) · reasoning on-off · fast on-off · verbose · elevated/execution mode.
