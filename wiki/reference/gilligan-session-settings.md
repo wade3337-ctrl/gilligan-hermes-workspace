@@ -2,8 +2,8 @@
 title: Gilligan — Session Settings Snapshot
 type: reference
 domain: environment
-updated: 2026-07-25
-tags: [settings, config, model, opus, context, session, environment]
+updated: 2026-07-29
+tags: [settings, config, model, openai, sol, context, session, environment]
 links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 ---
 
@@ -12,8 +12,9 @@ links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 > Snapshot of my runtime/session settings, captured **2026-07-11 ~20:47 UTC** at the Skipper's request. These are the live dials; re-run `session_status` for current values (usage numbers drift every turn).
 
 ## Model & reasoning
-- **Model:** `claude-cli/claude-opus-4-8` (Opus 4.8 — Anthropic flagship). Auth: token (anthropic:manual).
-- **Default model:** `anthropic/claude-opus-4-8`.
+- **Default model as of 2026-07-29:** `openai/gpt-5.6-sol` (alias `sol`) via OpenAI/Codex OAuth.
+- **Correct direct Codex CLI call:** `codex --model gpt-5.6-sol ...` (or omit `--model` because `~/.codex/config.toml` already sets `model = "gpt-5.6-sol"`).
+- **OpenClaw selectable model ref:** `openai/gpt-5.6-sol`; configured in `~/.openclaw/openclaw.json` under `agents.defaults.models`, and set as `agents.defaults.model.primary`.
 - **Reasoning / thinking effort:** **off** (direct-answer mode; toggle `/reasoning`).
 - **Fast mode:** **off** (speed boost available on Opus 4.8/4.7/4.6; toggle `/fast`).
 
@@ -28,8 +29,8 @@ links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]"]
 - **Durable config (`openclaw.json`, back-up + merge-patch, never clobber):** models & routing · channels · heartbeat cadence · cron/scheduled jobs · memory · permissions/allowlists · tools policy.
 
 ## Notes
-- Aliases: `opus48` = anthropic/claude-opus-4-8 · `sonnet` = anthropic/claude-sonnet-4-6.
-- OpenAI/Codex calls default to `gpt-5.6-sol` (crew code+review).
+- Aliases: `sol` = openai/gpt-5.6-sol · `opus48` = anthropic/claude-opus-4-8 · `sonnet` = anthropic/claude-sonnet-4-6.
+- Runtime verification 2026-07-29: `codex debug models` listed slug `gpt-5.6-sol` / display `GPT-5.6-Sol`; `openclaw models status --plain` returned `openai/gpt-5.6-sol`; Discord picker recent list puts it first for the Skipper DM.
 - Knowledge cutoff: **January 2026** — newer facts require live lookup.
 - To change a dial I can set it directly (e.g. model via `session_status`); config-file edits go through the `gateway` tool (backup + merge-patch).
 
