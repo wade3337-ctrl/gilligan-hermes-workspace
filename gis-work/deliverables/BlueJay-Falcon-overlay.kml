@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <GroundOverlay>
+  <name>Blue Jay / Falcon Contract Area Map (APPROX)</name>
+  <description>USFS Cleveland NF post-fire fuels-reduction contract area. Size/scale from the map's own scale bar; ABSOLUTE POSITION IS APPROXIMATE - use the overlay handles to drag/align to Blue Jay &amp; Falcon campgrounds and Long Canyon Rd. North-up.</description>
+  <color>b4ffffff</color>
+  <Icon><href>BlueJay-Falcon-ContractAreaMap.png</href></Icon>
+  <LatLonBox>
+   <north>33.657249</north>
+   <south>33.644860</south>
+   <east>-117.439777</east>
+   <west>-117.455045</west>
+   <rotation>0</rotation>
+  </LatLonBox>
+ </GroundOverlay>
+ <Placemark><name>Blue Jay Campground (control pt)</name><Point><coordinates>-117.4506,33.6517,0</coordinates></Point></Placemark>
+ <Placemark><name>Falcon Group Campground (control pt)</name><Point><coordinates>-117.4508,33.6575,0</coordinates></Point></Placemark>
+</kml>
