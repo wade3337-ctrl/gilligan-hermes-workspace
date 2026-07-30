@@ -24,6 +24,14 @@ links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]", "[[openclaw-plu
   rows appear in `openclaw models list`; only the `openai/` one is configured.
 - **Reasoning visibility:** `stream`. **Fast mode:** off.
 
+## 💳 Auth & billing — subscription, NOT metered API (verified 2026-07-30)
+**The Skipper is on his Claude SUBSCRIPTION. The `2026.7.1-2` upgrade changed the ROUTE, not the wallet.**
+- Active profile: **`anthropic:manual`, `mode=token`, `oauth=0`** — credential prefix **`sk-ant-oat…`** (an OAuth *subscription* token from `claude setup-token`), **expires in ~334d**.
+- A metered pay-as-you-go key looks like **`sk-ant-api…`** and does not carry that kind of expiry. Check with **`openclaw models status`**.
+- ⚠️ **Do NOT infer billing from a cron run's `provider:` field.** Runs through 2026-07-29 recorded `provider: "claude-cli"`; runs from 2026-07-30 record `provider: "anthropic"`. That is only the transport — the `claude-cli` OAuth profile is now **expired (0m)**, so the same subscription token goes straight to `api.anthropic.com`. I misreported this to him as "we're on API now"; he was right to push back.
+- 🔻 **Why the `Overloaded` (HTTP 529) bursts appeared now:** per `docs/providers/anthropic.md`, `service_tier` **only applies to direct API-key requests — OAuth/subscription-token requests never get one**, so subscription traffic has no priority lever when Anthropic sheds load. The old `claude-cli` path also absorbed those retries invisibly. Same weather, umbrella gone.
+- 🧯 **`Fallbacks (0)` at the config level** — a single transient 529 kills a job outright. The nightly wiki-distill cron now carries an explicit `fallbacks: ["anthropic/claude-sonnet-5"]` and `timeoutSeconds: 600` (was 360, while real runtimes were 200–308s and had already blown it three times).
+
 ## Execution & context
 - **Execution mode:** `direct` · **elevated** (fewer permission prompts).
 - **Runtime:** OpenClaw Default. **OpenClaw version:** **2026.7.1-2 (0790d9f)** — CLI and gateway matched.
@@ -44,7 +52,7 @@ expected. Re-check with `openclaw gateway status` after ~20–30s.
 - **Durable config (`openclaw.json`, back-up + merge-patch, never clobber):** models & routing · channels · heartbeat cadence · cron/scheduled jobs · memory · permissions/allowlists · tools policy.
 
 ## Notes
-- Aliases: `opus48` = anthropic/claude-opus-4-8 · `sonnet` = anthropic/claude-sonnet-4-6. `sol` should map to `codex/gpt-5.6-sol` only after the upgrade passes.
+- Aliases (live, `openclaw models status` 2026-07-30): `opus48` = anthropic/claude-opus-4-8 · `opus5` = anthropic/claude-opus-5 · **`sonnet` = anthropic/claude-sonnet-5** · **`sol` = openai/gpt-5.6-sol** (the `openai/` ref runs; the `codex/` ref is refused by the allowlist, by design — see above).
 - Runtime verification 2026-07-30: `codex debug models` lists slug `gpt-5.6-sol` / display `GPT-5.6-Sol`; `openclaw models status` allows `codex/gpt-5.6-sol`; live gateway call fails on `codex-cli 0.144.1` with `requires a newer version of Codex`. `openclaw update --dry-run` targets OpenClaw `2026.7.1-2`.
 - Knowledge cutoff: **January 2026** — newer facts require live lookup.
 - To change a dial I can set it directly (e.g. model via `session_status`); config-file edits go through the `gateway` tool (backup + merge-patch).
