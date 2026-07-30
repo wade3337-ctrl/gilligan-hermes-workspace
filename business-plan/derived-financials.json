@@ -1,0 +1,36 @@
+{
+  "source_file": "GSTS Financials 2022 - mid 2026 07-29-26.xlsx",
+  "generated": "2026-07-30T15:57:33",
+  "months": 6,
+  "revenue_ytd": 11250560.7,
+  "gross_profit": 3693223.58,
+  "reclass": 1374202.97,
+  "adjusted_gross_profit": 5067426.55,
+  "deal_agp": 5616561.07,
+  "deal_agp_rate": 0.4992249915153118,
+  "base_ebitda": 944015.3900000001,
+  "ebitda_adjustments": 429484.02,
+  "revised_ebitda": 1373499.4100000001,
+  "controls_failed": 0,
+  "scenarios": [
+    {
+      "label": "FY2026 goal - Workbench.dbo.SalesGoal",
+      "revenue": 25300976.0,
+      "note": "authoritative",
+      "agp": 12630879.528929107,
+      "earnout": 5000000.0
+    },
+    {
+      "label": "CFO budget figure (Steve, 2025 budget)",
+      "revenue": 24400000.0,
+      "note": "NOT the LOI - his words",
+      "agp": 12181089.792973608,
+      "earnout": 3550408.1498800353
+    }
+  ],
+  "annualized_revenue": 22501121.4,
+  "annualized_agp": 11233122.14,
+  "annualized_earnout": 0.0,
+  "revenue_for_floor": 22835395.250140134,
+  "revenue_for_cap": 25038810.581294008
+}

@@ -524,6 +524,48 @@ def main():
         print("  -> every control passed; the derived figures foot to the CFO's own file.")
     print("=" * 78)
 
+    # --- machine-readable emit for the private deal dashboard ---
+    # Written ONLY to a local file. Never rendered to a TRIM IT page: play is
+    # publicly resolvable and its cookie is forgeable (see wiki note), so earnout
+    # figures must not travel there.
+    if '--json' in sys.argv:
+        import json
+        out = {
+            'source_file': os.path.basename(path),
+            'generated': datetime.now().isoformat(timespec='seconds'),
+            'months': len(months),
+            'revenue_ytd': revenue,
+            'gross_profit': gp,
+            'reclass': reclass,
+            'adjusted_gross_profit': agp,
+            'deal_agp': deal_agp,
+            'deal_agp_rate': deal_rate,
+            'base_ebitda': base_ebit,
+            'ebitda_adjustments': adjustments,
+            'revised_ebitda': rev_ebit,
+            'controls_failed': len(fails),
+            'scenarios': [],
+        }
+        if deal_rate:
+            ann = revenue / len(months) * 12 if months else None
+            if ann:
+                out['annualized_revenue'] = ann
+                out['annualized_agp'] = ann * deal_rate
+                out['annualized_earnout'] = earnout_for(ann * deal_rate)
+            out['revenue_for_floor'] = EARNOUT_FLOOR_AGP / deal_rate
+            out['revenue_for_cap'] = EARNOUT_CAP_AGP / deal_rate
+            for label, rev_s, note in SCENARIOS:
+                a = rev_s * deal_rate
+                out['scenarios'].append({
+                    'label': label, 'revenue': rev_s, 'note': note,
+                    'agp': a, 'earnout': earnout_for(a),
+                })
+        jpath = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             'derived-financials.json')
+        with open(jpath, 'w', encoding='utf-8') as fh:
+            json.dump(out, fh, indent=2)
+        print(f"  wrote {jpath}")
+
     return len(fails)
 
 
