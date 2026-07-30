@@ -178,3 +178,24 @@ with H1 actuals — and that erases this:
 one month that actually explains the shortfall disappears from every dashboard that compares actual to
 goal. ✅ **His call: "leave it."** `SalesGoal` stays the approved plan of record — one immutable budget, with the
 live re-based requirement carried on this cockpit, which recomputes it from actuals every month anyway.
+
+## 📊 June-locked reconciliation + the CFO financial panel (2026-07-30, ship #202)
+Steve's locked June file entered and reconciled → [[monthly-cfo-reconciliation]] · [[cfo-financials-derivation]].
+- **6 monthly rows** added to `BODCfoRevenue`; **Q2 restated 5,904,101 → 5,932,229.25** — and the entire
+  **+28,128 move is one brand-new account, `4210 · Fuel Surcharge`** (residual **$0.24**). Q1 made exact.
+  Committed only after in-transaction controls proved monthly sum == quarter sum == **11,250,560.70**.
+- **ERP tie-out H1 −1.53%** (vs `SUM(Invoices.Total)` 11,078,311.77). Monthly drift swings −9.88%..+7.77%
+  and cancels. **Productivity Q2 $125.10 → $125.70**, H1 $122.32, still **$4.30/hr under the $130 commitment**.
+  Control run first: the basis reproduced the board's own $118.76 / $125.10 exactly before restating.
+- **NEW table `Workbench.dbo.BODFinancialActual`** — GP / reclass / AGP / base EBITDA / adjustments /
+  revised EBITDA, `IsProvisional` on the EBITDA rows. **These CANNOT be derived from TRIM IT — there is no
+  cost side in the ERP**; they are keyed from the Controller's file. Plus 3 FY target rows.
+- **New panel below the four tiles**, headed *"These are not the board commitments"* so a CFO budget target
+  can never be read as a board commitment. H1 AGP **$5,067,427 = 45.0%** of revenue; H1×2 **$10.13M vs the
+  $11.4–12.2M target**; Revised EBITDA H1×2 **$2.75M vs $4M+**. "H1 × 2" is labelled **arithmetic, not a
+  forecast** on the page.
+- 🚨 **Deal material was stripped the same session.** The panel as first shipped carried the **$4.1M EBITDA
+  floor**, the **FTI ~50% AGP definition** and **LOI/QoE** wording — proven readable via a forged
+  `ZUserID=9` cookie on a publicly-resolvable host. Rewritten to a neutral **Basis** note (the reclass
+  accounts); re-verified **all eight deal terms → 0** in the served HTML.
+  → **[[play-public-cookie-forgeable]]** · backup `Jasonsrepairs\...bak-predealstrip-20260730-160643`.

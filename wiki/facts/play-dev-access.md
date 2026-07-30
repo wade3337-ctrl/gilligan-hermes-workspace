@@ -40,7 +40,14 @@ My `gstsdb_ed25519` key logs in as **Administrator** → I have **full write** o
 - `sqlcmd "Timeout expired"` here = a **QUERY** timeout (server too slow), **NOT** a network drop. The tailnet to this host is **direct P2P, ~58ms, 0% loss** — verify with `ping` + `tailscale status`/`tailscale ping` before blaming the link or rebooting. **Don't reboot chasing a network ghost** — you'd also boot whoever's mid-session.
 - **Rule:** schedule heavy/analytical runs **off-peak (≈3am PT)**, DST-proof (two UTC fires + PT-hour guard + once-daily stamp — see `PLAYBOOK.md`). The [[aspen-retention-agent]] scoreboard runs 3am PT for exactly this reason.
 
+## 🚨 SSH is tailnet-only; HTTP is NOT (2026-07-30)
+The table above shows play at **173.208.162.142 — a PUBLIC IP.** SSH goes over the tailnet
+(`100.86.97.46`), which makes the box *feel* private. **It is not, over HTTP.** A forged
+`Cookie: ZUserID=9` returns **200** on gated pages. **Never render deal/Track-2 material on play.**
+→ [[play-public-cookie-forgeable]]
+
 ## Related
+- [[play-public-cookie-forgeable]] — the HTTP exposure of this same box; the no-deal-material rule.
 - [[workbench-play-db]] — separate side-DB that SURVIVES the nightly refresh.
 - [[prod-db-access-blocked]] — the (blocked) prod read-only path vs this play access.
 - [[disaster-recovery]] — `gstsdb_ed25519` is in the recovery bundle.

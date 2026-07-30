@@ -53,6 +53,17 @@ this number is the denominator of a board commitment.
 - The quarter rows (`GrainCode='Q'`) for Q1/Q2 2026 are already stored; monthly rows for those quarters
   can be added later without conflict since the unique key includes the grain.
 
+## ⚙️ Run the derivation script FIRST (2026-07-30)
+Before any manual reading of the file, run **`business-plan/derive-financials.py <file>`**. It re-derives
+the reclass, AGP, the deal-AGP inference and the earnout position, and **exits non-zero if any control
+fails** — so a changed statement format is caught before a figure reaches the Skipper. It also lifts the
+CFO's own FY targets out of his annotation column, so they never need hardcoding.
+→ **[[cfo-financials-derivation]]** (what is derivable, what is inference, and the two items that genuinely
+are not — Base EBITDA and the QoE adjustments).
+
+⚠️ **Where the output may go:** earnout math is Track-2/BLACK and goes to the Tailscale-private
+[[deal-tracker-dashboard]] only — **never rendered on play** → [[play-public-cookie-forgeable]].
+
 ## Cadence
 A monthly reminder fires on the **12th, 09:00 PT** (`bod-cfo-reconcile`) — late enough that the
 Controller has usually closed the prior month. If the email has not arrived, that is worth a nudge to him,

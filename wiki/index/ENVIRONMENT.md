@@ -16,6 +16,7 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[crew-llms-and-helpers]] — the 5-lab verification panel + `crew/*-ask.py` helpers + gotchas. **OpenAI = `gpt-5.6-sol`** (default in `~/.codex/config.toml`, needs codex-cli ≥0.144).
 - [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + **Crew Meter** durable URL **`https://gilligan.tail5807bd.ts.net/`** (Tailscale Serve, tailnet-only).
 - [[play-dev-access]] — SSH to `gstsdatabase`, `gsql.sh`/`view.sh`, PLAY nightly refresh = DB-only.
+- [[play-public-cookie-forgeable]] — 🚨 **play is a PUBLIC IP and `Cookie: ZUserID=9` returns 200** (SSH is tailnet-only; HTTP is not). **No deal/Track-2 material on play, ever.** The auth check can't see this — it probes a second *user*, not a forged one.
 - [[play-gsts-is-ephemeral]] — 🧨 the `GSTS` db on play is SCRATCH; the restore erases whole projects. Durable work → `Workbench` + an idempotent replay script.
 - [[prod-backup-chain]] — prod→play backups **fail ~weekly**; play silently re-restores a stale file. Check `restorehistory` before trusting any play number.
 - [[prod-db-access-blocked]] — DIRECT SQL to prod still blocked; Jordan/AWS security group + IP `76.32.188.157`.

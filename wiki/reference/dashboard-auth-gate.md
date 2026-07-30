@@ -86,7 +86,24 @@ Granting access to Celeste Armenta exposed this. The add-user search runs:
 - Bootstrap confirmed in source: **UserID 9 = Jason Wade** and the Arbor Helper assistant are always
   allowed, so the list cannot lock the admin out. (`376` = Ulises Mario Muniz.)
 
+## 🔴 3. The bootstrap allow-list IS the hole — and the auth CHECK cannot see it (2026-07-30)
+The gate's bootstrap (`9` = Jason, `376` = bot) **always passes, by design**, so the admin can never be
+locked out. But **`9` is a guessable integer and TRIM IT only checks the cookie EXISTS** — so
+`curl -H "Cookie: ZUserID=9"` (no password, no session token) returns **200** on a page gated to the COO,
+on a **publicly-resolvable host**. The gate correctly refuses user 340 while admitting a forged 9.
+
+⚠️ **`verify-build.sh`'s auth group cannot detect this.** It probes `ALLOW_UID=9` → 200 and
+`DENY_UID=340` → 403 and reports PASS — which proves *one real user cannot see another's page*, and says
+**nothing about an attacker**, because 340 is a different **user**, not a **forged identity**. I read
+`PASS 20 / FAIL 0` and wrongly told the Skipper deal figures were gated.
+- 🔧 **An auth probe must include a forged/garbage cookie case** (`ZUserID=99999999`, and `9`-without-session),
+  not merely a second legitimate user.
+- Root fix is **session binding, not a page patch** (Skipper + Jordan). → [[play-public-cookie-forgeable]]
+
 ## Related
+- [[play-public-cookie-forgeable]] — **the exposure this gate does not close**, and the standing rule that
+  no deal material may render on play.
+- [[claim-verification-discipline]] — why "the check passed" was not evidence.
 - [[anomaly-monitor-suite]] — the consumer that broke + was fixed.
 - [[play-dev-access]] — the play box these dashboards + the monitor run against.
 - [[arbor-core-v15-auth]] — the *other* (Track-2) gate; don't conflate.

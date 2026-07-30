@@ -26,6 +26,7 @@ Cross-cutting operating rules (both domains). Contracts detail in `wiki/referenc
 - [[review-before-prod]] — REVIEW-PILE, whole-dashboard rule, RC-##→LP-## lifecycle.
 - [[only-trustworthy-data]] — omit+flag wonky metrics; TPH target 130.
 - [[phone-friendly-emails]] — reps read on phones; short lines, key number first.
+- [[claim-verification-discipline]] — ✅ **NAME THE COMMAND**: before any claim about system state, name the command that produced it *this session*, or say "I'm inferring" out loud. **Derived/summary fields are not measurements** (`consecutiveErrors` counts attempts not nights; `provider:` names the route not the wallet; a PASS measures what the check tests). Retrieval, not capture, is the failing loop.
 - [[self-improvement-loop]] — LESSONS (flops) + PLAYBOOK (wins), written in the moment, weekly-distilled.
 
 ## Crew / sub-agent comms
