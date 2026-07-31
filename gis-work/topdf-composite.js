@@ -1,0 +1,14 @@
+const PDFDocument=require('pdfkit'), fs=require('fs');
+const D='/home/wade3337/.openclaw/workspace/gis-work/deliverables';
+const png=D+'/BlueJay-Falcon-SAT-overlay.png';
+const b=fs.readFileSync(png); const W=b.readUInt32BE(16), H=b.readUInt32BE(20);
+const iw=720, ih=Math.round(iw*H/W);
+const doc=new PDFDocument({size:[iw+40, ih+120], margin:0});
+const st=fs.createWriteStream(D+'/BlueJay-Falcon-SAT-overlay.pdf'); doc.pipe(st);
+doc.fontSize(13).fillColor('#111').text('Blue Jay / Falcon Contract Area — map over satellite imagery', 20, 16, {width:iw});
+doc.fontSize(9).fillColor('#555').text('USFS Cleveland NF post-fire fuels reduction. Contract-area map (contours, Units 1-3, roads, PLSS) laid over Esri World Imagery. NORTH-UP.', 20, 36, {width:iw});
+doc.image(png, 20, 58, {width:iw, height:ih});
+const cy=58+ih+8;
+doc.fontSize(8).fillColor('#a00').text('APPROXIMATE ORIENTATION OVERLAY — georegistered by feature-matching (no coordinate grid on the source map); alignment is good but not survey-grade. Source map states "LANDLINES ARE APPROXIMATE." For the legend + authoritative detail use the full contract-area map PDF. Imagery: Esri World Imagery.', 20, cy, {width:iw});
+doc.end();
+st.on('finish',()=>console.log('composite PDF written:', iw+'x'+ih));
