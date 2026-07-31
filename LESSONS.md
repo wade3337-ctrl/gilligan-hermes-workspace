@@ -62,6 +62,7 @@ tagged by domain — *in the moment*, not "later." Kept **lean** (consolidate, d
 - ⚠️ **Python 3.14 here has no package manager + no passwordless sudo** → use stdlib; Skipper installs system pkgs.
 - ⚠️ **No headless browser** → authenticated HTTP fetch (view.sh) for web/ERP pages.
 - ⚠️ **MEMORY.md silently clipped at ~20k** → `agents.defaults.bootstrapMaxChars`/`bootstrapTotalMaxChars` were UNSET in `~/.openclaw/openclaw.json` (bootstrap truncated). Set them (40000 / 160000), back up the config first, and restart to apply. (2026-06-28)
+- ⚠️ **This workspace clone may have no Git author identity configured** — the first commit failed with `unable to auto-detect email address`. Before committing, inspect the latest commit author and repo/global config; set the matching identity repo-locally rather than guessing or changing global config. (2026-07-31)
 
 ## 🧑‍🤝‍🧑 Working with the Skipper / process
 - ⚠️ **Don't let background/inter-session chatter drown the user** (`[[subagent-completion-noise]]`) — surface real
