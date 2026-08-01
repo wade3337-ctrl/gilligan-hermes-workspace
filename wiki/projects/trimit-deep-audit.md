@@ -3,7 +3,7 @@ title: TRIM IT Deep Audit — DB + ColdFusion, workflow-first
 type: project
 domain: work
 track: 1
-status: ACTIVE — living master index. Stages 1-2 done 2026-08-01.
+status: ACTIVE — living master index. Stages 1-3 done 2026-08-01.
 tags: [trimit, database, coldfusion, audit, cleanup, workflow, customer-creation, schema-map]
 applies: ["[[repair-contract]]", "[[db-repair-contract]]", "[[only-trustworthy-data]]", "[[config-clobber-guard]]"]
 links: ["[[trimit-db-cleanup]]", "[[trimit-db-gotchas]]", "[[trimit-server-topology]]", "[[trimit-stack-and-tph]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]", "[[play-gsts-is-ephemeral]]", "[[prod-db-access-blocked]]", "[[coldfusion-2025-upgrade-case]]"]
@@ -23,8 +23,8 @@ Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (templat
 |---|-------|--------|------|-------------------|
 | 1 | Customer / Account creation | ✅ done (map-only) | [[trimit-audit-01-customer-creation]] | customer=`Company`; create path `Profile.Company.Focus.cfm`→`Synch.CodeGenerateCompany.cfm`→proc `GenerateCompany`; `Companies`=133 cols/3,203 rows, 31 FK children |
 | 2 | Contact / Location setup | ✅ done (map-only) | [[trimit-audit-02-contact-location]] | Contacts=34 cols/12,827 rows (~30% dupes confirmed); Locations=123 cols/30,708 rows (40 map-render cols, 40 FK children); **2 write patterns: proc create vs inline-UPDATE edit**; blank-overwrite data-loss trap |
-| 3 | Lead → Proposal / Bid | ⬜ next | — | `GenerateProposal*` (huge proc family) |
-| 4 | Go-Ahead / activation → Work Order | ⬜ | — | `GenerateGoAhead`, `GoAheadsPostUpdate` |
+| 3 | Lead → Proposal / Bid | ✅ done (map-only) | [[trimit-audit-03-lead-proposal-bid]] | Proposals=**221 cols**/267,128 rows; **153 GenerateProposal\* procs** (polymorphic, 1/bid-type); **97.91% never approved**; **66.3M line-rows** (ProposalLines+PageLines) = the marquee cleanup |
+| 4 | Go-Ahead / activation → Work Order | ⬜ next | — | `GenerateGoAhead`, `GoAheadsPostUpdate`; partly known via [[goahead-status-lifecycle]] |
 | 5 | Scheduling → Crew Sheets → Production | ⬜ | — | (dashboards already touch this) |
 | 6 | Invoicing / AR | ⬜ | — | `GenerateInvoice*`, `InvoiceMasters` |
 | 7 | Reporting / dashboards | ⬜ (mostly known) | see RC-01..06 in [[PROJECTS]] | our existing dashboards cover much of this |
