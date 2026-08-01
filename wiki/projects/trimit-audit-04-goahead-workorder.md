@@ -68,6 +68,11 @@ updated: 2026-08-01
 
 **Architecture contrast worth noting:** `GenerateProposal` base = header-only (0 lines); `GenerateGoAhead` = header **+ 40 lines** via its cascade. So the create cost climbs down the workflow (Company→cascade of 2; Proposal→header only; GoAhead→header + lines + figures). The two-step InProcess→Active *activation* is a UI/SOP status flip (`goahead-status-lifecycle`), separate from this creation cascade. Residue: identity ticks only; reverted to 94,291 GoAheads.
 
+## ✅ WRITE-TEST — WorkOrder generation (2026-08-01, follow-up "B")
+**`GenerateWorkOrders(@ZLocationID,@ZYear)` fired on PLAY** (Location 1285186, Year 2027, clean slate), `TRAN…ROLLBACK`, zero residue.
+- ✅ **CONFIRMED it works:** inserted **11 WorkOrders** (one per month absent for that Location/Year, from `CalendarTemplates`, e.g. `FEBRUARY 2027`…, status NULL) then cursored each → `GenerateCrewSheets` → **287 CrewSheets** created. So WorkOrder generation = template-driven monthly WOs + auto crew sheets.
+- 🐛 **NEW BUG (found by reading, proven by running): the proc throws on EVERY run.** It declares cursor `WorkOrderCursor` but ends `CLOSE WorkOrders`/`DEALLOCATE WorkOrders` (wrong name) → **error 16916 “A cursor with the name ‘WorkOrders’ does not exist.”** The inserts complete BEFORE the error, so rows persist, but the caller (`.cfm`) receives a SQL exception every time. Cosmetic-in-effect but a real error surfaced to the app; also **leaks the cursor** (never CLOSE/DEALLOCATE’d under its real name) each call. Low-risk one-line fix (rename to `WorkOrderCursor`), but flag — don’t “fix” without checking whether any caller now depends on/catches that error. Residue: reverted to 52,680 WorkOrders.
+
 ## Resume pointer
 **Stage 4 COMPLETE (map-only, 2026-08-01).** Chain Proposal→GoAhead→WorkOrder confirmed by reading the create
 executors; both entities' schema + FK graphs mapped; InProcess data-quality re-measured live. **Next = Stage 5:

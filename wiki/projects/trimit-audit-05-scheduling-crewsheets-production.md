@@ -73,6 +73,13 @@ updated: 2026-08-01
 
 ⭐ **Bonus — caught a corrupted sheet in the wild:** the test crew sheet 541600 already had `WorkDate=2026-07-30` but true `CalDate=2026-07-29` (a real live 1-day mismatch), before I touched anything. The corruption is genuinely present in production data, not hypothetical. Residue: WorkDate restored by rollback; count 158,224.
 
+## ✅ WRITE-TEST — full scheduling CASCADE fired (2026-08-01, follow-up "B")
+**`GenerateCrewSheetsFromWOCrewCalendar(@ZWorkOrderID,@ZCrewCalendarID)` fired on PLAY** (WO 165464 on a **1-tree project** to keep the inventory cursor minimal; crew calendar 568783, non-INTERNAL), `TRAN…ROLLBACK`, `LOCK_TIMEOUT 15s`.
+- ✅ **Ran to completion without error; rolled back CLEAN (158,224).**
+- 🔴 **Key finding — the cascade is EXPENSIVE: 72,152 ms (72 s) even on a 1-tree project.** The cost is NOT the inventory cursor (1 row) — it's the chain of sub-procs (`$Crew$New` + `EvaluateStumpCrew` + RFP completion + `UpdateWorkOrderGeneral`). **This validates the Stage-5 caution:** on an average project (297 inventory) or a large one (up to 108,306) this would hold locks for a very long time. **Scheduling a work order is a heavyweight operation** — relevant to any performance work and to arbor-core's design.
+- ⚠️ **Inconclusive on fresh-sheet binding:** this WO already had 139 crew sheets and the combo added **0 net** (nothing new inserted — either already scheduled for that crew-day or the date logic produced none). So I could NOT observe a newly-created sheet's WorkDate=CalDate. The create-side binding (`CalendarID` from `CrewCalendars.CalendarID`) remains established by READING `$Crew$New` (Stage 5 §1). Chose NOT to retry — repeated 72s cascade runs on the SHARED play box aren't worth the lock pressure for a point already covered by code-read.
+- Residue: zero (reverted to 158,224).
+
 ## Resume pointer
 **Stage 5 COMPLETE (map-only, 2026-08-01).** Scheduling create path, CrewSheets/InventoryAssignments/Calendars
 schema + FK graphs mapped; the two data traps (WorkDate corruption, ScheduledHours/CompletedHours) re-measured live;

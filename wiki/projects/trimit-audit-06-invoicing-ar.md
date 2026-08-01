@@ -57,6 +57,19 @@ updated: 2026-08-01
 - **Already knew:** [[bod-commitment-dashboard]] + [[monthly-cfo-reconciliation]] (the IsProForma/IsCredit-NULL trap → use `SUM(Total)`; H1 revenue basis), [[anomaly-monitor-suite]] (AR report reads InvoiceBalance), [[trimit-audit-05-scheduling-crewsheets-production]] (InventoryAssignments→InvoiceLines bridge).
 - **NEW this pass:** **TRIM IT has no cash/payment layer** (`Payments`=0, `Applied`=0 → QuickBooks owns it); **`InvoiceLine` singular = QB staging table** (TxnID/EditSequence), not legacy; the 3-level `InvoiceMaster→Invoices→InvoiceLines` hierarchy with live counts (2,327 / 50,314 / 1.42M); the IsProForma/IsCredit NULL trap quantified exactly (99.5% / 99.95%); `Exported`=1 on only 64 invoices (flag unusable); AR open balance **$18.5M across 3,633 invoices** (live 2026-08-01); create path `GenerateInvoiceMaster` (34-proc family).
 
+## ✅ WRITE-TEST VERIFICATION (2026-08-01, Skipper-directed)
+**Method:** PLAY only, `BEGIN TRAN … ROLLBACK`, zero residue. `GenerateInvoiceMaster` is a light single INSERT (safe to fire). Created InvoiceMasterID 4394; NULL-trap tested on real invoice 483265.
+
+| # | Finding (map-only claim) | Write-test | Verdict |
+|---|---|---|---|
+| 1 | `GenerateInvoiceMaster(@ZProjectID)` creates the master header | S6-T1: EXEC’d → `*** New Invoice Master ***`, Pending, seeded from project (Total NULL) | ✅ CONFIRMED |
+| 2 | `IsProForma`/`IsCredit` 99.5% NULL → documented filter `=0 AND =0` returns near-zero; use `SUM(Total)` | S6-T2: real invoice with NULL flags **fails** the documented filter (0 rows); after `SET IsProForma=0,IsCredit=0` it **passes** (1 row). Schema confirms **no default constraint** on either column → new rows default NULL | ✅ **CONFIRMED — write-demonstrated the filter silently drops every NULL-flag invoice; the trap is baked in at the schema (no default)** |
+| 3 | Parent-FK enforcement | S6-T3: `SET CompanyID=-99999` on InvoiceMasters was **ACCEPTED** | 🚨 **NEW FINDING — `InvoiceMasters.CompanyID` has NO foreign key** (the table’s ONLY FK is `FK_InvoiceMasters_Contracts`). The child `Invoices` DOES enforce `FK_Invoices_Companies` (trusted). So the master is LESS protected than its children. 0 orphans exist today, but nothing prevents them. |
+| 4 | No cash layer (`Payments`/`Applied` = 0 → QuickBooks owns payments) | S6-T4: live counts | ✅ CONFIRMED — `Payments`=0, `Applied`=0 |
+| 5 | AR open $18.5M | S6-T4: live | ✅ CONFIRMED — **3,633 open invoices / $18,506,866.00** |
+
+**New integrity gap to log:** `InvoiceMasters` lacks FKs on `CompanyID` (and `ProjectID`) — the invoice *master* trusts the app to write valid keys; the DB won’t reject garbage. Candidate to add-with-check during any cleanup (rehearse first; verify 0 orphans on prod before adding, which play shows = 0). Residue: identity ticks only; master reverted, invoice flags back to NULL.
+
 ## Resume pointer
 **Stage 6 COMPLETE (map-only, 2026-08-01).** Invoice hierarchy, create path, FK graph, the QB boundary, and the
 BOD revenue-filter trap all confirmed live. **Next = Stage 7: Reporting / Dashboards** — the layer we've built most
