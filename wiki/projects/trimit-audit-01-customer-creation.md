@@ -67,6 +67,27 @@ This naming convention is the key to auditing the whole ERP fast:
 - **Already knew** (extended, not re-derived): [[trimit-db-cleanup]] (2026-07-20 audit: dead tables/proc bloat, contact dupes ~30%), customer-verifier (CustomerList 414/414).
 - **NEW this pass:** the real webroot path + the "wwwroot\GSTS is only our drop folder" trap; color folders aren't full dupes; **customer = `Company`, created by proc `GenerateCompany` (not a form page); `NewCompany.cfm` is dead;** Companies = 133 cols / 3,203 rows with 31 FK children (creation = root of the data graph); parent FKs Markets/ZipCodes/CommissionGroups; PostInsert/PostUpdate triggers; live 2011-era `zDelete-*` tables.
 
+## ✅ WRITE-TEST VERIFICATION (2026-08-01, Skipper-directed) — every finding exercised with a real write
+**Method:** on PLAY (`GSTSDATABASE`/GSTS; prod write blocked), every write wrapped in `BEGIN TRAN … ROLLBACK` so it executes for real (procs run, triggers fire) then reverts. Residue check after each = row counts returned to baseline (Companies 3,203; Contacts/Locations unchanged). Governed by [[db-repair-contract]] rule 1 (test on play). Read each proc/trigger body BEFORE executing.
+
+| # | Finding (map-only claim) | Write-test | Verdict |
+|---|---|---|---|
+| 1 | Customer = `Company`, created by proc `GenerateCompany` | T1: EXEC’d it → CompanyID 301784 `** New Company **`, Pending, SalesRep=TBD appeared | ✅ CONFIRMED |
+| 2 | (implied) `@ZCompanyID` param drives the create | T1: passed `999999`, got a fresh identity | ❌ **CORRECTED — `@ZCompanyID` is DECLARED BUT NEVER USED; GenerateCompany ignores it and always inserts a blank Pending shell (SalesRep WHERE Desc1=‘TBD’)** |
+| 3 | Two triggers fire on insert | T1: `CompaniesPostInsert` fired → CustomerNumbers +1 AND `CompanyGateway` set to `Synch.Company.Focus.cfm?ZCompanyID=301784` | ✅ CONFIRMED + **deeper: create is a CASCADE** |
+| 4 | Parent FKs Markets/ZipCodes/CommissionGroups | T3: bad value on each → all three rejected (`FK_Companies_{Markets,ZipCodes,CommissionGroups}`) | ✅ CONFIRMED (real + trusted, not disabled) |
+| 5 | `GenerateContact(@ZCompanyID)` attaches a contact | T4: ContactID 222183 `** New Contact **`, CompanyID matched, IsPrimary=1, **status Active**, address seeded from company | ✅ CONFIRMED (param USED here) |
+| 6 | `GenerateLocation(@ZCompanyID)` attaches a location | T5: LocationID 1285187, CompanyID matched, seeded from company Desc1, **status Pending**, Orientation Landscape | ✅ CONFIRMED (param USED here) |
+| 7 | `NewCompany.cfm` is a dead stub | read-verified (no form/insert logic) — nothing to write | ✅ CONFIRMED by read |
+
+### The verified create CASCADE (new depth from testing)
+`GenerateCompany` (ignores param) → INSERT blank Company → **AFTER-INSERT trigger `CompaniesPostInsert`** → `UpdateNewCompany` → **`GenerateCustomerNumber`** (inserts a `CustomerNumbers` row) **+ `UpdateCompanyGateway`** (sets `CompanyGateway = Synch.Company.Focus.cfm?ZCompanyID=<newID>`). Creating a customer is a multi-object cascade, not one INSERT.
+
+### Bonus corrections/observations from the writes
+- **New Contacts default to status `Active`, new Locations to `Pending`** → so the 72% NULL-status Contacts (Stage 2 cleanup finding) are **LEGACY data**, not how the create path behaves today.
+- Persisted Company row showed `CreatedByID=165` though the proc inserts `NULL` → the cascade post-processes the row (mechanism not chased).
+- **Only residual trace:** identity sequences advanced (SQL Server doesn’t roll back identity) — Companies ~301784, Contacts ~222183, Locations ~1285187. Cosmetic gaps, wiped by tonight’s play refresh; no data added.
+
 ## Resume pointer
 **Stage 1 COMPLETE (map-only, per Skipper "A", 2026-08-01).** Both loose ends closed with evidence: create
 path confirmed `Profile.Company.Focus.cfm` → `Synch.CodeGenerateCompany.cfm` (CFSTOREDPROC) → `dbo.GenerateCompany`;
