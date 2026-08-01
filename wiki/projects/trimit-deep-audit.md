@@ -17,7 +17,7 @@ updated: 2026-08-01
 > again. Mission, method, the stage tracker, all knowledge sources, and guardrails are below.
 
 ## 🧹 CLEANUP PLAN → [[trimit-cleanup-plan]] (compiled 2026-08-01)
-Inventory + phased execution: **416 dead tables/44M rows/5.76 GB · 160 dead procs · 69 empty tables · ~65M never-approved proposal line-rows · 40 InProcess GoAheads ($415K) · ~30% contact dupes · 3 code/schema defects.** Method: quarantine→soak→drop, rehearse on play (self-reverts nightly), package scoped scripts for prod. **Recommended start: Phase 0 harness + Phase 1 dead-table rehearsal.**
+Inventory + phased execution: **271 dead tables/20.4M rows/5.76 GB · 160 dead procs · 69 empty tables · ~65M never-approved proposal line-rows · 40 InProcess GoAheads ($415K) · ~30% contact dupes · 3 code/schema defects.** Method: quarantine→soak→drop, rehearse on play (self-reverts nightly), package scoped scripts for prod. **Recommended start: Phase 0 harness + Phase 1 dead-table rehearsal.**
 
 ## 🗂️ STAGE TRACKER (the spine — one row per workflow stage, update as we go)
 Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (template: [[deep-audit-stage-template]]).

@@ -19,7 +19,7 @@ updated: 2026-08-01
 ## 📋 THE INVENTORY (live counts, 2026-08-01)
 | # | Category | Size | Risk | Value | Notes |
 |---|----------|------|------|-------|-------|
-| **A** | **Dead tables** (`zDelete*` / `*Backup`) | **416 tables · 44.0M rows · 5,763 MB** | 🟢 low (already named for deletion) | 🥇 huge | biggest: `zUserCalendarsBackup$11062025` 2.1GB · `zDelete-TriggerDebugLog` 1.2GB · `zDelete-Backup_UserSelections` 5.0M rows |
+| **A** | **Dead tables** (`zDelete*` / `*Backup`) | **271 tables · 20.4M rows · 5,764 MB** | 🟢 low (already named for deletion) | 🥇 huge | biggest: `zUserCalendarsBackup$11062025` 2.1GB · `zDelete-TriggerDebugLog` 1.2GB · `zDelete-Backup_UserSelections` 5.0M rows. ⚠️ CORRECTED: earlier 416/44M was inflated by an `allocation_units` join fan-out (LOB/overflow units); clean distinct-table count = 271/20.4M. The 5.76 GB size was always correct. |
 | **B** | **Dead procedures** (`$dev`/`test`/`BK`/date-stamped) | **160 procs** | 🟡 med (dependency-check first) | med | e.g. `GetEmployeesWorkingHours_..._BK*2019` ×11, `GenerateProposal$dev$03182010`, `test1/2/3` |
 | **C** | **Empty tables** (0 rows, non-zDelete) | **69 tables** | 🟡 med (some may be live-but-unused) | low | dead structures: `Payments`, `Applied`, `ProjectSchedules`, `GSTSArborNote*`… |
 | **D** | **Never-approved proposal LINES** | **261,543 proposals → 32.6M `ProposalLines`** (+~33M `ProposalPageLines`) | 🔴 high (keep headers!) | 🥇 huge | archive lines for never-approved+aged proposals; KEEP the `Proposals` rows for win-history |
@@ -28,6 +28,7 @@ updated: 2026-08-01
 | **G** | **Code/schema DEFECTS** (fixes, not deletions) | 3 | varies | med | `GenerateWorkOrders` misnamed-cursor (throws err 16916 every run) · `InvoiceMasters.CompanyID` has NO FK · blank-overwrite data-loss trap in `Synch.*.Update.cfm` |
 
 **Headline: A + D together = ~5.8 GB of tables + ~65M line-rows of dead weight — the bulk of TRIM IT's bloat.**
+*(A = 271 tables / 20.4M rows / 5.76 GB, clean distinct-table counts 2026-08-01.)*
 
 ## 🌍 Environment realities that SHAPE the plan (non-negotiable)
 - **Play `GSTS` is DROP+RESTORE'd from prod every night** ([[play-gsts-is-ephemeral]]). Two consequences:
