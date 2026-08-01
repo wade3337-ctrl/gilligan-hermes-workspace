@@ -61,6 +61,18 @@ updated: 2026-08-01
 - **Already knew:** [[production-perf-future-dated-crewsheets]] (WorkDate vs CalDate; CompletedHours; the rebind fix), [[trimit-stack-and-tph]], [[bod-commitment-dashboard]] (clocked payroll = productivity ground truth), [[trimit-audit-04-goahead-workorder]] (CrewSheets are WorkOrder children).
 - **NEW this pass:** the create path proving scheduling = `GenerateCrewSheetsFromWOCrewCalendar(@ZWorkOrderID,@ZCrewCalendarID)`; CrewSheets = 108 cols/158,224 rows (10 parents incl. **2 FKs to Calendars** — the duality is structural), 6 children; **InventoryAssignments = 1.3M rows** bridging crew-day↔tree↔InvoiceLines; **63% H1-2026 WorkDate≠CalDate** (corruption not shrinking); `ScheduledHours` 90% empty; `CompletedHours≠ActHours` (looser than the old note said); **~7M-row dead backup domain** — the biggest cleanup target found.
 
+## ✅ WRITE-TEST VERIFICATION (2026-08-01, Skipper-directed)
+**Method:** PLAY only, `BEGIN TRAN … ROLLBACK`, zero residue. **Scope call:** the create proc `GenerateCrewSheetsFromWOCrewCalendar` is a heavy multi-proc CASCADE (dispatch → `$Crew$New` cursor → deeper insert + RFP completion + a project-wide **inventory cursor**). Firing it — even rolled back — would hold locks on the SHARED play box, so I verified creation by READING (`$Crew$New` sources the crew sheet's `CalendarID` from `CrewCalendars.CalendarID` = the scheduled crew-day) and write-tested the rest surgically.
+
+| # | Finding (map-only claim) | Write-test | Verdict |
+|---|---|---|---|
+| 1 | Scheduling create path sets `CalendarID` from the scheduled crew-day | read `$Crew$New`: `@VCalendarID = CrewCalendars.CalendarID` | ✅ CONFIRMED by read (cascade too heavy to fire on shared box) |
+| 2 | `CrewSheets.WorkOrderID` → WorkOrders FK | S5-T1: `SET WorkOrderID=-99999` → rejected | ✅ CONFIRMED enforced |
+| 3 | **`WorkDate` corruption → mis-bins production; bind on `CalDate`** | S5-T2: injected `WorkDate` 3 months off → `MONTH(WorkDate)=4` WRONG vs `MONTH(CalDate)=7` RIGHT | ✅ **CONFIRMED — write-demonstrated: `WorkDate` is freely writable to a wrong value and mis-attributes production to the wrong month; `CalendarID→CalDate` stays correct** |
+| 4 | 63% H1 crew sheets `WorkDate`≠`CalDate` | S5-T3: live re-count | ✅ CONFIRMED — **63.23%** (4,075 of 6,445) |
+
+⭐ **Bonus — caught a corrupted sheet in the wild:** the test crew sheet 541600 already had `WorkDate=2026-07-30` but true `CalDate=2026-07-29` (a real live 1-day mismatch), before I touched anything. The corruption is genuinely present in production data, not hypothetical. Residue: WorkDate restored by rollback; count 158,224.
+
 ## Resume pointer
 **Stage 5 COMPLETE (map-only, 2026-08-01).** Scheduling create path, CrewSheets/InventoryAssignments/Calendars
 schema + FK graphs mapped; the two data traps (WorkDate corruption, ScheduledHours/CompletedHours) re-measured live;
