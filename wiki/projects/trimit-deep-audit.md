@@ -3,7 +3,7 @@ title: TRIM IT Deep Audit — DB + ColdFusion, workflow-first
 type: project
 domain: work
 track: 1
-status: KICKOFF — set up 2026-08-01 for a fresh chat 2026-08-02. Nothing built yet by design.
+status: ACTIVE — living master index. Stage 1 (Customer Creation) done 2026-08-01.
 tags: [trimit, database, coldfusion, audit, cleanup, workflow, customer-creation, schema-map]
 applies: ["[[repair-contract]]", "[[db-repair-contract]]", "[[only-trustworthy-data]]", "[[config-clobber-guard]]"]
 links: ["[[trimit-db-cleanup]]", "[[trimit-db-gotchas]]", "[[trimit-server-topology]]", "[[trimit-stack-and-tph]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]", "[[play-gsts-is-ephemeral]]", "[[prod-db-access-blocked]]", "[[coldfusion-2025-upgrade-case]]"]
@@ -12,9 +12,33 @@ updated: 2026-08-01
 
 # 🔬 TRIM IT Deep Audit — DB + ColdFusion, workflow-first
 
-> **Kickoff note. Set up 2026-08-01 by Gilligan for a FRESH chat starting 2026-08-02. DO NOT BUILD YET —
-> tomorrow's session decides scope and does the first real pass.** This note is the runway: mission,
-> method, what we already know, guardrails, and the first target (customer creation).
+> **⭐ THIS IS THE MASTER INDEX / SINGLE FRONT DOOR for the whole audit.** Open this note FIRST every
+> session. Everything we knew + everything we learn is tracked or linked from here so nothing gets lost
+> again. Mission, method, the stage tracker, all knowledge sources, and guardrails are below.
+
+## 🗂️ STAGE TRACKER (the spine — one row per workflow stage, update as we go)
+Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (template: [[deep-audit-stage-template]]).
+
+| # | Stage | Status | Note | Key result so far |
+|---|-------|--------|------|-------------------|
+| 1 | Customer / Account creation | ✅ done (map-only) | [[trimit-audit-01-customer-creation]] | customer=`Company`; create path `Profile.Company.Focus.cfm`→`Synch.CodeGenerateCompany.cfm`→proc `GenerateCompany`; `Companies`=133 cols/3,203 rows, 31 FK children |
+| 2 | Contact / Company / Location setup | ⬜ next | — | `GenerateContact`, `GenerateLocation`, `Profile.Contacts.Focus.cfm` |
+| 3 | Lead → Proposal / Bid | ⬜ | — | `GenerateProposal*` (huge proc family) |
+| 4 | Go-Ahead / activation → Work Order | ⬜ | — | `GenerateGoAhead`, `GoAheadsPostUpdate` |
+| 5 | Scheduling → Crew Sheets → Production | ⬜ | — | (dashboards already touch this) |
+| 6 | Invoicing / AR | ⬜ | — | `GenerateInvoice*`, `InvoiceMasters` |
+| 7 | Reporting / dashboards | ⬜ (mostly known) | see RC-01..06 in [[PROJECTS]] | our existing dashboards cover much of this |
+
+## 🧭 TRIM IT architecture pattern (discovered Stage 1 — reuse every stage)
+- **`Profile.<Entity>.Focus.cfm`** = the edit/detail UI form.
+- **`Synch.Code<ProcName>.cfm`** = a thin page that runs ONE stored proc via `<CFSTOREDPROC>` then reloads the parent frame — this is how the UI triggers all writes.
+- **Business logic lives in the ~3,600 stored procs, not the `.cfm` files** — audit procs, not just pages. No inline `INSERT INTO Companies` exists in any of the 8,645 `.cfm`.
+- ⚠️ `$dev`/`$dev2`/`.Dev` twins = dead copies. ⚠️ but a `_MP_Test`/`$2` file can be wired into a LIVE page — check inbound refs before flagging drop (repair-contract).
+
+## 🗺️ Where the app lives (verified 2026-08-01 — burn this in)
+- **Real TRIM IT app = `D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS\` on the play box (100.86.97.46) — 8,645 `.cfm`.**
+- ⚠️ NOT `C:\ColdFusion2023\cfusion\wwwroot\GSTS\` (that's our 11-file dashboard drop). Vendor SaaS lives at `D:\home\arbortools.net\wwwroot\`. Color folders (Steel/Tan/Water…) are NOT full app copies.
+- **Local audit working copies** of pulled files: `arbor-stack/deep-audit/stage-NN-*/src/`.
 
 ## 🎯 The mission (Skipper, 2026-08-01 06:52)
 We've done a **high-level** pass on the TRIM IT database + ColdFusion and recorded a lot of knowledge.
