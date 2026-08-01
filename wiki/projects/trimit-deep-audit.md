@@ -3,7 +3,7 @@ title: TRIM IT Deep Audit — DB + ColdFusion, workflow-first
 type: project
 domain: work
 track: 1
-status: ACTIVE — living master index. Stage 1 (Customer Creation) done 2026-08-01.
+status: ACTIVE — living master index. Stages 1-2 done 2026-08-01.
 tags: [trimit, database, coldfusion, audit, cleanup, workflow, customer-creation, schema-map]
 applies: ["[[repair-contract]]", "[[db-repair-contract]]", "[[only-trustworthy-data]]", "[[config-clobber-guard]]"]
 links: ["[[trimit-db-cleanup]]", "[[trimit-db-gotchas]]", "[[trimit-server-topology]]", "[[trimit-stack-and-tph]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]", "[[play-gsts-is-ephemeral]]", "[[prod-db-access-blocked]]", "[[coldfusion-2025-upgrade-case]]"]
@@ -22,8 +22,8 @@ Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (templat
 | # | Stage | Status | Note | Key result so far |
 |---|-------|--------|------|-------------------|
 | 1 | Customer / Account creation | ✅ done (map-only) | [[trimit-audit-01-customer-creation]] | customer=`Company`; create path `Profile.Company.Focus.cfm`→`Synch.CodeGenerateCompany.cfm`→proc `GenerateCompany`; `Companies`=133 cols/3,203 rows, 31 FK children |
-| 2 | Contact / Company / Location setup | ⬜ next | — | `GenerateContact`, `GenerateLocation`, `Profile.Contacts.Focus.cfm` |
-| 3 | Lead → Proposal / Bid | ⬜ | — | `GenerateProposal*` (huge proc family) |
+| 2 | Contact / Location setup | ✅ done (map-only) | [[trimit-audit-02-contact-location]] | Contacts=34 cols/12,827 rows (~30% dupes confirmed); Locations=123 cols/30,708 rows (40 map-render cols, 40 FK children); **2 write patterns: proc create vs inline-UPDATE edit**; blank-overwrite data-loss trap |
+| 3 | Lead → Proposal / Bid | ⬜ next | — | `GenerateProposal*` (huge proc family) |
 | 4 | Go-Ahead / activation → Work Order | ⬜ | — | `GenerateGoAhead`, `GoAheadsPostUpdate` |
 | 5 | Scheduling → Crew Sheets → Production | ⬜ | — | (dashboards already touch this) |
 | 6 | Invoicing / AR | ⬜ | — | `GenerateInvoice*`, `InvoiceMasters` |
@@ -31,8 +31,10 @@ Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (templat
 
 ## 🧭 TRIM IT architecture pattern (discovered Stage 1 — reuse every stage)
 - **`Profile.<Entity>.Focus.cfm`** = the edit/detail UI form.
-- **`Synch.Code<ProcName>.cfm`** = a thin page that runs ONE stored proc via `<CFSTOREDPROC>` then reloads the parent frame — this is how the UI triggers all writes.
-- **Business logic lives in the ~3,600 stored procs, not the `.cfm` files** — audit procs, not just pages. No inline `INSERT INTO Companies` exists in any of the 8,645 `.cfm`.
+- **`Synch.Code<ProcName>.cfm` / `Code<ProcName>.cfm`** = a thin page that runs ONE stored proc via `<CFSTOREDPROC>` then reloads the parent frame — the **CREATE** path.
+- ⚠️ **BUT edit/save is a SECOND pattern** (found Stage 2): `Synch.<Entity>.Update.cfm` does an **inline `UPDATE dbo.<Table> SET …`** right in the .cfm (Dreamweaver `MM_UpdateRecord` forms), NOT a proc. **Audit both paths per entity — create-proc AND inline-update — they can disagree.**
+- 🐛 **Blank-overwrite trap** in those MM_UpdateRecord edit forms: a blank field saves as `''`/`NULL`, wiping stored data. Confirmed in Contacts + Locations edit handlers.
+- **Business logic lives in the ~3,600 stored procs, not the `.cfm` files** — but writes split between procs (create) and inline SQL (edit). No inline `INSERT INTO Companies` exists in any of the 8,645 `.cfm`.
 - ⚠️ `$dev`/`$dev2`/`.Dev` twins = dead copies. ⚠️ but a `_MP_Test`/`$2` file can be wired into a LIVE page — check inbound refs before flagging drop (repair-contract).
 
 ## 🗺️ Where the app lives (verified 2026-08-01 — burn this in)
