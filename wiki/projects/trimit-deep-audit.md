@@ -3,7 +3,7 @@ title: TRIM IT Deep Audit — DB + ColdFusion, workflow-first
 type: project
 domain: work
 track: 1
-status: ACTIVE — living master index. Stages 1-6 done 2026-08-01.
+status: ACTIVE — living master index. ✅ ALL 7 STAGES DONE (map-only) 2026-08-01. Full audit summary in [[trimit-audit-07-reporting-dashboards]].
 tags: [trimit, database, coldfusion, audit, cleanup, workflow, customer-creation, schema-map]
 applies: ["[[repair-contract]]", "[[db-repair-contract]]", "[[only-trustworthy-data]]", "[[config-clobber-guard]]"]
 links: ["[[trimit-db-cleanup]]", "[[trimit-db-gotchas]]", "[[trimit-server-topology]]", "[[trimit-stack-and-tph]]", "[[workbench-play-db]]", "[[arbor-core-db-importers]]", "[[play-gsts-is-ephemeral]]", "[[prod-db-access-blocked]]", "[[coldfusion-2025-upgrade-case]]"]
@@ -27,7 +27,7 @@ Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (templat
 | 4 | Go-Ahead / activation → Work Order | ✅ done (map-only) | [[trimit-audit-04-goahead-workorder]] | chain `GenerateGoAhead(@ZProposalID)`→`GenerateWorkOrders(@ZLocationID,@ZYear)`; GoAheads=54 cols/94,291 rows; WorkOrders=**168 cols**/52,680 rows, 21 parent FKs; **40 InProcess=$415,590** half-finished activations |
 | 5 | Scheduling → Crew Sheets → Production | ✅ done (map-only) | [[trimit-audit-05-scheduling-crewsheets-production]] | scheduling=`GenerateCrewSheetsFromWOCrewCalendar(@ZWorkOrderID,@ZCrewCalendarID)`; CrewSheets=108 cols/158k (2 FKs to Calendars); InventoryAssignments=1.3M; **63% H1 WorkDate≠CalDate**; **~7M-row dead backup domain** = biggest cleanup |
 | 6 | Invoicing / AR | ✅ done (map-only) | [[trimit-audit-06-invoicing-ar]] | hierarchy InvoiceMaster(2,327)→Invoices(50,314)→InvoiceLines(1.42M); **no cash layer** (`Payments`/`Applied`=0 → QuickBooks); `InvoiceLine` singular=QB staging; IsProForma/IsCredit 99.5% NULL (use SUM(Total)); AR open **$18.5M** |
-| 7 | Reporting / dashboards | ⬜ next (consolidation pass) | see RC-01..06 in [[PROJECTS]] | our existing dashboards cover much — Stage 7 = reconcile which dashboards read which mapped tables + rollup-drift risk |
+| 7 | Reporting / dashboards | ✅ done (consolidation) | [[trimit-audit-07-reporting-dashboards]] | dashboard↔stage↔trap crosswalk; ~28-table rollup drift surface; bugs = one class (stale-rollup reads). **Contains the FULL AUDIT SUMMARY.** |
 
 ## 🧭 TRIM IT architecture pattern (discovered Stage 1 — reuse every stage)
 - **`Profile.<Entity>.Focus.cfm`** = the edit/detail UI form.
