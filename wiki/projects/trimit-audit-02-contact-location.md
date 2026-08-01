@@ -66,6 +66,18 @@ Stage 1 saw only proc-driven creation. Stage 2 shows the full picture:
 - **Already knew:** [[trimit-audit-01-customer-creation]] (Company is the parent; proc-driven create pattern), [[trimit-db-cleanup]] (~30% contact dupes claim — now reconciled with live counts).
 - **NEW this pass:** the **two-write-architecture** finding (proc create vs. inline-UPDATE edit); Contacts = 34 cols / lean / only-Companies parent / 4 children; Locations = 123 cols (40 are map-render state) / 10 parents / 40 children; the **blank-overwrite data-loss trap** in both edit handlers; contact edit has no ownership binding; live dupe/blank/NULL-status counts; the `UpdateAddressDefs`×6 and `Evaluate*LocationZipRegion`×15 (XX/ZZ) proc clusters.
 
+## ✅ WRITE-TEST VERIFICATION (2026-08-01, Skipper-directed) — findings exercised with real writes
+**Method:** PLAY only (prod write blocked), every write `BEGIN TRAN … ROLLBACK` (executes for real, then reverts); zero residue confirmed; create procs already proven in Stage 1 (T4/T5). Test contact: ContactID 222182 (Jennifer Eldair, jeldair@actionlife.com).
+
+| # | Finding (map-only claim) | Write-test | Verdict |
+|---|---|---|---|
+| 1 | **Blank-overwrite data-loss trap** in the edit handler (blank field → `''` wipes stored value) | S2-T1: ran the handler's blank-email branch (`SET email=''`) on a contact with a real email | ✅ **CONFIRMED — populated email `jeldair@actionlife.com` wiped to empty.** A partial edit that leaves a field blank destroys the stored value. Real data-loss risk. |
+| 2 | `FullName` is STORED (not derived) and can DRIFT from First/Last | S2-T2: changed `LastName`→`ZZWRITETEST` via the handler (which never sets FullName) | ❌ **REFUTED — `FullName` auto-updated (`Jennifer Eldair`→`Jennifer ZZWRITETEST`).** Something (trigger/computed col) maintains it, so it does NOT go stale. My drift concern was wrong. |
+| 3 | Contact parent FK = `Companies` | S2-T3: `SET CompanyID=-99999` | ✅ CONFIRMED enforced (`FK_Contacts_Companies` rejected it) |
+| 4 | Edit targets `WHERE ContactID=<form value>` with no ownership check | UPDATE by raw ContactID succeeded with no company binding | ✅ consistent (edit-by-raw-ID; structural, read+write consistent) |
+
+**Correction to §4 of this note:** the "`FullName` stored, can drift" concern is refuted — FullName IS auto-maintained. (The 1,904 blank-FullName contacts are blank because First+Last are both empty, not a maintenance failure.) The **blank-overwrite trap (§4) is CONFIRMED real** and is the more important defect. Residue: identity/counter ticks only; test contact left intact after rollback.
+
 ## Resume pointer
 **Stage 2 COMPLETE (map-only, 2026-08-01).** Create + edit paths for Contact & Location confirmed by file read;
 data model, FK graphs, and cleanup signals captured live. **Next = Stage 3: Lead → Proposal / Bid**

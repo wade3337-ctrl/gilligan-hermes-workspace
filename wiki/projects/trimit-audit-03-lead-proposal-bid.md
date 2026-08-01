@@ -55,6 +55,18 @@ updated: 2026-08-01
 - **Already knew:** [[trimit-db-cleanup]] (66M derived rows + 98% never-approved claims — both now confirmed live), [[trimit-investor-case]] (the bid-loop friction that produces the 2% rate), [[trimit-audit-02-contact-location]] (Company/Location/Contact all become FKs on a Proposal).
 - **NEW this pass:** Proposals = 267,128 rows / **221 columns** (biggest entity); **153 `GenerateProposal*` procs** = a polymorphic creator, one variant per bid type; 14 parent FKs + 13 children (6 children ARE downstream stages 4–6); exact reconciliations — **97.91% not approved**, **66.3M line rows**, proposals back to 2008 with ~15–23K/yr and no purge; the dead-line-archive as the marquee cleanup; `TempProposalTotals` ~1M-row smell.
 
+## ✅ WRITE-TEST VERIFICATION (2026-08-01, Skipper-directed)
+**Method:** PLAY only (prod write blocked), `BEGIN TRAN … ROLLBACK` (executes for real, reverts); read the 6,476-char `GenerateProposal` body before executing; zero residue confirmed. Test project 1105554 → created ProposalID 802714.
+
+| # | Finding (map-only claim) | Write-test | Verdict |
+|---|---|---|---|
+| 1 | Create path = `GenerateProposal` (base takes `@ZProjectID`) | S3-T1: EXEC’d → ProposalID 802714 seeded from Project→Location→Company, status Pending | ✅ CONFIRMED |
+| 2 | 97.91% never approved | S3-T2: new proposal born `Approved=NULL`, status Pending | ✅ CONFIRMED — proposals are created UNAPPROVED; approval is an explicit later step, so the 2% hit-rate is by-design |
+| 3 | Creating a proposal drives the 66.3M `ProposalLines`/`PageLines` (~248/proposal) | S3-T3: after create, **Proposals +1, ProposalLines +0, ProposalPageLines +0** | ⚠️ **REFINED — the BASE proc is HEADER-ONLY; it spawns ZERO line-rows.** The 66M lines come from the VARIANT creators (`GenerateProposal$Immediate`/`$Seasonal`/`$GPS`…) that populate from inventory in a SECOND phase. Proposal creation is two-phase: header shell → line population. |
+| 4 | 14 parent FKs (Companies/Projects/…) | S3-T4: `SET CompanyID=-99999` → rejected (`FK_Proposals_Companies`) | ✅ CONFIRMED enforced |
+
+**Correction/refinement:** §1 of this note framed the polymorphic `GenerateProposal*` family as “creators” generically; the write-test shows the **base `GenerateProposal` only writes the Proposals header** (Total/EstValue/Approved all NULL), and the massive line-row volume is produced by the inventory-driven *variant* procs. Header ≠ lines. Residue: identity ticks only; reverted to 267,128 proposals.
+
 ## Resume pointer
 **Stage 3 COMPLETE (map-only, 2026-08-01).** Create path (`CodeGenerateProposal*` → `GenerateProposal*` ×153),
 221-col data model, FK graph, and the two headline reconciliations captured live. **Next = Stage 4:

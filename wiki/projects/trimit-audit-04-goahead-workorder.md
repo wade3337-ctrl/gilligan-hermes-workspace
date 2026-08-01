@@ -56,6 +56,18 @@ updated: 2026-08-01
 - **Already knew:** [[goahead-status-lifecycle]] (the two-step activation SOP, status enum meaning, the 8 stuck records at last-2-yr scope), [[trimit-audit-03-lead-proposal-bid]] (GoAheads/WorkOrders are Proposal children), [[trimit-recurring-contract-lookahead-gap]].
 - **NEW this pass:** the create-path params proving the chain (`GenerateGoAhead(@ZProposalID)` → `GenerateWorkOrders(@ZLocationID,@ZYear)`); GoAheads = 54 cols/94,291 rows (6 parents/4 children); WorkOrders = **168 cols/52,680 rows, 21 parent FKs** (the convergence point, first real production columns); **all-history InProcess = 40/$415,590** (vs the note's 2-yr 8/$120,861); the duplicate-2018-Anaheim `zDelete` pair + WO-line temp tables; the 6-version WorkOrder.Detail dead cluster.
 
+## ✅ WRITE-TEST VERIFICATION (2026-08-01, Skipper-directed)
+**Method:** PLAY only (prod write blocked), `BEGIN TRAN … ROLLBACK`; read the 2,416-char `GenerateGoAhead` body before executing; zero residue. Test proposal 802713 → created GoAheadID 215999.
+
+| # | Finding (map-only claim) | Write-test | Verdict |
+|---|---|---|---|
+| 1 | `GenerateGoAhead(@ZProposalID)` creates a GoAhead from a proposal | S4-T1: EXEC’d → GoAheadID 215999 `2009 - == CURRENT PROJECT MASTER ==`, ProposalID/CompanyID/ProjectID all seeded from the proposal | ✅ CONFIRMED |
+| 2 | Go-aheads born unapproved; creation cascades | S4-T2: born `Approved=NULL`/Pending; cascade fired → **GoAheadLines +40** (`GenerateGoAheadLines`+`UpdateGoAheadFigures`+`FlagProjectSummary`) | ✅ CONFIRMED — and unlike the proposal base (header-only), **GoAhead creation SPAWNS lines** |
+| 3 | Parent FK `GoAheads.ProposalID` → Proposals | S4-T3: `SET ProposalID=-99999` → rejected (`FK_GoAheads_Proposals`) | ✅ CONFIRMED enforced |
+| 4 | 40 InProcess GoAheads = $415,590 (half-finished activations) | S4-T4: live re-count | ✅ CONFIRMED — exactly **40 / $415,590.01** right now |
+
+**Architecture contrast worth noting:** `GenerateProposal` base = header-only (0 lines); `GenerateGoAhead` = header **+ 40 lines** via its cascade. So the create cost climbs down the workflow (Company→cascade of 2; Proposal→header only; GoAhead→header + lines + figures). The two-step InProcess→Active *activation* is a UI/SOP status flip (`goahead-status-lifecycle`), separate from this creation cascade. Residue: identity ticks only; reverted to 94,291 GoAheads.
+
 ## Resume pointer
 **Stage 4 COMPLETE (map-only, 2026-08-01).** Chain Proposal→GoAhead→WorkOrder confirmed by reading the create
 executors; both entities' schema + FK graphs mapped; InProcess data-quality re-measured live. **Next = Stage 5:
