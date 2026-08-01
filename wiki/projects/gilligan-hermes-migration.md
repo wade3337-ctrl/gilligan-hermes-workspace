@@ -228,6 +228,18 @@ actual pain), and the make-or-break (vision) is confirmed present.
   is proven, and as of 2026-08-01 the bot has **passed a live voice proof task** (see milestone at top).
   1 of the 2 pilot proof tasks remains (the reconciliation-class analytical one).
 
+## Backup — the Hermes clone has its OWN remote (2026-08-01)
+The Hermes workspace clone (`~/.gilligan-hermes/home/workspace`) is **independently versioned** —
+the 10-min mirror (`sync-workspace-to-gilligan.sh`) copies the primary's working tree in but
+**excludes `.git`**, so the clone keeps its own history. It was mistakenly pointed at the SHARED
+`gilligan-workspace` origin, which caused a divergence (1 unpushed / 42 behind) that stranded a
+commit AND made `git-health-check` fire a false *"primary workspace stranded"* alert (it prints the
+bare basename `workspace` for a `.gilligan-hermes` clone). Fixed:
+- **Dedicated remote:** origin repointed → `git@github.com:wade3337-ctrl/gilligan-hermes-workspace.git` (private). No more shared-origin collision.
+- **Backup loop:** `~/backups/push-hermes-workspace.sh` (guarded: secret-scan + `pull --rebase --autostash` so the agent's own commits never diverge + REFUSES to run if origin isn't the dedicated repo) on a systemd --user timer `push-hermes-workspace.timer` (every 15 min, Persistent, linger=yes).
+- **Monitor fix:** `git-health-check.sh` now reports `$ROOT`-relative paths, so a secondary clone can never masquerade as the primary again.
+- The stranded commit's unique content (`52ec6b4`: git-identity lesson + Hermes runtime path) was also rescued onto the PRIMARY origin as `a761408`.
+
 ## Plan — migration, NOT rip-and-replace
 1. **(done)** Capability audit + subscription confirmation.
 2. **Vision file-read spot check** — confirm Hermes reads an image *file on disk*, not just chat attachments.
