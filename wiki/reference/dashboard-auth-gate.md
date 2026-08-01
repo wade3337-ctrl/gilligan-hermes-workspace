@@ -6,7 +6,7 @@ track: 1
 tags: [auth, security, coldfusion, dashboards, v15, ZUserID, automation, monitor, access-control, realuser-gate]
 applies: []
 links: ["[[anomaly-monitor-suite]]", "[[play-dev-access]]", "[[dashboard-metric-standards]]", "[[trimit-dual-webroot-shadow]]", "[[rc-04-spm]]", "[[steve-diligence-dashboard]]", "[[v15-prod-deploy-state]]"]
-updated: 2026-07-28
+updated: 2026-07-31
 ---
 
 # 🛡️ Dashboard auth-gate + the headless-consumer re-auth rule
@@ -99,6 +99,23 @@ on a **publicly-resolvable host**. The gate correctly refuses user 340 while adm
 - 🔧 **An auth probe must include a forged/garbage cookie case** (`ZUserID=99999999`, and `9`-without-session),
   not merely a second legitimate user.
 - Root fix is **session binding, not a page patch** (Skipper + Jordan). → [[play-public-cookie-forgeable]]
+- 🔴 **Confirmed 2026-07-30 from an EXTERNAL vantage:** play answers the open internet (live 302 to
+  `ClientLogin.cfm`, real IIS, sets `ZUSERID` cookies) — so this is not an intra-net-only exposure. Session
+  binding remains **deferred by the Skipper**; treat every gated play page as world-readable meanwhile.
+
+## 👥 Granting the sales arborists — verified UserIDs (2026-07-30, pending action)
+Verified live against the DB, not from a list. **Use "Add by UserID"** — the search box misses all three
+(`FullName` NULL, per the bug above):
+- **Garrett Cornish = 151** (`gcornish@`) ✅ Active
+- **Rebekah Barker = 346** (`RBarker`) ✅ Active — ⚠️ she has a **duplicate `348`** (`rbarker@`, **INACTIVE**);
+  granting 348 would look successful and grant nothing. **Use 346.**
+- **Ethan Chesley = 325** (`EChesley`) ✅ Active
+
+None of the three is currently in `DashboardAccess` — all are genuine adds, not re-grants.
+**`flow` status codes: `143` = Active · `144` = Inactive.**
+⏳ Awaiting the Skipper: either he clicks them in `Dashboard-Access.cfm`, or I insert them backup-first.
+🧭 General rule this repeats: **resolve a person to a UserID and check for duplicate/inactive twins before
+granting** — a name is not an identity in this schema.
 
 ## Related
 - [[play-public-cookie-forgeable]] — **the exposure this gate does not close**, and the standing rule that

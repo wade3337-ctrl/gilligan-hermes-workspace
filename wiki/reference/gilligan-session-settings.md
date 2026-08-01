@@ -2,12 +2,16 @@
 title: Gilligan — Session Settings Snapshot
 type: reference
 domain: environment
-updated: 2026-07-30
+updated: 2026-07-31
 tags: [settings, config, model, openai, sol, context, session, environment]
-links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]", "[[openclaw-plugin-install-trust-gate]]"]
+links: ["[[env-host-and-tooling]]", "[[crew-llms-and-helpers]]", "[[openclaw-plugin-install-trust-gate]]", "[[gilligan-hermes-migration]]"]
 ---
 
 # Gilligan — Session Settings Snapshot
+
+> 🚚 **These dials describe the OpenClaw runtime, which is now the one being migrated FROM.**
+> A Hermes pilot of me is standing by — different brain config, different channel (Telegram), same
+> identity files. → **[[gilligan-hermes-migration]]**
 
 > Snapshot of my runtime/session settings, captured **2026-07-11 ~20:47 UTC** at the Skipper's request. These are the live dials; re-run `session_status` for current values (usage numbers drift every turn).
 

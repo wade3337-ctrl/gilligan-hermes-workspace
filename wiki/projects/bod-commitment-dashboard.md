@@ -7,7 +7,7 @@ status: 🟢 BUILT on play 2026-07-29 — render-verified, gate proven, headcoun
 tags: [dashboard, board, kpi, trimit, play, q3-2026]
 applies: ["[[repair-contract]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[dashboard-metric-standards]]", "[[only-trustworthy-data]]", "[[dashboard-auth-gate]]"]
 links: ["[[pending-crewsheet-closeout-gap]]", "[[path-to-25m-2026]]", "[[crewsheet-acthours-is-the-estimate]]", "[[timekeeping-live-nov-2025]]", "[[crew-assignment-drift]]", "[[production-perf-future-dated-crewsheets]]"]
-updated: 2026-07-29
+updated: 2026-07-31
 ---
 
 # BOD Commitment Dashboard
@@ -199,3 +199,22 @@ Steve's locked June file entered and reconciled → [[monthly-cfo-reconciliation
   `ZUserID=9` cookie on a publicly-resolvable host. Rewritten to a neutral **Basis** note (the reclass
   accounts); re-verified **all eight deal terms → 0** in the served HTML.
   → **[[play-public-cookie-forgeable]]** · backup `Jasonsrepairs\...bak-predealstrip-20260730-160643`.
+
+## 🎯 Productivity tile now scores the QUARTER, not a single month (2026-07-30, ship #203)
+The tile was scoring **one month** — it showed June **$116.32** while the figure the Skipper took to the Board
+is the **Q2 quarter, $125.70**. The arithmetic was right and June is genuinely soft (it carries the most
+clocked hours of the quarter), but two different "productivity" numbers on the same screen cost him a question.
+- **Fixed: headline = the quarter (the board basis); the single month stays as a labelled sub-line.** Logic is
+  generic, so it **rolls forward to H2 automatically** as July/Aug close — the quarter is not hard-coded.
+- `verify-build.sh` **7 PASS / 0 FAIL**; served value confirmed **$125.70**.
+- 📌 **The four figures in circulation for this one metric** — keep them straight, they are all correct on their
+  own basis: **Q2 $125.70** (what went to the Board · the scored number) · **June $116.32** (single month, soft)
+  · **H1 $122.32** · **April alone $128.33** — and the **$128.88 production-based** figure, which stays **off**
+  board material entirely (different basis, rule 1 above). Target is **$130**.
+- 🧭 **Standing rule this generalises to:** a commitment tile is scored on the **same period, statistic and
+  source as the commitment itself**; every other grain goes underneath it, labelled. Same family as the
+  mean-vs-median headcount correction above. → [[dashboard-metric-standards]]
+
+### Superseded / historical
+- *(2026-07-30, superseded)* the productivity tile scored the **latest single month**, which is how it came to
+  display **June $116.32** as the headline against a board figure of $125.70.

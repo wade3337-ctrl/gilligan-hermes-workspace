@@ -4,17 +4,19 @@ type: index
 domain: env
 tags: [index, moc, environment, infra]
 links: ["[[HOME]]"]
-updated: 2026-07-30
+updated: 2026-08-01
 ---
 
 # 💻 ENVIRONMENT / INFRA — map
 Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 
+- [[gilligan-hermes-migration]] — 🚚 **moving my runtime OpenClaw → Hermes. PILOT IS LIVE** (isolated container `gilligan`, own `@Gilligan_gsts_bot` Telegram; brain = **gbt `gpt-5.6-sol`** — the Claude-subscription brain is 400-walled at the account level). Two agents stay — Boss Herman remains separate. ⭐ **(08-01) FIRST LIVE PROOF TASK PASSED, by voice** — voice in → live `gsql.sh` TRIM IT query → accurate number → voice out; now has full work parity, live play DB read, and a 10-min wiki auto-sync. **1 of 2 proof tasks left; no cutover until it has done a real day's work.**
+- [[gilligan-voice-platform]] — 🎙️ **voice is SOLVED (2026-08-01) and it was one boolean**: `voice.auto_tts: true` on the Hermes Telegram bot (local whisper in · free edge-TTS out). The OpenJarvis browser path was **killed** after fighting a `Permissions-Policy` header, CUDA twice and a service-worker cache. **Native app > web UI for voice.**
 - [[gilligan-session-settings]] — 📸 my runtime dials snapshot. **⭐ Current: default = `anthropic/claude-opus-5`, thinking `high`, OpenClaw 2026.7.1-2; `sol` = `openai/gpt-5.6-sol` (NOT `codex/`) and is verified working.** Re-run `session_status` for live values.
 - [[openclaw-plugin-install-trust-gate]] — 🔌 **after ANY OpenClaw core update, check the gateway log for `failed during register`.** A stale row in the plugin install index un-trusts other plugins → `openSyncKeyedStore` undefined → crashed turns + "couldn't safely resume" messages. The *"conflicting plugin install metadata"* doctor notice IS the bug, not noise. Fix + one-command diagnostic in the note.
 - [[env-host-and-tooling]] — Ubuntu 26.04, Node/Python, headless browser `arbor_browser`, file-reading tools.
 - [[crew-llms-and-helpers]] — the 5-lab verification panel + `crew/*-ask.py` helpers + gotchas. **OpenAI = `gpt-5.6-sol`** (default in `~/.codex/config.toml`, needs codex-cli ≥0.144).
-- [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + **Crew Meter** durable URL **`https://gilligan.tail5807bd.ts.net/`** (Tailscale Serve, tailnet-only).
+- [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + the **Crew Meter** on `127.0.0.1:8300`. ⚠️ **(08-01) its durable URL `https://gilligan.tail5807bd.ts.net/` is DEAD** — the OpenJarvis teardown's `tailscale serve --https=443 off` cleared the whole serve config. Service is fine; restore with `tailscale serve --bg 8300`.
 - [[play-dev-access]] — SSH to `gstsdatabase`, `gsql.sh`/`view.sh`, PLAY nightly refresh = DB-only.
 - [[play-public-cookie-forgeable]] — 🚨 **play is a PUBLIC IP and `Cookie: ZUserID=9` returns 200** (SSH is tailnet-only; HTTP is not). **No deal/Track-2 material on play, ever.** The auth check can't see this — it probes a second *user*, not a forged one.
 - [[play-gsts-is-ephemeral]] — 🧨 the `GSTS` db on play is SCRATCH; the restore erases whole projects. Durable work → `Workbench` + an idempotent replay script.
