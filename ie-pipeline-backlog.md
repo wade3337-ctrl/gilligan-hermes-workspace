@@ -7,8 +7,10 @@ Drip 6 targets/week into the Bigin "Inland Empire Expansion" pipeline (owner Cha
 
 > ⚠️ **HELD — needs Skipper / re-verify before load:**
 > - **Vellano** — Chino Hills — HOA (guard-gated Greg Norman golf, $2M+). Residential HOA mgmt company still UNRESOLVED after web verify (candidates: AMSS 909-444-7655, Spectrum, Keystone Pacific — none confirmed). Do NOT load until mgmt confirmed. Note: "Victory for Vellano" community dispute is active — may complicate the deal.
-> - **Los Serranos (1920s golf community)** — Chino Hills — Wave 3 — SKIPPED: the historic 1920s subdivision has **NO unified HOA** (homes sell "no HOA fee"); the only Los Serranos HOA is *Los Serranos Ranch* (Keystone Pacific) — already pushed as a **Wave 1** target. A future "The Serranos" redevelopment (782 units) isn't built. Recommend dropping this target or replacing it in the wave list.
-> - **Vintage Hills** — Temecula — Wave 3 — HELD: a deal named "Vintage Hills" already exists in Bigin as **"Proposal Lost" in the *Chad Pipeline Standard* sub-pipeline** (id 5275136000002209041) — an old dead attempt, not an IE deal. Mgmt IS verified: Walters Management - Murrieta / RealManage, 951-691-5610 (832 units). Skipper decision: re-approach as a fresh IE Expansion deal, or leave it closed-lost?
+>
+> ✅ **RESOLVED 2026-08-02 (Skipper):**
+> - **Los Serranos** — ❌ **DROPPED** (no unified HOA; the only real HOA there = Los Serranos Ranch, already pushed Wave 1). Removed from the wave list.
+> - **Vintage Hills** — ↩️ **RE-APPROACH as a FRESH IE deal** → queued in Wave 6 with a DISTINCT deal name ("Vintage Hills HOA — IE Expansion") so it does NOT collide with the old closed-lost "Vintage Hills" in Chad Pipeline Standard (the cron skips on exact Deal_Name match). Mgmt verified: Walters Management - Murrieta / RealManage, 951-691-5610 (832 units).
 
 ---
 ## Wave 1 (done, 2026-07-08)
@@ -40,10 +42,18 @@ Redhawk, Daytona Business Park, Paloma del Sol, The Lakes/Menifee Lakes, Los Ser
 
 New Bigin accounts created this wave: MGR Property Management, IDI Logistics, Payne Ranch Estates HOA. Linked existing: The Management Trust (id …428889), CBRE (id …635001).
 
-## Wave 5+ (scale via CAI-GRIE directory + transparencyhoa.org)
-- Menifee EDC "Northern Gateway" business parks / Countryside Marketplace (Menifee, commercial)
-- Ontario / Rancho Cucamonga industrial parks (CBRE/Cushman-managed)
-- Enumerate more affluent established communities per priority city (Chino Hills, Temecula/Murrieta, Rancho Cucamonga, Corona, Eastvale 15-20yr tracts) via CAI-GRIE member management companies → their community rosters.
+## Wave 5 (QUEUED for 2026-08-03 — built 2026-08-02; cron re-verifies each at push)
+1. **Sycamore Creek** — Corona/Temescal Valley — HOA ✅ HIGH — FirstService Residential – South IE (Murrieta); on-site GM Mike Spielmann, (951) 277-3257 (Mike.Spielmann@fsresidential.com); 1,740 SFR lots. Warm bridge (FirstService).
+2. **The Prado at Eastvale** — Eastvale — HOA ✅ HIGH — Keystone Pacific Property Management (transparencyhoa). Warm bridge (Keystone). Eastvale 15-20yr tracts.
+3. **Countryside Marketplace** — Menifee — **Commercial** ✅ HIGH — **First Commercial Property Management** (REBusinessOnline, Jul 2026); 721,000 SF retail center.
+4. **Crossings at Corona** — Corona — **Commercial** ✅ HIGH — owner **Castle & Cooke**; leasing **Cushman & Wakefield** (2615-2690 Tuscany St, 92881; $140M refi Nov 2024). Warm bridge (Cushman). Confirm PM vs leasing role on the call.
+5. **Harveston** — Temecula — HOA 🟡 MED — premier master-planned (17-acre lake/park, ~1,900 homes, est ~2003); Harveston Community Assoc, 29005 Lakehouse Rd. **Mgmt company unresolved — re-verify at push** (not surfaced in web verify; check transparencyhoa/CAI-GRIE).
+6. **Roripaugh Ranch** — Temecula — HOA 🟡 MED — master-planned, est 2013, ~2,000 homes at buildout ($182-185/mo); note newer phases still building. **Mgmt company unresolved — re-verify at push.**
+
+## Wave 6+ (backlog)
+- **Vintage Hills HOA — IE Expansion** (Temecula, re-approach) — Walters Management/RealManage, 951-691-5610, 832 units. Use the DISTINCT deal name so it doesn't collide with the closed-lost "Vintage Hills."
+- Ontario / Rancho Cucamonga industrial parks (CBRE/Cushman-managed).
+- More affluent established communities per priority city (Chino Hills, Temecula/Murrieta, Rancho Cucamonga, Corona) via CAI-GRIE member management companies → their community rosters. transparencyhoa.org for mgmt-company confirmation.
 
 ---
 ### Push procedure (each Monday)
