@@ -13,6 +13,8 @@ updated: 2026-07-15
 # Aspen — retention / marketing / BD agent
 
 **One-liner:** Repurpose the **Arduino Herman** board into **"Aspen"** — a Great Scott customer-**retention, marketing, and business-development** agent. Full teardown + rebuild of memories/vault; **keep the board + Hermes runtime + GPT brain**. Same self-learning loop as [[brent-agent|Muni Bot]]. Comes up retention-first; grows into a "master" of all three via crew-driven best-practices research.
+
+> 🔌 **ACTIVE BUILD (paused 2026-08-02): Cockpit → Bigin push** → **[[aspen-cockpit-to-bigin-push]]** — Aspen reads the Sales Cockpit and maintains the live sales pipeline in Bigin. Both ends verified live (Bigin API + TRIM IT read); PAUSED pending the Skipper's talk with Nate. Canonical build-state is that note (NOT the aspen-knowledge vault, which quarantines Gilligan-written files).
 **Status:** 🟢 **PHASE 1 SHELL DONE (2026-07-15) — Aspen REBORN on the Arduino board.** Teardown+rebuild complete: fresh brain (state.db wiped/recreated), Aspen identity (SOUL), knowledge (aspen-knowledge + trimit-knowledge 109), **on Telegram** (@GSTS_Aspen_Bot, locked to Skipper), **TRIM IT read-only DB access** (customer data pulled; arbor DENIED), **self-learning return path** wired. Kept Hermes; brain **upgraded to gpt-5.6-sol + 1M-token context** (Skipper 2026-07-15, smoke-verified). Remaining: Telegram GROUP (Skipper+Nate) + capstone + Phase 2 retention function.
 **▶️ Resume:** this note.
 
