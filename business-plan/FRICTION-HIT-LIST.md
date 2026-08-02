@@ -127,6 +127,12 @@ We measured every handoff from customer request → cash:
 
 ---
 
+### C3. The mobile punch app fails at remote job sites (measured 2026-08-02)
+- **Friction:** Crews clock in/out on a phone app that **needs cell signal** — many job sites have none. Result: **~1,500 punches are hand-corrected by foremen** (no-signal/no-service/phone errors ≈890 + system errors ≈600, on `UserCalendarHistory`'s 5,172 edit events). Same disease as the paper crew sheets: the tool fails in the field, a human patches it by hand.
+- **Cost:** Supervisor admin time (5 people do 71% of the edits) + timekeeping not clean as-recorded (13% of punches edited). ✅ **Integrity is fine** (99.8% supervisor edits, meal compliance ~99%) — this is a *tech-reliability* cost, not a labor-integrity one.
+- **Fix:** Offline-capable punching (queue punches locally, sync when signal returns).
+- **Status:** ⚪ Measured; → `friction-modules/03-production-gps-spine.md` Module B. (The GPS truck-vs-clock cross-check will also quantify on-site-vs-reported time once play/GPS overlap.)
+
 ## D. INVOICING & AR — the third transcription point + the blind spot
 
 ### D1. Re-key every invoice into QuickBooks

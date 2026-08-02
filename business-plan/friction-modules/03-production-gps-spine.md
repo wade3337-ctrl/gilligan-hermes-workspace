@@ -35,7 +35,23 @@ Tooling: `osg_pull.py` (read-only OSG), `equip_raw.txt` export, `reconcile_final
 ## Key finding
 **OneStepGPS device names aren't standardized** — that's the single thing blocking a clean ~100% auto-match. Standardize the names (or store the crosswalk we just built) and the spine is permanent.
 
+## Module A — Yard-departure (BUILT 2026-08-02)
+`osg_snapshot.py` poller (every 20 min → `snapshots.jsonl`) + `yard_departure.py` engine. 4 yards in `yards.json`: **Stanton (HQ) · Laguna Woods · Irvine · City of Industry (satellite)**. Minute-precise via OSG `drive_status_begin_time`. Nightly rollup+prune (self-maintaining). First real morning distribution = the AM after 2026-08-02.
+
+## Module B — Time-on-job vs Clock-in/out (BUILT 2026-08-02; cross-check pending data overlap)
+**GPS side** (`jobsite_dwell.py`): truck stops away from a yard = job-site visits w/ duration; yard-excluded, multi-crew aware (validated: 2 trucks co-located = one job; roaming arborist = short separate stops).
+**Clock side** = `dbo.UserCalendars` — a goldmine: `ActStart/ActEnd`, `OrigStart/OrigEnd` (pre-edit), **GPS at every punch** (`ClockIn/OutLatitude/Longitude`, ~99% of recent field records tagged), meal punches, work-centroid. Audit trail of edits = `dbo.UserCalendarHistory` (5,172 events: editor `UserID`, `CurDate`, `Reason`, old→new).
+**Cross-check (truck on-site vs clocked hours + punch-location + edits) is STAGED** — lights up when play clock data (≤ the restore horizon, ~7/30) and the live GPS feed (≥8/2) overlap on a day. Play-lag is the only blocker.
+
+### Clock-side findings (real, on ~60d history — no overlap needed)
+- **Integrity is clean:** punch edits are **99.8% supervisor-made** (12 self of 5,172); 5 people do 71% (Manuel Perez, Raudel Gutierrez, Omar Sanchez, Francisco Aguilar, Roxanne Montijo). **Meal-break compliance ~99%** (only ~39 of 3,931 >5h shifts flagged) — a "checked, you're fine" result for a CA company.
+- **🚨 NEW FRICTION ITEM — the punch app fails in the field:** of 5,172 edits, **~890 are no-signal/no-service/phone errors** + ~600 system errors + 967 meal-attestation notes. **~1,500 punches are hand-corrected by foremen because crews at remote sites can't get a cell signal to clock in/out.** Same disease as the paper crew sheets — *the tool fails in the field, a human patches it by hand.* **Fix = offline-capable punching** (queue locally, sync on signal). → add to `FRICTION-HIT-LIST.md` §C.
+- **City of Industry satellite yard discovered from the clock data** (34.0025, -117.872; 7-person crew: Marco/Benjamin Ayon, Francisco Iniguez, Daniel Cruz Aranda, Jose Cano) — resolved most "elsewhere" clock-ins. Residual true off-yard = **327 (8%)** (Jose Albarran, Alejandro Flores, Mario Ramirez, Luis Franco…) — home/road punches the truck cross-check will resolve.
+- Files: `jobsite_dwell.py`, `clock_analysis.py`, `clock_mine.py` (raw `clock_raw*.txt` gitignored).
+
 ## Next
-1. Resolve the ~11 (name-normalize / stored crosswalk) + clean the ERP-active list to firm the "trucks-without-GPS" number.
-2. Then modules bolt on — **yard-departure first** (OSG-only, fast proof).
-→ then write the full Production node when the modules land.
+1. **GPS #1 (tomorrow):** firm the ~11 OSG name mismatches + clean ERP-active list → "trucks without GPS" as fact.
+2. Read the first real yard-departure distribution (AM after 8/2).
+3. When play advances to an 8/2+ day: run the **truck-on-site vs clocked-hours cross-check** (resolves the 327 residual off-yard punches + true on-site-vs-reported accuracy).
+4. More GPS modules queued: boom/PTO hours, safety scorecard, area-manager activity, 3-way vehicle reconciliation cleanup.
+5. **Add the no-signal-punch friction to the main hit list §C.**
