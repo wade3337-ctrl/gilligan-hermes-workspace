@@ -79,6 +79,19 @@ Artifacts in `arbor-stack/cleanup/manifests/`. The funnel from name-flagged → 
 
 **Phase 7 — Defect fixes G (ship via dev-handoff)** — one-line cursor rename in `GenerateWorkOrders`; add `FK_InvoiceMasters_Companies` WITH CHECK (0 orphans on play, verify prod); the blank-overwrite trap needs a UI decision (preserve-on-blank vs intended-clear) — scope with the Skipper first.
 
+## 🔎 VERIFICATION & ROLLBACK — "how do we prove we didn't break anything?" (Skipper Q, 2026-08-02)
+**The hard part:** TRIM IT has **zero automated tests** across 8,645 pages / 3,628 procs. You can't exhaustively prove a negative. Strategy = shrink risk beforehand + make failures LOUD & REVERSIBLE + let real usage surface them. Layered:
+1. **Prevention — dependency proof.** Removing something with 0 callers can't break anything by construction (done for the 84 procs: 0 proc + 0 `.cfm` callers). Verification scope shrinks to the blind spot below.
+2. **Dynamic-SQL sweep (the one blind spot, NOT yet done).** Static analysis misses runtime-built names (`EXEC('...'+@name)`, `sp_executesql`). Before ANY drop: grep procs + `.cfm` for those patterns, check if any assemble a name we're removing. Cheap. ⬅️ TODO when we resume.
+3. **Quarantine, never drop = the test mechanism.** Rename into a `_graveyard` schema: a missed reference throws a loud "invalid object name" (no silent breakage) and renames back in seconds (instant rollback, no restore needed).
+4. **Exercise + observe (on play):** `verify-build.sh` (our dashboards) + smoke-hit high-traffic pages + **watch the SQL Server error log for "invalid object"** during the exercise + a **business-figure baseline** (key dashboard numbers before == after).
+5. **Prod = soak under REAL traffic.** On prod (no nightly undo), quarantine + soak N days while real users work (their activity is the regression test we don't have to build), monitor the error log, DROP only after a clean soak. This is why quarantine-not-drop matters most on prod.
+- **Known GAP:** no **page-crawler smoke test** exists yet (pages need valid `?ZCompanyID=`/`?ZProjectID=` params + auth). Building a lightweight one (hit N representative pages → flag 500/stack-trace/SQL-exception) is a prerequisite before prod cleanup and is reusable for every future change. ⬅️ TODO when we resume.
+- **Chain:** dependency proof → dynamic-SQL sweep → quarantine (loud+reversible) → smoke-crawl + error-log watch + figure baseline on play → soak under real traffic on prod → drop only when clean.
+
+## ✅ CONFIRMED (2026-08-01): the nightly refresh reverts PROCS too, not just data
+GSTS is a full **DROP + RESTORE** from prod each morning (evidence: `sys.databases` create_date for GSTS rolls to "today" — 2026-08-01 08:47 — while `Workbench` 2026-06-25 + `GSTSBACKUP` 2026-05-18 persist; all 3,628 procs carry prod's authoring dates, restored in). A SQL restore brings the COMPLETE database — tables, data, AND procs/views/triggers. → **quarantining/dropping the 84 procs on play self-reverts overnight, exactly like table changes.** Only differently-named DBs (Workbench/GSTSBACKUP) survive — so a multi-day soak that must PERSIST needs a frozen `GSTS_cleanup` copy.
+
 ## ✅ THE GATE (what unblocks execution)
 1. **Skipper GO** on the plan + the archive cutoff for Phase 5 (proposal lines).
 2. **Decide the target:** rehearse-only on play (free, self-reverting) first — always. Persist/measure needs a frozen `GSTS_cleanup` copy.
@@ -93,7 +106,10 @@ Artifacts in `arbor-stack/cleanup/manifests/`. The funnel from name-flagged → 
 - `deep-audit/psrun.sh` — SSH+PowerShell helper (holds the key path)
 
 ## Resume pointer
-Plan re-sequenced **processes-first** 2026-08-01; proc call-graph DONE (84 true-dead procs ready). **NEXT:
-Phase 1 rehearsal — quarantine the 84 dead procs on play + `verify-build.sh` (self-reverts nightly).** Then
-Phase 2 (build the dead-`.cfm` candidate list). Data tracks (3–5) follow; Phase 5 (proposal-line archive)
-needs the Skipper's age cutoff. Defects (Phase 7) ship independently via dev-handoff.
+⏸️ **PAUSED 2026-08-02 (Skipper) — revisit at a later date. State saved; nothing executed yet.**
+- **DONE:** plan re-sequenced processes-first; proc call-graph complete (**84 true-dead procs** ready in `true-dead-procs-84.txt`; 13+6 held); inventory corrected (271 tables/20.4M rows/5.76 GB); confirmed play refresh reverts procs too; verification strategy captured above.
+- **NEXT when we resume (in order):**
+  1. **Dynamic-SQL sweep** (close the verification blind spot) + build the **page-crawler smoke test** — both prerequisites before any drop.
+  2. **Phase 1 rehearsal** — quarantine the 84 dead procs on play → `verify-build.sh` + smoke-crawl + error-log watch (self-reverts nightly).
+  3. **Phase 2** — build the dead-`.cfm` candidate list.
+  4. Data tracks (3–5); **Phase 5 proposal-line archive needs the Skipper's age cutoff**. Defects (Phase 7) ship independently via dev-handoff.

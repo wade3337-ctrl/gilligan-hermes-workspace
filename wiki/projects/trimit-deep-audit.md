@@ -16,6 +16,9 @@ updated: 2026-08-01
 > session. Everything we knew + everything we learn is tracked or linked from here so nothing gets lost
 > again. Mission, method, the stage tracker, all knowledge sources, and guardrails are below.
 
+## ✅ DASHBOARD VERIFICATION → [[trimit-audit-dashboard-verification]] (2026-08-02)
+"Are our dashboards reading the right things?" — audit's 5 biggest data traps run as a checklist against all 86 dashboard `.cfm`. **Every LIVE dashboard PASSES all 5** (WorkDate→CalDate binding · revenue `SUM(Total)` not the NULL filter · Job-TPH vs True-TPH kept distinct · close-rate counts `Complete` · no stale-rollup reads). Only 3 orphan `ex_*` files carry old patterns (0 inbound refs → cleanup, not a live issue).
+
 ## 🧹 CLEANUP PLAN → [[trimit-cleanup-plan]] (compiled 2026-08-01)
 **Re-sequenced PROCESSES-FIRST (Skipper 2026-08-01):** dead code before data (code depends on tables, not vice-versa; killing dead procs unlocks more orphan tables). **Proc call-graph DONE via native dependency tracker → 84 TRUE-DEAD procs** (0 proc + 0 `.cfm` callers) ready to quarantine; 13+6 held for investigation. Then dead `.cfm`, then data: **271 dead tables/20.4M rows/5.76 GB · 69 empty tables · ~65M never-approved proposal lines · 40 InProcess GoAheads ($415K) · ~30% contact dupes · 3 defects.** Method: native-tracker dependency check + single-pass `.cfm` grep + quarantine→soak→drop, rehearse on play (self-reverts nightly). **NEXT: Phase 1 = quarantine the 84 dead procs on play + verify-build.**
 
