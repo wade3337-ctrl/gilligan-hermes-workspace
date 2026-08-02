@@ -7,13 +7,19 @@ status: active
 tags: [business-development, inland-empire, expansion, hoa, commercial, target-list, deep-research, chad, scott, nate]
 applies: []
 links: ["[[anomaly-monitor-suite]]"]
-updated: 2026-07-08
+updated: 2026-08-02
 ---
 
 # Inland Empire Expansion — BD Target Research
 
 **One-liner:** A prioritized target list for Great Scott Tree Care to expand into the Inland Empire — affluent managed HOAs + commercial parks in the urban western IE — built for business developer **Chad**.
-**Status:** 🔵 active — **v1 + Round-2 delivered & emailed to Skipper; Top-6 emailed to Scott (CEO) + Nate 2026-07-08.** Chad can start dialing. Next = close the ⚠️ loose ends + scale on CAI-GRIE.
+**Status:** 🔵 active — **the weekly drip is LIVE and completing its pushes.** v1 + Round-2 delivered; Top-6 emailed to Scott (CEO) + Nate 2026-07-08. **Waves 1–4 all pushed on a clean weekly cadence (7/08 · 7/13 · 7/20 · 7/27); Wave 4 = 6 of 6, the last real push. Wave 5 is BUILT and queued for the Mon 2026-08-03 cron.**
+
+## 📈 Drip state (current — 2026-08-02)
+- **Wave 5, queued for Monday 8/3's automated cron** (deliberately NOT pushed manually — kept on normal rails rather than an off-cycle Saturday write, so the LAST-PUSHED marker still reads Wave 4 and the cron advances it with its own re-verification): ✅ **Sycamore Creek / Corona** (FirstService, GM Mike Spielmann) · ✅ **The Prado at Eastvale** (Keystone Pacific) · ✅ **Countryside Marketplace / Menifee** (First Commercial Property Mgmt, 721K SF) · ✅ **Crossings at Corona** (Cushman & Wakefield / Castle & Cooke) — all HIGH confidence; 🟡 **Harveston** & 🟡 **Roripaugh Ranch** (Temecula) — strong communities, management company re-verified at push. **3 of the 4 HIGH targets hit known warm bridges** (FirstService, Keystone, Cushman), which gives Chad an easier way in.
+- **Held items CLEARED (Skipper, 2026-08-02):** **Los Serranos → DROPPED** — the 1920s community has no unified HOA (homes sell "no HOA fee") and the one real HOA there was already pushed in Wave 1. **Vintage Hills (Temecula) → re-approach as a FRESH IE deal**, queued for Wave 6 under a distinct name ("Vintage Hills HOA — IE Expansion") so the cron can't collide with the existing closed-lost "Proposal Lost" deal in Chad's standard pipeline. **Vellano stays HELD** (management still unresolved).
+- ⚠️ The backlog was about to run dry — Wave 5's slot held only a *sourcing note* ("scale via CAI-GRIE + transparencyhoa.org"), not a ready list of six, and the cron's instruction is to report an empty backlog and stop. **Watch the backlog depth ahead of each Monday**; it is now replenished through Wave 6. Live list: `ie-pipeline-backlog.md`.
+- 🔗 **This drip is the "existing IE drip" that [[aspen-cockpit-to-bigin-push]] is designed to eventually absorb** — today it is a Gilligan cron pushing straight to Bigin; when Aspen takes over the pipeline it folds into Aspen's remit. Note the distinction: **the IE drip pushes NEW PROSPECTS; the Aspen build pushes EXISTING customers from the Sales Cockpit** into each rep's standard pipeline, stage-translated. Different data, same plumbing.
 **📁 Location:** report `inland-empire-expansion-targets.md` (workspace root). Built via the `deep-research` workflow (2 runs, 200+ agents, adversarially fact-checked) + enrichment/entity-resolution passes.
 **▶️ Resume:** the report file. Loose ends: Vellano's residential HOA manager; a landscape-PM contact for Daytona; per-community on-site manager names; scale to 100+ via CAI-GRIE + transparencyhoa.org.
 
@@ -56,11 +62,17 @@ updated: 2026-07-08
 - **🤖 Weekly automation:** Gateway cron **"IE pipeline weekly push"** id `42ec822d-1573-4208-ad53-4a4d8718b00c` — Mondays 8:12am PT (isolated agentTurn): reads `ie-pipeline-backlog.md` next wave → web-verifies mgmt/contact → loads 6 into Bigin (dedup-safe) → updates backlog → Discord-summarizes to Skipper. Backlog + waves 2–5 in `ie-pipeline-backlog.md`.
 
 ## Next
-- Close ⚠️: Vellano residential HOA manager; Daytona landscape-PM (vs owner Core5); per-community managers at call time.
+- Close ⚠️: **Vellano** residential HOA manager (still the one genuinely held target); Daytona landscape-PM (vs owner Core5); per-community managers at call time.
+- Keep the backlog topped up past Wave 6 (CAI-GRIE + transparencyhoa.org) so no Monday run comes up empty.
 - Manual: delete the 3 orphan dup accounts in Bigin UI (see Bigin section).
 - Scale to 100+ on CAI-GRIE + transparencyhoa.org (where Round 1 confirmed Haven View→FirstService).
 - Optional: quantify HOA counts per I-15 city to hard-prove hypothesis (a).
 
 ## Related
 - [[anomaly-monitor-suite]] — the email-send infrastructure (gilligan.gsts sender) used to deliver reports + the Scott/Nate email.
+- [[aspen-cockpit-to-bigin-push]] — the Aspen build that will eventually absorb this weekly drip.
 - Method: the `deep-research` workflow (fan-out search → adversarial verify → synthesize).
+
+## Superseded / historical
+- *(2026-07-08, superseded)* Status line read *"v1 + Round-2 delivered & emailed … Chad can start dialing. Next = close the ⚠️ loose ends + scale on CAI-GRIE"* — accurate at kickoff; the drip has since run four waves and cleared two of the three held items (see **Drip state** above).
+- *(2026-07-20, superseded)* **Los Serranos** and **Vintage Hills** were listed as held items awaiting the Skipper's call. Resolved 2026-08-02: Los Serranos dropped, Vintage Hills re-queued for Wave 6 as a fresh deal.

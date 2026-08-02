@@ -3,11 +3,11 @@ title: TRIM IT Cleanup Plan — inventory + phased execution
 type: project
 domain: work
 track: 1
-status: PLAN (execution gated on Skipper go + rehearsal)
+status: PLAN — ⏸️ PAUSED 2026-08-02 (Skipper, "revisit later"); nothing executed. Execution gated on Skipper go + rehearsal.
 tags: [trimit, cleanup, database, plan, dead-tables, db-repair]
 applies: ["[[db-repair-contract]]", "[[repair-contract]]", "[[only-trustworthy-data]]"]
 links: ["[[trimit-deep-audit]]", "[[trimit-db-cleanup]]", "[[trimit-audit-01-customer-creation]]", "[[trimit-audit-03-lead-proposal-bid]]", "[[trimit-audit-05-scheduling-crewsheets-production]]", "[[play-gsts-is-ephemeral]]", "[[prod-db-access-blocked]]"]
-updated: 2026-08-01
+updated: 2026-08-02
 ---
 
 # TRIM IT Cleanup Plan

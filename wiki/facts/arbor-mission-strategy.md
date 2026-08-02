@@ -3,8 +3,8 @@ title: Arbor AI — mission & strategy
 type: fact
 domain: work
 tags: [arbor-core, strategy, mission, strangler-fig, moat]
-links: ["[[skipper-and-company]]", "[[two-track-confidentiality]]", "[[trimit-stack-and-tph]]", "[[build-principle-v1-first]]"]
-updated: 2026-07-02
+links: ["[[skipper-and-company]]", "[[two-track-confidentiality]]", "[[trimit-stack-and-tph]]", "[[build-principle-v1-first]]", "[[arbortools-net-vendor-saas]]"]
+updated: 2026-08-02
 ---
 
 # Arbor AI — mission & strategy
@@ -23,3 +23,6 @@ Skipper decided to build a **clean, modern, in-house rebuild** that becomes the 
 - **Stack = MODERN / Arbor-native (NOT ColdFusion)**; loose data-level coupling to TRIM IT 1 (pull read-only).
 - Lives in a **separate private repo** `wade3337-ctrl/arbor-core`, local `~/arbor-core/`; in nightly backup.
 - Confidentiality + play-server rules → [[two-track-confidentiality]].
+
+## Build-vs-buy: the vendor's own SaaS was examined and rejected (2026-08-01)
+The TRIM IT vendor sells a modern multi-tenant low-code platform ("Automate", arborist-branded **ArborTools**) — investigated in detail → [[arbortools-net-vendor-saas]]. Verdict, and it **validates the arbor-core thesis**: the vendor rebuilt the **plumbing** (multi-tenant billing, S3, webhooks, modern UI, low-code CRUD) but **not the DEPTH**. Its only tree-care tables are `land_area`/`land_area_type`/`inventory_location` — a thin skin; none of TRIM IT's operational depth (221-col Proposals, GoAheads, 168-col WorkOrders, CrewSheets, InventoryAssignments, municipal/DIR contracts, TPH) exists in it. **Buying Automate would trade our depth for their breadth — a bad trade. A modern layer on OUR operational depth beats adopting a shallow generic platform.**
