@@ -17,7 +17,7 @@ updated: 2026-08-01
 > again. Mission, method, the stage tracker, all knowledge sources, and guardrails are below.
 
 ## 🧹 CLEANUP PLAN → [[trimit-cleanup-plan]] (compiled 2026-08-01)
-Inventory + phased execution: **271 dead tables/20.4M rows/5.76 GB · 160 dead procs · 69 empty tables · ~65M never-approved proposal line-rows · 40 InProcess GoAheads ($415K) · ~30% contact dupes · 3 code/schema defects.** Method: quarantine→soak→drop, rehearse on play (self-reverts nightly), package scoped scripts for prod. **Recommended start: Phase 0 harness + Phase 1 dead-table rehearsal.**
+**Re-sequenced PROCESSES-FIRST (Skipper 2026-08-01):** dead code before data (code depends on tables, not vice-versa; killing dead procs unlocks more orphan tables). **Proc call-graph DONE via native dependency tracker → 84 TRUE-DEAD procs** (0 proc + 0 `.cfm` callers) ready to quarantine; 13+6 held for investigation. Then dead `.cfm`, then data: **271 dead tables/20.4M rows/5.76 GB · 69 empty tables · ~65M never-approved proposal lines · 40 InProcess GoAheads ($415K) · ~30% contact dupes · 3 defects.** Method: native-tracker dependency check + single-pass `.cfm` grep + quarantine→soak→drop, rehearse on play (self-reverts nightly). **NEXT: Phase 1 = quarantine the 84 dead procs on play + verify-build.**
 
 ## 🗂️ STAGE TRACKER (the spine — one row per workflow stage, update as we go)
 Each stage gets its own note `wiki/projects/trimit-audit-NN-<stage>.md` (template: [[deep-audit-stage-template]]).
