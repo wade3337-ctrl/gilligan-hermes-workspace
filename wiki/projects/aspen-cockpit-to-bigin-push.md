@@ -17,8 +17,12 @@ updated: 2026-08-02
 
 ## ⏸️ PAUSED 2026-08-02 — Skipper to discuss with NATE first
 Verified + planned; **nothing built or written**. Resume when the Skipper gives the go + the answers below.
-**Unblocks on:** (1) which book to pilot first (rec: Megan/OC = most existing accounts, or Chad/IE where the sub-pipeline+drip already exist); (2) whatever Nate wants re pipeline structure / stage translator / ownership.
+**Unblocks on:** (1) which book to pilot first (rec: Megan/OC = most existing accounts, or Chad/IE where the sub-pipeline+drip already exist); (2) whatever Nate wants re pipeline structure / stage translator / ownership; (3) **AUTONOMY LEVEL for Aspen's Bigin WRITES (open, discuss w/ Nate):** once verified, do Aspen's pipeline writes run FULLY AUTONOMOUS, or get a review gate like outbound emails? It's the team's SHARED CRM. Rails already in design: dry-run before writes · source-of-truth split (Aspen writes only its OWN fields, never the reps' sale-motion) · idempotent dedup. This is a trust-boundary call, not technical.
 **On resume:** start at BUILD ORDER step 1 (owner map) → dry-run (step 4) before any Bigin write. Re-confirm the Bigin token refresh if it's been weeks.
+
+## Access model — Aspen is DIRECT to Bigin (not through Gilligan)
+- **Bigin = fully direct:** end-state = Aspen holds its OWN OAuth on its OWN runtime and calls the Bigin API itself. Gilligan only BUILDS + verifies, then hands off (creds + scripts move to Aspen's board). ⚠️ **Current:** token verified on jdog1 (Gilligan's box); making it truly Aspen-direct is a handoff step (provision OAuth on Aspen's runtime + deploy push scripts there).
+- **TRIM IT = autonomous but SCOPED through a gateway** (by security design): Aspen's read hops through the `aspen-dispatch.sh` forced-command on jdog1 (read-only query only; arbor-core/crew hard-denied). Not a raw DB connection — least-privilege, Track-1 only.
 
 ## ✅ Verified LIVE 2026-08-02 (both ends of the pipe work)
 - **Bigin API:** token in `~/.secrets/bigin-oauth.json` refreshes cleanly; scope `ZohoBigin.modules.ALL settings.ALL users.READ` (admin). Reads OK: **9 active users** (Chad `…2097047`, Megan `…1618001`, Nate `…2078003`, Jason, Garrett, Jeanie, Ethan, Rebekah, IT Admin); modules = Contacts/Accounts/**Pipelines**(=deals)/Tasks/Notes… Deals module reachable. → can create/update deals, link Accounts, read users.
