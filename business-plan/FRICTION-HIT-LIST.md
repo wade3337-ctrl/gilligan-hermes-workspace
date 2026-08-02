@@ -7,6 +7,9 @@ Audience: internal working tool → feeds the **5-Year Business Plan** and the S
 
 > 🔒 **Confidential — Fort Point / owner-tier.** Lives with the Operating Plan. Not for the team or shared channels.
 
+> 📚 **Module deep-dives** (built node-by-node with the Skipper) live in `business-plan/friction-modules/`:
+> **01 — Marketing / BD** (the 3 door-openers, comp, Nate's biweekly commission reconciliation) · **02 — Sales** (the WorkPhloem verdict + the 5×-rekey correction). Production and the rest to follow.
+
 ---
 
 ## Why this exists (Jason's framing)
@@ -73,11 +76,11 @@ We measured every handoff from customer request → cash:
 - **Fix:** Capture once, at the source, in a live workflow.
 - **Status:** 🔵 Future-state designed; same build as A1.
 
-### A3. The same data is re-keyed 5 times
-- **Friction:** Site/scope data re-entered across **RFP → e-traveler → proposal → work order → invoice**. ≈**17,800 duplicate data-entry events/year** across a ~8-person desk ≈ **9 per person per working day** (team-confirmed at ~10 min each).
-- **Cost:** The core of the $729K. 5 chances for the number to diverge = the "can't trust it" problem.
-- **Fix:** Enter once; every downstream step reads the same record.
-- **Status:** 🔵 Designed; delivered by the arbor-core single-record flow.
+### A3. Duplicate data entry (⚠️ RE-PRECISED 2026-08-02 — do not use the old "re-keyed 5×" wording externally)
+- **Friction (corrected):** The bid **objects** (RFP → Proposal → Work Order) do **NOT** force manual re-keying — the DB *generates* each from the prior (`GenerateProposal` reads the worksheet; `GenerateWorkOrderLines*` read `ProposalLines`; identity/address flows by reference). The real, defensible duplication sits in: **field inventory/scope capture** (Excel photo sheets · Google-Earth maps · hand counts), **out-of-system artifacts** (PDF assembly, attachments), the **transcription points** (production paper → keyed; QuickBooks re-key), and the **"created-after-the-fact" back-entry** (people work *outside* the tool then back-fill, bypassing the auto-generation).
+- **Cost:** The team-confirmed ≈17,800 duplicate-entry events/yr are real, but attach to *capture + transcription*, not object-to-object typing. Re-derive the $ basis before external use.
+- **Fix:** Make on-site capture fast/usable enough that people work **in** the tool, not around it (the FieldApp premise) — see module 02.
+- **Status:** 🟡 Partly in the WorkPhloem build (inventory capture); ⚠️ **the "5×" claim must be re-precised in the investor case before any Fort Point use.** → `friction-modules/02-sales.md`.
 
 ### A4. Manual file-wrangling *outside* the system
 - **Friction:** Desktop folders, strict PDF naming (**a `#` breaks the upload**), W: drive logo hunts, **hand-combining many PDFs into one e-traveler**, Excel serialized-photo sheets, Google Earth maps. Error-prone, slow, unsearchable — the real record doesn't live in a searchable system.

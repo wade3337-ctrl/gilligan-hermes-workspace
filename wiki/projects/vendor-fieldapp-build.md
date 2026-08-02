@@ -12,6 +12,8 @@ updated: 2026-07-24
 
 # 🏗️ Vendor Field App build (dev server)
 
+> **⏫ UPDATE 2026-08-02 (live re-walk via `[[dev-browser-access]]`):** the **four coordinate/view defects below are FIXED** on Quail Hill (ProjectID 1103460) — the map renders on the real property with **401 tree markers plotted** (was 6). Full evidence-based verdict + the two *remaining* seams (RFP still created in old TRIM IT; no one-click proposal in the UI) now live in **`business-plan/friction-modules/02-sales.md`**. Verdict in one line: *not a reskin, not "the 5× disease" — it digitizes the inventory/scope capture (the real manual origin), object-to-object flow was already automated.*
+
 **One-liner:** Travis (vendor, paid directly by GSTS) + Jordan Kim have been building a **sales-workflow / Field App rebuild** on `dev.greatscotttreeservice.com` — a host we have **no SSH on and were never given access to**. Assessed end-to-end 2026-07-24.
 **Why it matters:** it is the *inherited starting point* for Phase 1 of the [[gsts-operating-plan-2026-2031]] — **Phase 1 is NOT greenfield.**
 
