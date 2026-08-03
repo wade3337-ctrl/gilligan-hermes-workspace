@@ -5,7 +5,9 @@
 ## 🔥 Friction register — nodes still to work (brain-dump one at a time)
 Done: **Marketing/BD · Sales · Production (GPS + clock)**. Remaining:
 - [ ] **Accounting node** (flows directly out of completion/billing — the tail-end node) → then invoicing/AR items D1–D8 fold in here.
+  - *Seed (Skipper 8/3):* **AP is paper-bound.** Controller prints everything, can't get his head around paperless/automated. AP can't push vendors to **bill electronically** or stand up a **simple vendor pay portal** — no e-invoicing, no AP automation. (The AP-side mirror of the AR blind spot D3; note it's partly a *people/change-resistance* item, not just tooling.)
 - [ ] **HR node** (new-hire pipeline, onboarding, certs).
+  - *Seed (Skipper 8/3):* HR is **on board** with automation/paperless (opposite of the AP controller — the *people* side is ready here). Real blocker = **legal & privacy hurdles** (sensitive HR/PII, compliance). They've **stood up an HR framework in Claude** (claude.ai) but **nothing implemented or integrated with TRIM IT yet**. **Long-term play: that framework BECOMES the HR node**, integrated with TRIM IT. → likely one of his consumer-Claude domain docs to hand over (per USER.md consolidation habit).
 - [ ] **Safety node** (safety training/records — partly touched via Typhoom win).
 - [ ] Also open from earlier: area-manager bandwidth · aged-worker retirement/succession · purchasing/material ordering · fleet (beyond the GPS spine).
 
