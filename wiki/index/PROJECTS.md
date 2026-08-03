@@ -57,7 +57,7 @@ Legend: 🟢 shipped/live · 🔵 active · ⏸️ parked · 🔴 blocked-on-ext
 - 🔴 **[[steve-recon-c-month-performance|Project C — Month Performance by Customer]]** — report ~2× canonical. ▶️ `RECON-03-*.md` ⚠️ **blocked — need Steve's actual complaint**.
 
 ### Monitors / email engines
-- 🟢 **[[anomaly-monitor-suite|Anomaly-monitor suite]]** — COO daily · per-salesperson+Nate rollup · **AR collections (LIVE per-rep w/ property detail)**. 📁 `anomaly-monitor/` ▶️ `anomaly-monitor/CHECKPOINT.md` 🔗 METRICS_SPEC, metric-standards, `ar-report/rep-emails.json` ⚠️ COO live; salesperson pilot preview-only; AR live; **brent-citybudgets-check** cron Jul 8-20.
+- 🟢 **[[anomaly-monitor-suite|Anomaly-monitor suite]]** — COO daily · per-salesperson+Nate rollup · **AR collections (LIVE per-rep w/ property detail)**. 📁 `anomaly-monitor/` ▶️ `anomaly-monitor/CHECKPOINT.md` 🔗 METRICS_SPEC, metric-standards, `ar-report/rep-emails.json` ⚠️ **3 team emails HELD since 7/25** (stale-data). **8/03: interim LIVE-PROD pulse `prod-pulse.js` → Skipper-only, 6:30am PT** (headline off the prod dashboard, live DB). **Deploy pkg `deploy-monitordata-prod/` forwarded to Jordan 8/03** → on prod deploy: flip host play→prod, un-hold all 3, retire interim. AR live; **brent-citybudgets-check** cron Jul 8-20.
 
 ### Project-management tooling (cross-track)
 - 🟢 **Our-Work Kanban (two boards, drag-to-move)** — replaces the repairs-screen tabs as our shared source of truth. TRIM IT board on play (`ZTest-WorkKanban.cfm`, Workbench DB) · arbor-core board on the secure box (`http://100.82.161.7:8088/kanban`, Postgres, BLACK). ▶️ [[our-work-kanban]] ⚠️ **standing rule: keep the boards current when saving/updating (create cards + move columns).**
