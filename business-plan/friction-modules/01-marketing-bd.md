@@ -20,7 +20,12 @@ They feed RFPs to the sales admin trio, who enter them into TRIM IT.
 - **No capacity or ROI model.** Can't answer "can we get more?" — no denominator (cost per rep, activity → result) and no target.
 - **Reporting is an informal Nate email** — "who they may have chatted with," nothing documented.
 - **Compensation is pay-for-presence, not performance.** ~**$120k base** each + **1% commission on new sites** ≈ **~$1,500/mo (~$18k/yr)**. Commission ≈ 13% of comp — too weak to change behavior. **≈$415k cash / ~$540k loaded/yr across the three, with no ROI visibility.** This is *also why Bigin sits empty*: nothing they log affects their pay.
-- **Commission reconciliation is a real, recurring manual burden (Nate).** Every **pay period (biweekly, ~26×/yr)** Nate pulls a TRIM IT commission report, **manually checks it for errors (it has had them), and hand-decides new-sites-by-area** to pay each rep. Messy, error-prone (mispays possible), significant time. Some tune-up work exists on the report; status unknown and **likely not deployed to play** (deploy lag).
+- **🔥 Commission reconciliation — QUANTIFIED (Nate's reply, 2026-08-02).** Nate (Sales Manager) hand-reconciles the TRIM IT commission report **every pay period (biweekly, ~26×/yr)**, and it takes **4–6 hours on average, up to 2 full days** with corrections (≈**110–160+ manager-hrs/yr**).
+  - **Process:** TRIM IT *HR tab → sales rep commission report → current week → generate* → **two reports**: (a) new-site commission (marketing team + Nate, **1% of all new sites**), (b) per-rep commission (**1% new site + 5% plant-health-care + 1–4% TPH for $115–$130**).
+  - **The time-sink is the checking** — Nate opens **every single project** on the report, dives into *Project History* + *Invoices* to confirm start date + last-serviced date, because the report mislabels recurring jobs as "new site" and vice-versa. TPH/PHC checks are quick by comparison.
+  - **Root cause of the errors (~7 New-Site errors/report):** (1) the **internal team doesn't toggle "new site"** when entering a job into TRIM IT — *manual error, the most frequent*; (2) TRIM IT **doesn't auto-remove the new-site toggle after 1 year** of service — was frequent, **less so since Jordan patched it ~a month ago**. TPH errors (~8/report) also **mostly fixed by Jordan** (none on the last 2 reports).
+  - **🔑 The fix is clean and definable:** "new site" = *a project started within the past 12 months with a 2+ year gap since last worked there.* That's a **rule TRIM IT can auto-classify** — eliminating the manual toggle (the #1 error source) and most of the 4–6 hrs. Jordan's partial fixes already prove the TPH/auto-untoggle side is tractable.
+  - **Deploy caveat:** the tune-up lives in TRIM IT; **likely not on play yet** (deploy lag), so I can't fully verify the current-state proc from here.
 
 ## The fix path
 - **Bigin is the right tool, sitting unused** — a lightweight CRM to capture BD contacts, activity, lead source, and the marketing→sales handoff → makes ROI computable.
@@ -29,7 +34,7 @@ They feed RFPs to the sales admin trio, who enter them into TRIM IT.
 - Incentive redesign is part of it: tracked activity won't happen until the paycheck notices.
 
 ## Status / open
-- ⏳ **Email sent to Nate (via the Skipper, 2026-08-02)** asking him to detail the commission-report fixes + time — no reason disclosed. Awaiting his reply to quantify this friction.
+- ✅ **Nate replied 2026-08-02 (forwarded by the Skipper)** — details folded in above (quantified: 4–6 hrs/pay-period, ~7 new-site errors/report, root cause = manual new-site toggle + auto-untoggle bug). Raw email: `media/inbound/nate-commission/`.
 - Rick's style/ROI TBD (new).
 - Cross-cutting friction confirmed here too: **undeployed-fix / play-server lag** (our tuned report may not even be on play).
 
