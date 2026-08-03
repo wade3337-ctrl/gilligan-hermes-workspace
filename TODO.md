@@ -1,5 +1,13 @@
 # TODO
 
+## 🔴 DAILY EMAILS — resume on prod data (2026-08-03)
+- **State:** COO daily email + per-salesperson + Nate-rollup crons all HELD since 7/25 ("stale data"). Dark 9 days = why Skipper feels blind.
+- **Root cause:** endpoint `MonitorData.ReadOnly.cfm` (on play box) reads the play mirror despite `GSTSREADONLY` DSN labeled prod — nightly play refresh reverts it. Endpoint itself WORKS (token+IP OK; returns July invoiced $1.69M/accrued $277k).
+- **FIX shipped:** deploy pkg `arbor-stack/anomaly-monitor/deploy-monitordata-prod/` (+ `MonitorData-prod-deploy-20260803.tgz` md5 10f2d2b7) → Jordan deploys to prod `\GSTS\api\`, confirm DSN reads live prod. Then flip monitor `S.host` play→prod + un-hold crons.
+- **Interim decision PENDING Skipper:** resume to jwade-only now (recommended, no stale-to-team risk) vs un-hold full team w/ "play-mirror interim" caveat line. Recipients stay jkim/jroulson/sgriffiths per Skipper 8/3.
+- **No scrape needed** — emails work, just held; endpoint functions. (Original "scrape" ask superseded by this simpler path.)
+
+
 - [ ] **(2026-08-03) Fleet spine — firm the soft numbers** (GPS module #1): normalize the ~11 inconsistent OneStepGPS device names (B47 HW 1 / C66 HW 125 / C 68 Unit #175 / C74 New HW #9 / etc.) or store the crosswalk we built; then clean the TRIM IT ERP-active list so "motorized trucks with no GPS" becomes a fact, not the ~145 first-cut lead. → business-plan/friction-modules/03-production-gps-spine.md
 
 ## 🔥 Friction register — nodes still to work (brain-dump one at a time)
