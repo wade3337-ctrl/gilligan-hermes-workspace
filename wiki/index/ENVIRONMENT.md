@@ -4,7 +4,7 @@ type: index
 domain: env
 tags: [index, moc, environment, infra]
 links: ["[[HOME]]"]
-updated: 2026-08-01
+updated: 2026-08-03
 ---
 
 # 💻 ENVIRONMENT / INFRA — map
@@ -22,7 +22,9 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[play-gsts-is-ephemeral]] — 🧨 the `GSTS` db on play is SCRATCH; the restore erases whole projects. Durable work → `Workbench` + an idempotent replay script.
 - [[prod-backup-chain]] — prod→play backups **fail ~weekly**; play silently re-restores a stale file. Check `restorehistory` before trusting any play number.
 - [[prod-db-access-blocked]] — DIRECT SQL to prod still blocked; Jordan/AWS security group + IP `76.32.188.157`.
-- [[gstsreadonly-prod-dsn]] — **CF DSN `GSTSREADONLY` on play → prod read-only (Travis 2026-07-14)**; works for CF pages (3/5 monitor feeds), grant+perf pending. The daily-email live-prod path.
+- [[prod-web-read-access]] — 🔓 **(08-03) prod IS readable over the WEB, observe-only**: a `ZUserID=376` POST to the prod Revenue dashboard returns **live prod** figures (it ignores URL date params — dates go in the body), plus a Playwright path (`prodnav8.js`). **The dashboard is live; only the JSON endpoint is stuck on play.** Headline only, and it reports PRODUCED not invoiced.
+- [[gstsreadonly-prod-dsn]] — **CF DSN `GSTSREADONLY` on play → prod read-only (Travis 2026-07-14)**; works for CF pages (3/5 monitor feeds), grant+perf pending. ⚠️ **(08-03) on the play box the label LIES** — the nightly webroot refresh reverts the DSN, so the monitor endpoint still serves play data. Deploy to prod is the durable fix.
+- [[dev-browser-access]] — 🌐 server-side headless Chromium (`~/.local/devscout/`) logs into the vendor **dev** box as the Skipper — visibility without dev SSH. ⚠️ observe-only (state-changing GETs); 🚨 TRIM IT stores passwords in **plaintext**.
 - [[workbench-play-db]] — side SQL db that survives the nightly GSTS refresh (prototype state).
 - [[trimit-db-gotchas]] — dual-webroot shadow (C:\ overrides D:\) + DB-driven menus (AppForms).
 - [[gstscalendars-stale-cache]] — accounting's daily production report reads a CACHED day total that only refreshes when a human clicks "Update". Stale by $17,281 in July 2026. The dashboard is the accurate one.

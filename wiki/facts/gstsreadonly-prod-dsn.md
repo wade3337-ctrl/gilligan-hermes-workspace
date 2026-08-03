@@ -3,8 +3,8 @@ title: GSTSREADONLY — read-only DSN to PRODUCTION (on play)
 type: fact
 domain: environment
 tags: [trimit, coldfusion, dsn, production, read-only, data-access, travis]
-links: ["[[email-infrastructure]]", "[[trimit-stack-and-tph]]", "[[revenue-goal-close]]", "[[prod-db-access-blocked]]", "[[anomaly-monitor-suite]]", "[[trimit-server-topology]]"]
-updated: 2026-07-27
+links: ["[[email-infrastructure]]", "[[trimit-stack-and-tph]]", "[[revenue-goal-close]]", "[[prod-db-access-blocked]]", "[[anomaly-monitor-suite]]", "[[trimit-server-topology]]", "[[prod-web-read-access]]"]
+updated: 2026-08-03
 ---
 
 # GSTSREADONLY — read-only DSN to PRODUCTION (on the play server)
@@ -27,6 +27,22 @@ updated: 2026-07-27
 - Usage: `<cfquery name="x" datasource="GSTSREADONLY">SELECT ... FROM GSTS.dbo.Table</cfquery>`
 - **First query is slow (20–30s cold warm-up), then fast.** Don't put it on a hot path uncached; best for specific live lookups.
 - Travis explicitly framed it for **"building an AI Assistant that wants to query the production server (read-only)"** → intended for our Arbor AI / dashboard work.
+
+## 🚨 2026-08-03 — the LABEL lies on the play box: it still serves PLAY data
+`/GSTS/api/MonitorData.ReadOnly.cfm` line 6 reads `dsn = "GSTSREADONLY"` with the comment *"LIVE PRODUCTION
+(Travis read-only DSN, 2026-07-14)"* — **and it still returns play-mirror figures.** Proven by matching a
+figure that must differ: accrued **$277,442** ties to the play DB **to the cent**, and its July invoiced
+$1.69M sits below prod's $1.74M.
+- **Why:** the file lives on the **play box**, and play's **nightly webroot refresh reverts the DSN back to the
+  play copy**. The setting doesn't survive the night.
+- **On the PROD box the prod DSN sticks** — nothing reverts nightly. **That is why deploying the endpoint to
+  prod is the durable fix, not repointing it on play.** The endpoint is **404 on prod today** (only ever
+  deployed to play) = the actual blocker to a pure host-flip. Deploy package built → [[anomaly-monitor-suite]].
+- 🔑 **Method worth keeping:** a DSN comment is documentation, not instrumentation. Prove which source a page
+  reads by pulling one figure that must differ between the candidates (a partial-month accrual, a row count)
+  and seeing which it matches to the cent.
+- ⚠️ Note this is a *different* problem from the 7/14 cutover below (which was about play's DSN + grants).
+  Meanwhile the prod **dashboard** was live-readable the whole time → [[prod-web-read-access]].
 
 ## Nuances / when to use
 - **Read-only → safe** (no prod-write risk).

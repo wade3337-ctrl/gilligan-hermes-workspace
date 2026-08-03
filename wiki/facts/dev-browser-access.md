@@ -1,9 +1,11 @@
 ---
+title: Dev browser access — server-side headless Chromium into the vendor dev box
 type: fact
 domain: work
 tags: [dev-server, browser, capability, security, trimit]
 created: 2026-08-02
-links: ["[[vendor-fieldapp-build]]", "[[play-dev-access]]", "[[two-track-confidentiality]]"]
+links: ["[[vendor-fieldapp-build]]", "[[play-dev-access]]", "[[two-track-confidentiality]]", "[[prod-web-read-access]]", "[[arbornote-account-integration]]"]
+updated: 2026-08-03
 ---
 
 # Dev browser access — standing capability (built 2026-08-02)
@@ -16,6 +18,7 @@ I can now **drive a server-side headless browser** and log into the vendor dev b
 - **Creds:** `~/.openclaw/.secrets/dev-login.json` (chmod 600). Login = **`jwade`** (short name, NOT the email), pw pulled from play `flow.Users`. Login form is inside an iframe (`gsts/Login/index.cfm`, fields `LoginName`/`Password`).
 - **Screenshots** land in `workspace/devscout-shots/` (an allowed dir for the image tool).
 - OpenClaw's own `browser` tool is enabled but had **no browser binary** ("No supported browser found") — this driver bypasses it.
+- 🔌 **Same driver now reaches two more surfaces:** **PROD** (`prodnav8.js`, login `jwade` → [[prod-web-read-access]]) and **ArborNote** (`arbornote_login.js` → [[arbornote-account-integration]]). One capability, three systems — all observe-only.
 
 ## Navigation model (Field App, dev)
 - Login: `https://dev.greatscotttreeservice.com/ClientLogin.cfm` → app at `.../gsts/FieldApp/index.cfm?ZUserID=9`.

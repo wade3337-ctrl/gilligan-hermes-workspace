@@ -1,16 +1,15 @@
 ---
+title: GPS / Telematics integration (OneStepGPS ↔ TRIM IT)
 type: project
 domain: work
 status: active
 created: 2026-08-02
+updated: 2026-08-03
 tags: [gps, onestepgps, telematics, production, reconciler, fleet, friction]
 applies:
   - "[[friction-hit-list]]"
   - "[[only-trustworthy-data]]"
-links:
-  - "[[dev-browser-access]]"
-  - "[[friction-hit-list]]"
-  - "[[play-dev-access]]"
+links: ["[[dev-browser-access]]", "[[friction-hit-list]]", "[[play-dev-access]]"]
 ---
 
 # GPS / Telematics Integration (OneStepGPS ↔ TRIM IT)

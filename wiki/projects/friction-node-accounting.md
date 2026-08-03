@@ -1,15 +1,15 @@
 ---
+title: Friction Node — Accounting
 type: project
 domain: work
 status: pending
 confidential: fort-point-black
 created: 2026-08-03
+updated: 2026-08-03
 tags: [friction, accounting, AP, AR, quickbooks, node]
 applies:
   - "[[friction-hit-list]]"
-links:
-  - "[[friction-hit-list]]"
-  - "[[trimit-audit-06-invoicing-ar]]"
+links: ["[[friction-hit-list]]", "[[trimit-audit-06-invoicing-ar]]"]
 ---
 
 # Friction Node — Accounting

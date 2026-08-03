@@ -1,14 +1,15 @@
 ---
+title: Friction Node — HR
 type: project
 domain: work
 status: pending
 confidential: fort-point-black
 created: 2026-08-03
+updated: 2026-08-03
 tags: [friction, hr, onboarding, privacy, node]
 applies:
   - "[[friction-hit-list]]"
-links:
-  - "[[friction-hit-list]]"
+links: ["[[friction-hit-list]]"]
 ---
 
 # Friction Node — HR

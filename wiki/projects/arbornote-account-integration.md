@@ -1,17 +1,16 @@
 ---
+title: ArborNote — GSTS account + API integration
 type: project
 domain: work
 status: active
 confidential: fort-point-black
 created: 2026-08-02
+updated: 2026-08-03
 tags: [arbornote, integration, api, shadow-it, rebekah, acquisition, friction]
 applies:
   - "[[friction-hit-list]]"
   - "[[trimit-investor-case]]"
-links:
-  - "[[vendor-fieldapp-build]]"
-  - "[[dev-browser-access]]"
-  - "[[friction-hit-list]]"
+links: ["[[vendor-fieldapp-build]]", "[[dev-browser-access]]", "[[friction-hit-list]]"]
 ---
 
 # ArborNote — GSTS Account + API Integration
