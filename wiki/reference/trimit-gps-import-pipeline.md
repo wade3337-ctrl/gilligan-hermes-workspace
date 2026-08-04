@@ -102,3 +102,11 @@ Goodman is billed **through Gothic Landscape Maintenance** (the LM company that 
 - **`DBH` numeric inches is CRITICAL and separate from `SizeCode`** — the Field App drill-down reads DBH. · `PruningFrequency` = **integer ID** (1=annual,2=biennial,3=triennial), not a string. · `Projects.Desc1`=Project Name; `Locations.Street`≠`LocationStreetName`.
 
 Herman's fuller detail lives in his KB (30 reference files under the two skills). This section is my working map; pull his files for exact SQL.
+
+### ✅ Service-Type crosswalk BUILT + VERIFIED (2026-08-04) — both halves now 100% on Goodman
+- **Validation vs the real raw Goodman file** (`inbox-pull/goodman-rfp-2026-07-22/RFP Schedule 2 Goodman Tree Inventory Data redacted.xlsx`, 6,304 trees):
+  - **Species: 58/58 distinct → 100% of 6,304 trees resolve to a real InventoryGroup, zero UNDEFINED** (via `GoodmanSpeciesCrosswalk`). Caveat: crosswalk was built FOR Goodman (proves this portfolio, not auto-generalization); most matches are `auto` tier, not all human-verified for exact cultivar.
+  - **Service types: 9/9 → 100%.** The 9 `PrimaryMT` values (Priority 1/2/3 Structural Prune, P1/2 Palm Prune, P1/2/3 Prune Crown Maintenance, Clearance Pruning) **already exist VERBATIM in `dbo.ServiceTypes` (IDs 518–526, ServiceClass 1 = Trimming)** — exact-name match, no fuzzy logic needed. (The "Priority 1/2/3" is the year/cycle, not 3 services; but TrimIT has a distinct ServiceType per priority anyway.)
+- **New durable table `Workbench.dbo.GoodmanServiceTypeCrosswalk`** (mirrors the species one): RfpPrimaryMT → ServiceTypeID (+Desc1, ServiceClassID, TreeCount, MatchTier, Notes). All 9 rows `verbatim`. Build/verify SQL: `/tmp/svc-crosswalk.sql`.
+- Target model confirmed: `InventoryDetail.ServiceTypeID` → `dbo.ServiceTypes` (ServiceClass 1). Separately, MaintNeed = the priority/need classification (`dbo.MaintNeeds`: P1 Prune=4, P2 Prune=5, Palm Prune=18, Clearance Prune=12; no P3 Prune — priority is the year).
+- **Verdict on "do we have the solution?":** the translation bottleneck (species + service-type) is **covered end-to-end on Goodman's real data**. Remaining is packaging (deliver translated file; Jordan pushes prod), productizing (tool vs Herman-run), and generalizing beyond Goodman — none of it "can we", all "wire it up".
