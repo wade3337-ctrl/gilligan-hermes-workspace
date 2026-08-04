@@ -61,3 +61,44 @@ Proven across Eastvale (313 trees) + El Monte (298). Full recipe: `trimit-knowle
 
 ## Not handled by the importer
 **Pricing** — the GPS importer does NOT run **Price Buddy**; prices/labor-hours stay null. Separate step (still TBD as of 2026-07-23).
+
+---
+
+## 🔄 Herman's refined process (folded in 2026-08-04, from his KB `herman-brain-backup/skills/productivity/`)
+Boss Herman ran this import many times (Fullerton → Eastvale → El Monte) and refined it with the Skipper. This section captures what his notes have that mine didn't. **This is live-relevant: Jeanie/Brent (VP Ops) are asking for AI to streamline exactly this** (the >2-week manual inventory import; TrimIT "not recognizing species/service types") → email 2026-08-03.
+
+### ⭐ TWO mechanisms now — and Herman moved to the direct-build script for commercial portfolios
+- **Mechanism A — official staging importer** (`InventoryGPSModel` → `ImportInventoryGPSModelWithSeasonAndSizeAndServiceAndInventoryGroupID`): what the rest of this note documents. Still the GSTS-native path; hardened.
+- **Mechanism B — `scripts/one-shot-fresh-build.py`** (direct multi-table INSERTs, ALL fields at once): **Skipper directive 2026-07-28 "USE THIS, NOTHING ELSE"** for Goodman/commercial-portfolio builds. It bakes in ~68 pitfalls/trigger workarounds. Do NOT write ad-hoc build scripts (`jtest-generate.py` etc. skip critical steps). Ref: `commercial-portfolio-bid-pricing/references/canonical-build-pipeline.md`.
+
+### The canonical 11-step pipeline (Mechanism B)
+1 Pre-Flight (MAX IDs for LocationZipRegionID/ProjectID/LocationID/RFPID/InventoryDetailID; SalesRepID=9; ZipCodeID; **validate species crosswalk BEFORE building**) · 2 Company (`Companies` IsActive=1, CompanyTypeID=3) · 3 Project (`Projects` ZUserID=9, ProjectStatusDefID=1, Desc1=name) · 4 Location (`Locations` LocationTypeID=1, Street/City/State/Zip, HeightModelID) · 5 Tree INSERT (all fields at once) · 6 RFP (`RFPs` RFPStatusDefID=1) · 7 **GeoJSON via `apiCall.cfm` FIRST, THEN clear IsNewPlot** · 8 Maps (`dbo.Maps` MapTypeID=1, IsBaseMap=1) · 9 E-Traveler PDF · 10 **Irvine Gate audit (`verify-irvine-gate.sh`, 18 fields, 100%)** · 11 Email packet.
+
+### 🌳 Species crosswalk = THE fix for "TrimIT doesn't recognize the species" (Brent's exact problem)
+- `GetBestInventoryGroup()` resolves only ~1/3 of RFP "Family, Type" names → misses land in **`InventoryCategoryID=197` (UNDEFINED)** orphans, cut off from pricing history.
+- **Durable table `Workbench.dbo.GoodmanSpeciesCrosswalk`** (survives nightly restores), keyed `RfpCommonName`→`InventoryGroupID` (also `RfpBotanicalName`). ~59 rows.
+- **Wiring:** before the importer builds InventoryDetail, `UPDATE InventoryGPSModel SET InventoryGroupID = crosswalk` (precedence over GetBestInventoryGroup); unmatched species FLAGGED, never silently UNDEFINED.
+- **Match rule v3:** (1) correct species/cultivar first (botanical match), (2) among same-plant duplicates pick the ID with most 0-6 ServiceClass-1 HoursEach history. Never merge a distinct cultivar into a generic; exclude cat 197.
+- ⚠️ **HermanRO can't read `Workbench` (Msg 229) — use `gsql.sh` even for reads.**
+- Refs: `species-crosswalk-wiring.md`, `species-remap-recipe.md`, `goodman-inventory-crosswalk-2026-07.md`.
+- 🔎 **Service Type** = source col "PrimaryMT" → TrimIT "Service Type" (Brent's Col X→Y remap); same crosswalk pattern applies (map to exact `ServiceTypeDesc1`).
+
+### 🧱 Fresh-PLAY (nightly-refresh) build gotchas — trigger/schema quirks (`fresh-db-build-recipe.md`)
+- `GenerateZoneDef$Force$One` is a **CF function, not a DB proc** → insert `ZoneDefs` manually + UPDATE `Districts.ZoneDefID`.
+- `LocationZipCodes` NOT auto-created by the Locations trigger → insert manually before LZR.
+- `SizeModelSizeID` gets **zeroed by the `InventoryDetailPostInsert` trigger** → post-INSERT UPDATE pass to reset from SizeCode.
+- **`Height` is numeric(16,2) → OMIT from INSERT entirely** (passing a range string throws Msg 8114 and rolls back the whole batch; use `HeightRange`/`HeightRangeID` for the band).
+- No-such-column traps: `InventorySummary` has no InventoryClassID · `LocationZipRegions` no ProjectID (links via Location) · `HeightModels`/`HeightRanges` no StatusDefID (use SeqOrder) · `Projects` no SeasonID on fresh PLAY.
+- Bot WebUserID 376 may be absent on fresh PLAY → `CreatedByWebUserID=1874` (Myle Pham, Irvine ref).
+
+### ⚙️ Batching + rebuild
+- `gsql.sh` times out ~90-120s / ~100KB SQL. **Batch tree INSERTs 15/call** (faster than 10 — 298 trees ≈ 3.5 min). Observations via temp-table + JOIN, NOT correlated subqueries. Infra/observations/post-fixes each as separate calls.
+- **Rebuilding an existing property (AUDIT):** 27 tables FK-reference InventoryDetail; clear leaf-to-root (InventoryHitRates→GoAheadLines→ProposalLines→Observations→WebUserSelections→InventoryDetail/Summary), disable encrypted DDL triggers around it. **Preferred: build a NEW Location+Project instead** (avoids the FK cascade). Ref: `audit-property-rebuild-fk-chain.md`.
+
+### 💵 Billing = sub-to-GC pattern (dynamic, never hardcode)
+Goodman is billed **through Gothic Landscape Maintenance** (the LM company that pays us): `Projects.BillingName=Gothic`, BillingContact/Address/etc. — but **READ these from the source doc/customer record every time; never hardcode names** (pitfall Aug 2026). Goodman identity lives in LocationName + BillingRef.
+
+### Field/DBH notes reinforced
+- **`DBH` numeric inches is CRITICAL and separate from `SizeCode`** — the Field App drill-down reads DBH. · `PruningFrequency` = **integer ID** (1=annual,2=biennial,3=triennial), not a string. · `Projects.Desc1`=Project Name; `Locations.Street`≠`LocationStreetName`.
+
+Herman's fuller detail lives in his KB (30 reference files under the two skills). This section is my working map; pull his files for exact SQL.
