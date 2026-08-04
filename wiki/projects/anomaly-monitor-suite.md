@@ -7,7 +7,7 @@ status: shipped
 tags: [monitor, email-engine, coo, salesperson, ar-collections, brent]
 applies: ["[[external-comms-contract]]", "[[dashboard-metric-standards]]", "[[dashboard-auth-gate]]", "[[data-freshness-contract]]"]
 links: ["[[rc-03-city-budgets]]", "[[scott-manager-dashboard]]", "[[sales-cockpit]]", "[[gstsreadonly-prod-dsn]]", "[[dashboard-auth-gate]]", "[[prod-backup-chain]]", "[[data-freshness-contract]]", "[[prod-db-access-blocked]]", "[[prod-web-read-access]]", "[[june-invoicing-lag]]"]
-updated: 2026-08-03
+updated: 2026-08-04
 ---
 
 # Anomaly-monitor suite
@@ -21,7 +21,7 @@ updated: 2026-08-03
 - **DEPLOY PKG → Jordan (Skipper forwarded 8/3):** `arbor-stack/anomaly-monitor/deploy-monitordata-prod/` (+ `MonitorData-prod-deploy-20260803.tgz`, md5 `10f2d2b76fd9dd32b5260e6f53883afe`). One read-only `.cfm` + `START-HERE.md` (install to prod `\GSTS\api\`, confirm line-6 `dsn="GSTSREADONLY"` resolves to live prod, verify curl). **Why deploy vs repoint:** on the play box the nightly webroot refresh reverts the DSN back to the play copy (that's why the endpoint still returns play-mirror data despite the "live prod" label — accrued $277,442 matches play to the cent). On the **prod box the prod DSN sticks.** The JSON endpoint is **404 on prod today** (only ever deployed to play) = the real blocker to a pure host-flip.
 - ▶️ **FULL-LIVE sequence when Jordan confirms deploy:** drop endpoint on prod → flip `monitor.js` `S.host` play→prod → **un-hold all 3 team crons** → Skipper + team on complete live data → **retire this interim pulse.**
 - 📁 `memory/2026-08-03.md` has the full three-way July reconciliation (invoiced $1.738M vs produced $2.079M vs earned $2.18M) + both prod-read paths. ⚠️ **Basis discipline on anything this pulse feeds:** the dashboard reports **PRODUCED**, not invoiced — the ~$340K difference is WIP. Use invoiced for anything comparative/external. → [[june-invoicing-lag]]
-- ⏸️ **OPEN DECISION, awaiting the Skipper — interim distribution A vs B.** **(A)** resume to **Skipper only** now on play-mirror-free live-prod headline, team back on when Jordan's deploy confirms — *my rec, and what was built* (he held them **for** stale data; these are deal-sensitive). **(B)** un-hold the full team now (Jordan/Jroulson/Sgriffiths) with a one-line "interim: play mirror, live prod pending" header. **I did NOT auto-resume the team crons.** Recipients stay jkim/jroulson/sgriffiths per Skipper 8/3.
+- ✅ **RESOLVED 2026-08-03 13:32 UTC — Skipper chose Option A.** The interim live pulse (`prod-pulse.js`, 6:30am PT) stays **Skipper-only** for now; the full-team un-hold of the 3 daily emails **waits until Jordan's prod deploy lands** (verified live data). The team crons remain HELD; I did NOT auto-resume them. *(Original A/B framing: (A) Skipper-only now, rec/built — chosen; (B) un-hold full team now with a caveat header — not taken.)*
 
 **One-liner:** Nightly email engines off the read-only PLAY endpoint — COO daily report (TPH/OT/revenue-pace/contract burn-down), per-salesperson + Nate rollup, and **AR collections (LIVE, per-rep with property detail)**.
 **Status:** 🟢 shipped — COO daily LIVE; AR collections LIVE per-rep; **salesperson pilot preview-only** (`liveEnabled=false`, previews to Jason).

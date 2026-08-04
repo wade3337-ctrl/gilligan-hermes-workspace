@@ -6,8 +6,8 @@ track: both
 status: active
 tags: [kanban, project-management, workflow, board, drag-drop, two-track]
 applies: ["[[two-track-confidentiality]]", "[[async-report-rule]]"]
-links: ["[[PROJECTS]]", "[[repair-contract]]"]
-updated: 2026-07-04
+links: ["[[PROJECTS]]", "[[repair-contract]]", "[[workbench-play-db]]"]
+updated: 2026-08-04
 ---
 
 # Our-Work Kanban
@@ -22,6 +22,13 @@ updated: 2026-07-04
   1. **TRIM IT board** -> on **play** (Track-1, team-safe). Persist to the refresh-proof `Workbench` DB; Gilligan reads moves via SSH+sqlcmd. *(Build first — proven pattern from `ZTest-SalesPipeline.cfm`; Skipper already reaches play in his browser.)*
   2. **arbor-core board** -> on the **in-house secure server** (Track-2 BLACK, Skipper-eyes-only — see [[two-track-confidentiality]]). Persist to the `arbor_core` Postgres DB. **Migration plans live HERE** (on the arbor-core board), not on the TRIM IT one. ⚠️ arbor-core has no running web UI yet -> serving + Skipper-access must be set up.
 - **Card = a repair/project/build item.** Seed both from existing tracking: `repairs-needed.md`, `wiki/index/PROJECTS.md`, `gsts-ship-log.md`.
+
+## 🔄 2026-08-04 — boards were 7+ days stale, caught up
+Honest state when Skipper asked: **NO, we'd dropped the standing rule during the week's crunch** — TRIM IT board last touched 2026-07-27, arbor-core last 2026-07-23. Both caught up:
+- **TRIM IT board** (`Workbench.dbo.WorkKanban`, 63 cards): +7 — **rc:** Invoiced tab ([[rc-02-revenue-performance]]), BOD Commitment Dashboard · **shipped:** crew-audit bugfix batch (to Jordan 7/28) · **waiting:** Prod live-read (MonitorData→prod), Daily-emails un-hold · **dbcleanup:** TRIM IT deep audit+cleanup, Future-dated crew sheets. Backup `arbor-stack/backups/play-workbench/WorkKanban-backup-20260804-0037.txt`.
+- **arbor-core board** (Postgres `arbor_core` table `kanban`): +1 — **waiting:** "Migration: get our work OFF play onto our own infra" (card 30). ⚠️ **Write via `docker exec -i arbor_postgres psql -U arbor -d arbor_core`** — needs `-i` for stdin.
+- 🚨 **`arbor_api` container is EXITED** → the arbor board UI at `http://100.82.161.7:8088/kanban` is NOT serving (DB writes still land fine). To VIEW it: `docker start arbor_api` (or restart). `arbor_postgres` container is Up/healthy. *(100.82.161.7 = THIS box's own Tailscale IP.)*
+- **GOING FORWARD:** card work as it ships — the lapse is exactly the anti-pattern the standing rule below (Skipper 2026-07-04) exists to prevent.
 
 ## STANDING RULE (Skipper 2026-07-04) — keep the boards live
 When we work a project and Gilligan **saves / updates progress**, Gilligan must also **keep the relevant Kanban current — including creating new cards** for new work, and moving cards to the right column. The board update is part of "save progress," not an afterthought. (Cross-links the ship-log/save-progress discipline.)

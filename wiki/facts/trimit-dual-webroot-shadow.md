@@ -3,8 +3,8 @@ title: TRIM IT dual-webroot shadow (C:\ overrides D:\)
 type: fact
 domain: env
 tags: [infra, coldfusion, play, webroot, gotcha, deploy]
-links: ["[[play-dev-access]]", "[[repair-contract]]", "[[v15-landing-assistant]]", "[[trimit-deep-audit]]", "[[arbortools-net-vendor-saas]]"]
-updated: 2026-08-02
+links: ["[[play-dev-access]]", "[[repair-contract]]", "[[v15-landing-assistant]]", "[[trimit-deep-audit]]", "[[arbortools-net-vendor-saas]]", "[[rc-02-revenue-performance]]"]
+updated: 2026-08-04
 ---
 
 # 🥷 TRIM IT dual-webroot shadow — C:\ can override D:\
@@ -19,6 +19,12 @@ updated: 2026-08-02
 1. When a `.cfm` **EDIT** doesn't show in the SERVED output but a brand-new file would: **check the shadow FIRST** — `powershell "Get-ChildItem C:\ -Recurse -Filter <name> -EA SilentlyContinue"`. ⚠️ plain `where /r C:\ <name>` aborts on the first permission-denied dir and falsely prints "not found" — use the PowerShell form.
 2. If shadowed, **deploy to BOTH webroots** (C:\ shadow + D:\), backing up the C:\ copy first (→ `...\GSTS\Jasonsrepairs\<name>.CSHADOW-bak-<ts>`).
 3. Always **render-verify the SERVED output** ([[repair-contract]]), never trust the file-on-disk.
+
+## ⚠️ 2026-08-03 — IT BIT AGAIN (RevenuePerformance Invoiced-tab build), and it clarifies the 08-01 note
+Building the new Invoiced source on `Dashboard-RevenuePerformance.cfm`: edited the **D:\ copy, md5-verified it, cleared cfclasses, and did a full CF service restart** — the served page **never changed** (~1h lost) until I ALSO deployed to the **C:\ shadow** `C:\ColdFusion2023\cfusion\wwwroot\GSTS\`. Then it went live.
+- **Reconciles the ⭐ 08-01 line below ("nothing on C: is served by the LIVE site"):** that was strictly about **IIS binding** — IIS binds `play.…` → D:\. But the **ColdFusion application server resolves the physical `.cfm` from its OWN webroot first**, so for any page that exists in the C:\ shadow, **C:\ is what actually gets compiled and served.** The practical rule (deploy to BOTH) is unchanged and was reconfirmed the hard way. Don't read "IIS binds D:\" as "C:\ is inert for .cfm" — it isn't.
+- ⚠️ **PROD almost certainly has the same split** — the prod deploy instructions for RevenuePerformance (and any shadowed file) **must hit both roots.** → LESSONS 2026-08-03.
+- Backups from the build: `...\GSTS\Jasonsrepairs\revperf-invoiced-20260803-151506\` (IIS copy + `.CFROOT-SHADOW.cfm`).
 
 ## Known shadowed GSTS .cfm (2026-07-11) — 8 files
 `Dashboard-RevenuePerformance.cfm` (now synced) · `Dashboard-CustomerLeads.cfm` · `Dashboard-SalesPipeline.cfm` · `Exec$Periods$Overview.cfm` · `Exec.MarketFocus.Focus.cfm` · `Export-CustomerList.cfm` · `Diag.Batch9.Candidates.cfm` · `Diag.PeriodOverview.20260529.cfm`.

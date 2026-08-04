@@ -6,8 +6,8 @@ track: 1
 status: shipped
 tags: [dashboard, revenue, tph, pace, drill-through, release-candidate]
 applies: ["[[dashboard-metric-standards]]", "[[gsts-ui-spec]]", "[[gsts-ui-style-guide]]", "[[repair-contract]]"]
-links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[anomaly-monitor-suite]]", "[[trimit-dual-webroot-shadow]]", "[[trimit-investor-case]]", "[[v15-prod-deploy-state]]"]
-updated: 2026-07-28
+links: ["[[rc-01-executive-financial]]", "[[rc-03-city-budgets]]", "[[anomaly-monitor-suite]]", "[[trimit-dual-webroot-shadow]]", "[[trimit-investor-case]]", "[[v15-prod-deploy-state]]", "[[june-invoicing-lag]]", "[[trimit-accrual-formula]]"]
+updated: 2026-08-04
 ---
 
 # RC-02 Revenue Performance
@@ -27,7 +27,7 @@ updated: 2026-07-28
 - **"True Produced Work" source (CURRENT, 2026-07-24):** past/today = **actual `CrewSheets.CompletedDollars`** — *Option A, strict* (Skipper's call). The prior `Calendars.EstValue` basis was an **ESTIMATE reported as produced** (~2.9%/mo overstatement); June 1 now = **$84,909.71**, matching the Day Sheets. Future days = schedule.
 - **Pace tile** uses a stable calendar Mon–Sat count (6-day basis, Skipper-confirmed crews work Saturdays) minus 2026 holidays — NOT the live schedule (which fills incrementally → false "behind").
 - **Drill-through** reconciles to each bar by construction (no new SQL, in-memory reuse); rows deep-link to `Profile.WorkOrder.Detail.cfm`. All params cfqueryparam'd / IsDate-validated → no injection.
-- **BACKLOG (scoped, not built):** a "Billed (Invoiced)" source from `dbo.Invoices` + `GetPeriodAccrual` (monthly grain; needs work-type classification). Skipper deferred Jun 25.
+- ✅ **"Invoiced" source — BUILT + LIVE on play (2026-08-03)** — see the dedicated section below. (Supersedes the old "scoped, not built / Skipper deferred Jun 25" backlog line.)
 
 ## 🚀 2026-07-24 major upgrade (live on play, BOTH webroots, staged for prod)
 Staged in `arbor-stack/release-candidates/NEXT-DEPLOY-20260724/` (manifest warns re: dual webroot) — **held out of the V1.5 package, next prod batch.** Kanban cards 59-61; backup `Workbench.dbo.WorkKanban_bak_20260724`.
@@ -39,6 +39,15 @@ Staged in `arbor-stack/release-candidates/NEXT-DEPLOY-20260724/` (manifest warns
 6. **The daily COO/rep emails inherit all of it** ([[anomaly-monitor-suite]] `monitor.js` + `revenue-block.js`): **Produced = TrueProduced actual** ($1.295M July MTD), **Tracking-to-goal = ScheduleBoard total** (expected landing). Also fixed `monitor.js` passing `sampleDay` instead of `todayPT`, which was inflating tracking.
 
 ⚠️ **Always say WHICH TPH.** Productive-hours TPH and blended/True TPH rank segments *differently* — see [[trimit-investor-case]].
+
+## ✅ 2026-08-03 — "Invoiced" 4th source toggle: BUILT + VERIFIED + LIVE on play
+**Why:** Skipper's misconception was that this dashboard reports *invoiced* work — it does NOT (zero invoice logic; sources are Schedule Board / Crew Sheets / True Produced). He asked for a view that **aligns with Steve**. See [[june-invoicing-lag]] (revenue is three numbers) — the dashboard defaults to **PRODUCED**, ~20% above billed.
+- New **"Invoiced" revenue source** (4th source toggle) bins **`SUM(Invoices.Total)` by `InvoiceDate`** → **July $1,738,143.22, ties to Steve's register to the cent** (216 WOs, 12,624 hrs, TPH $137.68). Drill total == tile. `Invoices.Total` **includes** `SurchargeTotal`. Bin by **InvoiceDate** (NOT PeriodID — PeriodID basis = $1.779M, sweeps cross-period). → LESSONS 2026-08-03 [INVOICED].
+- Produced path guarded (`NEQ "Invoiced"`), verified intact ($2,112,828). `verify-build.sh` **PASS 20 / FAIL 0**.
+- On-screen caveats: lags production; billed-only, excludes accrual; **territory is company-wide for invoiced** (invoices carry no crew site).
+- ⚠️ **Deployed to BOTH webroots** — this build re-proved the [[trimit-dual-webroot-shadow]] trap the hard way (~1h; D:\ edit + cfclasses clear + CF restart did nothing until the C:\ shadow got it too). Bounced the CF app server (Skipper-approved) to flush trusted cache. Canonical md5 `20c970cf…`; ship-log `arbor-stack/ship-log/2026-08-03-revperf-invoiced-source.md`.
+- **Accrual caveat:** this Invoiced source is billed-only. For an *earned* view, add Steve's Accrual Report (NOT `GetPeriodAccrual()`, which still over-accrues municipal) → [[trimit-accrual-formula]].
+- ▶️ **OPEN:** not yet on prod (bundle for Jordan w/ both-roots note); `Reference-RepairsAndScheme` repairRows entry pending. Kanban: card added (TRIM IT board, `rc:`).
 
 ## 🩹 2026-07-27 — package 3: the two bugs prod exposed, plus the gate
 **Package 3 = this file + `Executive$Sales$Unattributed.cfm`.** Both render-verified on play; **HELD** pending
