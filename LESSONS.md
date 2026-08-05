@@ -458,3 +458,6 @@ Nate's weekly `Sales_Report_2026_Completed+Scheduled.xlsx` municipal column: Com
 
 ## 2026-08-04 — [infra/deploy] Don't copy the REDACTED ssh key path from tool output
 The play deploy key is `~/.ssh/gstsdb_ed25519` but tool output redacts it (shows `…519`). I pasted the redacted ellipsis into `-i` → "Identity file not accessible / Permission denied", and the scp SILENTLY failed (grep ate the error) so the render showed the OLD numbers. Always type the real key filename; after any scp, assert `play bytes == local bytes` before believing the deploy landed.
+
+## 2026-08-05 — [tooling/headless] MFA + pkill footguns cost ~20 min
+Two self-inflicted delays automating the OSG MFA login: (1) each fresh login SENDS A NEW code, so an earlier code is already dead — enter the code that matches THIS run (I burned 2 codes on a stale session). (2) `pkill -f osg_mfa_capture.js` from the SAME shell that launched it killed my own launcher (SIGTERM/SIGKILL abort) — run kills from a separate script file, or match a narrower pattern. (3) The MFA field was a SINGLE visible text input, not six 1-char boxes; my selector matched nothing so Continue submitted empty ("please fill out this field"). Fix: pick the first visible non-checkbox/non-hidden input. Also: redact `password` from any request-capture log.
