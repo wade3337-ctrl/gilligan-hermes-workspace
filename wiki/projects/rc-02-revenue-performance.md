@@ -82,6 +82,7 @@ manifest are one action, not two.*
 - [[rc-01-executive-financial]] — ships in the same Executive prod-deploy batch.
 - [[anomaly-monitor-suite]] — COO monitor shares the invoiced/accrued revenue source scoped in the Billed backlog.
 - [[trimit-dual-webroot-shadow]] — why this file must go to both roots.
+- [[trimit-sales-pipeline-page]] — the investor Sales-Pipeline/coverage page; its municipal + coverage-to-goal figures reconcile back to this dashboard.
 
 ## Superseded / historical
 - (2026-07-24, superseded) "True Produced Work" was previously past days = day-sheet **`Calendars.EstValue`** (reconciled to the Day Sheet to the penny), today+future = schedule; and before that `WorkOrders.CompletedDollars` (spiky, wrong). The EstValue basis was retired because it reported an **estimate** as produced.
