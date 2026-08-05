@@ -1,13 +1,15 @@
 ---
+title: TRIM IT Sales Pipeline page (Dashboard-PipelineCoverage.cfm)
 type: project
 status: active-paused
 domain: work
 created: 2026-08-04
-updated: 2026-08-04
+updated: 2026-08-05
 applies:
   - "[[repair-contract]]"
   - "[[only-trustworthy-data]]"
   - "[[rc-02-revenue-performance]]"
+links: ["[[rc-02-revenue-performance]]", "[[revenue-goal-close]]", "[[municipal-budgets-po-gated]]", "[[sales-cockpit]]", "[[dashboard-auth-gate]]"]
 tags: [trimit, dashboard, sales, pipeline, municipal, investor]
 ---
 
@@ -18,7 +20,7 @@ tags: [trimit, dashboard, sales, pipeline, municipal, investor]
 - **File:** `arbor-stack/production-dashboard/Dashboard-PipelineCoverage.cfm` (NEW, built 2026-08-04).
 - **Live (play):** https://play.greatscotttreeservice.com/GSTS/Dashboard-PipelineCoverage.cfm — behind the V1.5 dashboard gate (`dashboard-auth-gate.cfm` / DashboardAccess).
 - **Play webroot:** `D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS\` (single root for this file — no C:\ shadow). Backups in `...\Jasonsrepairs\`.
-- **Status (2026-08-04): PAUSED / pinned.** Municipal panel finished + verified. NOT committed to git, NOT run through `verify-build.sh` yet, one coverage open item.
+- **Status (2026-08-05): PAUSED / pinned** (Skipper "pin for now"). Municipal panel finished + verified + reconciled to Nate. **Committed + pushed both repos 2026-08-05; Kanban card #1057 added** (alpha col, backup-first). Still NOT run through `verify-build.sh`; two panel open items remain.
 
 ## The four panels
 1. **New-business bid pipeline** — **$9.17M / ~360 open bids**. Def = latest proposal per project, `Proposals.StatusDefID IN (41,106)`, `ProposalSentDate >= DATEADD(month,-6)`, project status `InProcess/Pending` (same as Sales Cockpit "open bid"). Segments by `Companies.MarketID`.
@@ -51,6 +53,6 @@ Nate's `Sales_Report_2026_Completed+Scheduled.xlsx` (his weekly manual report, c
 ## Open items (resume here)
 1. **Coverage panel:** add municipal forward $3.23M as 2nd coverage source (Skipper's call).
 2. **Unassigned $1.49M:** reclassify NULL `MarketID` accounts (mostly → HOA) OR display-side name-pattern re-bucket. Draft mapping for review first (data change → backup-first).
-3. **Commit to git** (arbor-stack is its OWN repo — `gilligan-arborstack`) + run `verify-build.sh` before calling it verified.
+3. **Run `verify-build.sh`** before calling it verified (commit + push already done 2026-08-05).
 
 🔗 [[rc-02-revenue-performance]] · [[revenue-goal-close]] · [[municipal-budgets-po-gated]] · [[sales-cockpit]] · [[dashboard-auth-gate]]
