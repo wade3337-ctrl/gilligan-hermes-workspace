@@ -29,15 +29,15 @@
  .foot{color:#6e7681;font-size:11px;margin-top:14px}
 </style></head><body>
 <h1>🎯 GSTS Revenue Ledger — count-once path to $26.40M</h1>
-<div class="sub"><span class="live">● LIVE</span> from TRIM IT (play, ~24h behind prod) · 2026-08-06 18:00 UTC · auto-refresh 15 min · Confidential (Skipper only). Financial = accounting-period, status-filtered. Production board kept separate.</div>
+<div class="sub"><span class="live">● LIVE</span> from TRIM IT (play, ~24h behind prod) · 2026-08-06 20:00 UTC · auto-refresh 15 min · Confidential (Skipper only). Financial = accounting-period, status-filtered. Production board kept separate.</div>
 
 <div class="hero">
 <div class="card"><div class="lab">Annual Goal</div><div class="big ">$26.40M</div><div class="tgt">GoalSettings×12 · $2,200,000/mo</div></div>
 <div class="card"><div class="lab">Adjusted Actual YTD</div><div class="big gk">$12.65M</div><div class="tgt">invoiced $12.81M + accrual bridge (live)</div></div>
 <div class="card"><div class="lab">Municipal Forecast (rem.)</div><div class="big gbl">$3.74M</div><div class="tgt">calendar H2 · engine recon $3.49M</div></div>
 <div class="card"><div class="lab">Firm Sold Coverage</div><div class="big gk">$2.61M</div><div class="tgt">nonmuni WOs dated ≤12/31</div></div>
-<div class="card"><div class="lab">Risk-Adj Fresh Pipeline</div><div class="big gbl">$1.79M</div><div class="tgt">$4.48M HOA/Comm × 40%</div></div>
-<div class="card"><div class="lab">Uncovered Gap</div><div class="big gb">$5.61M</div><div class="tgt">still needs NEW sales/scheduling</div></div>
+<div class="card"><div class="lab">Risk-Adj Fresh Pipeline</div><div class="big gbl">$1.75M</div><div class="tgt">$4.37M HOA/Comm × 40%</div></div>
+<div class="card"><div class="lab">Uncovered Gap</div><div class="big gb">$5.65M</div><div class="tgt">still needs NEW sales/scheduling</div></div>
 </div>
 
 <div class="covwrap"><div class="lab">Count-once bridge to $26.40M — every dollar counted once</div>
@@ -45,10 +45,10 @@
   <div class="a" style="width:48%">$12.65M actual</div>
   <div class="mu" style="width:14%">$3.74M muni</div>
   <div class="fw" style="width:10%">$2.61M firm</div>
-  <div class="pp" style="width:7%">$1.79M pipe</div>
-  <div class="gap" style="width:21%">$5.61M gap</div>
+  <div class="pp" style="width:7%">$1.75M pipe</div>
+  <div class="gap" style="width:21%">$5.65M gap</div>
  </div>
- <div class="covleg">Actual <b style="color:#2f81f7">$12.65M</b> + Muni forecast <b style="color:#58a6ff">$3.74M</b> + Firm sold <b style="color:#3fb950">$2.61M</b> + Pipeline@40% <b style="color:#a371f7">$1.79M</b> = <b>$20.79M</b> covered → <b style="color:#e3b341">$5.61M</b> still needs new sales. <span style="color:#6e7681">No layer double-counted: firm/pipeline exclude municipal &amp; each other; muni forecast is contract budget, not scheduled crew.</span></div>
+ <div class="covleg">Actual <b style="color:#2f81f7">$12.65M</b> + Muni forecast <b style="color:#58a6ff">$3.74M</b> + Firm sold <b style="color:#3fb950">$2.61M</b> + Pipeline@40% <b style="color:#a371f7">$1.75M</b> = <b>$20.75M</b> covered → <b style="color:#e3b341">$5.65M</b> still needs new sales. <span style="color:#6e7681">No layer double-counted: firm/pipeline exclude municipal &amp; each other; muni forecast is contract budget, not scheduled crew.</span></div>
 </div>
 
 <div class="warn" style="border-left-color:#3fb950"><b style="color:#3fb950">✔ Accrual bridge (live):</b> Adjusted Actual = invoiced <b>$12.81M</b> + current-period accrual <b>$0K</b> − year-start (Dec) accrual <b>$161K</b> = <b>$12.65M</b>. From <code>dbo.GetPeriodAccrual</code> — the billing-cycle-aware municipal accrual Steve confirmed &amp; shipped to prod (% -of-completion, only work whose billing period is after the current period). <span style="color:#6e7681">Current period is partial-month, so the accrual grows toward month-end.</span></div>
@@ -60,8 +60,8 @@
  <div><h3>🗓️ Sold work with NO 2026 date (267)</h3><div class="panel"><table>
    <tr><td>Undated / beyond-year sold WOs</td><td class="ga">$3.37M</td></tr>
    <tr><td colspan="2" style="color:#6e7681;font-size:11px">Not counted as coverage until Production assigns a 2026 completion date.</td></tr></table></div>
-  <h3>⏳ Pending nearing the 90-day cliff (33)</h3><div class="panel"><table>
-   <tr><td>GoAheads created 80–90 days ago</td><td class="ga">$0.54M</td></tr>
+  <h3>⏳ Pending nearing the 90-day cliff (31)</h3><div class="panel"><table>
+   <tr><td>GoAheads created 80–90 days ago</td><td class="ga">$0.42M</td></tr>
    <tr><td colspan="2" style="color:#6e7681;font-size:11px">Drop out of the plan at 90 days (Skipper rule) — chase or lose.</td></tr></table></div>
  </div>
  <div><h3>🏛️ Municipal contracts at/over budget</h3><div class="panel"><table><tr><td>City of Fountain Valley</td><td class='gb'>$-0.05M over</td></tr><tr><td>City of Irvine</td><td class='gb'>$-0.76M over</td></tr></table></div>
