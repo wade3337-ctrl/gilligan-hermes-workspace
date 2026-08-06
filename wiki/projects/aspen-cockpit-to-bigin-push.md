@@ -15,6 +15,16 @@ updated: 2026-08-02
 **Objective (Skipper 2026-08-02):** Aspen reads the Sales Cockpit → pushes to Bigin → maintains the live SALES pipeline in Bigin. "Gilligan builds, Aspen runs."
 > ⚠️ **This note is the canonical build-state (Gilligan owns it).** Do NOT keep it in the aspen-knowledge vault — that vault autosyncs FROM the Aspen board and **quarantines** files written directly into it (my first copy got swept to `_quarantine/` by the 02:52 autosync). Gilligan-owned build state lives HERE in the workspace wiki. Design/context still lives in `aspen-knowledge/business-development/bigin-structure-and-plan.md`.
 
+## 🗓️ 2026-08-06 — PLANNING SESSION (decisions locked; still no writes)
+Skipper worked the plan forward (prep for the Nate conversation). Locked so far:
+- **Autonomy = C (graduated).** Start the pilot fully review-gated; graduate Tier-1 writes to autonomous once proven; Tier-2 stays gated permanently.
+- **Write taxonomy (the artifact for Nate):**
+  - **Tier 1 (auto once proven — ERP-reflecting, reversible):** stage sync from cockpit lane · work fields (last-service, LTV, TPH, contract-end) · flags (running-dry/re-sell/expiring) · informational notes.
+  - **Tier 2 (always gated — sales decisions):** create a new Deal · change owner · close won/lost · overwrite any rep-typed field.
+- **Pilot rep = ETHAN CHESLEY, `SalesRepID 1140`** (measured, type 1). ⚠️ Chad/Megan are MARKETING with thin TRIM IT footprint — not sync candidates.
+- **Ethan footprint (measured via gsql.sh play, 2026-08-06):** 426 projects / 426 locations · earliest proposal 2008 · only 29 modified in last 12mo · **0 new proposals in last 12mo** · last activity 2026-07-17. → a LARGE but DORMANT legacy book.
+- **Pilot north-star (reframed by the data, pending Skipper confirm):** turn Ethan's dormant 426-account book into a live, flagged **reactivation pipeline** in Bigin (mostly Tier-1, lands in recently-done/running-dry/re-sell lanes) — NOT hot-deal stage tracking. Safest possible sandbox + clearest value.
+
 ## ⏸️ PAUSED 2026-08-02 — Skipper to discuss with NATE first
 Verified + planned; **nothing built or written**. Resume when the Skipper gives the go + the answers below.
 **Unblocks on:** (1) which book to pilot first (rec: Megan/OC = most existing accounts, or Chad/IE where the sub-pipeline+drip already exist); (2) whatever Nate wants re pipeline structure / stage translator / ownership; (3) **AUTONOMY LEVEL for Aspen's Bigin WRITES (open, discuss w/ Nate):** once verified, do Aspen's pipeline writes run FULLY AUTONOMOUS, or get a review gate like outbound emails? It's the team's SHARED CRM. Rails already in design: dry-run before writes · source-of-truth split (Aspen writes only its OWN fields, never the reps' sale-motion) · idempotent dedup. This is a trust-boundary call, not technical.
