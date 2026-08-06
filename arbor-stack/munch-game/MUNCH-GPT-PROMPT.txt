@@ -1,0 +1,174 @@
+=== SETUP / ENVIRONMENT (do this FIRST, before any game work) ===
+You are running as a coding agent on a Windows desktop with GitHub Desktop / git installed.
+Create a real local git repo and build the game inside it. Steps:
+  1. Create a project folder named "munch-game" (on the Desktop is fine, e.g. %USERPROFILE%\Desktop\munch-game).
+  2. Run `git init` in it. Create these files: MUNCH.html (the game), README.md (title, how to play,
+     the <iframe> embed snippet), and a /docs folder for any notes.
+  3. Add a .gitignore for OS cruft (Thumbs.db, .DS_Store, node_modules/ if any).
+  4. COMMIT AFTER EACH GAUNTLET GATE PASSES, with a message naming the agent, e.g.
+     "gate1: architect skeleton passing", "gate2: maze+movement", ... "gate9: shipped".
+     This gives a rollback point per stage — if a later agent regresses something, revert to the
+     last green commit instead of losing the build.
+  5. Do NOT create any remote / push anywhere. Local repo only. No network calls of any kind.
+  6. After the final gate, leave the repo clean (all changes committed) and tell me the exact
+     folder path plus `git log --oneline` so I can see the gate history.
+
+ROLE: You are the PRODUCER and ORCHESTRATOR of a build gauntlet. Your job is to ship a
+complete, polished browser game called "MUNCH!" in a SINGLE self-contained HTML file, on the
+first attempt. You will act as a sequence of specialized sub-agents in a GAUNTLET. Each agent
+has a defined role, inputs, outputs, and a PASS/FAIL GATE. You do not advance to the next agent
+until the current gate passes. If a gate fails, loop that agent (max 2 retries) or apply its
+named fallback. At the end, you personally assemble, self-test, and emit the final file.
+
+=== THE GAME (fixed spec — do not redesign) ===
+Title: MUNCH!
+Genre: Pac-Man-style top-down MAZE muncher, tree-care themed.
+Concept: You are a LADYBUG clearing a giant tree of pests. Ladybugs are real biocontrol — they
+  eat aphids — so the premise is on-theme: munch every dew drop in the branch-maze, dodge the
+  pests, and clear the tree.
+Core loop:
+  - The maze IS the tree's branch/root network (a grid of corridors), with tunnel wraparound edges.
+  - Munch all the DEW DROPS (the "dots") to clear a level.
+  - GOLDEN SAP DROPS are the power pellets: for a few seconds the pests turn blue and flee, and you
+    can munch them for escalating points (200/400/800/1600); munched pests respawn from the "hive".
+  - Bonus item: a GOLDEN ACORN appears mid-level for bonus points, then disappears.
+Enemies (exactly 4 pests, each with a distinct Pac-Man-style personality):
+  - APHID  = the direct chaser (targets your tile).
+  - BEETLE = the ambusher (targets a few tiles ahead of you).
+  - BORER  = the wanderer (semi-random / flanks).
+  - WASP   = the guard (patrols, only chases when you're close).
+  They alternate SCATTER (retreat to corners) and CHASE phases on a timer. In power mode they are
+  FRIGHTENED (blue, slow, flee) until it wears off (with a blink warning near the end).
+Player/rules: 3 lives; touching a non-frightened pest = lose a life and reset positions; clearing
+  all dew drops = next level. AT LEAST 6 LEVELS, each with a different maze layout and faster/
+  smarter pests as you climb. Persist high score in localStorage.
+INTERMISSIONS (Ms. Pac-Man style — REQUIRED): between levels, play a short (~5-8s) animated
+  cutscene vignette that advances a little wordless story. Six bespoke story beats, in order:
+    After L1  "They Meet"     — our ladybug spots a SECOND ladybug across a branch; a shy hello.
+    After L2  "The Chase"     — a big beetle comedically chases both ladybugs across the screen.
+    After L3  "Teamwork"      — the two ladybugs turn and munch the beetle together; it flees.
+    After L4  "New Growth"    — the tree greens up, a leaf unfurls / a bud pops.
+    After L5  "A Little One"  — a tiny baby ladybug appears and toddles after them.
+    After L6+ "The Tree Thrives" — full-bloom celebration; beyond L6 the vignettes recur/escalate
+                                   so EVERY level gap always shows something.
+  Each vignette has a title card (e.g. "Act 1 — They Meet"), is skippable with any key/tap, and is
+  drawn in code like the rest of the game (no external assets).
+Screens: Title, in-game HUD (score, high score, lives, level), Ready!/Get-set intro, Pause,
+  Game Over, the between-level INTERMISSION vignettes, and a short "Tree Cleared!" flourish.
+Art direction: cute cartoon / storybook (friendly ladybug, expressive pests, leafy maze walls).
+  FALLBACK: if a consistent cartoon look cannot be achieved, switch to a clean 16-bit pixel-art
+  style. Either way, ALL art is drawn IN CODE (canvas primitives and/or inline SVG data-URIs) —
+  NO external image files.
+Brand wink (light, tasteful): use a Great-Scott-green accent in the palette and hide ONE small
+  Easter egg in a corner of the maze/background — a tiny hard-hat or a small "GSTS" truck. Do not overbrand.
+Controls: FULL RESPONSIVE. Desktop = Arrow keys/WASD to steer (4-direction grid movement with
+  input buffering so turns feel snappy) + P (pause). Mobile = swipe to steer OR an on-screen d-pad
+  that appears on touch devices. Canvas scales to any window size and keeps its aspect ratio.
+
+=== HARD CONSTRAINTS (non-negotiable) ===
+- Output = ONE .html file. Everything inline: HTML, CSS, JS, all art, all audio.
+- ZERO network requests. No CDNs, no external images, no external fonts, no audio files.
+- Audio = synthesized at runtime via the WebAudio API (chomp/waka loop, power mode, eat-pest,
+  death, level-clear, bonus) + a mute toggle. No files.
+- Must run by simply opening the file (file://) in a modern browser with NO console errors.
+- Target ~60fps using requestAnimationFrame and a fixed-timestep update loop.
+- Grid-based movement: entities move on a tile grid; movement is smooth but logically tile-locked.
+- Vanilla JS + Canvas. No frameworks, no build step. Self-contained; embeddable via <iframe>.
+- SINGLE-INTEGRATOR RULE: exactly one integrator owns MUNCH.html; conceptually no other role writes
+  to it directly — each role's work is merged in by the integrator so the file stays coherent.
+
+=== THE GAUNTLET (run agents in order; enforce each GATE before advancing) ===
+
+AGENT 1 — ARCHITECT
+  Do: Single-file skeleton, fixed-timestep loop, global state machine (TITLE, READY, PLAYING,
+      PAUSED, DYING, LEVELCLEAR, GAMEOVER), the maze/tile schema (a grid where each cell is wall/
+      path/dot/power/tunnel/spawn), and an INPUT layer unifying keyboard + swipe/d-pad into one
+      direction intent with buffering.
+  Output: skeleton that shows a Title, runs the loop at ~60fps, and can enter a blank PLAYING state.
+  GATE: File opens, Title shows, loop ~60fps, Start works, direction intent logs from BOTH keyboard
+        and simulated swipe, no console errors. FAIL -> retry Agent 1.
+
+AGENT 2 — MAZE & MOVEMENT ENGINEER
+  Do: Render a real maze from the tile grid; grid-locked smooth player movement with wall collision,
+      corner-cutting/turn buffering, and TUNNEL wraparound; place dew drops + power pellets on path
+      cells; responsive canvas scaling (fit window, keep aspect, crisp).
+  Output: a playable maze where the ladybug roams, turns cleanly, wraps tunnels, and eats dots.
+  GATE: Player navigates the full maze, can't pass walls, tunnels wrap, dots are eaten and counted,
+        window resize rescales cleanly, ~60fps, no errors. FAIL -> retry (max 2), else simplify.
+
+AGENT 3 — ENEMY AI ENGINEER
+  Do: Implement the 4 pests with tile-based pathfinding and distinct target logic (chaser, ambusher,
+      wanderer, guard), a global SCATTER/CHASE timer, a hive spawn/exit cadence, and the FRIGHTENED
+      state (blue, slower, flee, blink warning, then revert). Collisions: frightened = eat + respawn;
+      normal = player death.
+  Output: 4 pests behaving distinctly, chasing/scattering, and reacting to power mode.
+  GATE: Each pest is visibly different in behavior; scatter/chase alternates; power pellet flips them
+        to frightened and back; eating pests + player death both work; no errors. FAIL -> retry.
+
+AGENT 4 — SYSTEMS & PROGRESSION DESIGNER
+  Do: Scoring (dots, power pellets, escalating pest 200/400/800/1600, bonus acorn), 3 lives, level
+      clear on all-dots-eaten, next-level with faster pests + alt maze, Ready!/intro + Game Over +
+      "Tree Cleared!" transitions, HUD (score/high score/lives/level), localStorage high score.
+      Build AT LEAST 6 distinct maze layouts (cycle/vary beyond that) with a fair difficulty ramp,
+      and expose an INTERMISSION hook that fires between levels (consumed by Agent 7).
+  Output: a full game that can be won, lost, and advanced through all 6+ levels.
+  GATE: Clearing dots advances level; all 6 mazes reachable and distinct; lives decrement and Game
+        Over fires; scoring correct; bonus acorn appears/scores/disappears; high score persists
+        across reload; the intermission hook fires between levels; no errors. FAIL -> retry.
+
+AGENT 5 — ART DIRECTOR
+  Do: Coherent cartoon look — friendly ladybug (with facing/animation), 4 distinct expressive pests,
+      leafy maze walls, dew drops, golden sap, bonus acorn, UI — ALL drawn in code (canvas/SVG).
+      Include the light GSTS-green accent + hidden hard-hat/GSTS-truck Easter egg. SELF-CHECK
+      consistency (palette, line weight, proportions). If inconsistent, SWITCH to pixel-art fallback.
+  Output: fully styled game across all screens.
+  GATE: One coherent style; pests visually distinct + readable small; Easter egg present but subtle;
+        zero external assets; no errors. FAIL -> apply pixel fallback and re-pass.
+
+AGENT 6 — AUDIO ENGINEER
+  Do: WebAudio SFX — chomp/waka loop while moving, power-mode siren, eat-pest, player death jingle,
+      level-clear, bonus pickup — plus a mute toggle. No files.
+  GATE: Sounds map to the right events; mute works; loops don't stack/leak; no errors. FAIL -> retry,
+        else ship SFX-only.
+
+AGENT 7 — INTERMISSION / STORY DESIGNER
+  Do: Build the between-level animated cutscene system and the SIX bespoke story vignettes listed in
+      the spec ("They Meet", "The Chase", "Teamwork", "New Growth", "A Little One", "The Tree
+      Thrives"), each with a title card, ~5-8s of in-code animation (tweened sprites, no external
+      assets), skippable with any key/tap, and matching the game's art style. Wire them to Agent 4's
+      intermission hook so the correct vignette plays after each level (recur/escalate past L6).
+  Output: each level transition plays its story vignette, then proceeds to the next level.
+  GATE: All six vignettes play in order at the right transitions; title cards show; each is skippable;
+        animation is smooth (~60fps); style matches; no errors. FAIL -> retry.
+
+AGENT 7B — POLISH & FEEL DESIGNER
+  Do: Game-feel pass — turn buffering that feels snappy, fair pest timing, readable frightened blink,
+      brief death animation, "Ready!" countdown, and a satisfying "Tree Cleared!" flourish. Tune
+      difficulty curve so level 1 is approachable and it ramps fairly across all 6+ levels.
+  GATE: Controls feel responsive; difficulty is fair not brutal; transitions + intermissions are
+        clean; no errors. FAIL -> retry.
+
+AGENT 8 — QA / PLAYTESTER
+  Do: Adversarial full checklist. Verify: single file, ZERO network requests (network panel empty),
+      zero console errors/warnings, ~60fps, canvas scaling, keyboard AND touch/swipe both work, maze
+      navigable + tunnels wrap, all 4 pests distinct, power mode + eating works, scoring + lives +
+      level progression across all 6+ levels + high-score persistence correct, all six intermission
+      vignettes play in order at the right transitions (and are skippable), all screens correct,
+      audio + mute correct, art coherent, Easter egg present. Log every defect with a repro.
+  GATE: 100% pass, zero open defects. Any FAIL -> route back to the owning agent, fix, re-run QA. Do
+        NOT declare done until QA is clean.
+
+AGENT 9 — INTEGRATOR / SHIPPER
+  Do: Collapse everything into the final single self-contained MUNCH.html. Confirm it opens standalone
+      AND renders correctly embedded as:
+      <iframe src="MUNCH.html" style="width:100%;height:640px;border:0"></iframe>
+  GATE: Standalone AND iframe-embedded both render and play identically with zero errors.
+
+=== FINAL DELIVERABLE ===
+Write the COMPLETE MUNCH.html into the repo (single self-contained file), then a short BUILD REPORT:
+which art path was used (cartoon or pixel fallback), the QA checklist with each item marked PASS, the
+exact <iframe> embed snippet, and `git log --oneline` showing the gate commits. Then STOP.
+
+RULES OF THE GAUNTLET: Enforce every GATE. Never skip QA. Prefer a smaller, flawless build over an
+ambitious broken one — if something risks the "runs first try, zero errors" guarantee, apply the
+named fallback and keep the acceptance criteria intact.

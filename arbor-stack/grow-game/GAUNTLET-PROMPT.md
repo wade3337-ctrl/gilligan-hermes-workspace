@@ -1,0 +1,152 @@
+# GROW! — Kimi K3 One-Shot Gauntlet Prompt (copy-paste)
+
+---
+
+=== SETUP / ENVIRONMENT (do this FIRST, before any game work) ===
+You are running as a coding agent on a Windows desktop. Create a real local git repo and build
+the game inside it. Steps:
+  1. Create a project folder named "grow-game" (on the Desktop is fine, e.g. %USERPROFILE%\Desktop\grow-game).
+  2. Run `git init` in it. Create these files: GROW.html (the game), README.md (title, how to play,
+     the <iframe> embed snippet), and a /docs folder for any notes.
+  3. Add a .gitignore for OS cruft (Thumbs.db, .DS_Store, node_modules/ if any).
+  4. COMMIT AFTER EACH GAUNTLET GATE PASSES, with a message naming the agent, e.g.
+     "gate1: architect skeleton passing", "gate2: engine physics", ... "gate9: shipped".
+     This gives a rollback point per stage — if a later agent regresses something, revert to the
+     last green commit instead of losing the build.
+  5. Do NOT create any remote / push anywhere. Local repo only. No network calls of any kind.
+  6. After the final gate, leave the repo clean (all changes committed) and tell me the exact
+     folder path plus `git log --oneline` so I can see the gate history.
+
+ROLE: You are the PRODUCER and ORCHESTRATOR of a build gauntlet. Your job is to ship a
+complete, polished browser game called "GROW!" in a SINGLE self-contained HTML file, on the
+first attempt. You will spin up specialized sub-agents in a sequential GAUNTLET. Each agent
+has a defined role, inputs, outputs, and a PASS/FAIL GATE. You do not advance to the next
+agent until the current gate passes. If a gate fails, loop that agent (max 2 retries) or apply
+its named fallback. At the end, you personally assemble, self-test, and emit the final file.
+
+=== THE GAME (fixed spec — do not redesign) ===
+Title: GROW!
+Concept: You are a sapling that GROWS stronger as it journeys up and across a giant tree world.
+Mechanic: HYBRID of two level types, alternating:
+  - CLIMB levels: vertical ascent (Donkey-Kong / redwood feel), dodge falling hazards.
+  - RUN levels: side-scrolling platformer (Mario feel), run/jump across branches, stomp pests.
+Hero growth (the heart of the game):
+  - 3 stages: Sprout -> Sapling -> Young Tree (bigger = higher reach, tougher).
+  - WATER collectible = grow one stage (cap 3). SUNLIGHT collectible = 6s speed boost;
+    double-tap direction = short "canopy dash".
+  - Pest hit = drop one growth stage. Hit while at stage 1 = lose a life. 3 lives total.
+Levels (exactly 5):
+  1. CLIMB "Roots to Trunk" — teaches water/sunlight + aphids.
+  2. RUN "The Low Canopy" — jump/dash across gaps, stomp beetles.
+  3. CLIMB "The Tall Timber" — falling pinecones, moving branches.
+  4. RUN "The High Canopy" — faster, wind gusts, more pests.
+  5. BOSS "The Summit" — fight "The Blight" (a giant bark-borer beetle). On defeat, the sapling
+     BLOOMS into a mighty full-grown tree -> triumphant win screen with score + high score.
+Scoring: collectibles + pests cleared + height/distance + level-clear bonus. Persist high score
+  in localStorage. Screens: Title, In-game HUD (lives, stage, score), Pause, Game Over, Win.
+Art direction: cute cartoon / storybook trees, warm and playful. FALLBACK: if a consistent
+  cartoon look cannot be achieved, switch to a clean 16-bit pixel-art style. Either way, ALL art
+  is drawn IN CODE (canvas primitives and/or inline SVG data-URIs) — NO external image files.
+Brand wink (light, tasteful): use a Great-Scott-green accent in the palette and hide ONE small
+  Easter egg in a background — a tiny hard-hat or a small "GSTS" truck. Do not overbrand.
+Controls: FULL RESPONSIVE. Desktop = Arrow keys/WASD + Space (jump) + Shift/double-tap (dash) +
+  P (pause). Mobile = on-screen touch buttons (left/right/jump/dash) that appear on touch devices.
+  Canvas must scale to any window size and maintain aspect ratio.
+
+=== HARD CONSTRAINTS (non-negotiable) ===
+- Output = ONE .html file. Everything inline: HTML, CSS, JS, all art, all audio.
+- ZERO network requests. No CDNs, no external images, no external fonts, no audio files.
+- Audio = synthesized at runtime via the WebAudio API (chiptune SFX + a light background loop);
+  include a mute toggle.
+- Must run by simply opening the file (file://) in a modern browser with NO console errors.
+- Target ~60fps using requestAnimationFrame and a fixed-timestep update loop.
+- Code is self-contained and readable; no build step, no frameworks required (vanilla JS + Canvas).
+- It will be embedded via <iframe> on another page, so it must be fully self-isolated.
+
+=== THE GAUNTLET (run agents in order; enforce each GATE before advancing) ===
+
+AGENT 1 — ARCHITECT
+  Do: Define the single-file skeleton, the fixed-timestep game loop, a global GameState/state
+      machine (TITLE, PLAYING, PAUSED, GAMEOVER, WIN), the level-data schema (a JSON-like object
+      per level: type climb/run, layout, spawns, hazards, exit), and an INPUT abstraction layer
+      that unifies keyboard + touch into the same action set (left,right,jump,dash,pause).
+  Output: skeleton HTML with the loop, state machine, input layer, empty level array, HUD stub.
+  GATE: File opens, shows a Title screen, loop runs at ~60fps, pressing Start enters PLAYING with
+        an empty scene, no console errors. Input actions log correctly from BOTH keyboard and
+        simulated touch. FAIL -> retry Agent 1.
+
+AGENT 2 — ENGINE ENGINEER
+  Do: Implement physics + rendering for BOTH level types on the shared engine:
+      RUN = gravity, jump, one-way platforms, side-scroll camera, stomp detection.
+      CLIMB = upward scroll/camera, climbable surfaces, falling-hazard spawner.
+      Add AABB collision, entity manager, camera, and responsive canvas scaling (scale to window,
+      keep aspect ratio, crisp rendering).
+  Output: a playable test room for each level type (move, jump, dash, collide, camera, scale).
+  GATE: In a RUN test room you can run/jump/dash across platforms with correct collisions and a
+        following camera; in a CLIMB test room you ascend with hazards falling; resizing the
+        window rescales cleanly; ~60fps; no errors. FAIL -> retry Agent 2 (max 2), else simplify
+        physics to the minimum that passes.
+
+AGENT 3 — GROWTH & SYSTEMS DESIGNER
+  Do: Implement the sapling growth stages (visual size + hitbox change), water/sunlight pickups,
+      dash from sunlight, pest-hit = lose a stage, stage-1 hit = lose a life, 3 lives, scoring,
+      and localStorage high score. Wire the full HUD (lives, current stage, score, high score).
+  Output: systems demo where growing, shrinking, dying, scoring, and high-score persistence work.
+  GATE: Collect water -> grow; get hit -> shrink; lose all lives -> Game Over; score increments;
+        high score survives reload. No errors. FAIL -> retry Agent 3.
+
+AGENT 4 — LEVEL DESIGNER
+  Do: Author the 5 real levels per the spec using the level schema, with a rising difficulty
+      curve and proper alternation (climb, run, climb, run, boss). Place collectibles, hazards,
+      pests, and clean exits. Ensure each level is completable by a competent player.
+  Output: all 5 levels populated and sequentially reachable (level 5 is the boss arena stub).
+  GATE: You can play from level 1 through level 4 and arrive at the boss arena; each level clears
+        on reaching its exit; difficulty rises; no dead-ends or impossible jumps. FAIL -> retry.
+
+AGENT 5 — ART DIRECTOR
+  Do: Produce a COHERENT cartoon/storybook look for hero (all 3 stages), pests, collectibles,
+      platforms/tree surfaces, backgrounds/parallax, and UI — ALL drawn in code (canvas/SVG).
+      Include the light GSTS-green accent and the hidden hard-hat/GSTS-truck Easter egg.
+      SELF-CHECK consistency (shared palette, line weight, proportions). If not consistent,
+      SWITCH to the pixel-art fallback and redo — still fully in code.
+  Output: fully styled game with consistent art across all screens.
+  GATE: Art reads as ONE coherent style; hero stages visually distinct; readable on small screens;
+        Easter egg present but subtle; still zero external assets, no errors. FAIL -> apply pixel
+        fallback and re-pass.
+
+AGENT 6 — AUDIO ENGINEER
+  Do: WebAudio-synthesized SFX (jump, grow, pickup, hit, stomp, boss-hit, win) + a light looping
+      background theme + a mute toggle. No files.
+  GATE: Sounds trigger on the right events; mute works; loop doesn't stack/leak; no errors.
+        FAIL -> retry, else ship SFX-only.
+
+AGENT 7 — BOSS & FINALE DESIGNER
+  Do: Build "The Blight" boss fight in level 5 (telegraphed attacks, a fair pattern, a health bar,
+      3 hits to win by stomping/dashing its weak point). On defeat, play the BLOOM sequence
+      (sapling -> mighty tree) then the WIN screen with final score + high score + Play Again.
+  GATE: Boss is winnable and losable, bloom + win screen fire correctly, restart works. FAIL -> retry.
+
+AGENT 8 — QA / PLAYTESTER
+  Do: Run the full acceptance checklist as an adversarial tester. Verify: single file, zero network
+      requests (check the network panel = empty), zero console errors/warnings, ~60fps, canvas
+      scaling, keyboard AND touch both work, all 5 levels completable, growth/lives/score/high-score
+      correct, all screens (title/pause/gameover/win) correct, audio + mute correct, art coherent,
+      Easter egg present. Log every defect with a repro.
+  GATE: 100% of the acceptance checklist passes with zero open defects. Any FAIL -> route the defect
+        back to the owning agent, fix, and re-run QA. Do NOT declare done until QA is clean.
+
+AGENT 9 — INTEGRATOR / SHIPPER
+  Do: Collapse everything into the final single self-contained GROW.html. Confirm the file opens
+      standalone, and also confirm it renders correctly when embedded as:
+      <iframe src="GROW.html" style="width:100%;height:640px;border:0"></iframe>
+  GATE: Standalone AND iframe-embedded both render and play identically with zero errors.
+
+=== FINAL DELIVERABLE ===
+Emit the COMPLETE contents of GROW.html (the single self-contained file), followed by a short
+BUILD REPORT: which art path was used (cartoon or pixel fallback), the QA checklist with each item
+marked PASS, and the exact <iframe> snippet to embed it. Then STOP. Do not summarize the code —
+ship the actual file.
+
+RULES OF THE GAUNTLET: Enforce every GATE. Never skip QA. Prefer a smaller, flawless build over an
+ambitious broken one — if something risks the "runs first try, zero errors" guarantee, apply the
+named fallback and keep the acceptance criteria intact.
