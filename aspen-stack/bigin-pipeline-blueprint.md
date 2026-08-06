@@ -34,7 +34,7 @@
 
 ## 2) Aspen feed = ONE new `Aspen Feed` SUB-PIPELINE added inside each rep's Team Pipeline (Model B)
 Add a sub-pipeline named **`Aspen Feed`** inside each of: `Ethan Pipeline` · `Garrett Pipeline`* · `Rebekah Pipeline` · `Scott Pipeline` (new, from §1).
-*(*Garrett has two layouts today — `Garrett Pipeline` + `Garretts new Pipeline`; confirm which is his live one before adding the sub, and fold the cleanup into Nate's conversation.)*
+*(*✅ RESOLVED 2026-08-06 via live deal counts: **`Garretts new Pipeline` is the LIVE one** (304 deals, last modified 2026-08-05) → add the sub HERE. Old `Garrett Pipeline` (829 deals, untouched since 2026-06-05) = legacy/archive; fold its cleanup into Nate's conversation, don't touch it now.)*
 
 Each `Aspen Feed` sub gets these **7 stages** (the cockpit's 5 lanes + 2 housekeeping bookends, Skipper APPROVED):
 
