@@ -6,7 +6,7 @@ track: 1
 status: PAUSED 2026-08-02 — Skipper discussing with Nate before build; nothing built/written
 tags: [aspen, bigin, cockpit, crm, pipeline, sync, build]
 applies: ["[[external-comms-contract]]", "[[repair-contract]]"]
-links: ["[[aspen-retention-agent]]", "[[sales-cockpit]]", "[[50m-growth-goal]]", "[[herman-agent]]"]
+links: ["[[aspen-retention-agent]]", "[[sales-cockpit]]", "[[50m-growth-goal]]", "[[herman-agent]]", "[[bigin-mcp-integration]]", "[[bigin-api-capabilities]]"]
 updated: 2026-08-02
 ---
 
@@ -60,7 +60,7 @@ Decided direction (Skipper 2026-08-06): Aspen manages a DEDICATED pipeline; reps
 Read the whole Bigin v2 API surface + probed our live org. **Architecture-critical discovery (CONFIRMED LIVE):** Bigin deals have a native **3-level hierarchy — `Pipeline` (Team Pipeline) → `Sub_Pipeline` (picklist) → `Stage`.** Today every rep pipeline has ONE default sub (e.g. `Garretts new Pipeline Standard`). This opens a **second, lighter build model**:
 - **Model A (drafted):** Aspen = its OWN Team Pipeline(s); rep "pulls" = MOVE the record to the rep's pipeline. Clean isolation, heavier.
 - **Model B ✅ CHOSEN (Skipper 2026-08-06):** Aspen feed = a **`Aspen Feed` Sub-Pipeline inside each rep's EXISTING Team Pipeline**; "pull" = flip the `Sub_Pipeline`/`Stage` picklist on the same card — no cross-pipeline move, card never leaves the rep's board. Lighter + better rep adoption. Blueprint redrawn around B → `aspen-stack/bigin-pipeline-blueprint.md`. Phase 0 (UI/admin, loop Nate): create `Scott Pipeline` + add a 7-stage `Aspen Feed` sub inside Ethan/Garrett/Rebekah/Scott.
-**Cheap at our scale:** 50k+ credits/day; writes = 1 credit/10 records; upsert = idempotency lever; **webhooks (Notification API) replace polling** so Aspen hears about a rep pull in real time. Notes/Tags/Tasks all writable on a deal (context + flags + next-action). Full detail → [[bigin-api-capabilities]].
+**Cheap at our scale:** 50k+ credits/day; writes = 1 credit/10 records; upsert = idempotency lever; **webhooks (Notification API) replace polling** so Aspen hears about a rep pull in real time. Notes/Tags/Tasks all writable on a deal (context + flags + next-action). Full detail → [[bigin-api-capabilities]]. The live tool path Aspen writes through = the native Zoho MCP server → [[bigin-mcp-integration]].
 
 ## 🔑 API CAPABILITY — CREATE pipelines is UI-ONLY (verified vs Bigin dev docs, 2026-08-06)
 **Definitive:** the Bigin API does NOT expose pipeline/layout CREATION. `GET /bigin/v2/settings/layouts` is READ-only (docs: "Get layouts metadata"); the create-pipeline endpoints 401'd because they don't exist. The API surface is: **record CRUD** (Add/Update/Get records in the Pipelines module = deals) + **settings metadata READS** + users READ. Scope held = `modules.ALL settings.ALL users.READ` (admin) — authority isn't the limit; the endpoint doesn't exist.

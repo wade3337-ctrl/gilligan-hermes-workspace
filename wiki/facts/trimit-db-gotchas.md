@@ -3,8 +3,8 @@ title: TrimIT DB gotchas — dual-webroot & DB-driven menus
 type: fact
 domain: env
 tags: [infra, trimit, coldfusion, deploy, gotcha, appforms, webroot]
-links: ["[[play-dev-access]]", "[[workbench-play-db]]", "[[trimit-investor-case]]", "[[only-trustworthy-data]]"]
-updated: 2026-07-24
+links: ["[[play-dev-access]]", "[[workbench-play-db]]", "[[trimit-investor-case]]", "[[only-trustworthy-data]]", "[[trimit-bonus-eligible-page]]", "[[trimit-ready-to-schedule-page]]", "[[goahead-status-lifecycle]]"]
+updated: 2026-08-06
 ---
 
 # TrimIT DB gotchas
@@ -38,6 +38,12 @@ Snapshot: `arbor-stack/gilligan-environment-snapshot.md`.
 - **Municipal vs commercial = `ProjectGroups.ProjectGroupDefID = 11`** (municipal), commercial = `NOT EXISTS` that row. Join `CrewSheets → WorkOrders → Projects`.
 - **`RFPActions.UserGroupID` IS the traveler step** (`UserGroups`: 3 Inventory · 4 Pricing · 5 Proposal · **11 Review = inventory QC** · 17 Prep · 18 Map · 27 Re-inventory). **A repeat visit to the same group on one RFP = a measurable return trip** — this is how the bid rework loop became countable. → [[trimit-investor-case]]
 - **The real bid population is 5,033** (trailing 12 mo to 2026-07-22, reached a sent proposal). Not 5,004 / 5,015 / 5,145 — those were mixed windows. Back-entry: 810 within 60s (16.1%), 1,343 within 1 hr (26.7%).
+
+## 🧾 Payroll / crew-assignment traps (2026-08-05, from the Bonus-Eligible + Ready-to-Schedule builds)
+- **Bonus-eligible marker = `dbo.CrewAssignments.IsPerDiemEligible = 1`** — the crew-leader "Is Bonus Eligible?" checkbox (`bit`, written `-1→1`). ⚠️ **`EmergencyTimeEntry` is NOT it** — that's an auto **clock-anomaly flag** (clock-in >30 min early or after scheduled end), 1,606 rows, nothing to do with bonus. First guess was wrong; verified the real marker against anchor crew sheet **541351** (CrewMemberID 5400/5403, both `=1` → exactly Dimitry's 2 for 7/20–8/2). → [[trimit-bonus-eligible-page]].
+- **`CrewAssignments.CalendarID` and `CrewAssignments.WorkDate` are NULL** → a crew-assignment's DATE must come from **`CrewSheets.CalendarID → Calendars.CalDate`** (`ca.CrewSheetID → cs.CalendarID → cal.CalDate`), never from CrewAssignments. Filtering a date window on the CrewAssignments columns silently returns **0 rows**.
+- **`WorkOrders.Created` is the reliable approval anchor; `WorkOrders.ApprovedDate` is ALWAYS NULL.** `Created` matched Nate's 7/29–7/31 approval dates exactly. Use `Created` for any "approved in last N days" window. → [[trimit-ready-to-schedule-page]].
+- **A scheduling / "approved awaiting schedule" count MUST include `StatusDefID 109 (InProcess)`, not just `46 (Active)`.** A WO left InProcess is approved-but-half-activated (2-step flip → [[goahead-status-lifecycle]]); its shell has **$0 EstValue / 0 TotalHours / NULL StartDate**, so value must come from **`Proposals.Total`** (via WO→GoAhead→Proposal). Also **`Proposals.LegacyRef` = the displayed proposal #** and **`Proposals.Total` = the EstValue** Nate/field cite.
 
 
 ## Related
