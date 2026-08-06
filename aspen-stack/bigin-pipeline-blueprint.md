@@ -1,8 +1,9 @@
 # Bigin Pipeline Blueprint — Aspen ↔ Sales (copy-follow UI setup)
 
-**Status:** DRAFT for Skipper/Nate to stamp the shells. Create = Bigin **web UI** (API cannot create pipelines). Cards = Aspen/API after.
+**Status:** DRAFT for Skipper/Nate to stamp the shells. Sub-pipelines + stages created in Bigin **web UI settings** (API cannot create pipelines/sub-pipelines). Cards = Aspen/API after.
 **Scope (Skipper 2026-08-06):** ALL FOUR reps at once — Ethan · Garrett · Rebekah · Scott — plus Scott's brand-new MAIN.
-**Inspected live 2026-08-06:** every Bigin pipeline is a full standalone *layout* with its own Stage picklist. `Megan`=`Rebekah`=`Garretts new` are byte-identical 18-stage layouts = the house standard. `Chad Pipeline` = 21-stage full lifecycle. There is no lightweight "sub" object — a "sub" is just a short pipeline; pulling a card = moving the deal record between layouts (UI drag or API re-assign).
+**MODEL = B (Skipper decision 2026-08-06):** Aspen's feed is a **Sub-Pipeline INSIDE each rep's existing Team Pipeline**, NOT a separate pipeline. Confirmed live: Bigin deals carry `Pipeline` (Team Pipeline) → `Sub_Pipeline` (picklist) → `Stage`. Today each rep pipeline has one default sub (e.g. `Garretts new Pipeline Standard`). We ADD a second sub named `Aspen Feed` to each. A rep **"pulls" a card = flip its `Sub_Pipeline` from `Aspen Feed` → the rep's Standard sub** (+ set Stage via translator) — the card never leaves the rep's board.
+> Why B (Skipper): less machinery, and the card staying in the rep's own view = better adoption. Cost: Aspen cards + real deals share one board → keep them separate with the `Aspen Feed` sub label + a tag.
 
 ---
 
@@ -31,10 +32,11 @@
 
 *(Optional add Nate may want: `Closed Won` + `Closed Lost` tail like Ethan/Chad. The clean trio does loss-tracking via Proposal Lost + Lost Job Follow Up instead.)*
 
-## 2) FOUR Aspen sub-feeds — one per rep
-Pipeline names: `Aspen Feed — Ethan` · `Aspen Feed — Garrett` · `Aspen Feed — Rebekah` · `Aspen Feed — Scott`
+## 2) Aspen feed = ONE new `Aspen Feed` SUB-PIPELINE added inside each rep's Team Pipeline (Model B)
+Add a sub-pipeline named **`Aspen Feed`** inside each of: `Ethan Pipeline` · `Garrett Pipeline`* · `Rebekah Pipeline` · `Scott Pipeline` (new, from §1).
+*(*Garrett has two layouts today — `Garrett Pipeline` + `Garretts new Pipeline`; confirm which is his live one before adding the sub, and fold the cleanup into Nate's conversation.)*
 
-Stages = the cockpit's 5 lanes + 2 housekeeping bookends (Skipper APPROVED 2026-08-06) = **7 stages**:
+Each `Aspen Feed` sub gets these **7 stages** (the cockpit's 5 lanes + 2 housekeeping bookends, Skipper APPROVED):
 
 1. New / Surfaced   ← Aspen drops a freshly-surfaced card here before triage
 2. Follow Up
@@ -42,7 +44,9 @@ Stages = the cockpit's 5 lanes + 2 housekeeping bookends (Skipper APPROVED 2026-
 4. Scheduled (Won)
 5. Working
 6. Recently Done
-7. Pulled by Rep   ← set when the arborist pulls the card into their MAIN (promotion metric)
+7. Pulled by Rep   ← set when the arborist pulls the card into their Standard sub (promotion metric)
+
+**The pull mechanic under B:** rep drags the card from the `Aspen Feed` sub to their `... Standard` sub (native Bigin gesture) — API-equivalent = update the record's `Sub_Pipeline` + `Stage`. Same record, same Team Pipeline, no cross-board move.
 
 ## 3) Stage translator — cockpit lane → rep MAIN stage (applied when a card is pulled)
 - Follow Up → Potential Lead / Lost Job Follow Up
@@ -52,14 +56,16 @@ Stages = the cockpit's 5 lanes + 2 housekeeping bookends (Skipper APPROVED 2026-
 - Recently Done → Recurring Contract
 - 🔴 Running dry / 💰 Re-sell → carried as a tag + next-action, not a stage.
 
-## 4) The pull mechanic (how rep + Aspen share a card)
-- A deal lives in ONE pipeline at a time. "Back and forth" = MOVE the record between `Aspen Feed — X` and `X Pipeline` (native in the rep UI; also API-reassignable).
+## 4) The pull mechanic (Model B)
+- One deal record, always inside the rep's Team Pipeline. "Pull" = change `Sub_Pipeline` from `Aspen Feed` → the rep's Standard sub (+ Stage via translator). Rep does it by dragging the card between subs; API can do the same `Sub_Pipeline`+`Stage` update.
 - Linchpin so Aspen keeps refreshing work-facts after a pull: shared **TRIM IT ProjectID** custom field on the Pipelines module + a `Workbench` link table (Bigin Deal ID ↔ TRIM IT key).
-- Autonomy: Aspen writes FREELY inside its own `Aspen Feed — X`; the single human gate is the rep pulling a card into their MAIN. Tier-2 actions (create/own/close on the rep's MAIN) only happen by that pull.
+- Autonomy: Aspen writes FREELY on cards sitting in the `Aspen Feed` sub; the single human gate is the rep dragging a card into their Standard sub. Tier-2 actions (own/close on a live deal) only begin after that pull.
+- Real-time: enable a **Notification API webhook** on the Pipelines module so Aspen hears the instant a rep pulls/edits — no polling.
 
 ## 5) Build order after shells exist
+0. **Phase 0 (UI/admin, loop Nate):** create `Scott Pipeline` (§1) + add an `Aspen Feed` sub-pipeline (7 stages, §2) inside each of the 4 rep pipelines.
 1. Owner map: TRIM IT `Proposals.SalesRepID` → Bigin owner ID.
 2. Add `TRIM IT ProjectID` custom field on Pipelines + `Workbench` link table.
 3. Cockpit read via `trimit-ro-query.sh` → accounts + lane + owner + flags.
-4. DRY-RUN push into `Aspen Feed — Ethan` first → Skipper/Nate eyeball.
-5. Go-live Ethan → clone to Garrett/Rebekah/Scott.
+4. DRY-RUN push into Ethan's `Aspen Feed` sub first → Skipper/Nate eyeball.
+5. Go-live Ethan → clone the sub to Garrett/Rebekah/Scott → enable webhook → Aspen drives (handoff).
