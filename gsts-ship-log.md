@@ -445,3 +445,10 @@ Working the 36 pre-existing defects so package 3 can ship in one deploy. **Every
 - UI-only, persists on play. No DB touched.
 
 ### 2026-08-06 — Sales Pipeline page: added "Pipeline freshness / aging" visibility (Skipper: "build this visibility into it")
+### 2026-08-06 — Sales Pipeline page: package-color restyle + multi-level drill-down (Skipper: "package colors that all our others use" + "drill all the way down to that project")
+- **Restyle:** swapped `Dashboard-PipelineCoverage.cfm` from its custom dark "ops" theme to the **standard package look** every other V1.5 dashboard uses — brand-green (`#5C743D`) app-bar header, `#f5f5f5` body, white cards, `#f0f2ec` table headers. Class names kept so only theme + header changed. (Skipper keeps the dark look for his own personal ops dashboards; the team-facing V1.5 page now matches the package.)
+- **Multi-level drill (new `Dashboard-PipelineCoverage$Drill.cfm`):** click any **age bucket** (fresh/31-60/61-90/stale) OR any **market segment** (HOA/Commercial/Retail/Unassigned/Muni…) on the main page → filtered list of the individual open bids with **Account · Property · Market · Owner(rep) · Bid# (LegacyRef) · Value · Age · Sent**; each row click → `Profile.Proposal.Detail.cfm?ZProposalID=` (the native TRIM IT bid). Combinable age×market filter chips at top. Built for MINING stale bids — who owns it, who to call, how old. Same open-bid population as Panel 1 so it reconciles.
+- **Reconciliation (verified live):** drill `age=4` (stale) = **83 bids / $2,677,685** = the aging panel's stale bucket · drill `market=HOA` = **135 rows** = Panel 1's HOA bid count. Exact.
+- **Contract:** backup-first (`Jasonsrepairs\Dashboard-PipelineCoverage.cfm.bak-<ts>`) · both files render clean (0 CF errors, verified as UserID 9) · **`verify-build.sh` = 20 PASS / 0 FAIL** · committed (gilligan-arborstack). UI-only, persists on play.
+
+### 2026-08-06 — V1.5 landing page: "Sales Pipeline" link added to SALES node (Skipper: "put a link to this on the v1.5 landing page in sales tab")
