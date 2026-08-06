@@ -3,7 +3,7 @@ title: Bigin ↔ Gilligan via Zoho MCP (native tool access)
 type: project
 domain: work
 track: 1
-status: IN PROGRESS 2026-08-06 — waiting on Skipper to generate the Zoho MCP Server URL (UI-only)
+status: ✅ LIVE 2026-08-06 — 69 Bigin tools authenticated, live reads verified
 tags: [bigin, mcp, zoho, integration, aspen, gilligan]
 applies: ["[[external-comms-contract]]", "[[agent-comms-security-policy]]"]
 links: ["[[bigin-api-capabilities]]", "[[aspen-cockpit-to-bigin-push]]"]
@@ -13,6 +13,14 @@ updated: 2026-08-06
 # Bigin ↔ Gilligan via Zoho MCP
 
 **Goal (Skipper 2026-08-06):** bring the **Zoho MCP server for Bigin** online so Gilligan (and later Aspen) can act on Bigin through native MCP tools instead of the hand-rolled OAuth token. Cleaner, officially supported, permission-scoped per tool.
+
+## ✅ LIVE 2026-08-06 — verified end-to-end
+- Server `bigin-gilligan` wired into OpenClaw `mcp.servers` (config patched backup-first: `openclaw.json.bak-premcp-20260806045837`). `transport: streamable-http`, `auth: oauth`, all 69 tools selected (`toolFilter.include *`).
+- OAuth completed via `openclaw mcp login` (manual PKCE: Skipper approved in browser → copied `code=` from the failed 127.0.0.1:8989 redirect → `--code`). Tokens stored `~/.openclaw/mcp-oauth/bigin-gilligan-*.json`. Server URL secret at `~/.secrets/bigin-mcp.json`.
+- `openclaw mcp probe` → **69 tools + resources**. Live read PROVEN: `Bigin_recordsCount` Pipelines = **1,340 deals**; `Bigin_getRecords` returned real cards (Lale forest woods / Indian hill @ Garretts new Pipeline, Proposal Sent).
+- **Scope granted (Skipper 2026-08-06, "trusted, everything except send email"):** full read+WRITE+DELETE across modules/notes/tags/users, bulk, notifications, COQL, layouts, ownership change. **NO send-mail scope.** ⚠️ Broad — Gilligan self-guardrail: read/query/draft freely, but NO create/move/delete on live CRM without asking first.
+- **Tool arg shape (Zoho MCP quirk):** args nest under `path_variables` + `query_params`, e.g. `Bigin_getRecords` needs `{path_variables:{module_api_name:'Pipelines'}, query_params:{fields:'...',per_page:N}}`. OpenClaw's runtime maps this; raw JSON-RPC callers must nest.
+- **69 tool names** incl: getRecords, searchRecords, getRecordsUsingCoqlQuery, recordsCount, addRecords, updateRecords, upsertRecords, deleteRecords, changeRecordOwner, add/getNotes, tags CRUD, enable/disableNotifications (webhooks), getLayoutsMetadata, getFieldsMetadata, bulk read/write, users CRUD, getSpecificRecord, getRelatedListRecords.
 
 ## How it works (verified from Zoho + OpenClaw docs 2026-08-06)
 - Zoho hosts a **remote MCP server**. You create one in the **Zoho MCP console** (`zoho.com/mcp`), add the **Bigin tools** you want it to expose, and it generates a **Server URL**:

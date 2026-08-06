@@ -1,0 +1,23 @@
+{
+  "_note": "TRIM IT SalesRepID -> Bigin owner (user) ID + the rep's Team Pipeline. Built 2026-08-06 from live SalesReps table (TRIM IT) + Bigin /users. Pilot = Ethan.",
+  "_source": {
+    "trimit": "SalesReps table: SalesRepID, FullName, UserID (via aspen-gateway/trimit-ro-query.sh)",
+    "bigin": "GET /bigin/v2/users?type=ActiveUsers"
+  },
+  "reps": {
+    "1140": { "name": "Ethan Chesley",   "trimit_userid": 325, "bigin_owner_id": "5275136000001941001", "bigin_pipeline": "Ethan Pipeline",          "aspen_feed_sub": "Aspen Feed", "pilot": true },
+    "1118": { "name": "Garrett Cornish", "trimit_userid": 151, "bigin_owner_id": "5275136000000428156", "bigin_pipeline": "Garretts new Pipeline",   "aspen_feed_sub": "Aspen Feed", "note": "LIVE pipeline is 'Garretts new' (304 deals); old 'Garrett Pipeline' is legacy" },
+    "1143": { "name": "Rebekah Barker",  "trimit_userid": 346, "bigin_owner_id": "5275136000002174001", "bigin_pipeline": "Rebekah Pipeline",        "aspen_feed_sub": "Aspen Feed" },
+    "19":   { "name": "Scott Griffiths", "trimit_userid": 3,   "bigin_owner_id": "5275136000002313001", "bigin_pipeline": "Scott Pipeline",          "aspen_feed_sub": "Aspen Feed", "note": "Scott Pipeline must be CREATED (Phase 0). Scott IS a Bigin user now." }
+  },
+  "also_known": {
+    "1139": { "name": "Jason Wade", "trimit_userid": 9, "bigin_owner_id": "5275136000001664001", "note": "CEO; not a pilot rep" }
+  },
+  "stage_translator": {
+    "_comment": "Proposal StatusDefID -> Aspen Feed lane. v1, aligns to cockpit open-bid def. Confirm vs live cockpit before go-live.",
+    "bidding_open_bid": { "status_ids": [41, 106, 334, 149], "requires": "ProposalSentDate within 6 months", "lane": "Bidding", "names": "Active/InProcess/Revised/Locked" },
+    "scheduled_won":    { "requires": "DateApproved not null within ~90d", "lane": "Scheduled (Won)" },
+    "follow_up":        { "status_ids": [141, 40], "lane": "Follow Up", "names": "Lost (re-engage) / Pending" },
+    "new_surfaced":     { "requires": "fresh active proposal not yet triaged", "lane": "New / Surfaced" }
+  }
+}

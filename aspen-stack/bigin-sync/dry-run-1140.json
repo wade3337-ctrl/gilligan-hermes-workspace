@@ -1,0 +1,1515 @@
+{
+  "rep": {
+    "name": "Ethan Chesley",
+    "trimit_userid": 325,
+    "bigin_owner_id": "5275136000001941001",
+    "bigin_pipeline": "Ethan Pipeline",
+    "aspen_feed_sub": "Aspen Feed",
+    "pilot": true
+  },
+  "generated": "2026-08-06T05:24:44.597Z",
+  "dedupMode": "[TI:<id>] tag in Deal_Name (fallback — create the field to upgrade)",
+  "counts": {
+    "create": 122,
+    "update": 0,
+    "skip": 0
+  },
+  "plan": {
+    "create": [
+      {
+        "Deal_Name": "University Community Association - (UCA) [TI:1093699]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 140401,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1093699",
+        "account": "Associa (AKA PCM)"
+      },
+      {
+        "Deal_Name": "Newport Crest HOA [TI:1092092]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 123141,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1092092",
+        "account": "Optimum Professional Property Management, Inc."
+      },
+      {
+        "Deal_Name": "Woodbury East Community Association [TI:1100436]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 115715,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100436",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "Tustin Ranch Estates [TI:1098579]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 83880,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1098579",
+        "account": "Optimum Property Management"
+      },
+      {
+        "Deal_Name": "Bella Rosa Maintenance Association [TI:1096771]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 77154,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096771",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Gayle Weinberg (Board Prez) [TI:1090204]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 61288,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1090204",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "The Groves Homeowners Inc. [TI:1092998]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 37385,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1092998",
+        "account": "The Groves Homeowners Inc."
+      },
+      {
+        "Deal_Name": "Suzanne Vertuno ; Patti Soucie [TI:1093627]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 33715,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1093627",
+        "account": "Optimum Professional Property Management, Inc."
+      },
+      {
+        "Deal_Name": "Janet Myrick (Board President) [TI:1098626]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 31720,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098626",
+        "account": "Optimum Property Management"
+      },
+      {
+        "Deal_Name": "Montara Neighborhood Association [TI:1103651]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 31379,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103651",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Serissa Community Association [TI:1101258]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 26885,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101258",
+        "account": "The Management Trust"
+      },
+      {
+        "Deal_Name": "Verona HOA [TI:1105235]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 23104,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1105235",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "For Invoicing [TI:1098630]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 17712,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098630",
+        "account": "Associa (AKA PCM)"
+      },
+      {
+        "Deal_Name": "Montilla at Oak Creek [TI:1095424]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 15745,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095424",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Antjie (BM) [TI:1105119]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 14600,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105119",
+        "account": "Cardinal Property Management"
+      },
+      {
+        "Deal_Name": "Ivy Neighborhood Association [TI:1096849]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 13522,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096849",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Harbor Cove [TI:1100718]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 13005,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100718",
+        "account": "Coastal Management & Consulting"
+      },
+      {
+        "Deal_Name": "The Villas at Rancho San Joaquin [TI:1098453]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 11866,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098453",
+        "account": "Optimum Property Management"
+      },
+      {
+        "Deal_Name": "Ashford Place Maintenance Association [TI:1096762]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 10415,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1096762",
+        "account": "First Service Residential"
+      },
+      {
+        "Deal_Name": "Canyon Crest [TI:1105311]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 10290,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105311",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Natalia Johnson (LS member) [TI:1103543]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 10171,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Running Dry"
+        ],
+        "projectId": "1103543",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "Celeste Neighborhood [TI:1101273]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 9970,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101273",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Vintage at Old Town [TI:1103657]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 9455,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103657",
+        "account": "Crummack Huseby, Inc."
+      },
+      {
+        "Deal_Name": "Angie Parker [TI:1100568]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 8394,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100568",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Lucinda Molina-Romero (Assistant) [TI:1096923]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 8185,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096923",
+        "account": "Associa (AKA PCM)"
+      },
+      {
+        "Deal_Name": "Airport Tower [TI:1103619]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 8113,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103619",
+        "account": "The Muller Company"
+      },
+      {
+        "Deal_Name": "Presidio Community Association [TI:1092431]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 8102,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1092431",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Palo Vista HOA [TI:1099002]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 7838,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1099002",
+        "account": "Optimum PM"
+      },
+      {
+        "Deal_Name": "Northpark Monterey Community Association [TI:1099127]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 7480,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1099127",
+        "account": "The Management Trust"
+      },
+      {
+        "Deal_Name": "Garden Homes Maintenance Association [TI:1091135]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 6666,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1091135",
+        "account": "Optimum Property Managment"
+      },
+      {
+        "Deal_Name": "Lunar Neighborhood Association [TI:1101044]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 6305,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101044",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Rion Parenteau (Associate Manager) [TI:1099024]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 5665,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1099024",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Oak Creek Village Maintenance Master (OCR) [TI:1098187]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 5610,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098187",
+        "account": "First Service Residential"
+      },
+      {
+        "Deal_Name": "Woodbridge Shore Maintenance Association [TI:1095244]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 4152,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095244",
+        "account": "Seabreeze Management Co."
+      },
+      {
+        "Deal_Name": "Spyglass Ridge [TI:1098517]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 4000,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1098517",
+        "account": "Seabreeze Management Company, Inc."
+      },
+      {
+        "Deal_Name": "Newport Glen [TI:1100254]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 3803,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100254",
+        "account": "Dynamic Property Group"
+      },
+      {
+        "Deal_Name": "Ziani HOA [TI:1095591]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 3740,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095591",
+        "account": "First Service Residential"
+      },
+      {
+        "Deal_Name": "Tustin Ranch Shadowbrook HOA [TI:1098155]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 2770,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098155",
+        "account": "Optimum"
+      },
+      {
+        "Deal_Name": "Villa Point Condominium Association [TI:1105335]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 2755,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Running Dry"
+        ],
+        "projectId": "1105335",
+        "account": "Cardinal Property Management"
+      },
+      {
+        "Deal_Name": "Tustin Barcelona HOA [TI:1099070]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 2590,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Running Dry"
+        ],
+        "projectId": "1099070",
+        "account": "Optimum Property Management"
+      },
+      {
+        "Deal_Name": "North Bluff Bayview HOA [TI:1094463]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 2345,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1094463",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Tustin Del Verde [TI:1105236]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 1710,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105236",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Canyon View Maintenance [TI:1100952]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 1170,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100952",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "St. Laurent at Newport Ridge [TI:1098165]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 1095,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098165",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Lantana Neighborhood Association [TI:1101008]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 600,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101008",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Paseo Westpark Maintenance (Master) [TI:1092336]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1092336",
+        "account": "Action Property Management"
+      },
+      {
+        "Deal_Name": "Tustin Ranch Community Association II [TI:1103522]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103522",
+        "account": "Optimum PM"
+      },
+      {
+        "Deal_Name": "Citrine Neighborhood Association [TI:1101070]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101070",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Shadow Canyon Condominium Association [TI:1092730]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1092730",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Barcelona Community Association [TI:1100681]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100681",
+        "account": "Crummack Huseby, Inc."
+      },
+      {
+        "Deal_Name": "Garland Park Community [TI:1095260]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095260",
+        "account": "Professional Community Management"
+      },
+      {
+        "Deal_Name": "Glenn Kubota [TI:1095308]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095308",
+        "account": "Tarantino Landscape, Inc."
+      },
+      {
+        "Deal_Name": "Vientos Community Association [TI:1101022]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101022",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Celadon Neighborhood Association [TI:1101196]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101196",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Serrano Homeowners Association [TI:1105028]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105028",
+        "account": "Optimum Professional Property Management, Inc."
+      },
+      {
+        "Deal_Name": "Belcourt Park [TI:1102331]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1102331",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Harbor View Center [TI:1105380]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1105380",
+        "account": "Gothic Landscape Maintenance"
+      },
+      {
+        "Deal_Name": "The Plaza - Irvine [TI:1096905]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096905",
+        "account": "FirstService Residential"
+      },
+      {
+        "Deal_Name": "Christina Sturgess (LS Committee) [TI:1096834]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096834",
+        "account": "Action Property Management"
+      },
+      {
+        "Deal_Name": "Toni Martinez [TI:1095994]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095994",
+        "account": "FirstService Residential"
+      },
+      {
+        "Deal_Name": "MDL Community Association [TI:1101189]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101189",
+        "account": "Property Management Professionals, LLC (PMP)"
+      },
+      {
+        "Deal_Name": "Azelea Neighborhood Association [TI:1103959]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103959",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Park Lido [TI:1105360]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105360",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Ebb Tide Owners Association [TI:1103685]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103685",
+        "account": "Crummack Huseby, Inc."
+      },
+      {
+        "Deal_Name": "Bowen Court Maintenance Association [TI:1096767]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096767",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "Northwood Glen HOA [TI:1096954]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096954",
+        "account": "Keystone Pacific Property Management"
+      },
+      {
+        "Deal_Name": "Kylie Decker [TI:1096932]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096932",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Masimo [TI:1103831]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103831",
+        "account": "Gothic Landscape Maintenance"
+      },
+      {
+        "Deal_Name": "Marla Hemmel [TI:1098635]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098635",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "3002 Dow Business Center [TI:1105363]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105363",
+        "account": "LBA Realty"
+      },
+      {
+        "Deal_Name": "Doe Trail Condominium Association [TI:1105362]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105362",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Orange Center Tower [TI:1103753]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103753",
+        "account": "Lincoln Property Company"
+      },
+      {
+        "Deal_Name": "Eastwood Village [TI:1100843]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100843",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "Demi (Lisa's Assistant) [TI:1098022]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098022",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Newport Ridge Summit HOA [TI:1097700]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1097700",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Arnold Residence [TI:1105318]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105318",
+        "account": "Arnold Residence"
+      },
+      {
+        "Deal_Name": "Liberty Baptist Church [TI:1105319]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105319",
+        "account": "Liberty Baptist Church"
+      },
+      {
+        "Deal_Name": "Opus at Beacon Park [TI:1105372]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105372",
+        "account": "The Management Trust"
+      },
+      {
+        "Deal_Name": "Westpark Las Palmas HOA [TI:1105379]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105379",
+        "account": "Cardinal Property Management"
+      },
+      {
+        "Deal_Name": "Yale Estates [TI:1105046]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Running Dry"
+        ],
+        "projectId": "1105046",
+        "account": "The Management Trust"
+      },
+      {
+        "Deal_Name": "Brio at Beacon Park [TI:1100961]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100961",
+        "account": "Crummack Huseby, Inc."
+      },
+      {
+        "Deal_Name": "Beverly Chainey [TI:1098575]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098575",
+        "account": "University of california Irvine"
+      },
+      {
+        "Deal_Name": "Beverly Chainey [TI:1098570]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1098570",
+        "account": "University of california Irvine"
+      },
+      {
+        "Deal_Name": "Los Trancos HOA [TI:1105354]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105354",
+        "account": "FirstService Residential"
+      },
+      {
+        "Deal_Name": "LanesEnd Community [TI:1105334]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105334",
+        "account": "Keystone Pacific Property Management, LLC"
+      },
+      {
+        "Deal_Name": "Columbus Square Community [TI:1098781]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098781",
+        "account": "FirstService Residential"
+      },
+      {
+        "Deal_Name": "Karen Newsome [TI:1095717]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1095717",
+        "account": "The Management Trust"
+      },
+      {
+        "Deal_Name": "Savannah [TI:1105271]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105271",
+        "account": "Platinum Management Group"
+      },
+      {
+        "Deal_Name": "Brisa Neighborhood Association [TI:1101272]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1101272",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Muse at Cadence [TI:1103808]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Running Dry"
+        ],
+        "projectId": "1103808",
+        "account": "The Management Trust"
+      },
+      {
+        "Deal_Name": "Cypress Village Master Association [TI:1098738]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098738",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Kenwood HOA [TI:1105350]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105350",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Glenn Kubota [TI:1095309]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1095309",
+        "account": "Tarantino Landscape, Inc."
+      },
+      {
+        "Deal_Name": "Barranca Business Park [TI:1105110]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105110",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Cobblestone Oak Creek Community Association [TI:1096770]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096770",
+        "account": "FirstService Residential"
+      },
+      {
+        "Deal_Name": "Mufflers West [TI:1105357]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Recently Done",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [
+          "Re-Sell"
+        ],
+        "projectId": "1105357",
+        "account": "Mufflers West"
+      },
+      {
+        "Deal_Name": "C2E Townhomes Community [TI:1103576]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103576",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Masimo (Alton) [TI:1105329]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105329",
+        "account": "Gothic Landscape Maintenance"
+      },
+      {
+        "Deal_Name": "Northwood Courtside [TI:1098865]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098865",
+        "account": "Action Property Management"
+      },
+      {
+        "Deal_Name": "Pelican Ridge Estates [TI:1105375]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105375",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "2392 Morse Avenue [TI:1103947]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103947",
+        "account": "Lincoln Property Company"
+      },
+      {
+        "Deal_Name": "Sterling HOA [TI:1105344]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105344",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "John Loper [TI:1096853]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Working",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096853",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Rancho San Juan HOA [TI:1105382]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105382",
+        "account": "CC&R's Property Management"
+      },
+      {
+        "Deal_Name": "Canyon Point [TI:1103998]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103998",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Northpark Square [TI:1105432]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105432",
+        "account": "Powerstone Property Management"
+      },
+      {
+        "Deal_Name": "Caserta II Neighborhood Association [TI:1100544]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1100544",
+        "account": "Seabreeze Management Company"
+      },
+      {
+        "Deal_Name": "Briarcliff HOA [TI:1094075]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1094075",
+        "account": "Optimum Property Management, Inc."
+      },
+      {
+        "Deal_Name": "Evergreen at Rise [TI:1105033]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105033",
+        "account": "Vintage Group"
+      },
+      {
+        "Deal_Name": "Glenn Kubota [TI:1095311]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1095311",
+        "account": "Tarantino Landscape, Inc."
+      },
+      {
+        "Deal_Name": "San Simeon [TI:1096855]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096855",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Cambridge Court Maintenance Association [TI:1096776]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096776",
+        "account": "Action Property Management"
+      },
+      {
+        "Deal_Name": "Lux Community Association [TI:1103652]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103652",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Bridgette Landa (assistant) [TI:1096790]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096790",
+        "account": "BHE Management"
+      },
+      {
+        "Deal_Name": "Marco (Landscaping Supervisor) [TI:1098206]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098206",
+        "account": "BHE Management Corporation"
+      },
+      {
+        "Deal_Name": "Leo- Landscaping Supervisor 714-497-5884 [TI:1096851]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1096851",
+        "account": "FirstService Residential"
+      },
+      {
+        "Deal_Name": "Reserve at Orchard Hills [TI:1103718]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1103718",
+        "account": "Professional Community Management"
+      },
+      {
+        "Deal_Name": "Greg Haynes [TI:1098574]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098574",
+        "account": "University of california Irvine"
+      },
+      {
+        "Deal_Name": "Sycamore Glen [TI:1105381]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Bidding",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1105381",
+        "account": "Stonekastle Community Management"
+      },
+      {
+        "Deal_Name": "Beverly Chainey [TI:1098576]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098576",
+        "account": "University of california Irvine"
+      },
+      {
+        "Deal_Name": "Irvine Wildflower HOA [TI:1098908]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Scheduled (Won)",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098908",
+        "account": "Associa (AKA PCM)"
+      },
+      {
+        "Deal_Name": "Turtle Rock Ridge Garden Homes Association [TI:1098927]",
+        "Sub_Pipeline": "Aspen Feed",
+        "Stage": "Follow Up",
+        "Amount": 0,
+        "Owner": {
+          "id": "5275136000001941001"
+        },
+        "Tag": [],
+        "projectId": "1098927",
+        "account": "Coastal Management & Consulting"
+      }
+    ],
+    "update": [],
+    "skip": []
+  }
+}
