@@ -3,7 +3,7 @@ title: Aspen — Cockpit → Bigin push (sales pipeline sync)
 type: project
 domain: work
 track: 1
-status: PAUSED 2026-08-02 — Skipper discussing with Nate before build; nothing built/written
+status: ACTIVE (unpaused 2026-08-07 — Skipper: "I don't need to ask Nate, I'll inform him when we have it done"). Running-dry pilot DESIGN COMPLETE; now designing the Collections/AR lane. Still zero autonomous writes to live Bigin.
 tags: [aspen, bigin, cockpit, crm, pipeline, sync, build]
 applies: ["[[external-comms-contract]]", "[[repair-contract]]"]
 links: ["[[aspen-retention-agent]]", "[[sales-cockpit]]", "[[50m-growth-goal]]", "[[herman-agent]]", "[[bigin-mcp-integration]]", "[[bigin-api-capabilities]]"]
@@ -29,11 +29,32 @@ Skipper chose **Running Dry** as the pilot's "you'd-have-missed-this" (c) signal
 - **⭐ DECISION (Skipper 2026-08-07): the `New / Surfaced` lane = the physical home of Point (c).** Everything Aspen CATCHES (running-dry now; re-sell + expiring-contract later) lands there. Gives 3 things free: rep gets a **worklist** (left→right = "what you'd have missed → go work it") · **(d) command view for free** = count of cards in New/Surfaced across reps = live "silent opportunity being surfaced" · **self-measuring** = a card moving out to Pricing/Won = a proven win.
 - **⭐ DECISION A (Skipper 2026-08-07): a catch = a NEW "RE-QUOTE" card in New/Surfaced**, NOT a flag on the existing Scheduled card. Rationale: it's a distinct action the rep must take, keeps the lane a clean worklist, and makes the Point visible instead of buried. (Rejected B = tag-in-place: easy to scroll past, loses the worklist + the free command-view count.)
 
+## 📧 2026-08-07 — COLLECTIONS lane: the routing + property feed ALREADY EXISTS (correction)
+⚠️ **I first claimed customer→rep routing was "the unsolved make-or-break gap" and that "Ethan owns zero AR accounts → Collections is Scott's feature." BOTH WRONG** — I read a stale `ar-report/ar-rep-mapping.md` (raw `Companies.SalesRepID`, dumped everything on Scott, even listed ex-employee Patrick Fringer). The **LIVE weekly system disproves it.**
+- **`arbor-stack/anomaly-monitor/ar-collections-monitor.js`** (runs weekly via `run-ar-weekly.sh` off Dimitry's xlsx) already: routes each account by **BestRep = most-recent active-invoice rep** (ex-employees excluded, `companies-rep.psv` col4 refreshed by `bestrep.sql`) · **labels every account by PROPERTY** (community pulled from each invoice Memo on the "AR Aging Subtotals" sheet, + balance + days aged) · splits **per-rep** + Nate rollup + **Municipalities→Skipper+Brent** + a **NEEDS REP** unmatched bucket · preview-vs-live modes · 10-day staleness guard · date tags. Render check: `node ar-collections-monitor.js --file=<xlsx> --stdout --allow-stale`.
+- **Live routing (8/04 report, 31+ behind):** Ethan **$149,922 / 3** (Optimum $87,641 · The Groves $44,206 · BHE $18,075) · Garrett **$198,019 / 10** · Rebekah **$133,970 / 6** · Scott **$41,714 / 2** (LEAST) · **TOTAL 21 acct / $523,627** (munis separate). Ethan has real chunky AR → **good Collections pilot rep**, and Optimum routes to Ethan in BOTH lanes (running-dry re-quote + $87K overdue) → the two lanes AGREE, no divergence.
+- **BUILD = SMALL:** the fetch→route→property-label→per-rep pipeline is DONE + trusted. Bigin only adds what the email can't: **persistent cards that auto-clear when paid (off the next report), aging escalation, and the (d) rollup.** Collections lane = pipe this existing feed into each rep's Aspen Feed @ Collections.
+- **ROUTING DECISION (settled by the live system, not re-litigated):** BestRep (active-invoice rep), which also aligns Collections with Running-Dry's selling-rep. The crude Companies.SalesRepID mapping is SUPERSEDED.
+
 ## 🏷️ 2026-08-07 — New/Surfaced card LIFECYCLE (4 exits; misses = the management signal)
 A card leaves New/Surfaced by one of four exits: **Surfaced** (born) → **Worked** (rep pulls to Pricing/bids = win, exits clean) · **Dismissed** (rep says not worth it → Aspen must NOT re-nag) · **Expired** (window closed, no action = MISS).
 - **⭐ REFRAME (Skipper 2026-08-07): the Expired pile is worth more than the wins.** 4 surfaced, 1 worked, 3 expired = **$X that walked because nobody re-quoted, now VISIBLE.** New/Surfaced does double duty: **worklist** for the rep (left side) + **missed-money ledger** for Jason/Nate (Expired exit). That ledger is what (d) the command view is really FOR.
 - **⭐ DECISION A (Skipper 2026-08-07): the "window" = the go-ahead's OWN end date.** If the flagged WorkOrder `EndDate` passes with no new proposal in TRIM IT → card flips to Expired/miss. Data-driven, per-account, no arbitrary timer — the real deadline is "re-quote must land before the current job ends or there's a service gap." (Rejected B = fixed 14-day timer: arbitrary, treats a Monday deadline and a 60-day-out job the same.)
 - **Build note:** the card's Bigin due/closing date = that `EndDate` (drives the auto-Expire); Aspen's nightly read re-checks TRIM IT for a new proposal on the ProjectID to auto-move Worked cards out.
+
+## 📇 2026-08-07 — RE-QUOTE card spec + lane sort (locked)
+**Card face (real example, ProjectID 1099070):** Title `🔴 RE-QUOTE — Optimum / Tustin Barcelona HOA` · Amount **$20,447** (the go-ahead, NOT project CurrentYear) · Due/Closing = `2026-10-22` (job EndDate → drives auto-Expire) · Tags `Running Dry` + `Aspen-Surfaced` · link `TRIM IT ProjectID`. **Notes** carry the honest size: *"Job ends 10/22, nothing queued. Customer Optimum = 139 live properties · $962K book · $167K trailing-12mo. Last activity 7/30. Re-quote before job ends to avoid a service gap."*
+- **⭐ DECISION A (Skipper 2026-08-07): lane sort = URGENCY primary (soonest EndDate first), CUSTOMER BOOK as tiebreaker.** Rationale: a missed deadline is unrecoverable (job just ends); a whale with runway can wait its turn. (Rejected B=relationship-size-first, C=job-$-first.) → Villa Point ($3,480, ends Mon 8/10) sorts ABOVE Optimum ($20K, ends 10/22).
+
+## 🔐 2026-08-07 — AUTONOMY (the pause gate for Nate) — locked
+**Trust boundary (the line Nate will care about):** Aspen is **autonomous UP TO the New/Surfaced lane** (its own sandbox — creating a RE-QUOTE card touches nothing the rep typed, nothing on their live sale motion, fully reversible). **The human gate = the PULL:** the moment the rep drags a card out of New/Surfaced into Pricing, a human made the call. Aspen never creates deals, changes owners, or moves anything on the rep's real pipeline on its own.
+- **⭐ DECISION B (Skipper 2026-08-07): the PILOT starts GATED, then graduates.** Batch 1's cards — Aspen shows Jason what it WANTS to create in New/Surfaced; he eyeballs before they post. Once it's proven, flip to autonomous-within-the-lane. (Rejected A = autonomous from day one.) Rationale: cheap trust-building with Nate + catches any bad catch before Ethan ever sees it.
+- **Still true after graduation:** autonomy only ever extends to *inside* New/Surfaced. The rep's pull stays the permanent human gate regardless.
+- **⭐ DECISION A (Skipper 2026-08-07): graduation trigger = a CLEAN STREAK — 3 consecutive nightly batches with every card approved / zero bad catches → flip to autonomous. Any bad catch resets the streak.** (Rejected B=≥90% precision over ~20, C=gut-feel.) Objective, fast, self-correcting.
+
+### ✅ RUNNING-DRY PILOT — DESIGN COMPLETE (2026-08-07, all decisions locked; still zero writes)
+North star (Floor=a/Point=c) · signal=Running Dry sized by go-ahead $ + `CompanyID` book · loop detect→surface→see→act→track · New/Surfaced=home of the Point · catch=its own RE-QUOTE card (A) · 4-exit lifecycle, window=job EndDate (A) · card spec + urgency-first sort (A) · autonomy=gated-then-graduate via 3-clean-night streak (B+A) · trust boundary = autonomous up to the lane, rep PULL is the permanent gate.
+**Still open before build/Nate:** (1) pilot scorecard (what proves it worked) · (2) Collections/AR lane (the other half) · (3) the Nate one-pager drawn from the above.
 
 ## 🧭 NORTH STAR — LOCKED 2026-08-07 (the lens for every decision below)
 Skipper worked the "what's the ONE thing" question and it resolved. The four candidate goals aren't a menu — **they're a stack**, so "pick one" was the wrong frame:
