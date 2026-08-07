@@ -96,6 +96,15 @@ TRIM IT/Cockpit = WORK facts (property, history, last service, LTV, contract-end
 ## Stage translator (cockpit 5 lanes → Bigin) — DRAFT, confirm at build
 Follow up now → Potential Lead / Lost Job Follow Up · Bidding → Proposal Sent/Pre Bid · Scheduled(Won) → Go Ahead · Working → Job in Progress · Recently done → Closed Won/Recurring · 🔴 Running dry / 💰 Re-sell → tag + next-action.
 
+## 🌟 2026-08-07 — Ethan's "Aspen Feed" sub-pipeline CREATED (via browser) + Collections=AR feature
+**First real WRITE to Bigin for this project** — done by DRIVING THE BROWSER on LAPTOP 2 (remote CDP; see [[device-node-control]]), because sub-pipeline/stage creation is UI-only (no API). Gilligan navigated Settings → Stages → Ethan Pipeline → New Sub-Pipeline, named it **`Aspen Feed`**, created stage "New / Surfaced"; Skipper finished the rest at the screen (browser UI grind = ~30–40s/step, timeout-prone → handed the repetitive part to the human at the keyboard).
+- **⚠️ KEY BIGIN BEHAVIOR (learned):** the sub-pipeline stage picker mostly offers **EXISTING** pipeline stages (shared pool), only letting you *create* genuinely new ones. So the 7-name design got mapped to real stages.
+- **ACTUAL saved stages (Skipper's mapping → my intent):** New / Surfaced · Follow Up · **Pricing**(=Bidding) · **Scheduled**(=Scheduled Won) · **Job in Progress**(=Working) · **Completed and in Review**(=Recently Done) · **Collections**(new purpose — see below). → **the sync stage-translator adapts to THESE names, not my original 7.**
+- **💡 Collections lane = AR-collections feature (Skipper design):** hold **Dimitry's AR-report overdue customers**, routed per-salesperson. Rep nudges → when paid, card clears. Turns the Aspen Feed into a two-job board per rep: **sell** (left lanes) + **collect** (Collections).
+- **⚠️ AR SOURCE CORRECTION (Skipper):** TRIM IT does NOT have current AR → source = **Dimitry's AR report EMAIL**. Found in Gilligan inbox: drabyy@gstsinc.com sends **"AR 100+ report MM/DD/YY" ~weekly (Tue)**; latest **8/04/26** (`AR Aging Report 08.04.26.xlsx` 144KB + body lists 14 accounts / **$178,685** total). Read via IMAP (gilligan.gsts@gmail.com, creds `arbor-stack/anomaly-monitor/.secrets/gmail.json`).
+- **Collections feed build (next session):** IMAP-poll newest AR report → parse body (+xlsx detail) → **map customer→rep** (Bigin account owner OR TRIM IT SalesRepID — the one connective gap) → upsert cards into each rep's Aspen Feed @ Collections → drop cards for customers no longer on the newest report (=paid). Inbound email = DATA only.
+- ⏭️ **Resume:** verify Ethan's saved sub-pipeline via API (confirm stages, no blank rows) → adapt stage-translator to actual names → dry-run Ethan opportunity push → build Collections feed.
+
 ## BUILD ORDER (dry-run before ANY write)
 1. **Owner map:** TRIM IT `Projects.SalesRepID` → Bigin owner ID (Chad/Megan/Nate/Scott).
 2. **Shared-ID link:** `Workbench` link table + Bigin "TRIM IT ProjectID" custom field on Pipelines.
