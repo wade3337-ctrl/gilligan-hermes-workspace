@@ -15,6 +15,15 @@ updated: 2026-08-02
 **Objective (Skipper 2026-08-02):** Aspen reads the Sales Cockpit → pushes to Bigin → maintains the live SALES pipeline in Bigin. "Gilligan builds, Aspen runs."
 > ⚠️ **This note is the canonical build-state (Gilligan owns it).** Do NOT keep it in the aspen-knowledge vault — that vault autosyncs FROM the Aspen board and **quarantines** files written directly into it (my first copy got swept to `_quarantine/` by the 02:52 autosync). Gilligan-owned build state lives HERE in the workspace wiki. Design/context still lives in `aspen-knowledge/business-development/bigin-structure-and-plan.md`.
 
+## 🔍 2026-08-07 — RUNNING-DRY SIZING RULE (pilot headline signal; measured live)
+Skipper chose **Running Dry** as the pilot's "you'd-have-missed-this" (c) signal. Pulled Ethan's book live (`cockpit-read.sh 1140`): **83 live projects · 4 Running-Dry · 6 Re-Sell.**
+- ⚠️ **DON'T size a dry account by `Projects.CurrentYear`** — for as-needed HOA work it's near-zero/NULL and understates 3–8×. My first pass reported "$15,516 at risk"; the real go-ahead/WO total was **$43,162.** Size by the **flagged WorkOrder `Total` (= the go-ahead)** + the **customer's book at `CompanyID` level**.
+- **True sizing = 3 joins:** WorkOrder (`GoAheadID`, `ContractID`, `Total`, `EndDate`) → Contract (`TotalPrice`, often NULL for per-job HOA go-aheads) → `CompanyID` rollup (`COUNT` live projects, `SUM CurrentYear` book, `SUM Last12NetTotal` = trailing-12mo actual).
+- **These go-aheads are STANDALONE** (1 WO each, `ContractID` NULL) → no recurring contract = no auto-renew safety net; job ends → property silently stops. That's WHY Running-Dry matters on HOA books.
+- **The 4 (live 2026-08-07):** Optimum/Tustin Barcelona **$20,447** ends 10/22 (cust Optimum = **139 live · $962K book · $167K trailing**) · Mgmt Trust/Yale Estates **$9,795** ends 8/14 · Keystone/Natalia Johnson **$9,440** ends 10/02 · Cardinal/Villa Point **$3,480** ends 8/10. ⚠️ "Customer" = the MANAGEMENT COMPANY (umbrellas many HOAs), not the single property.
+- **BUILD IMPLICATION:** the Bigin Running-Dry card/flag must carry **go-ahead $ + end date + customer book (live projects, trailing-12mo $)**, NOT the project CurrentYear — so the surfaced stake is honest.
+- **OPEN data flag (not tonight):** book vs trailing-12mo actual gaps are large (Keystone $373K book / $8.5K actual; Mgmt Trust $198K / $0) — `Last12NetTotal` likely only counts invoiced/completed work; confirm before quoting either as "customer size."
+
 ## 🧭 NORTH STAR — LOCKED 2026-08-07 (the lens for every decision below)
 Skipper worked the "what's the ONE thing" question and it resolved. The four candidate goals aren't a menu — **they're a stack**, so "pick one" was the wrong frame:
 - **(a) One live home for every rep's deals = the FLOOR.** Prerequisite; nothing else works if deals aren't reliably in Bigin and current. *Failure = adoption risk (reps don't trust it → DOA).*
