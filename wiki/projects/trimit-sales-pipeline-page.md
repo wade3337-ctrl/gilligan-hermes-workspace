@@ -4,7 +4,7 @@ type: project
 status: active-paused
 domain: work
 created: 2026-08-04
-updated: 2026-08-05
+updated: 2026-08-06
 applies:
   - "[[repair-contract]]"
   - "[[only-trustworthy-data]]"
@@ -20,7 +20,16 @@ tags: [trimit, dashboard, sales, pipeline, municipal, investor]
 - **File:** `arbor-stack/production-dashboard/Dashboard-PipelineCoverage.cfm` (NEW, built 2026-08-04).
 - **Live (play):** https://play.greatscotttreeservice.com/GSTS/Dashboard-PipelineCoverage.cfm — behind the V1.5 dashboard gate (`dashboard-auth-gate.cfm` / DashboardAccess).
 - **Play webroot:** `D:\home\dev.greatscotttreeservice.com\wwwroot\GSTS\` (single root for this file — no C:\ shadow). Backups in `...\Jasonsrepairs\`.
-- **Status (2026-08-05): PAUSED / pinned** (Skipper "pin for now"). Municipal panel finished + verified + reconciled to Nate. **Committed + pushed both repos 2026-08-05; Kanban card #1057 added** (alpha col, backup-first). Still NOT run through `verify-build.sh`; two panel open items remain.
+- **Status (2026-08-06):** aging/freshness panel + drill page shipped, **verify-build.sh now PASSES (20/0)**, committed + ship-logged both repos (Kanban #1057). Municipal panel reconciled to Nate. Remaining open = coverage-panel muni-forward fold + Unassigned reclassify + stale-owner rollup (below).
+
+## 🆕 2026-08-06 — AGING/FRESHNESS panel + multi-level DRILL shipped (resumed from pinned)
+Skipper: "dig into the ~$9.4M pipeline." Live reproduce **$9,157,483 / 359 open bids** (= the $9.17M).
+- ⭐ **Key finding — most isn't fresh.** Aging by `ProposalSentDate`: **≤30d $3.61M (39% fresh)** · 31–60 $0.95M · 61–90 $1.92M · **>90d STALE $2.68M (29%)**. Half the dollars are >60 days old; workable ≈ $3.6M fresh + a stale tail. Top-heavy: Action Property $954K + **Keystone Pacific $895K (sent Feb 9, 178d stale, Ethan)** = 20% of pipeline in 2 bids. Multi-year inflation = **$0** (future-year columns empty) — headline is first-year dollars.
+- **New panel in `Dashboard-PipelineCoverage.cfm`:** "Pipeline freshness — by bid age" + workable-vs-stale callout; headline KPI now shows the **fresh** number.
+- **NEW `Dashboard-PipelineCoverage$Drill.cfm`** — multi-level drill (SPM$Drill pattern): combinable **age × market** filter chips → list of individual bids (Account · Property · Market · Owner · Bid# · Value · Age · Sent) → **click row opens the proposal in TRIM IT** (`Profile.Proposal.Detail.cfm?ZProposalID=`). Built for MINING stale bids (who to call). Reconciles: stale drill = 83 bids/$2,677,685 = the aging bucket; HOA drill = 135 = Panel 1.
+- **Restyled to PACKAGE COLORS** (brand-green `#5C743D` app-bar, light theme) to match the other V1.5 shared dashboards (the dark ops view is Skipper-personal; shared landing/pages use package colors). Added a Sales Pipeline link to the V1.5 landing SALES tab — ⚠️ pre-edit drift check caught the repo landing copy was STALE (play had 2 links added directly), preserved all.
+- ✅ **verify-build.sh 20 PASS/0 FAIL**, render-verified (0 CF errors), backup-first, **committed + ship-logged both repos.**
+- **Open next threads:** stale-bucket owner rollup (per-rep call lists) · fold muni forward into coverage · reclassify $1.48M Unassigned.
 
 ## The four panels
 1. **New-business bid pipeline** — **$9.17M / ~360 open bids**. Def = latest proposal per project, `Proposals.StatusDefID IN (41,106)`, `ProposalSentDate >= DATEADD(month,-6)`, project status `InProcess/Pending` (same as Sales Cockpit "open bid"). Segments by `Companies.MarketID`.
@@ -53,6 +62,6 @@ Nate's `Sales_Report_2026_Completed+Scheduled.xlsx` (his weekly manual report, c
 ## Open items (resume here)
 1. **Coverage panel:** add municipal forward $3.23M as 2nd coverage source (Skipper's call).
 2. **Unassigned $1.49M:** reclassify NULL `MarketID` accounts (mostly → HOA) OR display-side name-pattern re-bucket. Draft mapping for review first (data change → backup-first).
-3. **Run `verify-build.sh`** before calling it verified (commit + push already done 2026-08-05).
+3. ~~Run `verify-build.sh`~~ ✅ done 2026-08-06 (20 PASS/0 FAIL).
 
 🔗 [[rc-02-revenue-performance]] · [[revenue-goal-close]] · [[municipal-budgets-po-gated]] · [[sales-cockpit]] · [[dashboard-auth-gate]]
