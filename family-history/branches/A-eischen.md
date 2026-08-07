@@ -64,6 +64,14 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
 - 🔎 **Leading hypothesis (Possible, NOT proven):** our "Mary/Marie Mathieu" = **Hortense Éléonore *Marie* Mathieu, b. 20 March 1865, Sedan**, who emigrated and went by her third name **Marie**; the US "Jan 1866" would be a ~1-yr approximation (very common). If so, her parents = **Georges Mathieu × Marie Munaux** (would confirm the candidate).
 - Alternative: she was born in a **neighbouring commune** (Sedan suburb) or a different exact record; needs checking.
 
+### ❗ KEY RECONCILIATION (2026-08-07, from Mary's own records)
+- **Mary's 1946 Illinois death record** (ark N3WV-... ; "Illinois Deaths & Stillbirths"): **b. 3 January 1866, Sedan, France**; d. 11 Sep 1946 Shields Twp, Lake, IL; bur. 14 Sep 1946 Waukegan; spouse Louis. **Parents NOT in the index.**
+- So **TWO US sources (1900 census + 1946 death) independently state "3 January 1866, Sedan, France"** — consistent + specific. Yet **Sedan's complete 1863–1872 birth index has NO Mathieu born 1866.**
+- **Reconciliation:** she was almost certainly **born in a small commune right next to Sedan** (French families routinely name the nearest town, "Sedan," for the whole area) — OR registered outside Sedan's register. Her **French birth + date (3 Jan 1866) are well-supported; Sedan-*proper* is refuted by the index.**
+- → **The Georges × Munaux (Sedan) candidate is now UNLIKELY** (they had no 1866 child in Sedan; their girls were 1865/1867). Hortense-Marie-1865 lead = dropped.
+- **New precise target:** birth indexes of **Sedan-arrondissement communes** (Torcy, Balan, Bazeilles, Floing, Wadelincourt, Donchery, Glaire, Sedan-Fond-de-Givonne, etc.) for **"Mathieu, [Marie], 3 January 1866."** Very findable given the exact date.
+- Best single US doc still unread = the **1888 Chicago Catholic marriage act IMAGE** (French Catholic marriage acts usually name the bride's father + birth parish) — FS index has it but not the parent fields; image may be restricted.
+
 ### Proof path (next)
 1. Confirm image 53 top has no additional Mathieu (rule out a stray 1866/Marie).
 2. Pull the **actual birth act for 20 March 1865** (Sedan naissances 1865 register) → names the parents → confirms Hortense Éléonore Marie = dau. of Georges × Munaux.
