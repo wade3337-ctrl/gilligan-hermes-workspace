@@ -11,5 +11,21 @@
 - Norman × Adeline marriage place: guessed CA/Fresno → **Cook County, Illinois (1 Jan 1926)**.
 - "French via Eischen surname" → **Eischen = Luxembourg/German**; French most likely via mother **Mary Mathieu**.
 
+## Branch C (Wade/Thompson) flags
+- **Jack Roger Wade death year: RESOLVED → 21 Nov 2008** (two SSDI records + burial agree). Family's "2006" = year-memory slip; the day (Nov 21) is correct.
+- Thomas Samuel Wade birthplace: family said Ohio → record says **Covington, Kenton Co., KENTUCKY** (b. 9 Nov 1899).
+- Thomas's mother: handoff "Carolyn Wade" → actually **Caroline Los-** (garbled on tree, verify); father **Orin Lorinza Wade (1869–1953)** ✅.
+- ⚠️ **SENSITIVE lead:** a **1960 CA marriage + 1980 CA divorce** index attached to Jack → possible marriage BEFORE Antoinette. Unverified (needs images).
+- Jack's 1940-census attachment is chronologically impossible (born after the April 1940 enumeration) → likely mis-attached.
+- Duplicate sibling "Ermajean Wade" (merge candidate). Charles W. Thompson death ambiguous (1942 vs 1951 WV).
+
+## Branch D (Gaunt/Hanley/Ballew) flags
+- Dorcie "Miller" surname explained: m. Harold Lawrence Miller 1970, div. 1972.
+- Tree's "El Monte, Contra Costa" is a bad auto-place → El Monte is **LA County**.
+- Gaunt husband = **Samuel John Gaunt** (odd first name "Schuessler" = his mother's maiden name).
+- ⚠️ **Rhoda–Gaunt 1932 marriage record MISSING** — the one undocumented spine link (Webb City MO date unverified).
+- 🔎 **NEW SENSITIVE lead:** Heeb marriage lists Rhoda as "Rhoda M **Davis**" → an unmentioned **3rd husband (Davis)** between Gaunt and Heeb.
+- 🎖️ Abijah Ballew (3xg-grandfather, b.1848 TN) = Union Civil War vet → pension files exist.
+
 ## Evidence caveat
 All current facts = FamilySearch shared-tree assertions with attached INDEXED records (census/marriage index). That's **Strongly supported**, not yet **Confirmed** — reach Confirmed by inspecting the actual record images (esp. the parents'-birthplace column on the 1900/1910/1920 censuses, which is what proves nationality).
