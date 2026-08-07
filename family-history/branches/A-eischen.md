@@ -29,8 +29,18 @@ Searched FS collection **"France, Ardennes, registres paroissiaux et d’état c
 - **Confirmation path:** (a) browse the Sedan **1866 birth register image** directly (the index may skip 1866); (b) the **1888 Chicago Catholic marriage record image** (usually names both spouses' parents); (c) a US **naturalization/passenger** record for Marie Mathieu/Eischen.
 - Soft corroboration (not proof): Norman & Adeline named a daughter **Fleurette** (French given name).
 
+## ✅ EISCHEN ORIGIN CONFIRMED + "garbled parents" mystery SOLVED (2026-08-07)
+- **Louis S. Eischen** (Adeline's father): Illinois death record (1929) gives **b. 5 Dec 1863, Rollingen, Luxembourg**; **d. 16 May 1929, Lake Bluff, Lake Co., IL**; buried North Chicago. His parents: **Harry Eischen + Anna Petrie** ("Petne" on tree).
+- → **The tree's "Harry Eischen / Anna Petne" are LOUIS's parents, NOT Mary Mathieu's.** That earlier "bad merge on Mary" was actually Louis's parentage bleeding into the view. So: Eischen line = **Rollingen, Luxembourg** (Harry Eischen × Anna Petrie).
+- Cross-checks: children's Cook County birth certs list father Louis b. Luxembourg/Germany 1864, mother "Mary Mathean/Mathew" b. **1866 France** — consistent.
+
+## Mary Mathieu's parents — STILL a candidate, not proven
+- Indexes for the 1888 marriage + the children's births name **Louis's** parents but **never Mary's** → no index gives Mary's parents.
+- No indexed 1866 Sedan birth for a Marie Mathieu. Candidate remains **Georges Mathieu × Marie Élisabeth Constance Munaux** of Sedan (children 1862/1865/1867; 1866 gap). **Possible.**
+- Only remaining proof path = **browse the Sedan 1866 birth register IMAGE** (unindexed year) or the **1888 Catholic marriage act IMAGE** (handwritten; may name her father). Both are manual image hunts.
+
 ## Extend-back targets
-- Louis S. Eischen (GZDY-VYY) — b.1864, d.1929 → trace Eischen line to Luxembourg/Germany
+- Louis S. Eischen (GZDY-VYY) — b. 5 Dec 1863 Rollingen, Luxembourg → trace Harry Eischen × Anna Petrie in Luxembourg records
 - Mary Mathieu (GZQM-82L) — b.1866, d.1946 → **French-descent proof lives here**
 
 ## Open / to verify
