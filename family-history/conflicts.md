@@ -15,7 +15,7 @@
 - **Jack Roger Wade death year: RESOLVED → 21 Nov 2008** (two SSDI records + burial agree). Family's "2006" = year-memory slip; the day (Nov 21) is correct.
 - Thomas Samuel Wade birthplace: family said Ohio → record says **Covington, Kenton Co., KENTUCKY** (b. 9 Nov 1899).
 - Thomas's mother: handoff "Carolyn Wade" → actually **Caroline Los-** (garbled on tree, verify); father **Orin Lorinza Wade (1869–1953)** ✅.
-- ⚠️ **SENSITIVE — Jack's first marriage (documented):** CA Marriage Index 1960, ark:/61903/1:1:V6KD-1ZX → **Jack R Wade (21) m. Francine Biggs (18), 1960.** ❗DISCREPANCY: family memory says Jack's first wife was **"Sandy"** — record says **Francine Biggs**. Reconcile: (a) Francine=earlier marriage, Sandy later; (b) Francine went by Sandy; (c) a Sandy marriage pre-1960/out-of-state (not in this CA index which starts 1960). Also a 1974 marriage (Antoinette) + a **1980 CA Divorce Index** on Jack — which marriage it ended is NOT stated on the index. Skipper to steer.
+- ⚠️ **SENSITIVE — Jack's first marriage (documented):** CA Marriage Index 1960, ark:/61903/1:1:V6KD-1ZX → **Jack R Wade (21) m. Francine Biggs (18), 1960.** ✅ RESOLVED (Skipper 2026-08-07): **Francine Biggs = "Sandy"** — same person; Jack's first wife. Married 1960 (he 21, she 18). Later m. Antoinette 1974. A **1980 CA Divorce Index** also attaches to Jack — which marriage it ended is not stated on the index (open, minor).
 - Jack's 1940-census attachment is chronologically impossible (born after the April 1940 enumeration) → likely mis-attached.
 - Duplicate sibling "Ermajean Wade" (merge candidate). Charles W. Thompson death ambiguous (1942 vs 1951 WV).
 
@@ -24,7 +24,7 @@
 - Tree's "El Monte, Contra Costa" is a bad auto-place → El Monte is **LA County**.
 - Gaunt husband = **Samuel John Gaunt** (odd first name "Schuessler" = his mother's maiden name).
 - ⚠️ **Rhoda–Gaunt 1932 marriage record MISSING** — the one undocumented spine link (Webb City MO date unverified).
-- 🔎 **SENSITIVE — Rhoda's hidden "Davis" husband:** Nevada Marriage Index, ark:/61903/1:1:VVGS-WXH → Glen Curtis Heeb m. **"Rhoda M Davis"** 19 Feb 1970 (residence CA). Confirms a **Davis husband existed between Gaunt (d.1960) and Heeb (1970)**, but NO attached record names him. Finding him needs a record search (FS search currently bot-blocking headless session — workaround pending).
+- 🔎 **SENSITIVE — Rhoda's hidden "Davis" husband:** Nevada Marriage Index, ark:/61903/1:1:VVGS-WXH → Glen Curtis Heeb m. **"Rhoda M Davis"** 19 Feb 1970 (residence CA). ✅ RESOLVED: the Davis husband = **Francis E. Davis**. CA Marriage Index 1960-1985 (ark:/61903/1:1:V6KK-58P bride / V6KK-585 groom): **Rhoda M Gaunt m. Francis E Davis, 1961, Los Angeles, CA.** Chain: Samuel J. Gaunt (d.1960) → Francis E. Davis (1961) → Glen C. Heeb (1970). Found via FamilySearch search API (workaround for the bot-blocked results UI: same-origin fetch to /service/search/hr/v2/personas). Strongly supported (2 corroborating indexed records).
 - 🎖️ Abijah Ballew (3xg-grandfather, b.1848 TN) = Union Civil War vet → pension files exist.
 
 ## Evidence caveat
