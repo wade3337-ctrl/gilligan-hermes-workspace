@@ -20,6 +20,13 @@ Source of these facts: FamilySearch shared tree (contributor **AntoinetteWade2**
 - ✅ **PROVEN (tree): Mary Mathieu (GZQM-82L) was born 3 January 1866 in SEDAN, ARDENNES, FRANCE.** Immigrated to US; m. Louis Eischen 16 Apr 1888 Cook Co., IL; d. 11 Sep 1946 Waukegan, Lake, IL; buried Northshore Garden of Memories, North Chicago. The family's French descent is documentary, and it descends through the **Mathieu** line. Attached records incl. **1888 Chicago Catholic Church record**, 1888 IL marriages, 1900 & 1910 US census, IL death 1946. Index name variants: Maria Mathean, Mary Mattew, Marie Mathieu.
   - ⚠️ **Tree data problem to fix:** Mary Mathieu's *parents* are listed on the tree as "Harry Eischen" + "Anna Petne" — almost certainly a bad merge (a Mathieu would not have a father surnamed Eischen). Treat her parentage as **Unverified** until a French birth/baptism record (Sedan) or a census/church record names her actual parents.
   - Next proof step: pull the Sedan birth/baptism (French civil or Catholic records, Ardennes, 1866) and confirm on the 1900/1910 US census "birthplace" columns (should read France).
+
+## France search result (2026-08-07) — candidate parents, NOT yet proven
+Searched FS collection **"France, Ardennes, registres paroissiaux et d’état civil, 1558-1893"** (indexed, searchable via the search API).
+- **No indexed birth found for a "Marie Mathieu, Sedan, 1866" matching our Mary.**
+- **Candidate family:** **Georges Mathieu × Marie Élisabeth Constance Munaux** of **Sedan** — indexed children **Honorine Louise Constance (1862)**, **Hortense Éléonore *Marie* (b. reg. 20 Mar 1865)**, **Lise Eugénie Valentine (14 Feb 1867)**. Their birth years **bracket 1866**, and one daughter already carries the name *Marie*. → **Possible** parents; a 1866 birth to this couple is not in the index (gap year, or our Mary belongs to a different Mathieu family).
+- **Tier:** French ORIGIN (Sedan, Ardennes) = **Confirmed** (census). Mary's exact birth record + her parents = **Possible/Unverified**.
+- **Confirmation path:** (a) browse the Sedan **1866 birth register image** directly (the index may skip 1866); (b) the **1888 Chicago Catholic marriage record image** (usually names both spouses' parents); (c) a US **naturalization/passenger** record for Marie Mathieu/Eischen.
 - Soft corroboration (not proof): Norman & Adeline named a daughter **Fleurette** (French given name).
 
 ## Extend-back targets
