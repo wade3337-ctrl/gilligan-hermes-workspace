@@ -86,9 +86,13 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
 - ⚠️ This register's format has **NO parents column** (only names, origin, witnesses, priest) → her parents are NOT here. Get them from the **Moselle civil birth register (Marspich/Hayange, ~1866)**.
 - **Tier:** birthplace **Marspich, Lorraine = Strongly supported** (contemporaneous 1888 act, zoom-verified). Sedan = refuted.
 
-### NEXT (relocated target)
-1. **Moselle civil registers** — Archives départementales de la Moselle (**archives57.com**), commune **Marspich / Hayange / Kreis Diedenhofen (Thionville)**, births ~**1863–1868**, for **Marie Mathieu** → names her parents. (Also on FamilySearch "France, Moselle" collections.)
-2. Reconcile Louis Eischen: Mondorf vs Rollingen (Luxembourg civil reg., free on FS).
+### NEXT (relocated target) — where the 1866 parents-record actually is (checked 2026-08-07)
+- **Marspich WAS its own commune** (INSEE 57306) until merged into Hayange 1971. So 1866 records are under **Marspich** itself.
+- ❌ **FamilySearch does NOT have Marspich 1866.** FS catalog #726510 (Eglise catholique, Paroisse de Marspich) = 3 reels: **baptisms/births 1731–1802** (DGS 8932406) + **1870–1882** (DGS 8510560) — a **GAP 1803–1869 that excludes 1866.** FS civil-reg for Marspich = only the INSEE death index (nothing 19th-c.).
+- ✅ **The 1866 Marspich CIVIL birth register is at the Archives départementales de la Moselle — archives57.com** — but that site is behind an **"Anubis" proof-of-work anti-bot wall** → headless can't pass; a REAL browser/phone passes fine.
+- **Paths to the parents (next session):** (1) archives57.com on Jason's **PHONE** → État civil → commune **Marspich** (or Hayange) → **Naissances 1866** → find Marie Mathieu → the act names father+mother. (2) **Geneanet/Filae** (Moselle heavily indexed; paid/account). (3) Paid AD57 lookup (archives@moselle.fr). (4) beat Anubis with a real (non-headless-shell) browser + PoW solve — untested.
+- Reconcile Louis Eischen: Mondorf (marriage) vs Rollingen (death) — both Luxembourg; Luxembourg church/civil reg is free on FS.
+- 🍾 **BANKED:** the French origin is RESOLVED (Marspich, Lorraine). Parents = one generation further, clean next-session target with a known location.
 
 ### Sweep + marriage-act attempt (2026-08-07 evening) — digital shortcuts EXHAUSTED
 - **FS Ardennes index sweep:** no "Marie Mathieu b. 3 Jan 1866" anywhere; **no Mathieu born 3 Jan 1866 in the Ardennes at all.** Nearest misses (weak): Marie-Laurence-Dorothée (29 Jan 1866, Vireux-Wallerand — wrong area) · Marie Octavie (20 Mar 1866, Linay — near Sedan, wrong month, par. Thomas Mathieu × Marie Brunaux). ⚠️ FS French index is INCOMPLETE (many AD08 registers image-only) → absence ≠ proof.
