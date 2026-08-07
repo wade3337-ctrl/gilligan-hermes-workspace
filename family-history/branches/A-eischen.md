@@ -39,6 +39,13 @@ Searched FS collection **"France, Ardennes, registres paroissiaux et d’état c
 - No indexed 1866 Sedan birth for a Marie Mathieu. Candidate remains **Georges Mathieu × Marie Élisabeth Constance Munaux** of Sedan (children 1862/1865/1867; 1866 gap). **Possible.**
 - Only remaining proof path = **browse the Sedan 1866 birth register IMAGE** (unindexed year) or the **1888 Catholic marriage act IMAGE** (handwritten; may name her father). Both are manual image hunts.
 
+## Browse attempt (2026-08-07) — sources found, but proof needs a manual image read
+- **FamilySearch scans = NOT hosted.** Film 008613492 (Ardennes reg.) is index-only on FS: viewer returns "Film has no images" (verified on 2 images; I'm logged in — not a permission wall). So FS cannot supply the 1866 Sedan register scan.
+- **Real free source located:** **Archives départementales des Ardennes — archives.cd08.fr** hosts 500,000+ register pages incl. Sedan, free. Its **nominative search** (283,997 volunteer annotations) IS drivable (harness `ad08-search.js`).
+- ⚠️ **BUT that base is a crowd-annotation index, NOT a full transcription** → its silence on a 1866 Sedan Mathieu birth is **not evidence of absence**. Only a handful of Sedan Mathieu annotations exist at all.
+- **The definitive move (not yet done):** open the **Sedan *table décennale* des naissances 1863–1872** (alphabetical birth index for the decade — lists every birth) OR the 1866 birth register itself, in the AD08 image viewer. That viewer is a deep JS collection-navigator (commune → act type → year → register → page); automating the browse is doable but slow/fragile.
+- **Status:** French ORIGIN Confirmed (census). Mary's parents = **Possible** (Georges Mathieu × Marie Munaux candidate). Proof pending a manual AD08 register/decennial-table read.
+
 ## Extend-back targets
 - Louis S. Eischen (GZDY-VYY) — b. 5 Dec 1863 Rollingen, Luxembourg → trace Harry Eischen × Anna Petrie in Luxembourg records
 - Mary Mathieu (GZQM-82L) — b.1866, d.1946 → **French-descent proof lives here**
