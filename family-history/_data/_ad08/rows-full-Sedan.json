@@ -1,0 +1,210 @@
+[
+ {
+  "tag": "A",
+  "txt": "ARCHIVES NUMÉRISÉES",
+  "attrs": {
+   "href": "/archives-numerisees",
+   "class": "active",
+   "aria-label": "Archives numérisées"
+  },
+  "rowtxt": "ARCHIVES NUMÉRISÉES Registres paroissiaux et d'état civil Recensements de la population Registres matricules du recensem"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "Archives numérisées",
+  "attrs": {
+   "class": "btn_deplier_menu btn_menu_ferme",
+   "aria-label": "Ouvrir le sous-menu",
+   "aria-expanded": "false",
+   "aria-controls": "nav_principal_sous_menu_2506"
+  },
+  "rowtxt": "ARCHIVES NUMÉRISÉES Registres paroissiaux et d'état civil Recensements de la population Registres matricules du recensem"
+ },
+ {
+  "tag": "A",
+  "txt": "Registres matricules du recensement militaire",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/registres-matricules-du-recensement-m",
+   "class": "",
+   "aria-label": "Registres matricules du recensement militaire"
+  },
+  "rowtxt": "Registres matricules du recensement militaire"
+ },
+ {
+  "tag": "A",
+  "txt": "Registres des hypothèques",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/registres-des-hypotheques",
+   "class": "",
+   "aria-label": "Registres des hypothèques"
+  },
+  "rowtxt": "Registres des hypothèques"
+ },
+ {
+  "tag": "A",
+  "txt": "Tables des successions et absences",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/tables-des-successions-et-absences",
+   "class": "",
+   "aria-label": "Tables des successions et absences"
+  },
+  "rowtxt": "Tables des successions et absences"
+ },
+ {
+  "tag": "A",
+  "txt": "Moteur de recherche et visionneuse des registres p",
+  "attrs": {
+   "href": "/image/2516/129916?size=!800,800&region=full&format=pdf&download=1&crop=centre&r",
+   "class": "download",
+   "target": "_blank",
+   "data-intitule": "Moteur de recherche et visionneuse des registres paroissiaux et d'état civil - M"
+  },
+  "rowtxt": "Moteur de recherche et visionneuse des registres paroissiaux et d'état civil - Mode d'emploi (1.2 Mo)"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1573-1608",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1573-1608[[8e365d424e8d4d6cd65ab06262980779bf20f931]]"
+  },
+  "rowtxt": "1 Mi 1178 1 Sedan Baptême 1573-1608 Relevé d'actes des registres paroissiaux protestants réalisé à partir de registres d"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1573-1608, 1631-1682",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1573-1608, 1631-1682[[c0a8b331a2ef6b0a2dcb3f8fe350a56a84ae66ba]]"
+  },
+  "rowtxt": "1 Mi 1183 1 Sedan Mariage 1573-1608, 1631-1682 Relevé d'actes des registres paroissiaux protestants réalisé à partir de "
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1603;1631;1704",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1603;1631;1704[[d80a1c5d8d7399bd834784ea694b6260571c3772]]"
+  },
+  "rowtxt": "2E409 230 Sedan Baptême Mariage Sépulture 1603;1631;1704 Registre de la paroisse protestante de Sedan. 1603 : Baptêmes, "
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1607, 1650",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1607, 1650[[c820a175f758a7031a955802582aacad1024714d]]"
+  },
+  "rowtxt": "2E409 1 Sedan Baptême Mariage 1607, 1650 Registres de la paroisse protestante de Sedan. 1607 : Baptêmes, mariages (Liass"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1622-1647",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1622-1647[[d199bdbca8c611fc8e01e01019888540abfdd6fa]]"
+  },
+  "rowtxt": "1 Mi 1183 2 Sedan Sépulture 1622-1647 Relevé d'actes des registres paroissiaux protestants réalisé à partir de registres"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1631-1655",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1631-1655[[b77ea8abd08336200964e2fab8b78baf44de9155]]"
+  },
+  "rowtxt": "1 Mi 1178 2 Sedan Baptême 1631-1655 Relevé d'actes des registres paroissiaux protestants réalisé à partir de registres d"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1648-1682",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1648-1682[[d01f3e278eff1d1b8b0f62cdf6692faaa55b8a8f]]"
+  },
+  "rowtxt": "1 Mi 1183 3 Sedan Sépulture 1648-1682 Relevé d'actes des registres paroissiaux protestants réalisé à partir de registres"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1656-1682",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1656-1682[[3851d957d972ba348f860da61fb5783cd4681d3f]]"
+  },
+  "rowtxt": "1 Mi 1178 3 Sedan Baptême 1656-1682 Relevé d'actes des registres paroissiaux protestants réalisé à partir de registres d"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1700-1793",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1700-1793[[e1de67337d517478a44b6cd11d4c564e12a0dd00]]"
+  },
+  "rowtxt": "Collection communale - GG174 Sedan Table annuelle 1700-1793 Table annuelle des mariages. (165 images)"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1700-1763",
+  "attrs": {
+   "data-rebond": "arko_default_67764c880046a",
+   "data-term": "1700-1763[[63c1100aece5938dd55dfcd7bbd60c2bebebbc13]]"
+  },
+  "rowtxt": "Collection communale - GG175 Sedan Table annuelle 1700-1763 Table annuelle des sépultures. (105 images)"
+ },
+ {
+  "tag": "A",
+  "txt": "Voir la liste des actes de catholicité des commune",
+  "attrs": {
+   "href": "/image/2516/129910?size=!800,800&region=full&format=pdf&download=1&crop=centre&r",
+   "class": "download",
+   "target": "_blank",
+   "data-intitule": "Voir la liste des actes de catholicité des communes dont l’état civil a été détr"
+  },
+  "rowtxt": "Voir la liste des actes de catholicité des communes dont l’état civil a été détruit lors de la première Guerre mondiale "
+ },
+ {
+  "tag": "A",
+  "txt": "ARCHIVES NUMÉRISÉES",
+  "attrs": {
+   "href": "/archives-numerisees",
+   "aria-label": "Archives numérisées"
+  },
+  "rowtxt": "ARCHIVES NUMÉRISÉES Registres paroissiaux et d'état civil Recensements de la population Registres matricules du recensem"
+ },
+ {
+  "tag": "A",
+  "txt": "Registres paroissiaux et d'état civil",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/registres-paroissiaux-et-detat-civil",
+   "aria-label": "Registres paroissiaux et d'état civil"
+  },
+  "rowtxt": "Registres paroissiaux et d'état civil"
+ },
+ {
+  "tag": "A",
+  "txt": "Registres matricules du recensement militaire",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/registres-matricules-du-recensement-m",
+   "aria-label": "Registres matricules du recensement militaire"
+  },
+  "rowtxt": "Registres matricules du recensement militaire"
+ },
+ {
+  "tag": "A",
+  "txt": "Registres des hypothèques",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/registres-des-hypotheques",
+   "aria-label": "Registres des hypothèques"
+  },
+  "rowtxt": "Registres des hypothèques"
+ },
+ {
+  "tag": "A",
+  "txt": "Tables des successions et absences",
+  "attrs": {
+   "href": "/archives-numerisees/sources-genealogiques/tables-des-successions-et-absences",
+   "aria-label": "Tables des successions et absences"
+  },
+  "rowtxt": "Tables des successions et absences"
+ }
+]

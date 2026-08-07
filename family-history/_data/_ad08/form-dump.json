@@ -1,0 +1,98 @@
+{
+ "selects": [
+  {
+   "name": "",
+   "id": "select_nombre_resultats",
+   "cls": "",
+   "opts": [
+    "25[25]",
+    "50[50]",
+    "100[100]"
+   ],
+   "n": 3
+  },
+  {
+   "name": "",
+   "id": "select_nombre_resultats",
+   "cls": "",
+   "opts": [
+    "25[25]",
+    "50[50]",
+    "100[100]"
+   ],
+   "n": 3
+  },
+  {
+   "name": "",
+   "id": "arko_default_6776acf636161--operator",
+   "cls": "",
+   "opts": [
+    "Et[AND]",
+    "Ou[OR]",
+    "Sauf[NOT]"
+   ],
+   "n": 3
+  }
+ ],
+ "inputs": [
+  {
+   "name": "",
+   "id": "",
+   "type": "checkbox",
+   "ph": ""
+  },
+  {
+   "name": "",
+   "id": "",
+   "type": "checkbox",
+   "ph": ""
+  },
+  {
+   "name": "",
+   "id": "commune",
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "name": "",
+   "id": "",
+   "type": "text",
+   "ph": ""
+  },
+  {
+   "name": "",
+   "id": "",
+   "type": "text",
+   "ph": ""
+  }
+ ],
+ "forms": [],
+ "btns": [
+  "Rechercher",
+  "Archives numérisées",
+  "Activités culturelles",
+  "Espaces dédiés",
+  "Informations pratiques",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "1833-1842",
+  "1843-1852",
+  "1853-1862",
+  "1863-1872",
+  "1873-1882",
+  "1883-1892",
+  "1893-1902",
+  "1903-1912",
+  "1913",
+  "1913-1918",
+  "1914",
+  "1914-1918",
+  "1918",
+  "1919",
+  "1920-1936"
+ ],
+ "url": "https://archives.cd08.fr/archives-numerisees/sources-genealogiques/registres-paroissiaux-et-detat-civil?arko_default_6776ac3012e9d--ficheFocus="
+}
