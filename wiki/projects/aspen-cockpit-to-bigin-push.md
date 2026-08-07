@@ -15,6 +15,16 @@ updated: 2026-08-02
 **Objective (Skipper 2026-08-02):** Aspen reads the Sales Cockpit → pushes to Bigin → maintains the live SALES pipeline in Bigin. "Gilligan builds, Aspen runs."
 > ⚠️ **This note is the canonical build-state (Gilligan owns it).** Do NOT keep it in the aspen-knowledge vault — that vault autosyncs FROM the Aspen board and **quarantines** files written directly into it (my first copy got swept to `_quarantine/` by the 02:52 autosync). Gilligan-owned build state lives HERE in the workspace wiki. Design/context still lives in `aspen-knowledge/business-development/bigin-structure-and-plan.md`.
 
+## 🧭 NORTH STAR — LOCKED 2026-08-07 (the lens for every decision below)
+Skipper worked the "what's the ONE thing" question and it resolved. The four candidate goals aren't a menu — **they're a stack**, so "pick one" was the wrong frame:
+- **(a) One live home for every rep's deals = the FLOOR.** Prerequisite; nothing else works if deals aren't reliably in Bigin and current. *Failure = adoption risk (reps don't trust it → DOA).*
+- **(b) Aspen does the grunt work = the ENGINE (the how, not the why).** The mechanism that keeps (a) true without reps hating data entry.
+- **(c) Surfaces what they'd miss = the POINT.** The only item a plain CRM can't already do → the entire justification for building Aspen vs. "just use Bigin." *Failure = value risk (no reason it exists).*
+- **(d) Command view for Jason + Nate = the REWARD (byproduct).** If a + c are real, d falls out for free — a live rollup is just the sum of honest pipelines.
+
+**Resolution (Skipper confirmed "it lands"):** **FLOOR = a · POINT = c.** b and d are downstream. **Build top-down:** stand up the floor (a) *in a way that makes the point (c) possible*, i.e. every schema/sync choice is judged by "does this let Aspen surface something the rep would've missed?" — not just "did the card sync?"
+**Design principles that follow:** dry-run before writes · source-of-truth split (Aspen writes only its OWN fields) · idempotent dedup · never make a rep do data entry the sync could do.
+
 ## 🗓️ 2026-08-06 — PLANNING SESSION (decisions locked; still no writes)
 Skipper worked the plan forward (prep for the Nate conversation). Locked so far:
 - **Autonomy = C (graduated).** Start the pilot fully review-gated; graduate Tier-1 writes to autonomous once proven; Tier-2 stays gated permanently.
