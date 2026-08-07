@@ -36,6 +36,19 @@ Skipper chose **Running Dry** as the pilot's "you'd-have-missed-this" (c) signal
 - **BUILD = SMALL:** the fetch→route→property-label→per-rep pipeline is DONE + trusted. Bigin only adds what the email can't: **persistent cards that auto-clear when paid (off the next report), aging escalation, and the (d) rollup.** Collections lane = pipe this existing feed into each rep's Aspen Feed @ Collections.
 - **ROUTING DECISION (settled by the live system, not re-litigated):** BestRep (active-invoice rep), which also aligns Collections with Running-Dry's selling-rep. The crude Companies.SalesRepID mapping is SUPERSEDED.
 
+## 📬 2026-08-07 — COLLECTIONS SOURCE = Dimitry's EMAIL for now (Skipper decision)
+**⭐ DECISION (Skipper 2026-08-07): AR data comes from Dimitry's weekly EMAIL, NOT TRIM IT.** Later phase = back-feed from **QuickBooks → Aspen directly**; for now it's the email. So the Collections lane sources 100% from the existing `ar-collections-monitor.js` feed (account + property + aging), no TRIM IT dependency.
+- **✅ Unblocks + simplifies:** stood down the TRIM IT property-manager dig (was blocked by GSTS `RESTORING` anyway; GSTS observed RESTORING 14:12 → ONLINE 14:14, ~2min today). **Collections is DECOUPLED from the nightly-restore window** — it reads the email, not GSTS. (Running-Dry still reads the cockpit/TRIM IT and DOES hit that window — its build must run outside the restore or tolerate RESTORING.)
+- **Property-manager "who to call" = DEFERRED enrichment, NOT a now-blocker.** The email carries property NAMES (invoice memos) but not the manager contact. For now the card = account + property list + aging from the email; the rep supplies the "who" from their own knowledge. **Later sources for the manager contact:** QuickBooks→Aspen back-feed, or Bigin's OWN existing account contacts (the Optimum account already has contacts in Bigin). So Skipper's "relationship is with the property manager" point is honored as a Phase-2 field, not dropped.
+- **Net: the Collections card is BUILDABLE TODAY** from the existing trusted email feed — no TRIM IT, no restore-window issue, no new pipeline.
+
+## ♻️ 2026-08-07 — COLLECTIONS card lifecycle (self-draining + 90+ escalation)
+- **Clears automatically:** account drops off next week's report → paid → card auto-moves out of Collections. The lane drains itself (no manual close).
+- **Escalates as it ages:** 31-60 → 61-90 → 90+. Crossing **90+** = the write-off-risk threshold (Collections' equivalent of running-dry's "Expired = miss").
+- **⭐ DECISION B (Skipper 2026-08-07): crossing 90+ ESCALATES to Jason + Nate** (the (d) collections ledger — "now 90+, nobody's collected"), not just a passive re-sort in the rep's lane. Parallel to running-dry's Expired pile becoming the management signal. (Rejected A = passive re-sort only.)
+
+### ✅ COLLECTIONS LANE — DESIGN COMPLETE (2026-08-07): source=Dimitry email now / QuickBooks→Aspen later · route=BestRep (existing) · label-by-property (existing) · card=per-account (A) w/ properties in notes · property-manager contact=Phase-2 enrichment · lifecycle=auto-clear on drop-off + 90+ escalates to Jason+Nate (B) · buildable today off the existing email feed, decoupled from the TRIM IT restore window.
+
 ## 🏷️ 2026-08-07 — New/Surfaced card LIFECYCLE (4 exits; misses = the management signal)
 A card leaves New/Surfaced by one of four exits: **Surfaced** (born) → **Worked** (rep pulls to Pricing/bids = win, exits clean) · **Dismissed** (rep says not worth it → Aspen must NOT re-nag) · **Expired** (window closed, no action = MISS).
 - **⭐ REFRAME (Skipper 2026-08-07): the Expired pile is worth more than the wins.** 4 surfaced, 1 worked, 3 expired = **$X that walked because nobody re-quoted, now VISIBLE.** New/Surfaced does double duty: **worklist** for the rep (left side) + **missed-money ledger** for Jason/Nate (Expired exit). That ledger is what (d) the command view is really FOR.
