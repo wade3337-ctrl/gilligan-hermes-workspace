@@ -15,7 +15,7 @@
 - **Jack Roger Wade death year: RESOLVED → 21 Nov 2008** (two SSDI records + burial agree). Family's "2006" = year-memory slip; the day (Nov 21) is correct.
 - Thomas Samuel Wade birthplace: family said Ohio → record says **Covington, Kenton Co., KENTUCKY** (b. 9 Nov 1899).
 - Thomas's mother: handoff "Carolyn Wade" → actually **Caroline Los-** (garbled on tree, verify); father **Orin Lorinza Wade (1869–1953)** ✅.
-- ⚠️ **SENSITIVE lead:** a **1960 CA marriage + 1980 CA divorce** index attached to Jack → possible marriage BEFORE Antoinette. Unverified (needs images).
+- ⚠️ **SENSITIVE — Jack's first marriage (documented):** CA Marriage Index 1960, ark:/61903/1:1:V6KD-1ZX → **Jack R Wade (21) m. Francine Biggs (18), 1960.** ❗DISCREPANCY: family memory says Jack's first wife was **"Sandy"** — record says **Francine Biggs**. Reconcile: (a) Francine=earlier marriage, Sandy later; (b) Francine went by Sandy; (c) a Sandy marriage pre-1960/out-of-state (not in this CA index which starts 1960). Also a 1974 marriage (Antoinette) + a **1980 CA Divorce Index** on Jack — which marriage it ended is NOT stated on the index. Skipper to steer.
 - Jack's 1940-census attachment is chronologically impossible (born after the April 1940 enumeration) → likely mis-attached.
 - Duplicate sibling "Ermajean Wade" (merge candidate). Charles W. Thompson death ambiguous (1942 vs 1951 WV).
 
@@ -24,7 +24,7 @@
 - Tree's "El Monte, Contra Costa" is a bad auto-place → El Monte is **LA County**.
 - Gaunt husband = **Samuel John Gaunt** (odd first name "Schuessler" = his mother's maiden name).
 - ⚠️ **Rhoda–Gaunt 1932 marriage record MISSING** — the one undocumented spine link (Webb City MO date unverified).
-- 🔎 **NEW SENSITIVE lead:** Heeb marriage lists Rhoda as "Rhoda M **Davis**" → an unmentioned **3rd husband (Davis)** between Gaunt and Heeb.
+- 🔎 **SENSITIVE — Rhoda's hidden "Davis" husband:** Nevada Marriage Index, ark:/61903/1:1:VVGS-WXH → Glen Curtis Heeb m. **"Rhoda M Davis"** 19 Feb 1970 (residence CA). Confirms a **Davis husband existed between Gaunt (d.1960) and Heeb (1970)**, but NO attached record names him. Finding him needs a record search (FS search currently bot-blocking headless session — workaround pending).
 - 🎖️ Abijah Ballew (3xg-grandfather, b.1848 TN) = Union Civil War vet → pension files exist.
 
 ## Evidence caveat
