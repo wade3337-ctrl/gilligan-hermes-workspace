@@ -1,0 +1,51 @@
+[
+ {
+  "tag": "BUTTON",
+  "txt": "2",
+  "cls": "",
+  "href": "",
+  "al": ""
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "3",
+  "cls": "",
+  "href": "",
+  "al": ""
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "",
+  "cls": "bouton_pagination",
+  "href": "",
+  "al": "Derniers résultats"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "2",
+  "cls": "",
+  "href": "",
+  "al": ""
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "3",
+  "cls": "",
+  "href": "",
+  "al": ""
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "",
+  "cls": "bouton_pagination",
+  "href": "",
+  "al": "Derniers résultats"
+ },
+ {
+  "tag": "BUTTON",
+  "txt": "1",
+  "cls": "reset-filtre",
+  "href": "",
+  "al": ""
+ }
+]

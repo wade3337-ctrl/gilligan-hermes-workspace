@@ -24,4 +24,12 @@
 - **Or** I take one more targeted swing to grab the exact "view register" link for the Sedan 1863–72 décennale (no promise it renders cleanly).
 - **Or** a paid assist (Geneanet/pro lookup) — not needed if the above works.
 
-Harnesses already built: `ad08.js`, `ad08-search.js`, `ad08-drive2.js`, `ad08-fiche.js` (in family-history/).
+Harnesses already built: `ad08.js`, `ad08-search.js`, `ad08-drive2.js`, `ad08-fiche.js`, `ad08-rows.js`, `ad08-decade.js`, `ad08-paginate.js`, `ad08-pag2.js`, `ad08-all.js` (in family-history/).
+
+## Automation state (2026-08-07, after 5+ swings) — the exact blocker
+- **AD08 uses a IIIF image server:** `/image/2516/<imageId>?size=!800,800&region=full&format=pdf` (proven on the mode-d'emploi PDF). If we get the décennale's image IDs, we can pull scans directly — no viewer needed.
+- **Register rows open the Arkothèque viewer** via a `<button data-rebond="arko_default_67764c880046a" data-term="<daterange>[[hash]]">` (AJAX facet/open). The viewer then serves pages via the IIIF endpoint.
+- **THE WALL:** for commune=Sedan, the headless driver only ever loads **24 rows — all *parish/protestant* registers (2E409, 1 Mi microfilms, 1573–1793)**. The **état-civil (civil, 1792+) section — which holds the 1863–1872 naissances *table décennale* and the 1866 birth register — never renders.** The site lists parish first, then civil; the civil rows are on later result pages.
+- **Pager = ** buttons `"2"`, `"3"`, and `bouton_pagination` **"Derniers résultats"** (jump to last), plus `"1"` = `reset-filtre`. **My clicks on 2/3/last did NOT advance the result set** (same 24 rows after every click; tried getByRole, JS `.click()`, force-click, ArrowDown+Enter). Likely the pager fires an AJAX call that needs a token/handler my headless click doesn't trigger.
+- **Next automation idea (if retried):** capture the XHR the pager fires (network sniff) and replay it directly, OR click "Derniers résultats" and detect the état-civil block, OR drive with a full (non-headless-shell) Chromium + real user gestures. Untested.
+- **Recommendation stands:** a human in a normal browser reaches the Sedan 1863–72 naissances décennale in ~10 min (the pager works with a real click) → Ctrl-find "Mathieu" → screenshot → I transcribe/verify.
