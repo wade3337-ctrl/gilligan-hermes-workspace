@@ -1,0 +1,338 @@
+[
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "Family Tree"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "Search"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "Memories"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "Get Involved"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "Activities"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Select a Language",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Help",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Chat",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Notifications",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "J\nJason95181"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "PREFERENCES"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "SEARCH"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Close",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add an ancestor name to the search form.",
+  "ph": "",
+  "name": "Name-fieldGroupButton",
+  "txt": "NAME"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add an Alternate Name to the search form.",
+  "ph": "",
+  "name": "Alternate Name-fieldGroupButton",
+  "txt": "ALTERNATE NAME"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Sex to the search form.",
+  "ph": "",
+  "name": "Sex-fieldGroupButton",
+  "txt": "SEX"
+ },
+ {
+  "tag": "INPUT",
+  "type": "text",
+  "al": "",
+  "ph": "",
+  "name": "q_givenName",
+  "txt": ""
+ },
+ {
+  "tag": "INPUT",
+  "type": "text",
+  "al": "",
+  "ph": "",
+  "name": "q_surname",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Birth event to the search form.",
+  "ph": "",
+  "name": "Birth-fieldGroupButton",
+  "txt": "BIRTH"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Marriage event to the search form.",
+  "ph": "",
+  "name": "Marriage-fieldGroupButton",
+  "txt": "MARRIAGE"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Residence to the search form.",
+  "ph": "",
+  "name": "Residence-fieldGroupButton",
+  "txt": "RESIDENCE"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Death event to the search form.",
+  "ph": "",
+  "name": "Death-fieldGroupButton",
+  "txt": "DEATH"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add Any event to the search form.",
+  "ph": "",
+  "name": "Any-fieldGroupButton",
+  "txt": "ANY"
+ },
+ {
+  "tag": "INPUT",
+  "type": "text",
+  "al": "",
+  "ph": "City, County, State, Province, or Country",
+  "name": "q_birthLikePlace.fieldValue",
+  "txt": ""
+ },
+ {
+  "tag": "INPUT",
+  "type": "text",
+  "al": "Birth year (from)",
+  "ph": "From",
+  "name": "q_birthLikeDate_from",
+  "txt": ""
+ },
+ {
+  "tag": "INPUT",
+  "type": "text",
+  "al": "Birth year (to)",
+  "ph": "To",
+  "name": "q_birthLikeDate_to",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Remove the Birth event from the search form.",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Spouse to the search form.",
+  "ph": "",
+  "name": "Spouse-fieldGroupButton",
+  "txt": "SPOUSE"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Father to the search form.",
+  "ph": "",
+  "name": "Father-fieldGroupButton",
+  "txt": "FATHER"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Mother to the search form.",
+  "ph": "",
+  "name": "Mother-fieldGroupButton",
+  "txt": "MOTHER"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add an Other Person to the search form.",
+  "ph": "",
+  "name": "Other Person-fieldGroupButton",
+  "txt": "OTHER PERSON"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Keyword to the search form.",
+  "ph": "",
+  "name": "Keyword-fieldGroupButton",
+  "txt": "KEYWORD"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Location to the search form.",
+  "ph": "",
+  "name": "Location-fieldGroupButton",
+  "txt": "LOCATION"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Record Type to the search form.",
+  "ph": "",
+  "name": "Type-fieldGroupButton",
+  "txt": "TYPE"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Batch Number to the search form.",
+  "ph": "",
+  "name": "Batch Number-fieldGroupButton",
+  "txt": "BATCH NUMBER"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Image Group Number (DGS) or Film Number to the search form.",
+  "ph": "",
+  "name": "Film/Fiche/Image Group Number (DGS)-fieldGroupButton",
+  "txt": "FILM/FICHE/IMAGE GROUP NUMBER "
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Add a Principal on Record option to the search form.",
+  "ph": "",
+  "name": "Principal-fieldGroupButton",
+  "txt": "PRINCIPAL"
+ },
+ {
+  "tag": "INPUT",
+  "type": "text",
+  "al": "",
+  "ph": "",
+  "name": "q_miscKeyword",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "button",
+  "al": "Remove Restriction",
+  "ph": "",
+  "name": "",
+  "txt": ""
+ },
+ {
+  "tag": "INPUT",
+  "type": "checkbox",
+  "al": "",
+  "ph": "",
+  "name": "exactSearching",
+  "txt": ""
+ },
+ {
+  "tag": "BUTTON",
+  "type": "submit",
+  "al": "Search",
+  "ph": "",
+  "name": "",
+  "txt": "SEARCH"
+ },
+ {
+  "tag": "BUTTON",
+  "type": "reset",
+  "al": "",
+  "ph": "",
+  "name": "",
+  "txt": "RESET"
+ }
+]

@@ -20,7 +20,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
       if(/Something Went Wrong|unable to display/i.test(t)){ console.log('retry reload',i+1); await p.reload({waitUntil:'domcontentloaded',timeout:60000}); await sleep(8000);} else break;
     }
     const text = await p.evaluate(()=>document.body.innerText||'');
-    const links = await p.evaluate(()=>Array.from(document.querySelectorAll('a[href]')).map(a=>({t:(a.innerText||'').trim().replace(/\s+/g,' ').slice(0,80),h:a.getAttribute('href')})).filter(x=>/ark:|\/record\//.test(x.h||'')));
+    const links = await p.evaluate(()=>Array.from(document.querySelectorAll('a[href]')).map(a=>({t:(a.innerText||'').trim().replace(/\s+/g,' ').slice(0,80),h:a.getAttribute('href')})).filter(x=>/ark:|\/record\/|\/memorial\//.test(x.h||'')));
     fs.writeFileSync(`${OUT}/${TAG}.txt`, text);
     fs.writeFileSync(`${OUT}/${TAG}.links.json`, JSON.stringify(links,null,1));
     console.log('=== '+TAG+' ('+URL+') ===');
