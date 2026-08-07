@@ -46,6 +46,30 @@ Searched FS collection **"France, Ardennes, registres paroissiaux et d’état c
 - **The definitive move (not yet done):** open the **Sedan *table décennale* des naissances 1863–1872** (alphabetical birth index for the decade — lists every birth) OR the 1866 birth register itself, in the AD08 image viewer. That viewer is a deep JS collection-navigator (commune → act type → year → register → page); automating the browse is doable but slow/fragile.
 - **Status:** French ORIGIN Confirmed (census). Mary's parents = **Possible** (Georges Mathieu × Marie Munaux candidate). Proof pending a manual AD08 register/decennial-table read.
 
+## 🔍 SEDAN BIRTHS INDEX READ (2026-08-07) — Table décennale des naissances 1863–1872, image 52 (via Jason's phone at archives.cd08.fr; cote 2E/SEDAN 3)
+Complete Mathieu birth block for the decade, transcribed from the alphabetical index:
+- Mathieu, **Hortense Éléonore Marie** — 20 mars **1865**
+- Mathieu, Paul Michel — 3 février 1867
+- Mathieu, **Lise Eugénie Valentine** — 14 février 1867
+- Mathieu, Paul Michel — 18 février 1869
+- Mathieu, Henriette Rosalie Marie — 11 sept 1868
+- Mathieu, Louis — 12 oct 1868
+- Mathieu, Gabriel Louis — 21 mars 1872
+- Mathieu, **Georges** Jules Auguste Louis — 20 avril 1872
+- Mathieu, Léon — 16 juillet 1872
+
+### What this PROVES / REFUTES
+- ❌ **No "Marie Mathieu born 1866" exists in Sedan.** There is **no Mathieu birth dated 1866 at all**, and **no birth whose primary given name is "Marie."** → the FamilySearch tree's literal claim ("Marie Mathieu b. 3 Jan 1866, Sedan") is **NOT corroborated** by the authoritative Sedan index. (Consistent with the FS record being unreliable — its listed parents were also wrong/merged.)
+- ✅ **Georges Mathieu × Marie Élisabeth Constance Munaux is a REAL Sedan Mathieu family:** their daughters **Hortense Éléonore Marie (1865)** and **Lise Eugénie Valentine (1867)** both appear here (matches the earlier FS-index find). A **Georges** Mathieu (1872) also appears — likely another child.
+- 🔎 **Leading hypothesis (Possible, NOT proven):** our "Mary/Marie Mathieu" = **Hortense Éléonore *Marie* Mathieu, b. 20 March 1865, Sedan**, who emigrated and went by her third name **Marie**; the US "Jan 1866" would be a ~1-yr approximation (very common). If so, her parents = **Georges Mathieu × Marie Munaux** (would confirm the candidate).
+- Alternative: she was born in a **neighbouring commune** (Sedan suburb) or a different exact record; needs checking.
+
+### Proof path (next)
+1. Confirm image 53 top has no additional Mathieu (rule out a stray 1866/Marie).
+2. Pull the **actual birth act for 20 March 1865** (Sedan naissances 1865 register) → names the parents → confirms Hortense Éléonore Marie = dau. of Georges × Munaux.
+3. US side: find Mary Mathieu's **naturalization / passenger / marriage (1888 Chicago Catholic) act image** → a stated birth date/place or parents to link her to the Sedan Hortense-Marie 1865 (or elsewhere).
+- **Tier:** French origin = Confirmed (census). Exact Sedan birth/parents = **Possible** (Hortense-Marie-1865 candidate), the FS "1866" literal = refuted by the index.
+
 ## Extend-back targets
 - Louis S. Eischen (GZDY-VYY) — b. 5 Dec 1863 Rollingen, Luxembourg → trace Harry Eischen × Anna Petrie in Luxembourg records
 - Mary Mathieu (GZQM-82L) — b.1866, d.1946 → **French-descent proof lives here**
