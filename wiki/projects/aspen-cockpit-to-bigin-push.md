@@ -3,7 +3,7 @@ title: Aspen — Cockpit → Bigin push (sales pipeline sync)
 type: project
 domain: work
 track: 1
-status: ACTIVE (unpaused 2026-08-07 — Skipper: "I don't need to ask Nate, I'll inform him when we have it done"). Running-dry pilot DESIGN COMPLETE; now designing the Collections/AR lane. Still zero autonomous writes to live Bigin.
+status: ACTIVE (unpaused 2026-08-07 — Skipper: "I don't need to ask Nate, I'll inform him when we have it done"). Both lanes DESIGN COMPLETE; Collections dry-run engine BUILT + proven on live data. Still zero writes to Bigin. NEXT = wire the gated go-live write for Ethan's 3 collections cards.
 tags: [aspen, bigin, cockpit, crm, pipeline, sync, build]
 applies: ["[[external-comms-contract]]", "[[repair-contract]]"]
 links: ["[[aspen-retention-agent]]", "[[sales-cockpit]]", "[[50m-growth-goal]]", "[[herman-agent]]", "[[bigin-mcp-integration]]", "[[bigin-api-capabilities]]"]
@@ -14,6 +14,11 @@ updated: 2026-08-02
 
 **Objective (Skipper 2026-08-02):** Aspen reads the Sales Cockpit → pushes to Bigin → maintains the live SALES pipeline in Bigin. "Gilligan builds, Aspen runs."
 > ⚠️ **This note is the canonical build-state (Gilligan owns it).** Do NOT keep it in the aspen-knowledge vault — that vault autosyncs FROM the Aspen board and **quarantines** files written directly into it (my first copy got swept to `_quarantine/` by the 02:52 autosync). Gilligan-owned build state lives HERE in the workspace wiki. Design/context still lives in `aspen-knowledge/business-development/bigin-structure-and-plan.md`.
+
+## ▶️ RESUME HERE (2026-08-07 end of session)
+**Where we stopped:** Collections dry-run engine BUILT + proven on Ethan (3 cards / $149,922, 2 × 90+ escalations, 0 existing → all new). **Next fork the Skipper was choosing from:** (A) wire the **gated go-live WRITE** for Ethan's 3 collections cards (his lean) · (B) the parked **running-dry sizing upgrade** (bake go-ahead $ + customer book into `cockpit-read.sh`) · (C) run the collections dry-run for the **other 3 reps** to preview full rollout. **No writes to Bigin yet by design (gated-then-graduate).**
+**Artifacts built today:** `aspen-stack/bigin-sync/collections-dry-run.js` (NEW) · `arbor-stack/anomaly-monitor/ar-collections-monitor.js` (added flag-gated `--json`, backup `*.bak-preJSON-*`). Running-dry side already had `cockpit-read.sh` + `dry-run-push.js` (8/06).
+**Two live-environment notes:** GSTS hits a nightly `RESTORING` window (~6am PT, seen 14:12→14:14 UTC today) — running-dry reads TRIM IT so it must run outside it; Collections is email-sourced so it's immune. Bigin token in `~/.secrets/bigin-oauth.json` refreshes clean.
 
 ## 🔍 2026-08-07 — RUNNING-DRY SIZING RULE (pilot headline signal; measured live)
 Skipper chose **Running Dry** as the pilot's "you'd-have-missed-this" (c) signal. Pulled Ethan's book live (`cockpit-read.sh 1140`): **83 live projects · 4 Running-Dry · 6 Re-Sell.**
@@ -48,6 +53,12 @@ Skipper chose **Running Dry** as the pilot's "you'd-have-missed-this" (c) signal
 - **⭐ DECISION B (Skipper 2026-08-07): crossing 90+ ESCALATES to Jason + Nate** (the (d) collections ledger — "now 90+, nobody's collected"), not just a passive re-sort in the rep's lane. Parallel to running-dry's Expired pile becoming the management signal. (Rejected A = passive re-sort only.)
 
 ### ✅ COLLECTIONS LANE — DESIGN COMPLETE (2026-08-07): source=Dimitry email now / QuickBooks→Aspen later · route=BestRep (existing) · label-by-property (existing) · card=per-account (A) w/ properties in notes · property-manager contact=Phase-2 enrichment · lifecycle=auto-clear on drop-off + 90+ escalates to Jason+Nate (B) · buildable today off the existing email feed, decoupled from the TRIM IT restore window.
+
+### 🛠️ COLLECTIONS DRY-RUN — BUILT + PROVEN 2026-08-07 (read-only, zero Bigin writes)
+- **`aspen-stack/bigin-sync/collections-dry-run.js`** (NEW): reads live AR feed → per-account cards in rep's `Aspen Feed`@`Collections` → reads existing Bigin deals → reports create/update/**auto-clear (paid=off newest report)**/skip + **90+ escalations to Jason+Nate**. Dedup = `[AR:<slug>]` in Deal_Name (per-account, stable). Properties go in the card Description (top 12). Writes a plan JSON. **WRITES NOTHING.**
+- **Reuses tested parsing:** shells to `ar-collections-monitor.js --json` (NEW flag-gated output added to the live monitor; backup `*.bak-preJSON-*`) — no duplication of the fragile memo parser.
+- **Ethan result (8/04 report):** 3 cards / **$149,922**, all new (0 existing AR cards) → Optimum $87,641 (13 props, 90+) · The Groves $44,206 (5 props, 90+) · BHE $18,075 (4 props). **2 escalations → Jason+Nate.** Confirms the live Bigin read path works (read Ethan's 30 existing deals) + the whole loop runs on real data.
+- **Run:** `node collections-dry-run.js "Ethan Chesley"` (default Ethan). Other reps: pass the name.
 
 ## 🏷️ 2026-08-07 — New/Surfaced card LIFECYCLE (4 exits; misses = the management signal)
 A card leaves New/Surfaced by one of four exits: **Surfaced** (born) → **Worked** (rep pulls to Pricing/bids = win, exits clean) · **Dismissed** (rep says not worth it → Aspen must NOT re-nag) · **Expired** (window closed, no action = MISS).
