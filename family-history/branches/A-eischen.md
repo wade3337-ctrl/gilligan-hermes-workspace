@@ -72,6 +72,24 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
 - **New precise target:** birth indexes of **Sedan-arrondissement communes** (Torcy, Balan, Bazeilles, Floing, Wadelincourt, Donchery, Glaire, Sedan-Fond-de-Givonne, etc.) for **"Mathieu, [Marie], 3 January 1866."** Very findable given the exact date.
 - Best single US doc still unread = the **1888 Chicago Catholic marriage act IMAGE** (French Catholic marriage acts usually name the bride's father + birth parish) — FS index has it but not the parent fields; image may be restricted.
 
+### 🎉 BREAKTHROUGH — 1888 MARRIAGE REGISTER READ (2026-08-07 late): SHE'S FROM LORRAINE, NOT SEDAN
+**Source:** St. Alphonsus (Chicago) Catholic **Religious Marriage Records 1882–1911**, DGS film #004284442, **image 14/106, entry no. 12**, ark 3:1:S3HT-6QXG-TT. (Unlocked after a FRESH FS login — the earlier "restricted" was a STALE session, not a hard block. Verified at high zoom.)
+- **Groom: "Louis Eishen, *von Mondorf, Luxemburg*"** (from Mondorf, Luxembourg). Priest Fr. Aug. Ahlert C.SS.R.; 2 proclamations.
+- **Bride: "Maria Mathean, *aus Marspich, Lothringen*"** = **Marie Mathieu, from MARSPICH, LORRAINE.** ("Mathean" = the German clerk's rendering of French "Mathieu.")
+- **Marspich** = today part of **Hayange, Moselle**, in **Lorraine** — the iron/steel border region ~25 km from Mondorf, Luxembourg.
+
+### ✅ THIS RESOLVES THE WHOLE FRENCH QUESTION
+- Marspich/Lorraine was **FRANCE when Marie was born (~1866)** — Lorraine wasn't annexed by Germany until **1871** (Reichsland Elsaß-Lothringen), when she was ~5. So the census "**born France, both parents French**" is CORRECT, and her remembered **French songs = Lorraine French culture.** The family's French-descent memory is documented and true.
+- **Explains why the entire Sedan/Ardennes hunt found nothing** — wrong département. "Sedan" in the US census/death records was simply **wrong** (~150 km off). 🗑️ **Sedan is OUT; Marspich, Moselle is the birthplace.**
+- Confirms the **Luxembourg×Lorraine borderland** we suspected: Eischen (Luxembourg) × Mathieu (French Lorraine), married in a German Redemptorist parish in Chicago.
+- Eischen origin note: marriage says **Mondorf**, Luxembourg; his 1929 death said **Rollingen** — two Luxembourg localities, minor discrepancy to reconcile later (both Luxembourg).
+- ⚠️ This register's format has **NO parents column** (only names, origin, witnesses, priest) → her parents are NOT here. Get them from the **Moselle civil birth register (Marspich/Hayange, ~1866)**.
+- **Tier:** birthplace **Marspich, Lorraine = Strongly supported** (contemporaneous 1888 act, zoom-verified). Sedan = refuted.
+
+### NEXT (relocated target)
+1. **Moselle civil registers** — Archives départementales de la Moselle (**archives57.com**), commune **Marspich / Hayange / Kreis Diedenhofen (Thionville)**, births ~**1863–1868**, for **Marie Mathieu** → names her parents. (Also on FamilySearch "France, Moselle" collections.)
+2. Reconcile Louis Eischen: Mondorf vs Rollingen (Luxembourg civil reg., free on FS).
+
 ### Sweep + marriage-act attempt (2026-08-07 evening) — digital shortcuts EXHAUSTED
 - **FS Ardennes index sweep:** no "Marie Mathieu b. 3 Jan 1866" anywhere; **no Mathieu born 3 Jan 1866 in the Ardennes at all.** Nearest misses (weak): Marie-Laurence-Dorothée (29 Jan 1866, Vireux-Wallerand — wrong area) · Marie Octavie (20 Mar 1866, Linay — near Sedan, wrong month, par. Thomas Mathieu × Marie Brunaux). ⚠️ FS French index is INCOMPLETE (many AD08 registers image-only) → absence ≠ proof.
 - **1888 marriage act:** located it — **married at ST. ALPHONSUS parish, Chicago (German Catholic), 16 Apr 1888** (arks QVMJ-MMV4 bride / QVMJ-MMVW groom). BUT the **image is RESTRICTED on FamilySearch** ("can only be displayed on certain accounts" — partner agreement). Index has no parents. → the doc that would name her father is locked on FS.

@@ -26,6 +26,14 @@
 
 Harnesses already built: `ad08.js`, `ad08-search.js`, `ad08-drive2.js`, `ad08-fiche.js`, `ad08-rows.js`, `ad08-decade.js`, `ad08-paginate.js`, `ad08-pag2.js`, `ad08-all.js` (in family-history/).
 
+## Option-2 swing (2026-08-07 late) — CRACKED the filter, BLOCKED on the scan read
+- ✅ **Headless AD08 commune filter now WORKS** (`ad08-commune.js`): fill `#commune`, type name, **ArrowDown+Enter to select the autocomplete**, then Rechercher. Bazeilles → 35 registers listed clean. Can now enumerate ANY village's registers headless.
+- ✅ Every Sedan-suburb village has a small **~22-image Table décennale 1863-1872** (e.g. Bazeilles = cote **2E/SEDAN 14**, contenuId **968219**, 22 imgs).
+- ✅ AD08 image server is IIIF-style: **`/image/2516/<id>`** (Bazeilles décennale img seen = **129909**).
+- ❌ **Can't READ the scan headless yet:** the arko image viewer opens (network shows `/image/2516/129909`) but a full-page screenshot captures the PORTAL, not the lightbox overlay; **direct `curl /image/2516/<id>?...` returns HTML** (needs the arko session cookie + signed params, not yet reverse-engineered); **fiche-redirect with contenuId 968219 = "Page introuvable"** (redirect wants an annotation fiche id, not a contenuId).
+- **Next-time ideas:** (a) capture the lightbox by screenshotting the popup/iframe or waiting for the arko viewer canvas; (b) sniff the FULL signed IIIF URL (with its `r=`/token param) from the viewer network and replay it; (c) just use the PHONE (proven works) to open a village décennale like we did for Sedan.
+- **Villages to check (closest to Sedan first):** Bazeilles, Balan, Floing, Glaire, Wadelincourt, Givonne, La Moncelle, Daigny, Donchery. Target: a **Mathieu born ~3 Jan 1866**.
+
 ## Automation state (2026-08-07, after 5+ swings) — the exact blocker
 - **AD08 uses a IIIF image server:** `/image/2516/<imageId>?size=!800,800&region=full&format=pdf` (proven on the mode-d'emploi PDF). If we get the décennale's image IDs, we can pull scans directly — no viewer needed.
 - **Register rows open the Arkothèque viewer** via a `<button data-rebond="arko_default_67764c880046a" data-term="<daterange>[[hash]]">` (AJAX facet/open). The viewer then serves pages via the IIIF endpoint.
