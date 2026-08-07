@@ -4,7 +4,7 @@ type: index
 domain: env
 tags: [index, moc, environment, infra]
 links: ["[[HOME]]"]
-updated: 2026-08-03
+updated: 2026-08-07
 ---
 
 # 💻 ENVIRONMENT / INFRA — map
@@ -15,6 +15,7 @@ Full snapshot: `arbor-stack/gilligan-environment-snapshot.md`. Atomic notes:
 - [[gilligan-session-settings]] — 📸 my runtime dials snapshot. **⭐ Current: default = `anthropic/claude-opus-5`, thinking `high`, OpenClaw 2026.7.1-2; `sol` = `openai/gpt-5.6-sol` (NOT `codex/`) and is verified working.** Re-run `session_status` for live values.
 - [[openclaw-plugin-install-trust-gate]] — 🔌 **after ANY OpenClaw core update, check the gateway log for `failed during register`.** A stale row in the plugin install index un-trusts other plugins → `openSyncKeyedStore` undefined → crashed turns + "couldn't safely resume" messages. The *"conflicting plugin install metadata"* doctor notice IS the bug, not noise. Fix + one-command diagnostic in the note.
 - [[env-host-and-tooling]] — Ubuntu 26.04, Node/Python, headless browser `arbor_browser`, file-reading tools.
+- [[device-node-control]] — 🖥️📱 **(08-07) Gilligan can act on Jason's own devices over Tailscale**: Galaxy S24+ + both Windows work laptops paired as OpenClaw nodes; both laptops = **full command execution as permanent background services** (`exec host=node node="LAPTOP 1/2"`), plus **remote-CDP browser see-and-drive** on LAPTOP 2. Two gotchas: Windows nodes boot `allowlist` (fix `tools.exec.mode full` ON the laptop); chat masks the gateway token (deliver via base64).
 - [[crew-llms-and-helpers]] — the 5-lab verification panel + `crew/*-ask.py` helpers + gotchas. **OpenAI = `gpt-5.6-sol`** (default in `~/.codex/config.toml`, needs codex-cli ≥0.144).
 - [[herman-agent]] — 👑 Boss Herman container: now has **direct crew API keys** (`/opt/data/home/.secrets/`) + the **Crew Meter** on `127.0.0.1:8300`. ⚠️ **(08-01) its durable URL `https://gilligan.tail5807bd.ts.net/` is DEAD** — the OpenJarvis teardown's `tailscale serve --https=443 off` cleared the whole serve config. Service is fine; restore with `tailscale serve --bg 8300`.
 - [[play-dev-access]] — SSH to `gstsdatabase`, `gsql.sh`/`view.sh`, PLAY nightly refresh = DB-only.
