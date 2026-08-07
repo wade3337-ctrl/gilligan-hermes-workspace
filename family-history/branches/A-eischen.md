@@ -72,6 +72,17 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
 - **New precise target:** birth indexes of **Sedan-arrondissement communes** (Torcy, Balan, Bazeilles, Floing, Wadelincourt, Donchery, Glaire, Sedan-Fond-de-Givonne, etc.) for **"Mathieu, [Marie], 3 January 1866."** Very findable given the exact date.
 - Best single US doc still unread = the **1888 Chicago Catholic marriage act IMAGE** (French Catholic marriage acts usually name the bride's father + birth parish) — FS index has it but not the parent fields; image may be restricted.
 
+### Sweep + marriage-act attempt (2026-08-07 evening) — digital shortcuts EXHAUSTED
+- **FS Ardennes index sweep:** no "Marie Mathieu b. 3 Jan 1866" anywhere; **no Mathieu born 3 Jan 1866 in the Ardennes at all.** Nearest misses (weak): Marie-Laurence-Dorothée (29 Jan 1866, Vireux-Wallerand — wrong area) · Marie Octavie (20 Mar 1866, Linay — near Sedan, wrong month, par. Thomas Mathieu × Marie Brunaux). ⚠️ FS French index is INCOMPLETE (many AD08 registers image-only) → absence ≠ proof.
+- **1888 marriage act:** located it — **married at ST. ALPHONSUS parish, Chicago (German Catholic), 16 Apr 1888** (arks QVMJ-MMV4 bride / QVMJ-MMVW groom). BUT the **image is RESTRICTED on FamilySearch** ("can only be displayed on certain accounts" — partner agreement). Index has no parents. → the doc that would name her father is locked on FS.
+- Also noted: a **Mathieu family in Floing** (adjacent to Sedan): Hortence-Léonie Mathieu b.1866, par. Jean Pierre Mathieu × Josephine Leblanc — shows Mathieus lived in Sedan's suburbs (context, not her).
+
+### HOW TO FINISH (the last inch — her exact village + parents)
+Pick any one:
+1. **St. Alphonsus 1888 marriage register** (names bride's father + birth parish) — via **Archdiocese of Chicago archives**, OR FamilySearch **at a Family History Center** (restricted images often open there), OR a paid lookup. **Best single doc.**
+2. **AD08 village decennial tables** for Sedan's suburbs (Bazeilles, Balan, Torcy, Floing, Glaire, Wadelincourt, Fond-de-Givonne, Donchery, Linay) — read the 1863–1872 naissances index for a Mathieu ~Jan 1866. Small communes load fine (reachable headless or by phone).
+3. Paid Ardennes/Geneanet lookup for "Mathieu, 3 Jan 1866, arr. Sedan."
+
 ### Proof path (next)
 1. Confirm image 53 top has no additional Mathieu (rule out a stray 1866/Marie).
 2. Pull the **actual birth act for 20 March 1865** (Sedan naissances 1865 register) → names the parents → confirms Hortense Éléonore Marie = dau. of Georges × Munaux.
