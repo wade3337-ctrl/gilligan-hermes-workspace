@@ -40,8 +40,14 @@ Never convert narrative into fact.
 | **Donald Lee Ainsworth (mat. gf)** | 1931-08-14 Fresno CA | 1990-08-11 Placer Co. CA | "Diesel Don," diesel mechanic | Confirmed |
 | Dorcie Dell Gaunt (mat. gm) | 1935-01-15 MO? | 1997 El Monte? | later Miller; m. Donald 1954-05-12 Yuma AZ | Confirmed / dates Possible |
 | Norman Brocaw Ainsworth (mat. g-gf) | 1903-07-14 Stevens Point WI | 1976-05-25 Vista CA | parents Newton Elmer Sr. / Emma D. Sweet? | Strongly supported / parents Possible |
-| Adeline Mary Belinda Eischen (mat. g-gm) | c.1901 | ? | French claim (oral) — TOP target | Confirmed name / rest Unverified |
+| Adeline Mary Belinda Eischen (mat. g-gm) | **1900-08-21 Park Ridge, Cook Co. IL** | **1990-11-25 San Diego CA** | parents Louis S. Eischen + **Mary Mathieu** (French line!) | Strongly supported |
+| — Newton Elmer Ainsworth Sr (2xg-gf) | 1861 | 1930 | Norman's father [9XFG-DBV] | Strongly supported |
+| — Emma Dean Sweet (2xg-gm) | 1861 | 1918 | Norman's mother [9XFG-DBK] | Strongly supported |
+| — Louis S. Eischen (2xg-gf) | 1864 | 1929 | Adeline's father [GZDY-VYY] · Eischen=Luxembourg/German | Strongly supported |
+| — Mary Mathieu (2xg-gm) | 1866 | 1946 | Adeline's mother [GZQM-82L] · **the French thread** | Strongly supported |
 | Rhoda May Hanley (mat. g-gm) | 1915-03-18? | 1999-06-26? | later Gaunt, Heeb; par. John Ray Hanley / Bertha Ballew | Confirmed par. / dates Possible |
 
 ## Status log
-- 2026-08-07 — Project opened. Source retrieved from Spam. Scaffold built. Recon: FamilySearch/Legacy are JS/Cloudflare-gated; built-in web search too weak to be primary engine → FamilySearch login (option a) is the engine. Awaiting login to arm crew.
+- 2026-08-07 — Project opened; source retrieved from Spam; scaffold built.
+- 2026-08-07 — FamilySearch login working (headless Chrome on jdog1; session saved to ~/.openclaw/.secrets/fs-state.json, reusable). Fetcher `fs-pull.js` built.
+- 2026-08-07 — **Priority line cracked (first pass).** Walked Donald → Norman → Adeline. Answered priorities #1 (marriage: Cook Co. IL 1926), #2 (Adeline's parents/birthplace: Louis Eischen + Mary Mathieu, b. Park Ridge IL 1900), #4 (Norman's parents = Newton Elmer Ainsworth Sr + Emma Dean Sweet, record-backed), #5 (Donald's 1940 childhood census located). French question: Eischen=Luxembourg/German; **French likely via mother Mary Mathieu** → next target GZQM-82L. All Strongly supported (indexed records); image-verify pending. See branches/A,B + conflicts.md.
