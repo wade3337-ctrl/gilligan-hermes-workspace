@@ -7,7 +7,7 @@ status: ACTIVE (unpaused 2026-08-07 — Skipper: "I don't need to ask Nate, I'll
 tags: [aspen, bigin, cockpit, crm, pipeline, sync, build]
 applies: ["[[external-comms-contract]]", "[[repair-contract]]"]
 links: ["[[aspen-retention-agent]]", "[[sales-cockpit]]", "[[50m-growth-goal]]", "[[herman-agent]]", "[[bigin-mcp-integration]]", "[[bigin-api-capabilities]]"]
-updated: 2026-08-02
+updated: 2026-08-07
 ---
 
 # Aspen — Cockpit → Bigin push
