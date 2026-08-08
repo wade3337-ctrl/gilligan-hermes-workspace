@@ -81,4 +81,36 @@ Live pull this session — Aspen read-only gateway, play DB. TWO LENSES (both re
 - [ ] Jason: grab safety/compliance facts from Isgard + list recent role changes
 
 ---
-(sections §3+ to follow — one at a time)
+
+## §3 — 2026 Forecast  🚧 IN PROGRESS
+**FPC asks:** (1) visibility into 2026 budget (2) projected COMMERCIAL revenue + commercial-customer visibility (3) backlog & sales-pipeline PROCESS (= the pre-bid forecasting piece).
+
+**Their bridge to $24.4M (datapack p3):**
+| Piece | $000s | What it is | System |
+|---|---|---|---|
+| YTD June | $11,408 | Completed Jan–Jun | TRIM IT |
+| Commercial Sold | $4,465 | Fwd commercial | Sales report |
+| Municipal Sold | $5,100 | Fwd municipal (forecast) | Sales report (budget÷12) |
+| Proj. Commercial | TBD | Fwd commercial not yet sold | ❌ nobody — the pre-bid gap |
+| Muni Budgets remaining | ~$888 | Unspent city budget | Brent's engine |
+| Go-Get | $2,542 | Plug to close gap | — |
+| **2026 Budget** | **$24,404** | | |
+- Internally consistent: forward pieces ($4.47M+$5.1M+$0.89M+$2.54M) = $13.0M = the H2 gap ($24.4M − $11.4M base). ✓
+- Base anchor reconciles: their YTD-June $11.41M ≈ my live produced Jan–Jun $11.30M / invoiced $11.14M (within ~1%).
+
+### Municipal pressure-test (DONE) — verdict: completed is SOLID, forward is a FORECAST
+⚠️ CORRECTION: an earlier "sales report undercounts municipal by half" claim was WRONG (compared report's calendar-YTD $4.20M to a TTM $8.58M — apples-to-oranges). Deleted.
+- **Municipal COMPLETED reconciles to live** — report Jan–Jun $4.16M vs my live invoiced $4.26M = within 2.3%. Report is accurate. (July gap $41K vs $792K = invoicing lag only.)
+- **Municipal SOLD $5.06M forward = a budget-based forecast** (Skipper confirmed: total muni budgets ÷ 12 ≈ $876,082/mo). Oct/Nov/Dec all identical $876,082.33 = the budget-÷-12 default (near months carry actual bookings, far months fall to default). $876,082 × 12 ≈ $10.5M annual muni budget (ties to the ~$10.77M budget figure).
+  - **Defensible method, but it is a FORECAST, not booked backlog.** If FPC asks "is this backlog?" → "No, it's a contract-budget-based forecast."
+- 🚩 **DOUBLE-COUNT to confirm w/ Nate/Brent:** bridge lists BOTH "Municipal Sold $5.1M" AND "Muni Budgets remaining $888K." If the $5.1M is already budget÷12, the $888K may overlap. Verify before Monday.
+- **Classification verified clean:** municipal = MarketFocusID 2 (all Cities, MarketID 7; zero counties). Join drops 217 unclassified invoices (undercounts, doesn't inflate). No double-count.
+
+**Municipal FPC answer:** "Completed municipal reconciles to live within ~2%. The forward figure is a contract-budget-based forecast (annual budget ÷ 12), not booked WOs — reliable because it's recurring city work, but it's a forecast."
+
+### Still to drill in §3:
+- [ ] Pre-bid forecasting story (Proj. Commercial TBD → Bigin/Aspen) — the real ask
+- [ ] Commercial Sold $4.47M — reconcile (sales-report commercial sold subtotal was $2.81M; bridge says $4.47M — different, check)
+- [ ] Backlog + pipeline PROCESS narrative
+- [ ] Goal mismatch: FPC budget $24.4M vs live SalesGoal $25.3M — pick the number
+- [ ] Confirm muni double-count w/ Nate/Brent
