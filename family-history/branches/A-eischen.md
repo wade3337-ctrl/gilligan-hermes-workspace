@@ -80,6 +80,39 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
 - Witnesses: **Sébastien Mathieu** (age 29, garde-poseur au chemin de fer — almost certainly Jean François's brother → Marie's uncle) + Jean Wagner (40, mineur). Both fathers/witnesses signed; Jean François Mathieu signed → literate.
 - → Jason's 3×-great-grandparents on this line = **Jean François Mathieu (b.~1832/33, railway track-layer) × Jeanne Wiegel (b.~1836/37)** of Marspich, Lorraine. Extends the French line another generation, from the primary civil act.
 - **Open follow-ups (next time):** exact spelling of Wiegel; Jean François & Jeanne's own birth/marriage records (their parents = Jason's 4×-greats); confirm Sébastien = brother.
+
+### 4×-greats hunt — the Mathieus are INCOMERS to Marspich (2026-08-08)
+- Checked Marspich civil-register marriage tables (reg 9 NUM/1MIE455/4): **1865 = only 2 marriages** (Naïbes×Konnert, Leblanc×Blondeau); **1864 = only 3** (Baesel×Zabele, Perlei×Monell, Schalttinne×Bernard). **NO Mathieu×Wiegel in either year**, and no Mathieu in those years' births/deaths tables.
+- → **Jean François Mathieu × Jeanne Wiegel did NOT marry in Marspich.** The Mathieu family first appears in Marspich with **Marie's 1866 birth** → they **arrived ~1865–66 for railway work** (he's a *garde-poseur au chemin de fer*; the Thionville–Hayange line served the De Wendel steelworks). They **married + originated in another commune** (unknown).
+- **Tractable next-session targets for the 4×-greats (unknown origin commune):**
+  1. **Death records of Jean François Mathieu / Jeanne Wiegel in Marspich** (later registers, reg /5+, post-1871 German era) — a death act names the deceased's parents. Best bet if they stayed + died in Marspich.
+  2. **Later Mathieu children** born Marspich 1867+ (godparents/witnesses may be extended family hinting origin) + **Sébastien Mathieu's** own records (brother).
+  3. **Broad Geneanet/Filae/FS search** for a **Mathieu × Wiegel (or Weigel) marriage ~1856–1864 in Moselle/Meurthe-et-Moselle** along the rail line.
+  4. Confirm **Wiegel** spelling from any of the above.
+
+### 🎉🎉🎉 THE "SEDAN" MEMORY WAS RIGHT AFTER ALL — mother's name is HIEGEL, family lived in SEDAN (2026-08-08)
+Broad FS search on the alt spelling **Hiegel** cracked it. A **Jean François Mathieu × Jeanne Catherine HIEGEL** couple had a string of children **in SEDAN, Ardennes** (FS "France, Ardennes, registres... 1558-1893"):
+- **Léon Mathieu** b. 16 Jul 1872 Sedan — **d. 21 Jul 1872 Sedan** (died at 5 days)
+- **Léon Henri Mathieu** b. 10 May 1874 Sedan
+- **Léon Adolphe Mathieu** b. 2 Aug 1878 Sedan → **emigrated to CALIFORNIA**, m. Katherine Walhburgh (CA County Marriages)
+- **Paul Désiré Mathieu** b. 11 Mar 1882 Sedan
+- **CORRECTION: the mother is "Jeanne Catherine HIEGEL," not Wiegel** (Hiegel = common Moselle/Bitche-area name; my zoom flagged Hiegel as an alternate reading — it was right).
+
+**Why this is almost certainly Marie's family (Strongly supported):**
+1. Same father **Jean François Mathieu** + same mother **Jeanne (Catherine) Hiegel** as Marie's 1866 Marspich birth act.
+2. **Reconciles the "Sedan" mystery:** US records (1900 census, 1946 death) said Marie was born "Sedan." We proved her BIRTH was Marspich (1866) — but the family **MOVED to Sedan** and her siblings were born there (1872–1882). Marie grew up in Sedan → that's why she always said "Sedan." **The family memory was right about the home town, just not her exact birthplace.**
+3. **Emigration pattern:** brother **Léon Adolphe → California**, just as **Marie → Chicago**. Siblings following each other to the US.
+4. Timeline fits: railway family Marspich (1866) → Sedan (by 1872). Both rail/industrial towns.
+
+**Marie Mathieu's known SIBLINGS (Jason's 2×-great aunts/uncles):** Léon (1872, d. infant), Léon Henri (1874), Léon Adolphe (1878, →CA), Paul Désiré (1882) — plus likely more between 1866–1872 not yet found.
+
+**Still open (4×-greats):** the **Mathieu × Hiegel marriage** (not yet in FS index; ~1864–65, likely Moselle where Hiegel is common) + **Jeanne Catherine Hiegel's own birth** (~1837–40) → these name Jason's 4×-great-grandparents. Next: AD Ardennes (Sedan) has the family's civil records 1872–82 (the birth acts may name grandparents/witnesses); the Sedan census (1872/76/81) would list the whole household incl. Marie if she was still home.
+
+### 🧭 HIEGEL ORIGIN LEAD — Bitche area, Moselle (2026-08-08)
+Web search: **HIEGEL is a well-documented Moselle family concentrated in the BITCHE arrondissement** — esp. **Rohrbach-lès-Bitche & Bining**, traced by dedicated Hiegel genealogists (noelhigel.fr, greg-wolf.com) back to the 1600s (e.g., Jacques Hiegel b.1673 Bining; the line runs to Rohrbach-lès-Bitche). → **Jeanne Catherine Hiegel almost certainly originated in the Bitche area (Moselle), b. ~1837–40.** That's the place to pull her birth act (names 2 of the 4×-greats) + likely the Mathieu×Hiegel marriage. Actionable next-session targets: **AD Moselle registers for Rohrbach-lès-Bitche / Bining / Bitche ~1837–1865**, or a **Geneanet** lookup (the Hiegel family is heavily documented there; a CA-emigrant branch means US descendants may have public trees).
+
+### 📍 SESSION STATUS (2026-08-08) — FS index exhausted for the parents' generation
+FS index gives the Sedan CHILDREN (1872–82) cleanly but NOT the parents' own marriage/birth/death (searched deaths in Ardennes + Jeanne Catherine's birth → only other Mathieu men, no clean hit). The 4×-greats now need **image work** (AD Moselle Bitche registers / AD Ardennes Sedan birth-act images) or **Geneanet** — a fresh-session task. Arks saved for the 4 Sedan sibling birth acts (6V2L-V7ZR, 6V2L-1DGJ, 6V2L-FNNF, 6V2L-1P2B) + Léon Adolphe's CA marriage (H9Z4-YZZM).
 - Tier: **Confirmed** (original civil birth act, act #1/1866, name+date+place all matching).
 
 ### 🎉 BREAKTHROUGH — 1888 MARRIAGE REGISTER READ (2026-08-07 late): SHE'S FROM LORRAINE, NOT SEDAN
