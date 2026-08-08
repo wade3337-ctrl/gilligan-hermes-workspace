@@ -20,9 +20,15 @@
 3. **Forecast forward municipal from the ceiling, not a flat ÷12** — pace POs by contract seasonality / historical draw pattern per city, so the number isn't a naive even spread.
 4. **Feed the coverage/forecast rollup** — this is the credible "forward municipal toward goal" number FPC's §3 wants, and the honest answer to §11 "how locked-in is municipal revenue" (anchored by NTE, realized via drip-fed POs).
 
-## Data source note
-- Realized POs / billing: TRIM IT (live, reliable) — via Brent's City Budgets engine / `Markets.MarketFocusID=2` (Cities=7).
-- NTE ceilings: **external today** (Nate/Brent). Needs a capture path into Bigin (manual entry field to start; later a contract-record object).
+## Data source note — NTE SOURCE FOUND (2026-08-08)
+- Realized POs / billing: TRIM IT (live, reliable) — `CompanyContracts` table (`TotalPrice`, `HTDBilled`, `AmountRemaining`, `Year01Budget`..`Year05Budget`) + Brent's City Budgets engine. **These fields = PO amounts Brent entered, NOT the NTE** (Skipper confirmed: a number is there only because we hold a PO for it).
+- **NTE ceilings = IN THE MUNIBOT WAREHOUSE** → `~/.munibot/municipal-archive/<County>/<City>/<term> CONTRACT/` (185 cities, bind-mounted to MuniBot `/opt/data/municipal-archive`; see [[munibot-data-warehouse]]). The NTE is stated verbatim in the **Contract Agreement + Amendment PDFs** (and Schedule of Compensation xlsx).
+  - **Proven example — Fountain Valley** (`==2021-2027 CONTRACT==/Contract Renewal/FY 25-27/Amend 2 CON-21-19.pdf`): current NTE = **$374,487.75/yr base + $25,000 contingency**; escalation history $310,500 (2021) → $349,334.50 (FY23-25) → $374,487.75 (FY25-27).
+  - Cross-check: TRIM IT `CompanyContracts` Year budget for FV = $374,335 ≈ the NTE (off ~$153) → this city's PO was cut for the full year. **Drip-feed cities will show TRIM IT PO < warehouse NTE** — that's the whole point.
+  - ✅ Warehouse VERIFIED COMPLETE 2026-08-08: the 6 previously-missing .lnk cities are now present — Long Beach (3,935 files/6.4G), Anaheim (2,327/1.2G), Aliso Viejo (275/256M), Cerritos (485/1.2G), Lake Forest (122/109M), Stanton (855/589M). The old known-gap in [[munibot-data-warehouse]] is CLOSED; full active municipal book is in the warehouse.
+
+## The extraction task (this is the AI build)
+NTE is locked in contract PROSE, not a structured field. Build = **parse each active city's Contract Agreement + latest Amendment PDF → extract {NTE base, contingency, term start/end, escalation, contract #} → structured record in Bigin.** Then: NTE (warehouse) − POs-drawn (TRIM IT `CompanyContracts`) = true remaining ceiling → the forward municipal forecast. This is a natural AI-layer job (PDF → structured contract record); pdf-parse already works on these docs (`arbor-stack/pdf-tools`).
 
 ## Cross-refs
 - FPC prep: `inbox-pull/fpc-meeting-2026-08-10/PREP-BRIEF.md` §3 municipal.

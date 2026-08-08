@@ -3,15 +3,26 @@ title: MuniBot data warehouse — Brent's 200GB municipal bid data ingest
 type: project
 domain: work
 track: 1
-status: ready-to-run (waiting on office run)
-tags: [munibot, brent, data-ingest, rsync, warehouse, transfer, resume]
-links: ["[[brent-agent]]", "[[aspen-retention-agent]]", "[[play-dev-access]]"]
-updated: 2026-07-16
+status: LIVE — warehouse complete on-disk (2026-08-08 verified full)
+tags: [munibot, brent, data-ingest, rsync, warehouse, transfer, nte, municipal-contracts]
+links: ["[[brent-agent]]", "[[aspen-retention-agent]]", "[[play-dev-access]]", "[[aspen-cockpit-to-bigin-push]]"]
+updated: 2026-08-08
 ---
 
-# MuniBot data warehouse — 200GB municipal bid data ingest
+# MuniBot data warehouse — Brent's municipal bid/contract data
 
-**Goal:** get Brent's ~200GB municipal bid folder (`\\gsts-server200\GSTS\Municipal Bid Data\Jason_Compiled`) into MuniBot's brain so it can work the bid pipeline.
+## 📍 WAREHOUSE LOCATION (don't re-hunt for this)
+**`~/.munibot/municipal-archive/`** on gilligan = MuniBot container bind-mount **`/opt/data/municipal-archive`**.
+- Structure: `<County>/<City>/<term> CONTRACT/…` — 5 counties (LA · Orange · Riverside · San Bernardino · San Diego), **185 city folders**, ~52G.
+- Contents: contract agreements + amendments (PDF), Schedule of Compensation, pricing, POs, RFPs, inventories, GIS shapefiles, work history.
+- **This is where Brent's actual municipal contract files live** — the source of truth for anything TRIM IT can't answer (esp. NTE ceilings). When the Skipper says "the warehouse" / "Brent's muni files" → it's HERE.
+
+## ⭐ NTE lives HERE, not in TRIM IT (2026-08-08 — proven)
+- **Municipal NTE (Not-To-Exceed contract ceiling) is stated verbatim in the contract/amendment PDFs in this warehouse.** TRIM IT has NO NTE field — its `CompanyContracts` values = **PO amounts Brent entered** (a number is there only because we hold a PO for it).
+- **Proven:** Fountain Valley `Orange County/Fountain Valley/==2021-2027 CONTRACT==/Contract Renewal/FY 25-27/Amend 2 CON-21-19.pdf` → current NTE **$374,487.75/yr base + $25,000 contingency** (history $310,500→$349,334.50→$374,487.75). `pdf-parse` (`arbor-stack/pdf-tools`) reads these cleanly.
+- Build spec (NTE extraction → Bigin, NTE − PO-drawn = forward forecast): `aspen-stack/MUNICIPAL-NTE-vs-PO-build-note.md` → [[aspen-cockpit-to-bigin-push]].
+
+**Original goal:** get Brent's municipal bid folder (`\\gsts-server200\GSTS\Municipal Bid Data\Jason_Compiled`) into MuniBot's brain so it can work the bid pipeline.
 
 ## ▶️ RESUME (2026-07-17): TRANSFER RUNNING from Skipper's home laptop
 - The ~42GB was **already staged** on the home laptop from an earlier two-hop attempt at `%LOCALAPPDATA%\MuniSync\data` (`C:\Users\JWade\AppData\Local\MuniSync\data`) — 42.6GB / 22,792 files / 2,082 folders. So we skipped the office/VPN/SMB path entirely.
@@ -19,8 +30,8 @@ updated: 2026-07-16
 - **Watchdog armed:** cron `*/30 upload-progress-monitor.sh` emails Skipper on done/stall, self-removes.
 - **MuniBot repointed:** SOUL + memory now name `/opt/data/municipal-archive/` (absolute) as raw source; old empty `~/home/municipal-history/` retired.
 
-## ⚠️ KNOWN GAP — 7 `.lnk` shortcut cities did NOT transfer (2026-07-17)
-rsync copied the 1,973-byte Windows shortcut stub, not the folder behind it. Missing city data: **Long Beach, Anaheim, Aliso Viejo, Cerritos, Lake Forest, Stanton** (+ a `CustomerInfo (192.168.1.6)` network-share shortcut). **To fix:** on the laptop resolve each shortcut's real target and either copy the real folder into `…\MuniSync\data\<County>\<City>\` or add its path to the sync, then re-run `SyncMuni-LOCAL.cmd`. (Long Beach packet itself is in hand from Brent's 2026-07-16 email; only its warehouse *history* is missing.)
+## ✅ GAP CLOSED — the 6 `.lnk` cities are NOW IN the warehouse (verified 2026-08-08)
+Previously the 6 shortcut-stub cities hadn't transferred; a later re-run landed them. **All present now:** Long Beach (LA County, 3,935 files/6.4G) · Anaheim (OC, 2,327/1.2G) · Cerritos (LA, 485/1.2G) · Stanton (OC, 855/589M) · Aliso Viejo (OC, 275/256M) · Lake Forest (OC, 122/109M). **Full active municipal book is in the warehouse.** (Historical note: rsync had copied the 1,973-byte shortcut stub, not the folder behind it; resolved by copying the real targets and re-running.)
 
 ## ✅ Verified contents (2026-07-17): 185 city folders / 5 counties
 ~3,562 "bid", 1,188 "proposal", 319 "cost", 291 "schedule", 201 "compensation", 210 "award", 7,835 "invoice", 733 "inventory" files + GIS shapefiles. Feeds [[munibot-smart-bidding-tool]] (historical-bids + schedule-of-comp signals).
