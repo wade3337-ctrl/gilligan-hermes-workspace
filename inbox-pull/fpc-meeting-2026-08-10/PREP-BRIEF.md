@@ -122,11 +122,28 @@ Live commercial run-rate (invoiced, this session):
 - Reconciles: muni $5.05M + comm $6.84M + unassigned $1.49M ≈ $13.37M total ✓
 - **$1.65M gap (bridge $4.47M vs sales-report $2.81M):** same pattern as municipal — sales report = REP-ATTRIBUTED only; bridge adds recurring/contract commercial + HOA. (Inferred from parallel structure; can't fully verify bridge composition — call it "different bases.")
 - **Verdict: forward commercial looks CONSERVATIVE** — run-rate says H2 commercial+HOA ≈ $7.1M; bridge claims only $4.47M sold + Proj. Commercial TBD. Headroom, not a stretch (opposite of municipal).
-- ⭐ **"Proj. Commercial TBD" = the pre-bid forecasting gap** (~$2.6M between run-rate and sold) — forward commercial they can't forecast because it's not sold yet + TRIM IT is blind pre-bid. THIS is what Bigin/Aspen fills.
+- ⭐ **"Proj. Commercial TBD" = the pre-bid forecasting gap** (~$2.6M between run-rate and sold) — forward commercial not yet forecastable.
+  - ⚠️ CORRECTED framing (Skipper 2026-08-08): TRIM IT is NOT blind pre-bid. It HAS the RFP queue + travelers with `EstValue`, `ProposalDueDate`, `NextActionDate`, follow-ups. **The visibility exists — it's just not ORGANIZED to forecast from.** Live proof: RFPs table = 1.69M rows, completion dates unmaintained, only 174 with a future proposal-due-date and those carry NULL EstValue. So the data's there but unusable as-is.
+  - **The pitch:** "The pre-bid pipeline data already lives in TRIM IT; Bigin/Aspen organizes it into a clean, rep-owned, dollar-weighted, forecastable pipeline." (Structuring existing visibility, NOT building sight from blindness — more credible.)
 - 🧹 Cleanup flag: $1.49M "unassigned" (NULL MarketID, mostly HOA) — not market-classified in TRIM IT.
 
+### Goal number (DECIDED 2026-08-08, Skipper aligned)
+Live `Workbench.dbo.SalesGoal` (pulled this session) = **$25,300,976** (12 monthly targets, set by Jason/ZUser 9 on 2026-07-22).
+
+**Landscape:** FPC budget **$24.40M** (their underwriting) · internal SalesGoal **$25.30M** (live, Jason-set stretch) · $25.1M old team goal · $25.05M deal-dashboard (STALE/broken).
+
+**DECISION (locked):**
+- **Lead with $24.40M as plan-of-record** — aligns with FPC's underwriting, one consistent number, July's pace supports it.
+- **Frame $25.30M as the internal STRETCH goal** — "we set the team target above budget to drive performance" (turns the ~$900K gap into a positive; pre-empts them noticing two numbers).
+- **Retire $25.1M and $25.05M** — don't let stale numbers into the room.
+- ⚠️ **Trap to avoid:** do NOT quote $25.3M as "the goal" — H1 came in ~$11.1–11.3M vs the internal goal's H1 of $12.25M (~$1M behind). Against $24.4M budget you're much closer to on-pace. Speak to budget; hold stretch as upside.
+
 ### Still to drill in §3:
-- [ ] Pre-bid forecasting story (Proj. Commercial TBD → Bigin/Aspen) — the real ask (NEXT, teed up)
-- [ ] Backlog + pipeline PROCESS narrative
-- [ ] Goal mismatch: FPC budget $24.4M vs live SalesGoal $25.3M — pick the number
-- [ ] Confirm muni double-count w/ Nate/Brent
+- [ ] Backlog + pipeline PROCESS narrative (how leads/RFP-queue/proposals/backlog flow by system)
+### Muni double-count RESOLVED (Skipper 2026-08-08) + the NET-OUT (key Monday synthesis)
+- **Skipper confirmed: the $5.1M "Municipal Sold" is ALL-IN — it already includes the $888K "Muni Budgets Remaining."** So FPC's bridge lists $888K TWICE → bridge is **$888K optimistic** on municipal (identifiable pieces really ~$23.5M, not $24.4M).
+- **BUT it nets the OTHER way — don't stop at "$888K light":**
+  - Muni double-count = bridge **+$888K optimistic**.
+  - Commercial = bridge **~$2.6M pessimistic** ("Proj. Commercial TBD" blank; run-rate says ~$7.1M forward commercial vs $4.47M booked).
+  - **NET ≈ +$1.7M cushion** — commercial under-count more than covers the muni over-count. **$24.4M is still reachable, arguably conservative overall.**
+- **Room handling:** don't volunteer "your bridge double-counts." If FPC walks the math: *"Municipal is all-in — the $888K remaining budget is already inside the $5.1M, don't add it twice. But commercial is conservative by more than that vs our run-rate, so the plan nets out achievable."* = position of command.
