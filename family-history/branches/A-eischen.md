@@ -111,6 +111,16 @@ Broad FS search on the alt spelling **Hiegel** cracked it. A **Jean François Ma
 ### 🧭 HIEGEL ORIGIN LEAD — Bitche area, Moselle (2026-08-08)
 Web search: **HIEGEL is a well-documented Moselle family concentrated in the BITCHE arrondissement** — esp. **Rohrbach-lès-Bitche & Bining**, traced by dedicated Hiegel genealogists (noelhigel.fr, greg-wolf.com) back to the 1600s (e.g., Jacques Hiegel b.1673 Bining; the line runs to Rohrbach-lès-Bitche). → **Jeanne Catherine Hiegel almost certainly originated in the Bitche area (Moselle), b. ~1837–40.** That's the place to pull her birth act (names 2 of the 4×-greats) + likely the Mathieu×Hiegel marriage. Actionable next-session targets: **AD Moselle registers for Rohrbach-lès-Bitche / Bining / Bitche ~1837–1865**, or a **Geneanet** lookup (the Hiegel family is heavily documented there; a CA-emigrant branch means US descendants may have public trees).
 
+### 🇺🇸 Marie's brother Léon Adolphe Mathieu — FULLY TRACED in America (2026-08-08)
+Jason's **great-great-uncle** (Marie Mathieu's younger brother), documented US trail:
+- b. **2 Aug 1878, Sedan** → emigrated to US (Ellis Island manifest 31 May 1897; a 1930 census says imm. 1917 — one is him).
+- **WWI veteran** (US VA Master Index: military service 10 Oct 1919, St. Louis MO).
+- m. **Katherine Walhburgh, 21 Oct 1919, Los Angeles** (CA County Marriages) — this record re-confirms parents **Jean François Mathieu + Jeanne Catherine Hiegel**.
+- Residences: Chicago / Lake Forest IL → St. Louis → **Hot Springs / Little Rock, Arkansas**.
+- d. **15 Feb 1955, Hot Springs, Arkansas**; buried Little Rock (FindAGrave + BillionGraves + newspaper obit).
+- ⚠️ US NUMIDENT lists his father as **"Jules Mathieu"** (variant/nickname for Jean François?) + mother Catherine Hiegel — minor discrepancy to note.
+- → Both Marie AND Léon Adolphe emigrated to the US (Chicago / then Arkansas) — a two-sibling emigration; there may be living American descendants of Léon with trees back to the 4×-greats.
+
 ### 📍 SESSION STATUS (2026-08-08) — FS index exhausted for the parents' generation
 FS index gives the Sedan CHILDREN (1872–82) cleanly but NOT the parents' own marriage/birth/death (searched deaths in Ardennes + Jeanne Catherine's birth → only other Mathieu men, no clean hit). The 4×-greats now need **image work** (AD Moselle Bitche registers / AD Ardennes Sedan birth-act images) or **Geneanet** — a fresh-session task. Arks saved for the 4 Sedan sibling birth acts (6V2L-V7ZR, 6V2L-1DGJ, 6V2L-FNNF, 6V2L-1P2B) + Léon Adolphe's CA marriage (H9Z4-YZZM).
 - Tier: **Confirmed** (original civil birth act, act #1/1866, name+date+place all matching).
