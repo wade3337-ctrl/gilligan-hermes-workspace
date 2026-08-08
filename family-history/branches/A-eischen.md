@@ -90,6 +90,13 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
   3. **Broad Geneanet/Filae/FS search** for a **Mathieu × Wiegel (or Weigel) marriage ~1856–1864 in Moselle/Meurthe-et-Moselle** along the rail line.
   4. Confirm **Wiegel** spelling from any of the above.
 
+### 4×-greats hunt — progress + the pivot (2026-08-08, Jason's browser on archives57 Moselle)
+- Mother's name CORRECTED to **Jeanne Catherine HIEGEL** (Hiegel = Bitche-area Moselle family; homeland Bining / Rohrbach-lès-Bitche).
+- Hand-checked on archives57 (Jason reading images): **Rohrbach-lès-Bitche 1837 births** (index too faint + too many Catherine Hiegels to disambiguate) and **Bining-lès-Rohrbach 1864 marriage index (reg 86EC6)** = **7 marriages, NO Mathieu groom, NO Hiegel bride** → not Bining 1864. (Bining has Hiegels: Bernard Hiegel married 1864, a Catherine Hiegel born 1864 — family present, not our couple.)
+- ⚠️ **The exact Bitche village + marriage year is a genuine needle** (Bining + Rohrbach-lès-Bitche + ~5 other villages × 1862–1865). Hand-scanning is low-yield.
+- 🔑 **PIVOT (the master key that skips village-guessing): the couple's DEATH acts in SEDAN.** They lived/raised kids in Sedan; a French death act names the deceased's PARENTS outright → gives the 4×-greats DIRECTLY, no birth-village needed. **"Hiegel" is RARE in the Ardennes**, so Jeanne Catherine's Sedan death is findable. Source: **cd08.fr (AD Ardennes)** → Sedan → décès → décennale tables 1883–1892 / 1893–1902 / 1903–1912 → hunt "Hiegel" or "Mathieu, Jean François." (Death year unknown; both b.~1833/1837 → likely die ~1890s–1910s.)
+- Alt levers: Geneanet (Hiegel family heavily documented; CA-emigrant branch = US descendant trees) · Léon Adolphe's US naturalization (may state a parent's birthplace).
+
 ### 🎉🎉🎉 THE "SEDAN" MEMORY WAS RIGHT AFTER ALL — mother's name is HIEGEL, family lived in SEDAN (2026-08-08)
 Broad FS search on the alt spelling **Hiegel** cracked it. A **Jean François Mathieu × Jeanne Catherine HIEGEL** couple had a string of children **in SEDAN, Ardennes** (FS "France, Ardennes, registres... 1558-1893"):
 - **Léon Mathieu** b. 16 Jul 1872 Sedan — **d. 21 Jul 1872 Sedan** (died at 5 days)
