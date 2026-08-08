@@ -72,6 +72,16 @@ Complete Mathieu birth block for the decade, transcribed from the alphabetical i
 - **New precise target:** birth indexes of **Sedan-arrondissement communes** (Torcy, Balan, Bazeilles, Floing, Wadelincourt, Donchery, Glaire, Sedan-Fond-de-Givonne, etc.) for **"Mathieu, [Marie], 3 January 1866."** Very findable given the exact date.
 - Best single US doc still unread = the **1888 Chicago Catholic marriage act IMAGE** (French Catholic marriage acts usually name the bride's father + birth parish) — FS index has it but not the parent fields; image may be restricted.
 
+### 🎉🎉 FOUND HER BIRTH ACT — Marie Mathieu's PARENTS (2026-08-08, read on AD Moselle via Jason's laptop)
+**Source:** Archives départementales de la Moselle (archives57.com), Marspich civil registers **9 NUM/1MIE455/4 (1843–1871)**, État civil de l'année **1866**, **Acte de naissance No. 1**, image ~433/538. Read directly off the register scan.
+- **Marie MATHIEU** — b. **3 January 1866, Marspich** (female; "le prénom de Marie"). ✅ EXACT match to US records (1900 census + 1946 death both = 3 Jan 1866). This is Adeline Eischen's mother. CONFIRMED birth act.
+- **FATHER: Jean François Mathieu**, age **33** (→ b. ~1832/33), **railway worker** ("garde au chemin de fer"), domiciled Marspich.
+- **MOTHER: Jeanne Wiegel** (reads W-i-e-g-e-l; alt Weigel/Hiegel — common Moselle names; confirm exact spelling via her marriage/own birth record), age **29** (→ b. ~1836/37), no profession, his wife, Marspich.
+- Witnesses: **Sébastien Mathieu** (age 29, garde-poseur au chemin de fer — almost certainly Jean François's brother → Marie's uncle) + Jean Wagner (40, mineur). Both fathers/witnesses signed; Jean François Mathieu signed → literate.
+- → Jason's 3×-great-grandparents on this line = **Jean François Mathieu (b.~1832/33, railway track-layer) × Jeanne Wiegel (b.~1836/37)** of Marspich, Lorraine. Extends the French line another generation, from the primary civil act.
+- **Open follow-ups (next time):** exact spelling of Wiegel; Jean François & Jeanne's own birth/marriage records (their parents = Jason's 4×-greats); confirm Sébastien = brother.
+- Tier: **Confirmed** (original civil birth act, act #1/1866, name+date+place all matching).
+
 ### 🎉 BREAKTHROUGH — 1888 MARRIAGE REGISTER READ (2026-08-07 late): SHE'S FROM LORRAINE, NOT SEDAN
 **Source:** St. Alphonsus (Chicago) Catholic **Religious Marriage Records 1882–1911**, DGS film #004284442, **image 14/106, entry no. 12**, ark 3:1:S3HT-6QXG-TT. (Unlocked after a FRESH FS login — the earlier "restricted" was a STALE session, not a hard block. Verified at high zoom.)
 - **Groom: "Louis Eishen, *von Mondorf, Luxemburg*"** (from Mondorf, Luxembourg). Priest Fr. Aug. Ahlert C.SS.R.; 2 proclamations.

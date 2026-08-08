@@ -8,7 +8,7 @@
 ---
 
 ## ⭐ Headline answers to the original questions
-1. **Was the family French? YES — documented.** ✅ The French line runs through **Mary Mathieu**, born **1866 in France** (1900 U.S. Census lists her birthplace *and both her parents'* birthplace as **France**; the 1910 census lists daughter Adeline's mother as France-born). The *Eischen* surname is **Luxembourg/German**, so the French came in through the **Mathieu** women — not the Eischen name.
+1. **Was the family French? YES — documented all the way to the birth register.** ✅ The French line runs through **Marie Mathieu**, born **3 January 1866 in Marspich, Lorraine** (Moselle, France) — proven from her **original civil birth act**. The family memory said "Sedan"; that was wrong by ~150 km — the primary record puts her in **Marspich**, an iron/steel town near the Luxembourg border. Marspich was **France** at her 1866 birth (Lorraine wasn't annexed by Germany until 1871), so the census "born France, both parents French" is correct, and her remembered **French songs = Lorraine French culture**. The *Eischen* surname is **Luxembourg/German**; the French came through the **Mathieu** line. **We now have her parents (see §2).**
 2. **Norman × Adeline marriage:** 🟩 **1 January 1926, Cook County, Illinois** (a Cook County marriage record is attached). The family's guess of California/Fresno was wrong — they married in the Chicago area, where Adeline was born.
 3. **Adeline's origins:** 🟩 born **21 Aug 1900, Park Ridge, Cook Co., Illinois**; died **25 Nov 1990, San Diego**. Parents **Louis S. Eischen** (b. Germany/Luxembourg) + **Mary Mathieu** (b. France).
 4. **Norman's parents (were "to verify"):** 🟩 **Newton Elmer Ainsworth Sr (1861–1930)** + **Emma Dean Sweet (1861–1918)** — now record-backed.
@@ -43,7 +43,8 @@
 - **Samuel G. Wade (1829–1895)** × **Emily A. Kyle** — Lawrence Co., OH.
 - **George W. Thompson (1833–1911)** × **Margaret Busby (1834–1913)**, m. 1856, Harrison Co., OH.
 - **Newton Elmer Ainsworth Sr (1861–1930)** × **Emma Dean Sweet (1861–1918)**.
-- **Louis S. Eischen (1864–1929)**, b. Germany/Luxembourg × **Mary Mathieu (1866–1946)**, **b. France** 🇫🇷 ✅.
+- **Louis S. Eischen (1863–1929)**, b. **Rollingen/Mondorf, Luxembourg** × **Marie Mathieu (1866–1946)**, **b. Marspich, Lorraine, France** 🇫🇷 ✅ (both origins from primary records).
+- **NEW — 3×-great-grandparents (Marie's parents, from her 1866 birth act):** **Jean François Mathieu (b.~1832/33, railway track-layer, Marspich)** × **Jeanne Wiegel (b.~1836/37)** ✅.
 - **Harry Clinton Gaunt** × **Dorothy "Dorsie" Dell Schuessler** (source of the odd "Schuessler" first name).
 - **John Ray Hanley (1888–1947)** × **Bertha Ballew (1895–1950)**, m. **3 Jun 1914, Kansas City, KANSAS**. 🟩
 
@@ -53,12 +54,15 @@
 
 ---
 
-## 2. The French question — the evidence chain (✅ Confirmed)
-- **1900 U.S. Census (Mary Mathieu, in Louis Eischen's household):** Birthplace **France**; Father's birthplace **France**; Mother's birthplace **France**. Husband Louis = Luxemburg.
-- **1910 U.S. Census (Eischen household, Shields Twp, Lake Co., IL):** Adeline b. Illinois; **mother "Mary Eischen, France"**, father "Lou Eischen, Germany."
-- **Family tree detail:** Mary Mathieu b. 3 Jan 1866, **Sedan, Ardennes, France**; immigrated; m. Louis Eischen 16 Apr 1888, Cook Co., IL (incl. an **1888 Chicago Catholic church record**); d. 1946, Waukegan, IL.
-- **Conclusion:** the family's memory of a French great-(great-)grandmother who sang French songs is **true**, and it traces to **Mary Mathieu of Sedan, France.**
-- ⚠️ *Caveat:* Mary Mathieu's own **parents' names** on the tree are a bad data-merge (they show as "Eischen," which is wrong). Their *nationality* (French) is confirmed by census; their *names* await the actual Sedan birth/baptism record. ⬜
+## 2. The French question — the evidence chain (✅ Confirmed to the primary birth register)
+We walked this from oral history all the way to an original document, each step corroborating the next:
+- **1900 U.S. Census** (Marie Mathieu, in Louis Eischen's household): Birthplace **France**; *both her parents'* birthplace **France**. (Husband Louis = Luxemburg.)
+- **1910 U.S. Census** (Eischen household, Shields Twp, Lake Co., IL): Adeline b. Illinois; **mother "Mary Eischen, France."**
+- **1888 marriage act** (St. Alphonsus Catholic Church, Chicago, 16 Apr 1888 — image read): recorded her origin in the German style as ***"Maria Mathean aus Marspich, Lothringen"*** = **Marie Mathieu from Marspich, Lorraine** (and groom ***"Louis Eischen von Mondorf, Luxemburg"***). **This is what corrected "Sedan" → Marspich.**
+- **1866 civil birth act** (Archives de la Moselle — Marspich register 9 NUM/1MIE455/4, *État civil 1866, acte de naissance No. 1*, image read): **Marie Mathieu, born 3 January 1866, Marspich** — matching the U.S. records to the exact day — **daughter of Jean François Mathieu (33, railway track-layer, who signed the act) and Jeanne Wiegel (29).** Witness **Sébastien Mathieu** (29, railway track-layer), likely the father's brother.
+- **Conclusion:** the family's French great-great-grandmother is **documented**: **Marie Mathieu of Marspich, Lorraine**, daughter of a literate railway family. The "French songs" memory is confirmed Lorraine heritage.
+- ⚠️ *Minor open item:* the **exact spelling of the mother's surname** reads **Wiegel** (could be Weigel/Hiegel — all common Moselle names); one follow-up record will pin it.
+- 🔎 *Note on the old "Sedan" idea:* it appears in the U.S. census/death index but is **refuted** by the primary records above — a ~150 km error, wrong département. Marspich, Moselle is correct.
 
 ---
 
@@ -69,6 +73,8 @@
 ---
 
 ## 4. Corrections to the earlier family notes
+- Marie Mathieu birthplace: family said "Sedan" → **Marspich, Moselle (Lorraine), 3 Jan 1866** (from her birth act).
+- Louis Eischen origin: → **Rollingen/Mondorf, Luxembourg** (parents Harry Eischen × Anna Petrie).
 - Adeline Eischen: "circa 1901, birthplace unknown" → **21 Aug 1900, Park Ridge, IL**; death **25 Nov 1990, San Diego**.
 - Norman × Adeline married in **Cook Co., Illinois (1926)**, not California.
 - Thomas Samuel Wade born **Kentucky**, not Ohio.
@@ -78,7 +84,7 @@
 ---
 
 ## 5. Open items & conflicts (honest list)
-- **Mary Mathieu's parents' names** — unverified (tree merge error); need Sedan, France birth/baptism (Ardennes civil records, 1866).
+- ✅ **Marie Mathieu's parents — NOW FOUND** (Jean François Mathieu × Jeanne Wiegel, Marspich, from the 1866 birth act). Remaining: confirm the **Wiegel** spelling + go one generation deeper (their own births/marriage name their parents = the 4×-greats).
 - **Rhoda–Gaunt 1932 marriage record** — still not located (Webb City, MO date is from a family-written memorial, not a primary record).
 - **George Junior Ainsworth (b. 1920)** listed as Donald's sibling but born *before* Norman & Adeline's 1926 marriage — needs resolution (wrong year, earlier relationship, or tree error).
 - Jack's **1940-census** attachment is chronologically impossible (mis-attached).
@@ -88,7 +94,7 @@
 ---
 
 ## 6. Best next records to pull (to move 🟩 → ✅ and go deeper)
-1. **Mary Mathieu — Sedan, Ardennes, France birth/baptism (1866)** → her true parents + extends the line into France.
+1. ✅ **DONE — Marie Mathieu's 1866 Marspich birth act** → named her parents (Jean François Mathieu × Jeanne Wiegel). Next: their marriage record (names both sets of *their* parents = the 4×-greats) in the Marspich/Moselle registers, ~1855–1865.
 2. **Norman × Adeline 1926 Cook County, IL marriage image** → confirms both sets of parents in one document.
 3. **Abijah Ballew Union Civil War pension file** (NARA) → a narrative-rich record.
 4. **Louis Eischen naturalization** → Luxembourg/German origin town.
