@@ -115,9 +115,18 @@ Live pull this session — Aspen read-only gateway, play DB. TWO LENSES (both re
 
 **Municipal FPC answer:** "Completed municipal reconciles to live within ~2%. The forward figure is a contract-budget-based forecast (annual budget ÷ 12), not booked WOs — reliable because it's recurring city work, but it's a forecast."
 
+### Commercial Sold reconciliation (DONE) — verdict: CONSERVATIVE, and it teed up the pre-bid story
+Live commercial run-rate (invoiced, this session):
+- Commercial (MarketFocusID=1): Jan–Jul $6.84M, ~$977K/mo; **July high = $1.195M**
+- + HOA/unassigned (NULL market): $1.49M → combined commercial+HOA run-rate ≈ **$1.19M/mo**
+- Reconciles: muni $5.05M + comm $6.84M + unassigned $1.49M ≈ $13.37M total ✓
+- **$1.65M gap (bridge $4.47M vs sales-report $2.81M):** same pattern as municipal — sales report = REP-ATTRIBUTED only; bridge adds recurring/contract commercial + HOA. (Inferred from parallel structure; can't fully verify bridge composition — call it "different bases.")
+- **Verdict: forward commercial looks CONSERVATIVE** — run-rate says H2 commercial+HOA ≈ $7.1M; bridge claims only $4.47M sold + Proj. Commercial TBD. Headroom, not a stretch (opposite of municipal).
+- ⭐ **"Proj. Commercial TBD" = the pre-bid forecasting gap** (~$2.6M between run-rate and sold) — forward commercial they can't forecast because it's not sold yet + TRIM IT is blind pre-bid. THIS is what Bigin/Aspen fills.
+- 🧹 Cleanup flag: $1.49M "unassigned" (NULL MarketID, mostly HOA) — not market-classified in TRIM IT.
+
 ### Still to drill in §3:
-- [ ] Pre-bid forecasting story (Proj. Commercial TBD → Bigin/Aspen) — the real ask
-- [ ] Commercial Sold $4.47M — reconcile (sales-report commercial sold subtotal was $2.81M; bridge says $4.47M — different, check)
+- [ ] Pre-bid forecasting story (Proj. Commercial TBD → Bigin/Aspen) — the real ask (NEXT, teed up)
 - [ ] Backlog + pipeline PROCESS narrative
 - [ ] Goal mismatch: FPC budget $24.4M vs live SalesGoal $25.3M — pick the number
 - [ ] Confirm muni double-count w/ Nate/Brent

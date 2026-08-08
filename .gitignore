@@ -14,3 +14,9 @@ memory/_backups/
 
 # Obsidian per-vault local config (viewer state, not memory) — do not track
 .obsidian/
+
+# Confidential M&A diligence (Fort Point) + employee PII — LOCAL ONLY, never push
+inbox-pull/fpc-meeting-2026-08-10/*.pdf
+inbox-pull/fpc-meeting-2026-08-10/*.xlsx
+inbox-pull/fpc-meeting-2026-08-10/datapack.txt
+inbox-pull/fpc-meeting-2026-08-10/roster/
