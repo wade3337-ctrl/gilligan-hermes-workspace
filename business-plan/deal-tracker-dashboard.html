@@ -28,47 +28,47 @@
  details summary{cursor:pointer;padding:8px 0} details td{font-size:12px}
  .foot{color:#6e7681;font-size:11px;margin-top:14px}
 </style></head><body>
-<h1>🎯 GSTS Revenue Ledger — count-once path to $26.40M</h1>
-<div class="sub"><span class="live">● LIVE</span> from TRIM IT (play, ~24h behind prod) · 2026-08-08 12:00 UTC · auto-refresh 15 min · Confidential (Skipper only). Financial = accounting-period, status-filtered. Production board kept separate.</div>
+<h1>🎯 GSTS Revenue Ledger — count-once path to $25.05M</h1>
+<div class="sub"><span class="live">● LIVE</span> from TRIM IT (play, ~24h behind prod) · 2026-08-08 14:00 UTC · auto-refresh 15 min · Confidential (Skipper only). Financial = accounting-period, status-filtered. Production board kept separate.</div>
 
 <div class="hero">
-<div class="card"><div class="lab">Annual Goal</div><div class="big ">$26.40M</div><div class="tgt">GoalSettings×12 · $2,200,000/mo</div></div>
-<div class="card"><div class="lab">Adjusted Actual YTD</div><div class="big gk">$13.23M</div><div class="tgt">invoiced $13.39M + accrual bridge (live)</div></div>
-<div class="card"><div class="lab">Municipal Forecast (rem.)</div><div class="big gbl">$3.74M</div><div class="tgt">calendar H2 · engine recon $3.02M</div></div>
-<div class="card"><div class="lab">Firm Sold Coverage</div><div class="big gk">$2.50M</div><div class="tgt">nonmuni WOs dated ≤12/31</div></div>
-<div class="card"><div class="lab">Risk-Adj Fresh Pipeline</div><div class="big gbl">$1.77M</div><div class="tgt">$4.42M HOA/Comm × 40%</div></div>
-<div class="card"><div class="lab">Uncovered Gap</div><div class="big gb">$5.16M</div><div class="tgt">still needs NEW sales/scheduling</div></div>
+<div class="card"><div class="lab">Annual Goal</div><div class="big ">$25.05M</div><div class="tgt">GoalSettings×12 (snapshot) · $2,087,119/mo</div></div>
+<div class="card"><div class="lab">Adjusted Actual YTD</div><div class="big gk">$0.00M</div><div class="tgt">invoiced $0.00M + accrual bridge (live)</div></div>
+<div class="card"><div class="lab">Municipal Forecast (rem.)</div><div class="big gbl">$3.74M</div><div class="tgt">calendar H2 · engine recon n/a</div></div>
+<div class="card"><div class="lab">Firm Sold Coverage</div><div class="big gk">$0.00M</div><div class="tgt">nonmuni WOs dated ≤12/31</div></div>
+<div class="card"><div class="lab">Risk-Adj Fresh Pipeline</div><div class="big gbl">$0.00M</div><div class="tgt">$0.00M HOA/Comm × 40%</div></div>
+<div class="card"><div class="lab">Uncovered Gap</div><div class="big gb">$21.30M</div><div class="tgt">still needs NEW sales/scheduling</div></div>
 </div>
 
-<div class="covwrap"><div class="lab">Count-once bridge to $26.40M — every dollar counted once</div>
+<div class="covwrap"><div class="lab">Count-once bridge to $25.05M — every dollar counted once</div>
  <div class="cov">
-  <div class="a" style="width:50%">$13.23M actual</div>
-  <div class="mu" style="width:14%">$3.74M muni</div>
-  <div class="fw" style="width:9%">$2.50M firm</div>
-  <div class="pp" style="width:7%">$1.77M pipe</div>
-  <div class="gap" style="width:20%">$5.16M gap</div>
+  <div class="a" style="width:6%">$0.00M actual</div>
+  <div class="mu" style="width:15%">$3.74M muni</div>
+  <div class="fw" style="width:5%">$0.00M firm</div>
+  <div class="pp" style="width:4%">$0.00M pipe</div>
+  <div class="gap" style="width:85%">$21.30M gap</div>
  </div>
- <div class="covleg">Actual <b style="color:#2f81f7">$13.23M</b> + Muni forecast <b style="color:#58a6ff">$3.74M</b> + Firm sold <b style="color:#3fb950">$2.50M</b> + Pipeline@40% <b style="color:#a371f7">$1.77M</b> = <b>$21.24M</b> covered → <b style="color:#e3b341">$5.16M</b> still needs new sales. <span style="color:#6e7681">No layer double-counted: firm/pipeline exclude municipal &amp; each other; muni forecast is contract budget, not scheduled crew.</span></div>
+ <div class="covleg">Actual <b style="color:#2f81f7">$0.00M</b> + Muni forecast <b style="color:#58a6ff">$3.74M</b> + Firm sold <b style="color:#3fb950">$0.00M</b> + Pipeline@40% <b style="color:#a371f7">$0.00M</b> = <b>$3.74M</b> covered → <b style="color:#e3b341">$21.30M</b> still needs new sales. <span style="color:#6e7681">No layer double-counted: firm/pipeline exclude municipal &amp; each other; muni forecast is contract budget, not scheduled crew.</span></div>
 </div>
 
-<div class="warn" style="border-left-color:#3fb950"><b style="color:#3fb950">✔ Accrual bridge (live):</b> Adjusted Actual = invoiced <b>$13.39M</b> + current-period accrual <b>$2K</b> − year-start (Dec) accrual <b>$161K</b> = <b>$13.23M</b>. From <code>dbo.GetPeriodAccrual</code> — the billing-cycle-aware municipal accrual Steve confirmed &amp; shipped to prod (% -of-completion, only work whose billing period is after the current period). <span style="color:#6e7681">Current period is partial-month, so the accrual grows toward month-end.</span></div>
+<div class="warn" style="border-left-color:#3fb950"><b style="color:#3fb950">✔ Accrual bridge (live):</b> Adjusted Actual = invoiced <b>$0.00M</b> + current-period accrual <b>$0K</b> − year-start (Dec) accrual <b>$0K</b> = <b>$0.00M</b>. From <code>dbo.GetPeriodAccrual</code> — the billing-cycle-aware municipal accrual Steve confirmed &amp; shipped to prod (% -of-completion, only work whose billing period is after the current period). <span style="color:#6e7681">Current period is partial-month, so the accrual grows toward month-end.</span></div>
 
 <h3>Monthly financial actual (accounting period) vs goal</h3>
-<table><tr><th>Month</th><th>Goal</th><th>Invoiced (adj. actual)</th><th>Δ / to go</th><th></th></tr><tr class="gbad"><td>Jan</td><td>$2.20M</td><td>$1.62M</td><td>−$0.58M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Feb</td><td>$2.20M</td><td>$1.70M</td><td>−$0.50M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Mar</td><td>$2.20M</td><td>$1.69M</td><td>−$0.51M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Apr</td><td>$2.20M</td><td>$2.18M</td><td>−$0.02M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>May</td><td>$2.20M</td><td>$1.90M</td><td>−$0.30M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Jun</td><td>$2.20M</td><td>$2.00M</td><td>−$0.20M</td><td class="stcell">✗</td></tr><tr class="gok"><td>Jul</td><td>$2.20M</td><td>$2.22M</td><td>+$0.02M</td><td class="stcell">✅</td></tr><tr class="gcur"><td>Aug</td><td>$2.20M</td><td>$0.09M</td><td>$2.11M left</td><td class="stcell">◐</td></tr><tr class="gsoft"><td>Sep</td><td>$2.20M</td><td>—</td><td>$2.20M</td><td class="stcell">·</td></tr><tr class="gsoft"><td>Oct</td><td>$2.20M</td><td>—</td><td>$2.20M</td><td class="stcell">·</td></tr><tr class="gsoft"><td>Nov</td><td>$2.20M</td><td>—</td><td>$2.20M</td><td class="stcell">·</td></tr><tr class="gsoft"><td>Dec</td><td>$2.20M</td><td>—</td><td>$2.20M</td><td class="stcell">·</td></tr></table>
+<table><tr><th>Month</th><th>Goal</th><th>Invoiced (adj. actual)</th><th>Δ / to go</th><th></th></tr><tr class="gbad"><td>Jan</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Feb</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Mar</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Apr</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>May</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Jun</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gbad"><td>Jul</td><td>$2.09M</td><td>$0</td><td>−$2.09M</td><td class="stcell">✗</td></tr><tr class="gcur"><td>Aug</td><td>$2.09M</td><td>$0.00M</td><td>$2.09M left</td><td class="stcell">◐</td></tr><tr class="gsoft"><td>Sep</td><td>$2.09M</td><td>—</td><td>$2.09M</td><td class="stcell">·</td></tr><tr class="gsoft"><td>Oct</td><td>$2.09M</td><td>—</td><td>$2.09M</td><td class="stcell">·</td></tr><tr class="gsoft"><td>Nov</td><td>$2.09M</td><td>—</td><td>$2.09M</td><td class="stcell">·</td></tr><tr class="gsoft"><td>Dec</td><td>$2.09M</td><td>—</td><td>$2.09M</td><td class="stcell">·</td></tr></table>
 
 <div class="cols">
- <div><h3>🗓️ Sold work with NO 2026 date (273)</h3><div class="panel"><table>
-   <tr><td>Undated / beyond-year sold WOs</td><td class="ga">$3.40M</td></tr>
+ <div><h3>🗓️ Sold work with NO 2026 date (0)</h3><div class="panel"><table>
+   <tr><td>Undated / beyond-year sold WOs</td><td class="ga">$0.00M</td></tr>
    <tr><td colspan="2" style="color:#6e7681;font-size:11px">Not counted as coverage until Production assigns a 2026 completion date.</td></tr></table></div>
-  <h3>⏳ Pending nearing the 90-day cliff (30)</h3><div class="panel"><table>
-   <tr><td>GoAheads created 80–90 days ago</td><td class="ga">$0.51M</td></tr>
+  <h3>⏳ Pending nearing the 90-day cliff (0)</h3><div class="panel"><table>
+   <tr><td>GoAheads created 80–90 days ago</td><td class="ga">$0.00M</td></tr>
    <tr><td colspan="2" style="color:#6e7681;font-size:11px">Drop out of the plan at 90 days (Skipper rule) — chase or lose.</td></tr></table></div>
  </div>
- <div><h3>🏛️ Municipal contracts at/over budget</h3><div class="panel"><table><tr><td>City of Fountain Valley</td><td class='gb'>$-0.04M over</td></tr><tr><td>City of Irvine</td><td class='gb'>$-0.84M over</td></tr></table></div>
+ <div><h3>🏛️ Municipal contracts at/over budget</h3><div class="panel"><table><tr><td>none</td><td>—</td></tr></table></div>
   <h3>🔁 Reconciliation differences</h3><div class="panel"><table>
    <tr><td>Muni invoiced: Brent workbook vs TRIM IT</td><td>$4.16M vs $4.19M (+$32K)</td></tr>
-   <tr><td>Firm WO: Herman snapshot vs live</td><td>$4.60M vs $2.50M</td></tr>
-   <tr><td>Muni forward: calendar vs engine-FY recon</td><td>$3.74M vs $3.02M</td></tr></table></div>
+   <tr><td>Firm WO: Herman snapshot vs live</td><td>$4.60M vs $0.00M</td></tr>
+   <tr><td>Muni forward: calendar vs engine-FY recon</td><td>$3.74M vs n/a</td></tr></table></div>
  </div>
 </div>
 
