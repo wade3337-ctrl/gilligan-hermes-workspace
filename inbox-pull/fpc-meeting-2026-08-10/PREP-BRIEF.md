@@ -52,10 +52,23 @@ Live pull this session — Aspen read-only gateway, `SUM(Invoices.Total)`, play 
 - Live H1 $11.14M sits between our prior reconciled $11.08M and Dimitry's $11.22M (all within ~0.6%). For an external room, needs a credit/pro-forma scrub before it's "the number."
 - Item 4 (hires/terms, capex, safety/compliance) — NOT ours. Confirm Scott/Jeanie/Roxanne own it.
 
+### Item 4 — Operational update (JASON DELIVERS THIS; not Scott/Jeanie/Roxanne)
+Live pull this session (reliable = StatusDefs Active flag, NOT the leaky EndDate field):
+
+- **Active headcount:** Field crew **152** (status Active) + Office **59** = **~211**. (EndDate-NULL gave a bogus 389/173 — inactive people keep blank end dates; do NOT use.)
+- **2026 field hires: 15** (Jan 2, Feb 2, Mar 2, Apr 4, May 2, Jun 3) — reliable (StartDate).
+- **2026 field terminations: 7 recorded** (Jan 1, Feb 2, Apr 2, May 1, Jul 1) — net **+8 field**, supports board commitment of net adds.
+  - ⚠️ INTERNAL ONLY: term tracking is leaky (crew leave w/o EndDate) — real separations higher than 7. FPC's §15 retention uses QoE data, correctly.
+- **Capex (their datapack §20, reconciles):** 2026 budget $1.43M (maint $836K / growth $598K); only $386K spent thru June. Near-term need: aging bucket trucks (2013–2023).
+- **STILL TO GATHER (only Jason can):**
+  - Role/responsibility changes — recent org moves (Jason's head).
+  - Safety/compliance — 2–3 facts from Isgard Ocampo (incident rate, any OSHA/comp items). = the one real gap.
+- **Headcount guidance:** do NOT quote a precise TRIM IT headcount to FPC (won't match their org-chart ~90 field roles). Speak to the hiring TREND (steady, net-positive); let the datapack carry precise counts.
+
 **Open before Monday:**
 - [ ] Sun-night fresh re-pull of July (close the month out)
 - [ ] Steve to bless pro-forma July + confirm budget basis for the exact gap
-- [ ] Confirm who delivers the ops update (item 4)
+- [ ] Jason: grab safety/compliance facts from Isgard + list recent role changes
 
 ---
 (sections §3+ to follow — one at a time)
