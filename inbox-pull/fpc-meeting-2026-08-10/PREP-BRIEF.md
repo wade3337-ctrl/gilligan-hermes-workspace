@@ -103,7 +103,14 @@ Live pull this session — Aspen read-only gateway, play DB. TWO LENSES (both re
 - **Municipal COMPLETED reconciles to live** — report Jan–Jun $4.16M vs my live invoiced $4.26M = within 2.3%. Report is accurate. (July gap $41K vs $792K = invoicing lag only.)
 - **Municipal SOLD $5.06M forward = a budget-based forecast** (Skipper confirmed: total muni budgets ÷ 12 ≈ $876,082/mo). Oct/Nov/Dec all identical $876,082.33 = the budget-÷-12 default (near months carry actual bookings, far months fall to default). $876,082 × 12 ≈ $10.5M annual muni budget (ties to the ~$10.77M budget figure).
   - **Defensible method, but it is a FORECAST, not booked backlog.** If FPC asks "is this backlog?" → "No, it's a contract-budget-based forecast."
-- 🚩 **DOUBLE-COUNT to confirm w/ Nate/Brent:** bridge lists BOTH "Municipal Sold $5.1M" AND "Muni Budgets remaining $888K." If the $5.1M is already budget÷12, the $888K may overlap. Verify before Monday.
+- 🔑 **NTE vs PO (Skipper clarified) — the real reason report ≠ TRIM IT:**
+  - Report forecast is built off **NTE (Not-To-Exceed) = full contract ceiling**.
+  - TRIM IT "budget" field = **PO amounts ONLY, entered only once Brent physically has the PO**. No PO → nothing in TRIM IT. TRIM IT NEVER stores the NTE ceiling.
+  - Cities **drip-feed POs** against the ceiling over the year → that's why TRIM IT "remaining" is small while the NTE-based forecast is large.
+  - **So the $5.1M forward forecast lives ENTIRELY OUTSIDE TRIM IT** (Nate/Brent contract knowledge) — unreconcilable to TRIM IT by design, not by error.
+  - **Double-count concern SOFTENS:** $5.1M (NTE forecast) vs $888K (unspent on ISSUED POs) are two different lenses, not obviously the same dollars. Still confirm how the bridge stacked them.
+- ✅ **Doubles as §11 answer (how locked-in is municipal):** "Anchored by NTE ceilings, realized through drip-fed POs; we bill against POs."
+- 💡 **§22 systems angle:** forward municipal contract visibility is NOT in the ERP today → candidate for the CRM/Bigin layer or a contract-tracking build (the "we saw the gap, we're building for it" theme).
 - **Classification verified clean:** municipal = MarketFocusID 2 (all Cities, MarketID 7; zero counties). Join drops 217 unclassified invoices (undercounts, doesn't inflate). No double-count.
 
 **Municipal FPC answer:** "Completed municipal reconciles to live within ~2%. The forward figure is a contract-budget-based forecast (annual budget ÷ 12), not booked WOs — reliable because it's recurring city work, but it's a forecast."
