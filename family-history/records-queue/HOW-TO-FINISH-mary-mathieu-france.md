@@ -41,3 +41,8 @@ Harnesses already built: `ad08.js`, `ad08-search.js`, `ad08-drive2.js`, `ad08-fi
 - **Pager = ** buttons `"2"`, `"3"`, and `bouton_pagination` **"Derniers résultats"** (jump to last), plus `"1"` = `reset-filtre`. **My clicks on 2/3/last did NOT advance the result set** (same 24 rows after every click; tried getByRole, JS `.click()`, force-click, ArrowDown+Enter). Likely the pager fires an AJAX call that needs a token/handler my headless click doesn't trigger.
 - **Next automation idea (if retried):** capture the XHR the pager fires (network sniff) and replay it directly, OR click "Derniers résultats" and detect the état-civil block, OR drive with a full (non-headless-shell) Chromium + real user gestures. Untested.
 - **Recommendation stands:** a human in a normal browser reaches the Sedan 1863–72 naissances décennale in ~10 min (the pager works with a real click) → Ctrl-find "Mathieu" → screenshot → I transcribe/verify.
+
+## ⏸️ RESUME POINTER (paused 2026-08-07 ~23:45 UTC)
+Jason was live on his PHONE at **archives.moselle.fr / archives57.com** (passed the Anubis anti-bot). Path reached:
+Menu ☰ → **To research** → **Online archives** → **Parish and civil registration records** → the green link **"Click here to access digitized parish and civil registration records"** (civil records online **1793–1904**, so 1866 IS covered; digitized w/ FamilySearch).
+**NEXT TAP:** that green "Click here…" link → search form → **commune = Marspich** (fallback Hayange) → **Naissances (Births)** → **1866** → find **Mathieu, Marie** → read **"fille de [FATHER] et de [MOTHER]"** = her parents. (Backup: "Ten-year civil status indexes" = table décennale 1863–1872, alphabetical → M.)
