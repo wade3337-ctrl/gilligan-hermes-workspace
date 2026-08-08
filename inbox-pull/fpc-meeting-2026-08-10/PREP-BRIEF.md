@@ -13,22 +13,28 @@ Working method: one section at a time, deep. Pull LIVE TRIM IT numbers, build th
 
 **Our answer (items 1–3, numbers ours; item 4 = Scott/Jeanie/Roxanne):**
 
-Live pull this session — Aspen read-only gateway, `SUM(Invoices.Total)`, play DB, INVOICED basis:
+Live pull this session — Aspen read-only gateway, play DB. TWO LENSES (both real, ~$117K apart in July = billing timing):
 
-| Month 2026 | Invoiced | Invoices |
+| Month 2026 | PRODUCED (board) | INVOICED (books) |
 |---|---|---|
-| Jan | $1.664M | 207 |
-| Feb | $1.716M | 258 |
-| Mar | $1.687M | 264 |
-| Apr | $2.179M | 270 |
-| May | $1.900M | 244 |
-| Jun | $1.996M | 262 |
-| **Jul** | **$2.225M** | **275** |
-| Aug (8 days) | $0.146M | 38 |
+| Jan | $1.709M | $1.664M |
+| Feb | $1.705M | $1.716M |
+| Mar | $1.799M | $1.687M |
+| Apr | $2.100M | $2.179M |
+| May | $1.837M | $1.900M |
+| Jun | $2.145M | $1.996M |
+| **Jul** | **$2.108M** | **$2.225M** |
 
-- **H1 = $11.14M · YTD-July = $13.37M**
-- **July = strongest month of 2026** (+~11% over June). Momentum is UP into the meeting.
-- **Pacing:** recent run-rate (Apr–Jul) ~$2.08M/mo. To hit FPC's $24.4M budget need ~$2.21M/mo Aug–Dec. July already cleared that bar. Line: "on pace if we hold July; ~$130K/mo behind on the 4-month average."
+- **PRODUCED = `CrewSheets.CompletedDollars`** = what the Revenue Performance board shows = Jason's team's daily number. **July $2.108M matches his board's $2.1M.**
+- **INVOICED = `SUM(Invoices.Total)` by InvoiceDate** = what reconciles to Dimitry's books. July $2.225M.
+- They cross month to month (Jun produced>invoiced, Jul invoiced>produced) = normal billing lag, tracking close = NO leakage. Good story.
+- **H1 invoiced = $11.14M · YTD-July invoiced = $13.37M**
+- **July = strong month, both lenses.** Momentum UP into the meeting.
+- **Pacing (invoiced):** recent run-rate ~$2.08M/mo. FPC budget $24.4M needs ~$2.21M/mo Aug–Dec. July cleared it.
+
+**Two-sentence answer if they ask why dashboard ≠ books:** "The board reports PRODUCED work (crew output); invoiced lags by billing timing but tracks within a couple points. For anything comparative we quote invoiced — it reconciles to Dimitry's books."
+
+**§22 tie-in:** the dashboard has a built-in SOURCE TOGGLE (Produced / Schedule Board / Crew Sheets / Invoiced) — flip lenses LIVE in front of FPC to show the ops team works off a purpose-built tool, not one number.
 
 **Year-over-year (same invoiced basis, live pull this session):**
 
@@ -53,12 +59,16 @@ Live pull this session — Aspen read-only gateway, `SUM(Invoices.Total)`, play 
 - Item 4 (hires/terms, capex, safety/compliance) — NOT ours. Confirm Scott/Jeanie/Roxanne own it.
 
 ### Item 4 — Operational update (JASON DELIVERS THIS; not Scott/Jeanie/Roxanne)
-Live pull this session (reliable = StatusDefs Active flag, NOT the leaky EndDate field):
+**HEADCOUNT SOURCE = Roxanne's HR roster (Jul 30 2026), NOT TRIM IT. TRIM IT headcount is unreliable — do not use.**
+(roster saved: this folder /roster/roster.xlsx)
 
-- **Active headcount:** Field crew **152** (status Active) + Office **59** = **~211**. (EndDate-NULL gave a bogus 389/173 — inactive people keep blank end dates; do NOT use.)
-- **2026 field hires: 15** (Jan 2, Feb 2, Mar 2, Apr 4, May 2, Jun 3) — reliable (StartDate).
-- **2026 field terminations: 7 recorded** (Jan 1, Feb 2, Apr 2, May 1, Jul 1) — net **+8 field**, supports board commitment of net adds.
-  - ⚠️ INTERNAL ONLY: term tracking is leaky (crew leave w/o EndDate) — real separations higher than 7. FPC's §15 retention uses QoE data, correctly.
+**Authoritative headcount — 130 total employees:**
+- **FIELD: 85** — Tree Trimmers 30 · Crew Leaders (Sr Tree Trimmer) 25 · Groundsmen 27 · Roll-Off Drivers 3
+- **NON-FIELD: 45** — Office/Clerical 17 · Outside Sales dept 11 (area supers, branch mgrs, field training, safety) · Sales/Manager 10 (arborists, BD, marketing) · Mechanics/Drivers 6 · Officer 1 (Scott)
+- **Reconciles to FPC datapack:** their §12 org chart = SOCO 47 + NOCO 43 = 90 field; §14 defines field = Landscape + Tree Trimmer + Sr Tree Trimmer. Our 85 field lands right in their band. **~90 field / ~130 total ties to their book.**
+
+- **2026 field hires: 15** (Jan 2, Feb 2, Mar 2, Apr 4, May 2, Jun 3) — from TRIM IT StartDate; plausible vs stable ~85–90 field w/ ~44% turnover. Use as TREND, not gospel.
+- ⚠️ TRIM IT term tracking is leaky — do NOT quote a TRIM IT separations count. FPC's §15 retention uses QoE data, correctly.
 - **Capex (their datapack §20, reconciles):** 2026 budget $1.43M (maint $836K / growth $598K); only $386K spent thru June. Near-term need: aging bucket trucks (2013–2023).
 - **STILL TO GATHER (only Jason can):**
   - Role/responsibility changes — recent org moves (Jason's head).
